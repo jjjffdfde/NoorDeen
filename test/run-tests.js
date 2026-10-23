@@ -44,6 +44,7 @@ async function runTestSuite() {
     'seerah.html',
     'prophets.html',
     'sahaba.html',
+    'history.html',
     'pillars.html',
     'salah-guide.html',
     'janazah-guide.html',
@@ -274,7 +275,7 @@ async function runTestSuite() {
   console.log('\n--- TEST SUITE 8: Technical SEO, Canonical, Social & Schema.org ---');
   const htmlFiles = [
     'index.html', 'quran.html', 'hadith.html', 'kalimas.html', 'duas.html',
-    'seerah.html', 'prophets.html', 'sahaba.html', 'pillars.html', 'salah-guide.html',
+    'seerah.html', 'prophets.html', 'sahaba.html', 'history.html', 'pillars.html', 'salah-guide.html',
     'janazah-guide.html', 'eid-guide.html', 'download-app.html',
     'wudu-guide.html', 'prayer-times.html', 'tasbih.html', 'zakat-calculator.html',
     'calendar.html', 'bookmarks.html', 'about.html', 'sources.html', 'privacy.html', 'terms.html'
@@ -295,11 +296,11 @@ async function runTestSuite() {
     if (!html.includes('mobile-menu-btn')) allHaveMobileBtn = false;
   });
 
-  assert(allHaveCanonical, 'All 23 HTML pages contain <link rel="canonical"> tags');
-  assert(allHaveManifest, 'All 23 HTML pages link to PWA manifest.json');
-  assert(allHaveOG, 'All 23 HTML pages contain Open Graph meta tags');
-  assert(allHaveTwitter, 'All 23 HTML pages contain Twitter Card meta tags');
-  assert(allHaveMobileBtn, 'All 23 HTML pages contain responsive mobile drawer menu trigger');
+  assert(allHaveCanonical, `All ${htmlFiles.length} HTML pages contain <link rel="canonical"> tags`);
+  assert(allHaveManifest, `All ${htmlFiles.length} HTML pages link to PWA manifest.json`);
+  assert(allHaveOG, `All ${htmlFiles.length} HTML pages contain Open Graph meta tags`);
+  assert(allHaveTwitter, `All ${htmlFiles.length} HTML pages contain Twitter Card meta tags`);
+  assert(allHaveMobileBtn, `All ${htmlFiles.length} HTML pages contain responsive mobile drawer menu trigger`);
 
   // Subpage schema test
   const hadithHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'hadith.html'), 'utf-8');
@@ -539,10 +540,10 @@ async function runTestSuite() {
   const charQulRes = searchEngine.search('char qul');
   assert(charQulRes.length === 4, 'Comprehensive query "char qul" returns all 4 Qul Surahs (109, 112, 113, 114)');
 
-  // 2. Canonical Navbar Uniformity Across All 24 HTML Files
+  // 2. Canonical Navbar Uniformity Across All HTML Files
   const allHtmlPages = [
     'index.html', 'quran.html', 'hadith.html', 'kalimas.html', 'duas.html',
-    'seerah.html', 'prophets.html', 'sahaba.html', 'pillars.html', 'salah-guide.html',
+    'seerah.html', 'prophets.html', 'sahaba.html', 'history.html', 'pillars.html', 'salah-guide.html',
     'janazah-guide.html', 'eid-guide.html', 'download-app.html', 'wudu-guide.html',
     'prayer-times.html', 'tasbih.html', 'zakat-calculator.html', 'calendar.html',
     'bookmarks.html', 'about.html', 'contact.html', 'sources.html', 'privacy.html', 'terms.html'
@@ -564,7 +565,7 @@ async function runTestSuite() {
       console.error(`Navbar canonical mismatch in: ${fileName}`);
     }
   });
-  assert(canonicalNavConsistent, 'Canonical site-header and mobile drawer DOM structure identical across all 24 HTML files');
+  assert(canonicalNavConsistent, `Canonical site-header and mobile drawer DOM structure identical across all ${allHtmlPages.length} HTML files`);
 
   // 3. Zero-Lag I18n Engine & Instant Default English Snapshotting
   const i18nEngineCode = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'i18n.js'), 'utf-8');
@@ -587,6 +588,74 @@ async function runTestSuite() {
 
   const quranHtmlCode = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
   assert(quranHtmlCode.includes('popular-surah-pill'), 'Quran reader includes Popular Daily Surahs 1-click quick access row');
+
+  // TEST SUITE 21: QURAN TRANSLATION ISOLATION, PROTECTED ARABIC, SEERAH & SAHABA LIBRARIES, ISLAMIC HISTORY & WAZAIF AUDIT
+  console.log('\n--- TEST SUITE 21: Quran Translation Isolation, Protected Arabic, Seerah, Sahaba & History Libraries ---');
+  
+  // 1. Quran Translation Isolation & Persistence
+  assert(quranHtmlCode.includes('id="quran-trans-lang-select"'), 'Quran toolbar contains dedicated #quran-trans-lang-select dropdown');
+  assert(quranHtmlCode.includes('value="ur"') && quranHtmlCode.includes('value="en"') && quranHtmlCode.includes('value="fr"'), 'Quran translation selector includes major verified languages');
+  
+  const quranCode = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  assert(quranCode.includes('setQuranTranslationLanguage'), 'Quran controller implements setQuranTranslationLanguage handler');
+  assert(quranCode.includes('islamic_portal_quran_trans_lang'), 'Quran controller isolates translation preference in islamic_portal_quran_trans_lang');
+  
+  // 2. Strict Quranic Arabic Protection
+  assert(quranCode.includes('lang="ar"') && quranCode.includes('dir="rtl"') && quranCode.includes('translate="no"'), 'Quran controller protects Arabic text with lang="ar", dir="rtl", and translate="no"');
+  
+  // 3. 40-Language Quran Translation Registry Verification
+  const registryDiskPath = path.join(ROOT_DIR, 'data', 'quran-translations', 'registry.json');
+  assert(fs.existsSync(registryDiskPath), 'Quran translation registry exists at data/quran-translations/registry.json');
+  const registryData = JSON.parse(fs.readFileSync(registryDiskPath, 'utf-8'));
+  assert(registryData.translations && registryData.translations.length === 40, 'Quran translation registry contains exactly 40 configured languages');
+  const urduEntry = registryData.translations.find(t => t.code === 'ur');
+  const enEntry = registryData.translations.find(t => t.code === 'en');
+  assert(urduEntry && urduEntry.translator.includes('Fateh Muhammad Jalandhry'), 'Urdu translation verified as Fateh Muhammad Jalandhry');
+  assert(enEntry && enEntry.translator.includes('Saheeh International'), 'English translation verified as Saheeh International');
+  assert(quranCode.includes('theological review') || quranCode.includes('scholarly review') || quranCode.includes('Scholarly Translation Status'), 'Quran controller alerts user when viewing languages under theological review');
+
+  // 4. Seerah Nabawiyyah 16-Chapter Structured Library
+  const seerahHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'seerah.html'), 'utf-8');
+  for (let ch = 1; ch <= 16; ch++) {
+    assert(seerahHtml.includes(`id="ch${ch}"`) || seerahHtml.includes(`CHAPTER ${ch}:`), `Seerah library contains Chapter ${ch}`);
+  }
+  assert(seerahHtml.includes('Ibn Hisham') && seerahHtml.includes('Ibn Sa\'d'), 'Seerah library cites primary classical authorities Ibn Hisham and Ibn Sa\'d');
+  assert(seerahHtml.includes('Sahih al-Bukhari') && seerahHtml.includes('Sahih Muslim'), 'Seerah library cites canonical Sahihayn collections');
+  assert(seerahHtml.includes('Verified: Classical Consensus') || seerahHtml.includes('Verified: Muttafaqun \'Alayh'), 'Seerah library features explicit theological verification badges');
+
+  // 5. Expanded Sahaba Biographies
+  const sahabaHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'sahaba.html'), 'utf-8');
+  assert(sahabaHtml.includes('Khadijah bint Khuwaylid') && sahabaHtml.includes('Aisha bint Abi Bakr') && sahabaHtml.includes('Fatimah az-Zahra'), 'Sahaba library includes prominent Mothers of the Believers and Sayyidah Fatimah');
+  assert(sahabaHtml.includes('Umm Salamah') && sahabaHtml.includes('Asma bint Abi Bakr'), 'Sahaba library includes Sayyidah Umm Salamah and Asma bint Abi Bakr');
+  assert(sahabaHtml.includes('Bilal ibn Rabah') && sahabaHtml.includes('Salman al-Farsi'), 'Sahaba library includes Bilal ibn Rabah and Salman al-Farsi');
+  assert(sahabaHtml.includes('Khalid ibn al-Walid') && sahabaHtml.includes('Mus\'ab ibn Umayr') && sahabaHtml.includes('Abu Dharr al-Ghifari'), 'Sahaba library includes Khalid ibn al-Walid, Mus\'ab ibn Umayr, and Abu Dharr al-Ghifari');
+  assert(sahabaHtml.includes('Al-Isabah') || sahabaHtml.includes('Ibn Hajar'), 'Sahaba library cites classical biographical corpus (Al-Isabah)');
+
+  // 6. Islamic History 12-Era Library
+  const historyPath = path.join(PUBLIC_DIR, 'history.html');
+  assert(fs.existsSync(historyPath), 'Islamic History library exists at public/history.html');
+  const historyHtml = fs.readFileSync(historyPath, 'utf-8');
+  for (let era = 1; era <= 12; era++) {
+    assert(historyHtml.includes(`id="era${era}"`) || historyHtml.includes(`ERA ${era}:`), `Islamic History library covers Era ${era}`);
+  }
+  const pillarsHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'pillars.html'), 'utf-8');
+  assert(pillarsHtml.includes('history.html'), 'Five Pillars guide cross-references Islamic History library');
+
+  // 7. Daily Routine Wazaif Claims & Hadith Citations Audit
+  const indexHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
+  assert(indexHtml.includes('Mustahabb') || indexHtml.includes('Amal al-Salaf'), 'Daily companion differentiates Mustahabb / Amal al-Salaf devotional practices');
+  assert(indexHtml.includes('Established Sahih Sunnah'), 'Daily companion affirms established Sahih Sunnah wazaif');
+  assert(indexHtml.includes('Sunan ad-Darimi #3418'), 'Fajr Surah Yaseen wazifa cites Sunan ad-Darimi #3418');
+  assert(indexHtml.includes('Sahih al-Bukhari #2311') || indexHtml.includes('Bukhari #6306'), 'Morning Adhkar wazifa cites Sahih al-Bukhari');
+  assert(indexHtml.includes('Sunan Abi Dawud #1400') || indexHtml.includes('Tirmidhi #2891'), 'Night Surah Al-Mulk wazifa cites Abu Dawud and Tirmidhi');
+  assert(indexHtml.includes('Al-Hakim 2/368') || indexHtml.includes('Al-Bayhaqi #5856'), 'Friday Surah Al-Kahf wazifa cites Al-Hakim and Al-Bayhaqi');
+
+  // 8. Mobile Responsiveness Safeguards
+  const mainCss = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
+  assert(mainCss.includes('@media (max-width: 768px)'), 'Main stylesheet defines 768px tablet media query');
+  assert(mainCss.includes('@media (max-width: 480px)'), 'Main stylesheet defines 480px mobile media query');
+  assert(mainCss.includes('@media (max-width: 360px)'), 'Main stylesheet defines 360px small mobile media query');
+  assert(mainCss.includes('overflow-x: hidden'), 'Main stylesheet implements zero-horizontal-overflow safeguard');
 
   // SUMMARY
   console.log('\n====================================================');

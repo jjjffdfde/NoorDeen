@@ -2219,3 +2219,100 @@ body {
   color: #FFFFFF;
 }
 
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE REFINEMENT (320px – 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .header-actions {
+    gap: 6px;
+  }
+  .search-trigger-btn {
+    padding: 6px 10px;
+  }
+  .search-kbd {
+    display: none;
+  }
+  .wazifa-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .wazifa-action-btn {
+    align-self: flex-end;
+  }
+  .quran-controls-card {
+    padding: 16px;
+  }
+  .audio-player-bar {
+    padding: 10px 14px;
+  }
+  .ayah-arabic {
+    font-size: 1.55rem;
+    line-height: 2.3;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+  }
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .top-announcement {
+    font-size: 0.76rem;
+    padding: 6px 10px;
+  }
+  .site-header {
+    padding: 8px 0;
+  }
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+  .logo-text-title {
+    font-size: 1.05rem;
+  }
+  .logo-text-subtitle {
+    display: none;
+  }
+  #quran-trans-lang-select {
+    max-width: 100%;
+    font-size: 0.82rem;
+    padding: 7px 10px;
+  }
+  .audio-bar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .audio-controls-group {
+    justify-content: center;
+  }
+  .ayah-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ayah-actions button {
+    padding: 4px 8px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo-text-title {
+    font-size: 0.92rem;
+  }
+  .search-trigger-text {
+    display: none;
+  }
+  .btn-outline, .btn-primary {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+  .wazifa-desc {
+    font-size: 0.76rem;
+  }
+}
+
+

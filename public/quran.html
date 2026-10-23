@@ -163,9 +163,56 @@
 
       <!-- Reading Settings Controls -->
       <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <!-- Dedicated Quran Translation Language Selector (40 Supported Languages) -->
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <label for="quran-trans-lang-select" style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary);">Translation Language:</label>
+          <select id="quran-trans-lang-select" class="btn btn-outline" style="background-color: var(--color-card); padding: 6px 10px; font-size: 0.85rem; max-width: 210px; cursor: pointer;" aria-label="Quran Translation Language">
+            <option value="en">English — Saheeh International [Verified]</option>
+            <option value="ur">اردو — مولانا فتح محمد جالندھری [Verified]</option>
+            <option value="fr">Français — Dr. Muhammad Hamidullah [Verified]</option>
+            <option value="id">Bahasa Indonesia — Kemenag RI [Verified]</option>
+            <option value="tr">Türkçe — Diyanet İşleri [Verified]</option>
+            <option value="bn">বাংলা — মাওলানা মুহিউদ্দীন খান [Verified]</option>
+            <option value="hi">हिन्दी — फ़ारूक़ ख़ान व मुहम्मद अहमद [Verified]</option>
+            <option value="ms">Bahasa Melayu — Syeikh Basmeih [Verified]</option>
+            <option value="fa">فارسی — دکتر الهی قمشه‌ای [Verified]</option>
+            <option value="es">Español — Muhammad Isa García [Verified]</option>
+            <option value="de">Deutsch — Abu Rida ibn Rassoul [Verified]</option>
+            <option value="ru">Русский — Эльмир Кулиев [Verified]</option>
+            <option value="zh-CN">简体中文 — 马坚 (Ma Jian) [Verified]</option>
+            <option value="zh-TW">繁體中文 — 馬堅 (Ma Jian) [Verified]</option>
+            <option value="pt">Português — Samir El-Hayek [Verified]</option>
+            <option value="sw">Kiswahili — Ali Muhsin Al-Barwani [Verified]</option>
+            <option value="ha">Hausa — Abubakar Mahmoud Gumi [Verified]</option>
+            <option value="so">Soomaali — Mahmud Muhammad Abduh [Verified]</option>
+            <option value="ps">پښتو — مولانا عبدالولی خان [Verified]</option>
+            <option value="ku">کوردی — بورهان محەممەد ئەمین [Verified]</option>
+            <option value="ta">தமிழ் — ஜான் டிரஸ்ட் [Verified]</option>
+            <option value="ml">മലയാളം — ചെറിയമുണ്ടം അബ്ദുൽ ഹമീദ് [Verified]</option>
+            <option value="th">ไทย — King Fahd Complex [Verified]</option>
+            <option value="nl">Nederlands — Dr. Sofian Siregar [Verified]</option>
+            <option value="it">Italiano — Hamza Roberto Piccardo [Verified]</option>
+            <option value="pl">Polski — Prof. Józef Bielawski [Verified]</option>
+            <option value="bs">Bosanski — Besim Korkut [Verified]</option>
+            <option value="sq">Shqip — Hasan I. Nahi [Verified]</option>
+            <option value="uz">Oʻzbekcha — Shayx Muhammad Sodiq [Verified]</option>
+            <option value="az">Azərbaycanca — Məmmədəliyev & Bünyadov [Verified]</option>
+            <option value="ar">العربية — التفسير الميسر [Verified Tafsir]</option>
+            <option value="te">తెలుగు — Telugu (Scholarly Review)</option>
+            <option value="kn">ಕನ್ನಡ — Kannada (Scholarly Review)</option>
+            <option value="mr">मराठी — Marathi (Scholarly Review)</option>
+            <option value="gu">ગુજરાતી — Gujarati (Scholarly Review)</option>
+            <option value="pa">ਪੰਜਾਬੀ — Punjabi (Scholarly Review)</option>
+            <option value="ja">日本語 — Japanese (Scholarly Review)</option>
+            <option value="ko">한국어 — Korean (Scholarly Review)</option>
+            <option value="vi">Tiếng Việt — Vietnamese (Scholarly Review)</option>
+            <option value="kk">Қазақша — Kazakh (Scholarly Review)</option>
+          </select>
+        </div>
+
         <!-- Translation Mode Selector -->
         <div style="display: flex; align-items: center; gap: 6px;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Translation:</span>
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">View Mode:</span>
           <select id="translation-view-select" class="btn btn-outline" style="background-color: var(--color-card); padding: 6px 10px; font-size: 0.85rem;" aria-label="Quran translation display mode">
             <option value="both">Urdu & English</option>
             <option value="urdu">Urdu (Jalandhry)</option>
@@ -395,6 +442,15 @@
     const transSelect = document.getElementById('translation-view-select');
     if (transSelect && quranApp.translationMode) {
       transSelect.value = quranApp.translationMode;
+    }
+
+    // Sync saved Quran Translation Language (40 Languages Supported)
+    const transLangSelect = document.getElementById('quran-trans-lang-select');
+    if (transLangSelect && quranApp.translationLang) {
+      transLangSelect.value = quranApp.translationLang;
+      transLangSelect.addEventListener('change', (e) => {
+        quranApp.setQuranTranslationLanguage(e.target.value);
+      });
     }
 
     // Event listeners
