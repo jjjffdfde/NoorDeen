@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stories of the Prophets (Qisas al-Anbiya) — Authentic Quranic Accounts</title>
-  <meta name="description" content="Discover the lives, trials, and divine missions of the Prophets in Islam (Adam, Nuh, Ibrahim, Musa, Isa) according to the Quran and Ibn Kathir.">
+  <title>Stories of the Prophets (Qisas al-Anbiya) — Authentic Quranic Accounts | Islamic Knowledge Portal</title>
+  <meta name="description" content="Discover the lives, trials, and divine missions of the Prophets in Islam (Adam, Nuh, Ibrahim, Musa, Isa, and Muhammad عليهم السلام) according to the Holy Quran and Ibn Kathir.">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="Islamic Knowledge Portal">
   <meta property="og:url" content="https://islamicknowledge.example.com/prophets.html">
   <meta property="og:title" content="Stories of the Prophets (Qisas al-Anbiya) — Authentic Quranic Accounts">
-  <meta property="og:description" content="Discover the lives, trials, and divine missions of the Prophets in Islam (Adam, Nuh, Ibrahim, Musa, Isa) according to the Quran and Ibn Kathir.">
+  <meta property="og:description" content="Discover the lives, trials, and divine missions of the Prophets in Islam (Adam, Nuh, Ibrahim, Musa, Isa, and Muhammad عليهم السلام) according to the Holy Quran and Ibn Kathir.">
   <meta property="og:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
   <meta property="og:locale" content="en_US">
 
@@ -23,32 +23,38 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://islamicknowledge.example.com/prophets.html">
   <meta name="twitter:title" content="Stories of the Prophets (Qisas al-Anbiya) — Authentic Quranic Accounts">
-  <meta name="twitter:description" content="Discover the lives, trials, and divine missions of the Prophets in Islam (Adam, Nuh, Ibrahim, Musa, Isa) according to the Quran and Ibn Kathir.">
+  <meta name="twitter:description" content="Discover the lives, trials, and divine missions of the Prophets in Islam according to the Holy Quran.">
   <meta name="twitter:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://islamicknowledge.example.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Stories of the Prophets",
-      "item": "https://islamicknowledge.example.com/prophets.html"
-    }
-  ]
-}
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islamicknowledge.example.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Stories of the Prophets",
+        "item": "https://islamicknowledge.example.com/prophets.html"
+      }
+    ]
+  }
   </script>
 </head>
 <body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement">
+    <span>✨ Authentic Islamic Knowledge Portal — Free, Verified, and Ad-Dignified Learning Worldwide</span>
+    <a href="download-app.html" style="color: var(--color-gold); margin-left: 10px; font-weight: 700; text-decoration: underline;">Install Offline App (PWA & APK) ➔</a>
+  </div>
 
   <!-- Header -->
   <header class="site-header">
@@ -61,129 +67,245 @@
         </div>
       </a>
 
+      <!-- Desktop Navigation Menu -->
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
-          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
-          <li class="nav-item"><a href="seerah.html">Seerah</a></li>
-          <li class="nav-item active"><a href="prophets.html">Prophets</a></li>
-          <li class="nav-item"><a href="sahaba.html">Sahaba</a></li>
-          <li class="nav-item"><a href="pillars.html">Pillars</a></li>
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="quran.html" data-i18n="navQuran">Holy Quran ▾</a>
+            <div class="nav-dropdown">
+              <a href="quran.html">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown active">
+            <a href="hadith.html" data-i18n="navHadith">Hadith & Duas ▾</a>
+            <div class="nav-dropdown">
+              <a href="hadith.html">📜 Authentic Hadith Collections</a>
+              <a href="duas.html">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html">⭐ Six Kalimas</a>
+              <a href="seerah.html">🌹 Prophetic Seerah</a>
+              <a href="prophets.html">📜 Stories of the Prophets</a>
+              <a href="sahaba.html">👥 Lives of the Sahaba</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="salah-guide.html">Worship Guides ▾</a>
+            <div class="nav-dropdown">
+              <a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html">💧 Step-by-Step Wudu</a>
+              <a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="prayer-times.html">Tools ▾</a>
+            <div class="nav-dropdown">
+              <a href="prayer-times.html">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html">💰 Zakat Calculator</a>
+              <a href="tasbih.html">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html">📅 Hijri Calendar</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="about.html">About</a></li>
+          <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
+      <!-- Header Actions -->
       <div class="header-actions">
-        <button id="language-selector-btn" class="btn btn-outline">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
-      <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
       </div>
     </div>
   </header>
 
-  <!-- Banner -->
-  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+  <!-- Top Ad Slot Container -->
+  <div class="ad-slot-container" id="ad-banner-top" style="display: none;">
+    <div class="ad-placeholder-label">Advertisement</div>
+    <div id="ad-content-top"></div>
+  </div>
+
+  <!-- Hero Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 48px 0; text-align: center;">
     <div class="container">
-      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Stories of the Prophets (عليهم السلام)</h1>
-      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
-        "There was certainly in their stories a lesson for those of understanding." (Surah Yusuf 12:111)
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.12); border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: var(--color-gold); margin-bottom: 12px;">
+        قَصَصُ الْأَنْبِيَاءِ عَلَيْهِمُ السَّلَامُ — CHRONICLES OF DIVINE MESSENGERS
+      </div>
+      <h1 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 12px;">Stories of the Prophets (عليهم السلام)</h1>
+      <p style="color: #D1D5DB; max-width: 750px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7;">
+        "There was certainly in their stories a lesson for those of understanding." (Surah Yusuf 12:111). Explore the lives, unwavering monotheism, trials, and divine victories of the Prophets in Islam based on the Holy Quran and authentic Tafsir.
       </p>
     </div>
   </div>
 
-  <!-- Content -->
-  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 900px;">
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 950px;">
     
     <!-- Prophet Adam -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-primary);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
         <div>
-          <h2 style="font-size: 1.35rem; color: var(--color-primary); font-weight: 700;">Adam (عليه السلام)</h2>
-          <span style="font-size: 0.85rem; color: var(--color-text-muted);">Father of Mankind • Mentioned 25 Times in Quran</span>
+          <h2 style="font-size: 1.45rem; color: var(--color-primary); font-weight: 800; margin: 0;">Adam (عليه السلام)</h2>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Father of Mankind • Mentioned 25 Times in the Holy Quran</span>
         </div>
         <span class="font-arabic" style="font-size: 1.4rem; color: var(--color-gold-dark); font-weight: 700;">آدم عليه السلام</span>
       </div>
-      <p style="line-height: 1.7; color: var(--color-text-main); margin-bottom: 16px;">
-        Created by Allah from clay and granted the knowledge of all things. When tempted by Iblis regarding the tree, Adam and Hawwa (Eve) turned in sincere repentance, teaching humanity the eternal door of Tawbah: "Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers" (7:23).
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 16px; font-size: 1rem;">
+        Created by Allah directly from earth and clay, honored when Allah commanded the angels to prostrate to him, and endowed with the divine names and knowledge of all things. When tempted by Iblis regarding the forbidden tree, Adam and Hawwa (Eve) turned in sincere, sorrowful repentance, teaching humanity the eternal door of Tawbah: <em>"Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers"</em> (Surah Al-A'raf 7:23).
       </p>
-      <div style="background-color: var(--color-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.88rem;">
-        <strong>Key Lessons:</strong> Supreme honor of divine knowledge • The poison of pride (Kibr) • Repentance washes away sin.
+      <div style="background-color: var(--color-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; border-left: 3px solid var(--color-gold);">
+        <strong>Eternal Theological Lessons:</strong> Supreme honor of divine knowledge • The destructive arrogance of Iblis (Kibr) • Sincere repentance instantly restores divine mercy.
       </div>
     </div>
 
     <!-- Prophet Nuh -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-primary);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
         <div>
-          <h2 style="font-size: 1.35rem; color: var(--color-primary); font-weight: 700;">Nuh / Noah (عليه السلام)</h2>
-          <span style="font-size: 0.85rem; color: var(--color-text-muted);">Shaikh al-Anbiya • Preached Tawhid for 950 Years</span>
+          <h2 style="font-size: 1.45rem; color: var(--color-primary); font-weight: 800; margin: 0;">Nuh / Noah (عليه السلام)</h2>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Shaykh al-Anbiya • Preached Tawhid for 950 Years</span>
         </div>
         <span class="font-arabic" style="font-size: 1.4rem; color: var(--color-gold-dark); font-weight: 700;">نوح عليه السلام</span>
       </div>
-      <p style="line-height: 1.7; color: var(--color-text-main); margin-bottom: 16px;">
-        Preached pure monotheism with immense patience day and night. When the ruling oligarchs persisted in idol worship, he built the Ark under divine inspiration. The believers were delivered from the global deluge while arrogance was wiped clean.
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 16px; font-size: 1rem;">
+        Preached pure monotheism with unmatched perseverance day and night, openly and secretly, for nine and a half centuries. When the corrupt ruling oligarchs mocked him and persisted in idolatry, Allah commanded him to construct the Ark (Al-Fulk) under divine surveillance. The believers and animal pairs were delivered across the raging floodwaters while tyranny was washed away.
       </p>
-      <div style="background-color: var(--color-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.88rem;">
-        <strong>Key Lessons:</strong> Perseverance without relying on immediate numbers • Spiritual kinship transcends blood.
+      <div style="background-color: var(--color-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; border-left: 3px solid var(--color-gold);">
+        <strong>Eternal Theological Lessons:</strong> Tireless patience without conditioning efforts on immediate worldly numbers • True kinship is bound by faith, not biological bloodline alone.
       </div>
     </div>
 
     <!-- Prophet Ibrahim -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-gold);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-gold); padding: 26px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
         <div>
-          <h2 style="font-size: 1.35rem; color: var(--color-primary); font-weight: 700;">Ibrahim / Abraham (عليه السلام)</h2>
-          <span style="font-size: 0.85rem; color: var(--color-text-muted);">Khalilullah (Intimate Friend of Allah) • Builder of the Ka'bah</span>
+          <h2 style="font-size: 1.45rem; color: var(--color-primary); font-weight: 800; margin: 0;">Ibrahim / Abraham (عليه السلام)</h2>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Khalilullah (Intimate Friend of Allah) • Builder of the Ka'bah</span>
         </div>
         <span class="font-arabic" style="font-size: 1.4rem; color: var(--color-gold-dark); font-weight: 700;">إبراهيم عليه السلام</span>
       </div>
-      <p style="line-height: 1.7; color: var(--color-text-main); margin-bottom: 16px;">
-        The patriarch of pure monotheism. Thrown into Nimrod's blazing fire, Allah commanded it to be coolness and peace. Tested with leaving baby Ismail and Hajar in barren Makkah and submitting to sacrifice, he surrendered completely, earning the title of an Ummah in himself (Surah An-Nahl 16:120).
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 16px; font-size: 1rem;">
+        The archetype of pure, uncompromised monotheism (Hanifiyyah). Cast into King Nimrod's blazing inferno for shattering idols, Allah commanded the flames: <em>"O fire, be coolness and safety upon Abraham!"</em> (21:69). Tested with settling baby Ismail and Lady Hajar in the barren desert of Bakkah, and submitting to the divine command of sacrifice, he surrendered completely, earning Allah's praise as an entire nation (Ummah) within a single soul (Surah An-Nahl 16:120).
       </p>
-      <div style="background-color: var(--color-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.88rem;">
-        <strong>Key Lessons:</strong> Complete trust (Tawakkul) • Rational debate over superstitions • Raising the foundations of the Holy Ka'bah.
+      <div style="background-color: var(--color-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; border-left: 3px solid var(--color-gold);">
+        <strong>Eternal Theological Lessons:</strong> Absolute reliance upon Allah (Tawakkul) • Rational discourse against superstition • The foundational rites of Hajj and Qurbani.
       </div>
     </div>
 
     <!-- Prophet Musa -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-primary);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
         <div>
-          <h2 style="font-size: 1.35rem; color: var(--color-primary); font-weight: 700;">Musa / Moses (عليه السلام)</h2>
-          <span style="font-size: 0.85rem; color: var(--color-text-muted);">Kalimullah (Spoken to by Allah) • Liberator of Bani Isra'il</span>
+          <h2 style="font-size: 1.45rem; color: var(--color-primary); font-weight: 800; margin: 0;">Musa / Moses (عليه السلام)</h2>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Kalimullah (Spoken to by Allah) • Liberator of the Children of Israel</span>
         </div>
         <span class="font-arabic" style="font-size: 1.4rem; color: var(--color-gold-dark); font-weight: 700;">موسى عليه السلام</span>
       </div>
-      <p style="line-height: 1.7; color: var(--color-text-main); margin-bottom: 16px;">
-        Confronted Pharaoh's brutal tyranny with the staff and divine signs. When trapped against the Red Sea, he proclaimed: "No! Indeed, with me is my Lord; He will guide me!" (26:62). Allah parted the sea and revealed the Holy Torah.
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 16px; font-size: 1rem;">
+        Confronted the brutal totalitarian regime of Pharaoh with divine signs and the miraculous staff. When cornered against the roaring Red Sea with Pharaoh's chariots closing in behind, his companions cried: <em>"Indeed, we are overtaken!"</em> Musa answered with unshakeable certainty: <em>"No! Indeed, with me is my Lord; He will guide me!"</em> (Surah Ash-Shu'ara 26:61–62). Allah parted the sea into twelve paths of safety, drowned the oppressors, and revealed the Holy Torah at Mount Sinai.
       </p>
-      <div style="background-color: var(--color-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.88rem;">
-        <strong>Key Lessons:</strong> Speaking truth to power • Liberating the oppressed • Steadfast faith in divine deliverance.
+      <div style="background-color: var(--color-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; border-left: 3px solid var(--color-gold);">
+        <strong>Eternal Theological Lessons:</strong> Courage against tyranny in defense of the oppressed • Faith when all worldly doors appear locked • Divine law as a standard of justice.
       </div>
     </div>
 
     <!-- Prophet Isa -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-primary);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
         <div>
-          <h2 style="font-size: 1.35rem; color: var(--color-primary); font-weight: 700;">Isa / Jesus (عليه السلام)</h2>
-          <span style="font-size: 0.85rem; color: var(--color-text-muted);">Ruhullah & Kalimatullah • Messenger of Peace and Mercy</span>
+          <h2 style="font-size: 1.45rem; color: var(--color-primary); font-weight: 800; margin: 0;">Isa / Jesus (عليه السلام)</h2>
+          <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">Ruhullah & Kalimatullah • Son of Maryam (Virgin Mary)</span>
         </div>
         <span class="font-arabic" style="font-size: 1.4rem; color: var(--color-gold-dark); font-weight: 700;">عيسى عليه السلام</span>
       </div>
-      <p style="line-height: 1.7; color: var(--color-text-main); margin-bottom: 16px;">
-        Born miraculously of the virgin Maryam (Mary). He healed the blind, cured lepers, and raised the dead by Allah's permission. Sent with the Injil to confirm the Torah and announce the coming of Prophet Muhammad ﷺ (Ahmad). Allah raised him unto Himself and he was neither killed nor crucified (Surah An-Nisa 4:157).
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 16px; font-size: 1rem;">
+        Born miraculously without a human father to the purest woman of all worlds, Sayyidah Maryam (RA). Spoke eloquently from the cradle defending his mother's purity, healed the blind and leper, and raised the dead by Allah's sovereign permission (<em>bi-idhnillāh</em>). The Quran clarifies that he was neither killed nor crucified, but raised bodily to heaven by Allah (Surah An-Nisa 4:157–158), and will descend before the Day of Judgment to establish justice and affirm the message of Prophet Muhammad ﷺ.
       </p>
-      <div style="background-color: var(--color-surface); padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.88rem;">
-        <strong>Key Lessons:</strong> Spiritual humility over hypocritical legalism • Clear affirmation of monotheism (servant of Allah, not divine).
+      <div style="background-color: var(--color-surface); padding: 14px 18px; border-radius: var(--radius-sm); font-size: 0.9rem; border-left: 3px solid var(--color-gold);">
+        <strong>Eternal Theological Lessons:</strong> Rejection of both extreme slander and pagan deification • Ascetic detachment from worldly materialism • Unbroken lineage of Prophetic monotheism.
       </div>
     </div>
 
   </main>
 
+  <!-- Bottom Ad Slot Container -->
+  <div class="ad-slot-container" id="ad-banner-bottom" style="display: none;">
+    <div class="ad-placeholder-label">Advertisement</div>
+    <div id="ad-content-bottom"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-title">About the Portal</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; color: #D1D5DB; margin-bottom: 14px;">
+          An authentic, universally accessible, and dignified digital repository of core Islamic texts, classical scholarship, and worship tools. Dedicated to serving seekers of knowledge worldwide under mainstream Ahl al-Sunnah wa al-Jama'ah consensus.
+        </p>
+        <div style="font-size: 0.8rem; color: var(--color-gold);">
+          Hafs Uthmanic Standard • Six Canonical Hadith Books • Four Sunnite Madhhabs
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Sacred Knowledge</div>
+        <ul class="footer-links">
+          <li><a href="quran.html">📖 Complete Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">📜 Authentic Hadith Collections</a></li>
+          <li><a href="duas.html">🤲 Daily Duas & Adhkar</a></li>
+          <li><a href="kalimas.html">⭐ Six Kalimas with Audio</a></li>
+          <li><a href="seerah.html">🌹 Seerah of Prophet Muhammad ﷺ</a></li>
+          <li><a href="prophets.html">📜 Stories of the Prophets</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-title">Worship Guides & Tools</div>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a></li>
+          <li><a href="wudu-guide.html">💧 Step-by-Step Wudu Guide</a></li>
+          <li><a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a></li>
+          <li><a href="zakat-calculator.html">💰 Zakat Calculation Engine</a></li>
+          <li><a href="prayer-times.html">⏱️ Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-title">Legal & Trust</div>
+        <ul class="footer-links">
+          <li><a href="about.html">🏛️ About Us & Methodology</a></li>
+          <li><a href="sources.html">📚 Sourcing & Bibliography</a></li>
+          <li><a href="contact.html">✉️ Contact & Corrections</a></li>
+          <li><a href="privacy.html">🛡️ Privacy Policy & Cookies</a></li>
+          <li><a href="terms.html">⚖️ Terms of Use</a></li>
+          <li><a href="download-app.html">📱 Download App (PWA & APK)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        © 2026 Islamic Knowledge Portal. All religious texts are strictly preserved in their authentic classical editions.
+      </div>
+      <div style="margin-top: 6px; font-size: 0.8rem; color: #9CA3AF;">
+        Designed for universal accessibility, high-contrast readability, and deep Islamic learning worldwide.
+      </div>
+    </div>
+  </footer>
+
   <!-- Scripts -->
+  <script src="js/config.js"></script>
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tools.js"></script>

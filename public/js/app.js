@@ -259,9 +259,88 @@ class Application {
   }
 
   renderHijriDate() {
+    const date = new Date();
+    const hijriStr = window.IslamicTools ? window.IslamicTools.getHijriDate(date) : '1447 AH';
+    
     const el = document.getElementById('current-hijri-date');
-    if (el && window.IslamicTools) {
-      el.textContent = window.IslamicTools.getHijriDate(new Date());
+    if (el) el.textContent = hijriStr;
+
+    const bentoEl = document.getElementById('bento-hijri-date');
+    if (bentoEl) bentoEl.textContent = `${hijriStr} • Astronomical`;
+
+    this.updateBentoPrayerTimes();
+  }
+
+  updateBentoPrayerTimes() {
+    if (!window.IslamicTools || !window.IslamicTools.calculatePrayerTimes) return;
+    try {
+      const now = new Date();
+      const times = window.IslamicTools.calculatePrayerTimes(21.4225, 39.8262, 3, now);
+      if (!times) return;
+
+      const fEl = document.getElementById('mini-fajr');
+      const dEl = document.getElementById('mini-dhuhr');
+      const aEl = document.getElementById('mini-asr');
+      const mEl = document.getElementById('mini-maghrib');
+      const iEl = document.getElementById('mini-isha');
+
+      if (fEl) fEl.textContent = times.fajr;
+      if (dEl) dEl.textContent = times.dhuhr;
+      if (aEl) aEl.textContent = times.asr;
+      if (mEl) mEl.textContent = times.maghrib;
+      if (iEl) iEl.textContent = times.isha;
+
+      const timeToMinutes = (str) => {
+        const [h, m] = str.split(':').map(Number);
+        return h * 60 + m;
+      };
+
+      const currentMins = now.getHours() * 60 + now.getMinutes();
+      const schedule = [
+        { name: 'Fajr', mins: timeToMinutes(times.fajr) },
+        { name: 'Dhuhr', mins: timeToMinutes(times.dhuhr) },
+        { name: 'Asr', mins: timeToMinutes(times.asr) },
+        { name: 'Maghrib', mins: timeToMinutes(times.maghrib) },
+        { name: 'Isha', mins: timeToMinutes(times.isha) }
+      ];
+
+      let next = schedule.find(p => p.mins > currentMins);
+      if (!next) next = { name: 'Fajr (Tomorrow)', mins: schedule[0].mins + 1440 };
+
+      const diff = next.mins - currentMins;
+      const hours = Math.floor(diff / 60);
+      const minutes = diff % 60;
+
+      const nameEl = document.getElementById('next-prayer-name');
+      const remainingEl = document.getElementById('next-prayer-time-remaining');
+      if (nameEl) nameEl.textContent = next.name;
+      if (remainingEl) remainingEl.textContent = `in ${hours > 0 ? `${hours}h ` : ''}${minutes}m`;
+    } catch (e) {
+      console.warn('Could not update Bento prayer times:', e);
+    }
+  }
+
+  // Instant Ayah Audio Player (Verse of the Day)
+  playDailyAyahAudio() {
+    if (!this.dailyAudio) {
+      this.dailyAudio = new Audio('https://everyayah.com/data/Alafasy_128kbps/002255.mp3');
+      this.dailyAudio.addEventListener('ended', () => {
+        const btn = document.getElementById('instant-ayah-audio-btn');
+        if (btn) btn.innerHTML = '<span>▶</span> <span>Listen (Alafasy)</span>';
+      });
+    }
+
+    const btn = document.getElementById('instant-ayah-audio-btn');
+    if (this.dailyAudio.paused) {
+      this.dailyAudio.play().then(() => {
+        if (btn) btn.innerHTML = '<span>⏸</span> <span>Pause Recitation</span>';
+      }).catch(err => {
+        console.warn('Audio play prevented:', err);
+        this.showToast('Please tap play again to allow audio.');
+      });
+    } else {
+      this.dailyAudio.pause();
+      if (btn) btn.innerHTML = '<span>▶</span> <span>Resume (Alafasy)</span>';
     }
   }
 
@@ -270,6 +349,14 @@ class Application {
     const searchInputs = document.querySelectorAll('.global-search-trigger');
     searchInputs.forEach(input => {
       input.addEventListener('focus', () => this.openSearchModal());
+    });
+
+    // Global keyboard shortcut: Ctrl+K or Cmd+K
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        this.openSearchModal();
+      }
     });
   }
 
@@ -347,53 +434,32 @@ class Application {
       modal.id = 'language-modal';
       modal.className = 'modal-overlay';
 
-      const languages = window.I18n ? window.I18n.getAllLanguages() : [];
+      const languages = window.I18n ? window.I18n.getUISelectableLanguages() : [];
 
       modal.innerHTML = `
-        <div class="modal-content" style="max-width: 650px;">
+        <div class="modal-content" style="max-width: 500px;">
           <div class="modal-header">
-            <h3 style="font-size: 1.15rem; font-weight: 700;">Select Interface Language (40 Supported)</h3>
+            <h3 style="font-size: 1.15rem; font-weight: 700;">Select Interface Language</h3>
             <button class="btn-icon" onclick="App.closeLanguageModal()">✕</button>
           </div>
-          <div style="padding: 16px 24px 0;">
-            <input type="text" id="lang-filter-input" class="search-input" style="width: 100%; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-sm);" placeholder="Search language name (English, Urdu, العربية)...">
+          <div style="padding: 16px 24px 4px;">
+            <p style="font-size: 0.88rem; color: var(--color-text-muted);">Fully verified, authentic complete translations:</p>
           </div>
-          <div class="modal-body" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; padding-top: 14px;" id="lang-modal-grid">
+          <div class="modal-body" style="display: flex; flex-direction: column; gap: 10px; padding-top: 10px;" id="lang-modal-grid">
             ${languages.map(l => `
-              <button class="btn btn-outline" style="justify-content: space-between; text-align: left; padding: 10px 14px; border-radius: var(--radius-sm);" onclick="App.selectLanguage('${l.code}')">
+              <button class="btn btn-outline" style="justify-content: space-between; text-align: left; padding: 12px 18px; border-radius: var(--radius-sm);" onclick="App.selectLanguage('${l.code}')">
                 <div>
-                  <div style="font-weight: 700; font-size: 0.95rem;">${l.name}</div>
-                  <div style="font-size: 0.8rem; color: var(--color-primary);">${l.nativeName}</div>
+                  <div style="font-weight: 700; font-size: 1rem;">${l.name}</div>
+                  <div style="font-size: 0.85rem; color: var(--color-primary);">${l.nativeName}</div>
                 </div>
-                ${l.dir === 'rtl' ? '<span style="font-size: 0.7rem; padding: 2px 6px; background-color: var(--color-surface); border-radius: 4px;">RTL</span>' : ''}
+                ${l.dir === 'rtl' ? '<span style="font-size: 0.72rem; padding: 2px 8px; background-color: var(--color-surface); border-radius: 4px; font-weight: 700;">RTL</span>' : '<span style="font-size: 0.72rem; padding: 2px 8px; background-color: var(--color-surface); border-radius: 4px; font-weight: 700;">LTR</span>'}
               </button>
             `).join('')}
           </div>
         </div>
       `;
       document.body.appendChild(modal);
-
-      const filterInput = document.getElementById('lang-filter-input');
-      filterInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const grid = document.getElementById('lang-modal-grid');
-        const filtered = languages.filter(l =>
-          l.name.toLowerCase().includes(query) ||
-          l.nativeName.toLowerCase().includes(query) ||
-          l.code.toLowerCase().includes(query)
-        );
-        grid.innerHTML = filtered.map(l => `
-          <button class="btn btn-outline" style="justify-content: space-between; text-align: left; padding: 10px 14px; border-radius: var(--radius-sm);" onclick="App.selectLanguage('${l.code}')">
-            <div>
-              <div style="font-weight: 700; font-size: 0.95rem;">${l.name}</div>
-              <div style="font-size: 0.8rem; color: var(--color-primary);">${l.nativeName}</div>
-            </div>
-            ${l.dir === 'rtl' ? '<span style="font-size: 0.7rem; padding: 2px 6px; background-color: var(--color-surface); border-radius: 4px;">RTL</span>' : ''}
-          </button>
-        `).join('');
-      });
     }
-
     modal.style.display = 'flex';
   }
 

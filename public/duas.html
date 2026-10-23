@@ -50,6 +50,11 @@
 </head>
 <body>
 
+  <!-- Top Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
@@ -65,17 +70,51 @@
       <nav>
         <ul class="nav-menu">
           <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
-          <li class="nav-item"><a href="quran.html" data-i18n="navQuran">Holy Quran</a></li>
-          <li class="nav-item"><a href="hadith.html" data-i18n="navHadith">Hadith</a></li>
-          <li class="nav-item"><a href="salah-guide.html">Salah Guide</a></li>
-          <li class="nav-item"><a href="janazah-guide.html">Janazah</a></li>
-          <li class="nav-item"><a href="eid-guide.html">Eid Guide</a></li>
-          <li class="nav-item active"><a href="duas.html" data-i18n="navDuas">Duas</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="quran.html" data-i18n="navQuran">Holy Quran ▾</a>
+            <div class="nav-dropdown">
+              <a href="quran.html">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown active">
+            <a href="hadith.html" data-i18n="navHadith">Hadith & Duas ▾</a>
+            <div class="nav-dropdown">
+              <a href="hadith.html">📜 Authentic Hadith Collections</a>
+              <a href="duas.html">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html">⭐ Six Kalimas</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="salah-guide.html">Worship Guides ▾</a>
+            <div class="nav-dropdown">
+              <a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html">💧 Step-by-Step Wudu</a>
+              <a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="prayer-times.html">Tools ▾</a>
+            <div class="nav-dropdown">
+              <a href="prayer-times.html">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html">💰 Zakat Calculator</a>
+              <a href="tasbih.html">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html">📅 Hijri Calendar</a>
+            </div>
+          </li>
           <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
+      <!-- Actions -->
       <div class="header-actions">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
         <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
@@ -86,23 +125,23 @@
   </header>
 
   <!-- Banner -->
-  <div style="background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary)); color: #FFFFFF; padding: 40px 0; text-align: center;">
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 48px 0; text-align: center;">
     <div class="container">
-      <div style="display: inline-block; padding: 4px 14px; background: rgba(181,139,80,0.2); color: var(--color-gold); border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-bottom: 10px;">
-        أَدْعِيَةٌ وَأَذْكَارٌ نَبَوِيَّةٌ — SUPPLICATIONS & ADHKAR
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.12); color: var(--color-gold); border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-bottom: 12px;">
+        وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ — CALL UPON ME, I WILL ANSWER YOU
       </div>
-      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Authentic Duas & Prophetic Adhkar</h1>
-      <p style="color: #D1D5DB; max-width: 680px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
-        Verified supplications from the Holy Quran, Sahih collections, and Hisnul Muslim (Fortress of the Muslim) with interactive recital counters and Urdu translations.
+      <h1 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 10px;">Authentic Duas & Prophetic Adhkar</h1>
+      <p style="color: #D1D5DB; max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
+        Verified supplications from the Holy Quran, Sahih collections, and Hisnul Muslim (Fortress of the Muslim) with interactive recital counters, Urdu translations, and scholarly commentary.
       </p>
     </div>
   </div>
 
   <!-- Content -->
-  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 900px;">
+  <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 960px;">
     
     <!-- Category Filter Bar -->
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px;">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px;">
       <button class="btn btn-primary dua-filter-btn" data-cat="all" onclick="filterDuas('all', this)">All Duas</button>
       <button class="btn btn-outline dua-filter-btn" data-cat="morning" onclick="filterDuas('morning', this)">🌅 Morning & Evening</button>
       <button class="btn btn-outline dua-filter-btn" data-cat="salah" onclick="filterDuas('salah', this)">🕌 Salah, Istikharah & Qunut</button>
@@ -118,6 +157,11 @@
     </div>
 
   </main>
+
+  <!-- Bottom Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-bottom" data-ad-slot="portal_bottom_leaderboard" style="display: none; min-height: 90px; margin: 20px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -153,30 +197,32 @@
           <li><a href="hadith.html">Hadith Library</a></li>
           <li><a href="kalimas.html">Six Kalimas</a></li>
           <li><a href="duas.html">Duas & Adhkar</a></li>
-          <li><a href="seerah.html">Prophetic Seerah</a></li>
+          <li><a href="pillars.html">Five Pillars</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4 class="footer-title">Offline & Apps</h4>
+        <h4 class="footer-title">Trust & Policies</h4>
         <ul class="footer-links">
-          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Download Android APK</a></li>
-          <li><a href="about.html">About Portal</a></li>
+          <li><a href="about.html">About & Editorial Board</a></li>
           <li><a href="sources.html">Source Bibliography</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="contact.html">Contact & Corrections</a></li>
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Offline Access</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
-        <div>Preserving the Quranic Text and Prophetic Sunnah.</div>
+        <div>Contact: contact@islamicknowledge.example.com</div>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
+  <script src="js/config.js"></script>
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tools.js"></script>
@@ -185,6 +231,26 @@
   <script>
     const counts = {};
     let activeCategory = 'all';
+
+    // Fiqh Commentary for Key Duas
+    const DUA_COMMENTARY = {
+      'dua-sayyidul-istighfar': {
+        title: 'Scholarly Commentary: The Master of Forgiveness',
+        content: 'Prophet Muhammad ﷺ declared that whoever recites Sayyidul Istighfar with sincere conviction in the morning and dies before evening, or recites it in the evening and dies before morning, will be among the people of Paradise (Sahih al-Bukhari #6306). It begins with acknowledging Allah’s supreme Lordship and creation, affirms servitude and the primordial covenant, confesses the overwhelming bounty of Allah, and acknowledges human deficiency and sin.'
+      },
+      'dua-istikharah': {
+        title: 'Fiqh al-Hadith: When and How to Pray Istikharah',
+        content: 'Jabir ibn Abdullah (RA) narrated that the Prophet ﷺ taught Istikharah for every matter just as he taught a Surah from the Quran (Sahih al-Bukhari #1162). Offer two voluntary Rak‘ahs of prayer (outside the forbidden prayer times), then recite this supplication with an unbiased heart, placing complete trust in Allah’s divine knowledge and decree.'
+      },
+      'dua-qunut': {
+        title: 'Fiqh al-Hadith: The Supplication of Qunut',
+        content: 'Taught by Prophet Muhammad ﷺ to his grandson Al-Hasan ibn Ali (RA) for the Witr prayer (Sunan Abi Dawud #1425). It is also recited during times of severe calamity (Qunut an-Nazilah) in congregational obligatory prayers to beseech Allah’s protection for oppressed Muslims.'
+      },
+      'dua-ayatul-kursi': {
+        title: 'Prophetic Virtues: The Greatest Verse in the Quran',
+        content: 'Narrated by Ubayy ibn Ka‘b in Sahih Muslim #810. The Prophet ﷺ stated that reciting Ayatul Kursi after every obligatory prayer leaves nothing between the servant and Paradise except death (Sunan an-Nasa\'i in As-Sunan al-Kubra #9848). Reciting it before sleep assigns a divine guardian angel from Allah, protecting against Shaytan until morning.'
+      }
+    };
 
     function filterDuas(category, btnElement) {
       activeCategory = category;
@@ -214,40 +280,52 @@
         if (!counts[d.id]) counts[d.id] = 0;
         const currentCount = counts[d.id];
         const isCompleted = currentCount >= d.target;
+        const comm = DUA_COMMENTARY[d.id];
 
         return `
-          <div class="card" id="${d.id}" style="margin-bottom: 24px; border-left: 5px solid ${isCompleted ? 'var(--color-success)' : 'var(--color-primary)'};">
+          <div class="card" id="${d.id}" style="margin-bottom: 24px; padding: 24px; border-left: 5px solid ${isCompleted ? 'var(--color-gold)' : 'var(--color-primary)'}; background: var(--color-card); border-radius: var(--radius-md);">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
               <div>
-                <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">${d.title}</h2>
-                <span style="font-size: 0.8rem; color: var(--color-gold-dark); font-weight: 600;">${d.ref}</span>
+                <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">${d.title}</h2>
+                <span style="font-size: 0.82rem; color: var(--color-gold-dark); font-weight: 600;">${d.ref}</span>
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); background: rgba(23,107,91,0.08); padding: 4px 10px; border-radius: 12px;">Target: ${d.target}x</span>
+                <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); background: rgba(15,81,50,0.08); padding: 4px 12px; border-radius: 12px;">Target: ${d.target}x</span>
               </div>
             </div>
 
-            <div class="ayah-arabic" style="font-size: 1.55rem; line-height: 2.2; margin-bottom: 16px; color: var(--color-text-main);">
+            <div class="ayah-arabic font-quran" style="font-size: 1.65rem; line-height: 2.3; margin-bottom: 16px; color: var(--color-primary); text-align: right; direction: rtl;">
               ${d.ar}
             </div>
 
-            <div style="font-style: italic; color: var(--color-gold-dark); font-size: 0.92rem; margin-bottom: 10px; line-height: 1.5;">
+            <div style="font-style: italic; color: var(--color-gold-dark); font-size: 0.95rem; margin-bottom: 10px; line-height: 1.6;">
               ${d.tr}
             </div>
 
-            <div style="font-size: 0.98rem; line-height: 1.6; color: var(--color-text-main); margin-bottom: 10px;">
+            <div style="font-size: 1rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 12px;">
               ${d.en}
             </div>
 
-            <div class="urdu-text" style="font-size: 1.15rem; line-height: 2.2; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 10px; margin-bottom: 18px;">
+            <div class="urdu-text" style="font-size: 1.15rem; line-height: 2.2; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle); padding-top: 10px; margin-bottom: 16px;">
               ${d.ur}
             </div>
 
+            ${comm ? `
+            <details style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 16px;">
+              <summary style="font-weight: 700; color: var(--color-primary); cursor: pointer; font-size: 0.9rem; user-select: none;">
+                📖 ${comm.title}
+              </summary>
+              <p style="margin: 8px 0 0 0; font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main);">
+                ${comm.content}
+              </p>
+            </details>
+            ` : ''}
+
             <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border); padding-top: 14px; flex-wrap: wrap; gap: 10px;">
-              <button class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;" onclick="resetCount('${d.id}')">
-                Reset
+              <button class="btn btn-outline" style="padding: 6px 16px; font-size: 0.85rem;" onclick="resetCount('${d.id}')">
+                ↺ Reset
               </button>
-              <button class="btn ${isCompleted ? 'btn-gold' : 'btn-primary'}" style="padding: 8px 24px; font-weight: 700;" onclick="incrementCount('${d.id}', ${d.target})">
+              <button class="btn ${isCompleted ? 'btn-primary' : 'btn-outline'}" style="padding: 8px 24px; font-weight: 700; font-size: 0.95rem;" onclick="incrementCount('${d.id}', ${d.target})">
                 📿 Recite: <span id="count-val-${d.id}">${currentCount}</span> / ${d.target} ${isCompleted ? '✓ Completed' : ''}
               </button>
             </div>

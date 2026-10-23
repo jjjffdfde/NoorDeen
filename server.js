@@ -53,6 +53,7 @@ const ROUTE_ALIASES = {
   '/calendar': '/calendar.html',
   '/bookmarks': '/bookmarks.html',
   '/about': '/about.html',
+  '/contact': '/contact.html',
   '/sources': '/sources.html',
   '/privacy': '/privacy.html',
   '/terms': '/terms.html'

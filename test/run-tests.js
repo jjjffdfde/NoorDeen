@@ -56,12 +56,14 @@ async function runTestSuite() {
     'calendar.html',
     'bookmarks.html',
     'about.html',
+    'contact.html',
     'sources.html',
     'privacy.html',
     'terms.html',
     'sitemap.xml',
     'robots.txt',
     'css/main.css',
+    'js/config.js',
     'js/data.js',
     'js/i18n.js',
     'js/tools.js',
@@ -208,6 +210,12 @@ async function runTestSuite() {
 
     const eidRes = await testRequest('/eid-guide');
     assert(eidRes.status === 200, 'HTTP GET /eid-guide clean route returns 200 OK');
+
+    const contactRes = await testRequest('/contact');
+    assert(contactRes.status === 200, 'HTTP GET /contact clean route returns 200 OK');
+
+    const aboutRes = await testRequest('/about');
+    assert(aboutRes.status === 200, 'HTTP GET /about clean route returns 200 OK');
 
     // 3. API Health endpoint
     const healthRes = await testRequest('/api/health');
@@ -470,6 +478,26 @@ async function runTestSuite() {
   assert(fs.existsSync(finalVerificationReport), 'Audit report AUDIT/FINAL-VERIFICATION.md exists');
   const finalReportText = fs.readFileSync(finalVerificationReport, 'utf-8');
   assert(finalReportText.includes('23 Endpoints') || finalReportText.includes('All 23 Endpoints') || finalReportText.includes('All 23 Pages'), 'Final verification report documents all 23 endpoints');
+
+  // TEST SUITE 19: EDITORIAL DEPTH, E-E-A-T & GOOGLE ADSENSE COMPLIANCE
+  console.log('\n--- TEST SUITE 19: Editorial Depth, E-E-A-T & Google AdSense Compliance ---');
+  const contactHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'contact.html'), 'utf-8');
+  assert(contactHtml.includes('id="feedback-form"') && contactHtml.includes('id="feedback-category"'), 'Contact page contains interactive contact & corrections form');
+  assert(contactHtml.includes('FAQPage'), 'Contact page contains FAQPage JSON-LD schema');
+
+  const aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
+  assert(aboutHtml.includes('5-Stage') || aboutHtml.includes('Verification Pipeline'), 'About page documents 5-stage editorial verification pipeline');
+  assert(aboutHtml.includes('Hanafi') && aboutHtml.includes('Shafi\'i'), 'About page covers 4 orthodox Madhhabs with academic balance');
+
+  const privacyHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'privacy.html'), 'utf-8');
+  assert(privacyHtml.includes('Google AdSense') && privacyHtml.includes('DoubleClick DART'), 'Privacy policy contains explicit Google AdSense and DoubleClick DART disclosures');
+  assert(privacyHtml.includes('opt-out') || privacyHtml.includes('aboutads.info'), 'Privacy policy includes direct user ad opt-out references');
+
+  const kalimasHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'kalimas.html'), 'utf-8');
+  assert(kalimasHtml.includes('KALIMA_COMMENTARY'), 'Kalimas page includes theological commentary data structure');
+
+  const configJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'config.js'), 'utf-8');
+  assert(configJs.includes('AD_CONFIG') && configJs.includes('BANNER_TOP') && configJs.includes('BANNER_BOTTOM'), 'Config defines zero-CLS AdSense banner slot mappings');
 
   // SUMMARY
   console.log('\n====================================================');

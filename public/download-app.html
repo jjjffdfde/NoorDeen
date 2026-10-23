@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Islamic Knowledge Portal Android App — Offline APK & PWA</title>
-  <meta name="description" content="Download the official Islamic Knowledge Portal Android APK (v1.2.0) directly. 100% offline Holy Quran, 5 master reciters, Janazah, Eid, Salah guides, and prayer times without ads or tracking.">
+  <title>Install Web App (PWA) & Offline Access Center — Android APK Download</title>
+  <meta name="description" content="Install the Islamic Knowledge Portal Progressive Web App (PWA) or download the official Android APK (v1.2.0) directly. 100% offline Holy Quran, 5 reciters, Janazah, Eid, Salah guides, and prayer times without ads or tracking.">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
@@ -14,16 +14,16 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Islamic Knowledge Portal">
   <meta property="og:url" content="https://islamicknowledge.example.com/download-app.html">
-  <meta property="og:title" content="Download Islamic Knowledge Portal Android App — Offline APK & PWA">
-  <meta property="og:description" content="Download the official Islamic Knowledge Portal Android APK (v1.2.0) directly. 100% offline Holy Quran, 5 master reciters, Janazah, Eid, Salah guides, and prayer times without ads or tracking.">
+  <meta property="og:title" content="Install Web App (PWA) & Offline Access Center — Android APK Download">
+  <meta property="og:description" content="Install the official Islamic Knowledge Portal PWA or download the release Android APK directly. 100% offline Holy Quran, prayer guides, and solar prayer times.">
   <meta property="og:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://islamicknowledge.example.com/download-app.html">
-  <meta name="twitter:title" content="Download Islamic Knowledge Portal Android App — Offline APK & PWA">
-  <meta name="twitter:description" content="Download the official Islamic Knowledge Portal Android APK (v1.2.0) directly. 100% offline Holy Quran, 5 master reciters, Janazah, Eid, Salah guides, and prayer times without ads or tracking.">
+  <meta name="twitter:title" content="Install Web App (PWA) & Offline Access Center — Android APK">
+  <meta name="twitter:description" content="Install the official Islamic Knowledge Portal PWA or download the release Android APK directly. 100% offline Holy Quran and prayer guides.">
   <meta name="twitter:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
 
   <!-- BreadcrumbList Schema -->
@@ -41,7 +41,7 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Download Android App",
+        "name": "Offline Access & App",
         "item": "https://islamicknowledge.example.com/download-app.html"
       }
     ]
@@ -70,6 +70,11 @@
 </head>
 <body>
 
+  <!-- Top Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
@@ -77,7 +82,7 @@
         <div class="logo-icon">☪</div>
         <div>
           <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
-          <div class="logo-text-subtitle">Android APK Download</div>
+          <div class="logo-text-subtitle">Offline Access & App Center</div>
         </div>
       </a>
 
@@ -85,18 +90,51 @@
       <nav>
         <ul class="nav-menu">
           <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
-          <li class="nav-item"><a href="quran.html" data-i18n="navQuran">Holy Quran</a></li>
-          <li class="nav-item"><a href="hadith.html" data-i18n="navHadith">Hadith</a></li>
-          <li class="nav-item"><a href="salah-guide.html">Salah Guide</a></li>
-          <li class="nav-item"><a href="janazah-guide.html">Janazah</a></li>
-          <li class="nav-item"><a href="eid-guide.html">Eid Guide</a></li>
-          <li class="nav-item"><a href="duas.html" data-i18n="navDuas">Duas</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="quran.html" data-i18n="navQuran">Holy Quran ▾</a>
+            <div class="nav-dropdown">
+              <a href="quran.html">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="hadith.html" data-i18n="navHadith">Hadith & Duas ▾</a>
+            <div class="nav-dropdown">
+              <a href="hadith.html">📜 Authentic Hadith Collections</a>
+              <a href="duas.html">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html">⭐ Six Kalimas</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="salah-guide.html">Worship Guides ▾</a>
+            <div class="nav-dropdown">
+              <a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html">💧 Step-by-Step Wudu</a>
+              <a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="prayer-times.html">Tools ▾</a>
+            <div class="nav-dropdown">
+              <a href="prayer-times.html">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html">💰 Zakat Calculator</a>
+              <a href="tasbih.html">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html">📅 Hijri Calendar</a>
+            </div>
+          </li>
           <li class="nav-item active"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
       <!-- Actions -->
       <div class="header-actions">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
         <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
@@ -107,12 +145,12 @@
   </header>
 
   <!-- Main Content -->
-  <main class="container" style="max-width: 920px; padding-top: 40px; padding-bottom: 70px;">
+  <main class="container" style="max-width: 960px; padding-top: 40px; padding-bottom: 70px;">
 
     <!-- Breadcrumb Display -->
     <nav aria-label="Breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 24px;">
       <a href="index.html" style="color: var(--color-primary); text-decoration: none;">Home</a> &gt; 
-      <span>Download Android App</span>
+      <span>Install Web App (PWA) & Offline Access Center</span>
     </nav>
 
     <!-- Hero Card -->
@@ -126,10 +164,10 @@
       </div>
 
       <h1 style="color: var(--color-primary); font-size: 2.3rem; margin-bottom: 12px;">
-        Download Islamic Knowledge Portal for Android
+        Install Web App (PWA) & Offline Access Center
       </h1>
-      <p style="font-size: 1.08rem; color: var(--color-text-muted); max-width: 680px; margin: 0 auto 24px auto; line-height: 1.6;">
-        Install the complete offline Islamic library directly on your Android smartphone or tablet. Access the Holy Quran, verified recitations, authentic Hadith, prayer guides, and solar prayer times anywhere without ads, tracking, or mandatory internet.
+      <p style="font-size: 1.08rem; color: var(--color-text-muted); max-width: 720px; margin: 0 auto 24px auto; line-height: 1.6;">
+        Install the complete offline Islamic library directly on your smartphone, tablet, or desktop. Access the Holy Quran, verified recitations, authentic Hadith, prayer guides, and solar prayer times anywhere without ads, tracking, or mandatory internet.
       </p>
 
       <!-- App Metadata Specs Pill -->
@@ -137,28 +175,59 @@
         <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">📦 <strong>Package:</strong> com.islamicknowledge.portal</span>
         <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">🏷️ <strong>Version:</strong> 1.2.0 (Build 10200)</span>
         <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">💾 <strong>APK Size:</strong> ~18.4 MB</span>
-        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">📱 <strong>OS:</strong> Android 7.0+ (API 24 to 34)</span>
+        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">📱 <strong>OS:</strong> Android 7.0+ (API 24 to 34) & All PWA Browsers</span>
         <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">🛡️ <strong>Permissions:</strong> 0 Invasive Permissions</span>
       </div>
 
       <!-- Action Buttons -->
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
-        <a href="downloads/islamic-portal-release.apk" download="islamic-portal-release.apk" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 28px; display: inline-flex; align-items: center; gap: 8px;">
-          <span>📥</span>
-          <span><strong>Download APK (v1.2.0)</strong> — Direct File</span>
-        </a>
-        <button id="pwa-install-btn" class="btn btn-outline" style="font-size: 1.05rem; padding: 14px 24px; display: inline-flex; align-items: center; gap: 8px;" onclick="App.promptPwaInstall()">
+        <button id="pwa-install-btn" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 28px; display: inline-flex; align-items: center; gap: 8px;" onclick="App.promptPwaInstall()">
           <span>⚡</span>
-          <span><strong>Install PWA Web App</strong> (Instant)</span>
+          <span><strong>Install Web App (PWA)</strong> — Instant on Any Device</span>
         </button>
+        <a href="downloads/islamic-portal-release.apk" download="islamic-portal-release.apk" class="btn btn-outline" style="font-size: 1.05rem; padding: 14px 24px; display: inline-flex; align-items: center; gap: 8px;">
+          <span>📥</span>
+          <span><strong>Download Release APK</strong> (Direct Android File)</span>
+        </a>
         <a href="downloads/islamic-portal-offline-bundle.zip" download="islamic-portal-offline-bundle.zip" class="btn btn-outline" style="font-size: 0.95rem; padding: 14px 20px;">
           💻 Download Desktop Offline (.ZIP)
         </a>
       </div>
     </div>
 
+    <!-- PWA vs APK Comparison Card -->
+    <div class="card" style="margin-bottom: 30px; padding: 24px;">
+      <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 14px;">
+        Choose Your Preferred Offline Access Method
+      </h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="background: var(--color-surface); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+          <div style="font-weight: 700; color: var(--color-primary); font-size: 1.05rem; margin-bottom: 8px;">
+            ⚡ 1. Progressive Web App (PWA) — Recommended
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 8px;">
+            Works instantly on <strong>Android, iPhone/iPad (iOS), Mac, Windows, and Linux</strong>. No sideloading warnings, zero disk bloat, automatic background updates, and complete offline access powered by the modern browser Service Worker.
+          </p>
+          <div style="font-size: 0.82rem; color: var(--color-text-muted);">
+            <em>On Safari iOS:</em> Tap the Share button ➔ "Add to Home Screen".
+          </div>
+        </div>
+        <div style="background: var(--color-surface); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+          <div style="font-weight: 700; color: var(--color-gold-dark); font-size: 1.05rem; margin-bottom: 8px;">
+            🤖 2. Native Android Release APK (v1.2.0)
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 8px;">
+            For users who prefer a standalone <code>.apk</code> package file. Bundles all core assets directly on your phone storage. Verified with cryptographic SHA-256 checksums to ensure zero malware or modification.
+          </p>
+          <div style="font-size: 0.82rem; color: var(--color-text-muted);">
+            Requires enabling "Allow installation from unknown sources" on Android.
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- SHA-256 Cryptographic Checksum Card -->
-    <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--color-primary);">
+    <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--color-primary); padding: 24px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
         <div style="font-weight: 700; color: var(--color-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 6px;">
           <span>🔐</span> Official Cryptographic SHA-256 Checksum
@@ -179,9 +248,9 @@
     </div>
 
     <!-- Step-by-Step Android Installation Instructions -->
-    <div class="card" style="margin-bottom: 32px;">
+    <div class="card" style="margin-bottom: 32px; padding: 24px;">
       <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 16px;">
-        Step-by-Step Android Installation Guide
+        Step-by-Step Android Installation Guide (Sideloading)
       </h2>
 
       <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -193,7 +262,7 @@
           <div>
             <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Download the APK File</h3>
             <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
-              Tap the <strong>"Download APK"</strong> button above. When your mobile browser displays the default Android warning (<em>"File might be harmful... Do you want to download islamic-portal-release.apk anyway?"</em>), tap <strong>"Download anyway"</strong>. This standard warning appears for every application downloaded outside the Google Play Store.
+              Tap the <strong>"Download Release APK"</strong> button above. When your mobile browser displays the default Android warning (<em>"File might be harmful... Do you want to download islamic-portal-release.apk anyway?"</em>), tap <strong>"Download anyway"</strong>. This standard warning appears for every application downloaded outside the Google Play Store.
             </p>
           </div>
         </div>
@@ -245,7 +314,7 @@
     </div>
 
     <!-- Offline Features Breakdown -->
-    <div class="card" style="margin-bottom: 32px;">
+    <div class="card" style="margin-bottom: 32px; padding: 24px;">
       <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 16px;">
         100% Offline App Features Breakdown
       </h2>
@@ -275,9 +344,9 @@
           </p>
         </div>
         <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 16px;">
-          <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 6px;">🌐 40-Language Interface</h3>
+          <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 6px;">🌐 40-Language Architecture</h3>
           <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6;">
-            Complete RTL and LTR localization with fully bundled language dictionaries for English, Urdu, Arabic, French, Indonesian, Turkish, Bengali, Hindi, Malay, Persian, and Spanish.
+            Complete RTL and LTR localization with fully verified dictionaries for English, Urdu, and Arabic, and architectural framework support for 40 global languages.
           </p>
         </div>
         <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 16px;">
@@ -290,9 +359,9 @@
     </div>
 
     <!-- Permissions and Security Declaration -->
-    <div class="card" style="margin-bottom: 24px; background: rgba(23,107,91,0.03); border: 1px solid var(--color-border);">
+    <div class="card" style="margin-bottom: 24px; background: rgba(23,107,91,0.03); border: 1px solid var(--color-border); padding: 24px;">
       <h3 style="font-size: 1.15rem; color: var(--color-primary); margin-bottom: 10px;">
-        🛡️ Privacy & Security Guarantee
+        🛡️ Privacy & Zero Invasive Permissions Guarantee
       </h3>
       <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 12px;">
         The Islamic Knowledge Portal Android App is designed with utmost respect for user privacy:
@@ -311,13 +380,18 @@
             <li>No Camera or Microphone access</li>
             <li>No Contacts or Call Logs</li>
             <li>No GPS background tracking</li>
-            <li>No Commercial Advertisements</li>
+            <li>No Commercial Advertisements in the native app</li>
           </ul>
         </div>
       </div>
     </div>
 
   </main>
+
+  <!-- Bottom Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-bottom" data-ad-slot="portal_bottom_leaderboard" style="display: none; min-height: 90px; margin: 20px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -353,30 +427,32 @@
           <li><a href="hadith.html">Hadith Library</a></li>
           <li><a href="kalimas.html">Six Kalimas</a></li>
           <li><a href="duas.html">Duas & Adhkar</a></li>
-          <li><a href="seerah.html">Prophetic Seerah</a></li>
+          <li><a href="pillars.html">Five Pillars</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4 class="footer-title">Offline & Apps</h4>
+        <h4 class="footer-title">Trust & Policies</h4>
         <ul class="footer-links">
-          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Download Android APK</a></li>
-          <li><a href="about.html">About Portal</a></li>
+          <li><a href="about.html">About & Editorial Board</a></li>
           <li><a href="sources.html">Source Bibliography</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="contact.html">Contact & Corrections</a></li>
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Offline Access</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
-        <div>Preserving the Quranic Text and Prophetic Sunnah.</div>
+        <div>Contact: contact@islamicknowledge.example.com</div>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
+  <script src="js/config.js"></script>
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tools.js"></script>
