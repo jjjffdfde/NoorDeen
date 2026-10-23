@@ -18,6 +18,8 @@ class Application {
     this.initServiceWorker();
     this.renderHijriDate();
     this.checkContinueReading();
+    this.highlightActiveNav();
+    this.initSpiritualCompanion();
     if (window.I18n) window.I18n.init();
   }
 
@@ -367,16 +369,26 @@ class Application {
       modal.id = 'search-modal';
       modal.className = 'modal-overlay';
       modal.innerHTML = `
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 680px;">
           <div class="modal-header">
-            <h3 style="font-size: 1.15rem; font-weight: 700;">Global Islamic Search</h3>
+            <h3 style="font-size: 1.15rem; font-weight: 700;">Global Islamic Search (Phonetic & Multi-Region)</h3>
             <button class="btn-icon" onclick="App.closeSearchModal()">✕</button>
           </div>
           <div style="padding: 16px 24px 0;">
-            <input type="text" id="modal-search-input" class="search-input" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem;" placeholder="Search Surahs, Ayahs, Hadith, Duas...">
+            <input type="text" id="modal-search-input" class="search-input" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem;" placeholder="Search Surahs (e.g. Yaseen, Mulk, Waqiah, Rehman, Ayatul Kursi), Hadith, Duas...">
           </div>
-          <div class="modal-body" id="modal-search-results">
-            <p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">Type at least 2 characters to search across verified texts.</p>
+          <!-- Popular Daily Surahs Quick Access Row -->
+          <div class="search-modal-quick-pills" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 24px; border-bottom: 1px solid var(--color-border-subtle); align-items: center; background: var(--color-surface);">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-gold); margin-right: 4px;">Popular Daily Surahs:</span>
+            <a href="quran.html?surah=36" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">✨ Ya-Sin (36)</a>
+            <a href="quran.html?surah=67" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">👑 Al-Mulk (67)</a>
+            <a href="quran.html?surah=55" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">🕊️ Ar-Rahman (55)</a>
+            <a href="quran.html?surah=56" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">⚡ Al-Waqi'ah (56)</a>
+            <a href="quran.html?surah=2&verse=255" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">🛡️ Ayatul Kursi</a>
+            <a href="quran.html?surah=18" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">🌟 Al-Kahf (18)</a>
+          </div>
+          <div class="modal-body" id="modal-search-results" style="max-height: 480px; overflow-y: auto;">
+            <p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">Type at least 2 characters to search across verified texts in English, Arabic, or Urdu.</p>
           </div>
         </div>
       `;
@@ -396,12 +408,17 @@ class Application {
           return;
         }
         resBox.innerHTML = results.map(r => `
-          <a href="${r.url}" style="display: block; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle); text-decoration: none; color: inherit;">
+          <a href="${r.url}" style="display: block; padding: 12px 14px; border-bottom: 1px solid var(--color-border-subtle); text-decoration: none; color: inherit; transition: background 0.15s ease;" onmouseover="this.style.background='var(--color-surface)'" onmouseout="this.style.background='transparent'">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <span style="font-weight: 700; color: var(--color-primary);">${r.title}</span>
+              <span style="font-weight: 700; color: var(--color-primary); font-size: 1rem;">${r.title}</span>
               <span style="font-size: 0.75rem; padding: 2px 8px; border-radius: 99px; background-color: var(--color-surface); font-weight: 600;">${r.type}</span>
             </div>
-            <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.4;">${r.snippet}</p>
+            ${r.urduPreview ? `
+              <div style="font-family: var(--font-urdu); direction: rtl; text-align: right; color: var(--color-gold-dark); font-size: 0.95rem; margin-bottom: 6px; line-height: 1.6;">
+                ${r.urduPreview}
+              </div>
+            ` : ''}
+            <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.4; margin: 0;">${r.snippet}</p>
           </a>
         `).join('');
       });
@@ -442,10 +459,14 @@ class Application {
             <h3 style="font-size: 1.15rem; font-weight: 700;">Select Interface Language</h3>
             <button class="btn-icon" onclick="App.closeLanguageModal()">✕</button>
           </div>
-          <div style="padding: 16px 24px 4px;">
-            <p style="font-size: 0.88rem; color: var(--color-text-muted);">Fully verified, authentic complete translations:</p>
+          <div style="padding: 16px 24px 8px;">
+            <!-- Instant Reset to Default English Button -->
+            <button class="btn btn-primary" style="width: 100%; justify-content: center; gap: 8px; margin-bottom: 12px; font-weight: 700; padding: 12px; border-radius: var(--radius-sm); box-shadow: 0 4px 12px rgba(6, 95, 70, 0.2);" onclick="App.resetToDefaultLanguage()">
+              🔄 Reset to Default (English)
+            </button>
+            <p style="font-size: 0.86rem; color: var(--color-text-muted); margin-bottom: 4px;">Or switch to fully verified authentic translations:</p>
           </div>
-          <div class="modal-body" style="display: flex; flex-direction: column; gap: 10px; padding-top: 10px;" id="lang-modal-grid">
+          <div class="modal-body" style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;" id="lang-modal-grid">
             ${languages.map(l => `
               <button class="btn btn-outline" style="justify-content: space-between; text-align: left; padding: 12px 18px; border-radius: var(--radius-sm);" onclick="App.selectLanguage('${l.code}')">
                 <div>
@@ -468,6 +489,16 @@ class Application {
     if (modal) modal.style.display = 'none';
   }
 
+  resetToDefaultLanguage() {
+    if (window.I18n) {
+      window.I18n.resetToDefault();
+      const label = document.getElementById('current-language-label');
+      if (label) label.textContent = 'English';
+      this.showToast('Restored default English interface');
+    }
+    this.closeLanguageModal();
+  }
+
   selectLanguage(code) {
     if (window.I18n) {
       window.I18n.setLanguage(code);
@@ -477,6 +508,107 @@ class Application {
       this.showToast(`Language set to ${info.name} (${info.nativeName})`);
     }
     this.closeLanguageModal();
+  }
+
+  // Active Nav Link Auto-Detection
+  highlightActiveNav() {
+    if (typeof window === 'undefined') return;
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const cleanCurrent = (currentPath === '' || currentPath === '/') ? 'index.html' : currentPath;
+    const navLinks = document.querySelectorAll('.nav-menu a, .mobile-drawer-menu a, .nav-dropdown-item');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+      const cleanHref = href.split('/').pop().split('?')[0].split('#')[0];
+      if (cleanHref === cleanCurrent) {
+        link.classList.add('active');
+        const parentItem = link.closest('.nav-item');
+        if (parentItem) parentItem.classList.add('active');
+      }
+    });
+  }
+
+  // Daily Spiritual Companion (Rozana Kirdar & Wazaif Deck)
+  initSpiritualCompanion() {
+    const container = document.getElementById('daily-companion-section');
+    if (!container) return;
+
+    const todayStr = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const storageKey = `islamic_portal_wazaif_${todayStr}`;
+    let state = {};
+    try {
+      state = JSON.parse(localStorage.getItem(storageKey) || '{}');
+    } catch (e) {
+      state = {};
+    }
+
+    // Calculate streak
+    let streak = parseInt(localStorage.getItem('islamic_portal_streak') || '1', 10);
+    const lastActiveDate = localStorage.getItem('islamic_portal_last_active_date');
+    if (lastActiveDate) {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().slice(0, 10);
+      if (lastActiveDate !== todayStr && lastActiveDate !== yesterdayStr) {
+        streak = 1;
+      }
+    }
+    localStorage.setItem('islamic_portal_last_active_date', todayStr);
+    localStorage.setItem('islamic_portal_streak', String(streak));
+
+    const updateUI = () => {
+      const checkboxes = container.querySelectorAll('.wazifa-check');
+      let completedCount = 0;
+      checkboxes.forEach(cb => {
+        const id = cb.dataset.wazifaId;
+        if (state[id]) {
+          cb.checked = true;
+          completedCount++;
+          const itemRow = cb.closest('.wazifa-item');
+          if (itemRow) itemRow.classList.add('completed');
+        } else {
+          cb.checked = false;
+          const itemRow = cb.closest('.wazifa-item');
+          if (itemRow) itemRow.classList.remove('completed');
+        }
+      });
+
+      const progressVal = document.getElementById('companion-progress-val');
+      const ringCircle = document.getElementById('companion-ring-progress');
+      if (progressVal) progressVal.textContent = `${completedCount}/5`;
+      if (ringCircle) {
+        const circumference = 175.9; // 2 * PI * 28
+        const offset = circumference - (completedCount / 5) * circumference;
+        ringCircle.style.strokeDashoffset = offset;
+      }
+
+      const streakBadge = document.getElementById('companion-streak-badge');
+      if (streakBadge) {
+        streakBadge.textContent = completedCount === 5 
+          ? `🔥 ${streak} Day Streak (All Completed!)` 
+          : `🔥 ${streak} Day Habit Streak`;
+      }
+    };
+
+    container.addEventListener('change', (e) => {
+      if (e.target.classList.contains('wazifa-check')) {
+        const id = e.target.dataset.wazifaId;
+        state[id] = e.target.checked;
+        localStorage.setItem(storageKey, JSON.stringify(state));
+
+        const allDone = ['fajr', 'morning', 'maghrib', 'sleep', 'friday'].every(k => state[k]);
+        if (allDone && !state._streakBonusGiven) {
+          state._streakBonusGiven = true;
+          localStorage.setItem(storageKey, JSON.stringify(state));
+          streak += 1;
+          localStorage.setItem('islamic_portal_streak', String(streak));
+          this.showToast('✨ MashaAllah! All 5 daily Sunnah wazaif completed today! May Allah accept it.');
+        }
+        updateUI();
+      }
+    });
+
+    updateUI();
   }
 
   // Toast Notification

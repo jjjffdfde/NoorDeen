@@ -499,6 +499,95 @@ async function runTestSuite() {
   const configJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'config.js'), 'utf-8');
   assert(configJs.includes('AD_CONFIG') && configJs.includes('BANNER_TOP') && configJs.includes('BANNER_BOTTOM'), 'Config defines zero-CLS AdSense banner slot mappings');
 
+  // TEST SUITE 20: 3D SPATIAL UI, PHONETIC SEARCH, 24-PAGE NAVBAR & ZERO-LAG I18N ENGINE
+  console.log('\n--- TEST SUITE 20: 3D Spatial UI, Phonetic Search, 24-Page Navbar & Zero-Lag I18n ---');
+
+  // 1. Phonetic & Universal Multi-Region Search Validation
+  const searchContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  const searchSandbox = { window: {}, console: console };
+  vm.default.createContext(searchSandbox);
+  vm.default.runInContext(dataContent, searchSandbox);
+  searchSandbox.ISLAMIC_DATA = searchSandbox.window.ISLAMIC_DATA;
+  vm.default.runInContext(searchContent, searchSandbox);
+  const searchEngine = searchSandbox.window.UniversalSearch;
+
+  // Assert Subcontinent Roman Urdu & Transliteration queries
+  const yaseenRes = searchEngine.search('surah yaseen');
+  assert(yaseenRes.length > 0 && yaseenRes[0].url.includes('surah=36'), 'Phonetic query "surah yaseen" resolves to Surah Ya-Sin (36) at rank 1');
+
+  const yasinRes = searchEngine.search('yasin');
+  assert(yasinRes.length > 0 && yasinRes[0].url.includes('surah=36'), 'Phonetic query "yasin" resolves to Surah Ya-Sin (36) at rank 1');
+
+  const rehmanRes = searchEngine.search('surah rehman');
+  assert(rehmanRes.length > 0 && rehmanRes[0].url.includes('surah=55'), 'Regional query "surah rehman" resolves to Surah Ar-Rahman (55) at rank 1');
+
+  const waqiahRes = searchEngine.search('waqiah');
+  assert(waqiahRes.length > 0 && waqiahRes[0].url.includes('surah=56'), 'Phonetic query "waqiah" resolves to Surah Al-Waqi\'ah (56) at rank 1');
+
+  const mulkRes = searchEngine.search('tabarakallazi');
+  assert(mulkRes.length > 0 && mulkRes[0].url.includes('surah=67'), 'Popular title "tabarakallazi" resolves to Surah Al-Mulk (67) at rank 1');
+
+  const urduYaseenRes = searchEngine.search('سورہ یسین');
+  assert(urduYaseenRes.length > 0 && urduYaseenRes[0].url.includes('surah=36'), 'Urdu script query "سورہ یسین" resolves to Surah Ya-Sin (36) at rank 1');
+
+  const kahafRes = searchEngine.search('kahaf');
+  assert(kahafRes.length > 0 && kahafRes[0].url.includes('surah=18'), 'Phonetic query "kahaf" resolves to Surah Al-Kahf (18) at rank 1');
+
+  const bakraRes = searchEngine.search('surah bakra');
+  assert(bakraRes.length > 0 && bakraRes[0].url.includes('surah=2'), 'Subcontinent query "surah bakra" resolves to Surah Al-Baqarah (2) at rank 1');
+
+  const charQulRes = searchEngine.search('char qul');
+  assert(charQulRes.length === 4, 'Comprehensive query "char qul" returns all 4 Qul Surahs (109, 112, 113, 114)');
+
+  // 2. Canonical Navbar Uniformity Across All 24 HTML Files
+  const allHtmlPages = [
+    'index.html', 'quran.html', 'hadith.html', 'kalimas.html', 'duas.html',
+    'seerah.html', 'prophets.html', 'sahaba.html', 'pillars.html', 'salah-guide.html',
+    'janazah-guide.html', 'eid-guide.html', 'download-app.html', 'wudu-guide.html',
+    'prayer-times.html', 'tasbih.html', 'zakat-calculator.html', 'calendar.html',
+    'bookmarks.html', 'about.html', 'contact.html', 'sources.html', 'privacy.html', 'terms.html'
+  ];
+
+  let canonicalNavConsistent = true;
+  allHtmlPages.forEach(fileName => {
+    const pageHtml = fs.readFileSync(path.join(PUBLIC_DIR, fileName), 'utf-8');
+    const hasHeader = pageHtml.includes('<header class="site-header">');
+    const hasLogo = pageHtml.includes('class="logo-group"');
+    const hasDesktopNav = pageHtml.includes('class="desktop-nav"');
+    const hasSearchTrigger = pageHtml.includes('id="search-modal-btn"');
+    const hasLangTrigger = pageHtml.includes('id="language-selector-btn"');
+    const hasThemeTrigger = pageHtml.includes('id="theme-toggle-btn"');
+    const hasDrawer = pageHtml.includes('App.toggleMobileDrawer()');
+
+    if (!hasHeader || !hasLogo || !hasDesktopNav || !hasSearchTrigger || !hasLangTrigger || !hasThemeTrigger || !hasDrawer) {
+      canonicalNavConsistent = false;
+      console.error(`Navbar canonical mismatch in: ${fileName}`);
+    }
+  });
+  assert(canonicalNavConsistent, 'Canonical site-header and mobile drawer DOM structure identical across all 24 HTML files');
+
+  // 3. Zero-Lag I18n Engine & Instant Default English Snapshotting
+  const i18nEngineCode = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'i18n.js'), 'utf-8');
+  assert(i18nEngineCode.includes('snapshotDefaultDOM') && i18nEngineCode.includes('i18nDefaultHtml'), 'I18n engine snapshots initial native DOM structure for zero-loss restore');
+  assert(i18nEngineCode.includes('resetToDefault'), 'I18n engine provides explicit resetToDefault() controller');
+
+  const appJsCode = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(appJsCode.includes('resetToDefaultLanguage'), 'App controller provides resetToDefaultLanguage UI handler');
+  assert(appJsCode.includes('highlightActiveNav'), 'App controller auto-detects current route and highlights active nav link');
+
+  // 4. 2026 Spatial Luxury Design System & Retention Engine
+  const mainCssCode = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
+  assert(mainCssCode.includes('hero-mandala-bg') && mainCssCode.includes('floatSlow'), 'Main CSS implements floating rotating Sacred Islamic Geometric Mandala');
+  assert(mainCssCode.includes('perspective(1000px)'), 'Main CSS implements 2026 3D spatial depth hover micro-interactions');
+  assert(mainCssCode.includes('daily-companion-card') && mainCssCode.includes('companion-ring-progress'), 'Main CSS defines Daily Spiritual Companion deck & circular progress ring styles');
+  assert(fs.existsSync(path.join(PUBLIC_DIR, 'css', 'styles.css')), 'Stylesheet compatibility alias public/css/styles.css exists');
+
+  const indexHtmlCode = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
+  assert(indexHtmlCode.includes('id="daily-companion-section"') && indexHtmlCode.includes('wazifa-check'), 'Homepage features high-retention Daily Spiritual Companion with 5 Sunnah wazaif');
+
+  const quranHtmlCode = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  assert(quranHtmlCode.includes('popular-surah-pill'), 'Quran reader includes Popular Daily Surahs 1-click quick access row');
+
   // SUMMARY
   console.log('\n====================================================');
   console.log(`TEST RESULTS SUMMARY:`);

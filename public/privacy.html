@@ -53,71 +53,96 @@
     <!-- Ad container managed by PortalConfig -->
   </div>
 
-  <!-- Header -->
+    <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo-group">
         <div class="logo-icon">☪</div>
-        <div>
+        <div class="logo-text-wrapper">
           <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
-          <div class="logo-text-subtitle">Privacy & Transparency</div>
+          <div class="logo-text-subtitle" data-i18n="siteSubtitle">Sacred Islamic Library & Tools</div>
         </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav>
+      <nav class="desktop-nav">
         <ul class="nav-menu">
           <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
-          <li class="nav-item has-dropdown">
-            <a href="quran.html" data-i18n="navQuran">Holy Quran ▾</a>
-            <div class="nav-dropdown">
-              <a href="quran.html">📖 Complete Quran (114 Surahs)</a>
-              <a href="bookmarks.html">🔖 Bookmarked Ayahs</a>
+
+          <!-- Quran Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navQuran">Holy Quran</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="quran.html" class="nav-dropdown-item">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html" class="nav-dropdown-item">🔖 Bookmarked Ayahs</a>
             </div>
           </li>
-          <li class="nav-item has-dropdown">
-            <a href="hadith.html" data-i18n="navHadith">Hadith & Duas ▾</a>
-            <div class="nav-dropdown">
-              <a href="hadith.html">📜 Authentic Hadith Collections</a>
-              <a href="duas.html">🤲 Daily Duas & Adhkar</a>
-              <a href="kalimas.html">⭐ Six Kalimas</a>
+
+          <!-- Hadith & Duas Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navHadith">Hadith & Duas</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
+              <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
             </div>
           </li>
-          <li class="nav-item has-dropdown">
-            <a href="salah-guide.html">Worship Guides ▾</a>
-            <div class="nav-dropdown">
-              <a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a>
-              <a href="wudu-guide.html">💧 Step-by-Step Wudu</a>
-              <a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a>
-              <a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a>
-              <a href="pillars.html">🏛️ Five Pillars of Islam</a>
+
+          <!-- Worship Guides Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
+              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
             </div>
           </li>
-          <li class="nav-item has-dropdown">
-            <a href="prayer-times.html">Tools ▾</a>
-            <div class="nav-dropdown">
-              <a href="prayer-times.html">⏱️ Solar Prayer Times</a>
-              <a href="zakat-calculator.html">💰 Zakat Calculator</a>
-              <a href="tasbih.html">📿 Digital Tasbih Counter</a>
-              <a href="calendar.html">📅 Hijri Calendar</a>
+
+          <!-- Tools Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navTools">Islamic Tools</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="prayer-times.html" class="nav-dropdown-item">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html" class="nav-dropdown-item">💰 Zakat Calculation Engine</a>
+              <a href="tasbih.html" class="nav-dropdown-item">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
             </div>
           </li>
-          <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
+
+          <!-- App Pill -->
+          <li class="nav-item">
+            <a href="download-app.html" class="nav-app-pill">
+              <span>📱</span> <span data-i18n="navApp">App</span>
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <!-- Actions -->
+      <!-- Header Actions -->
       <div class="header-actions">
         <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
           <span>🔍</span>
-          <span class="search-trigger-text">Search...</span>
+          <span class="search-trigger-text" data-i18n="navSearch">Search...</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
         <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">🌙</button>
-        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu">☰</button>
       </div>
     </div>
   </header>
