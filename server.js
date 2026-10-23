@@ -41,6 +41,7 @@ const ROUTE_ALIASES = {
   '/seerah': '/seerah.html',
   '/prophets': '/prophets.html',
   '/sahaba': '/sahaba.html',
+  '/history': '/history.html',
   '/pillars': '/pillars.html',
   '/salah-guide': '/salah-guide.html',
   '/wudu-guide': '/wudu-guide.html',

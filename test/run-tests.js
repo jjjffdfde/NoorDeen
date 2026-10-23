@@ -218,6 +218,9 @@ async function runTestSuite() {
     const aboutRes = await testRequest('/about');
     assert(aboutRes.status === 200, 'HTTP GET /about clean route returns 200 OK');
 
+    const historyCleanRes = await testRequest('/history');
+    assert(historyCleanRes.status === 200, 'HTTP GET /history clean route returns 200 OK');
+
     // 3. API Health endpoint
     const healthRes = await testRequest('/api/health');
     assert(healthRes.status === 200, 'HTTP GET /api/health returns 200 OK');

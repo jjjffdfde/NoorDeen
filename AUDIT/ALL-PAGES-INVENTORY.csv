@@ -1,0 +1,26 @@
+PageFile,CleanRoute,Title,Category,WordCount,HasCanonical,HasManifest,HasOG,HasTwitter,HasSchema,MobileResponsive,VerificationStatus
+index.html,/,Islamic Knowledge Portal — Sacred Islamic Library & Tools,Homepage,3200,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+quran.html,/quran,The Holy Quran (القرآن الكريم) — Hafs Standard & 40 Translations,Quran Reader,4800,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+hadith.html,/hadith,Authentic Hadith Library — Kutub al-Sittah & Fiqh Commentary,Hadith Library,3500,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+kalimas.html,/kalimas,The Six Kalimas of Islam — Arabic Audio & Scholarly Commentary,Theology & Creeds,2800,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+duas.html,/duas,Daily Duas & Prophetic Adhkar — Hisnul Muslim & Quranic Duas,Supplications,3900,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+seerah.html,/seerah,Seerah Nabawiyyah — Biography of Prophet Muhammad ﷺ (16 Chapters),Prophetic Biography,7800,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+prophets.html,/prophets,Stories of the Prophets (Qisas al-Anbiya) — Authentic Quranic Accounts,Prophetic Stories,4600,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+sahaba.html,/sahaba,The Noble Sahaba (رضي الله عنهم) — Caliphs Mothers of Believers & Luminaries,Companions,6200,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+history.html,/history,Islamic History & Civilizations (Tarikh al-Islam) — 14 Centuries & 12 Eras,Civilization & History,5900,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+pillars.html,/pillars,The Five Pillars of Islam (Arkan al-Islam) — Theological Guide,Core Worship,4200,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+salah-guide.html,/salah-guide,The Complete Step-by-Step Salah Guide (Five Daily Prayers),Worship Guide,8400,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+wudu-guide.html,/wudu-guide,Step-by-Step Wudu & Purification Guide (Ghusl & Tayammum),Purification,4900,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+janazah-guide.html,/janazah-guide,The Funeral Prayer (Salat al-Janazah) Complete Guide,Worship Guide,6100,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+eid-guide.html,/eid-guide,Eid al-Fitr & Eid al-Adha Prayer Guide & Takbirat at-Tashreeq,Worship Guide,4800,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+prayer-times.html,/prayer-times,Astronomical Solar Prayer Times Calculation Engine,Worship Tools,3400,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+zakat-calculator.html,/zakat-calculator,Comprehensive Zakat Calculation Engine with Live Nisab,Financial Worship,3800,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+tasbih.html,/tasbih,Digital Tasbih & Dhikr Counter with Haptic Feedback,Dhikr Tools,2900,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+calendar.html,/calendar,Astronomical Lunar Hijri Calendar & Islamic Holidays,Astronomical Tools,3100,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+bookmarks.html,/bookmarks,Bookmarked Ayahs & Sacred Reading Library,User Workspace,1900,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+download-app.html,/download-app,Download Offline Android Application (APK & PWA),Mobile App,3200,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+about.html,/about,About the Islamic Knowledge Portal & 5-Stage Editorial Methodology,Trust & E-E-A-T,4100,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+sources.html,/sources,Classical Sourcing & Comprehensive Academic Bibliography,Trust & E-E-A-T,2600,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+contact.html,/contact,Contact Us & Scholarly Corrections Feedback Desk,Communication,2400,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+privacy.html,/privacy,Privacy Policy — Strict Zero Data Tracking & AdSense Disclosures,Legal & Trust,2200,Yes,Yes,Yes,Yes,Yes,Yes,PASS
+terms.html,/terms,Terms of Use & Theological Verification Disclaimers,Legal & Trust,2100,Yes,Yes,Yes,Yes,Yes,Yes,PASS
