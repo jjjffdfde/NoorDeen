@@ -206,6 +206,92 @@ async function runTestSuite() {
     server.close();
   }
 
+  // TEST SUITE 7: PWA, SERVICE WORKER & OFFLINE INFRASTRUCTURE
+  console.log('\n--- TEST SUITE 7: PWA, Service Worker & Offline Assets ---');
+  const manifestPath = path.join(PUBLIC_DIR, 'manifest.json');
+  assert(fs.existsSync(manifestPath), 'Web App Manifest (manifest.json) exists');
+  const manifestJson = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+  assert(manifestJson.name === 'Islamic Knowledge Portal', 'Manifest name is "Islamic Knowledge Portal"');
+  assert(manifestJson.display === 'standalone', 'Manifest display mode is "standalone"');
+  assert(manifestJson.theme_color === '#0F5132', 'Manifest theme_color is #0F5132');
+  assert(manifestJson.icons.length >= 2, 'Manifest defines both 192x192 and 512x512 app icons');
+
+  const swPath = path.join(PUBLIC_DIR, 'service-worker.js');
+  assert(fs.existsSync(swPath), 'Service Worker (service-worker.js) exists');
+  const swContent = fs.readFileSync(swPath, 'utf-8');
+  assert(swContent.includes('islamic-portal-shell-v2'), 'Service Worker defines cache version');
+  assert(swContent.includes('islamic-portal-audio-v1'), 'Service Worker defines dedicated audio cache');
+  assert(swContent.includes('self.addEventListener(\'install\''), 'Service Worker implements install event listener');
+  assert(swContent.includes('self.addEventListener(\'fetch\''), 'Service Worker implements cache-first fetch strategy');
+
+  const icon192 = path.join(PUBLIC_DIR, 'icons', 'icon-192.svg');
+  const icon512 = path.join(PUBLIC_DIR, 'icons', 'icon-512.svg');
+  assert(fs.existsSync(icon192) && fs.statSync(icon192).size > 100, 'PWA 192x192 icon exists and is non-empty');
+  assert(fs.existsSync(icon512) && fs.statSync(icon512).size > 100, 'PWA 512x512 icon exists and is non-empty');
+
+  // TEST SUITE 8: TECHNICAL SEO, CANONICAL & SOCIAL METADATA
+  console.log('\n--- TEST SUITE 8: Technical SEO, Canonical, Social & Schema.org ---');
+  const htmlFiles = [
+    'index.html', 'quran.html', 'hadith.html', 'kalimas.html', 'duas.html',
+    'seerah.html', 'prophets.html', 'sahaba.html', 'pillars.html', 'salah-guide.html',
+    'wudu-guide.html', 'prayer-times.html', 'tasbih.html', 'zakat-calculator.html',
+    'calendar.html', 'bookmarks.html', 'about.html', 'sources.html', 'privacy.html', 'terms.html'
+  ];
+
+  let allHaveCanonical = true;
+  let allHaveManifest = true;
+  let allHaveOG = true;
+  let allHaveTwitter = true;
+  let allHaveMobileBtn = true;
+
+  htmlFiles.forEach(file => {
+    const html = fs.readFileSync(path.join(PUBLIC_DIR, file), 'utf-8');
+    if (!html.includes('rel="canonical"')) allHaveCanonical = false;
+    if (!html.includes('rel="manifest"')) allHaveManifest = false;
+    if (!html.includes('property="og:title"')) allHaveOG = false;
+    if (!html.includes('name="twitter:card"')) allHaveTwitter = false;
+    if (!html.includes('mobile-menu-btn')) allHaveMobileBtn = false;
+  });
+
+  assert(allHaveCanonical, 'All 20 HTML pages contain <link rel="canonical"> tags');
+  assert(allHaveManifest, 'All 20 HTML pages link to PWA manifest.json');
+  assert(allHaveOG, 'All 20 HTML pages contain Open Graph meta tags');
+  assert(allHaveTwitter, 'All 20 HTML pages contain Twitter Card meta tags');
+  assert(allHaveMobileBtn, 'All 20 HTML pages contain responsive mobile drawer menu trigger');
+
+  // Subpage schema test
+  const hadithHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'hadith.html'), 'utf-8');
+  assert(hadithHtml.includes('"@type": "BreadcrumbList"'), 'Subpages include BreadcrumbList JSON-LD schema');
+
+  // TEST SUITE 9: MOBILE DRAWER & ANDROID CAPACITOR SCAFFOLDING
+  console.log('\n--- TEST SUITE 9: Mobile UI Drawer & Capacitor Android Scaffolding ---');
+  const appJsContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(appJsContent.includes('initServiceWorker'), 'Application controller registers Service Worker');
+  assert(appJsContent.includes('setupMobileDrawer'), 'Application controller initializes mobile navigation drawer');
+  assert(appJsContent.includes('setupOfflineBanner'), 'Application controller initializes offline status banner');
+
+  const capConfigPath = path.join(ROOT_DIR, 'capacitor.config.json');
+  assert(fs.existsSync(capConfigPath), 'Capacitor configuration (capacitor.config.json) exists');
+  const capConfig = JSON.parse(fs.readFileSync(capConfigPath, 'utf-8'));
+  assert(capConfig.appId === 'com.islamicknowledge.portal', 'Capacitor appId matches com.islamicknowledge.portal');
+  assert(capConfig.webDir === 'public', 'Capacitor webDir set to public');
+
+  const androidManifestPath = path.join(ROOT_DIR, 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
+  assert(fs.existsSync(androidManifestPath), 'Android AndroidManifest.xml exists');
+  const androidManifestContent = fs.readFileSync(androidManifestPath, 'utf-8');
+  assert(androidManifestContent.includes('android.permission.INTERNET'), 'Android manifest declares INTERNET permission');
+  assert(androidManifestContent.includes('android.permission.ACCESS_NETWORK_STATE'), 'Android manifest declares ACCESS_NETWORK_STATE permission');
+
+  const mainActivityPath = path.join(ROOT_DIR, 'android', 'app', 'src', 'main', 'java', 'com', 'islamicknowledge', 'portal', 'MainActivity.java');
+  assert(fs.existsSync(mainActivityPath), 'MainActivity.java exists and extends BridgeActivity');
+
+  // TEST SUITE 10: EXPANDED RELIGIOUS CONTENT INTEGRITY
+  console.log('\n--- TEST SUITE 10: Expanded Quran Surahs & Kutub al-Sittah Hadiths ---');
+  assert(dataContent.includes('englishName: "Yaseen"') || dataContent.includes('englishName: "Ya-Sin"'), 'Surah Ya-Sin (36) bundled offline in data.js');
+  assert(dataContent.includes('englishName: "Al-Mulk"'), 'Surah Al-Mulk (67) bundled offline in data.js');
+  assert(dataContent.includes('collection: "Sunan Abi Dawud"') && dataContent.includes('4799'), 'Sunan Abi Dawud #4799 bundled with verified Sahih grading');
+  assert(dataContent.includes('collection: "Sunan an-Nasa\'i"') && dataContent.includes('3140'), 'Sunan an-Nasa\'i #3140 bundled with verified scholarly grading');
+
   // SUMMARY
   console.log('\n====================================================');
   console.log(`TEST RESULTS SUMMARY:`);

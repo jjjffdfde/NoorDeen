@@ -1,0 +1,25 @@
+Route,File Path,HTTP Status,Page Title,Canonical URL,OpenGraph,Schema JSON-LD,i18n Ready
+/,public/index.html,200,Islamic Knowledge Portal — Authentic Quran Hadith Duas & Education,https://islamicknowledge.example.com/,Yes,WebSite,Yes
+/quran,public/quran.html,200,Holy Quran Reader — All 114 Surahs & 30 Juz with Translations,https://islamicknowledge.example.com/quran.html,Needs Review,Needs Review,Yes
+/hadith,public/hadith.html,200,Authentic Hadith Library — Sahih al-Bukhari Muslim & Kutub al-Sittah,https://islamicknowledge.example.com/hadith.html,Needs Review,Needs Review,Yes
+/kalimas,public/kalimas.html,200,The Six Kalimas of Islam — Arabic Transliteration English & Urdu,https://islamicknowledge.example.com/kalimas.html,Needs Review,Needs Review,Partial
+/duas,public/duas.html,200,Daily Duas & Prophetic Adhkar — Hisnul Muslim Supplications,https://islamicknowledge.example.com/duas.html,Needs Review,Needs Review,Yes
+/seerah,public/seerah.html,200,Seerah Nabawiyyah — Biography of Prophet Muhammad ﷺ,https://islamicknowledge.example.com/seerah.html,Needs Review,Needs Review,Partial
+/prophets,public/prophets.html,200,Stories of the Prophets (Qisas al-Anbiya) — Authentic Quranic Accounts,https://islamicknowledge.example.com/prophets.html,Needs Review,Needs Review,Partial
+/sahaba,public/sahaba.html,200,The Noble Sahaba — Companions of Prophet Muhammad ﷺ,https://islamicknowledge.example.com/sahaba.html,Needs Review,Needs Review,Partial
+/pillars,public/pillars.html,200,The Five Pillars of Islam (Arkan al-Islam) — Comprehensive Guide,https://islamicknowledge.example.com/pillars.html,Needs Review,Needs Review,Partial
+/salah-guide,public/salah-guide.html,200,Step-by-Step Salah (Prayer) Guide — Rak'ahs Postures & Recitations,https://islamicknowledge.example.com/salah-guide.html,Needs Review,Needs Review,Partial
+/wudu-guide,public/wudu-guide.html,200,Step-by-Step Wudu (Ablution) Guide — Purification in Islam,https://islamicknowledge.example.com/wudu-guide.html,Needs Review,Needs Review,Partial
+/prayer-times,public/prayer-times.html,200,Accurate Islamic Prayer Times & Qibla Direction,https://islamicknowledge.example.com/prayer-times.html,Needs Review,Needs Review,Yes
+/tasbih,public/tasbih.html,200,Digital Tasbih — Interactive Dhikr & Remembrance Counter,https://islamicknowledge.example.com/tasbih.html,Needs Review,Needs Review,Yes
+/zakat-calculator,public/zakat-calculator.html,200,Zakat Calculator — Live Islamic Wealth & Nisab Evaluation,https://islamicknowledge.example.com/zakat-calculator.html,Needs Review,Needs Review,Yes
+/calendar,public/calendar.html,200,Hijri Calendar & Sacred Islamic Dates Converter,https://islamicknowledge.example.com/calendar.html,Needs Review,Needs Review,Yes
+/bookmarks,public/bookmarks.html,200,Your Saved Islamic Bookmarks — Private & Local Storage,https://islamicknowledge.example.com/bookmarks.html,Needs Review,Needs Review,Yes
+/about,public/about.html,200,About Us — Islamic Knowledge Portal,https://islamicknowledge.example.com/about.html,Needs Review,Needs Review,Partial
+/sources,public/sources.html,200,Sources & Methodology — Islamic Knowledge Portal,https://islamicknowledge.example.com/sources.html,Needs Review,Needs Review,Partial
+/privacy,public/privacy.html,200,Privacy Policy — Islamic Knowledge Portal,https://islamicknowledge.example.com/privacy.html,Needs Review,Needs Review,Partial
+/terms,public/terms.html,200,Terms of Service — Islamic Knowledge Portal,https://islamicknowledge.example.com/terms.html,Needs Review,Needs Review,Partial
+/sitemap.xml,public/sitemap.xml,200,XML Sitemap,https://islamicknowledge.example.com/sitemap.xml,N/A,N/A,N/A
+/robots.txt,public/robots.txt,200,Robots Directive,https://islamicknowledge.example.com/robots.txt,N/A,N/A,N/A
+/api/health,server.js:33,200,API Health Endpoint,N/A,N/A,N/A,N/A
+/api/languages,server.js:40,200,API Languages Endpoint,N/A,N/A,N/A,N/A

@@ -7,7 +7,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "test": "node test/run-tests.js"
+    "test": "node test/run-tests.js",
+    "build:seo": "node scripts/seo-pwa-enhancer.js",
+    "android:sync": "npx cap copy android",
+    "android:open": "npx cap open android"
   },
   "keywords": [
     "islamic",

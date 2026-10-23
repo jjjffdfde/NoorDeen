@@ -1,0 +1,22 @@
+Module,Category,Current Status,Data Source,Offline Status,Identified Issues & Fixes Required
+Quran Reader,Core Religious,Working Partial,Tanzil / Al-Quran Cloud,Partial,Bundle Surah 36 (Ya-Sin) and Surah 67 (Al-Mulk) offline; add audio download cache
+Hadith Library,Core Religious,Working,Sahih Bukhari / Muslim / Tirmidhi,Full Bundled,Add Abu Dawud and Nasai narrations; enhance topic filtering
+Six Kalimas,Core Religious,Working,Traditional Creed,Full Bundled,Add dynamic language translation tags for all 6 items
+Duas & Adhkar,Supplications,Working,Hisnul Muslim,Full Bundled,Add more situational supplications (Distress Illness Istikhara)
+Seerah,History,Working,Ar-Raheeq Al-Makhtum,Full Static,Enhance responsive era timeline and source links
+Prophets,History,Working,Qisas al-Anbiya (Ibn Kathir),Full Static,Add Yusuf (AS) and Yunus (AS) biographies
+Sahaba,History,Working,Usd al-Ghabah / Ibn Hajar,Full Static,Add Khadijah (RA) and Aisha (RA) biographies
+Five Pillars,Education,Working,Canonical Sunnah,Full Static,Add i18n attributes for multilingual rendering
+Salah Guide,Education,Working,Fiqh Consensus,Full Static,Enhance visual posture cards and i18n attributes
+Wudu Guide,Education,Working,Fiqh Consensus,Full Static,Add i18n attributes and step-by-step progress check
+Prayer Times,Interactive Tool,Working,Solar Astronomical Formula,Full Offline,Add countdown to next prayer time and notification alert
+Digital Tasbih,Interactive Tool,Working,Web Audio API Synth,Full Offline,Add custom phrase input and reset confirmation
+Zakat Calculator,Interactive Tool,Working,Fiqh Nisab Formula,Full Offline,Add currency selector and gold tola conversion helper
+Hijri Calendar,Interactive Tool,Working,Intl.DateTimeFormat Umm al-Qura,Full Offline,Add full 12 Islamic month names explanation
+Bookmarks,User Preference,Working,Browser localStorage,Full Offline,Add export/import JSON and clear individual items
+Global Search,Discovery,Working,Client In-Memory Index,Full Offline,Enhance highlighting of matched terms
+40-Language Switcher,i18n,Working,i18n.js,Full Offline,Add mobile drawer language selector and complete missing dictionary keys
+Mobile Navigation,UI / Layout,Broken on <900px,DOM,N/A,Add mobile hamburger button and slide-over navigation drawer
+Progressive Web App,PWA / Offline,Missing,N/A,Needs Implementation,Add manifest.json and service-worker.js with Cache API
+Android APK,Mobile Native,Missing,N/A,Needs Implementation,Add standalone Android packaging and local offline assets
+SEO Infrastructure,Discoverability,Partial,sitemap.xml / robots.txt,N/A,Add canonical tags OpenGraph and JSON-LD Breadcrumbs to all pages
