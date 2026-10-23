@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holy Quran Reader — All 114 Surahs & 30 Juz with Translations</title>
+  <meta name="description" content="Read and listen to the Holy Quran with authentic Uthmani script, verse-by-verse Urdu and English translations, and audio recitation.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div>
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle">Holy Quran Reader</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item active"><a href="quran.html">Holy Quran</a></li>
+          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
+          <li class="nav-item"><a href="kalimas.html">Six Kalimas</a></li>
+          <li class="nav-item"><a href="duas.html">Duas</a></li>
+          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
+          <li class="nav-item"><a href="bookmarks.html">Bookmarks</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="language-selector-btn" class="btn btn-outline">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Surah Navigation & Settings Bar -->
+  <div style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: 16px 0;">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+      
+      <!-- Surah Selector -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="surah-select-dropdown" style="font-weight: 700; font-size: 0.9rem;">Select Surah:</label>
+        <select id="surah-select-dropdown" class="btn btn-outline" style="background-color: var(--color-card); padding: 8px 12px; font-weight: 600; cursor: pointer;">
+          <!-- Dynamically populated -->
+        </select>
+      </div>
+
+      <!-- Reading Settings Controls -->
+      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+        <!-- Font Size Slider -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.85rem; font-weight: 600;">Font:</span>
+          <input type="range" id="quran-font-slider" min="20" max="44" value="28" style="cursor: pointer; width: 100px;">
+        </div>
+
+        <!-- Reciter Selector -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.85rem; font-weight: 600;">Reciter:</span>
+          <select id="reciter-dropdown" class="btn btn-outline" style="background-color: var(--color-card); padding: 4px 8px; font-size: 0.85rem;">
+            <option value="Alafasy_128kbps">Mishary Rashid Alafasy</option>
+            <option value="Abdul_Basit_Murattal_192kbps">Abdul Basit (Murattal)</option>
+            <option value="Abu_Bakr_Ash-Shaatree_128kbps">Abu Bakr Ash-Shatri</option>
+            <option value="Ghamadi_40kbps">Saad Al-Ghamadi</option>
+            <option value="Husary_128kbps">Mahmoud Khalil Al-Husary</option>
+          </select>
+        </div>
+
+        <!-- Play Surah Button -->
+        <button id="play-surah-btn" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">
+          ▶ Play Surah
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 90px; max-width: 960px;">
+    
+    <!-- Surah Header Banner -->
+    <div class="card" style="text-align: center; margin-bottom: 30px; border-top: 4px solid var(--color-primary); background: radial-gradient(circle at 50% 0%, var(--color-surface) 0%, var(--color-card) 100%);">
+      <h1 id="surah-title-header" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 8px;">
+        1. Al-Fatihah (الفَاتِحَة)
+      </h1>
+      <p id="surah-meta-header" style="font-size: 0.95rem; color: var(--color-text-muted);">
+        The Opening • 7 Verses • Revelation: Meccan
+      </p>
+    </div>
+
+    <!-- Ayahs Container -->
+    <div id="quran-ayahs-container">
+      <!-- Ayahs dynamically rendered by quran.js -->
+    </div>
+
+  </main>
+
+  <!-- Audio Player Floating Bar -->
+  <div id="audio-player-bar" class="audio-player-bar" style="display: none;">
+    <div class="container audio-bar-inner">
+      <div class="audio-track-info">
+        <span style="font-size: 1.4rem; color: var(--color-primary);">🎵</span>
+        <div>
+          <div id="audio-track-title" class="audio-track-title">Surah Al-Fatihah — Ayah 1</div>
+          <div id="audio-track-reciter" class="audio-track-reciter">Reciter: Mishary Rashid Alafasy</div>
+        </div>
+      </div>
+      <div class="audio-controls">
+        <button id="audio-play-toggle-btn" class="btn btn-primary" onclick="quranApp.togglePlayPause()">
+          ❚❚ Pause
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/quran.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Initialize Quran Reader
+    const quranApp = new QuranReader();
+
+    // Populate dropdown with all 114 Surahs
+    const dropdown = document.getElementById('surah-select-dropdown');
+    ISLAMIC_DATA.surahs.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.number;
+      opt.textContent = `${s.number}. ${s.englishName} (${s.name}) - ${s.numberOfAyahs} Ayahs`;
+      dropdown.appendChild(opt);
+    });
+
+    // Check URL parameters for surah
+    const urlParams = new URLSearchParams(window.location.search);
+    const surahParam = urlParams.get('surah') || 1;
+    dropdown.value = surahParam;
+    quranApp.loadSurah(surahParam);
+
+    // Event listeners
+    dropdown.addEventListener('change', (e) => {
+      quranApp.loadSurah(e.target.value);
+      history.pushState(null, '', `quran.html?surah=${e.target.value}`);
+    });
+
+    document.getElementById('quran-font-slider').addEventListener('input', (e) => {
+      quranApp.setFontSize(e.target.value);
+    });
+
+    document.getElementById('reciter-dropdown').addEventListener('change', (e) => {
+      quranApp.reciter = e.target.value;
+      const reciterName = e.target.options[e.target.selectedIndex].text;
+      document.getElementById('audio-track-reciter').textContent = `Reciter: ${reciterName}`;
+    });
+
+    document.getElementById('play-surah-btn').addEventListener('click', () => {
+      quranApp.playAyah(quranApp.currentSurah, 1);
+    });
+  </script>
+</body>
+</html>

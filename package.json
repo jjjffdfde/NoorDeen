@@ -1,0 +1,23 @@
+{
+  "name": "islamic-knowledge-portal",
+  "version": "1.0.0",
+  "description": "Comprehensive Multilingual Islamic Knowledge Portal featuring Quran, Hadith, Duas, Seerah, Prayer Times, and Education",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test/run-tests.js"
+  },
+  "keywords": [
+    "islamic",
+    "quran",
+    "hadith",
+    "duas",
+    "prayer-times",
+    "seerah",
+    "multilingual"
+  ],
+  "author": "Islamic Knowledge Foundation",
+  "license": "CC-BY-4.0"
+}

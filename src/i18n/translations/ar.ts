@@ -1,0 +1,138 @@
+import { Translations } from './en';
+
+export const ar: Translations = {
+  // Navigation
+  siteTitle: 'بوابة المعرفة الإسلامية',
+  siteSubtitle: 'القرآن الكريم، الحديث النبوي، الأدعية والعلوم الإسلامية الموثقة',
+  navHome: 'الرئيسية',
+  navQuran: 'القرآن الكريم',
+  navHadith: 'مكتبة الحديث',
+  navKalimas: 'الكلمات الست',
+  navDuas: 'الأدعية والأذكار',
+  navSeerah: 'السيرة النبوية',
+  navProphets: 'قصص الأنبياء',
+  navSahaba: 'صحابة رسول الله',
+  navEducation: 'التعليم الإسلامي',
+  navTools: 'أدوات إسلامية',
+  navPrayerTimes: 'مواقيت الصلاة',
+  navTasbih: 'السبحة الإلكترونية',
+  navZakat: 'حاسبة الزكاة',
+  navCalendar: 'التقويم الهجري',
+  navBookmarks: 'المحفوظات',
+  navSearch: 'بحث',
+  navLanguage: 'اللغة',
+  navTheme: 'المظهر',
+  
+  // Hero & Search
+  heroTitle: 'تعلم الإسلام الصحيح بصفاء وطمأنينة',
+  heroSubtitle: 'تصفح القرآن الكريم مع الترجمات المعتمدة، ومجموعات الحديث النبوي الشريف، وأذكار الصباح والمساء، والدروس الشرعية الموثوقة.',
+  searchPlaceholder: 'ابحث عن سور، أحاديث، أدعية، أو موضوعات إسلامية...',
+  searchBtn: 'بحث',
+  searchModalTitle: 'البحث الشامل في المعرفة الإسلامية',
+  
+  // Quick Access
+  quickAccessTitle: 'استكشف أركان الدين والمعرفة',
+  quickAccessSubtitle: 'مصادر موثقة من التراث الإسلامي المعتمد',
+  
+  // Quran
+  quranSectionTitle: 'القرآن الكريم',
+  quranSectionSubtitle: 'اقرأ واستمع وتدبر في 114 سورة و30 جزءاً بالرسم العثماني الموثق مع الترجمات المعتمدة',
+  allSurahs: 'جميع السور',
+  allJuz: 'الأجزاء الثلاثون',
+  revelationMakki: 'مكية',
+  revelationMadani: 'مدنية',
+  versesCount: 'آيات',
+  surahNumber: 'سورة',
+  juzNumber: 'الجزء',
+  continueReading: 'متابعة القراءة',
+  startReading: 'قراءة السورة',
+  listenAudio: 'استماع',
+  arabicText: 'النص القرآني',
+  translation: 'الترجمة',
+  transliteration: 'النطق الصوتي',
+  copyVerse: 'نسخ الآية',
+  verseCopied: 'تم نسخ الآية الكريمة',
+  bookmarkVerse: 'حفظ الآية',
+  fontSize: 'حجم الخط',
+  arabicFont: 'خط المصحف',
+  selectReciter: 'اختر القارئ',
+  playAll: 'تشغيل الكل',
+  pauseAudio: 'إيقاف مؤقت',
+  nextVerse: 'الآية التالية',
+  prevVerse: 'الآية السابقة',
+  
+  // Hadith
+  hadithSectionTitle: 'مكتبة الحديث النبوي الشريف',
+  hadithSectionSubtitle: 'أحاديث المصطفى ﷺ بأسانيدها وتخريجها ودرجات صحتها المعتمدة',
+  collectionBukhari: 'صحيح البخاري',
+  collectionMuslim: 'صحيح مسلم',
+  collectionTirmidhi: 'جامع الترمذي',
+  collectionAbuDawud: 'سنن أبي داود',
+  collectionNasai: 'سنن النسائي',
+  collectionIbnMajah: 'سنن ابن ماجه',
+  hadithGrade: 'الدرجة',
+  hadithGradeSahih: 'صحيح',
+  hadithGradeHasan: 'حسن',
+  narrator: 'عن',
+  hadithNumber: 'رقم الحديث',
+  reference: 'المصدر',
+  
+  // Kalimas
+  kalimasTitle: 'الكلمات الست',
+  kalimasSubtitle: 'إعلانات العقيدة الإسلامية والتوحيد والاستغفار',
+  firstKalima: 'الكلمة الأولى (الطيب)',
+  secondKalima: 'الكلمة الثانية (الشهادة)',
+  thirdKalima: 'الكلمة الثالثة (التمجيد)',
+  fourthKalima: 'الكلمة الرابعة (التوحيد)',
+  fifthKalima: 'الكلمة الخامسة (الاستغفار)',
+  sixthKalima: 'الكلمة السادسة (رد الكفر)',
+  
+  // Duas & Adhkar
+  duasTitle: 'الأدعية المأثورة وأذكار اليوم والليلة',
+  duasSubtitle: 'أدعية من القرآن الكريم وحصن المسلم لكل أحوال المسلم اليومية',
+  morningAdhkar: 'أذكار الصباح',
+  eveningAdhkar: 'أذكار المساء',
+  sleepDuas: 'أذكار النوم والاستيقاظ',
+  mealDuas: 'أدعية الطعام والشراب',
+  travelDuas: 'دعاء السفر والركوب',
+  homeDuas: 'دخول المنزل والخروج منه',
+  protectionDuas: 'الحفظ والتحصين والاستغفار',
+  counter: 'العدد',
+  reset: 'إعادة ضبط',
+  
+  // Education & Pillars
+  fivePillarsTitle: 'أركان الإسلام الخمسة',
+  shahadahTitle: 'الشهادتان',
+  salahTitle: 'إقام الصلاة',
+  zakatTitle: 'إيتاء الزكاة',
+  sawmTitle: 'صوم رمضان',
+  hajjTitle: 'حج البيت',
+  learnSalah: 'تعليم الصلاة خطوة بخطوة',
+  learnWudu: 'تعليم الوضوء وسننه',
+  
+  // Daily Feature
+  dailyVerseTitle: 'آية اليوم',
+  dailyHadithTitle: 'حديث اليوم',
+  
+  // Common UI
+  readMore: 'اقرأ المزيد',
+  viewAll: 'عرض الكل',
+  loading: 'جارٍ التحميل...',
+  errorOccurred: 'حدث خطأ أثناء تحميل المحتوى.',
+  retry: 'إعادة المحاولة',
+  noResults: 'لم يتم العثور على نتائج مطابقة.',
+  filterAll: 'الكل',
+  close: 'إغلاق',
+  save: 'حفظ',
+  settings: 'الإعدادات',
+  
+  // Footer & Compliance
+  aboutUs: 'من نحن',
+  sourcesAndLicensing: 'المصادر والمنهجية',
+  privacyPolicy: 'سياسة الخصوصية',
+  termsOfUse: 'شروط الاستخدام',
+  editorialPolicy: 'السياسة التحريرية',
+  contactUs: 'اتصل بنا',
+  copyrightNotice: 'موقع إسلامي موجه لخدمة الأمة ونشر العلم النافع بالحق والبرهان.',
+  disclaimer: 'المحتوى الديني في هذا الموقع مخصص للأغراض التعليمية الشرعية وفق إجماع العلماء المعتبرين، ولا يغني عن الفتوى المباشرة من المفتين المعتمدين.'
+};

@@ -1,0 +1,138 @@
+import { Translations } from './en';
+
+export const ur: Translations = {
+  // Navigation
+  siteTitle: 'اسلامک نالج پورٹل',
+  siteSubtitle: 'مستند قرآن، احادیث نبوی، مسنون دعائیں اور دینی تعلیمات',
+  navHome: 'صفحہ اول',
+  navQuran: 'قرآن کریم',
+  navHadith: 'احادیث کتب خانہ',
+  navKalimas: 'چھ کلمے',
+  navDuas: 'دعائیں و اذکار',
+  navSeerah: 'سیرت النبی ﷺ',
+  navProphets: 'قصص الانبیاء',
+  navSahaba: 'صحابہ کرام',
+  navEducation: 'دینی تعلیم',
+  navTools: 'اسلامی ٹولز',
+  navPrayerTimes: 'اوقات نماز',
+  navTasbih: 'ڈیجیٹل تسبیح',
+  navZakat: 'زکوٰۃ کیلکولیٹر',
+  navCalendar: 'ہجری کیلنڈر',
+  navBookmarks: 'محفوظات',
+  navSearch: 'تلاش',
+  navLanguage: 'زبان',
+  navTheme: 'تھیم',
+  
+  // Hero & Search
+  heroTitle: 'مستند اسلامی علوم کو سکون و رہنمائی کے ساتھ سیکھیں',
+  heroSubtitle: 'قرآن مجید کے تمام 114 سورتوں کی تلاوت، اردو ترجمہ، صحیح بخاری و مسلم کی احادیث اور روزمرہ کے مسنون اذکار۔',
+  searchPlaceholder: 'سورہ، حدیث، دعا یا اسلامی موضوع تلاش کریں...',
+  searchBtn: 'تلاش کریں',
+  searchModalTitle: 'جامع اسلامی نالج تلاش',
+  
+  // Quick Access
+  quickAccessTitle: 'دین کے بنیادی ارکان اور علوم',
+  quickAccessSubtitle: 'معتبر اور تصدیق شدہ اسلامی مآخذ سے ماخوذ مواد',
+  
+  // Quran
+  quranSectionTitle: 'قرآن مجید',
+  quranSectionSubtitle: '114 سورتیں اور 30 پارے، مستند اعراب اور لفظ بہ لفظ اردو ترجمے کے ساتھ',
+  allSurahs: 'تمام سورتیں',
+  allJuz: '30 پارے',
+  revelationMakki: 'مکی',
+  revelationMadani: 'مدنی',
+  versesCount: 'آیات',
+  surahNumber: 'سورۃ نمبر',
+  juzNumber: 'پارہ نمبر',
+  continueReading: 'پڑھنا جاری رکھیں',
+  startReading: 'سورہ پڑھیں',
+  listenAudio: 'تلاوت سنیں',
+  arabicText: 'عربی متن',
+  translation: 'ترجمہ',
+  transliteration: 'تلفظ',
+  copyVerse: 'آیت کاپی کریں',
+  verseCopied: 'آیت کاپی ہوگئی',
+  bookmarkVerse: 'محفوظ کریں',
+  fontSize: 'فونٹ سائز',
+  arabicFont: 'عربی رسم الخط',
+  selectReciter: 'قاری کا انتخاب',
+  playAll: 'مکمل چلائیں',
+  pauseAudio: 'وقفہ',
+  nextVerse: 'اگلی آیت',
+  prevVerse: 'پچھلی آیت',
+  
+  // Hadith
+  hadithSectionTitle: 'کتب احادیث مبارکہ',
+  hadithSectionSubtitle: 'فرامین رسول ﷺ، حوالہ جات اور صحیح و حسن درجہ بندی کے ساتھ',
+  collectionBukhari: 'صحیح البخاری',
+  collectionMuslim: 'صحیح مسلم',
+  collectionTirmidhi: 'جامع الترمذی',
+  collectionAbuDawud: 'سنن ابی داؤد',
+  collectionNasai: 'سنن النسائی',
+  collectionIbnMajah: 'سنن ابن ماجہ',
+  hadithGrade: 'درجہ صحت',
+  hadithGradeSahih: 'صحیح',
+  hadithGradeHasan: 'حسن',
+  narrator: 'راوی',
+  hadithNumber: 'حدیث نمبر',
+  reference: 'حوالہ',
+  
+  // Kalimas
+  kalimasTitle: 'چھ کلمے',
+  kalimasSubtitle: 'ایمان، توحید، تمجید اور استغفار کے بنیادی کلمات مع اردو ترجمہ و معانی',
+  firstKalima: 'پہلا کلمہ (طیب)',
+  secondKalima: 'دوسرا کلمہ (شہادت)',
+  thirdKalima: 'تیسرا کلمہ (تمجید)',
+  fourthKalima: 'چوتھا کلمہ (توحید)',
+  fifthKalima: 'پانچواں کلمہ (استغفار)',
+  sixthKalima: 'چھٹا کلمہ (رد کفر)',
+  
+  // Duas & Adhkar
+  duasTitle: 'روزمرہ مسنون دعائیں و اذکار',
+  duasSubtitle: 'قرآن و حصن المسلم سے ماخوذ صبح و شام اور روزمرہ کے تمام مواقع کی دعائیں',
+  morningAdhkar: 'صبح کے اذکار',
+  eveningAdhkar: 'شام کے اذکار',
+  sleepDuas: 'سونے اور جاگنے کی دعائیں',
+  mealDuas: 'کھانے پینے کی دعائیں',
+  travelDuas: 'سفر کی مسنون دعا',
+  homeDuas: 'گھر میں داخل اور نکلنے کی دعا',
+  protectionDuas: 'حفاظت، استغفار اور شفا',
+  counter: 'تعداد',
+  reset: 'دوبارہ شروع',
+  
+  // Education & Pillars
+  fivePillarsTitle: 'اسلام کے پانچ بنیادی ارکان',
+  shahadahTitle: 'کلمہ شہادت',
+  salahTitle: 'نماز قائم کرنا',
+  zakatTitle: 'زکوٰۃ ادا کرنا',
+  sawmTitle: 'رمضان کے روزے',
+  hajjTitle: 'حج بیت اللہ',
+  learnSalah: 'مکمل طریقہ نماز تصویر و رہنمائی کے ساتھ',
+  learnWudu: 'وضو کا مسنون طریقہ',
+  
+  // Daily Feature
+  dailyVerseTitle: 'آج کی قرآنی آیت',
+  dailyHadithTitle: 'آج کی حدیث مبارکہ',
+  
+  // Common UI
+  readMore: 'مزید پڑھیں',
+  viewAll: 'سب دیکھیں',
+  loading: 'لوڈ ہو رہا ہے...',
+  errorOccurred: 'مواد لوڈ کرنے میں مسئلہ پیش آیا۔',
+  retry: 'دوبارہ کوشش کریں',
+  noResults: 'کوئی نتیجہ نہیں ملا۔',
+  filterAll: 'سب',
+  close: 'بند کریں',
+  save: 'محفوظ کریں',
+  settings: 'ترتیبات',
+  
+  // Footer & Compliance
+  aboutUs: 'ہمارے متعلق',
+  sourcesAndLicensing: 'مآخذ و طریقہ کار',
+  privacyPolicy: 'پرائیویسی پالیسی',
+  termsOfUse: 'شرائط استعمال',
+  editorialPolicy: 'ادارتی پالیسی',
+  contactUs: 'رابطہ کریں',
+  copyrightNotice: 'امت مسلمہ کی رہنمائی اور صحیح دینی تعلیمات کے فروغ کے لیے وقف۔',
+  disclaimer: 'اس ویب سائٹ پر موجود دینی معلومات تعلیمی مقاصد اور جمہور علماء کے مسلک پر مبنی ہیں۔ کسی بھی شرعی فیصلے کے لیے اپنے معتمد مفتیان کرام سے رجوع فرمائیں۔'
+};

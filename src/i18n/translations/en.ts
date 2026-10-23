@@ -1,0 +1,138 @@
+export const en = {
+  // Navigation
+  siteTitle: 'Islamic Knowledge Portal',
+  siteSubtitle: 'Authentic Quran, Hadith, Duas, and Islamic Learning',
+  navHome: 'Home',
+  navQuran: 'Holy Quran',
+  navHadith: 'Hadith Library',
+  navKalimas: 'Six Kalimas',
+  navDuas: 'Duas & Adhkar',
+  navSeerah: 'Seerah',
+  navProphets: 'Prophets',
+  navSahaba: 'Sahaba',
+  navEducation: 'Islamic Education',
+  navTools: 'Islamic Tools',
+  navPrayerTimes: 'Prayer Times',
+  navTasbih: 'Digital Tasbih',
+  navZakat: 'Zakat Calculator',
+  navCalendar: 'Hijri Calendar',
+  navBookmarks: 'Bookmarks',
+  navSearch: 'Search',
+  navLanguage: 'Language',
+  navTheme: 'Theme',
+  
+  // Hero & Search
+  heroTitle: 'Learn Authentic Islam With Peace & Clarity',
+  heroSubtitle: 'Explore the Holy Quran with verified translations, authentic Hadith collections, daily supplications, and comprehensive Islamic education.',
+  searchPlaceholder: 'Search Surahs, Hadith, Duas, or Islamic topics...',
+  searchBtn: 'Search',
+  searchModalTitle: 'Global Islamic Knowledge Search',
+  
+  // Quick Access
+  quickAccessTitle: 'Explore Core Pillars & Knowledge',
+  quickAccessSubtitle: 'Verified resources curated from authorized traditional Islamic sources',
+  
+  // Quran
+  quranSectionTitle: 'The Noble Quran',
+  quranSectionSubtitle: 'Read, listen, and reflect upon all 114 Surahs and 30 Juz with verse-by-verse translations',
+  allSurahs: 'All Surahs',
+  allJuz: '30 Juz (Paras)',
+  revelationMakki: 'Makki',
+  revelationMadani: 'Madani',
+  versesCount: 'Verses',
+  surahNumber: 'Surah',
+  juzNumber: 'Juz',
+  continueReading: 'Continue Reading',
+  startReading: 'Read Surah',
+  listenAudio: 'Listen',
+  arabicText: 'Arabic Text',
+  translation: 'Translation',
+  transliteration: 'Transliteration',
+  copyVerse: 'Copy Verse',
+  verseCopied: 'Verse copied to clipboard',
+  bookmarkVerse: 'Bookmark Verse',
+  fontSize: 'Font Size',
+  arabicFont: 'Arabic Script',
+  selectReciter: 'Select Reciter',
+  playAll: 'Play All',
+  pauseAudio: 'Pause',
+  nextVerse: 'Next Verse',
+  prevVerse: 'Previous Verse',
+  
+  // Hadith
+  hadithSectionTitle: 'Authentic Hadith Collections',
+  hadithSectionSubtitle: 'The traditions and sayings of Prophet Muhammad ﷺ with verified gradings and references',
+  collectionBukhari: 'Sahih al-Bukhari',
+  collectionMuslim: 'Sahih Muslim',
+  collectionTirmidhi: 'Jami` at-Tirmidhi',
+  collectionAbuDawud: 'Sunan Abi Dawud',
+  collectionNasai: 'Sunan an-Nasa\'i',
+  collectionIbnMajah: 'Sunan Ibn Majah',
+  hadithGrade: 'Grading',
+  hadithGradeSahih: 'Sahih (Authentic)',
+  hadithGradeHasan: 'Hasan (Good)',
+  narrator: 'Narrated by',
+  hadithNumber: 'Hadith Number',
+  reference: 'Reference',
+  
+  // Kalimas
+  kalimasTitle: 'The Six Kalimas',
+  kalimasSubtitle: 'The foundational declarations of Islamic faith, creed, and forgiveness',
+  firstKalima: 'First Kalima (Tayyab)',
+  secondKalima: 'Second Kalima (Shahadat)',
+  thirdKalima: 'Third Kalima (Tamjeed)',
+  fourthKalima: 'Fourth Kalima (Tauheed)',
+  fifthKalima: 'Fifth Kalima (Astaghfar)',
+  sixthKalima: 'Sixth Kalima (Radde Kufr)',
+  
+  // Duas & Adhkar
+  duasTitle: 'Daily Duas & Prophetic Adhkar',
+  duasSubtitle: 'Supplications from the Holy Quran and Hisnul Muslim for every moment of life',
+  morningAdhkar: 'Morning Adhkar',
+  eveningAdhkar: 'Evening Adhkar',
+  sleepDuas: 'Sleep & Waking',
+  mealDuas: 'Food & Drink',
+  travelDuas: 'Travel & Journeys',
+  homeDuas: 'Entering & Leaving Home',
+  protectionDuas: 'Protection & Forgiveness',
+  counter: 'Count',
+  reset: 'Reset',
+  
+  // Education & Pillars
+  fivePillarsTitle: 'The Five Pillars of Islam',
+  shahadahTitle: 'Shahadah (Faith)',
+  salahTitle: 'Salah (Prayer)',
+  zakatTitle: 'Zakat (Charity)',
+  sawmTitle: 'Sawm (Fasting)',
+  hajjTitle: 'Hajj (Pilgrimage)',
+  learnSalah: 'Learn Salah Step-by-Step',
+  learnWudu: 'Learn Wudu (Ablution)',
+  
+  // Daily Feature
+  dailyVerseTitle: 'Verse of the Day',
+  dailyHadithTitle: 'Hadith of the Day',
+  
+  // Common UI
+  readMore: 'Read More',
+  viewAll: 'View All',
+  loading: 'Loading...',
+  errorOccurred: 'An error occurred while loading content.',
+  retry: 'Retry',
+  noResults: 'No matching records found.',
+  filterAll: 'All',
+  close: 'Close',
+  save: 'Save',
+  settings: 'Settings',
+  
+  // Footer & Compliance
+  aboutUs: 'About Us',
+  sourcesAndLicensing: 'Sources & Methodology',
+  privacyPolicy: 'Privacy Policy',
+  termsOfUse: 'Terms of Service',
+  editorialPolicy: 'Editorial Policy',
+  contactUs: 'Contact Us',
+  copyrightNotice: 'Dedicated to serving the global Ummah with verified, authentic Islamic knowledge.',
+  disclaimer: 'Religious content on this website is for educational purposes based on traditional scholarly consensus. It does not replace individualized rulings from qualified local Islamic authorities (Muftis).'
+};
+
+export type Translations = typeof en;

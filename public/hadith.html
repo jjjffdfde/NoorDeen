@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentic Hadith Library — Sahih al-Bukhari, Muslim & Kutub al-Sittah</title>
+  <meta name="description" content="Search authentic Hadith collections with verified scholarly gradings, references, Arabic text, English, and Urdu translations.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div>
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle">Hadith Library</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
+          <li class="nav-item active"><a href="hadith.html">Hadith</a></li>
+          <li class="nav-item"><a href="kalimas.html">Six Kalimas</a></li>
+          <li class="nav-item"><a href="duas.html">Duas</a></li>
+          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
+          <li class="nav-item"><a href="bookmarks.html">Bookmarks</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="language-selector-btn" class="btn btn-outline">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Authentic Hadith Collections</h1>
+      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
+        The verified traditions and sayings of Prophet Muhammad ﷺ with authenticated gradings and source references.
+      </p>
+    </div>
+  </div>
+
+  <!-- Filters & Content -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 960px;">
+    
+    <!-- Filter Bar -->
+    <div class="card" style="margin-bottom: 24px; padding: 18px 24px;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;">
+        
+        <!-- Collection Filter -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-weight: 700; font-size: 0.9rem;">Collection:</span>
+          <select id="hadith-collection-filter" class="btn btn-outline" style="background-color: var(--color-surface); padding: 6px 12px; font-size: 0.9rem;">
+            <option value="all">All Collections</option>
+            <option value="Sahih al-Bukhari">Sahih al-Bukhari</option>
+            <option value="Sahih Muslim">Sahih Muslim</option>
+            <option value="Jami` at-Tirmidhi">Jami` at-Tirmidhi</option>
+          </select>
+        </div>
+
+        <!-- Topic Filter -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-weight: 700; font-size: 0.9rem;">Topic:</span>
+          <select id="hadith-topic-filter" class="btn btn-outline" style="background-color: var(--color-surface); padding: 6px 12px; font-size: 0.9rem;">
+            <option value="all">All Topics</option>
+            <option value="Iman">Iman (Faith)</option>
+            <option value="Akhlaq">Akhlaq (Good Character)</option>
+            <option value="Knowledge">Knowledge (Ilm)</option>
+            <option value="Mercy">Mercy (Rahmah)</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Hadiths Container -->
+    <div id="hadiths-list-container">
+      <!-- Rendered dynamically -->
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderHadiths() {
+      const container = document.getElementById('hadiths-list-container');
+      const collFilter = document.getElementById('hadith-collection-filter').value;
+      const topicFilter = document.getElementById('hadith-topic-filter').value;
+
+      const filtered = ISLAMIC_DATA.hadiths.filter(h => {
+        const matchColl = collFilter === 'all' || h.collection === collFilter;
+        const matchTopic = topicFilter === 'all' || h.topic === topicFilter;
+        return matchColl && matchTopic;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="card" style="text-align:center; padding: 40px;"><p>No Hadiths match your selected filter.</p></div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(h => `
+        <div class="hadith-card">
+          <div class="hadith-meta">
+            <div>
+              <strong style="color: var(--color-primary); font-size: 1rem;">${h.collection} #${h.number}</strong>
+              <span style="color: var(--color-text-muted); margin-left: 8px;">[${h.book}]</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="hadith-badge-grade">${h.grade}</span>
+              <span style="font-size: 0.78rem; padding: 3px 8px; background-color: var(--color-surface); border-radius: 4px; font-weight: 600;">${h.topic}</span>
+            </div>
+          </div>
+          
+          <div class="hadith-arabic">
+            ${h.ar}
+          </div>
+
+          <div style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 12px;">
+            "${h.en}"
+          </div>
+
+          <div class="urdu-text" style="font-size: 1.15rem; line-height: 2.2; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle); padding-top: 10px; margin-bottom: 14px;">
+            ${h.ur}
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border); padding-top: 12px; font-size: 0.85rem; color: var(--color-text-muted);">
+            <div>Narrated by: <strong style="color: var(--color-text-main);">${h.narrator}</strong></div>
+            <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.8rem;" onclick="copyHadith('${h.id}')">
+              Copy Hadith
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function copyHadith(id) {
+      const h = ISLAMIC_DATA.hadiths.find(item => item.id === id);
+      if (!h) return;
+      const text = `${h.ar}\n\n"${h.en}"\n\nNarrated by: ${h.narrator}\nReference: ${h.collection} #${h.number} (${h.grade})`;
+      navigator.clipboard.writeText(text).then(() => {
+        if (window.App) window.App.showToast('Hadith copied with citation!');
+      });
+    }
+
+    document.getElementById('hadith-collection-filter').addEventListener('change', renderHadiths);
+    document.getElementById('hadith-topic-filter').addEventListener('change', renderHadiths);
+    renderHadiths();
+  </script>
+</body>
+</html>
