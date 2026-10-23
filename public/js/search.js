@@ -92,6 +92,67 @@ const UniversalSearch = {
       }
     });
 
+    // 6. Search Educational & Practice Modules
+    const educationalPages = [
+      {
+        title: "Complete Janazah (Funeral Prayer) Guide",
+        snippet: "4 Takbirs step-by-step, adult and child duas, Madhhab differences, and graveyard etiquette.",
+        url: "janazah-guide.html",
+        keywords: ["janazah", "funeral", "mayyit", "burial", "takbir", "grave", "death", "condolence", "taziyah", "fard kifayah"]
+      },
+      {
+        title: "Complete Eid Prayer Guide (Eid al-Fitr & Eid al-Adha)",
+        snippet: "Hanafi 6 extra Takbirs vs Shafi'i 12 Takbirs, Takbirat al-Tashreeq, Zakat al-Fitr, Qurbani, and Sunan.",
+        url: "eid-guide.html",
+        keywords: ["eid", "fitr", "adha", "tashreeq", "qurbani", "udhiyah", "takbeer", "khutbah", "shawwal", "dhul hijjah"]
+      },
+      {
+        title: "Download Android APK & Offline Application",
+        snippet: "Official v1.2.0 release APK download, SHA-256 verification, and 100% offline Quran reading.",
+        url: "download-app.html",
+        keywords: ["app", "apk", "android", "download", "offline", "install", "mobile", "pwa"]
+      },
+      {
+        title: "Step-by-Step Salah (Five Daily Prayers) Guide",
+        snippet: "Visual positions, rak'ahs, recitations, and meanings for Fajr, Dhuhr, Asr, Maghrib, and Isha.",
+        url: "salah-guide.html",
+        keywords: ["salah", "namaz", "prayer", "rakah", "ruku", "sujud", "tashahhud", "fard", "sunnah"]
+      },
+      {
+        title: "Ablution (Wudu) & Purification Guide",
+        snippet: "Obligatory steps, sunnah acts, tayammum, and nullifiers of wudu according to authentic Sunnah.",
+        url: "wudu-guide.html",
+        keywords: ["wudu", "ablution", "purification", "taharah", "tayammum", "ghusl", "wash"]
+      },
+      {
+        title: "Astronomical Solar Prayer Times & Qiblah",
+        snippet: "Precise calculated prayer times for any global city without mobile data or external APIs.",
+        url: "prayer-times.html",
+        keywords: ["prayer times", "salat times", "azan", "fajr", "maghrib", "dhuhr", "asr", "isha", "qibla"]
+      },
+      {
+        title: "Zakat Calculator & Nisab Thresholds",
+        snippet: "Calculate 2.5% Zakat on gold, silver, savings, investments, and business stock.",
+        url: "zakat-calculator.html",
+        keywords: ["zakat", "nisab", "charity", "gold", "silver", "wealth", "wealth tax"]
+      }
+    ];
+
+    educationalPages.forEach(p => {
+      if (
+        p.title.toLowerCase().includes(q) ||
+        p.snippet.toLowerCase().includes(q) ||
+        p.keywords.some(k => k.includes(q) || q.includes(k))
+      ) {
+        results.push({
+          type: 'Islamic Guide',
+          title: p.title,
+          snippet: p.snippet,
+          url: p.url
+        });
+      }
+    });
+
     return results;
   }
 };

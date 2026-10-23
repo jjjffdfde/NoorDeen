@@ -26,7 +26,9 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon',
   '.xml': 'application/xml; charset=UTF-8',
   '.txt': 'text/plain; charset=UTF-8',
-  '.mp3': 'audio/mpeg'
+  '.mp3': 'audio/mpeg',
+  '.apk': 'application/vnd.android.package-archive',
+  '.zip': 'application/zip'
 };
 
 // Clean URL Route Aliases
@@ -42,6 +44,9 @@ const ROUTE_ALIASES = {
   '/pillars': '/pillars.html',
   '/salah-guide': '/salah-guide.html',
   '/wudu-guide': '/wudu-guide.html',
+  '/janazah-guide': '/janazah-guide.html',
+  '/eid-guide': '/eid-guide.html',
+  '/download-app': '/download-app.html',
   '/prayer-times': '/prayer-times.html',
   '/tasbih': '/tasbih.html',
   '/zakat-calculator': '/zakat-calculator.html',

@@ -501,6 +501,127 @@ const ISLAMIC_DATA = {
       ur: "اللہ کے نام کے ساتھ، میں نے اللہ پر بھروسہ کیا، گناہوں سے بچنے اور نیکی کرنے کی طاقت صرف اللہ کی مدد سے ہے۔",
       target: 1,
       ref: "Abu Dawud 5095 (Sahih)"
+    },
+    {
+      id: "dua-janazah-adult",
+      cat: "janazah",
+      title: "Janazah Supplication for Adult Deceased",
+      ar: "اللَّهُمَّ اغْفِرْ لِحَيِّنَا وَمَيِّتِنَا، وَشَاهِدِنَا وَغَائِبِنَا، وَصَغِيرِنَا وَكَبِيرِنَا، وَذَكَرِنَا وَأُنْثَانَا. اللَّهُمَّ مَنْ أَحْيَيْتَهُ مِنَّا فَأَحْيِهِ عَلَى الْإِسْلَامِ، وَمَنْ تَوَفَّيْتَهُ مِنَّا فَتَوَفَّهُ عَلَى الْإِيمَانِ. اللَّهُمَّ لَا تَحْرِمْنَا أَجْرَهُ، وَلَا تُضِلَّنَا بَعْدَهُ.",
+      tr: "Allahummagh-fir li-hayyinaa wa mayyitinaa, wa shaahidinaa wa ghaa'ibinaa, wa sagheerinaa wa kabeerinaa, wa thakarinaa wa unthaanaa. Allahumma man ahyaytahoo minnaa fa-ahyihee 'alal-Islaam, wa man tawaffaytahoo minnaa fa-tawaffahoo 'alal-Eemaan. Allahumma laa tahrimnaa ajrahoo, wa laa tudillanaa ba'dah.",
+      en: "O Allah, forgive our living and our dead, those present and those absent, our young and our old, our males and our females. O Allah, whomsoever You keep alive among us, keep him alive upon Islam, and whomsoever You cause to die among us, cause him to die upon Faith. O Allah, do not deprive us of his reward, and do not cause us to go astray after him.",
+      ur: "اے اللہ! بخش دے ہمارے زندوں کو اور ہمارے مُردوں کو، اور ہمارے حاضرین کو اور ہمارے غائبین کو، اور ہمارے چھوٹوں کو اور ہمارے بڑوں کو، اور ہمارے مَردوں کو اور ہماری عورتوں کو۔ اے اللہ! ہم میں سے جسے تو زندہ رکھے اسے اسلام پر زندہ رکھ، اور جسے موت دے اسے ایمان پر موت دے۔ اے اللہ! ہمیں اس کے اجر سے محروم نہ فرما اور اس کے بعد ہمیں گمراہ نہ کر۔",
+      target: 1,
+      ref: "Sunan Abi Dawud 3201, Tirmidhi 1024 (Sahih)"
+    },
+    {
+      id: "dua-janazah-child",
+      cat: "janazah",
+      title: "Janazah Supplication for Deceased Child",
+      ar: "اللَّهُمَّ اجْعَلْهُ لَنَا فَرَطًا، وَاجْعَلْهُ لَنَا أَجْرًا وَذُخْرًا، وَاجْعَلْهُ لَنَا شَافِعًا وَمُشَفَّعًا.",
+      tr: "Allahummaj-'alhu lanaa faratan, waj-'alhu lanaa ajran wa thukhran, waj-'alhu lanaa shaafi'an wa mushaffa'aa.",
+      en: "O Allah, make him for us a forerunner and advance herald, and make him for us a source of reward and treasure, and make him for us an intercessor whose intercession is granted.",
+      ur: "اے اللہ! اس بچے کو ہمارے لیے آگے بھیجا ہوا توشہ بنا، اور اس کو ہمارے لیے اجر اور ذخیرہ بنا، اور اس کو ہمارے حق میں شفاعت کرنے والا اور مقبول شفاعت بنا۔",
+      target: 1,
+      ref: "Sahih al-Bukhari (Ta'liqan), Al-Bayhaqi 4/9"
+    },
+    {
+      id: "dua-eid-tashreeq",
+      cat: "eid",
+      title: "Takbirat al-Tashreeq (Eid al-Adha)",
+      ar: "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، لَا إِلَٰهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، وَلِلَّهِ الْحَمْدُ.",
+      tr: "Allāhu Akbar, Allāhu Akbar, Laa ilaaha ill-Allāhu, wallāhu Akbar, Allāhu Akbar, wa lillāhil-hamd.",
+      en: "Allah is the Greatest, Allah is the Greatest; there is no deity worthy of worship besides Allah, and Allah is the Greatest, Allah is the Greatest, and to Allah belongs all praise.",
+      ur: "اللہ سب سے بڑا ہے، اللہ سب سے بڑا ہے، اللہ کے سوا کوئی معبود نہیں، اور اللہ سب سے بڑا ہے، اللہ سب سے بڑا ہے، اور تمام تعریفیں اللہ ہی کے لیے ہیں۔",
+      target: 3,
+      ref: "Musannaf Ibn Abi Shaybah 5633, Daruqutni (Authentic Sunnah)"
+    },
+    {
+      id: "dua-istikharah",
+      cat: "salah",
+      title: "Dua al-Istikharah (Seeking Allah's Guidance in Decisions)",
+      ar: "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ، وَتَعْلَمُ وَلَا أَعْلَمُ، وَأَنْتَ عَلَّامُ الْغُيُوبِ. اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ هَٰذَا الْأَمْرَ خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي ثُمَّ بَارِكْ لِي فِيهِ.",
+      tr: "Allahumma innee astakheeruka bi-'ilmika, wa astaqdiruka bi-qudratika, wa as'aluka min fadlikal-'azeem, fa-innaka taqdiru wa laa aqdir, wa ta'lamu wa laa a'lam, wa Anta 'Allaamul-ghuyoob...",
+      en: "O Allah, I seek Your counsel by Your knowledge, and I seek ability by Your power, and I ask You from Your immense favor. For You have power and I have none, and You know and I do not know, and You are the Knower of the unseen...",
+      ur: "اے اللہ! میں تیرے علم کی برکت سے تجھ سے خیر طلب کرتا ہوں اور تیری قدرت کے ذریعے تجھ سے طاقت مانگتا ہوں اور تیرے فضل عظیم کا سوال کرتا ہوں، کیونکہ تو قادر ہے اور میں بے بس ہوں، اور تو جانتا ہے اور میں نہیں جانتا، اور تو تمام غیبوں کا خوب جاننے والا ہے۔۔۔",
+      target: 1,
+      ref: "Sahih al-Bukhari 1162"
+    },
+    {
+      id: "dua-qunut",
+      cat: "salah",
+      title: "Dua al-Qunut (Witr Prayer Supplication)",
+      ar: "اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ، وَعَافِنِي فِيمَنْ عَافَيْتَ، وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ، وَبَارِكْ لِي فِيمَا أَعْطَيْتَ، وَقِنِي شَرَّ مَا قَضَيْتَ، فَإِنَّكَ تَقْضِي وَلَا يُقْضَىٰ عَلَيْكَ، وَإِنَّهُ لَا يَذِلُّ مَنْ وَالَيْتَ، وَلَا يَعِزُّ مَنْ عَادَيْتَ، تَبَارَكْتَ رَبَّنَا وَتَعَالَيْتَ.",
+      tr: "Allahummah-dinee feeman hadayt, wa 'aafinee feeman 'aafayt, wa tawallanee feeman tawallayt, wa baarik lee feemaa a'tayt, wa qinee sharra maa qadayt, fa-innaka taqdee wa laa yuqdaa 'alayk, wa innahoo laa yazillu man waalayt, wa laa ya'izzu man 'aadayt, tabaarakta Rabbanaa wa ta'aalayt.",
+      en: "O Allah, guide me among those You have guided, grant me well-being among those You have granted well-being, take me into Your care among those You have taken into care, bless for me what You have given, and protect me from the evil of what You have decreed. Indeed, You decree and none can decree against You...",
+      ur: "اے اللہ! مجھے ہدایت دے ان لوگوں میں جنہیں تو نے ہدایت دی، اور مجھے عافیت دے ان میں جنہیں تو نے عافیت بخشی، اور میرا سرپرست بن جا ان میں جن کا تو سرپرست بنا، اور جو کچھ تو نے دیا اس میں میرے لیے برکت ڈال دے، اور مجھے اس برائی سے بچا جو تو نے مقدر فرمائی ہے...",
+      target: 1,
+      ref: "Sunan Abi Dawud 1425, Tirmidhi 464 (Sahih)"
+    },
+    {
+      id: "dua-tahajjud",
+      cat: "salah",
+      title: "Supplication upon Rising for Tahajjud (Night Prayer)",
+      ar: "اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ نُورُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ أَنْتَ قَيِّمُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ أَنْتَ الْحَقُّ، وَوَعْدُكَ الْحَقُّ، وَقَوْلُكَ الْحَقُّ، وَلِقَاؤُكَ حَقٌّ، وَالْجَنَّةُ حَقٌّ، وَالنَّارُ حَقٌّ، وَالنَّبِيُّونَ حَقٌّ، وَمُحَمَّدٌ حَقٌّ، وَالسَّاعَةُ حَقٌّ.",
+      tr: "Allahumma lakal-hamdu Anta noorus-samaawaati wal-ardi wa man feehinna, wa lakal-hamdu Anta qayyimus-samaawaati wal-ardi wa man feehinna, wa lakal-hamdu Antal-Haqqu, wa wa'dukal-haqq, wa qawlukal-haqq, wa liqaa'uka haqq, wal-jannatu haqq, wan-naaru haqq, wan-nabiyyoona haqq, wa Muhammadun haqqun, was-saa'atu haqq.",
+      en: "O Allah, to You belongs all praise; You are the Light of the heavens and the earth and all that is within them. To You belongs all praise; You are the Sustainer of the heavens and the earth and all that is within them. To You belongs all praise; You are the Truth, Your promise is true, Your word is true, the meeting with You is true, Paradise is true, the Fire is true, the Prophets are true, Muhammad is true, and the Final Hour is true.",
+      ur: "اے اللہ! تیرے ہی لیے تمام تعریفیں ہیں، تو آسمانوں اور زمین اور جو کچھ ان میں ہے ان کا نور ہے۔ تیرے ہی لیے حمد ہے، تو آسمانوں اور زمین اور جو کچھ ان میں ہے ان کا قائم رکھنے والا ہے۔ اور تیرے ہی لیے تعریف ہے، تو ہی حق ہے، تیرا وعدہ سچا ہے، تیرا فرمان سچا ہے، تیری ملاقات برحق ہے، جنت حق ہے، جہنم حق ہے، تمام انبیاء حق ہیں، حضرت محمد ﷺ برحق ہیں، اور قیامت کی گھڑی سچی ہے۔",
+      target: 1,
+      ref: "Sahih al-Bukhari 1120, Sahih Muslim 769"
+    },
+    {
+      id: "dua-sayyidul-istighfar",
+      cat: "forgiveness",
+      title: "Sayyidul Istighfar (The Master Supplication for Forgiveness)",
+      ar: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَٰهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَىٰ عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ.",
+      tr: "Allahumma Anta Rabbee laa ilaaha illaa Anta, khalaqtanee wa ana 'abduka, wa ana 'alaa 'ahdika wa wa'dika mastata'tu, a'oozu bika min sharri maa sana'tu, aboo'u laka bi-ni'matika 'alayya, wa aboo'u bi-zambee faghfir lee fa-innahoo laa yaghfiruz-zunooba illaa Ant.",
+      en: "O Allah, You are my Lord; none has the right to be worshipped except You. You created me and I am Your servant, and I remain upon Your covenant and Your promise as much as I am able. I seek refuge in You from the evil of what I have done. I acknowledge before You Your favor upon me, and I acknowledge my sin; so forgive me, for indeed none can forgive sins except You.",
+      ur: "اے اللہ! تو ہی میرا رب ہے، تیرے سوا کوئی معبود نہیں، تو نے مجھے پیدا کیا اور میں تیرا بندہ ہوں، اور میں اپنی استطاعت کے مطابق تیرے عہد اور وعدے پر قائم ہوں۔ میں نے جو کچھ کیا اس کی برائی سے تیری پناہ مانگتا ہوں۔ میں اپنے اوپر تیری نعمت کا اعتراف کرتا ہوں اور اپنے گناہ کا اقرار کرتا ہوں، پس مجھے بخش دے کیونکہ تیرے سوا کوئی گناہوں کو نہیں بخش سکتا۔",
+      target: 1,
+      ref: "Sahih al-Bukhari 6306 (Chief of Supplications)"
+    },
+    {
+      id: "dua-rabbana-dunya",
+      cat: "quranic",
+      title: "Rabbana: Goodness in this Life and the Hereafter",
+      ar: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.",
+      tr: "Rabbanaa aatinaa fid-dunyaa hasanatanw-wa fil-aakhirati hasanatanw-wa qinaa 'azaaban-naar.",
+      en: "Our Lord, grant us in this world that which is good and in the Hereafter that which is good, and save us from the punishment of the Fire.",
+      ur: "اے ہمارے رب! ہمیں دنیا میں بھی بھلائی عطا فرما اور آخرت میں بھی بھلائی عطا فرما اور ہمیں دوزخ کے عذاب سے بچا۔",
+      target: 3,
+      ref: "Surah Al-Baqarah 2:201"
+    },
+    {
+      id: "dua-rabbana-hidayah",
+      cat: "quranic",
+      title: "Rabbana: Protection from Heart Deviation",
+      ar: "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً ۚ إِنَّكَ أَنْتَ الْوَهَّابُ.",
+      tr: "Rabbanaa laa tuzigh quloobanaa ba'da iz hadaytanaa wa hab lanaa mil-ladunka rahmah, innaka Antal-Wahhaab.",
+      en: "Our Lord, let not our hearts deviate after You have guided us and grant us from Yourself mercy. Indeed, You are the Bestower.",
+      ur: "اے ہمارے پروردگار! ہمارے دلوں کو ٹیڑھا نہ کر بعد اس کے کہ تو نے ہمیں ہدایت دی اور ہمیں اپنے پاس سے رحمت عطا فرما، بے شک تو ہی سب سے بڑا عطا فرمانے والا ہے۔",
+      target: 1,
+      ref: "Surah Ali 'Imran 3:8"
+    },
+    {
+      id: "dua-rabbana-family",
+      cat: "quranic",
+      title: "Rabbana: Comfort in Family and Righteous Leadership",
+      ar: "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا.",
+      tr: "Rabbanaa hab lanaa min azwaajinaa wa zurriyyaatinaa qurrata a'yuninw-waj'alnaa lil-muttaqeena imaamaa.",
+      en: "Our Lord, grant us from among our spouses and offspring comfort to our eyes and make us a leader for the righteous.",
+      ur: "اے ہمارے رب! ہمیں ہماری بیویوں اور ہماری اولاد کی طرف سے آنکھوں کی ٹھنڈک عطا فرما اور ہمیں پرہیزگاروں کا امام بنا۔",
+      target: 1,
+      ref: "Surah Al-Furqan 25:74"
+    },
+    {
+      id: "dua-rabbana-salah",
+      cat: "quranic",
+      title: "Supplication of Prophet Ibrahim for Prayer & Parents",
+      ar: "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ. رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ.",
+      tr: "Rabbij-'alnee muqeemas-Salaati wa min zurriyyatee, Rabbanaa wa taqabbal du'aaa'. Rabbanagh-fir lee wa li-waalidayya wa lil-mu'mineena yawma yaqoomul-hisaab.",
+      en: "My Lord, make me an establisher of prayer, and from my descendants. Our Lord, and accept my supplication. Our Lord, forgive me and my parents and the believers the Day the account is established.",
+      ur: "اے میرے رب! مجھے نماز قائم کرنے والا بنا اور میری اولاد میں سے بھی، اے ہمارے پروردگار! میری دعا قبول فرما۔ اے ہمارے رب! مجھے بخش دے اور میرے والدین کو اور تمام مومنوں کو جس دن حساب قائم ہو گا۔",
+      target: 1,
+      ref: "Surah Ibrahim 14:40-41"
     }
   ]
 };

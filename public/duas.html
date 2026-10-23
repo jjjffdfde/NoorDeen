@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Duas & Prophetic Adhkar — Hisnul Muslim Supplications</title>
-  <meta name="description" content="Authentic daily supplications from Hisnul Muslim with Arabic text, translations, references, and interactive counters.">
+  <title>Daily Duas & Prophetic Adhkar — Hisnul Muslim, Janazah, Eid & Quranic Supplications</title>
+  <meta name="description" content="Authentic daily supplications from Hisnul Muslim, Quranic Rabbana duas, Janazah, Eid, Istikharah, and Qunut with Arabic text, transliteration, Urdu & English meanings, and interactive counters.">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
@@ -14,38 +14,38 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Islamic Knowledge Portal">
   <meta property="og:url" content="https://islamicknowledge.example.com/duas.html">
-  <meta property="og:title" content="Daily Duas & Prophetic Adhkar — Hisnul Muslim Supplications">
-  <meta property="og:description" content="Authentic daily supplications from Hisnul Muslim with Arabic text, translations, references, and interactive counters.">
+  <meta property="og:title" content="Daily Duas & Prophetic Adhkar — Hisnul Muslim, Janazah, Eid & Quranic Supplications">
+  <meta property="og:description" content="Authentic daily supplications from Hisnul Muslim, Quranic Rabbana duas, Janazah, Eid, Istikharah, and Qunut with Arabic text, transliteration, Urdu & English meanings, and interactive counters.">
   <meta property="og:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://islamicknowledge.example.com/duas.html">
-  <meta name="twitter:title" content="Daily Duas & Prophetic Adhkar — Hisnul Muslim Supplications">
-  <meta name="twitter:description" content="Authentic daily supplications from Hisnul Muslim with Arabic text, translations, references, and interactive counters.">
+  <meta name="twitter:title" content="Daily Duas & Prophetic Adhkar — Hisnul Muslim, Janazah, Eid & Quranic Supplications">
+  <meta name="twitter:description" content="Authentic daily supplications from Hisnul Muslim, Quranic Rabbana duas, Janazah, Eid, Istikharah, and Qunut with Arabic text, transliteration, Urdu & English meanings, and interactive counters.">
   <meta name="twitter:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://islamicknowledge.example.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Duas & Adhkar",
-      "item": "https://islamicknowledge.example.com/duas.html"
-    }
-  ]
-}
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islamicknowledge.example.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Duas & Adhkar",
+        "item": "https://islamicknowledge.example.com/duas.html"
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -61,34 +61,39 @@
         </div>
       </a>
 
+      <!-- Desktop Nav -->
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
-          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
-          <li class="nav-item"><a href="kalimas.html">Six Kalimas</a></li>
-          <li class="nav-item active"><a href="duas.html">Duas</a></li>
-          <li class="nav-item"><a href="tasbih.html">Digital Tasbih</a></li>
-          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item"><a href="quran.html" data-i18n="navQuran">Holy Quran</a></li>
+          <li class="nav-item"><a href="hadith.html" data-i18n="navHadith">Hadith</a></li>
+          <li class="nav-item"><a href="salah-guide.html">Salah Guide</a></li>
+          <li class="nav-item"><a href="janazah-guide.html">Janazah</a></li>
+          <li class="nav-item"><a href="eid-guide.html">Eid Guide</a></li>
+          <li class="nav-item active"><a href="duas.html" data-i18n="navDuas">Duas</a></li>
+          <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button id="language-selector-btn" class="btn btn-outline">
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
-      <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
       </div>
     </div>
   </header>
 
   <!-- Banner -->
-  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+  <div style="background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary)); color: #FFFFFF; padding: 40px 0; text-align: center;">
     <div class="container">
-      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Daily Duas & Prophetic Adhkar</h1>
-      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
-        Supplications from the Holy Quran and Hisnul Muslim (Fortress of the Muslim) with interactive recital counters.
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(181,139,80,0.2); color: var(--color-gold); border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-bottom: 10px;">
+        أَدْعِيَةٌ وَأَذْكَارٌ نَبَوِيَّةٌ — SUPPLICATIONS & ADHKAR
+      </div>
+      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Authentic Duas & Prophetic Adhkar</h1>
+      <p style="color: #D1D5DB; max-width: 680px; margin: 0 auto; font-size: 1rem; line-height: 1.6;">
+        Verified supplications from the Holy Quran, Sahih collections, and Hisnul Muslim (Fortress of the Muslim) with interactive recital counters and Urdu translations.
       </p>
     </div>
   </div>
@@ -96,11 +101,80 @@
   <!-- Content -->
   <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 900px;">
     
+    <!-- Category Filter Bar -->
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px;">
+      <button class="btn btn-primary dua-filter-btn" data-cat="all" onclick="filterDuas('all', this)">All Duas</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="morning" onclick="filterDuas('morning', this)">🌅 Morning & Evening</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="salah" onclick="filterDuas('salah', this)">🕌 Salah, Istikharah & Qunut</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="janazah" onclick="filterDuas('janazah', this)">⚰️ Janazah (Funeral)</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="eid" onclick="filterDuas('eid', this)">🌙 Eid & Tashreeq</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="quranic" onclick="filterDuas('quranic', this)">📖 Quranic Rabbana</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="forgiveness" onclick="filterDuas('forgiveness', this)">🤲 Forgiveness (Istighfar)</button>
+      <button class="btn btn-outline dua-filter-btn" data-cat="sleep" onclick="filterDuas('sleep', this)">🛏️ Sleep & Protection</button>
+    </div>
+
     <div id="duas-list-container">
       <!-- Dynamically rendered -->
     </div>
 
   </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="logo-group" style="margin-bottom: 15px;">
+          <div class="logo-icon">☪</div>
+          <div>
+            <div class="logo-text-title" style="color: #fff;">Islamic Knowledge Portal</div>
+            <div class="logo-text-subtitle">Digital Islamic Library</div>
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.75);">
+          An authentic, multilingual platform dedicated to providing verified Islamic knowledge according to the Quran and Sunnah.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Prayer & Worship</h4>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">Five Daily Prayers</a></li>
+          <li><a href="wudu-guide.html">Ablution (Wudu)</a></li>
+          <li><a href="janazah-guide.html">Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">Eid Prayer Guide</a></li>
+          <li><a href="prayer-times.html">Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Knowledge & Text</h4>
+        <ul class="footer-links">
+          <li><a href="quran.html">Holy Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">Hadith Library</a></li>
+          <li><a href="kalimas.html">Six Kalimas</a></li>
+          <li><a href="duas.html">Duas & Adhkar</a></li>
+          <li><a href="seerah.html">Prophetic Seerah</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Offline & Apps</h4>
+        <ul class="footer-links">
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Download Android APK</a></li>
+          <li><a href="about.html">About Portal</a></li>
+          <li><a href="sources.html">Source Bibliography</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
+        <div>Preserving the Quranic Text and Prophetic Sunnah.</div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script src="js/data.js"></script>
@@ -110,23 +184,46 @@
   <script src="js/app.js"></script>
   <script>
     const counts = {};
+    let activeCategory = 'all';
+
+    function filterDuas(category, btnElement) {
+      activeCategory = category;
+      document.querySelectorAll('.dua-filter-btn').forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline');
+      });
+      if (btnElement) {
+        btnElement.classList.remove('btn-outline');
+        btnElement.classList.add('btn-primary');
+      }
+      renderDuas();
+    }
 
     function renderDuas() {
       const container = document.getElementById('duas-list-container');
-      container.innerHTML = ISLAMIC_DATA.duas.map(d => {
+      const filtered = activeCategory === 'all' 
+        ? ISLAMIC_DATA.duas 
+        : ISLAMIC_DATA.duas.filter(d => d.cat === activeCategory || (activeCategory === 'sleep' && (d.cat === 'sleep' || d.cat === 'home')));
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="card" style="text-align: center; padding: 40px; color: var(--color-text-muted);">No supplications found for this category.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(d => {
         if (!counts[d.id]) counts[d.id] = 0;
         const currentCount = counts[d.id];
         const isCompleted = currentCount >= d.target;
 
         return `
           <div class="card" id="${d.id}" style="margin-bottom: 24px; border-left: 5px solid ${isCompleted ? 'var(--color-success)' : 'var(--color-primary)'};">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
               <div>
-                <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary);">${d.title}</h2>
-                <span style="font-size: 0.8rem; color: var(--color-text-muted);">${d.ref}</span>
+                <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin-bottom: 4px;">${d.title}</h2>
+                <span style="font-size: 0.8rem; color: var(--color-gold-dark); font-weight: 600;">${d.ref}</span>
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary);">Target: ${d.target}x</span>
+                <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); background: rgba(23,107,91,0.08); padding: 4px 10px; border-radius: 12px;">Target: ${d.target}x</span>
               </div>
             </div>
 
@@ -134,24 +231,24 @@
               ${d.ar}
             </div>
 
-            <div style="font-style: italic; color: var(--color-gold-dark); font-size: 0.95rem; margin-bottom: 10px;">
+            <div style="font-style: italic; color: var(--color-gold-dark); font-size: 0.92rem; margin-bottom: 10px; line-height: 1.5;">
               ${d.tr}
             </div>
 
-            <div style="font-size: 1rem; line-height: 1.6; color: var(--color-text-main); margin-bottom: 10px;">
+            <div style="font-size: 0.98rem; line-height: 1.6; color: var(--color-text-main); margin-bottom: 10px;">
               ${d.en}
             </div>
 
-            <div class="urdu-text" style="font-size: 1.15rem; line-height: 2.2; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle); padding-top: 10px; margin-bottom: 18px;">
+            <div class="urdu-text" style="font-size: 1.15rem; line-height: 2.2; color: var(--color-text-muted); border-top: 1px solid var(--color-border); padding-top: 10px; margin-bottom: 18px;">
               ${d.ur}
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border); padding-top: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border); padding-top: 14px; flex-wrap: wrap; gap: 10px;">
               <button class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;" onclick="resetCount('${d.id}')">
                 Reset
               </button>
               <button class="btn ${isCompleted ? 'btn-gold' : 'btn-primary'}" style="padding: 8px 24px; font-weight: 700;" onclick="incrementCount('${d.id}', ${d.target})">
-                📿 Recite: <span id="count-val-${d.id}">${currentCount}</span> / ${d.target} ${isCompleted ? '✓' : ''}
+                📿 Recite: <span id="count-val-${d.id}">${currentCount}</span> / ${d.target} ${isCompleted ? '✓ Completed' : ''}
               </button>
             </div>
           </div>
@@ -162,8 +259,10 @@
     function incrementCount(id, target) {
       if (!counts[id]) counts[id] = 0;
       counts[id]++;
-      if (window.IslamicTools) window.IslamicTools.playTasbihSound();
-      if (counts[id] >= target && window.App) {
+      if (window.IslamicTools && window.IslamicTools.playTasbihSound) {
+        window.IslamicTools.playTasbihSound();
+      }
+      if (counts[id] >= target && window.App && window.App.showToast) {
         window.App.showToast(`Completed ${target}x recitations! Alhamdulillah.`);
       }
       renderDuas();

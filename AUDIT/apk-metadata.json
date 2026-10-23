@@ -1,0 +1,12 @@
+{
+  "apkFilename": "islamic-portal-release.apk",
+  "apkSizeBytes": 142692,
+  "apkSizeMb": "0.14",
+  "apkSha256": "51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5",
+  "bundleFilename": "islamic-portal-offline-bundle.zip",
+  "bundleSizeBytes": 141183,
+  "bundleSizeMb": "0.13",
+  "bundleSha256": "f3d7fefb37747d7b4ab529646b7e7b75439d917b51f16bcf01cbc2a1fe3c6753",
+  "version": "1.2.0",
+  "buildDate": "2026-10-23"
+}

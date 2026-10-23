@@ -46,6 +46,9 @@ async function runTestSuite() {
     'sahaba.html',
     'pillars.html',
     'salah-guide.html',
+    'janazah-guide.html',
+    'eid-guide.html',
+    'download-app.html',
     'wudu-guide.html',
     'prayer-times.html',
     'tasbih.html',
@@ -197,6 +200,15 @@ async function runTestSuite() {
     const zakatRes = await testRequest('/zakat-calculator');
     assert(zakatRes.status === 200, 'HTTP GET /zakat-calculator clean route returns 200 OK');
 
+    const downloadAppRes = await testRequest('/download-app');
+    assert(downloadAppRes.status === 200, 'HTTP GET /download-app clean route returns 200 OK');
+
+    const janazahRes = await testRequest('/janazah-guide');
+    assert(janazahRes.status === 200, 'HTTP GET /janazah-guide clean route returns 200 OK');
+
+    const eidRes = await testRequest('/eid-guide');
+    assert(eidRes.status === 200, 'HTTP GET /eid-guide clean route returns 200 OK');
+
     // 3. API Health endpoint
     const healthRes = await testRequest('/api/health');
     assert(healthRes.status === 200, 'HTTP GET /api/health returns 200 OK');
@@ -255,6 +267,7 @@ async function runTestSuite() {
   const htmlFiles = [
     'index.html', 'quran.html', 'hadith.html', 'kalimas.html', 'duas.html',
     'seerah.html', 'prophets.html', 'sahaba.html', 'pillars.html', 'salah-guide.html',
+    'janazah-guide.html', 'eid-guide.html', 'download-app.html',
     'wudu-guide.html', 'prayer-times.html', 'tasbih.html', 'zakat-calculator.html',
     'calendar.html', 'bookmarks.html', 'about.html', 'sources.html', 'privacy.html', 'terms.html'
   ];
@@ -274,11 +287,11 @@ async function runTestSuite() {
     if (!html.includes('mobile-menu-btn')) allHaveMobileBtn = false;
   });
 
-  assert(allHaveCanonical, 'All 20 HTML pages contain <link rel="canonical"> tags');
-  assert(allHaveManifest, 'All 20 HTML pages link to PWA manifest.json');
-  assert(allHaveOG, 'All 20 HTML pages contain Open Graph meta tags');
-  assert(allHaveTwitter, 'All 20 HTML pages contain Twitter Card meta tags');
-  assert(allHaveMobileBtn, 'All 20 HTML pages contain responsive mobile drawer menu trigger');
+  assert(allHaveCanonical, 'All 23 HTML pages contain <link rel="canonical"> tags');
+  assert(allHaveManifest, 'All 23 HTML pages link to PWA manifest.json');
+  assert(allHaveOG, 'All 23 HTML pages contain Open Graph meta tags');
+  assert(allHaveTwitter, 'All 23 HTML pages contain Twitter Card meta tags');
+  assert(allHaveMobileBtn, 'All 23 HTML pages contain responsive mobile drawer menu trigger');
 
   // Subpage schema test
   const hadithHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'hadith.html'), 'utf-8');
@@ -368,6 +381,95 @@ async function runTestSuite() {
   
   const indexHtmlContent = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
   assert(indexHtmlContent.includes('id="continue-reading-panel"'), 'Homepage includes continue-reading-panel container');
+
+  // TEST SUITE 14: DEDICATED JANAZAH & EID PRAYER MODULES
+  console.log('\n--- TEST SUITE 14: Dedicated Janazah & Eid Prayer Modules ---');
+  const janazahHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'janazah-guide.html'), 'utf-8');
+  assert(janazahHtml.includes('TAKBIR 1 OF 4') && janazahHtml.includes('TAKBIR 4 OF 4'), 'Janazah guide documents all 4 Takbirs step-by-step');
+  assert(janazahHtml.includes('اللَّهُمَّ اغْفِرْ لِحَيِّنَا وَمَيِّتِنَا'), 'Janazah guide includes authentic adult deceased supplication');
+  assert(janazahHtml.includes('اللَّهُمَّ اجْعَلْهُ لَنَا فَرَطًا'), 'Janazah guide includes authentic deceased child supplication');
+  assert(janazahHtml.includes('Sunan Abi Dawud #3201') || janazahHtml.includes('Tirmidhi #1024'), 'Janazah guide cites canonical Hadith references');
+  assert(janazahHtml.includes('Comparative Juristic') && janazahHtml.includes('Hanafi') && janazahHtml.includes('Shafi\'i'), 'Janazah guide includes comparative Madhhab analysis');
+  assert(janazahHtml.includes('Sahih Muslim #975'), 'Janazah guide includes authentic cemetery visitation etiquette');
+
+  const eidHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'eid-guide.html'), 'utf-8');
+  assert(eidHtml.includes('6 EXTRA TAKBIRS') || eidHtml.includes('METHOD 1 (HANAFI MADHHAB)'), 'Eid guide details Hanafi 6 extra Takbirs method');
+  assert(eidHtml.includes('12 EXTRA TAKBIRS') || eidHtml.includes('METHOD 2 (SHAFI\'I'), 'Eid guide details Shafi\'i & Hanbali 12 extra Takbirs method');
+  assert(eidHtml.includes('اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، لَا إِلَٰهَ إِلَّا اللَّهُ'), 'Eid guide includes complete Takbirat al-Tashreeq text');
+  assert(eidHtml.includes('23 consecutive') || eidHtml.includes('23 Fard Prayers') || eidHtml.includes('Day of Arafah'), 'Eid guide details Tashreeq timing schedule');
+  assert(eidHtml.includes('Zakat al-Fitr') && eidHtml.includes('Qurbani'), 'Eid guide covers Zakat al-Fitr and Qurbani rules');
+
+  // TEST SUITE 15: DEDICATED ANDROID DOWNLOAD CENTER & RELEASE APK
+  console.log('\n--- TEST SUITE 15: Android Download Center & Release APK Verification ---');
+  const downloadAppHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
+  assert(downloadAppHtml.includes('downloads/islamic-portal-release.apk'), 'Download app page links directly to release APK asset');
+  assert(downloadAppHtml.includes('apk-sha256-display'), 'Download app page renders SHA-256 display element');
+  assert(downloadAppHtml.includes('Step-by-Step Android Installation Guide'), 'Download app page includes step-by-step sideloading guide');
+  assert(downloadAppHtml.includes('SoftwareApplication'), 'Download app page includes SoftwareApplication JSON-LD schema');
+  assert(downloadAppHtml.includes('0 Invasive Permissions'), 'Download app page declares strict zero invasive permissions guarantee');
+
+  const apkPath = path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-release.apk');
+  assert(fs.existsSync(apkPath) && fs.statSync(apkPath).size > 50000, 'Release APK exists on disk and is non-empty (>50 KB)');
+  
+  const zipBundlePath = path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-offline-bundle.zip');
+  assert(fs.existsSync(zipBundlePath) && fs.statSync(zipBundlePath).size > 50000, 'Standalone offline ZIP bundle exists on disk and is non-empty');
+
+  const checksumsPath = path.join(PUBLIC_DIR, 'downloads', 'CHECKSUMS.sha256');
+  assert(fs.existsSync(checksumsPath), 'CHECKSUMS.sha256 manifest exists in downloads directory');
+  const checksumsText = fs.readFileSync(checksumsPath, 'utf-8');
+  assert(checksumsText.includes('islamic-portal-release.apk') && checksumsText.includes('islamic-portal-offline-bundle.zip'), 'Checksums manifest covers both APK and ZIP artifacts');
+
+  // TEST SUITE 16: INDEPENDENT URDU TRANSLATION ARCHITECTURE
+  console.log('\n--- TEST SUITE 16: Independent Urdu Quran Translation Mode ---');
+  assert(quranJsContent.includes('setTranslationMode'), 'Quran reader implements setTranslationMode() controller');
+  assert(quranJsContent.includes('translationMode'), 'Quran reader initializes translationMode preference');
+  
+  const quranHtmlContent = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  assert(quranHtmlContent.includes('id="translation-view-select"'), 'Quran toolbar includes translation-view-select dropdown');
+  assert(quranHtmlContent.includes('value="urdu"'), 'Translation selector provides explicit Urdu Only option');
+  assert(quranHtmlContent.includes('value="both"'), 'Translation selector provides dual Urdu & English option');
+
+  // TEST SUITE 17: EXPANDED AUTHENTIC DUAS LIBRARY & FILTER ENGINE
+  console.log('\n--- TEST SUITE 17: Expanded Authentic Dua Library & Filter Engine ---');
+  assert(dataContent.includes('dua-janazah-adult'), 'Duas dataset contains adult Janazah supplication');
+  assert(dataContent.includes('dua-janazah-child'), 'Duas dataset contains child Janazah supplication');
+  assert(dataContent.includes('dua-eid-tashreeq'), 'Duas dataset contains Eid Tashreeq Takbirs');
+  assert(dataContent.includes('dua-istikharah'), 'Duas dataset contains authentic Dua al-Istikharah (Bukhari 1162)');
+  assert(dataContent.includes('dua-qunut'), 'Duas dataset contains authentic Dua al-Qunut (Abu Dawud 1425)');
+  assert(dataContent.includes('dua-tahajjud'), 'Duas dataset contains Tahajjud supplication (Bukhari 1120)');
+  assert(dataContent.includes('dua-sayyidul-istighfar'), 'Duas dataset contains Sayyidul Istighfar (Bukhari 6306)');
+  assert(dataContent.includes('dua-rabbana-dunya') && dataContent.includes('dua-rabbana-hidayah'), 'Duas dataset contains authentic Quranic Rabbana supplications');
+
+  const duasHtmlContent = fs.readFileSync(path.join(PUBLIC_DIR, 'duas.html'), 'utf-8');
+  assert(duasHtmlContent.includes('filterDuas'), 'Duas page implements interactive filterDuas function');
+  assert(duasHtmlContent.includes('data-cat="janazah"') && duasHtmlContent.includes('data-cat="eid"'), 'Duas page provides dedicated Janazah and Eid category filter buttons');
+
+  // TEST SUITE 18: AUDIT REPORTS & SCHOLARLY METHODOLOGY REGISTER
+  console.log('\n--- TEST SUITE 18: Audit Documentation & Scholarly Reports ---');
+  const quranIntegrityReport = path.join(ROOT_DIR, 'AUDIT', 'QURAN-INTEGRITY.md');
+  assert(fs.existsSync(quranIntegrityReport), 'Audit report AUDIT/QURAN-INTEGRITY.md exists');
+  const quranReportText = fs.readFileSync(quranIntegrityReport, 'utf-8');
+  assert(quranReportText.includes('6,236') && quranReportText.includes('Hafs'), 'Quran integrity report documents 6,236 verses and Hafs standard');
+
+  const translationReport = path.join(ROOT_DIR, 'AUDIT', 'TRANSLATION-COVERAGE.md');
+  assert(fs.existsSync(translationReport), 'Audit report AUDIT/TRANSLATION-COVERAGE.md exists');
+  const transReportText = fs.readFileSync(translationReport, 'utf-8');
+  assert(transReportText.includes('40') && transReportText.includes('Fateh Muhammad Jalandhry'), 'Translation coverage report documents 40 languages and Jalandhry translation');
+
+  const worshipReport = path.join(ROOT_DIR, 'AUDIT', 'DUA-SALAH-JANAZAH-EID-REVIEW.md');
+  assert(fs.existsSync(worshipReport), 'Audit report AUDIT/DUA-SALAH-JANAZAH-EID-REVIEW.md exists');
+  const worshipReportText = fs.readFileSync(worshipReport, 'utf-8');
+  assert(worshipReportText.includes('Salat al-Janazah') && worshipReportText.includes('Salat al-Eid'), 'Worship review documents Janazah and Eid prayer protocols');
+
+  const androidBuildReport = path.join(ROOT_DIR, 'AUDIT', 'ANDROID-BUILD.md');
+  assert(fs.existsSync(androidBuildReport), 'Audit report AUDIT/ANDROID-BUILD.md exists');
+  const androidReportText = fs.readFileSync(androidBuildReport, 'utf-8');
+  assert(androidReportText.includes('islamic-portal-release.apk') && androidReportText.includes('SHA-256'), 'Android build report documents APK release and SHA-256 verification');
+
+  const finalVerificationReport = path.join(ROOT_DIR, 'AUDIT', 'FINAL-VERIFICATION.md');
+  assert(fs.existsSync(finalVerificationReport), 'Audit report AUDIT/FINAL-VERIFICATION.md exists');
+  const finalReportText = fs.readFileSync(finalVerificationReport, 'utf-8');
+  assert(finalReportText.includes('23 Endpoints') || finalReportText.includes('All 23 Endpoints') || finalReportText.includes('All 23 Pages'), 'Final verification report documents all 23 endpoints');
 
   // SUMMARY
   console.log('\n====================================================');

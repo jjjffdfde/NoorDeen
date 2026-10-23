@@ -14,8 +14,9 @@ class QuranReader {
     this.repeatMode = 'none'; // 'none' | 'ayah' | 'surah'
     this.playbackRate = 1.0;
     this.fontSize = parseInt(localStorage.getItem('islamic_portal_font_size') || '30', 10);
-    this.showUrdu = localStorage.getItem('islamic_portal_show_urdu') !== 'false';
-    this.showEnglish = localStorage.getItem('islamic_portal_show_english') !== 'false';
+    this.translationMode = localStorage.getItem('islamic_portal_translation_mode') || 'both';
+    this.showUrdu = this.translationMode === 'both' || this.translationMode === 'urdu';
+    this.showEnglish = this.translationMode === 'both' || this.translationMode === 'english';
     this.showTranslit = localStorage.getItem('islamic_portal_show_translit') === 'true';
     this.surahData = null;
     this.isDownloadingAudio = false;
@@ -379,6 +380,25 @@ class QuranReader {
     if (reciterLabel) {
       reciterLabel.textContent = `Reciter: ${this.getReciterName(this.reciter)}`;
     }
+  }
+
+  setTranslationMode(mode) {
+    this.translationMode = mode;
+    if (mode === 'both') {
+      this.showUrdu = true;
+      this.showEnglish = true;
+    } else if (mode === 'urdu') {
+      this.showUrdu = true;
+      this.showEnglish = false;
+    } else if (mode === 'english') {
+      this.showUrdu = false;
+      this.showEnglish = true;
+    } else if (mode === 'arabic') {
+      this.showUrdu = false;
+      this.showEnglish = false;
+    }
+    localStorage.setItem('islamic_portal_translation_mode', mode);
+    this.renderAyahs();
   }
 
   setFontSize(size) {

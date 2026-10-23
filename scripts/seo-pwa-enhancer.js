@@ -49,6 +49,18 @@ const pagesMeta = {
     breadcrumb: 'Salah Guide',
     canonical: `${BASE_URL}/salah-guide.html`
   },
+  'janazah-guide.html': {
+    breadcrumb: 'Janazah Guide',
+    canonical: `${BASE_URL}/janazah-guide.html`
+  },
+  'eid-guide.html': {
+    breadcrumb: 'Eid Guide',
+    canonical: `${BASE_URL}/eid-guide.html`
+  },
+  'download-app.html': {
+    breadcrumb: 'Download Android App',
+    canonical: `${BASE_URL}/download-app.html`
+  },
   'wudu-guide.html': {
     breadcrumb: 'Wudu Guide',
     canonical: `${BASE_URL}/wudu-guide.html`
@@ -91,7 +103,7 @@ const pagesMeta = {
   }
 };
 
-console.log('Inspecting and enhancing 20 HTML pages...');
+console.log('Inspecting and enhancing 23 HTML pages...');
 
 let updatedCount = 0;
 
