@@ -84,36 +84,41 @@
   </header>
 
   <!-- Surah Navigation & Settings Bar -->
-  <div style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: 16px 0;">
-    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+  <div style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: 14px 0; position: sticky; top: 72px; z-index: 80; backdrop-filter: blur(8px);">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px;">
       
       <!-- Surah Selector -->
       <div style="display: flex; align-items: center; gap: 10px;">
-        <label for="surah-select-dropdown" style="font-weight: 700; font-size: 0.9rem;">Select Surah:</label>
-        <select id="surah-select-dropdown" class="btn btn-outline" style="background-color: var(--color-card); padding: 8px 12px; font-weight: 600; cursor: pointer;">
+        <label for="surah-select-dropdown" style="font-weight: 700; font-size: 0.9rem; color: var(--color-text-main);">Surah:</label>
+        <select id="surah-select-dropdown" class="btn btn-outline" style="background-color: var(--color-card); padding: 8px 12px; font-weight: 600; cursor: pointer; max-width: 260px;">
           <!-- Dynamically populated -->
         </select>
       </div>
 
       <!-- Reading Settings Controls -->
-      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
         <!-- Font Size Slider -->
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 0.85rem; font-weight: 600;">Font:</span>
-          <input type="range" id="quran-font-slider" min="20" max="44" value="28" style="cursor: pointer; width: 100px;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Font:</span>
+          <input type="range" id="quran-font-slider" min="22" max="46" value="30" style="cursor: pointer; width: 85px;" aria-label="Quran font size slider">
         </div>
 
         <!-- Reciter Selector -->
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="font-size: 0.85rem; font-weight: 600;">Reciter:</span>
-          <select id="reciter-dropdown" class="btn btn-outline" style="background-color: var(--color-card); padding: 4px 8px; font-size: 0.85rem;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Reciter:</span>
+          <select id="reciter-dropdown" class="btn btn-outline" style="background-color: var(--color-card); padding: 6px 10px; font-size: 0.85rem;" aria-label="Quran recitation reciter selector">
             <option value="Alafasy_128kbps">Mishary Rashid Alafasy</option>
             <option value="Abdul_Basit_Murattal_192kbps">Abdul Basit (Murattal)</option>
-            <option value="Abu_Bakr_Ash-Shaatree_128kbps">Abu Bakr Ash-Shatri</option>
-            <option value="Ghamadi_40kbps">Saad Al-Ghamadi</option>
             <option value="Husary_128kbps">Mahmoud Khalil Al-Husary</option>
+            <option value="Minshawy_Murattal_128kbps">Mohamed Siddiq Al-Minshawi</option>
+            <option value="Abu_Bakr_Ash-Shaatree_128kbps">Abu Bakr Al-Shatri</option>
           </select>
         </div>
+
+        <!-- Offline Audio Downloader -->
+        <button id="download-audio-btn" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;" title="Download this Surah for offline playback" onclick="quranApp.downloadSurahAudio(quranApp.currentSurah)">
+          ⬇ Download Audio
+        </button>
 
         <!-- Play Surah Button -->
         <button id="play-surah-btn" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">
@@ -124,12 +129,12 @@
     </div>
   </div>
 
-  <!-- Main Content Container -->
-  <main class="container" style="padding-top: 36px; padding-bottom: 90px; max-width: 960px;">
+  <!-- Main Content Container (Focused Reading Column) -->
+  <main class="container quran-reading-column" style="padding-top: 36px; padding-bottom: 140px;">
     
     <!-- Surah Header Banner -->
     <div class="card" style="text-align: center; margin-bottom: 30px; border-top: 4px solid var(--color-primary); background: radial-gradient(circle at 50% 0%, var(--color-surface) 0%, var(--color-card) 100%);">
-      <h1 id="surah-title-header" style="font-size: 2rem; color: var(--color-primary); margin-bottom: 8px;">
+      <h1 id="surah-title-header" style="font-family: var(--font-heading); font-size: 2.1rem; color: var(--color-primary); margin-bottom: 8px;">
         1. Al-Fatihah (الفَاتِحَة)
       </h1>
       <p id="surah-meta-header" style="font-size: 0.95rem; color: var(--color-text-muted);">
@@ -144,21 +149,53 @@
 
   </main>
 
-  <!-- Audio Player Floating Bar -->
-  <div id="audio-player-bar" class="audio-player-bar" style="display: none;">
+  <!-- Audio Player Floating Bar (Professional Suite) -->
+  <div id="audio-player-bar" class="audio-player-bar" style="display: none;" role="region" aria-label="Audio Recitation Player">
     <div class="container audio-bar-inner">
+      
+      <!-- Track & Reciter Info -->
       <div class="audio-track-info">
-        <span style="font-size: 1.4rem; color: var(--color-primary);">🎵</span>
+        <div class="audio-track-icon">📖</div>
         <div>
           <div id="audio-track-title" class="audio-track-title">Surah Al-Fatihah — Ayah 1</div>
-          <div id="audio-track-reciter" class="audio-track-reciter">Reciter: Mishary Rashid Alafasy</div>
+          <div id="audio-track-reciter" class="audio-track-reciter">Reciter: Sheikh Mishary Rashid Alafasy</div>
         </div>
       </div>
-      <div class="audio-controls">
-        <button id="audio-play-toggle-btn" class="btn btn-primary" onclick="quranApp.togglePlayPause()">
-          ❚❚ Pause
+
+      <!-- Scrubber & Playback Controls -->
+      <div class="audio-center-controls">
+        <div class="audio-playback-buttons">
+          <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.9rem;" onclick="quranApp.playPreviousAyah()" title="Previous Ayah" aria-label="Previous Ayah">
+            ⏮
+          </button>
+          <button id="audio-play-toggle-btn" class="btn btn-primary" style="width: 44px; height: 44px; border-radius: 50%; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem;" onclick="quranApp.togglePlayPause()" aria-label="Toggle Play Pause">
+            ❚❚
+          </button>
+          <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.9rem;" onclick="quranApp.playNextAyah()" title="Next Ayah" aria-label="Next Ayah">
+            ⏭
+          </button>
+        </div>
+
+        <div class="audio-seek-row">
+          <span id="audio-time-current" class="audio-time-label">00:00</span>
+          <input type="range" id="audio-seek-slider" class="audio-seek-slider" min="0" max="100" value="0" oninput="quranApp.seekAudio(this.value)" aria-label="Audio seek progress slider">
+          <span id="audio-time-total" class="audio-time-label">00:00</span>
+        </div>
+      </div>
+
+      <!-- Settings & Mode Actions -->
+      <div class="audio-side-actions">
+        <button id="audio-repeat-btn" class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;" onclick="quranApp.toggleRepeatMode()" title="Toggle repeat mode">
+          🔁 Off
+        </button>
+        <button id="audio-speed-btn" class="btn btn-outline" style="padding: 4px 8px; font-size: 0.78rem;" onclick="quranApp.setPlaybackSpeed(quranApp.playbackRate === 1.0 ? 1.25 : (quranApp.playbackRate === 1.25 ? 0.75 : 1.0))" title="Playback Speed">
+          1.0x
+        </button>
+        <button class="btn-icon" onclick="document.getElementById('audio-player-bar').style.display='none'; quranApp.audioElement.pause(); quranApp.isPlaying=false;" title="Close player" aria-label="Close audio player" style="width: 32px; height: 32px;">
+          ✕
         </button>
       </div>
+
     </div>
   </div>
 
@@ -188,20 +225,30 @@
     dropdown.value = surahParam;
     quranApp.loadSurah(surahParam);
 
+    // Sync saved font size
+    const fontSlider = document.getElementById('quran-font-slider');
+    if (fontSlider && quranApp.fontSize) {
+      fontSlider.value = quranApp.fontSize;
+    }
+
+    // Sync saved reciter
+    const reciterSelect = document.getElementById('reciter-dropdown');
+    if (reciterSelect && quranApp.reciter) {
+      reciterSelect.value = quranApp.reciter;
+    }
+
     // Event listeners
     dropdown.addEventListener('change', (e) => {
       quranApp.loadSurah(e.target.value);
       history.pushState(null, '', `quran.html?surah=${e.target.value}`);
     });
 
-    document.getElementById('quran-font-slider').addEventListener('input', (e) => {
+    fontSlider.addEventListener('input', (e) => {
       quranApp.setFontSize(e.target.value);
     });
 
-    document.getElementById('reciter-dropdown').addEventListener('change', (e) => {
-      quranApp.reciter = e.target.value;
-      const reciterName = e.target.options[e.target.selectedIndex].text;
-      document.getElementById('audio-track-reciter').textContent = `Reciter: ${reciterName}`;
+    reciterSelect.addEventListener('change', (e) => {
+      quranApp.setReciter(e.target.value);
     });
 
     document.getElementById('play-surah-btn').addEventListener('click', () => {

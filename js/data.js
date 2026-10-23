@@ -213,6 +213,63 @@ const ISLAMIC_DATA = {
         { num: 5, ar: "الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ", en: "Who whispers [evil] into the breasts of mankind -", ur: "جو لوگوں کے دلوں میں وسوسے ڈالتا ہے۔", tr: "Allazee yuwaswisu fee sudoorin-naas", audio: "114005.mp3" },
         { num: 6, ar: "مِنَ الْجِنَّةِ وَالنَّاسِ", en: "From among the jinn and mankind.\"", ur: "خواہ وہ جنات میں سے ہو یا انسانوں میں سے۔", tr: "Minal-jinnati wan-naas", audio: "114006.mp3" }
       ]
+    },
+    97: {
+      number: 97,
+      name: "القَدْر",
+      englishName: "Al-Qadr",
+      englishNameTranslation: "The Power",
+      numberOfAyahs: 5,
+      bismillahPre: true,
+      ayahs: [
+        { num: 1, ar: "إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ", en: "Indeed, We sent the Qur'an down during the Night of Decree.", ur: "بے شک ہم نے اس (قرآن) کو شب قدر میں نازل فرمایا۔", tr: "Innaaa anzalnaahu fee laylatil qadr", audio: "097001.mp3" },
+        { num: 2, ar: "وَمَا أَدْرَاكَ مَا لَيْلَةُ الْقَدْرِ", en: "And what can make you know what is the Night of Decree?", ur: "اور آپ کو کیا معلوم کہ شب قدر کیا ہے؟", tr: "Wa maaa adraaka maa laylatul qadr", audio: "097002.mp3" },
+        { num: 3, ar: "لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ", en: "The Night of Decree is better than a thousand months.", ur: "شب قدر ہزار مہینوں سے بہتر ہے۔", tr: "Laylatul qadri khayrum min alfee shahr", audio: "097003.mp3" },
+        { num: 4, ar: "تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ", en: "The angels and the Spirit descend therein by permission of their Lord for every matter.", ur: "اس میں فرشتے اور روح (جبریل) اپنے رب کے حکم سے ہر کام کے لیے اترتے ہیں۔", tr: "Tanazzalul malaaa'ikatu war roohu feeha bi izni rabbihim min kulli amr", audio: "097004.mp3" },
+        { num: 5, ar: "سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ", en: "Peace it is until the emergence of dawn.", ur: "یہ (رات) طلوع فجر تک سراسر سلامتی ہے۔", tr: "Salaamun hiya hattaa matla'il fajr", audio: "097005.mp3" }
+      ]
+    },
+    108: {
+      number: 108,
+      name: "الكَوْثَر",
+      englishName: "Al-Kawthar",
+      englishNameTranslation: "The Abundance",
+      numberOfAyahs: 3,
+      bismillahPre: true,
+      ayahs: [
+        { num: 1, ar: "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ", en: "Indeed, We have granted you, [O Muhammad], al-Kawthar.", ur: "بے شک ہم نے آپ کو کوثر عطا فرمائی۔", tr: "Innaaa a'taynaakal kawthar", audio: "108001.mp3" },
+        { num: 2, ar: "فَصَلِّ لِرَبِّكَ وَانْحَرْ", en: "So pray to your Lord and sacrifice [to Him alone].", ur: "پس اپنے رب کے لیے نماز پڑھیے اور قربانی کیجیے۔", tr: "Fasalli li rabbika wanhar", audio: "108002.mp3" },
+        { num: 3, ar: "إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ", en: "Indeed, your enemy is the one cut off.", ur: "بے شک آپ کا دشمن ہی بے نام و نشان رہنے والا ہے۔", tr: "Inna shaani'aka huwal abtar", audio: "108003.mp3" }
+      ]
+    },
+    109: {
+      number: 109,
+      name: "الكَافِرُون",
+      englishName: "Al-Kafirun",
+      englishNameTranslation: "The Disbelievers",
+      numberOfAyahs: 6,
+      bismillahPre: true,
+      ayahs: [
+        { num: 1, ar: "قُلْ يَا أَيُّهَا الْكَافِرُونَ", en: "Say, \"O disbelievers,", ur: "کہہ دیجیے کہ اے کافرو!", tr: "Qul yaaa ayyuhal kaafiroon", audio: "109001.mp3" },
+        { num: 2, ar: "لَا أَعْبُدُ مَا تَعْبُدُونَ", en: "I do not worship what you worship.", ur: "میں ان کی عبادت نہیں کرتا جن کی تم عبادت کرتے ہو۔", tr: "Laaa a'budu maa ta'budoon", audio: "109002.mp3" },
+        { num: 3, ar: "وَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ", en: "Nor are you worshippers of what I worship.", ur: "اور نہ تم اس کی عبادت کرنے والے ہو جس کی میں عبادت کرتا ہوں۔", tr: "Wa laaa antum 'aabidoona maaa a'bud", audio: "109003.mp3" },
+        { num: 4, ar: "وَلَا أَنَا عَابِدٌ مَّا عَبَدتُّمْ", en: "Nor will I be a worshipper of what you worship.", ur: "اور نہ میں ان کی عبادت کرنے والا ہوں جن کی تم نے عبادت کی۔", tr: "Wa laaa ana 'aabidum maa 'abattum", audio: "109004.mp3" },
+        { num: 5, ar: "وَلَا أَنتُمْ عَابِدُونَ مَا أَعْبُدُ", en: "Nor will you be worshippers of what I worship.", ur: "اور نہ تم اس کی عبادت کرنے والے ہو جس کی میں عبادت کرتا ہوں۔", tr: "Wa laaa antum 'aabidoona maaa a'bud", audio: "109005.mp3" },
+        { num: 6, ar: "لَكُمْ دِينُكُمْ وَلِيَ دِينِ", en: "For you is your religion, and for me is my religion.\"", ur: "تمہارے لیے تمہارا دین ہے اور میرے لیے میرا دین۔", tr: "Lakum deenukum wa liya deen", audio: "109006.mp3" }
+      ]
+    },
+    110: {
+      number: 110,
+      name: "النَّصْر",
+      englishName: "An-Nasr",
+      englishNameTranslation: "The Divine Support",
+      numberOfAyahs: 3,
+      bismillahPre: true,
+      ayahs: [
+        { num: 1, ar: "إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ", en: "When the victory of Allah has come and the conquest,", ur: "جب اللہ کی مدد اور فتح آ جائے،", tr: "Izaa jaaa'a nasrul laahi wal fath", audio: "110001.mp3" },
+        { num: 2, ar: "وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا", en: "And you see the people entering into the religion of Allah in multitudes,", ur: "اور آپ لوگوں کو اللہ کے دین میں فوج در فوج داخل ہوتے دیکھیں،", tr: "Wa ra'aytan naasa yadkhuloona fee deenil laahi afwaajaa", audio: "110002.mp3" },
+        { num: 3, ar: "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ ۚ إِنَّهُ كَانَ تَوَّابًا", en: "Then exalt [Him] with praise of your Lord and ask forgiveness of Him. Indeed, He is ever Accepting of repentance.", ur: "تو اپنے رب کی حمد کے ساتھ تسبیح کیجیے اور اس سے بخشش مانگیے، بے شک وہ بڑا معاف فرمانے والا ہے۔", tr: "Fasabbih bihamdi rabbika wastaghfirhu innahoo kaana tawwaaba", audio: "110003.mp3" }
+      ]
     }
   },
 
