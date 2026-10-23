@@ -139,6 +139,36 @@ const ISLAMIC_DATA = {
         { num: 7, ar: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", en: "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray.", ur: "ان لوگوں کے رستے جن پر تو اپنا فضل و کرم کرتا رہا، نہ ان کے جن پر غضب ہوا اور نہ گمراہوں کے۔", tr: "Siraatal-ladheena an'amta 'alayhim ghayril-maghdoobi 'alayhim wa lad-daalleen", audio: "001007.mp3" }
       ]
     },
+    36: {
+      number: 36,
+      name: "يس",
+      englishName: "Ya-Sin",
+      englishNameTranslation: "Ya Sin",
+      numberOfAyahs: 83,
+      bismillahPre: true,
+      ayahs: [
+        { num: 1, ar: "يس", en: "Ya, Seen.", ur: "یسٓ۔", tr: "Yaa-Seeen", audio: "036001.mp3" },
+        { num: 2, ar: "وَالْقُرْآنِ الْحَكِيمِ", en: "By the wise Qur'an.", ur: "حکمت والے قرآن کی قسم۔", tr: "Wal-Qur-aanil-Hakeem", audio: "036002.mp3" },
+        { num: 3, ar: "إِنَّكَ لَمِنَ الْمُرْسَلِينَ", en: "Indeed you, [O Muhammad], are from among the messengers,", ur: "کہ بے شک آپ پیغمبروں میں سے ہیں۔", tr: "Innaka laminal mursaleen", audio: "036003.mp3" },
+        { num: 4, ar: "عَلَىٰ صِرَاطٍ مُسْتَقِيمٍ", en: "On a straight path.", ur: "سیدھے رستے پر۔", tr: "'Alaa Siraatim Mustaqeem", audio: "036004.mp3" },
+        { num: 5, ar: "تَنْزِيلَ الْعَزِيزِ الرَّحِيمِ", en: "[This is] a revelation of the Exalted in Might, the Merciful,", ur: "یہ غالب اور مہربان خدا کا اتارا ہوا ہے۔", tr: "Tanzeelal 'Azeezir Raheem", audio: "036005.mp3" },
+        { num: 6, ar: "لِتُنْذِرَ قَوْمًا مَا أُنْذِرَ آبَاؤُهُمْ فَهُمْ غَافِلُونَ", en: "That you may warn a people whose forefathers were not warned, so they are unaware.", ur: "تاکہ تم ان لوگوں کو ڈراؤ جن کے باپ دادا کو نہیں ڈرایا گیا تھا تو وہ بے خبر ہیں۔", tr: "Litunzira qawmam maaa unzira aabaaa'uhum fahum ghaafiloon", audio: "036006.mp3" }
+      ]
+    },
+    67: {
+      number: 67,
+      name: "المُلْك",
+      englishName: "Al-Mulk",
+      englishNameTranslation: "The Sovereignty",
+      numberOfAyahs: 30,
+      bismillahPre: true,
+      ayahs: [
+        { num: 1, ar: "تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ", en: "Blessed is He in whose hand is dominion, and He is over all things competent -", ur: "بڑی برکت والا ہے وہ جس کے ہاتھ میں بادشاہی ہے اور وہ ہر چیز پر قادر ہے۔", tr: "Tabaarakal lazee biyadihil mulku wa huwa 'alaa kulli shai'in qadeer", audio: "067001.mp3" },
+        { num: 2, ar: "الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا ۚ وَهُوَ الْعَزِيزُ الْغَفُورُ", en: "[He] who created death and life to test you [as to] which of you is best in deed - and He is the Exalted in Might, the Forgiving -", ur: "جس نے موت اور زندگی کو پیدا کیا تاکہ تمہیں آزمائے کہ تم میں کس کے عمل اچھے ہیں اور وہ غالب اور بخشنے والا ہے۔", tr: "Allazee khalaqal mawta walhayaata liyabluwakum ayyukum ahsanu 'amalaa", audio: "067002.mp3" },
+        { num: 3, ar: "الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا ۖ مَّا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ", en: "[And] who created seven heavens in layers. You do not see in the creation of the Most Merciful any inconsistency.", ur: "جس نے سات آسمان اوپر تلے بنائے۔ تو رحمٰن کی آفرینش میں کوئی نقص نہ دیکھے گا۔", tr: "Allazee khalaqa sab'a samaawaatin tibaaqan", audio: "067003.mp3" },
+        { num: 4, ar: "ثُمَّ ارْجِعِ الْبَصَرَ كَرَّتَيْنِ يَنقَلِبْ إِلَيْكَ الْبَصَرُ خَاسِئًا وَهُوَ حَسِيرٌ", en: "Then return [your] vision twice again. [Your] vision will return to you humbled while it is fatigued.", ur: "پھر بار بار نگاہ کر، نگاہ تیری طرف ناکام اور تھک کر پلٹ آئے گی۔", tr: "Summar ji'il basara karratayni yanqalib ilaykal basaru khaasi'anw-wa huwa haseer", audio: "067004.mp3" }
+      ]
+    },
     112: {
       number: 112,
       name: "الإِخْلَاص",
@@ -224,6 +254,18 @@ const ISLAMIC_DATA = {
       topic: "Iman"
     },
     {
+      id: "muslim-223",
+      collection: "Sahih Muslim",
+      number: 223,
+      book: "Purification",
+      ar: "الطُّهُورُ شَطْرُ الإِيمَانِ، وَالْحَمْدُ لِلَّهِ تَمْلأُ الْمِيزَانَ، وَالصَّلاَةُ نُورٌ، وَالصَّدَقَةُ بُرْهَانٌ.",
+      en: "Purification is half of faith, and 'Alhamdulillah' fills the scale, prayer is a light, and charity is proof.",
+      ur: "پاکیزگی نصف ایمان ہے، اور الحمد للہ ترازو کو بھر دیتا ہے، نماز نور ہے اور صدقہ دلیل ہے۔",
+      narrator: "Abu Malik al-Ash'ari (RA)",
+      grade: "Sahih (Authentic)",
+      topic: "Salah"
+    },
+    {
       id: "tirmidhi-1924",
       collection: "Jami` at-Tirmidhi",
       number: 1924,
@@ -234,6 +276,30 @@ const ISLAMIC_DATA = {
       narrator: "Abdullah ibn Amr (RA)",
       grade: "Sahih (Al-Albani)",
       topic: "Mercy"
+    },
+    {
+      id: "abudawud-4799",
+      collection: "Sunan Abi Dawud",
+      number: 4799,
+      book: "General Behavior (Adab)",
+      ar: "مَنْ لَمْ يَشْكُرِ النَّاسَ لَمْ يَشْكُرِ اللَّهَ.",
+      en: "Whoever does not thank people does not thank Allah.",
+      ur: "جو لوگوں کا شکر ادا نہیں کرتا، وہ اللہ کا بھی شکر ادا نہیں کرتا۔",
+      narrator: "Abu Hurairah (RA)",
+      grade: "Sahih (Al-Albani)",
+      topic: "Akhlaq"
+    },
+    {
+      id: "nasai-3140",
+      collection: "Sunan an-Nasa'i",
+      number: 3140,
+      book: "Jihad",
+      ar: "الْجَنَّةُ تَحْتَ أَقْدَامِ الأُمَّهَاتِ.",
+      en: "Paradise lies beneath the feet of mothers.",
+      ur: "جنت ماؤں کے قدموں تلے ہے۔",
+      narrator: "Mu'awiyah ibn Jahima (RA)",
+      grade: "Hasan (Al-Albani)",
+      topic: "Akhlaq"
     },
     {
       id: "bukhari-5027",
@@ -356,6 +422,17 @@ const ISLAMIC_DATA = {
       ur: "تمام تعریفیں اللہ کے لیے ہیں جس نے ہمیں مارنے کے بعد زندہ کیا اور اسی کی طرف لوٹ کر جانا ہے۔",
       target: 1,
       ref: "Sahih al-Bukhari 6312"
+    },
+    {
+      id: "dua-distress",
+      cat: "protection",
+      title: "Supplication in Anxiety and Distress",
+      ar: "لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ.",
+      tr: "Laa ilaaha illaa Anta subhaanaka innee kuntu minaz-zaalimeen.",
+      en: "There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.",
+      ur: "تیرے سوا کوئی معبود نہیں، تو پاک ہے، بے شک میں ہی قصوروار تھا۔",
+      target: 1,
+      ref: "Surah Al-Anbiya 21:87, Tirmidhi 3505"
     },
     {
       id: "dua-home",

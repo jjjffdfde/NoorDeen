@@ -13,8 +13,156 @@ class Application {
     this.setupThemeToggle();
     this.setupLanguageModal();
     this.setupSearchModal();
+    this.setupMobileDrawer();
+    this.setupOfflineBanner();
+    this.initServiceWorker();
     this.renderHijriDate();
     if (window.I18n) window.I18n.init();
+  }
+
+  // Service Worker Registration for Offline Capability
+  initServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('[PWA] Service Worker registered successfully with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.warn('[PWA] Service Worker registration failed:', error);
+          });
+      });
+    }
+  }
+
+  // Offline / Online Connectivity Status Banner
+  setupOfflineBanner() {
+    let banner = document.getElementById('offline-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'offline-banner';
+      banner.className = 'offline-status-banner';
+      banner.setAttribute('role', 'status');
+      banner.setAttribute('aria-live', 'polite');
+      banner.innerHTML = '⚡ You are currently offline. Full offline reading (Quran, Hadith, Kalimas, Duas) is active.';
+      document.body.prepend(banner);
+    }
+
+    const updateStatus = () => {
+      if (!navigator.onLine) {
+        banner.classList.add('active');
+        this.showToast('Offline mode active. Cached content available.', 4000);
+      } else {
+        banner.classList.remove('active');
+      }
+    };
+
+    window.addEventListener('online', () => {
+      updateStatus();
+      this.showToast('You are back online.', 3000);
+    });
+    window.addEventListener('offline', updateStatus);
+
+    if (!navigator.onLine) {
+      updateStatus();
+    }
+  }
+
+  // Mobile Navigation Drawer
+  setupMobileDrawer() {
+    let overlay = document.getElementById('mobile-drawer-overlay');
+    let drawer = document.getElementById('mobile-drawer');
+
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'mobile-drawer-overlay';
+      overlay.className = 'mobile-drawer-overlay';
+      overlay.addEventListener('click', () => this.closeMobileDrawer());
+      document.body.appendChild(overlay);
+    }
+
+    if (!drawer) {
+      drawer = document.createElement('aside');
+      drawer.id = 'mobile-drawer';
+      drawer.className = 'mobile-drawer';
+      drawer.setAttribute('aria-label', 'Mobile Navigation');
+      drawer.innerHTML = `
+        <div class="mobile-drawer-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="color: var(--color-gold); font-size: 1.4rem;">☪</span>
+            <strong style="color: var(--color-primary); font-size: 1.05rem;">Islamic Portal</strong>
+          </div>
+          <button class="btn-icon" onclick="App.closeMobileDrawer()" aria-label="Close menu">✕</button>
+        </div>
+        <ul class="mobile-drawer-links">
+          <li><a href="/" id="drawer-home"><span>🏠</span> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="/quran.html" id="drawer-quran"><span>📖</span> <span data-i18n="nav.quran">Quran</span></a></li>
+          <li><a href="/hadith.html" id="drawer-hadith"><span>📜</span> <span data-i18n="nav.hadith">Hadith</span></a></li>
+          <li><a href="/kalimas.html" id="drawer-kalimas"><span>⭐</span> <span data-i18n="nav.kalimas">Kalimas</span></a></li>
+          <li><a href="/duas.html" id="drawer-duas"><span>🤲</span> <span data-i18n="nav.duas">Duas & Adhkar</span></a></li>
+          <li><a href="/seerah.html" id="drawer-seerah"><span>🕌</span> <span data-i18n="nav.seerah">Seerah</span></a></li>
+          <li><a href="/prophets.html" id="drawer-prophets"><span>✨</span> <span data-i18n="nav.prophets">Prophets</span></a></li>
+          <li><a href="/sahaba.html" id="drawer-sahaba"><span>👥</span> <span data-i18n="nav.sahaba">Sahaba</span></a></li>
+          <li><a href="/pillars.html" id="drawer-pillars"><span>🏛️</span> <span data-i18n="nav.pillars">Five Pillars</span></a></li>
+          <li><a href="/salah-guide.html" id="drawer-salah"><span>🧎</span> <span data-i18n="nav.salah">Salah Guide</span></a></li>
+          <li><a href="/wudu-guide.html" id="drawer-wudu"><span>💧</span> <span data-i18n="nav.wudu">Wudu Guide</span></a></li>
+          <li><a href="/prayer-times.html" id="drawer-prayer-times"><span>⏰</span> <span data-i18n="nav.prayerTimes">Prayer Times</span></a></li>
+          <li><a href="/tasbih.html" id="drawer-tasbih"><span>📿</span> <span data-i18n="nav.tasbih">Tasbih</span></a></li>
+          <li><a href="/zakat-calculator.html" id="drawer-zakat"><span>🪙</span> <span data-i18n="nav.zakat">Zakat</span></a></li>
+          <li><a href="/calendar.html" id="drawer-calendar"><span>📅</span> <span data-i18n="nav.calendar">Calendar</span></a></li>
+          <li><a href="/bookmarks.html" id="drawer-bookmarks"><span>🔖</span> <span data-i18n="nav.bookmarks">Bookmarks</span></a></li>
+        </ul>
+        <div style="padding: 16px; margin-top: auto; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 10px;">
+          <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="App.closeMobileDrawer(); App.openLanguageModal();">
+            🌐 <span id="drawer-lang-label">Language</span>
+          </button>
+          <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="App.toggleTheme();">
+            🌓 Toggle Dark/Light
+          </button>
+        </div>
+      `;
+      document.body.appendChild(drawer);
+    }
+
+    // Mark current active link
+    const currentPath = window.location.pathname;
+    const links = drawer.querySelectorAll('.mobile-drawer-links a');
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (href === currentPath || (currentPath === '/' && href === '/') || (href !== '/' && currentPath.endsWith(href.replace('/', '')))) {
+        a.classList.add('active');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.closeMobileDrawer();
+    });
+  }
+
+  toggleMobileDrawer() {
+    const drawer = document.getElementById('mobile-drawer');
+    if (drawer && drawer.classList.contains('active')) {
+      this.closeMobileDrawer();
+    } else {
+      this.openMobileDrawer();
+    }
+  }
+
+  openMobileDrawer() {
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const drawer = document.getElementById('mobile-drawer');
+    if (overlay) overlay.classList.add('active');
+    if (drawer) drawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeMobileDrawer() {
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const drawer = document.getElementById('mobile-drawer');
+    if (overlay) overlay.classList.remove('active');
+    if (drawer) drawer.classList.remove('active');
+    document.body.style.overflow = '';
   }
 
   applyTheme(theme) {

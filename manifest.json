@@ -1,0 +1,27 @@
+{
+  "name": "Islamic Knowledge Portal",
+  "short_name": "IslamicPortal",
+  "description": "Comprehensive multilingual Islamic knowledge platform featuring the Holy Quran, authentic Hadith, Duas, and Prayer Times.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#0F5132",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "books", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}

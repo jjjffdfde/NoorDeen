@@ -14,7 +14,56 @@ class QuranReader {
     this.showEnglish = true;
     this.showTranslit = false;
     this.surahData = null;
+    this.isDownloadingAudio = false;
     this.initAudioListener();
+  }
+
+  // Audio Cache & Offline Download Manager
+  async downloadSurahAudio(surahNum) {
+    if (!('caches' in window)) {
+      if (window.App) window.App.showToast('Offline audio caching is not supported in this browser.');
+      return;
+    }
+    const surah = this.surahData && this.surahData.number === surahNum ? this.surahData : ISLAMIC_DATA.offlineSurahs[surahNum];
+    if (!surah) {
+      if (window.App) window.App.showToast('Load this surah before downloading audio.');
+      return;
+    }
+
+    if (this.isDownloadingAudio) {
+      if (window.App) window.App.showToast('Audio download already in progress...');
+      return;
+    }
+
+    this.isDownloadingAudio = true;
+    if (window.App) window.App.showToast(`Starting offline audio download for Surah ${surah.englishName} (${surah.ayahs.length} ayahs)...`);
+
+    try {
+      const cache = await caches.open('islamic-portal-audio-v1');
+      let downloaded = 0;
+      const s = String(surahNum).padStart(3, '0');
+
+      for (const ayah of surah.ayahs) {
+        const a = String(ayah.num).padStart(3, '0');
+        const url = `https://everyayah.com/data/${this.reciter}/${s}${a}.mp3`;
+        const match = await cache.match(url);
+        if (!match) {
+          try {
+            const resp = await fetch(url, { mode: 'no-cors' });
+            if (resp) await cache.put(url, resp);
+          } catch (e) {
+            console.warn(`Failed to cache audio for ${s}:${a}:`, e);
+          }
+        }
+        downloaded++;
+      }
+      this.isDownloadingAudio = false;
+      if (window.App) window.App.showToast(`Surah ${surah.englishName} audio is now available offline! (${downloaded} ayahs)`);
+    } catch (err) {
+      this.isDownloadingAudio = false;
+      console.error('Audio download error:', err);
+      if (window.App) window.App.showToast('Audio download failed. Please check your connection.');
+    }
   }
 
   initAudioListener() {
