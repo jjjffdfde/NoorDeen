@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sources & Methodology — Islamic Knowledge Portal</title>
-  <meta name="description" content="Detailed documentation of content sources, scholarly attribution, translation licenses, and academic methodology used on our platform.">
+  <title>Sources, Methodology & Academic Bibliography — Islamic Knowledge Portal</title>
+  <meta name="description" content="Detailed documentation of content sources, scholarly attribution, translation licenses, and academic methodology used across the Islamic Knowledge Portal.">
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
@@ -14,41 +14,47 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Islamic Knowledge Portal">
   <meta property="og:url" content="https://islamicknowledge.example.com/sources.html">
-  <meta property="og:title" content="Sources & Methodology — Islamic Knowledge Portal">
-  <meta property="og:description" content="Detailed documentation of content sources, scholarly attribution, translation licenses, and academic methodology used on our platform.">
+  <meta property="og:title" content="Sources, Methodology & Academic Bibliography — Islamic Knowledge Portal">
+  <meta property="og:description" content="Detailed documentation of content sources, scholarly attribution, translation licenses, and academic methodology used across the Islamic Knowledge Portal.">
   <meta property="og:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://islamicknowledge.example.com/sources.html">
-  <meta name="twitter:title" content="Sources & Methodology — Islamic Knowledge Portal">
-  <meta name="twitter:description" content="Detailed documentation of content sources, scholarly attribution, translation licenses, and academic methodology used on our platform.">
+  <meta name="twitter:title" content="Sources, Methodology & Academic Bibliography">
+  <meta name="twitter:description" content="Complete documentation of classical Islamic sources, Hadith verification, and translation licensing.">
   <meta name="twitter:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://islamicknowledge.example.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Authentic Sources",
-      "item": "https://islamicknowledge.example.com/sources.html"
-    }
-  ]
-}
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islamicknowledge.example.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Authentic Sources & Methodology",
+        "item": "https://islamicknowledge.example.com/sources.html"
+      }
+    ]
+  }
   </script>
 </head>
 <body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement">
+    <span>✨ Authentic Islamic Knowledge Portal — Free, Verified, and Ad-Dignified Learning Worldwide</span>
+    <a href="download-app.html" style="color: var(--color-gold); margin-left: 10px; font-weight: 700; text-decoration: underline;">Install Offline App (PWA & APK) ➔</a>
+  </div>
 
   <!-- Header -->
   <header class="site-header">
@@ -61,52 +67,111 @@
         </div>
       </a>
 
+      <!-- Desktop Navigation Menu -->
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
-          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="quran.html" data-i18n="navQuran">Holy Quran ▾</a>
+            <div class="nav-dropdown">
+              <a href="quran.html">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="hadith.html" data-i18n="navHadith">Hadith & Duas ▾</a>
+            <div class="nav-dropdown">
+              <a href="hadith.html">📜 Authentic Hadith Collections</a>
+              <a href="duas.html">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html">⭐ Six Kalimas</a>
+              <a href="seerah.html">🌹 Prophetic Seerah</a>
+              <a href="prophets.html">📜 Stories of the Prophets</a>
+              <a href="sahaba.html">👥 Lives of the Sahaba</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="salah-guide.html">Worship Guides ▾</a>
+            <div class="nav-dropdown">
+              <a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html">💧 Step-by-Step Wudu</a>
+              <a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="prayer-times.html">Tools ▾</a>
+            <div class="nav-dropdown">
+              <a href="prayer-times.html">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html">💰 Zakat Calculator</a>
+              <a href="tasbih.html">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html">📅 Hijri Calendar</a>
+            </div>
+          </li>
           <li class="nav-item active"><a href="sources.html">Sources</a></li>
           <li class="nav-item"><a href="about.html">About</a></li>
+          <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
+      <!-- Header Actions -->
       <div class="header-actions">
-        <button id="language-selector-btn" class="btn btn-outline">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
-      <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
       </div>
     </div>
   </header>
 
-  <!-- Banner -->
-  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+  <!-- Top Ad Slot Container -->
+  <div class="ad-slot-container" id="ad-banner-top" style="display: none;">
+    <div class="ad-placeholder-label">Advertisement</div>
+    <div id="ad-content-top"></div>
+  </div>
+
+  <!-- Hero Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 48px 0; text-align: center;">
     <div class="container">
-      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Sources, Methodology & Attribution</h1>
-      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
-        Complete transparency regarding source licensing, scholarly references, and data provenance.
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.12); border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: var(--color-gold); margin-bottom: 12px;">
+        الْمَصَادِرُ وَالْمَرَاجِعُ الْعِلْمِيَّةُ — SCHOLARLY PROVENANCE
+      </div>
+      <h1 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 12px;">Sources, Methodology & Attribution</h1>
+      <p style="color: #D1D5DB; max-width: 750px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7;">
+        Complete transparency regarding source licensing, scholarly references, authentic Hadith chains, and academic data provenance.
       </p>
     </div>
   </div>
 
   <!-- Content -->
-  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 850px;">
+  <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 900px;">
     
     <!-- Quran Source -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-primary);">
-      <h2 style="color: var(--color-primary); margin-bottom: 12px;">1. Holy Quranic Text & Audio</h2>
-      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
-        <strong>Arabic Text:</strong> Sourced from the globally audited <em>Tanzil Project</em> and King Fahd Glorious Quran Printing Complex in Madinah al-Munawwarah. The text adheres to the verified Uthmani script with authentic diacritics (Harakat) and standardized verse breaks.
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <h2 style="color: var(--color-primary); margin-bottom: 14px; font-size: 1.4rem; font-weight: 800;">1. Holy Quranic Text, Translations & Recitations</h2>
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px; font-size: 1rem;">
+        <strong>Immutable Arabic Text:</strong> Sourced from the globally recognized <em>Tanzil Project</em> and King Fahd Glorious Quran Printing Complex in Madinah al-Munawwarah. The text adheres strictly to the canonical Hafs 'an 'Asim recitation in the Uthmani script with authentic diacritics (Harakat) and 6,236 standardized verses.
       </p>
-      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
-        <strong>Audio Recitation:</strong> High-definition audio streams courtesy of <em>EveryAyah</em> and <em>Quran Central</em>, featuring renowned Qaris including Sheikh Mishary Rashid Alafasy, Sheikh Abdul Basit Abdul Samad, Sheikh Abu Bakr Ash-Shatri, and Sheikh Mahmoud Khalil Al-Husary.
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px; font-size: 1rem;">
+        <strong>Audio Recitations:</strong> High-definition audio streams courtesy of the <em>EveryAyah Public Domain Audio Repository</em>, featuring world-renowned Qaris:
       </p>
-      <p style="line-height: 1.8; color: var(--color-text-main);">
-        <strong>Translations:</strong>
+      <ul style="padding-left: 20px; line-height: 1.8; font-size: 0.95rem; color: var(--color-text-main); margin-bottom: 14px;">
+        <li>Sheikh Mishary Rashid Alafasy (128 kbps)</li>
+        <li>Sheikh Abdul Basit Abdul Samad (Murattal, 192 kbps)</li>
+        <li>Sheikh Mahmoud Khalil Al-Husary (128 kbps)</li>
+        <li>Sheikh Mohamed Siddiq Al-Minshawi (Murattal, 128 kbps)</li>
+        <li>Sheikh Abu Bakr Ash-Shatri (128 kbps)</li>
+      </ul>
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 8px; font-size: 1rem;">
+        <strong>Authorized Translations:</strong>
       </p>
-      <ul style="margin-left: 20px; line-height: 1.7; font-size: 0.95rem;">
+      <ul style="padding-left: 20px; line-height: 1.8; font-size: 0.95rem; color: var(--color-text-main); margin-bottom: 0;">
         <li><strong>English:</strong> Saheeh International (Abul A'la Maududi, Umm Muhammad, Aminah Assami) & The Clear Quran (Dr. Mustafa Khattab).</li>
         <li><strong>Urdu:</strong> Maulana Fateh Muhammad Jalandhry & Tafheem-ul-Quran (Syed Abul A'la Maududi).</li>
         <li><strong>Indonesian:</strong> Indonesian Ministry of Religious Affairs (Kemenag RI).</li>
@@ -116,46 +181,113 @@
     </div>
 
     <!-- Hadith Source -->
-    <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-primary);">
-      <h2 style="color: var(--color-primary); margin-bottom: 12px;">2. Hadith Collections & Gradings</h2>
-      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <h2 style="color: var(--color-primary); margin-bottom: 14px; font-size: 1.4rem; font-weight: 800;">2. Hadith Collections & Authenticity Gradings</h2>
+      <p style="line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px; font-size: 1rem;">
         Hadith narrations are drawn from the canonical six books of the Sunni tradition (Kutub al-Sittah):
       </p>
-      <ul style="margin-left: 20px; line-height: 1.7; font-size: 0.95rem; margin-bottom: 12px;">
-        <li><strong>Sahih al-Bukhari</strong> — Verified text and numbering based on the standard scholarly system.</li>
-        <li><strong>Sahih Muslim</strong> — Complete authentic numbering and sanad references.</li>
-        <li><strong>Jami` at-Tirmidhi</strong> — Scholarly gradings explicitly attributed to Imam at-Tirmidhi and Sheikh Muhammad Nasiruddin al-Albani.</li>
-        <li><strong>Sunan Abi Dawud, Sunan an-Nasa'i, Sunan Ibn Majah</strong> — Verified numbering.</li>
+      <ul style="padding-left: 20px; line-height: 1.8; font-size: 0.95rem; color: var(--color-text-main); margin-bottom: 0;">
+        <li><strong>Sahih al-Bukhari:</strong> Verified text and numbering based on the standard scholarly system of Muhammad Fu'ad Abdul Baqi.</li>
+        <li><strong>Sahih Muslim:</strong> Complete authentic numbering, book divisions, and verified sanad references.</li>
+        <li><strong>Jami` at-Tirmidhi:</strong> Scholarly gradings explicitly attributed to Imam at-Tirmidhi, Hafiz Ibn Hajar al-Asqalani, and Sheikh Muhammad Nasiruddin al-Albani.</li>
+        <li><strong>Sunan Abi Dawud, Sunan an-Nasa'i, Sunan Ibn Majah:</strong> Verified canonical numbering.</li>
       </ul>
     </div>
 
     <!-- Duas Source -->
-    <div class="card" style="margin-bottom: 24px;">
-      <h2 style="color: var(--color-primary); margin-bottom: 12px;">3. Duas & Supplications</h2>
-      <p style="line-height: 1.8; color: var(--color-text-main);">
-        Daily supplications, morning and evening adhkar, and situational prayers are extracted from <em>Hisnul Muslim (The Fortress of the Muslim from the Invocations of the Quran and Sunnah)</em> compiled by the respected scholar Dr. Sa'id bin Ali bin Wahf Al-Qahtani (رحمه الله).
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <h2 style="color: var(--color-primary); margin-bottom: 14px; font-size: 1.4rem; font-weight: 800;">3. Supplications (Duas) & Daily Adhkar</h2>
+      <p style="line-height: 1.8; color: var(--color-text-main); font-size: 1rem; margin-bottom: 0;">
+        Daily supplications, morning and evening adhkar, post-prayer invocations, and situational supplications are extracted from <em>Hisnul Muslim (The Fortress of the Muslim from the Invocations of the Quran and Sunnah)</em> compiled by the esteemed scholar Dr. Sa'id bin Ali bin Wahf Al-Qahtani (رحمه الله), verified against original citations in Bukhari, Muslim, Abu Dawud, and Tirmidhi.
       </p>
     </div>
 
     <!-- Seerah Source -->
-    <div class="card" style="margin-bottom: 24px;">
-      <h2 style="color: var(--color-primary); margin-bottom: 12px;">4. Seerah & Prophetic History</h2>
-      <p style="line-height: 1.8; color: var(--color-text-main);">
-        Historical narratives and chronological milestones are derived from <em>Ar-Raheeq Al-Makhtum (The Sealed Nectar)</em> by Sheikh Safiur-Rahman Mubarakpuri (honored with 1st prize by the Muslim World League), <em>As-Seerah an-Nabawiyyah</em> by Ibn Hisham, and <em>Al-Bidayah wan-Nihayah</em> by Ibn Kathir.
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-primary); padding: 26px;">
+      <h2 style="color: var(--color-primary); margin-bottom: 14px; font-size: 1.4rem; font-weight: 800;">4. Seerah & Prophetic History</h2>
+      <p style="line-height: 1.8; color: var(--color-text-main); font-size: 1rem; margin-bottom: 0;">
+        Historical narratives and chronological milestones are derived from <em>Ar-Raheeq Al-Makhtum (The Sealed Nectar)</em> by Sheikh Safiur-Rahman Mubarakpuri (awarded 1st prize worldwide by the Muslim World League), <em>As-Seerah an-Nabawiyyah</em> by Ibn Hisham, and <em>Al-Bidayah wan-Nihayah</em> by Hafiz Ibn Kathir.
       </p>
     </div>
 
     <!-- Astronomical Calculations -->
-    <div class="card">
-      <h2 style="color: var(--color-primary); margin-bottom: 12px;">5. Astronomical Prayer Times Mathematics</h2>
-      <p style="line-height: 1.8; color: var(--color-text-main);">
-        Calculations for astronomical prayer times employ established solar orbital trigonometric equations (solar declination, equation of time, solar altitude angles, and refraction corrections) matching algorithms recognized by the Muslim World League (MWL), Islamic Society of North America (ISNA), and Umm al-Qura University.
+    <div class="card" style="margin-bottom: 28px; border-top: 4px solid var(--color-gold); padding: 26px;">
+      <h2 style="color: var(--color-primary); margin-bottom: 14px; font-size: 1.4rem; font-weight: 800;">5. Astronomical Solar Mathematics & Qibla Trigonometry</h2>
+      <p style="line-height: 1.8; color: var(--color-text-main); font-size: 1rem; margin-bottom: 0;">
+        Calculations for astronomical prayer times employ established solar orbital trigonometric equations (solar declination, equation of time, solar altitude angles, and atmospheric refraction corrections) matching algorithms codified by the Muslim World League (MWL), Islamic Society of North America (ISNA), and Umm al-Qura University in Makkah. Qibla bearing utilizes great-circle forward azimuth navigation toward the Holy Ka'bah (21.4225° N, 39.8262° E).
       </p>
     </div>
 
   </main>
 
+  <!-- Bottom Ad Slot Container -->
+  <div class="ad-slot-container" id="ad-banner-bottom" style="display: none;">
+    <div class="ad-placeholder-label">Advertisement</div>
+    <div id="ad-content-bottom"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-title">About the Portal</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; color: #D1D5DB; margin-bottom: 14px;">
+          An authentic, universally accessible, and dignified digital repository of core Islamic texts, classical scholarship, and worship tools. Dedicated to serving seekers of knowledge worldwide under mainstream Ahl al-Sunnah wa al-Jama'ah consensus.
+        </p>
+        <div style="font-size: 0.8rem; color: var(--color-gold);">
+          Hafs Uthmanic Standard • Six Canonical Hadith Books • Four Sunnite Madhhabs
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Sacred Knowledge</div>
+        <ul class="footer-links">
+          <li><a href="quran.html">📖 Complete Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">📜 Authentic Hadith Collections</a></li>
+          <li><a href="duas.html">🤲 Daily Duas & Adhkar</a></li>
+          <li><a href="kalimas.html">⭐ Six Kalimas with Audio</a></li>
+          <li><a href="seerah.html">🌹 Seerah of Prophet Muhammad ﷺ</a></li>
+          <li><a href="prophets.html">📜 Stories of the Prophets</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-title">Worship Guides & Tools</div>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a></li>
+          <li><a href="wudu-guide.html">💧 Step-by-Step Wudu Guide</a></li>
+          <li><a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a></li>
+          <li><a href="zakat-calculator.html">💰 Zakat Calculation Engine</a></li>
+          <li><a href="prayer-times.html">⏱️ Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-title">Legal & Trust</div>
+        <ul class="footer-links">
+          <li><a href="about.html">🏛️ About Us & Methodology</a></li>
+          <li><a href="sources.html">📚 Sourcing & Bibliography</a></li>
+          <li><a href="contact.html">✉️ Contact & Corrections</a></li>
+          <li><a href="privacy.html">🛡️ Privacy Policy & Cookies</a></li>
+          <li><a href="terms.html">⚖️ Terms of Use</a></li>
+          <li><a href="download-app.html">📱 Download App (PWA & APK)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        © 2026 Islamic Knowledge Portal. All religious texts are strictly preserved in their authentic classical editions.
+      </div>
+      <div style="margin-top: 6px; font-size: 0.8rem; color: #9CA3AF;">
+        Designed for universal accessibility, high-contrast readability, and deep Islamic learning worldwide.
+      </div>
+    </div>
+  </footer>
+
   <!-- Scripts -->
+  <script src="js/config.js"></script>
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tools.js"></script>

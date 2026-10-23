@@ -50,6 +50,11 @@
 </head>
 <body>
 
+  <!-- Top Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
@@ -61,25 +66,60 @@
         </div>
       </a>
 
+      <!-- Desktop Nav -->
       <nav>
         <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html">Home</a></li>
-          <li class="nav-item active"><a href="quran.html">Holy Quran</a></li>
-          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
-          <li class="nav-item"><a href="salah-guide.html">Salah Guide</a></li>
-          <li class="nav-item"><a href="janazah-guide.html">Janazah</a></li>
-          <li class="nav-item"><a href="eid-guide.html">Eid Guide</a></li>
-          <li class="nav-item"><a href="duas.html">Duas</a></li>
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item has-dropdown active">
+            <a href="quran.html" data-i18n="navQuran">Holy Quran ▾</a>
+            <div class="nav-dropdown">
+              <a href="quran.html">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="hadith.html" data-i18n="navHadith">Hadith & Duas ▾</a>
+            <div class="nav-dropdown">
+              <a href="hadith.html">📜 Authentic Hadith Collections</a>
+              <a href="duas.html">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html">⭐ Six Kalimas</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="salah-guide.html">Worship Guides ▾</a>
+            <div class="nav-dropdown">
+              <a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html">💧 Step-by-Step Wudu</a>
+              <a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="prayer-times.html">Tools ▾</a>
+            <div class="nav-dropdown">
+              <a href="prayer-times.html">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html">💰 Zakat Calculator</a>
+              <a href="tasbih.html">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html">📅 Hijri Calendar</a>
+            </div>
+          </li>
           <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
+      <!-- Actions -->
       <div class="header-actions">
-        <button id="language-selector-btn" class="btn btn-outline">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
-      <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
       </div>
     </div>
   </header>
@@ -211,7 +251,71 @@
     </div>
   </div>
 
+  <!-- Bottom Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-bottom" data-ad-slot="portal_bottom_leaderboard" style="display: none; min-height: 90px; margin: 20px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="logo-group" style="margin-bottom: 15px;">
+          <div class="logo-icon">☪</div>
+          <div>
+            <div class="logo-text-title" style="color: #fff;">Islamic Knowledge Portal</div>
+            <div class="logo-text-subtitle">Digital Islamic Library</div>
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.75);">
+          An authentic, multilingual platform dedicated to providing verified Islamic knowledge according to the Quran and Sunnah.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Prayer & Worship</h4>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">Five Daily Prayers</a></li>
+          <li><a href="wudu-guide.html">Ablution (Wudu)</a></li>
+          <li><a href="janazah-guide.html">Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">Eid Prayer Guide</a></li>
+          <li><a href="prayer-times.html">Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Knowledge & Text</h4>
+        <ul class="footer-links">
+          <li><a href="quran.html">Holy Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">Hadith Library</a></li>
+          <li><a href="kalimas.html">Six Kalimas</a></li>
+          <li><a href="duas.html">Duas & Adhkar</a></li>
+          <li><a href="pillars.html">Five Pillars</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Trust & Policies</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About & Editorial Board</a></li>
+          <li><a href="sources.html">Source Bibliography</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="contact.html">Contact & Corrections</a></li>
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Offline Access</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
+        <div>Contact: contact@islamicknowledge.example.com</div>
+      </div>
+    </div>
+  </footer>
+
   <!-- Scripts -->
+  <script src="js/config.js"></script>
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/tools.js"></script>

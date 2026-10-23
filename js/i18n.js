@@ -637,6 +637,10 @@ class I18nManager {
     return LANGUAGES.find(l => l.code === code) || LANGUAGES.find(l => l.code === 'en');
   }
 
+  getUISelectableLanguages() {
+    return LANGUAGES.filter(l => l.code === 'en' || l.code === 'ur' || l.code === 'ar');
+  }
+
   getAllLanguages() {
     return LANGUAGES;
   }

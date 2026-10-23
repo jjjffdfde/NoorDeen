@@ -4,6 +4,63 @@
  * Persistent Progress • Font Customization • Translation Controls
  */
 
+const SURAH_THEMATIC_DATA = {
+  1: {
+    period: "Early Meccan (Pre-Hijrah)",
+    themes: ["Praise & Glorification of Allah", "Divine Sovereignty & Day of Recompense", "Direct Supplication for Sincere Guidance", "The Straight Path (Sirat al-Mustaqeem)"],
+    asbab: "Revealed at the onset of prophetic revelation in Makkah, ordained as the essential foundation of every unit (Rak'ah) of prayer.",
+    virtues: "Proclaimed by Prophet Muhammad ﷺ as 'The Greatest Surah in the Quran' and the 'Seven Oft-Repeated Verses' (Sahih al-Bukhari #4474)."
+  },
+  2: {
+    period: "Early Medinan (Post-Hijrah)",
+    themes: ["Guidance for the God-Conscious (Muttaqeen)", "Covenant with Bani Isra'il & Adam's Creation", "Legislation of Salah, Zakat, Fasting & Hajj", "Prohibition of Riba (Usury) & Ayatul Kursi"],
+    asbab: "Revealed gradually over several years in Madinah to establish the civil, economic, and moral framework of the newly established Islamic society.",
+    virtues: "The Prophet ﷺ said: 'Do not turn your houses into graves; Satan flees from the house in which Surah Al-Baqarah is recited' (Sahih Muslim #780)."
+  },
+  36: {
+    period: "Middle Meccan",
+    themes: ["The Authenticity of Prophethood & Revelation", "The Reality of Physical Resurrection & Day of Judgment", "Signs of Divine Omnipotence in the Cosmos", "Fate of Previous Defiant Civilizations"],
+    asbab: "Revealed during the peak of Quraysh denial in Makkah to confront the polytheists regarding the certainty of resurrection and accountability.",
+    virtues: "Revered throughout Islamic history as the 'Heart of the Quran' for its poetic eloquence, vivid eschatological descriptions, and powerful theological arguments."
+  },
+  67: {
+    period: "Meccan",
+    themes: ["Absolute Dominion & Sovereignty of Allah", "Cosmic Order and the Seven Heavens", "The Purpose of Life and Death as a Moral Test", "Warnings of the Fire and the Regret of Disbelievers"],
+    asbab: "Revealed to orient the human consciousness toward the grandeur of the Creator and the inevitability of the Hereafter.",
+    virtues: "Prophet Muhammad ﷺ stated: 'A Surah of thirty verses interceded for a man until he was forgiven: Tabarakalladhi biyadihil-Mulk' (Sunan Abi Dawud #1400)."
+  },
+  97: {
+    period: "Meccan",
+    themes: ["Descent of the Holy Quran", "The Magnificence of the Night of Decree (Laylatul Qadr)", "Descent of Angel Jibril and the Angels with Divine Decrees", "Peace Until the Break of Dawn"],
+    asbab: "Revealed to honor the night wherein the Quran was first sent down from the Preserved Tablet (Al-Lawh al-Mahfuz) to the lowest heaven.",
+    virtues: "Worship during this single night is declared better than a thousand months of continuous devotion (over 83 years and 4 months)."
+  },
+  108: {
+    period: "Meccan",
+    themes: ["Divine Abundance Granted to the Prophet ﷺ", "Gratitude Expressed via Prayer and Sacrifice", "The Cutting Off and Humiliation of the Prophet's Enemies"],
+    asbab: "Revealed to comfort Prophet Muhammad ﷺ when his son al-Qasim died in infancy and the polytheist al-As ibn Wa'il taunted that he was 'Abtar' (cut off from posterity).",
+    virtues: "The Prophet ﷺ revealed that Al-Kawthar is a celestial river and basin in Paradise whose banks are of gold and drinking vessels as numerous as the stars."
+  },
+  112: {
+    period: "Early Meccan",
+    themes: ["Absolute Monotheism (Tawheed al-Khalis)", "The Self-Sufficiency of Allah (As-Samad)", "Negation of Offspring, Ancestry, and Partners", "Total Incomparability of the Divine Essence"],
+    asbab: "Revealed when the polytheists of Makkah asked the Prophet ﷺ: 'Describe the lineage and ancestry of your Lord to us.'",
+    virtues: "The Messenger of Allah ﷺ affirmed that reciting Surah Al-Ikhlas is equivalent to reciting one-third of the entire Quran (Sahih al-Bukhari #5013)."
+  },
+  113: {
+    period: "Meccan / Medinan",
+    themes: ["Seeking Refuge with the Lord of the Daybreak", "Protection Against the Evils of Darkness (Ghāsiq)", "Shield Against Sorcery and Occult Blowing on Knots", "Shield Against Malicious Envy and Jealousy (Ḥasad)"],
+    asbab: "Revealed alongside Surah An-Nas as complete spiritual armor against psychic harm, black magic, evil eye, and environmental perils.",
+    virtues: "The Prophet ﷺ consistently sought refuge with these two Surahs upon retiring to sleep and during sickness (Sahih al-Bukhari #5016)."
+  },
+  114: {
+    period: "Meccan / Medinan",
+    themes: ["Seeking Sanctuary with the King and God of Mankind", "Protection from the Retreating Whisperer (Al-Waswas Al-Khannas)", "Spiritual Warfare Against Diabolical Temptations from Jinn and Men"],
+    asbab: "Revealed to safeguard the inner sanctuary of the human heart from doubts, whisperings, and psychic malice.",
+    virtues: "One of the twin Mu'awwidhatayn which the Prophet ﷺ described: 'People have never sought refuge with anything like them' (Sunan an-Nasa'i #5433)."
+  }
+};
+
 class QuranReader {
   constructor() {
     this.currentSurah = 1;
@@ -167,6 +224,44 @@ class QuranReader {
     }
   }
 
+  getSurahOverviewHTML(surahNum, meta) {
+    const custom = SURAH_THEMATIC_DATA[surahNum];
+    const period = custom ? custom.period : (meta.revelationType === 'Meccan' ? 'Meccan (Focus on Monotheism, Creeds & Hereafter)' : 'Medinan (Focus on Law, Community & Worship)');
+    const themes = custom ? custom.themes : [
+      `Divine Oneness & Creeds of Faith`,
+      `Cosmic Signs & Divine Guidance`,
+      `Moral Responsibility & Righteous Deeds`,
+      `Accountability on the Day of Judgment`
+    ];
+    const asbab = custom ? custom.asbab : `Preserved according to the canonical order established by Prophet Muhammad ﷺ under divine guidance.`;
+    const virtues = custom ? custom.virtues : `Part of the living, immutable Word of Allah recited daily by millions in prayer.`;
+
+    return `
+      <details class="surah-overview-card" open>
+        <summary style="cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none;">
+          <span class="surah-overview-title">📖 Surah Overview & Thematic Context</span>
+          <span class="surah-overview-badge">${period}</span>
+        </summary>
+        <div style="margin-top: 16px; font-size: 0.92rem; line-height: 1.7; color: var(--color-text-main);">
+          <div style="margin-bottom: 10px;">
+            <strong>Core Divine Themes:</strong><br>
+            <div style="margin-top: 6px;">
+              ${themes.map(t => `<span class="surah-theme-pill">${t}</span>`).join('')}
+            </div>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <strong>Historical Context & Asbab al-Nuzul:</strong>
+            <p style="margin: 4px 0 0 0; color: var(--color-text-muted); font-size: 0.88rem;">${asbab}</p>
+          </div>
+          <div>
+            <strong>Authentic Virtues (Fada'il):</strong>
+            <p style="margin: 4px 0 0 0; color: var(--color-text-muted); font-size: 0.88rem;">${virtues}</p>
+          </div>
+        </div>
+      </details>
+    `;
+  }
+
   renderSurah() {
     if (!this.surahData) return;
     const container = document.getElementById('quran-ayahs-container');
@@ -183,6 +278,12 @@ class QuranReader {
 
     if (!container) return;
     container.innerHTML = '';
+
+    // Render Surah Overview & Thematic Context Card
+    const meta = ISLAMIC_DATA.surahs.find(s => s.number === this.surahData.number) || {};
+    const overviewBox = document.createElement('div');
+    overviewBox.innerHTML = this.getSurahOverviewHTML(this.surahData.number, meta);
+    container.appendChild(overviewBox.firstElementChild);
 
     // Render Bismillah Header if applicable (All Surahs except At-Tawbah & Al-Fatihah which has it as verse 1)
     if (this.surahData.bismillahPre) {
