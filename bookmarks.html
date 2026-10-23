@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Saved Islamic Bookmarks — Private & Local Storage</title>
+  <meta name="description" content="View and manage your saved Quranic verses, Hadith, and supplications stored privately on your local device.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div>
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle">Bookmarks</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
+          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
+          <li class="nav-item"><a href="duas.html">Duas</a></li>
+          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
+          <li class="nav-item active"><a href="bookmarks.html">Bookmarks</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="language-selector-btn" class="btn btn-outline">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Your Saved Bookmarks</h1>
+      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
+        Stored privately on your personal device without requiring an account or transmitting personal data.
+      </p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 800px;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+      <h2 style="font-size: 1.3rem; color: var(--color-primary); font-weight: 700;">Saved Verses & Items</h2>
+      <button id="clear-all-bookmarks-btn" class="btn btn-outline" style="font-size: 0.85rem; color: var(--color-danger); border-color: var(--color-danger);">
+        Clear All Bookmarks
+      </button>
+    </div>
+
+    <div id="bookmarks-list-container">
+      <!-- Rendered dynamically -->
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function renderBookmarks() {
+      const container = document.getElementById('bookmarks-list-container');
+      const bookmarks = JSON.parse(localStorage.getItem('islamic_portal_bookmarks') || '[]');
+
+      if (bookmarks.length === 0) {
+        container.innerHTML = `
+          <div class="card" style="text-align: center; padding: 40px;">
+            <p style="color: var(--color-text-muted); margin-bottom: 16px;">You haven't bookmarked any verses yet.</p>
+            <a href="quran.html" class="btn btn-primary">Start Reading the Quran</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = bookmarks.map((b, idx) => `
+        <div class="card" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 700; color: var(--color-primary); font-size: 1.05rem;">
+              Surah ${b.surahName} [${b.surahNumber}:${b.ayahNumber}]
+            </div>
+            <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 4px;">
+              Saved on ${new Date(b.timestamp).toLocaleDateString()}
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="quran.html?surah=${b.surahNumber}#ayah-${b.ayahNumber}" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.85rem;">
+              Read
+            </a>
+            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;" onclick="removeBookmark(${idx})">
+              ✕
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function removeBookmark(index) {
+      const bookmarks = JSON.parse(localStorage.getItem('islamic_portal_bookmarks') || '[]');
+      bookmarks.splice(index, 1);
+      localStorage.setItem('islamic_portal_bookmarks', JSON.stringify(bookmarks));
+      renderBookmarks();
+      if (window.App) window.App.showToast('Bookmark removed.');
+    }
+
+    document.getElementById('clear-all-bookmarks-btn').addEventListener('click', () => {
+      if (confirm('Are you sure you want to clear all your bookmarks?')) {
+        localStorage.removeItem('islamic_portal_bookmarks');
+        renderBookmarks();
+        if (window.App) window.App.showToast('All bookmarks cleared.');
+      }
+    });
+
+    renderBookmarks();
+  </script>
+</body>
+</html>

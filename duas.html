@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Duas & Prophetic Adhkar — Hisnul Muslim Supplications</title>
+  <meta name="description" content="Authentic daily supplications from Hisnul Muslim with Arabic text, translations, references, and interactive counters.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div>
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle">Duas & Adhkar</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
+          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
+          <li class="nav-item"><a href="kalimas.html">Six Kalimas</a></li>
+          <li class="nav-item active"><a href="duas.html">Duas</a></li>
+          <li class="nav-item"><a href="tasbih.html">Digital Tasbih</a></li>
+          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="language-selector-btn" class="btn btn-outline">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Daily Duas & Prophetic Adhkar</h1>
+      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
+        Supplications from the Holy Quran and Hisnul Muslim (Fortress of the Muslim) with interactive recital counters.
+      </p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 900px;">
+    
+    <div id="duas-list-container">
+      <!-- Dynamically rendered -->
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const counts = {};
+
+    function renderDuas() {
+      const container = document.getElementById('duas-list-container');
+      container.innerHTML = ISLAMIC_DATA.duas.map(d => {
+        if (!counts[d.id]) counts[d.id] = 0;
+        const currentCount = counts[d.id];
+        const isCompleted = currentCount >= d.target;
+
+        return `
+          <div class="card" id="${d.id}" style="margin-bottom: 24px; border-left: 5px solid ${isCompleted ? 'var(--color-success)' : 'var(--color-primary)'};">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div>
+                <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary);">${d.title}</h2>
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">${d.ref}</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-primary);">Target: ${d.target}x</span>
+              </div>
+            </div>
+
+            <div class="ayah-arabic" style="font-size: 1.55rem; line-height: 2.2; margin-bottom: 16px; color: var(--color-text-main);">
+              ${d.ar}
+            </div>
+
+            <div style="font-style: italic; color: var(--color-gold-dark); font-size: 0.95rem; margin-bottom: 10px;">
+              ${d.tr}
+            </div>
+
+            <div style="font-size: 1rem; line-height: 1.6; color: var(--color-text-main); margin-bottom: 10px;">
+              ${d.en}
+            </div>
+
+            <div class="urdu-text" style="font-size: 1.15rem; line-height: 2.2; color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle); padding-top: 10px; margin-bottom: 18px;">
+              ${d.ur}
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border); padding-top: 14px;">
+              <button class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;" onclick="resetCount('${d.id}')">
+                Reset
+              </button>
+              <button class="btn ${isCompleted ? 'btn-gold' : 'btn-primary'}" style="padding: 8px 24px; font-weight: 700;" onclick="incrementCount('${d.id}', ${d.target})">
+                📿 Recite: <span id="count-val-${d.id}">${currentCount}</span> / ${d.target} ${isCompleted ? '✓' : ''}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function incrementCount(id, target) {
+      if (!counts[id]) counts[id] = 0;
+      counts[id]++;
+      if (window.IslamicTools) window.IslamicTools.playTasbihSound();
+      if (counts[id] >= target && window.App) {
+        window.App.showToast(`Completed ${target}x recitations! Alhamdulillah.`);
+      }
+      renderDuas();
+    }
+
+    function resetCount(id) {
+      counts[id] = 0;
+      renderDuas();
+    }
+
+    renderDuas();
+  </script>
+</body>
+</html>

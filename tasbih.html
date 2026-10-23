@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Tasbih — Interactive Dhikr & Remembrance Counter</title>
+  <meta name="description" content="Interactive digital Tasbih counter with prophetic dhikr presets, audio feedback, and cycle tracking.">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div>
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle">Digital Tasbih</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="quran.html">Holy Quran</a></li>
+          <li class="nav-item"><a href="hadith.html">Hadith</a></li>
+          <li class="nav-item"><a href="duas.html">Duas</a></li>
+          <li class="nav-item active"><a href="tasbih.html">Digital Tasbih</a></li>
+          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
+          <li class="nav-item"><a href="zakat-calculator.html">Zakat</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="language-selector-btn" class="btn btn-outline">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 40px 0; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">Digital Tasbih Counter</h1>
+      <p style="color: #D1D5DB; max-width: 650px; margin: 0 auto; font-size: 1rem;">
+        "The remembrance of Allah brings peace to hearts." (Surah Ar-Ra'd 13:28)
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 36px; padding-bottom: 80px; max-width: 650px;">
+    
+    <!-- Presets Selector -->
+    <div class="card" style="margin-bottom: 24px; text-align: center;">
+      <label style="font-weight: 700; display: block; margin-bottom: 12px;">Choose Dhikr Preset:</label>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+        <button class="btn btn-outline preset-btn active" data-target="33" data-phrase="سُبْحَانَ اللَّهِ" data-meaning="Glory be to Allah (33x)">
+          Subhanallah (33x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="33" data-phrase="الْحَمْدُ لِلَّهِ" data-meaning="All praise is due to Allah (33x)">
+          Alhamdulillah (33x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="34" data-phrase="اللَّهُ أَكْبَرُ" data-meaning="Allah is the Greatest (34x)">
+          Allahu Akbar (34x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="أَسْتَغْفِرُ اللَّهَ" data-meaning="I seek forgiveness from Allah (100x)">
+          Astaghfirullah (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="لَا إِلَٰهَ إِلَّا اللَّهُ" data-meaning="There is no deity except Allah (100x)">
+          La ilaha illallah (100x)
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Counter Unit -->
+    <div class="counter-box">
+      <div id="dhikr-phrase" class="font-arabic" style="font-size: 2.2rem; color: var(--color-primary); font-weight: 700;">
+        سُبْحَانَ اللَّهِ
+      </div>
+      <div id="dhikr-meaning" style="font-size: 0.95rem; color: var(--color-text-muted); margin-top: 4px;">
+        Glory be to Allah (33x)
+      </div>
+
+      <div id="counter-value" class="counter-display">0</div>
+      
+      <div style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 24px;">
+        Target: <strong id="target-label" style="color: var(--color-text-main);">33</strong> • Total Cycles: <strong id="cycles-count" style="color: var(--color-gold);">0</strong>
+      </div>
+
+      <!-- Giant Tap Button -->
+      <button id="tap-tasbih-btn" class="counter-btn-large" style="margin-bottom: 24px;">
+        TAP
+      </button>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 12px;">
+        <button id="reset-tasbih-btn" class="btn btn-outline" style="padding: 8px 18px;">
+          Reset Count
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let currentCount = 0;
+    let targetCount = 33;
+    let completedCycles = 0;
+
+    const valEl = document.getElementById('counter-value');
+    const targetLabel = document.getElementById('target-label');
+    const cyclesLabel = document.getElementById('cycles-count');
+    const phraseEl = document.getElementById('dhikr-phrase');
+    const meaningEl = document.getElementById('dhikr-meaning');
+    const tapBtn = document.getElementById('tap-tasbih-btn');
+    const resetBtn = document.getElementById('reset-tasbih-btn');
+
+    tapBtn.addEventListener('click', () => {
+      currentCount++;
+      valEl.textContent = currentCount;
+      IslamicTools.playTasbihSound();
+
+      if (navigator.vibrate) {
+        navigator.vibrate(30);
+      }
+
+      if (currentCount >= targetCount) {
+        completedCycles++;
+        cyclesLabel.textContent = completedCycles;
+        currentCount = 0;
+        valEl.textContent = currentCount;
+        if (window.App) window.App.showToast(`Completed target cycle! Alhamdulillah.`);
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      currentCount = 0;
+      valEl.textContent = currentCount;
+    });
+
+    // Preset selectors
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        targetCount = Number(btn.getAttribute('data-target'));
+        phraseEl.textContent = btn.getAttribute('data-phrase');
+        meaningEl.textContent = btn.getAttribute('data-meaning');
+        targetLabel.textContent = targetCount;
+        currentCount = 0;
+        valEl.textContent = currentCount;
+      });
+    });
+  </script>
+</body>
+</html>
