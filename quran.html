@@ -66,10 +66,11 @@
           <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item active"><a href="quran.html">Holy Quran</a></li>
           <li class="nav-item"><a href="hadith.html">Hadith</a></li>
-          <li class="nav-item"><a href="kalimas.html">Six Kalimas</a></li>
+          <li class="nav-item"><a href="salah-guide.html">Salah Guide</a></li>
+          <li class="nav-item"><a href="janazah-guide.html">Janazah</a></li>
+          <li class="nav-item"><a href="eid-guide.html">Eid Guide</a></li>
           <li class="nav-item"><a href="duas.html">Duas</a></li>
-          <li class="nav-item"><a href="prayer-times.html">Prayer Times</a></li>
-          <li class="nav-item"><a href="bookmarks.html">Bookmarks</a></li>
+          <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
         </ul>
       </nav>
 
@@ -97,6 +98,17 @@
 
       <!-- Reading Settings Controls -->
       <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <!-- Translation Mode Selector -->
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Translation:</span>
+          <select id="translation-view-select" class="btn btn-outline" style="background-color: var(--color-card); padding: 6px 10px; font-size: 0.85rem;" aria-label="Quran translation display mode">
+            <option value="both">Urdu & English</option>
+            <option value="urdu">Urdu (Jalandhry)</option>
+            <option value="english">English (Sahih Int.)</option>
+            <option value="arabic">Arabic Only</option>
+          </select>
+        </div>
+
         <!-- Font Size Slider -->
         <div style="display: flex; align-items: center; gap: 6px;">
           <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-text-muted);">Font:</span>
@@ -237,6 +249,12 @@
       reciterSelect.value = quranApp.reciter;
     }
 
+    // Sync saved translation display mode
+    const transSelect = document.getElementById('translation-view-select');
+    if (transSelect && quranApp.translationMode) {
+      transSelect.value = quranApp.translationMode;
+    }
+
     // Event listeners
     dropdown.addEventListener('change', (e) => {
       quranApp.loadSurah(e.target.value);
@@ -250,6 +268,12 @@
     reciterSelect.addEventListener('change', (e) => {
       quranApp.setReciter(e.target.value);
     });
+
+    if (transSelect) {
+      transSelect.addEventListener('change', (e) => {
+        quranApp.setTranslationMode(e.target.value);
+      });
+    }
 
     document.getElementById('play-surah-btn').addEventListener('click', () => {
       quranApp.playAyah(quranApp.currentSurah, 1);
