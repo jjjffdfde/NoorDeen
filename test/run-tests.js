@@ -75,10 +75,13 @@ async function runTestSuite() {
   });
 
   // TEST SUITE 2: DESIGN SYSTEM & CSS VERIFICATION
-  console.log('\n--- TEST SUITE 2: Design System & CSS Rules ---');
+  console.log('\n--- TEST SUITE 2: Design System & Editorial Palette ---');
   const cssContent = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
-  assert(cssContent.includes('--color-primary: #0F5132'), 'Emerald primary color variable defined');
-  assert(cssContent.includes('--color-gold: #D4AF37'), 'Gold secondary color variable defined');
+  assert(cssContent.includes('--color-jade: #176B5B') || cssContent.includes('--color-primary: #176B5B'), 'Deep jade primary color variable defined');
+  assert(cssContent.includes('--color-brass: #B58B50') || cssContent.includes('--color-gold: #B58B50'), 'Muted brass secondary color variable defined');
+  assert(cssContent.includes('--color-midnight: #142326'), 'Midnight ink color variable defined');
+  assert(cssContent.includes('--color-ivory: #F7F4EC'), 'Warm ivory background variable defined');
+  assert(cssContent.includes('--color-sage: #E6EEE8'), 'Soft sage surface variable defined');
   assert(cssContent.includes('[data-theme="dark"]'), 'Dark theme selector defined');
   assert(cssContent.includes('[dir="rtl"]'), 'Right-to-left (RTL) directional layout defined');
   assert(cssContent.includes('--font-quran'), 'Quran font family defined');
@@ -116,13 +119,31 @@ async function runTestSuite() {
   });
   assert(rtlProperlyConfigured, 'Arabic, Urdu, Persian, Pashto, and Kurdish are correctly configured as RTL');
 
+  // Verify complete dictionary coverage for verified languages
+  const verifiedLanguages = ['en', 'ur', 'ar', 'fr', 'id', 'tr', 'bn', 'hi', 'ms', 'fa', 'es'];
+  let allDictionariesPresent = true;
+  verifiedLanguages.forEach(code => {
+    if (!i18nContent.includes(`${code}: {`)) {
+      allDictionariesPresent = false;
+      console.error(`Missing translation dictionary for: ${code}`);
+    }
+  });
+  assert(allDictionariesPresent, 'Complete translation dictionaries present for 11 verified languages (en, ur, ar, fr, id, tr, bn, hi, ms, fa, es)');
+
   // TEST SUITE 4: QURAN & RELIGIOUS DATA VERIFICATION
   console.log('\n--- TEST SUITE 4: Quran & Religious Data Integrity ---');
   const dataContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'data.js'), 'utf-8');
 
-  // Verify 114 Surahs are in data.js
-  const surahCountMatch = dataContent.match(/number:\s*(\d+)/g);
-  assert(dataContent.includes('englishName: "Al-Fatihah"') && dataContent.includes('englishName: "An-Nas"'), 'Surah range spans from Al-Fatihah (1) to An-Nas (114)');
+  // Full 114 Surahs and 6,236 verses validation via VM
+  const vm = await import('vm');
+  const dataSandbox = { window: {} };
+  vm.default.createContext(dataSandbox);
+  vm.default.runInContext(dataContent, dataSandbox);
+  const parsedData = dataSandbox.window.ISLAMIC_DATA;
+
+  assert(parsedData.surahs.length === 114, 'All 114 Surahs defined in canonical order');
+  const totalVerses = parsedData.surahs.reduce((sum, s) => sum + s.numberOfAyahs, 0);
+  assert(totalVerses === 6236, `Total Quranic verses tally matches Hafs canonical standard: ${totalVerses} === 6236`);
   assert(dataContent.includes('name: "الفَاتِحَة"'), 'Authentic Arabic Surah names present with diacritics');
 
   // Verify 6 Kalimas
@@ -289,8 +310,64 @@ async function runTestSuite() {
   console.log('\n--- TEST SUITE 10: Expanded Quran Surahs & Kutub al-Sittah Hadiths ---');
   assert(dataContent.includes('englishName: "Yaseen"') || dataContent.includes('englishName: "Ya-Sin"'), 'Surah Ya-Sin (36) bundled offline in data.js');
   assert(dataContent.includes('englishName: "Al-Mulk"'), 'Surah Al-Mulk (67) bundled offline in data.js');
+  assert(dataContent.includes('englishName: "Al-Qadr"'), 'Surah Al-Qadr (97) bundled offline in data.js');
+  assert(dataContent.includes('englishName: "Al-Kawthar"'), 'Surah Al-Kawthar (108) bundled offline in data.js');
+  assert(dataContent.includes('englishName: "Al-Kafirun"'), 'Surah Al-Kafirun (109) bundled offline in data.js');
+  assert(dataContent.includes('englishName: "An-Nasr"'), 'Surah An-Nasr (110) bundled offline in data.js');
   assert(dataContent.includes('collection: "Sunan Abi Dawud"') && dataContent.includes('4799'), 'Sunan Abi Dawud #4799 bundled with verified Sahih grading');
   assert(dataContent.includes('collection: "Sunan an-Nasa\'i"') && dataContent.includes('3140'), 'Sunan an-Nasa\'i #3140 bundled with verified scholarly grading');
+
+  // TEST SUITE 11: AUDIO RECITATION SUITE & LICENSING REGISTER
+  console.log('\n--- TEST SUITE 11: Audio Reciter Suite & Licensing Register ---');
+  const quranJsContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  assert(quranJsContent.includes('Alafasy_128kbps'), 'Audio controller defines Sheikh Mishary Rashid Alafasy');
+  assert(quranJsContent.includes('Abdul_Basit_Murattal_192kbps'), 'Audio controller defines Sheikh Abdul Basit (Murattal)');
+  assert(quranJsContent.includes('Husary_128kbps'), 'Audio controller defines Sheikh Mahmoud Khalil Al-Husary');
+  assert(quranJsContent.includes('Minshawy_Murattal_128kbps'), 'Audio controller defines Sheikh Mohamed Siddiq Al-Minshawi');
+  assert(quranJsContent.includes('Abu_Bakr_Ash-Shaatree_128kbps'), 'Audio controller defines Sheikh Abu Bakr Al-Shatri');
+  assert(quranJsContent.includes('playPreviousAyah'), 'Audio controller implements playPreviousAyah function');
+  assert(quranJsContent.includes('playNextAyah'), 'Audio controller implements playNextAyah function');
+  assert(quranJsContent.includes('seekAudio'), 'Audio controller implements seek progress function');
+  assert(quranJsContent.includes('toggleRepeatMode'), 'Audio controller implements repeat mode function');
+  assert(quranJsContent.includes('setPlaybackSpeed'), 'Audio controller implements playback speed control');
+
+  const licensingDocPath = path.join(ROOT_DIR, 'AUDIT', 'AUDIO-LICENSING.md');
+  assert(fs.existsSync(licensingDocPath), 'Audio licensing register document (AUDIT/AUDIO-LICENSING.md) exists');
+  const licensingContent = fs.readFileSync(licensingDocPath, 'utf-8');
+  assert(licensingContent.includes('EveryAyah.com Project'), 'Audio licensing register covers EveryAyah source and permissions');
+
+  // TEST SUITE 12: INTERNAL ROUTE & LINK CRAWLER
+  console.log('\n--- TEST SUITE 12: Comprehensive Internal Link Crawler ---');
+  let totalLinksChecked = 0;
+  let brokenLinks = 0;
+
+  htmlFiles.forEach(file => {
+    const content = fs.readFileSync(path.join(PUBLIC_DIR, file), 'utf-8');
+    const matches = content.matchAll(/href=["']([^"'#?]+)["']/g);
+    for (const match of matches) {
+      const link = match[1];
+      if (link.startsWith('http') || link.startsWith('mailto') || link.startsWith('javascript') || link.startsWith('#')) {
+        continue;
+      }
+      totalLinksChecked++;
+      const resolvedTarget = path.join(PUBLIC_DIR, link === '/' ? 'index.html' : link);
+      if (!fs.existsSync(resolvedTarget)) {
+        brokenLinks++;
+        console.error(`Broken link in ${file}: "${link}" -> not found at ${resolvedTarget}`);
+      }
+    }
+  });
+
+  assert(brokenLinks === 0 && totalLinksChecked > 50, `All ${totalLinksChecked} internal links resolve to valid published files (0 broken links)`);
+
+  // TEST SUITE 13: DYNAMIC CONTINUE-READING & LOCAL PERSISTENCE
+  console.log('\n--- TEST SUITE 13: Dynamic Continue-Reading & Local Persistence ---');
+  assert(appJsContent.includes('checkContinueReading'), 'App controller implements checkContinueReading()');
+  assert(appJsContent.includes('islamic_portal_last_read'), 'App controller reads persistent reading progress from localStorage');
+  assert(quranJsContent.includes('saveLastReadPosition'), 'Quran controller implements saveLastReadPosition()');
+  
+  const indexHtmlContent = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
+  assert(indexHtmlContent.includes('id="continue-reading-panel"'), 'Homepage includes continue-reading-panel container');
 
   // SUMMARY
   console.log('\n====================================================');

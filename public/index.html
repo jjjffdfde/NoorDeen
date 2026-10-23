@@ -103,13 +103,13 @@
     <div class="hero-pattern"></div>
     <div class="container" style="position: relative; z-index: 2;">
       <div class="hero-badge">
-        ✨ Pure & Authentic Islamic Heritage
+        ✨ Digital Library of Authentic Islamic Knowledge
       </div>
       <h1 class="hero-title" data-i18n="heroTitle">
-        Learn Authentic Islam With Peace & Clarity
+        The Digital Library of Authentic Islamic Knowledge
       </h1>
       <p class="hero-subtitle" data-i18n="heroSubtitle">
-        Explore the Holy Quran with verified translations, authentic Hadith collections, daily supplications, and comprehensive Islamic education.
+        Read the Holy Quran with verse-by-verse translations, study authenticated Hadith from Kutub al-Sittah, and explore the Prophetic legacy.
       </p>
 
       <!-- Search Trigger Box -->
@@ -125,9 +125,35 @@
           >
           <button class="btn btn-primary" onclick="App.openSearchModal()" data-i18n="searchBtn">Search</button>
         </div>
+
+        <!-- Quick Access Chips -->
+        <div class="hero-quick-chips">
+          <span style="font-size: 0.82rem; opacity: 0.85; margin-right: 4px;">Quick Access:</span>
+          <a href="quran.html?surah=1" class="hero-chip">📖 Al-Fatihah</a>
+          <a href="quran.html?surah=36" class="hero-chip">✨ Ya-Sin</a>
+          <a href="quran.html?surah=67" class="hero-chip">👑 Al-Mulk</a>
+          <a href="quran.html?surah=55" class="hero-chip">🕊️ Ar-Rahman</a>
+          <a href="quran.html?surah=2" class="hero-chip">🛡️ Ayatul Kursi</a>
+          <a href="duas.html" class="hero-chip">🤲 Daily Adhkar</a>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Continue Reading Banner (Dynamically Unhidden if localStorage Has Progress) -->
+  <div id="continue-reading-panel" class="container continue-reading-panel" role="region" aria-label="Continue Reading">
+    <div class="continue-reading-info">
+      <div class="continue-reading-icon">📖</div>
+      <div>
+        <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gold); font-weight: 700;">Continue Reading</div>
+        <h3 id="continue-reading-title" style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin: 2px 0;">Surah Al-Fatihah</h3>
+        <div id="continue-reading-time" style="font-size: 0.8rem; color: var(--color-text-muted);">Saved from your previous reading session</div>
+      </div>
+    </div>
+    <a id="continue-reading-link" href="quran.html" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.9rem;">
+      Resume Reading →
+    </a>
+  </div>
 
   <!-- Quick Access Grid -->
   <section class="container" style="margin-bottom: 60px;">
@@ -303,6 +329,99 @@
         </div>
         <div class="surah-name-ar">النَّاس</div>
       </a>
+    </div>
+  </section>
+
+  <!-- Authentic Quran Audio Recitations Section -->
+  <section class="container" style="margin-bottom: 60px;">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">
+          <span>🎧</span> <span>Authentic Quran Recitations</span>
+        </h2>
+        <p class="section-subtitle">Listen to master reciters recorded under traditional Awqaf and Waqf standards</p>
+      </div>
+      <a href="quran.html" class="btn btn-outline">Open Full Quran Player</a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+      
+      <!-- Reciter 1 -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-primary);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
+            <div>
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Mishary Alafasy</h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Kuwait • Murattal 128kbps</span>
+            </div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Renowned worldwide for soulful clarity, measured tajweed cadence, and emotional recitation.
+          </p>
+        </div>
+        <a href="quran.html?surah=1&reciter=Alafasy_128kbps" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
+          ▶ Listen Surah Al-Fatihah
+        </a>
+      </div>
+
+      <!-- Reciter 2 -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-brass);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-surface); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
+            <div>
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Abdul Basit</h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Master Murattal 192kbps</span>
+            </div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
+            The legendary "Voice of Makkah", famed for majestic breath control, impeccable articulation, and golden tajweed.
+          </p>
+        </div>
+        <a href="quran.html?surah=36&reciter=Abdul_Basit_Murattal_192kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
+          ▶ Listen Surah Ya-Sin
+        </a>
+      </div>
+
+      <!-- Reciter 3 -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-primary);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
+            <div>
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Al-Husary</h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Awqaf Benchmark 128kbps</span>
+            </div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
+            The gold standard for Quranic memorization, revered across Islamic universities for flawless tajweed rules.
+          </p>
+        </div>
+        <a href="quran.html?surah=67&reciter=Husary_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
+          ▶ Listen Surah Al-Mulk
+        </a>
+      </div>
+
+      <!-- Reciter 4 -->
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-brass);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-surface); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
+            <div>
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Al-Minshawi</h3>
+              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Sad Voice of the Ummah</span>
+            </div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
+            Celebrated for deep humility (Khushu'), reverent tone, and profound emotional resonance.
+          </p>
+        </div>
+        <a href="quran.html?surah=55&reciter=Minshawy_Murattal_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
+          ▶ Listen Surah Ar-Rahman
+        </a>
+      </div>
+
     </div>
   </section>
 

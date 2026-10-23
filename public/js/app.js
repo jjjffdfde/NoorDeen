@@ -17,7 +17,52 @@ class Application {
     this.setupOfflineBanner();
     this.initServiceWorker();
     this.renderHijriDate();
+    this.checkContinueReading();
     if (window.I18n) window.I18n.init();
+  }
+
+  // Dynamic Continue Reading Session Manager
+  checkContinueReading() {
+    const panel = document.getElementById('continue-reading-panel');
+    if (!panel) return;
+
+    try {
+      const dataStr = localStorage.getItem('islamic_portal_last_read');
+      if (!dataStr) {
+        panel.classList.remove('active');
+        return;
+      }
+      const data = JSON.parse(dataStr);
+      if (!data || !data.surahNumber) {
+        panel.classList.remove('active');
+        return;
+      }
+
+      const titleEl = document.getElementById('continue-reading-title');
+      const linkEl = document.getElementById('continue-reading-link');
+      const timeEl = document.getElementById('continue-reading-time');
+
+      if (titleEl) {
+        titleEl.textContent = `${data.surahName} (Verse ${data.ayahNumber || 1})`;
+      }
+      if (linkEl) {
+        linkEl.setAttribute('href', `quran.html?surah=${data.surahNumber}#ayah-${data.ayahNumber || 1}`);
+      }
+      if (timeEl && data.timestamp) {
+        const diffMinutes = Math.round((Date.now() - data.timestamp) / 60000);
+        let timeText = 'Recently';
+        if (diffMinutes < 1) timeText = 'Just now';
+        else if (diffMinutes < 60) timeText = `${diffMinutes}m ago`;
+        else if (diffMinutes < 1440) timeText = `${Math.round(diffMinutes / 60)}h ago`;
+        else timeText = `${Math.round(diffMinutes / 1440)}d ago`;
+        timeEl.textContent = `Last read ${timeText} • Saved in device storage`;
+      }
+
+      panel.classList.add('active');
+    } catch (e) {
+      console.warn('Could not parse continue-reading progress:', e);
+      panel.classList.remove('active');
+    }
   }
 
   // Service Worker Registration for Offline Capability
