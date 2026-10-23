@@ -626,4 +626,9 @@ const ISLAMIC_DATA = {
   ]
 };
 
-window.ISLAMIC_DATA = ISLAMIC_DATA;
+if (typeof window !== 'undefined') {
+  window.ISLAMIC_DATA = ISLAMIC_DATA;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = ISLAMIC_DATA;
+}

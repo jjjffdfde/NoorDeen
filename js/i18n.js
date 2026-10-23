@@ -627,9 +627,40 @@ class I18nManager {
       this.currentLang = 'en';
     }
     this.listeners = [];
+    this.domSnapshotted = false;
+
+    // Snapshot English DOM on load
+    if (typeof document !== 'undefined') {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.snapshotDefaultDOM());
+      } else {
+        this.snapshotDefaultDOM();
+      }
+    }
+  }
+
+  snapshotDefaultDOM() {
+    if (this.domSnapshotted || typeof document === 'undefined') return;
+    const elements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder], [data-i18n-title]');
+    elements.forEach(el => {
+      if (!el.dataset.i18nDefaultHtml) {
+        el.dataset.i18nDefaultHtml = el.innerHTML;
+      }
+      if (!el.dataset.i18nDefaultText) {
+        el.dataset.i18nDefaultText = el.textContent;
+      }
+      if (el.placeholder && !el.dataset.i18nDefaultPlaceholder) {
+        el.dataset.i18nDefaultPlaceholder = el.placeholder;
+      }
+      if (el.title && !el.dataset.i18nDefaultTitle) {
+        el.dataset.i18nDefaultTitle = el.title;
+      }
+    });
+    this.domSnapshotted = true;
   }
 
   init() {
+    this.snapshotDefaultDOM();
     this.applyLanguage(this.currentLang, false);
   }
 
@@ -652,13 +683,19 @@ class I18nManager {
     this.applyLanguage(code, true);
   }
 
+  resetToDefault() {
+    this.setLanguage('en');
+  }
+
   applyLanguage(code, notify = true) {
     const info = this.getLanguageInfo(code);
-    document.documentElement.lang = code;
-    document.documentElement.dir = info.dir;
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = code;
+      document.documentElement.dir = info.dir;
 
-    // Apply translations across data-i18n elements
-    this.translateDOM();
+      // Apply translations across data-i18n elements
+      this.translateDOM();
+    }
 
     if (notify) {
       this.listeners.forEach(cb => cb(code, info));
@@ -666,13 +703,63 @@ class I18nManager {
   }
 
   translateDOM() {
+    if (typeof document === 'undefined') return;
+
+    // Ensure default DOM is snapshotted before any translation
+    this.snapshotDefaultDOM();
+
     const elements = document.querySelectorAll('[data-i18n]');
+
+    // If English, directly restore native DOM snapshot for 100% fidelity
+    if (this.currentLang === 'en') {
+      elements.forEach(el => {
+        if (el.tagName === 'INPUT' && el.type === 'text') {
+          if (el.dataset.i18nDefaultPlaceholder) {
+            el.placeholder = el.dataset.i18nDefaultPlaceholder;
+          }
+        } else if (el.dataset.i18nDefaultHtml) {
+          el.innerHTML = el.dataset.i18nDefaultHtml;
+        } else if (el.dataset.i18nDefaultText) {
+          el.textContent = el.dataset.i18nDefaultText;
+        }
+      });
+      return;
+    }
+
+    // Otherwise translate to the target language
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
       const text = this.t(key);
-      if (text) {
-        if (el.tagName === 'INPUT' && el.getAttribute('type') === 'text') {
-          el.placeholder = text;
+      if (!text) return;
+
+      if (el.tagName === 'INPUT' && el.getAttribute('type') === 'text') {
+        el.placeholder = text;
+      } else {
+        // Preserve child elements (such as .dropdown-caret, .search-kbd, badges, SVGs)
+        if (el.children && el.children.length > 0) {
+          // Look for an existing primary text node
+          let textNode = null;
+          for (let i = 0; i < el.childNodes.length; i++) {
+            const node = el.childNodes[i];
+            if (node.nodeType === 3 && node.nodeValue && node.nodeValue.trim().length > 0) {
+              textNode = node;
+              break;
+            }
+          }
+
+          if (textNode) {
+            const leading = textNode.nodeValue.match(/^\s*/)[0];
+            const trailing = textNode.nodeValue.match(/\s*$/)[0];
+            textNode.nodeValue = leading + text + (trailing || ' ');
+          } else {
+            const caret = el.querySelector('.dropdown-caret');
+            if (caret) {
+              const caretHtml = caret.outerHTML;
+              el.innerHTML = text + ' ' + caretHtml;
+            } else {
+              el.textContent = text;
+            }
+          }
         } else {
           el.textContent = text;
         }

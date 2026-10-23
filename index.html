@@ -64,88 +64,112 @@
   </div>
 
   <!-- Header & Navigation -->
+    <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo-group">
         <div class="logo-icon">☪</div>
-        <div>
+        <div class="logo-text-wrapper">
           <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
-          <div class="logo-text-subtitle" data-i18n="siteSubtitle">Authentic Quran, Hadith & Learning</div>
+          <div class="logo-text-subtitle" data-i18n="siteSubtitle">Sacred Islamic Library & Tools</div>
         </div>
       </a>
 
-      <!-- Desktop Nav with Glassmorphic Mega-Dropdowns -->
-      <nav>
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
         <ul class="nav-menu">
-          <li class="nav-item active"><a href="index.html" data-i18n="navHome">Home</a></li>
-          
-          <!-- Worship Dropdown -->
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+
+          <!-- Quran Dropdown -->
           <li class="nav-item nav-dropdown">
-            <button class="nav-btn" aria-haspopup="true">🕌 Worship ▾</button>
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navQuran">Holy Quran</span> <span class="dropdown-caret">▾</span>
+            </button>
             <div class="nav-dropdown-menu">
-              <a href="salah-guide.html" class="nav-dropdown-item"><span>🧎</span> Daily Salah Guide</a>
-              <a href="janazah-guide.html" class="nav-dropdown-item"><span>⚰️</span> Janazah (Funeral) Guide</a>
-              <a href="eid-guide.html" class="nav-dropdown-item"><span>🌙</span> Eid al-Fitr & Adha</a>
-              <a href="wudu-guide.html" class="nav-dropdown-item"><span>💧</span> Wudu & Ghusl</a>
-              <a href="pillars.html" class="nav-dropdown-item"><span>🏛️</span> Five Pillars of Islam</a>
+              <a href="quran.html" class="nav-dropdown-item">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html" class="nav-dropdown-item">🔖 Bookmarked Ayahs</a>
             </div>
           </li>
 
-          <!-- Scripture Dropdown -->
+          <!-- Hadith & Duas Dropdown -->
           <li class="nav-item nav-dropdown">
-            <button class="nav-btn" aria-haspopup="true">📖 Scripture ▾</button>
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navHadith">Hadith & Duas</span> <span class="dropdown-caret">▾</span>
+            </button>
             <div class="nav-dropdown-menu">
-              <a href="quran.html" class="nav-dropdown-item"><span>📖</span> Holy Quran (114 Surahs)</a>
-              <a href="hadith.html" class="nav-dropdown-item"><span>📜</span> Kutub al-Sittah Hadith</a>
-              <a href="kalimas.html" class="nav-dropdown-item"><span>⭐</span> Six Kalimas</a>
-              <a href="duas.html" class="nav-dropdown-item"><span>🤲</span> Daily Duas & Adhkar</a>
+              <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
+              <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
             </div>
           </li>
 
-          <!-- Heritage Dropdown -->
+          <!-- Worship Guides Dropdown -->
           <li class="nav-item nav-dropdown">
-            <button class="nav-btn" aria-haspopup="true">📜 Heritage ▾</button>
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+            </button>
             <div class="nav-dropdown-menu">
-              <a href="seerah.html" class="nav-dropdown-item"><span>🕌</span> Prophetic Seerah</a>
-              <a href="prophets.html" class="nav-dropdown-item"><span>✨</span> Stories of Prophets</a>
-              <a href="sahaba.html" class="nav-dropdown-item"><span>👥</span> Lives of the Sahaba</a>
+              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
+              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
             </div>
           </li>
 
           <!-- Tools Dropdown -->
           <li class="nav-item nav-dropdown">
-            <button class="nav-btn" aria-haspopup="true">⏱️ Tools ▾</button>
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navTools">Islamic Tools</span> <span class="dropdown-caret">▾</span>
+            </button>
             <div class="nav-dropdown-menu">
-              <a href="prayer-times.html" class="nav-dropdown-item"><span>⏰</span> Solar Prayer Times</a>
-              <a href="zakat-calculator.html" class="nav-dropdown-item"><span>⚖️</span> Zakat Calculator</a>
-              <a href="tasbih.html" class="nav-dropdown-item"><span>📿</span> Digital Tasbih</a>
-              <a href="calendar.html" class="nav-dropdown-item"><span>📅</span> Hijri Calendar</a>
-              <a href="bookmarks.html" class="nav-dropdown-item"><span>🔖</span> Saved Bookmarks</a>
+              <a href="prayer-times.html" class="nav-dropdown-item">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html" class="nav-dropdown-item">💰 Zakat Calculation Engine</a>
+              <a href="tasbih.html" class="nav-dropdown-item">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
             </div>
           </li>
 
-          <li class="nav-item"><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 App</a></li>
+          <!-- App Pill -->
+          <li class="nav-item">
+            <a href="download-app.html" class="nav-app-pill">
+              <span>📱</span> <span data-i18n="navApp">App</span>
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <!-- Actions: Search (Ctrl+K), Language & Theme -->
+      <!-- Header Actions -->
       <div class="header-actions">
-        <button class="btn btn-outline" onclick="App.openSearchModal()" style="padding: 6px 12px; font-size: 0.85rem;" title="Search Quran, Hadith, Topics (Ctrl+K)">
-          🔍 <span class="kbd-shortcut">Ctrl+K</span>
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text" data-i18n="navSearch">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
         </button>
         <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
           🌐 <span id="current-language-label">English</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme">
-          🌙
-        </button>
-        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu" style="display: none;">☰</button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu">☰</button>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section">
+  <section class="hero-section" style="position: relative; overflow: hidden;">
+    <!-- 2026 Spatial Floating Sacred Geometric Mandala -->
+    <svg class="hero-mandala-bg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+      <circle cx="100" cy="100" r="75" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="100" cy="100" r="55" stroke="currentColor" stroke-width="0.8"/>
+      <polygon points="100,15 125,75 185,100 125,125 100,185 75,125 15,100 75,75" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <polygon points="100,25 120,80 175,100 120,120 100,175 80,120 25,100 80,80" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(45 100 100)"/>
+      <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="8" fill="currentColor" opacity="0.4"/>
+    </svg>
     <div class="hero-pattern"></div>
     <div class="container" style="position: relative; z-index: 2;">
       <div class="hero-badge">
@@ -207,6 +231,124 @@
       <span class="ad-slot-label">Sponsored Resource</span>
     </div>
   </div>
+
+  <!-- HIGH-RETENTION DAILY SPIRITUAL COMPANION (Rozana Kirdar & Wazaif Deck) -->
+  <section id="daily-companion-section" class="container daily-companion-section" aria-label="Daily Spiritual Companion">
+    <div class="daily-companion-card">
+      <div class="companion-header">
+        <div>
+          <div class="companion-badge-group">
+            <span class="companion-streak-badge" id="companion-streak-badge">🔥 1 Day Habit Streak</span>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-gold-dark);">✨ Sunnah Routine</span>
+          </div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary); margin-top: 6px; margin-bottom: 2px;">
+            Daily Spiritual Companion (روزانہ کردار و وظائف)
+          </h2>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0;">
+            Build a consistent spiritual habit with authentic Prophetic recitations and daily protection.
+          </p>
+        </div>
+
+        <!-- 3D Circular Progress Meter -->
+        <div class="companion-progress-box">
+          <div class="companion-ring-container">
+            <svg class="companion-ring-svg" viewBox="0 0 64 64">
+              <circle class="companion-ring-bg" cx="32" cy="32" r="28"></circle>
+              <circle id="companion-ring-progress" class="companion-ring-progress" cx="32" cy="32" r="28"></circle>
+            </svg>
+            <span id="companion-progress-val" class="companion-ring-text">0/5</span>
+          </div>
+          <div>
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-text-main);">Daily Goal</div>
+            <div style="font-size: 0.74rem; color: var(--color-text-muted);">Refreshes every midnight</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Sunnah Wazaif Checklist -->
+      <div class="wazaif-list">
+        <!-- 1. Fajr -->
+        <div class="wazifa-item">
+          <div class="wazifa-left">
+            <input type="checkbox" class="wazifa-check" data-wazifa-id="fajr" id="wazifa-fajr" aria-label="Mark Fajr Surah Yaseen complete">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span class="wazifa-time-pill">🌅 Fajr</span>
+                <span class="wazifa-title">Surah Yaseen (Heart of Quran)</span>
+                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ یٰسٓ</span>
+              </div>
+              <div class="wazifa-desc">Recitation & reflection after Fajr for daily barakah and protection.</div>
+            </div>
+          </div>
+          <a href="quran.html?surah=36" class="wazifa-action-btn">Read Surah 36 →</a>
+        </div>
+
+        <!-- 2. Morning -->
+        <div class="wazifa-item">
+          <div class="wazifa-left">
+            <input type="checkbox" class="wazifa-check" data-wazifa-id="morning" id="wazifa-morning" aria-label="Mark Morning Azkar complete">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span class="wazifa-time-pill">☀️ Morning</span>
+                <span class="wazifa-title">Morning Adhkar & Ayatul Kursi</span>
+                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">صبح کے اذکار و آیت الکرسی</span>
+              </div>
+              <div class="wazifa-desc">Sayyidul Istighfar & comprehensive armor against harm throughout the day.</div>
+            </div>
+          </div>
+          <a href="duas.html#sayyidul-istighfar" class="wazifa-action-btn">Daily Adhkar →</a>
+        </div>
+
+        <!-- 3. Maghrib -->
+        <div class="wazifa-item">
+          <div class="wazifa-left">
+            <input type="checkbox" class="wazifa-check" data-wazifa-id="maghrib" id="wazifa-maghrib" aria-label="Mark Maghrib Surah Waqiah complete">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span class="wazifa-time-pill">🌆 Maghrib</span>
+                <span class="wazifa-title">Surah Al-Waqi'ah (Sustenance & Barakah)</span>
+                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الواقعہ</span>
+              </div>
+              <div class="wazifa-desc">Prophetic tradition for freedom from spiritual and material poverty.</div>
+            </div>
+          </div>
+          <a href="quran.html?surah=56" class="wazifa-action-btn">Read Surah 56 →</a>
+        </div>
+
+        <!-- 4. Isha / Sleep -->
+        <div class="wazifa-item">
+          <div class="wazifa-left">
+            <input type="checkbox" class="wazifa-check" data-wazifa-id="sleep" id="wazifa-sleep" aria-label="Mark Surah Mulk complete">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span class="wazifa-time-pill">🌙 Night / Sleep</span>
+                <span class="wazifa-title">Surah Al-Mulk (Deliverance from Grave)</span>
+                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الملک (تبارک الذی)</span>
+              </div>
+              <div class="wazifa-desc">30 verses that intercede for their reciter until forgiven.</div>
+            </div>
+          </div>
+          <a href="quran.html?surah=67" class="wazifa-action-btn">Read Surah 67 →</a>
+        </div>
+
+        <!-- 5. Friday Special -->
+        <div class="wazifa-item">
+          <div class="wazifa-left">
+            <input type="checkbox" class="wazifa-check" data-wazifa-id="friday" id="wazifa-friday" aria-label="Mark Surah Kahf complete">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <span class="wazifa-time-pill">🕌 Friday Sunnah</span>
+                <span class="wazifa-title">Surah Al-Kahf (Light Between Two Jummahs)</span>
+                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الکہف</span>
+              </div>
+              <div class="wazifa-desc">Illumination and shield against the trials of Dajjal every Friday.</div>
+            </div>
+          </div>
+          <a href="quran.html?surah=18" class="wazifa-action-btn">Read Surah 18 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- MODERN BENTO GRID (Quran.com & Yaqeen Institute Contemporary Aesthetics) -->
   <section class="container bento-section">
