@@ -1,6 +1,6 @@
 {
   "appId": "com.islamicknowledge.portal",
-  "appName": "Islamic Portal",
+  "appName": "NoorDeen",
   "webDir": "public",
   "bundledWebRuntime": false,
   "server": {
@@ -16,7 +16,7 @@
     "SplashScreen": {
       "launchShowDuration": 1500,
       "launchAutoHide": true,
-      "backgroundColor": "#0F5132",
+      "backgroundColor": "#176B5B",
       "androidSplashResourceName": "splash",
       "showSpinner": false
     }

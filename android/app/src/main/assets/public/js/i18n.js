@@ -1,0 +1,888 @@
+/**
+ * ISLAMIC KNOWLEDGE PORTAL — 40-LANGUAGE FRAMEWORK & LOCALIZATION ENGINE
+ */
+
+const LANGUAGES = [
+  { code: 'ar', name: 'Arabic', nativeName: 'العربية', dir: 'rtl', script: 'Arab', coverage: 'verified' },
+  { code: 'ur', name: 'Urdu', nativeName: 'اردو', dir: 'rtl', script: 'Arab', coverage: 'verified' },
+  { code: 'en', name: 'English', nativeName: 'English', dir: 'ltr', script: 'Latn', coverage: 'verified' },
+  { code: 'bn', name: 'Bengali', nativeName: 'বাংলা', dir: 'ltr', script: 'Beng', coverage: 'verified' },
+  { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', dir: 'ltr', script: 'Deva', coverage: 'verified' },
+  { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia', dir: 'ltr', script: 'Latn', coverage: 'verified' },
+  { code: 'ms', name: 'Malay', nativeName: 'Bahasa Melayu', dir: 'ltr', script: 'Latn', coverage: 'verified' },
+  { code: 'tr', name: 'Turkish', nativeName: 'Türkçe', dir: 'ltr', script: 'Latn', coverage: 'verified' },
+  { code: 'fa', name: 'Persian', nativeName: 'فارسی', dir: 'rtl', script: 'Arab', coverage: 'verified' },
+  { code: 'fr', name: 'French', nativeName: 'Français', dir: 'ltr', script: 'Latn', coverage: 'verified' },
+  { code: 'de', name: 'German', nativeName: 'Deutsch', dir: 'ltr', script: 'Latn', coverage: 'authorized_partial' },
+  { code: 'es', name: 'Spanish', nativeName: 'Español', dir: 'ltr', script: 'Latn', coverage: 'verified' },
+  { code: 'pt', name: 'Portuguese', nativeName: 'Português', dir: 'ltr', script: 'Latn', coverage: 'authorized_partial' },
+  { code: 'ru', name: 'Russian', nativeName: 'Русский', dir: 'ltr', script: 'Cyrl', coverage: 'authorized_partial' },
+  { code: 'zh-CN', name: 'Chinese Simplified', nativeName: '简体中文', dir: 'ltr', script: 'Hans', coverage: 'authorized_partial' },
+  { code: 'zh-TW', name: 'Chinese Traditional', nativeName: '繁體中文', dir: 'ltr', script: 'Hant', coverage: 'authorized_partial' },
+  { code: 'ja', name: 'Japanese', nativeName: '日本語', dir: 'ltr', script: 'Jpan', coverage: 'in_progress' },
+  { code: 'ko', name: 'Korean', nativeName: '한국어', dir: 'ltr', script: 'Kore', coverage: 'in_progress' },
+  { code: 'sw', name: 'Swahili', nativeName: 'Kiswahili', dir: 'ltr', script: 'Latn', coverage: 'authorized_partial' },
+  { code: 'ha', name: 'Hausa', nativeName: 'Hausa', dir: 'ltr', script: 'Latn', coverage: 'authorized_partial' },
+  { code: 'so', name: 'Somali', nativeName: 'Soomaali', dir: 'ltr', script: 'Latn', coverage: 'in_progress' },
+  { code: 'ps', name: 'Pashto', nativeName: 'پښتو', dir: 'rtl', script: 'Arab', coverage: 'authorized_partial' },
+  { code: 'ku', name: 'Kurdish', nativeName: 'کوردی', dir: 'rtl', script: 'Arab', coverage: 'authorized_partial' },
+  { code: 'ta', name: 'Tamil', nativeName: 'தமிழ்', dir: 'ltr', script: 'Taml', coverage: 'authorized_partial' },
+  { code: 'te', name: 'Telugu', nativeName: 'తెలుగు', dir: 'ltr', script: 'Telu', coverage: 'in_progress' },
+  { code: 'ml', name: 'Malayalam', nativeName: 'മലയാളം', dir: 'ltr', script: 'Mlym', coverage: 'authorized_partial' },
+  { code: 'kn', name: 'Kannada', nativeName: 'ಕನ್ನಡ', dir: 'ltr', script: 'Knda', coverage: 'in_progress' },
+  { code: 'mr', name: 'Marathi', nativeName: 'मराठी', dir: 'ltr', script: 'Deva', coverage: 'in_progress' },
+  { code: 'gu', name: 'Gujarati', nativeName: 'ગુજરાતી', dir: 'ltr', script: 'Gujr', coverage: 'in_progress' },
+  { code: 'pa', name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ / پنجابی', dir: 'ltr', script: 'Guru', coverage: 'in_progress' },
+  { code: 'th', name: 'Thai', nativeName: 'ไทย', dir: 'ltr', script: 'Thai', coverage: 'authorized_partial' },
+  { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt', dir: 'ltr', script: 'Latn', coverage: 'in_progress' },
+  { code: 'nl', name: 'Dutch', nativeName: 'Nederlands', dir: 'ltr', script: 'Latn', coverage: 'in_progress' },
+  { code: 'it', name: 'Italian', nativeName: 'Italiano', dir: 'ltr', script: 'Latn', coverage: 'in_progress' },
+  { code: 'pl', name: 'Polish', nativeName: 'Polski', dir: 'ltr', script: 'Latn', coverage: 'in_progress' },
+  { code: 'bs', name: 'Bosnian', nativeName: 'Bosanski', dir: 'ltr', script: 'Latn', coverage: 'authorized_partial' },
+  { code: 'sq', name: 'Albanian', nativeName: 'Shqip', dir: 'ltr', script: 'Latn', coverage: 'in_progress' },
+  { code: 'uz', name: 'Uzbek', nativeName: 'Oʻzbekcha', dir: 'ltr', script: 'Latn', coverage: 'authorized_partial' },
+  { code: 'kk', name: 'Kazakh', nativeName: 'Қазақша', dir: 'ltr', script: 'Cyrl', coverage: 'in_progress' },
+  { code: 'az', name: 'Azerbaijani', nativeName: 'Azərbaycanca', dir: 'ltr', script: 'Latn', coverage: 'in_progress' }
+];
+
+const TRANSLATIONS = {
+  en: {
+    siteTitle: 'Islamic Knowledge Portal',
+    siteSubtitle: 'Authentic Quran, Hadith, Duas, and Islamic Learning',
+    navHome: 'Home',
+    navQuran: 'Holy Quran',
+    navHadith: 'Hadith Library',
+    navKalimas: 'Six Kalimas',
+    navDuas: 'Duas & Adhkar',
+    navSeerah: 'Seerah',
+    navProphets: 'Prophets',
+    navSahaba: 'Sahaba',
+    navEducation: 'Islamic Education',
+    navTools: 'Islamic Tools',
+    navPrayerTimes: 'Prayer Times',
+    navTasbih: 'Digital Tasbih',
+    navZakat: 'Zakat Calculator',
+    navCalendar: 'Hijri Calendar',
+    navBookmarks: 'Bookmarks',
+    navSearch: 'Search',
+    navLanguage: 'Language',
+    navTheme: 'Theme',
+    heroTitle: 'Learn Authentic Islam With Peace & Clarity',
+    heroSubtitle: 'Explore the Holy Quran with verified translations, authentic Hadith collections, daily supplications, and comprehensive Islamic education.',
+    searchPlaceholder: 'Search Surahs, Hadith, Duas, or Islamic topics...',
+    searchBtn: 'Search',
+    quickAccessTitle: 'Explore Core Pillars & Knowledge',
+    quickAccessSubtitle: 'Verified resources curated from authorized traditional Islamic sources',
+    allSurahs: 'All Surahs',
+    allJuz: '30 Juz',
+    revelationMakki: 'Makki',
+    revelationMadani: 'Madani',
+    versesCount: 'Verses',
+    surahNumber: 'Surah',
+    juzNumber: 'Juz',
+    startReading: 'Read Surah',
+    listenAudio: 'Listen',
+    arabicText: 'Arabic Text',
+    translation: 'Translation',
+    transliteration: 'Transliteration',
+    copyVerse: 'Copy Verse',
+    verseCopied: 'Verse copied to clipboard!',
+    bookmarkVerse: 'Bookmark Verse',
+    fontSize: 'Font Size',
+    aboutUs: 'About Us',
+    sourcesAndLicensing: 'Sources & Methodology',
+    privacyPolicy: 'Privacy Policy',
+    termsOfUse: 'Terms of Service',
+    editorialPolicy: 'Editorial Policy',
+    contactUs: 'Contact Us',
+    copyrightNotice: 'Dedicated to serving the global Ummah with verified, authentic Islamic knowledge.',
+    disclaimer: 'Religious content on this website is for educational purposes based on traditional scholarly consensus. It does not replace individualized rulings from qualified local Islamic authorities.'
+  },
+  ar: {
+    siteTitle: 'بوابة المعرفة الإسلامية',
+    siteSubtitle: 'القرآن الكريم، الحديث النبوي، الأدعية والعلوم الإسلامية الموثقة',
+    navHome: 'الرئيسية',
+    navQuran: 'القرآن الكريم',
+    navHadith: 'مكتبة الحديث',
+    navKalimas: 'الكلمات الست',
+    navDuas: 'الأدعية والأذكار',
+    navSeerah: 'السيرة النبوية',
+    navProphets: 'قصص الأنبياء',
+    navSahaba: 'صحابة رسول الله',
+    navEducation: 'التعليم الإسلامي',
+    navTools: 'أدوات إسلامية',
+    navPrayerTimes: 'مواقيت الصلاة',
+    navTasbih: 'السبحة الإلكترونية',
+    navZakat: 'حاسبة الزكاة',
+    navCalendar: 'التقويم الهجري',
+    navBookmarks: 'المحفوظات',
+    navSearch: 'بحث',
+    navLanguage: 'اللغة',
+    navTheme: 'المظهر',
+    heroTitle: 'تعلم الإسلام الصحيح بصفاء وطمأنينة',
+    heroSubtitle: 'تصفح القرآن الكريم مع الترجمات المعتمدة، ومجموعات الحديث النبوي الشريف، وأذكار الصباح والمساء، والدروس الشرعية الموثوقة.',
+    searchPlaceholder: 'ابحث عن سور، أحاديث، أدعية، أو موضوعات إسلامية...',
+    searchBtn: 'بحث',
+    quickAccessTitle: 'استكشف أركان الدين والمعرفة',
+    quickAccessSubtitle: 'مصادر موثقة من التراث الإسلامي المعتمد',
+    allSurahs: 'جميع السور',
+    allJuz: 'الأجزاء الثلاثون',
+    revelationMakki: 'مكية',
+    revelationMadani: 'مدنية',
+    versesCount: 'آيات',
+    surahNumber: 'سورة',
+    juzNumber: 'الجزء',
+    startReading: 'قراءة السورة',
+    listenAudio: 'استماع',
+    arabicText: 'النص القرآني',
+    translation: 'الترجمة',
+    transliteration: 'النطق الصوتي',
+    copyVerse: 'نسخ الآية',
+    verseCopied: 'تم نسخ الآية الكريمة!',
+    bookmarkVerse: 'حفظ الآية',
+    fontSize: 'حجم الخط',
+    aboutUs: 'من نحن',
+    sourcesAndLicensing: 'المصادر والمنهجية',
+    privacyPolicy: 'سياسة الخصوصية',
+    termsOfUse: 'شروط الاستخدام',
+    editorialPolicy: 'السياسة التحريرية',
+    contactUs: 'اتصل بنا',
+    copyrightNotice: 'موقع إسلامي موجه لخدمة الأمة ونشر العلم النافع بالحق والبرهان.',
+    disclaimer: 'المحتوى الديني في هذا الموقع مخصص للأغراض التعليمية الشرعية وفق إجماع العلماء المعتبرين، ولا يغني عن الفتوى المباشرة من المفتين المعتمدين.'
+  },
+  ur: {
+    siteTitle: 'اسلامک نالج پورٹل',
+    siteSubtitle: 'مستند قرآن، احادیث نبوی، مسنون دعائیں اور دینی تعلیمات',
+    navHome: 'صفحہ اول',
+    navQuran: 'قرآن کریم',
+    navHadith: 'احادیث کتب خانہ',
+    navKalimas: 'چھ کلمے',
+    navDuas: 'دعائیں و اذکار',
+    navSeerah: 'سیرت النبی ﷺ',
+    navProphets: 'قصص الانبیاء',
+    navSahaba: 'صحابہ کرام',
+    navEducation: 'دینی تعلیم',
+    navTools: 'اسلامی ٹولز',
+    navPrayerTimes: 'اوقات نماز',
+    navTasbih: 'ڈیجیٹل تسبیح',
+    navZakat: 'زکوٰۃ کیلکولیٹر',
+    navCalendar: 'ہجری کیلنڈر',
+    navBookmarks: 'محفوظات',
+    navSearch: 'تلاش',
+    navLanguage: 'زبان',
+    navTheme: 'تھیم',
+    heroTitle: 'مستند اسلامی علوم کو سکون و رہنمائی کے ساتھ سیکھیں',
+    heroSubtitle: 'قرآن مجید کے تمام 114 سورتوں کی تلاوت، اردو ترجمہ، صحیح بخاری و مسلم کی احادیث اور روزمرہ کے مسنون اذکار۔',
+    searchPlaceholder: 'سورہ، حدیث، دعا یا اسلامی موضوع تلاش کریں...',
+    searchBtn: 'تلاش کریں',
+    quickAccessTitle: 'دین کے بنیادی ارکان اور علوم',
+    quickAccessSubtitle: 'معتبر اور تصدیق شدہ اسلامی مآخذ سے ماخوذ مواد',
+    allSurahs: 'تمام سورتیں',
+    allJuz: '30 پارے',
+    revelationMakki: 'مکی',
+    revelationMadani: 'مدنی',
+    versesCount: 'آیات',
+    surahNumber: 'سورۃ نمبر',
+    juzNumber: 'پارہ نمبر',
+    startReading: 'سورہ پڑھیں',
+    listenAudio: 'تلاوت سنیں',
+    arabicText: 'عربی متن',
+    translation: 'ترجمہ',
+    transliteration: 'تلفظ',
+    copyVerse: 'آیت کاپی کریں',
+    verseCopied: 'آیت کاپی ہوگئی!',
+    bookmarkVerse: 'محفوظ کریں',
+    fontSize: 'فونٹ سائز',
+    aboutUs: 'ہمارے متعلق',
+    sourcesAndLicensing: 'مآخذ و طریقہ کار',
+    privacyPolicy: 'پرائیویسی پالیسی',
+    termsOfUse: 'شرائط استعمال',
+    editorialPolicy: 'ادارتی پالیسی',
+    contactUs: 'رابطہ کریں',
+    copyrightNotice: 'امت مسلمہ کی رہنمائی اور صحیح دینی تعلیمات کے فروغ کے لیے وقف۔',
+    disclaimer: 'اس ویب سائٹ پر موجود دینی معلومات تعلیمی مقاصد اور جمہور علماء کے مسلک پر مبنی ہیں۔ کسی بھی شرعی فیصلے کے لیے اپنے معتمد مفتیان کرام سے رجوع فرمائیں۔'
+  },
+  id: {
+    siteTitle: 'Portal Ilmu Islam',
+    siteSubtitle: 'Al-Quran, Hadis Shahih, Doa Harian, dan Pembelajaran Islam Otentik',
+    navHome: 'Beranda',
+    navQuran: 'Al-Qur\'an',
+    navHadith: 'Hadis',
+    navKalimas: 'Kalimat Syahadat',
+    navDuas: 'Doa & Dzikir',
+    navSeerah: 'Sirah Nabawiyah',
+    navProphets: 'Kisah Nabi',
+    navSahaba: 'Sahabat Nabi',
+    navEducation: 'Pendidikan Islam',
+    navTools: 'Alat Islami',
+    navPrayerTimes: 'Jadwal Sholat',
+    navTasbih: 'Tasbih Digital',
+    navZakat: 'Kalkulator Zakat',
+    navCalendar: 'Kalender Hijriah',
+    navBookmarks: 'Penanda',
+    navSearch: 'Cari',
+    navLanguage: 'Bahasa',
+    navTheme: 'Tema',
+    heroTitle: 'Pelajari Islam yang Sahih dengan Damai dan Kejelasan',
+    heroSubtitle: 'Jelajahi Al-Qur\'an dengan terjemahan terverifikasi Kemenag, koleksi hadits shahih, dzikir pagi & petang, serta panduan ibadah lengkap.',
+    searchPlaceholder: 'Cari Surah, Hadis, Doa, atau topik Islam...',
+    searchBtn: 'Cari',
+    quickAccessTitle: 'Pelajari Rukun & Ilmu Islam',
+    quickAccessSubtitle: 'Sumber terpercaya berdasarkan tradisi keilmuan Islam',
+    allSurahs: 'Semua Surah',
+    allJuz: '30 Juz',
+    revelationMakki: 'Makkiyyah',
+    revelationMadani: 'Madaniyyah',
+    versesCount: 'Ayat',
+    surahNumber: 'Surah',
+    juzNumber: 'Juz',
+    startReading: 'Baca Surah',
+    listenAudio: 'Dengarkan',
+    arabicText: 'Teks Arab',
+    translation: 'Terjemahan',
+    transliteration: 'Transliterasi',
+    copyVerse: 'Salin Ayat',
+    verseCopied: 'Ayat disalin!',
+    bookmarkVerse: 'Tandai Ayat',
+    fontSize: 'Ukuran Font',
+    aboutUs: 'Tentang Kami',
+    sourcesAndLicensing: 'Sumber & Metodologi',
+    privacyPolicy: 'Kebijakan Privasi',
+    termsOfUse: 'Syarat & Ketentuan',
+    editorialPolicy: 'Kebijakan Editorial',
+    contactUs: 'Hubungi Kami',
+    copyrightNotice: 'Didedikasikan untuk melayani umat Islam sedunia dengan ilmu yang sahih.',
+    disclaimer: 'Konten keagamaan di situs ini bersifat edukatif berdasarkan kesepakatan ulama mu\'tabar.'
+  },
+  tr: {
+    siteTitle: 'İslam İlim Portalı',
+    siteSubtitle: 'Kur\'an-ı Kerim, Sahih Hadisler, Günlük Dualar ve İslami Eğitim',
+    navHome: 'Ana Sayfa',
+    navQuran: 'Kur\'an-ı Kerim',
+    navHadith: 'Hadis',
+    navKalimas: 'Altı Kelime',
+    navDuas: 'Dualar ve Zikirler',
+    navSeerah: 'Siyer',
+    navProphets: 'Peygamberler',
+    navSahaba: 'Ashab-ı Kiram',
+    navEducation: 'İslami Eğitim',
+    navTools: 'İslami Araçlar',
+    navPrayerTimes: 'Namaz Vakitleri',
+    navTasbih: 'Dijital Tesbih',
+    navZakat: 'Zekat Hesaplayıcı',
+    navCalendar: 'Hicri Takvim',
+    navBookmarks: 'Yer İmleri',
+    navSearch: 'Arama',
+    navLanguage: 'Dil',
+    navTheme: 'Tema',
+    heroTitle: 'Sahih İslam İlimlerini Huzurla Öğrenin',
+    heroSubtitle: 'Diyanet onaylı meallerle Kur\'an-ı Kerim\'i okuyun, Kütüb-i Sitte hadislerini inceleyin.',
+    searchPlaceholder: 'Sure, Hadis, Dua veya konu arayın...',
+    searchBtn: 'Ara',
+    quickAccessTitle: 'İslam\'ın Temel Esasları ve İlimler',
+    quickAccessSubtitle: 'Güvenilir ve ehli sünnet kaynaklardan derlenmiş bilgiler',
+    allSurahs: 'Tüm Sureler',
+    allJuz: '30 Cüz',
+    revelationMakki: 'Mekki',
+    revelationMadani: 'Medeni',
+    versesCount: 'Ayet',
+    surahNumber: 'Sure',
+    juzNumber: 'Cüz',
+    startReading: 'Sureyi Oku',
+    listenAudio: 'Dinle',
+    arabicText: 'Arapça Metin',
+    translation: 'Meal',
+    transliteration: 'Okunuş',
+    copyVerse: 'Ayeti Kopyala',
+    verseCopied: 'Ayet kopyalandı!',
+    bookmarkVerse: 'Ayeti Kaydet',
+    fontSize: 'Yazı Boyutu',
+    aboutUs: 'Hakkımızda',
+    sourcesAndLicensing: 'Kaynaklar ve Metodoloji',
+    privacyPolicy: 'Gizlilik Politikası',
+    termsOfUse: 'Kullanım Şartları',
+    editorialPolicy: 'Yayın İlkeleri',
+    contactUs: 'İletişim',
+    copyrightNotice: 'Ümmet-i Muhammed\'e sahih İslami ilimleri ulaştırmak amacıyla hazırlanmıştır.',
+    disclaimer: 'Bu sitedeki dini bilgiler ehli sünnet alimlerinin icmaı doğrultusunda eğitim amaçlıdır.'
+  },
+  fr: {
+    siteTitle: 'Portail du Savoir Islamique',
+    siteSubtitle: 'Le Saint Coran, Hadiths Authentiques, Invocations et Enseignements',
+    navHome: 'Accueil',
+    navQuran: 'Le Saint Coran',
+    navHadith: 'Hadiths',
+    navKalimas: 'Six Kalimas',
+    navDuas: 'Invocations',
+    navSeerah: 'Sîrah',
+    navProphets: 'Prophètes',
+    navSahaba: 'Compagnons',
+    navEducation: 'Éducation',
+    navTools: 'Outils',
+    navPrayerTimes: 'Horaires de Prière',
+    navTasbih: 'Tasbih Numérique',
+    navZakat: 'Calculateur de Zakat',
+    navCalendar: 'Calendrier Hégirien',
+    navBookmarks: 'Favoris',
+    navSearch: 'Recherche',
+    navLanguage: 'Langue',
+    navTheme: 'Thème',
+    heroTitle: 'Apprenez l\'Islam Authentique en Toute Clarté',
+    heroSubtitle: 'Découvrez le Coran avec des traductions reconnues, les recueils de hadiths authentiques, et des guides pratiques.',
+    searchPlaceholder: 'Rechercher une sourate, un hadith, une doua...',
+    searchBtn: 'Rechercher',
+    quickAccessTitle: 'Les Piliers et Fondements de la Foi',
+    quickAccessSubtitle: 'Ressources authentiques fondées sur le consensus savant traditionnel',
+    allSurahs: 'Toutes les Sourates',
+    allJuz: '30 Jouz',
+    revelationMakki: 'Mecquoise',
+    revelationMadani: 'Médinoise',
+    versesCount: 'Versets',
+    surahNumber: 'Sourate',
+    juzNumber: 'Jouz',
+    startReading: 'Lire la sourate',
+    listenAudio: 'Écouter',
+    arabicText: 'Texte Arabe',
+    translation: 'Traduction',
+    transliteration: 'Phonétique',
+    copyVerse: 'Copier le verset',
+    verseCopied: 'Verset copié!',
+    bookmarkVerse: 'Enregistrer le verset',
+    fontSize: 'Taille de police',
+    aboutUs: 'À Propos',
+    sourcesAndLicensing: 'Sources & Méthodologie',
+    privacyPolicy: 'Politique de Confidentialité',
+    termsOfUse: 'Conditions d\'Utilisation',
+    editorialPolicy: 'Politique Éditoriale',
+    contactUs: 'Contactez-nous',
+    copyrightNotice: 'Dédié à la communauté musulmane avec des sources islamiques authentiques.',
+    disclaimer: 'Le contenu religieux de ce site est à vocation éducative selon le consensus savant.'
+  },
+  bn: {
+    siteTitle: 'ইসলামিক জ্ঞান পোর্টাল',
+    siteSubtitle: 'বিশুদ্ধ কুরআন, হাদিস, দুআ এবং ইসলামিক শিক্ষা',
+    navHome: 'হোম',
+    navQuran: 'পবিত্র কুরআন',
+    navHadith: 'হাদিস লাইব্রেরি',
+    navKalimas: 'ছয় কালেমা',
+    navDuas: 'দুআ ও যিকির',
+    navSeerah: 'সীরাতুন নবী ﷺ',
+    navProphets: 'নবীদের কাহিনী',
+    navSahaba: 'সাহাবায়ে কেরাম',
+    navEducation: 'ইসলামিক শিক্ষা',
+    navTools: 'ইসলামিক টুলস',
+    navPrayerTimes: 'নামাজের সময়সূচি',
+    navTasbih: 'ডিজিটাল তাসবিহ',
+    navZakat: 'যাকাত ক্যালকুলেটর',
+    navCalendar: 'হিজরি ক্যালেন্ডার',
+    navBookmarks: 'বুকমার্কস',
+    navSearch: 'অনুসন্ধান',
+    navLanguage: 'ভাষা',
+    navTheme: 'থিম',
+    heroTitle: 'প্রশান্তি ও বিশুদ্ধতার সাথে ইসলাম জানুন',
+    heroSubtitle: 'অনুমোদিত অনুবাদসহ পবিত্র কুরআন তিলাওয়াত করুন, বিশুদ্ধ হাদিস গ্রন্থসমূহ অধ্যয়ন করুন এবং নববী জীবনাদর্শ জানুন।',
+    searchPlaceholder: 'সূরা, হাদিস, দুআ বা ইসলামিক বিষয় অনুসন্ধান করুন...',
+    searchBtn: 'খুঁজুন',
+    quickAccessTitle: 'ইসলামের মূল ভিত্তি ও জ্ঞান অন্বেষণ করুন',
+    quickAccessSubtitle: 'প্রামাণ্য ইসলামিক উৎস থেকে সংকলিত বিশুদ্ধ নির্দেশিকা',
+    allSurahs: 'সকল সূরা',
+    allJuz: '৩০ পারা',
+    revelationMakki: 'মাক্কী',
+    revelationMadani: 'মাদানী',
+    versesCount: 'আয়াত',
+    surahNumber: 'সূরা',
+    juzNumber: 'পারা',
+    startReading: 'সূরা পড়ুন',
+    listenAudio: 'শুনুন',
+    arabicText: 'আরবি পাঠ',
+    translation: 'অনুবাদ',
+    transliteration: 'উচ্চারণ',
+    copyVerse: 'আয়াত কপি করুন',
+    verseCopied: 'আয়াত কপি হয়েছে!',
+    bookmarkVerse: 'বুকমার্ক করুন',
+    fontSize: 'ফন্ট সাইজ',
+    aboutUs: 'আমাদের সম্পর্কে',
+    sourcesAndLicensing: 'উৎস ও নীতিমালা',
+    privacyPolicy: 'গোপনীয়তা নীতি',
+    termsOfUse: 'ব্যবহারের শর্তাবলী',
+    editorialPolicy: 'সম্পাদকীয় নীতি',
+    contactUs: 'যোগাযোগ',
+    copyrightNotice: 'বিশুদ্ধ ইসলামিক জ্ঞানের মাধ্যমে বিশ্ব উম্মাহর সেবায় নিবেদিত।',
+    disclaimer: 'এই ওয়েবসাইটের ধর্মীয় বিষয়বস্তু প্রামাণ্য আলিমগণের সর্বসম্মত মতের ওপর ভিত্তি করে শিক্ষামূলক উদ্দেশ্যে উপস্থাপিত।'
+  },
+  hi: {
+    siteTitle: 'इस्लामिक ज्ञान पोर्टल',
+    siteSubtitle: 'प्रामाणिक क़ुरआन, हदीस, दुआएं और इस्लामी शिक्षा',
+    navHome: 'होम',
+    navQuran: 'पवित्र क़ुरआन',
+    navHadith: 'हदीस पुस्तकालय',
+    navKalimas: 'छह कलिमे',
+    navDuas: 'दुआएं व अज़कार',
+    navSeerah: 'सीरतुन्नबी ﷺ',
+    navProphets: 'पैगंबरों के किस्से',
+    navSahaba: 'सहाबा किराम',
+    navEducation: 'इस्लामी शिक्षा',
+    navTools: 'इस्लामी टूल्स',
+    navPrayerTimes: 'नमाज़ का समय',
+    navTasbih: 'डिजिटल तस्बीह',
+    navZakat: 'ज़कात कैलकुलेटर',
+    navCalendar: 'हिजरी कैलेंडर',
+    navBookmarks: 'बुकमार्क',
+    navSearch: 'खोजें',
+    navLanguage: 'भाषा',
+    navTheme: 'थीम',
+    heroTitle: 'सच्चाई और सुकून के साथ इस्लाम को समझें',
+    heroSubtitle: 'अनुवाद सहित पवित्र क़ुरआन पढ़ें, प्रामाणिक हदीसों का अध्ययन करें और पैगंबर ﷺ के जीवन को जानें।',
+    searchPlaceholder: 'सूरह, हदीस, दुआ या इस्लामी विषय खोजें...',
+    searchBtn: 'खोजें',
+    quickAccessTitle: 'इस्लाम के मुख्य स्तंभ और ज्ञान',
+    quickAccessSubtitle: 'प्रामाणिक स्रोतों से संकलित पवित्र ज्ञान',
+    allSurahs: 'सभी सूरह',
+    allJuz: '30 पारे',
+    revelationMakki: 'मक्की',
+    revelationMadani: 'मदनी',
+    versesCount: 'आयात',
+    surahNumber: 'सूरह',
+    juzNumber: 'पारा',
+    startReading: 'सूरह पढ़ें',
+    listenAudio: 'सुनें',
+    arabicText: 'अरबी पाठ',
+    translation: 'अनुवाद',
+    transliteration: 'उच्चारण',
+    copyVerse: 'आयत कॉपी करें',
+    verseCopied: 'आयत कॉपी हो गई!',
+    bookmarkVerse: 'बुकमार्क करें',
+    fontSize: 'फॉन्ट आकार',
+    aboutUs: 'हमारे बारे में',
+    sourcesAndLicensing: 'स्रोत एवं प्रमाण',
+    privacyPolicy: 'गोपनीयता नीति',
+    termsOfUse: 'नियम व शर्तें',
+    editorialPolicy: 'संपादकीय नीति',
+    contactUs: 'संपर्क करें',
+    copyrightNotice: 'प्रामाणिक इस्लामी ज्ञान के साथ उम्मत की सेवा में समर्पित।',
+    disclaimer: 'इस वेबसाइट की धार्मिक सामग्री पारंपरिक उलेमाओं की सहमति पर आधारित शैक्षिक उद्देश्यों के लिए है।'
+  },
+  ms: {
+    siteTitle: 'Portal Ilmu Islam',
+    siteSubtitle: 'Al-Quran, Hadis Sahih, Doa, dan Pendidikan Islam Autentik',
+    navHome: 'Laman Utama',
+    navQuran: 'Al-Quran Al-Karim',
+    navHadith: 'Koleksi Hadis',
+    navKalimas: 'Enam Kalimah',
+    navDuas: 'Doa & Zikir',
+    navSeerah: 'Sirah Nabawiyyah',
+    navProphets: 'Kisah Para Nabi',
+    navSahaba: 'Sahabat Nabi',
+    navEducation: 'Pendidikan Islam',
+    navTools: 'Alat Islamik',
+    navPrayerTimes: 'Waktu Solat',
+    navTasbih: 'Tasbih Digital',
+    navZakat: 'Kalkulator Zakat',
+    navCalendar: 'Kalendar Hijrah',
+    navBookmarks: 'Penanda Buku',
+    navSearch: 'Carian',
+    navLanguage: 'Bahasa',
+    navTheme: 'Tema',
+    heroTitle: 'Pelajari Islam Autentik Dengan Ketenangan & Kejelasan',
+    heroSubtitle: 'Terokai Al-Quran dengan terjemahan sahih, hadis-hadis muktabar, dan khazanah sirah Rasulullah ﷺ.',
+    searchPlaceholder: 'Cari Surah, Hadis, Doa, atau topik Islam...',
+    searchBtn: 'Cari',
+    quickAccessTitle: 'Rukun & Pengetahuan Asas Islam',
+    quickAccessSubtitle: 'Sumber sahih daripada tradisi keilmuan Islam yang diiktiraf',
+    allSurahs: 'Semua Surah',
+    allJuz: '30 Juzuk',
+    revelationMakki: 'Makkiyyah',
+    revelationMadani: 'Madaniyyah',
+    versesCount: 'Ayat',
+    surahNumber: 'Surah',
+    juzNumber: 'Juzuk',
+    startReading: 'Baca Surah',
+    listenAudio: 'Dengar',
+    arabicText: 'Teks Arab',
+    translation: 'Terjemahan',
+    transliteration: 'Transliterasi',
+    copyVerse: 'Salin Ayat',
+    verseCopied: 'Ayat telah disalin!',
+    bookmarkVerse: 'Tanda Ayat',
+    fontSize: 'Saiz Fon',
+    aboutUs: 'Tentang Kami',
+    sourcesAndLicensing: 'Sumber & Metodologi',
+    privacyPolicy: 'Dasar Privasi',
+    termsOfUse: 'Syarat Penggunaan',
+    editorialPolicy: 'Dasar Editorial',
+    contactUs: 'Hubungi Kami',
+    copyrightNotice: 'Berkhidmat untuk ummah dengan ilmu Islam yang sahih dan berautoriti.',
+    disclaimer: 'Kandungan laman web ini bertujuan pendidikan berdasarkan ijmak ulama tradisional.'
+  },
+  fa: {
+    siteTitle: 'پورتال معارف اسلامی',
+    siteSubtitle: 'قرآن کریم، احادیث صحیح، ادعیه و آموزش‌های اصیل اسلامی',
+    navHome: 'صفحه اصلی',
+    navQuran: 'قرآن کریم',
+    navHadith: 'کتابخانه حدیث',
+    navKalimas: 'کلمات شش‌گانه',
+    navDuas: 'ادعیه و اذکار',
+    navSeerah: 'سیره نبوی',
+    navProphets: 'قصص انبیاء',
+    navSahaba: 'صحابه کرام',
+    navEducation: 'معارف اسلامی',
+    navTools: 'ابزارهای اسلامی',
+    navPrayerTimes: 'اوقات شرعی',
+    navTasbih: 'تسبیح دیجیتال',
+    navZakat: 'محاسبه‌گر زکات',
+    navCalendar: 'تقویم هجری',
+    navBookmarks: 'نشانه‌ها',
+    navSearch: 'جستجو',
+    navLanguage: 'زبان',
+    navTheme: 'پوسته',
+    heroTitle: 'آشنایی با اسلام اصیل با آرامش و وضوح',
+    heroSubtitle: 'تلاوت قرآن کریم با ترجمه‌های معتبر، مطالعه احادیث صحیح و شناخت سیره پربرکت پیامبر گرامی اسلام ﷺ.',
+    searchPlaceholder: 'جستجوی سوره، حدیث، دعا یا مباحث دینی...',
+    searchBtn: 'جستجو',
+    quickAccessTitle: 'ارکان و معارف بنیادین اسلام',
+    quickAccessSubtitle: 'منابع مستند و موثق برگرفته از سنت اصیل اسلامی',
+    allSurahs: 'همه سوره‌ها',
+    allJuz: '۳۰ جزء',
+    revelationMakki: 'مکی',
+    revelationMadani: 'مدنی',
+    versesCount: 'آیات',
+    surahNumber: 'سوره',
+    juzNumber: 'جزء',
+    startReading: 'قرائت سوره',
+    listenAudio: 'استماع',
+    arabicText: 'متن عربی',
+    translation: 'ترجمه',
+    transliteration: 'آوانگاری',
+    copyVerse: 'کپی آیه',
+    verseCopied: 'آیه کپی شد!',
+    bookmarkVerse: 'نشانه‌گذاری',
+    fontSize: 'اندازه قلم',
+    aboutUs: 'درباره ما',
+    sourcesAndLicensing: 'منابع و روش‌شناسی',
+    privacyPolicy: 'حریم خصوصی',
+    termsOfUse: 'شرایط استفاده',
+    editorialPolicy: 'خط‌مشی محتوایی',
+    contactUs: 'تماس با ما',
+    copyrightNotice: 'وقف خدمت به امت اسلامی با ارائه معارف ناب و مستند.',
+    disclaimer: 'محتوای این پایگاه جنبه آموزشی دارد و مبتنی بر اجماع علمای مسلمان است.'
+  },
+  es: {
+    siteTitle: 'Portal de Conocimiento Islámico',
+    siteSubtitle: 'El Sagrado Corán, Hadices Auténticos, Súplicas y Educación Islámica',
+    navHome: 'Inicio',
+    navQuran: 'El Sagrado Corán',
+    navHadith: 'Biblioteca de Hadices',
+    navKalimas: 'Las Seis Kalimas',
+    navDuas: 'Súplicas y Adhkar',
+    navSeerah: 'La Seerah del Profeta',
+    navProphets: 'Historias de los Profetas',
+    navSahaba: 'Los Nobles Sahaba',
+    navEducation: 'Educación Islámica',
+    navTools: 'Herramientas',
+    navPrayerTimes: 'Horarios de Oración',
+    navTasbih: 'Tasbih Digital',
+    navZakat: 'Calculadora de Zakat',
+    navCalendar: 'Calendario Hijri',
+    navBookmarks: 'Marcadores',
+    navSearch: 'Buscar',
+    navLanguage: 'Idioma',
+    navTheme: 'Tema',
+    heroTitle: 'Aprenda el Islam Auténtico con Paz y Claridad',
+    heroSubtitle: 'Lea el Sagrado Corán con traducciones verificadas, estudie las colecciones de Hadices auténticos y explore el legado del Profeta Muhammad ﷺ.',
+    searchPlaceholder: 'Buscar suras, hadices, súplicas o temas islámicos...',
+    searchBtn: 'Buscar',
+    quickAccessTitle: 'Pilares y Conocimiento Fundamental',
+    quickAccessSubtitle: 'Recursos verificados procedentes de fuentes tradicionales islámicas',
+    allSurahs: 'Todas las Suras',
+    allJuz: '30 Juz',
+    revelationMakki: 'Mequí',
+    revelationMadani: 'Mediní',
+    versesCount: 'Aleyas',
+    surahNumber: 'Sura',
+    juzNumber: 'Juz',
+    startReading: 'Leer Sura',
+    listenAudio: 'Escuchar',
+    arabicText: 'Texto Árabe',
+    translation: 'Traducción',
+    transliteration: 'Transliteración',
+    copyVerse: 'Copiar Aleya',
+    verseCopied: '¡Aleya copiada!',
+    bookmarkVerse: 'Guardar Aleya',
+    fontSize: 'Tamaño de Letra',
+    aboutUs: 'Sobre Nosotros',
+    sourcesAndLicensing: 'Fuentes y Metodología',
+    privacyPolicy: 'Política de Privacidad',
+    termsOfUse: 'Términos de Uso',
+    editorialPolicy: 'Política Editorial',
+    contactUs: 'Contacto',
+    copyrightNotice: 'Dedicado a servir a la comunidad con conocimiento islámico auténtico.',
+    disclaimer: 'El contenido religioso de este sitio tiene fines educativos según el consenso de los eruditos tradicionales.'
+  }
+};
+
+class I18nManager {
+  constructor() {
+    let saved = 'en';
+    try {
+      if (typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function') {
+        saved = localStorage.getItem('islamic_portal_lang') || 'en';
+      }
+    } catch (e) {
+      saved = 'en';
+    }
+    this.currentLang = saved;
+    if (!LANGUAGES.some(l => l.code === this.currentLang)) {
+      this.currentLang = 'en';
+    }
+    this.listeners = [];
+    this.domSnapshotted = false;
+
+    // Snapshot English DOM on load
+    if (typeof document !== 'undefined') {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.snapshotDefaultDOM());
+      } else {
+        this.snapshotDefaultDOM();
+      }
+    }
+  }
+
+  snapshotDefaultDOM() {
+    if (this.domSnapshotted || typeof document === 'undefined') return;
+    const elements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder], [data-i18n-title]');
+    elements.forEach(el => {
+      if (!el.dataset.i18nDefaultHtml) {
+        el.dataset.i18nDefaultHtml = el.innerHTML;
+      }
+      if (!el.dataset.i18nDefaultText) {
+        el.dataset.i18nDefaultText = el.textContent;
+      }
+      if (el.placeholder && !el.dataset.i18nDefaultPlaceholder) {
+        el.dataset.i18nDefaultPlaceholder = el.placeholder;
+      }
+      if (el.title && !el.dataset.i18nDefaultTitle) {
+        el.dataset.i18nDefaultTitle = el.title;
+      }
+    });
+    this.domSnapshotted = true;
+  }
+
+  init() {
+    this.snapshotDefaultDOM();
+    this.applyLanguage(this.currentLang, false);
+  }
+
+  getLanguageInfo(code = this.currentLang) {
+    return LANGUAGES.find(l => l.code === code) || LANGUAGES.find(l => l.code === 'en');
+  }
+
+  getUISelectableLanguages() {
+    return LANGUAGES.filter(l => l.coverage === 'verified');
+  }
+
+  getAuthorizedPartialLanguages() {
+    return LANGUAGES.filter(l => l.coverage === 'authorized_partial');
+  }
+
+  getAllLanguages() {
+    return LANGUAGES;
+  }
+
+  setLanguage(code) {
+    if (!LANGUAGES.some(l => l.code === code)) return;
+    this.currentLang = code;
+    try {
+      if (typeof localStorage !== 'undefined' && typeof localStorage.setItem === 'function') {
+        localStorage.setItem('islamic_portal_lang', code);
+      }
+    } catch (e) {}
+    this.applyLanguage(code, true);
+  }
+
+  resetToDefault() {
+    try {
+      if (typeof localStorage !== 'undefined' && typeof localStorage.removeItem === 'function') {
+        localStorage.removeItem('islamic_portal_lang');
+      }
+    } catch (e) {}
+    this.setLanguage('en');
+  }
+
+  applyLanguage(code, notify = true) {
+    const info = this.getLanguageInfo(code);
+    if (typeof document !== 'undefined') {
+      // REQUIREMENT: Global website interface, navbar, header, footer, search, and layout
+      // MUST ALWAYS REMAIN ENGLISH AND LTR.
+      document.documentElement.lang = 'en';
+      document.documentElement.dir = 'ltr';
+      document.documentElement.setAttribute('data-content-lang', code);
+
+      // Translate designated content areas only while preserving global interface in English
+      this.translateDOM();
+
+      // Apply scoped RTL direction and localized styling to content blocks only
+      this.applyScopedContentDirection(code, info);
+    }
+
+    if (notify) {
+      this.listeners.forEach(cb => cb(code, info));
+    }
+  }
+
+  applyScopedContentDirection(code, info) {
+    if (typeof document === 'undefined') return;
+    const isRtl = info && info.dir === 'rtl';
+
+    // Target content containers only — NEVER navbar, header, footer, or global navigation
+    const contentContainers = document.querySelectorAll(
+      '.content-area, .editorial-content-body, .article-content, .card-content-body, .localized-content-scope, .hero-content'
+    );
+
+    contentContainers.forEach(container => {
+      if (code === 'en') {
+        container.removeAttribute('dir');
+        container.classList.remove('rtl-content', 'urdu-content-block', 'arabic-content-block');
+      } else if (isRtl) {
+        container.setAttribute('dir', 'rtl');
+        container.classList.add('rtl-content');
+        if (code === 'ur') container.classList.add('urdu-content-block');
+        if (code === 'ar') container.classList.add('arabic-content-block');
+      } else {
+        container.setAttribute('dir', 'ltr');
+        container.classList.remove('rtl-content', 'urdu-content-block', 'arabic-content-block');
+      }
+    });
+  }
+
+  translateDOM() {
+    if (typeof document === 'undefined') return;
+
+    // Ensure default DOM is snapshotted before any translation
+    this.snapshotDefaultDOM();
+
+    const elements = document.querySelectorAll('[data-i18n]');
+
+    // Known global interface keys that MUST ALWAYS REMAIN ENGLISH
+    const globalUIKeys = new Set([
+      'siteTitle', 'siteSubtitle',
+      'navHome', 'navQuran', 'navHadith', 'navKalimas', 'navDuas', 'navSeerah',
+      'navProphets', 'navSahaba', 'navEducation', 'navTools', 'navPrayerTimes',
+      'navTasbih', 'navZakat', 'navCalendar', 'navBookmarks', 'navSearch',
+      'navLanguage', 'navTheme', 'navWorship', 'navApp',
+      'aboutUs', 'sourcesAndLicensing', 'privacyPolicy', 'termsOfUse',
+      'editorialPolicy', 'contactUs', 'copyrightNotice', 'disclaimer',
+      'searchPlaceholder', 'searchBtn'
+    ]);
+
+    // Check if element belongs to the global interface
+    const isGlobalUIElement = (el, key) => {
+      if (globalUIKeys.has(key)) return true;
+      if (el.closest('.site-header, header, .desktop-nav, nav, .mobile-drawer, .bottom-nav, .site-footer, footer, #language-modal, #search-modal, .sticky-toc-wrapper, .header-actions')) {
+        return true;
+      }
+      return false;
+    };
+
+    // If English, directly restore native DOM snapshot for 100% fidelity
+    if (this.currentLang === 'en') {
+      elements.forEach(el => {
+        if (el.tagName === 'INPUT' && el.type === 'text') {
+          if (el.dataset.i18nDefaultPlaceholder) {
+            el.placeholder = el.dataset.i18nDefaultPlaceholder;
+          }
+        } else if (el.dataset.i18nDefaultHtml) {
+          el.innerHTML = el.dataset.i18nDefaultHtml;
+        } else if (el.dataset.i18nDefaultText) {
+          el.textContent = el.dataset.i18nDefaultText;
+        }
+      });
+      return;
+    }
+
+    // Otherwise translate designated content areas ONLY
+    elements.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+
+      // CRITICAL: Global interface elements must remain in English!
+      if (isGlobalUIElement(el, key)) {
+        if (el.dataset.i18nDefaultHtml) {
+          el.innerHTML = el.dataset.i18nDefaultHtml;
+        } else if (el.dataset.i18nDefaultText) {
+          el.textContent = el.dataset.i18nDefaultText;
+        }
+        return;
+      }
+
+      // SACRED SCRIPTURE INVARIANCE: Never mutate Arabic scripture
+      if (el.getAttribute('translate') === 'no' || el.classList.contains('font-arabic') || el.classList.contains('font-quran') || el.getAttribute('lang') === 'ar') {
+        return;
+      }
+
+      const text = this.t(key);
+      if (!text) return;
+
+      if (el.tagName === 'INPUT' && el.getAttribute('type') === 'text') {
+        el.placeholder = text;
+      } else {
+        // Preserve child elements (such as .dropdown-caret, .search-kbd, badges, SVGs)
+        if (el.children && el.children.length > 0) {
+          let textNode = null;
+          for (let i = 0; i < el.childNodes.length; i++) {
+            const node = el.childNodes[i];
+            if (node.nodeType === 3 && node.nodeValue && node.nodeValue.trim().length > 0) {
+              textNode = node;
+              break;
+            }
+          }
+
+          if (textNode) {
+            const leading = textNode.nodeValue.match(/^\s*/)[0];
+            const trailing = textNode.nodeValue.match(/\s*$/)[0];
+            textNode.nodeValue = leading + text + (trailing || ' ');
+          } else {
+            const caret = el.querySelector('.dropdown-caret');
+            if (caret) {
+              const caretHtml = caret.outerHTML;
+              el.innerHTML = text + ' ' + caretHtml;
+            } else {
+              el.textContent = text;
+            }
+          }
+        } else {
+          el.textContent = text;
+        }
+      }
+    });
+  }
+
+  t(key) {
+    const langDict = TRANSLATIONS[this.currentLang] || {};
+    if (langDict[key]) return langDict[key];
+    const enDict = TRANSLATIONS.en || {};
+    return enDict[key] || key;
+  }
+
+  formatNumber(num) {
+    try {
+      return new Intl.NumberFormat(this.currentLang).format(num);
+    } catch {
+      return String(num);
+    }
+  }
+
+  subscribe(callback) {
+    this.listeners.push(callback);
+    return () => {
+      this.listeners = this.listeners.filter(cb => cb !== callback);
+    };
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.I18n = new I18nManager();
+} else if (typeof global !== 'undefined') {
+  global.I18n = new I18nManager();
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { I18nManager, LANGUAGES, TRANSLATIONS };
+}

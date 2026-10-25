@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astronomical Islamic Prayer Times — Solar Calculations, Fiqh & Twilight Angles</title>
+  <meta name="description" content="Calculate accurate daily Islamic prayer times (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha) worldwide. Learn the astronomical definitions, twilight angles (18° vs 15°), Hanafi Asr calculation, high-latitude rulings, and forbidden times.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0F5132">
+  <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/prayer-times.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Islamic Knowledge Portal">
+  <meta property="og:url" content="https://jjjffdfde.github.io/NoorDeen/prayer-times.html">
+  <meta property="og:title" content="Astronomical Islamic Prayer Times & Complete Fiqh Guide">
+  <meta property="og:description" content="Calculate accurate daily Islamic prayer times worldwide with solar geometry, shadow calculations, and juristic analysis.">
+  <meta property="og:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Astronomical Islamic Prayer Times & Fiqh Guide">
+  <meta name="twitter:description" content="Accurate prayer calculations, twilight angles, and juristic rulings worldwide.">
+  <meta name="twitter:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://jjjffdfde.github.io/NoorDeen/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://jjjffdfde.github.io/NoorDeen/prayer-times.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Prayer Times",
+        "item": "https://jjjffdfde.github.io/NoorDeen/prayer-times.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema for AdSense & Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between the 18-degree and 15-degree Fajr calculation angle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 18-degree angle represents astronomical twilight (when the sun is 18 degrees below the horizon), adopted by the Muslim World League, Umm Al-Qura, and Egyptian General Authority of Survey as the onset of true dawn (Subh Sadiq). The 15-degree angle represents marine twilight (sun 15 degrees below horizon), utilized by ISNA in North America to prevent hardship and allow later Fajr times during seasonal extremes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do Hanafi and Standard (Shafi'i/Maliki/Hanbali) Asr times differ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In the Shafi'i, Maliki, and Hanbali schools (Mithl 1), Asr begins when the shadow of an upright object equals its original height plus the shadow at solar noon (Zawal). In the Hanafi school (Mithl 2), Imam Abu Hanifah determined that Asr begins when the shadow equals twice the height of the object plus the shadow at solar noon, causing Hanafi Asr to commence approximately 45–60 minutes later."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the three forbidden times for prayer (Auqat-e-Mamnoo'ah)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Prophet ﷺ forbade praying voluntary prayers during three specific astronomical windows (Sahih Muslim #831): (1) When the sun is rising until it ascends above the horizon by the height of a spear (approx. 15–20 minutes after sunrise); (2) When the sun is directly at its zenith (Istiwā') at solar noon until it declines; and (3) When the sun turns pale yellow approaching sunset until it has completely vanished."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are prayer times calculated in extreme northern or southern high latitudes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In high-latitude regions (above 48°–66° N/S) where twilight persists through summer nights and true dawn never appears, contemporary Islamic Fiqh academies mandate estimation (Taqdeer) using one of three valid methods: (1) Nearest Latitude: borrowing prayer timings from the nearest city at 45° latitude; (2) Middle of the Night: dividing the night between Maghrib and Sunrise in half; or (3) One-Seventh: designating the last 1/7th of the night for Fajr."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between True Dawn (Subh Sadiq) and False Dawn (Subh Kadhib)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The False Dawn (Subh Kadhib) is a vertical column of zodiacal light in the eastern horizon followed by darkness, during which eating Suhoor is still permissible and Fajr cannot be prayed. The True Dawn (Subh Sadiq) is a horizontal band of white light spreading horizontally along the horizon, marking the obligatory beginning of Fajr prayer and the start of fasting."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+    <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div class="logo-text-wrapper">
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle" data-i18n="siteSubtitle">Sacred Islamic Library & Tools</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+
+          <!-- Quran Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navQuran">Holy Quran</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="quran.html" class="nav-dropdown-item">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html" class="nav-dropdown-item">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+
+          <!-- Hadith & Duas Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navHadith">Hadith & Duas</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
+              <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
+            </div>
+          </li>
+
+          <!-- Worship Guides Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
+              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+
+          <!-- Tools Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navTools">Islamic Tools</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="prayer-times.html" class="nav-dropdown-item">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html" class="nav-dropdown-item">💰 Zakat Calculation Engine</a>
+              <a href="tasbih.html" class="nav-dropdown-item">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
+            </div>
+          </li>
+
+          <!-- App Pill -->
+          <li class="nav-item">
+            <a href="download-app.html" class="nav-app-pill">
+              <span>📱</span> <span data-i18n="navApp">App</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text" data-i18n="navSearch">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 48px 0; text-align: center;">
+    <div class="container">
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.12); border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: var(--color-gold); margin-bottom: 12px;">
+        إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا
+      </div>
+      <h1 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 12px;">Astronomical Islamic Prayer Times</h1>
+      <p style="color: #D1D5DB; max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
+        "Verily, the prayer is enjoined upon the believers at prescribed times." (Surah An-Nisa 4:103). Computed via astronomical solar positioning algorithms for every latitude and longitude across the globe.
+      </p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 950px;">
+    
+    <!-- Advanced Prayer Settings Bar -->
+    <div class="card" style="margin-bottom: 24px; padding: 20px; width: 100%; box-sizing: border-box;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
+        <!-- City Select -->
+        <div>
+          <label for="city-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">📍 Location / City:</label>
+          <select id="city-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="24.8607,67.0011,5,Asia/Karachi,Karachi">Karachi (Pakistan)</option>
+            <option value="31.5204,74.3587,5,Asia/Karachi,Lahore">Lahore (Pakistan)</option>
+            <option value="33.6844,73.0479,5,Asia/Karachi,Islamabad" selected>Islamabad (Pakistan)</option>
+            <option value="32.1877,74.1945,5,Asia/Karachi,Gujranwala">Gujranwala (Pakistan)</option>
+            <option value="30.1575,71.4524,5,Asia/Karachi,Multan">Multan (Pakistan)</option>
+            <option value="34.0151,71.5249,5,Asia/Karachi,Peshawar">Peshawar (Pakistan)</option>
+            <option value="30.1798,66.9750,5,Asia/Karachi,Quetta">Quetta (Pakistan)</option>
+            <option value="21.4225,39.8262,3,Asia/Riyadh,Makkah">Makkah al-Mukarramah (Saudi Arabia)</option>
+            <option value="24.4686,39.6142,3,Asia/Riyadh,Madinah">Madinah al-Munawwarah (Saudi Arabia)</option>
+            <option value="31.7683,35.2137,3,Asia/Jerusalem,Al-Quds">Al-Quds / Jerusalem</option>
+            <option value="30.0444,31.2357,2,Africa/Cairo,Cairo">Cairo (Egypt)</option>
+            <option value="23.8103,90.4125,6,Asia/Dhaka,Dhaka">Dhaka (Bangladesh)</option>
+            <option value="-6.2088,106.8456,7,Asia/Jakarta,Jakarta">Jakarta (Indonesia)</option>
+            <option value="3.1390,101.6869,8,Asia/Kuala_Lumpur,Kuala Lumpur">Kuala Lumpur (Malaysia)</option>
+            <option value="41.0082,28.9784,3,Europe/Istanbul,Istanbul">Istanbul (Turkey)</option>
+            <option value="25.2048,55.2708,4,Asia/Dubai,Dubai">Dubai (UAE)</option>
+            <option value="25.2854,51.5310,3,Asia/Qatar,Doha">Doha (Qatar)</option>
+            <option value="24.7136,46.6753,3,Asia/Riyadh,Riyadh">Riyadh (Saudi Arabia)</option>
+            <option value="51.5074,-0.1278,0,Europe/London,London">London (UK)</option>
+            <option value="48.8566,2.3522,1,Europe/Paris,Paris">Paris (France)</option>
+            <option value="43.6532,-79.3832,-5,America/Toronto,Toronto">Toronto (Canada)</option>
+            <option value="40.7128,-74.0060,-5,America/New_York,New York">New York (USA)</option>
+            <option value="-33.8688,151.2093,10,Australia/Sydney,Sydney">Sydney (Australia)</option>
+            <option value="35.6762,139.6503,9,Asia/Tokyo,Tokyo">Tokyo (Japan)</option>
+          </select>
+        </div>
+
+        <!-- Date Select -->
+        <div>
+          <label for="date-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">📅 Selected Calendar Date:</label>
+          <input type="date" id="date-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%; box-sizing: border-box;">
+        </div>
+
+        <!-- Calculation Method -->
+        <div>
+          <label for="method-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">📐 Calculation Method:</label>
+          <select id="method-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="karachi" selected>Univ. of Islamic Sciences, Karachi (18°/18°)</option>
+            <option value="mwl">Muslim World League (18°/17°)</option>
+            <option value="makkah">Umm Al-Qura, Makkah (18.5° / +90m)</option>
+            <option value="isna">ISNA — North America (15°/15°)</option>
+            <option value="egypt">Egyptian General Authority (19.5°/17.5°)</option>
+            <option value="tehran">Univ. of Tehran Geophysics (17.7°/14°)</option>
+          </select>
+        </div>
+
+        <!-- Asr Juristic Method -->
+        <div>
+          <label for="asr-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">⚖️ Asr Juristic School:</label>
+          <select id="asr-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="hanafi" selected>Hanafi (Shadow = 2x + Noon)</option>
+            <option value="standard">Standard / Shafi'i / Maliki / Hanbali (Shadow = 1x)</option>
+          </select>
+        </div>
+
+        <!-- High Latitude Rule -->
+        <div>
+          <label for="highlat-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">🌐 High Latitude Rule:</label>
+          <select id="highlat-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="nightMiddle" selected>Middle of the Night (Nisf al-Layl)</option>
+            <option value="oneSeventh">One-Seventh of the Night (Sub' al-Layl)</option>
+            <option value="angleBased">Angle-Based Estimation (Taqdeer)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--color-border); padding-top: 14px;">
+        <button id="detect-location-btn" class="btn btn-primary" style="padding: 9px 16px; font-weight: 700; font-size: 0.88rem;">
+          📍 Auto-Detect My GPS Location
+        </button>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
+          <label for="toggle-format" style="font-weight: 600; cursor: pointer;">Time Format:</label>
+          <select id="toggle-format" class="btn btn-outline" style="background-color: var(--color-surface); padding: 6px 10px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+            <option value="12" selected>12-Hour (AM / PM)</option>
+            <option value="24">24-Hour (Military)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Method & Next Prayer Notification Card -->
+    <div id="prayer-status-card" class="card" style="margin-bottom: 24px; padding: 18px 22px; background: var(--color-surface); border-left: 4px solid var(--color-primary); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+      <div>
+        <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700; letter-spacing: 0.05em;">Upcoming Prayer Window</div>
+        <div id="next-prayer-title" style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); margin-top: 2px;">Dhuhr</div>
+        <div id="active-location-meta" style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 4px;">📍 Islamabad, Pakistan • Timezone: UTC+5 (Asia/Karachi)</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Calendar Date: <strong id="active-date-label" style="color: var(--color-text-main);">Today</strong></div>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 3px;">Method: <strong id="active-method-label" style="color: var(--color-text-main);">Univ. of Karachi (18°/18°)</strong></div>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 3px;">Asr School: <strong id="active-asr-label" style="color: var(--color-text-main);">Hanafi (2x shadow)</strong></div>
+      </div>
+    </div>
+
+    <!-- Prayer Times Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 50px;">
+      
+      <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
+        <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">الفجر</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Fajr (Dawn)</div>
+        <div id="time-fajr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">04:57 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">True Dawn (18° Below Horizon)</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid #D97706; padding: 24px;">
+        <div style="font-size: 1.1rem; color: #D97706; font-weight: 700;" class="font-arabic">الشروق</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: #D97706; margin: 6px 0;">Sunrise (Shuruq)</div>
+        <div id="time-sunrise" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">06:20 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Upper Limb Appears on Horizon</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid var(--color-danger); padding: 24px;">
+        <div style="font-size: 1.1rem; color: var(--color-danger); font-weight: 700;" class="font-arabic">وقت الاستواء (المكروه)</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-danger); margin: 6px 0;">Prohibited Zenith Window (Istiwa')</div>
+        <div id="time-zawal" style="font-size: 1.9rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:42 AM – 11:52 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-danger); font-weight: 700; margin-top: 6px;">⚠️ Voluntary Prayers Prohibited (~10m until Dhuhr)</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
+        <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">الظهر / الزوال</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Solar Noon / Dhuhr Begins (Zawal)</div>
+        <div id="time-dhuhr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:52 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Sun Declines from Meridian (Zawal begins Dhuhr)</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
+        <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">العصر</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Asr (Afternoon)</div>
+        <div id="time-asr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">03:45 PM</div>
+        <div id="asr-card-subtext" style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Hanafi: Shadow = 2x + Solar Noon</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid #B45309; padding: 24px;">
+        <div style="font-size: 1.1rem; color: #B45309; font-weight: 700;" class="font-arabic">المغرب</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: #B45309; margin: 6px 0;">Maghrib (Sunset)</div>
+        <div id="time-maghrib" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">05:23 PM</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Solar Disc Completely Disappears</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary-dark); padding: 24px;">
+        <div style="font-size: 1.1rem; color: var(--color-primary-dark); font-weight: 700;" class="font-arabic">العشاء</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary-dark); margin: 6px 0;">Isha (Night)</div>
+        <div id="time-isha" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">06:47 PM</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Disappearance of Red Evening Twilight</div>
+      </div>
+
+    </div>
+
+    <!-- Deep Editorial Content (AdSense High-Value Compliance) -->
+    <article style="border-top: 2px solid var(--color-border); padding-top: 48px;">
+      
+      <div style="text-align: center; margin-bottom: 36px;">
+        <h2 style="font-size: 1.9rem; color: var(--color-primary); font-weight: 800; margin-bottom: 10px;">
+          The Science of Astronomical Solar Calculations in Islam
+        </h2>
+        <p style="color: var(--color-text-muted); max-width: 680px; margin: 0 auto; font-size: 1rem;">
+          How classical Muslim astronomers harmonized celestial solar mechanics with prophetic juristic mandates.
+        </p>
+      </div>
+
+      <!-- Section: Celestial Mechanics of Prayer Times -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          Astronomical Criteria for the Five Daily Prayers
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px;">
+          Unlike civil time which follows arbitrary artificial time zones, Islamic prayer times are strictly governed by the celestial mechanics of the sun relative to an observer's exact geographic coordinates:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="card" style="padding: 16px; border-left: 4px solid var(--color-primary);">
+            <h4 style="color: var(--color-primary); margin-bottom: 4px;">Fajr (True Dawn — Subh Sadiq):</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-main);">
+              Astronomically defined when the center of the solar disc is between <strong>18° and 19.5° below the eastern horizon</strong> (astronomical twilight). At this juncture, scattering of sunlight across the upper atmosphere produces a distinct horizontal band of white light spanning the horizon.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 16px; border-left: 4px solid #D97706;">
+            <h4 style="color: #D97706; margin-bottom: 4px;">Sunrise (Shuruq):</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-main);">
+              The exact moment the upper limb of the sun touches the eastern horizon. End of Fajr prayer time; voluntary prayers become forbidden until the sun ascends.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 16px; border-left: 4px solid var(--color-primary);">
+            <h4 style="color: var(--color-primary); margin-bottom: 4px;">Dhuhr (Solar Noon & Zawal):</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-main);">
+              Commences immediately after <strong>Zawal</strong>, the moment the sun passes the meridian (its highest point in the sky) and begins its downward trajectory toward the west.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 16px; border-left: 4px solid var(--color-primary);">
+            <h4 style="color: var(--color-primary); margin-bottom: 4px;">Asr (Shadow Proportions):</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-main);">
+              • <strong>Mithl 1 (Majority: Shafi'i, Maliki, Hanbali):</strong> Begins when the shadow of an upright object equals its height plus noon shadow.
+              <br>• <strong>Mithl 2 (Hanafi):</strong> Begins when the shadow equals twice the height of the object plus noon shadow.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 16px; border-left: 4px solid #B45309;">
+            <h4 style="color: #B45309; margin-bottom: 4px;">Maghrib (Sunset — Ghurub):</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-main);">
+              Occurs the instant the entire solar disc vanishes below the western horizon. Fasting is broken immediately, and Maghrib prayer commences.
+            </p>
+          </div>
+
+          <div class="card" style="padding: 16px; border-left: 4px solid var(--color-primary-dark);">
+            <h4 style="color: var(--color-primary-dark); margin-bottom: 4px;">Isha (Disappearance of Twilight — Shafaq):</h4>
+            <p style="font-size: 0.9rem; line-height: 1.7; color: var(--color-text-main);">
+              Occurs when the afterglow of sunset vanishes from the sky (sun 15° to 18° below the western horizon). In the Hanafi school (according to Imam Abu Hanifah), it is when the white twilight vanishes; according to the Two Companions (Abu Yusuf and Muhammad) and majority jurists, it is when the red twilight vanishes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: International Calculation Conventions -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          Global Astronomical Calculation Conventions Compared
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px;">
+          Because the twilight angles vary with atmospheric clarity and latitude, international Islamic astronomy authorities have established localized parameters:
+        </p>
+
+        <div style="overflow-x: auto; margin-bottom: 18px;">
+          <table style="width: 100%; border-collapse: collapse; background: var(--color-card); border: 1px solid var(--color-border); font-size: 0.88rem;">
+            <thead>
+              <tr style="background: var(--color-surface); border-bottom: 2px solid var(--color-primary); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--color-primary);">Authority / Convention</th>
+                <th style="padding: 10px 14px; color: var(--color-primary);">Fajr Angle</th>
+                <th style="padding: 10px 14px; color: var(--color-primary);">Isha Angle / Interval</th>
+                <th style="padding: 10px 14px; color: var(--color-primary);">Primary Geographical Adoption</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--color-border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">Univ. of Islamic Sciences, Karachi</td>
+                <td style="padding: 10px 14px;">18.0°</td>
+                <td style="padding: 10px 14px;">18.0°</td>
+                <td style="padding: 10px 14px; color: var(--color-text-muted);">Pakistan, India, Bangladesh, Afghanistan</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border-subtle); background: var(--color-surface);">
+                <td style="padding: 10px 14px; font-weight: 700;">Muslim World League (MWL)</td>
+                <td style="padding: 10px 14px;">18.0°</td>
+                <td style="padding: 10px 14px;">17.0°</td>
+                <td style="padding: 10px 14px; color: var(--color-text-muted);">Europe, Far East, Global Standard</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">Umm al-Qura, Makkah</td>
+                <td style="padding: 10px 14px;">18.5°</td>
+                <td style="padding: 10px 14px;">+90 min (+120m Ramadan)</td>
+                <td style="padding: 10px 14px; color: var(--color-text-muted);">Saudi Arabia, Arabian Gulf States</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border-subtle); background: var(--color-surface);">
+                <td style="padding: 10px 14px; font-weight: 700;">Egyptian General Authority of Survey</td>
+                <td style="padding: 10px 14px;">19.5°</td>
+                <td style="padding: 10px 14px;">17.5°</td>
+                <td style="padding: 10px 14px; color: var(--color-text-muted);">Egypt, North Africa, Levant, Malaysia</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--color-border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">Islamic Society of North America (ISNA)</td>
+                <td style="padding: 10px 14px;">15.0°</td>
+                <td style="padding: 10px 14px;">15.0°</td>
+                <td style="padding: 10px 14px; color: var(--color-text-muted);">United States, Canada</td>
+              </tr>
+              <tr style="background: var(--color-surface);">
+                <td style="padding: 10px 14px; font-weight: 700;">French Muslims (UOIF / EMF)</td>
+                <td style="padding: 10px 14px;">12.0°</td>
+                <td style="padding: 10px 14px;">12.0°</td>
+                <td style="padding: 10px 14px; color: var(--color-text-muted);">France, Extreme Western Europe</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section: The 3 Forbidden Times -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: #DC2626; margin-bottom: 12px;">
+          The Three Forbidden Times for Prayer (Auqat-e-Mamnoo'ah)
+        </h3>
+        <div class="card" style="border-left: 4px solid #DC2626; padding: 20px;">
+          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 10px;">
+            Uqbah ibn Amir (RA) reported: <em>"There are three times during which the Messenger of Allah ﷺ forbade us to pray or to bury our dead: (1) When the sun begins to rise until it is fully risen; (2) When the sun is at its height at midday until it passes the meridian; and (3) When the sun draws near to setting until it sets."</em> (Sahih Muslim #831).
+          </p>
+          <ul style="padding-left: 20px; font-size: 0.9rem; line-height: 1.8; color: var(--color-text-muted);">
+            <li><strong>Sunrise:</strong> Approximately 15 to 20 minutes following the sunrise time displayed on schedules.</li>
+            <li><strong>Midday Peak (Istiwa'):</strong> Approximately 5 to 10 minutes prior to the start of Dhuhr.</li>
+            <li><strong>Sunset:</strong> When the sun turns reddish-orange and pale (approx. 15–20 minutes prior to Maghrib). However, if someone has not yet prayed Asr of that day, they must pray it immediately even during this time.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section: High-Latitude Rulings -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          High-Latitude Calculations (Midnight Sun & Persistent Twilight)
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
+          In extreme northern and southern latitudes (e.g. Scandinavia, Scotland, Alaska, Canada, and Russia) during summer months, the sun never dips far enough below the horizon to produce astronomical darkness (the sun stays within 18° of the horizon all night).
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main);">
+          The Islamic Fiqh Academy of the Muslim World League and the European Council for Fatwa and Research (ECFR) resolved that communities residing where true dawn or true twilight ceases must estimate their prayer times (<em>Taqdeer</em>). Accepted methods include using the <strong>Nearest Latitude (Aqrab al-Bilad)</strong> at 45° latitude, or applying the <strong>Middle of the Night (Nisf al-Layl)</strong> principle where the interval between Maghrib and sunrise is split evenly.
+        </p>
+      </section>
+
+      <!-- Section: FAQs -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 14px;">
+          Frequently Asked Questions About Prayer Times
+        </h3>
+        <div class="accordion-faq-group">
+          <details class="faq-card" open>
+            <summary class="faq-summary">What is the difference between 18° and 15° Fajr calculation?</summary>
+            <div class="faq-content">
+              <p>The 18-degree angle represents astronomical twilight (when the sun is 18 degrees below the horizon), adopted by the Muslim World League and Umm Al-Qura as true dawn (Subh Sadiq). The 15-degree angle represents marine twilight, used by ISNA in North America to prevent seasonal hardship during short summer nights.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">Why do Hanafi and Standard Asr times differ?</summary>
+            <div class="faq-content">
+              <p>In the Shafi'i, Maliki, and Hanbali schools (Mithl 1), Asr begins when the shadow equals the object's height plus noon shadow. In the Hanafi school (Mithl 2), Asr begins when the shadow equals twice the object's height plus noon shadow, occurring about 45–60 minutes later.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">What are the three forbidden times for voluntary prayers?</summary>
+            <div class="faq-content">
+              <p>The three windows are: (1) During sunrise until 15–20 minutes after; (2) At exact solar noon (Istiwā') when the sun is at its apex; and (3) In the final 15–20 minutes before sunset when the sun turns pale yellow.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">How are prayer times calculated in extreme high latitudes?</summary>
+            <div class="faq-content">
+              <p>Where twilight persists all night, scholars mandate estimation (Taqdeer) using the Nearest Latitude method (borrowing times from 45° latitude), the Middle of the Night method, or the One-Seventh of the night rule.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Bottom Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-bottom" data-ad-slot="portal_bottom_leaderboard" style="display: none; min-height: 90px; margin: 20px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="logo-group" style="margin-bottom: 15px;">
+          <div class="logo-icon">☪</div>
+          <div>
+            <div class="logo-text-title" style="color: #fff;">Islamic Knowledge Portal</div>
+            <div class="logo-text-subtitle">Digital Islamic Library</div>
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.75);">
+          An authentic, multilingual platform dedicated to providing verified Islamic knowledge according to the Quran and Sunnah.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Prayer & Worship</h4>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">Five Daily Prayers</a></li>
+          <li><a href="wudu-guide.html">Ablution (Wudu)</a></li>
+          <li><a href="janazah-guide.html">Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">Eid Prayer Guide</a></li>
+          <li><a href="prayer-times.html">Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Knowledge & Text</h4>
+        <ul class="footer-links">
+          <li><a href="quran.html">Holy Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">Hadith Library</a></li>
+          <li><a href="kalimas.html">Six Kalimas</a></li>
+          <li><a href="duas.html">Duas & Adhkar</a></li>
+          <li><a href="pillars.html">Five Pillars</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Trust & Policies</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About & Editorial Board</a></li>
+          <li><a href="sources.html">Source Bibliography</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="contact.html">Contact & Corrections</a></li>
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Offline Access</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
+        <div><a href="contact.html" style="color: inherit; text-decoration: underline;">Contact & Feedback</a> • <a href="https://github.com/jjjffdfde/NoorDeen/issues" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GitHub Issues</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let customCoords = null;
+    const STORAGE_KEY = 'ikp_prayer_times_state';
+
+    // Format Date to YYYY-MM-DD in local context
+    function formatDateYMD(d) {
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Initialize date input to today
+    const dateInput = document.getElementById('date-select');
+    if (dateInput && !dateInput.value) {
+      dateInput.value = formatDateYMD(new Date());
+    }
+
+    // Restore saved settings from localStorage
+    try {
+      const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      if (savedState.city) document.getElementById('city-select').value = savedState.city;
+      if (savedState.date) dateInput.value = savedState.date;
+      if (savedState.method) document.getElementById('method-select').value = savedState.method;
+      if (savedState.asrMethod) document.getElementById('asr-select').value = savedState.asrMethod;
+      if (savedState.highLat) document.getElementById('highlat-select').value = savedState.highLat;
+      if (savedState.format) document.getElementById('toggle-format').value = savedState.format;
+    } catch(e) {}
+
+    function updateTimes() {
+      let lat, lng, tz, timezoneName = 'Asia/Karachi', cityName = 'Islamabad';
+      if (customCoords) {
+        lat = customCoords.lat;
+        lng = customCoords.lng;
+        tz = customCoords.tz;
+        timezoneName = customCoords.timezoneName || 'GPS Location';
+        cityName = 'My GPS Location';
+      } else {
+        const val = document.getElementById('city-select').value;
+        const parts = val.split(',');
+        lat = Number(parts[0]);
+        lng = Number(parts[1]);
+        tz = Number(parts[2]);
+        if (parts[3]) timezoneName = parts[3];
+        if (parts[4]) cityName = parts[4];
+      }
+
+      const method = document.getElementById('method-select').value;
+      const asrMethod = document.getElementById('asr-select').value;
+      const highLatMethod = document.getElementById('highlat-select').value;
+      const is24Hour = document.getElementById('toggle-format').value === '24';
+      const dateVal = dateInput.value || formatDateYMD(new Date());
+
+      const options = {
+        method,
+        asrMethod,
+        highLatMethod,
+        is24Hour
+      };
+
+      const times = IslamicTools.calculatePrayerTimes(dateVal, lat, lng, tz, options);
+
+      // Render updated prayer times
+      document.getElementById('time-fajr').textContent = times.fajr;
+      document.getElementById('time-sunrise').textContent = times.sunrise;
+      const zawalEl = document.getElementById('time-zawal');
+      if (zawalEl) zawalEl.textContent = `${times.zawalStart} – ${times.dhuhr}`;
+      document.getElementById('time-dhuhr').textContent = times.dhuhr;
+      document.getElementById('time-asr').textContent = times.asr;
+      document.getElementById('time-maghrib').textContent = times.maghrib;
+      document.getElementById('time-isha').textContent = times.isha;
+
+      const asrSubtext = document.getElementById('asr-card-subtext');
+      if (asrSubtext) {
+        asrSubtext.textContent = asrMethod === 'hanafi'
+          ? 'Hanafi: Shadow = 2x + Solar Noon'
+          : 'Standard: Shadow = 1x + Solar Noon';
+      }
+
+      const methodNames = {
+        karachi: 'Univ. of Karachi (18°/18°)',
+        mwl: 'Muslim World League (18°/17°)',
+        makkah: 'Umm Al-Qura, Makkah',
+        isna: 'ISNA North America (15°/15°)',
+        egypt: 'Egyptian General Authority',
+        tehran: 'Univ. of Tehran'
+      };
+
+      document.getElementById('active-method-label').textContent = methodNames[method] || method;
+      document.getElementById('active-asr-label').textContent = asrMethod === 'hanafi' ? 'Hanafi (2x shadow)' : 'Standard / Shafi\'i (1x shadow)';
+
+      // Formatted Date Label
+      const dateParts = dateVal.split('-').map(Number);
+      const parsedDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+      const dateFormatted = parsedDate.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+      const activeDateEl = document.getElementById('active-date-label');
+      if (activeDateEl) activeDateEl.textContent = dateFormatted;
+
+      const locationMetaEl = document.getElementById('active-location-meta');
+      if (locationMetaEl) {
+        locationMetaEl.textContent = `📍 ${cityName} • Coordinates: ${lat.toFixed(4)}°, ${lng.toFixed(4)}° • Timezone: UTC${tz >= 0 ? '+' + tz : tz} (${timezoneName})`;
+      }
+
+      // Determine next upcoming prayer (relative to real current time)
+      const now = new Date();
+      const isToday = formatDateYMD(now) === dateVal;
+      let nextTitle = 'Fajr';
+      if (isToday) {
+        const curHour = now.getHours() + now.getMinutes() / 60;
+        if (curHour < times.raw.fajr) nextTitle = 'Fajr (Dawn)';
+        else if (curHour < times.raw.sunrise) nextTitle = 'Sunrise (Shuruq)';
+        else if (curHour < times.raw.dhuhr) nextTitle = 'Dhuhr (Midday)';
+        else if (curHour < times.raw.asr) nextTitle = 'Asr (Afternoon)';
+        else if (curHour < times.raw.maghrib) nextTitle = 'Maghrib (Sunset)';
+        else if (curHour < times.raw.isha) nextTitle = 'Isha (Night)';
+        else nextTitle = 'Fajr (Tomorrow Dawn)';
+      } else {
+        nextTitle = `Selected Date: ${dateFormatted}`;
+      }
+
+      const nextEl = document.getElementById('next-prayer-title');
+      if (nextEl) nextEl.textContent = nextTitle;
+
+      // Persist state in localStorage
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          city: document.getElementById('city-select').value,
+          date: dateVal,
+          method,
+          asrMethod,
+          highLat: highLatMethod,
+          format: is24Hour ? '24' : '12'
+        }));
+      } catch(e) {}
+    }
+
+    document.getElementById('city-select').addEventListener('change', () => {
+      customCoords = null;
+      updateTimes();
+    });
+    dateInput.addEventListener('change', updateTimes);
+    document.getElementById('method-select').addEventListener('change', updateTimes);
+    document.getElementById('asr-select').addEventListener('change', updateTimes);
+    document.getElementById('highlat-select').addEventListener('change', updateTimes);
+    document.getElementById('toggle-format').addEventListener('change', updateTimes);
+
+    document.getElementById('detect-location-btn').addEventListener('click', () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          customCoords = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            tz: -new Date().getTimezoneOffset() / 60,
+            timezoneName: 'Local Browser Timezone'
+          };
+          updateTimes();
+          if (window.App) window.App.showToast(`Updated to GPS location: ${customCoords.lat.toFixed(2)}°, ${customCoords.lng.toFixed(2)}°`);
+        }, err => {
+          if (window.App) window.App.showToast('Geolocation access denied. Using selected city.');
+        });
+      }
+    });
+
+    updateTimes();
+  </script>
+</body>
+</html>

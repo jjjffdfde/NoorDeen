@@ -1402,7 +1402,9 @@ async function runTestSuite() {
 
   // 4. Download APK Checksum Inlining
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
-  assert(s36_downloadHtml.includes('51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5'), 'Suite 36: download-app.html inlines verified SHA-256 APK hash');
+  const s36_currentApkBuffer = fs.readFileSync(path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-release.apk'));
+  const s36_currentApkHash = crypto.createHash('sha256').update(s36_currentApkBuffer).digest('hex');
+  assert(s36_downloadHtml.includes(s36_currentApkHash), 'Suite 36: download-app.html inlines verified SHA-256 APK hash');
   assert(!s36_downloadHtml.includes('calculating-sha256-checksum...'), 'Suite 36: download-app.html eliminates calculating checksum placeholder');
 
   // 5. Dual Nisab Standards Verification in Tools Engine

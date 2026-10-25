@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Islamic Portal</string>
-    <string name="title_activity_main">Islamic Knowledge Portal</string>
+    <string name="app_name">NoorDeen</string>
+    <string name="title_activity_main">NoorDeen - Islamic Knowledge Portal</string>
     <string name="package_name">com.islamicknowledge.portal</string>
     <string name="custom_url_scheme">com.islamicknowledge.portal</string>
 </resources>

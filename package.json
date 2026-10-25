@@ -1,6 +1,6 @@
 {
   "name": "islamic-knowledge-portal",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Comprehensive Multilingual Islamic Knowledge Portal featuring Quran, Hadith, Duas, Seerah, Prayer Times, and Education",
   "type": "module",
   "main": "server.js",
@@ -9,8 +9,16 @@
     "dev": "node server.js",
     "test": "node test/run-tests.js",
     "build:seo": "node scripts/seo-pwa-enhancer.js",
-    "android:sync": "npx cap copy android",
+    "sync:android-assets": "node scripts/build-android-assets.cjs",
+    "android:sync": "node scripts/build-android-assets.cjs && npx cap copy android",
     "android:open": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.7.0",
+    "@capacitor/core": "^5.7.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.7.0"
   },
   "keywords": [
     "islamic",

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamic Hijri Calendar — Live Converter, Sacred Months & Historical Origins </title>
+  <meta name="description" content="Interactive Gregorian to Hijri calendar converter with live Islamic date. Discover the historical origins under Caliph Umar (RA), the 4 Sacred Months, and moon-sighting vs astronomical calculation rulings.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0F5132">
+  <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/calendar.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Islamic Knowledge Portal">
+  <meta property="og:url" content="https://jjjffdfde.github.io/NoorDeen/calendar.html">
+  <meta property="og:title" content="Islamic Hijri Calendar & Converter">
+  <meta property="og:description" content="Convert Gregorian dates to Hijri calendar and explore sacred Islamic dates, months, and history.">
+  <meta property="og:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Islamic Hijri Calendar & Converter">
+  <meta name="twitter:description" content="Interactive Hijri date converter with historical scholarship and sacred dates.">
+  <meta name="twitter:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://jjjffdfde.github.io/NoorDeen/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://jjjffdfde.github.io/NoorDeen/calendar.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Hijri Calendar",
+        "item": "https://jjjffdfde.github.io/NoorDeen/calendar.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema for AdSense & Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why did Caliph Umar (RA) choose the Hijrah as the starting year of the Islamic calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In 16/17 AH, Caliph Umar ibn al-Khattab consulted the senior Sahaba regarding establishing an official dating system. Ali ibn Abi Talib (RA) suggested dating from the Prophet's Hijrah (migration from Makkah to Madinah) because it separated truth from falsehood and marked the birth of the first independent Islamic society, choosing it over the Prophet's birth or death."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the Four Sacred Months (Al-Ashhur al-Hurum) in Islam?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Surah At-Tawbah (9:36) affirms that Allah created twelve months, of which four are sacred: Dhul-Qa'dah, Dhul-Hijjah, Muharram, and Rajab. During these months, warfare is forbidden and the spiritual rewards for good deeds—as well as the gravity of sins—are heavily magnified."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the Islamic date change at sunset (Maghrib) instead of midnight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Islamic calendar is fundamentally a lunar calendar. Because each new lunar month is inaugurated by sighting the crescent moon (Hilal) in the western sky immediately following sunset, every Islamic day begins at Maghrib and concludes at the following sunset."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between local moon sighting and astronomical calculation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional jurisprudence emphasizes physical naked-eye observation (Ru'yah) based on the hadith: 'Fast when you see it and break fast when you see it' (Sahih al-Bukhari #1909). Modern astronomical bodies utilize precise lunar positioning algorithms to determine the moon's conjunction and potential visibility, preventing erroneous claims of sighting before the moon has even been born."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+    <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div class="logo-text-wrapper">
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle" data-i18n="siteSubtitle">Sacred Islamic Library & Tools</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+
+          <!-- Quran Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navQuran">Holy Quran</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="quran.html" class="nav-dropdown-item">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html" class="nav-dropdown-item">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+
+          <!-- Hadith & Duas Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navHadith">Hadith & Duas</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
+              <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
+            </div>
+          </li>
+
+          <!-- Worship Guides Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
+              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+
+          <!-- Tools Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navTools">Islamic Tools</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="prayer-times.html" class="nav-dropdown-item">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html" class="nav-dropdown-item">💰 Zakat Calculation Engine</a>
+              <a href="tasbih.html" class="nav-dropdown-item">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
+            </div>
+          </li>
+
+          <!-- App Pill -->
+          <li class="nav-item">
+            <a href="download-app.html" class="nav-app-pill">
+              <span>📱</span> <span data-i18n="navApp">App</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text" data-i18n="navSearch">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 48px 0; text-align: center;">
+    <div class="container">
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.12); border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: var(--color-gold); margin-bottom: 12px;">
+        إِنَّ عِدَّةَ الشُّهُورِ عِندَ اللَّهِ اثْنَا عَشَرَ شَهْرًا
+      </div>
+      <h1 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 12px;">Islamic Hijri Calendar & Converter</h1>
+      <p style="color: #D1D5DB; max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
+        "Indeed, the number of months with Allah is twelve [lunar] months in the register of Allah..." (Surah At-Tawbah 9:36). The sacred lunar reckoning dating from the Prophet's ﷺ Hijrah in 622 CE.
+      </p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 900px;">
+    
+    <!-- Today's Date Card -->
+    <div class="card" style="text-align: center; margin-bottom: 30px; border-top: 4px solid var(--color-gold); padding: 30px;">
+      <div style="font-size: 0.9rem; color: var(--color-text-muted); font-weight: 700; letter-spacing: 1px;">TODAY'S ISLAMIC DATE</div>
+      <div id="live-hijri-date" class="font-arabic" style="font-size: 2.6rem; color: var(--color-primary); margin: 12px 0; font-weight: 700;">
+        1447 AH
+      </div>
+      <div id="live-gregorian-date" style="font-size: 1.15rem; color: var(--color-text-main); font-weight: 600;">
+        Loading date...
+      </div>
+    </div>
+
+    <!-- Converter Box -->
+    <div class="card" style="margin-bottom: 30px; padding: 24px;">
+      <h3 style="color: var(--color-primary); margin-bottom: 14px; font-size: 1.25rem;">Gregorian to Hijri Date Converter</h3>
+      <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 16px;">
+        Select any past or future Gregorian date to compute its corresponding Hijri calendar date:
+      </p>
+      <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+        <input type="date" id="date-converter-input" class="search-input" style="padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);">
+        <button id="convert-date-btn" class="btn btn-primary" style="padding: 10px 20px; font-weight: 700;">Convert Date</button>
+      </div>
+      <div id="converter-result" style="margin-top: 16px; font-weight: 700; color: var(--color-primary); font-size: 1.2rem;"></div>
+    </div>
+
+    <!-- Sacred Islamic Months & Events -->
+    <div class="card" style="margin-bottom: 50px; padding: 24px;">
+      <h3 style="color: var(--color-primary); margin-bottom: 16px; font-size: 1.25rem;">Key Sacred Islamic Months & Annual Events</h3>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle);">
+          <div>
+            <strong style="font-size: 1rem;">1st Muharram — Islamic New Year</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Inauguration of the Hijri year & sacred month</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-primary);">Muharram</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle);">
+          <div>
+            <strong style="font-size: 1rem;">10th Muharram — Day of Ashura</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Day Allah delivered Prophet Musa (AS) from Pharaoh</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-primary);">Muharram</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle);">
+          <div>
+            <strong style="font-size: 1rem;">1st Ramadan — Fasting Begins</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Beginning of the Blessed Month of Quran and Fasting</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-primary);">Ramadan</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle);">
+          <div>
+            <strong style="font-size: 1rem;">Last 10 Nights of Ramadan — Laylatul Qadr</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Night of Decree, better than 1,000 months (Surah Al-Qadr)</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-gold-dark);">Ramadan</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle);">
+          <div>
+            <strong style="font-size: 1rem;">1st Shawwal — Eid al-Fitr</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Celebration of completing the month of Ramadan</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-gold-dark);">Shawwal</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--color-border-subtle);">
+          <div>
+            <strong style="font-size: 1rem;">9th Dhul-Hijjah — Day of Arafah</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Pinnacle of Hajj pilgrimage & recommended fasting for non-pilgrims</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-primary);">Dhul-Hijjah</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+          <div>
+            <strong style="font-size: 1rem;">10th Dhul-Hijjah — Eid al-Adha</strong>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted);">Festival of the Abrahamic Sacrifice (Qurbani)</div>
+          </div>
+          <span style="font-weight: 700; color: var(--color-primary);">Dhul-Hijjah</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial Deep-Dive Below Tool (AdSense High-Value Compliance) -->
+    <article style="border-top: 2px solid var(--color-border); padding-top: 48px;">
+      
+      <div style="text-align: center; margin-bottom: 36px;">
+        <h2 style="font-size: 1.9rem; color: var(--color-primary); font-weight: 800; margin-bottom: 10px;">
+          The History & Theological Structure of the Hijri Calendar
+        </h2>
+        <p style="color: var(--color-text-muted); max-width: 680px; margin: 0 auto; font-size: 1rem;">
+          How Caliph Umar (RA) established the Islamic dating epoch and how the lunar cycle governs Muslim worship.
+        </p>
+      </div>
+
+      <!-- Section: The Historical Epoch -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          The Establishment of the Calendar by Caliph Umar (RA)
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
+          During the reign of the second Rightly Guided Caliph, <strong>Umar ibn al-Khattab (RA)</strong>, around the year 16 or 17 AH, the expanding Islamic state encountered administrative challenges because official letters, fiscal documents, and debt contracts were dated simply by the month without specifying the year. Caliph Umar assembled the senior Sahaba to institute a standardized dating epoch for the Muslim world.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main);">
+          Various proposals were deliberated: dating from the birth of the Prophet ﷺ, dating from the commencement of revelation in the Cave of Hira, or dating from his passing. <strong>Ali ibn Abi Talib (RA)</strong> proposed dating from the <strong>Hijrah</strong>—the epic migration from Makkah to Madinah in 622 CE. Ali (RA) reasoned that the Hijrah was the pivotal turning point that separated truth from falsehood, transformed an oppressed community into an independent sovereign civilization, and laid the foundations of Islamic law and social justice. Caliph Umar unanimously endorsed this decision, and <strong>Muharram</strong> was selected as the first month of the new calendar year.
+        </p>
+      </section>
+
+      <!-- Section: The 4 Sacred Months -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          The Four Sacred Months (Al-Ashhur al-Hurum)
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px;">
+          The Holy Quran establishes the sanctity of four specific lunar months in Surah At-Tawbah (9:36):
+        </p>
+        <div class="card" style="padding: 20px; border-left: 4px solid var(--color-primary); margin-bottom: 14px;">
+          <p style="font-size: 0.92rem; line-height: 1.8; color: var(--color-text-main);">
+            The Prophet ﷺ clarified in his Farewell Pilgrimage (Sahih al-Bukhari #3197): <em>"Time has completed its cycle and is as it was on the day Allah created the heavens and the earth. The year is twelve months, of which four are sacred: three are consecutive—Dhul-Qa'dah, Dhul-Hijjah, and Muharram—and Rajab of Mudar, which is between Jumada and Sha'ban."</em>
+          </p>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main);">
+          During these four months, committing sins is magnified in gravity, while righteousness, voluntary fasting, and almsgiving receive multiplied heavenly reward.
+        </p>
+      </section>
+
+      <!-- Section: Moon Sighting vs Astronomical Calculation -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          Moon Sighting (Ru'yah) versus Astronomical Calculation (Hisab)
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
+          A central subject of contemporary Islamic jurisprudence is determining the onset of the lunar months of Ramadan and Shawwal (Eid al-Fitr):
+        </p>
+        <ul style="padding-left: 20px; font-size: 0.92rem; line-height: 1.8; color: var(--color-text-main);">
+          <li><strong>Physical Sighting (Ru'yah):</strong> The classical majority position relies on the prophetic command: <em>"Fast when you see it and break your fast when you see it, and if it is obscured, then complete thirty days of Sha'ban."</em> (Sahih al-Bukhari #1909).</li>
+          <li><strong>Astronomical Calculation (Hisab):</strong> Many contemporary councils (such as the Fiqh Council of North America and the European Council for Fatwa and Research) utilize astronomical calculations to determine the exact moment of the lunar conjunction (birth of the new moon) and its visibility coordinates, providing advance certainty for civic planning.</li>
+        </ul>
+      </section>
+
+      <!-- Section: FAQs -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 14px;">
+          Frequently Asked Questions About the Islamic Calendar
+        </h3>
+        <div class="accordion-faq-group">
+          <details class="faq-card" open>
+            <summary class="faq-summary">Why did Caliph Umar (RA) choose the Hijrah as the starting year?</summary>
+            <div class="faq-content">
+              <p>Ali ibn Abi Talib (RA) suggested the Hijrah because it marked the profound transition when Muslims established an independent society and separated truth from falsehood, selecting it over the Prophet's birth or death.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">Why does an Islamic day begin at sunset (Maghrib)?</summary>
+            <div class="faq-content">
+              <p>Because the Islamic calendar is lunar, each new lunar month is inaugurated by sighting the crescent moon in the western sky immediately after sunset. Consequently, every Islamic day begins at Maghrib.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">How many days are in a Hijri year compared to a Gregorian year?</summary>
+            <div class="faq-content">
+              <p>A lunar year consists of 12 lunar months of either 29 or 30 days, totaling approximately 354 or 355 days. This makes the Hijri year approximately 10 to 11 days shorter than the 365-day Gregorian solar year, causing Islamic dates to rotate backward through the seasonal cycle every 33 years.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Bottom Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-bottom" data-ad-slot="portal_bottom_leaderboard" style="display: none; min-height: 90px; margin: 20px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="logo-group" style="margin-bottom: 15px;">
+          <div class="logo-icon">☪</div>
+          <div>
+            <div class="logo-text-title" style="color: #fff;">Islamic Knowledge Portal</div>
+            <div class="logo-text-subtitle">Digital Islamic Library</div>
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.75);">
+          An authentic, multilingual platform dedicated to providing verified Islamic knowledge according to the Quran and Sunnah.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Prayer & Worship</h4>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">Five Daily Prayers</a></li>
+          <li><a href="wudu-guide.html">Ablution (Wudu)</a></li>
+          <li><a href="janazah-guide.html">Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">Eid Prayer Guide</a></li>
+          <li><a href="prayer-times.html">Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Knowledge & Text</h4>
+        <ul class="footer-links">
+          <li><a href="quran.html">Holy Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">Hadith Library</a></li>
+          <li><a href="kalimas.html">Six Kalimas</a></li>
+          <li><a href="duas.html">Duas & Adhkar</a></li>
+          <li><a href="pillars.html">Five Pillars</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Trust & Policies</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About & Editorial Board</a></li>
+          <li><a href="sources.html">Source Bibliography</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="contact.html">Contact & Corrections</a></li>
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Offline Access</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
+        <div><a href="contact.html" style="color: inherit; text-decoration: underline;">Contact & Feedback</a> • <a href="https://github.com/jjjffdfde/NoorDeen/issues" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GitHub Issues</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const today = new Date();
+    const hijri = IslamicTools.toHijri(today);
+    
+    document.getElementById('live-hijri-date').textContent = `${hijri.day} ${hijri.monthName} ${hijri.year} AH`;
+    document.getElementById('live-gregorian-date').textContent = today.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    const input = document.getElementById('date-converter-input');
+    input.valueAsDate = today;
+
+    document.getElementById('convert-date-btn').addEventListener('click', () => {
+      const selected = new Date(input.value);
+      if (!isNaN(selected)) {
+        const h = IslamicTools.toHijri(selected);
+        document.getElementById('converter-result').textContent = `Corresponding Islamic Date: ${h.day} ${h.monthName} ${h.year} AH`;
+      }
+    });
+  </script>
+</body>
+</html>

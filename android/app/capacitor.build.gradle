@@ -1,3 +1,7 @@
 // Auto-generated Capacitor build gradle dependencies
 dependencies {
+    def capacitorDir = new File(project(':app').projectDir, '../../node_modules/@capacitor/android/capacitor')
+    if (capacitorDir.exists()) {
+        implementation project(':capacitor-android')
+    }
 }

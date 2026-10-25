@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Tasbih Counter — Interactive Dhikr, Virtues & Post-Salah Adhkar</title>
+  <meta name="description" content="Interactive digital Tasbih counter with prophetic dhikr presets, sound feedback, and cycle tracking. Includes comprehensive scholarly guide to authentic post-Salah adhkar and virtues of remembrance.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0F5132">
+  <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/tasbih.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Islamic Knowledge Portal">
+  <meta property="og:url" content="https://jjjffdfde.github.io/NoorDeen/tasbih.html">
+  <meta property="og:title" content="Digital Tasbih Counter & Dhikr Guide">
+  <meta property="og:description" content="Interactive digital Tasbih counter with prophetic presets, cycle tracking, and comprehensive Dhikr virtues.">
+  <meta property="og:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Tasbih Counter & Dhikr Guide">
+  <meta name="twitter:description" content="Interactive digital Tasbih counter with authentic prophetic supplications and virtues.">
+  <meta name="twitter:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+
+  <!-- Breadcrumbs Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://jjjffdfde.github.io/NoorDeen/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://jjjffdfde.github.io/NoorDeen/tasbih.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Digital Tasbih",
+        "item": "https://jjjffdfde.github.io/NoorDeen/tasbih.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema for AdSense & Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is it better to count Dhikr on one's fingers or use a Tasbih / digital counter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Counting on the fingers of the right hand is superior and emphasized in the prophetic Sunnah, as the Prophet ﷺ stated that the fingers will be questioned and will speak as witnesses on the Day of Resurrection (Sunan Abi Dawud #1501). However, using prayer beads (Subhah) or electronic digital counters is completely permissible according to the vast majority of scholars as a helpful instrument to avoid distraction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the authentic post-Salah Tasbih prescription according to Sahih Muslim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Prophet ﷺ taught: 'Whoever glorifies Allah after every prayer 33 times (Subhanallah), praises Allah 33 times (Alhamdulillah), and exalts Allah 33 times (Allahu Akbar), making 99, and then seals 100 with: La ilaha illallahu wahdahu la shareeka lahu, lahul-mulku wa lahul-hamdu wa huwa 'ala kulli shay'in qadeer, will have all his sins forgiven even if they were like the foam of the sea' (Sahih Muslim #597)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the four most beloved phrases of remembrance to Allah?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Prophet Muhammad ﷺ said: 'The most beloved words to Allah are four: Subhanallah, Alhamdulillah, La ilaha illallah, and Allahu Akbar; it does not matter with which of them you begin' (Sahih Muslim #2137)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the significance of reciting Subhanallahi wa bihamdihi 100 times daily?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Prophet ﷺ declared: 'Whoever says: Subhanallahi wa bihamdihi (Glory and praise be to Allah) 100 times a day will have his sins forgiven even if they were as abundant as the foam of the ocean' (Sahih al-Bukhari #6405)."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+    <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div class="logo-text-wrapper">
+          <div class="logo-text-title" data-i18n="siteTitle">Islamic Knowledge Portal</div>
+          <div class="logo-text-subtitle" data-i18n="siteSubtitle">Sacred Islamic Library & Tools</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+
+          <!-- Quran Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navQuran">Holy Quran</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="quran.html" class="nav-dropdown-item">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html" class="nav-dropdown-item">🔖 Bookmarked Ayahs</a>
+            </div>
+          </li>
+
+          <!-- Hadith & Duas Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navHadith">Hadith & Duas</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
+              <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
+            </div>
+          </li>
+
+          <!-- Worship Guides Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
+              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+
+          <!-- Tools Dropdown -->
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navTools">Islamic Tools</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="prayer-times.html" class="nav-dropdown-item">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html" class="nav-dropdown-item">💰 Zakat Calculation Engine</a>
+              <a href="tasbih.html" class="nav-dropdown-item">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
+            </div>
+          </li>
+
+          <!-- App Pill -->
+          <li class="nav-item">
+            <a href="download-app.html" class="nav-app-pill">
+              <span>📱</span> <span data-i18n="navApp">App</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text" data-i18n="navSearch">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <div style="background: radial-gradient(circle at 50% 30%, #0F5132 0%, #073320 100%); color: #FFFFFF; padding: 48px 0; text-align: center;">
+    <div class="container">
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(255,255,255,0.12); border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: var(--color-gold); margin-bottom: 12px;">
+        أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ
+      </div>
+      <h1 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 12px;">Digital Tasbih Counter & Dhikr Guide</h1>
+      <p style="color: #D1D5DB; max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
+        "Unquestionably, by the remembrance of Allah hearts find rest." (Surah Ar-Ra'd 13:28). Engage in continuous spiritual remembrance with tactile feedback, prophetic presets, and cycle tracking.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 850px;">
+    
+    <!-- Presets Selector -->
+    <div class="card" style="margin-bottom: 24px; text-align: center; padding: 22px;">
+      <label style="font-weight: 700; display: block; margin-bottom: 14px; font-size: 1rem; color: var(--color-primary);">Select Authentic Dhikr Preset or Custom Target:</label>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 16px;">
+        <button class="btn btn-outline preset-btn active" data-target="33" data-phrase="سُبْحَانَ اللَّهِ" data-meaning="Glory be to Allah (33x)">
+          Subhanallah (33x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="33" data-phrase="الْحَمْدُ لِلَّهِ" data-meaning="All praise is due to Allah (33x)">
+          Alhamdulillah (33x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="34" data-phrase="اللَّهُ أَكْبَرُ" data-meaning="Allah is the Greatest (34x)">
+          Allahu Akbar (34x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="أَسْتَغْفِرُ اللَّهَ" data-meaning="I seek forgiveness from Allah (100x)">
+          Astaghfirullah (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="لَا إِلَٰهَ إِلَّا اللَّهُ" data-meaning="There is no deity except Allah (100x)">
+          La ilaha illallah (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="سُبْحَانَ اللَّهِ وَبِحَمْدِهِ" data-meaning="Glory be to Allah and His praise (100x)">
+          Subhanallahi wa bihamdihi (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ" data-meaning="O Allah, send blessings upon Muhammad ﷺ (100x)">
+          Salawat on Prophet ﷺ (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ" data-meaning="Sufficient for us is Allah, and He is the best Disposer of affairs (100x)">
+          Hasbunallah (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ" data-meaning="There is no power nor strength except through Allah (100x)">
+          Hawqalah (100x)
+        </button>
+      </div>
+
+      <!-- Custom Goal Bar -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--color-border); padding-top: 14px;">
+        <label for="inp-custom-target" style="font-size: 0.88rem; font-weight: 600;">Custom Goal / Count:</label>
+        <input type="number" id="inp-custom-target" class="search-input" style="width: 100px; padding: 6px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 0.92rem; background: var(--color-surface); color: var(--color-text-main);" placeholder="e.g. 500" min="1" max="100000">
+        <button id="btn-set-custom-target" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem; font-weight: 600;">Set Goal</button>
+      </div>
+    </div>
+
+    <!-- Interactive Counter Unit -->
+    <div class="counter-box" style="margin-bottom: 50px; position: relative;">
+      
+      <!-- Utility Toggle Controls Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding: 0 10px; flex-wrap: wrap; gap: 8px;">
+        <button id="toggle-sound-btn" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">
+          🔊 Sound: <span id="sound-status-label">ON</span>
+        </button>
+        <button id="toggle-vibrate-btn" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">
+          📳 Vibration: <span id="vibrate-status-label">ON</span>
+        </button>
+      </div>
+
+      <div id="dhikr-phrase" class="font-arabic" style="font-size: 2.4rem; color: var(--color-primary); font-weight: 700; line-height: 1.6;">
+        سُبْحَانَ اللَّهِ
+      </div>
+      <div id="dhikr-meaning" style="font-size: 1rem; color: var(--color-text-muted); margin-top: 6px;">
+        Glory be to Allah (33x)
+      </div>
+
+      <div id="counter-value" class="counter-display" style="font-size: 5rem; font-weight: 800; color: var(--color-primary); margin: 20px 0;">0</div>
+      
+      <div style="font-size: 0.95rem; color: var(--color-text-light); margin-bottom: 24px;">
+        Target: <strong id="target-label" style="color: var(--color-text-main);">33</strong> • Total Completed Cycles: <strong id="cycles-count" style="color: var(--color-gold);">0</strong>
+      </div>
+
+      <!-- Giant Tap Button -->
+      <button id="tap-tasbih-btn" class="counter-btn-large" style="margin-bottom: 24px; cursor: pointer; user-select: none;" title="Tap or press Spacebar">
+        TAP
+      </button>
+
+      <!-- Action Buttons: Undo, Reset -->
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <button id="undo-tasbih-btn" class="btn btn-outline" style="padding: 10px 22px; font-weight: 600; color: var(--color-text-muted);" title="Undo count by 1">
+          ↶ Undo (-1)
+        </button>
+        <button id="reset-tasbih-btn" class="btn btn-outline" style="padding: 10px 24px; font-weight: 600; border-color: rgba(220, 38, 38, 0.4); color: var(--color-danger);">
+          ↺ Reset Count
+        </button>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 0.8rem; color: var(--color-text-light);">
+        Keyboard shortcuts: <strong>Spacebar / Enter</strong> to count • <strong>Backspace / -</strong> to undo
+      </div>
+    </div>
+
+    <!-- Editorial Deep-Dive Below Tool (AdSense High-Value Compliance) -->
+    <article style="border-top: 2px solid var(--color-border); padding-top: 48px;">
+      
+      <div style="text-align: center; margin-bottom: 36px;">
+        <h2 style="font-size: 1.9rem; color: var(--color-primary); font-weight: 800; margin-bottom: 10px;">
+          The Spiritual Science & Virtues of Dhikr (Remembrance of Allah)
+        </h2>
+        <p style="color: var(--color-text-muted); max-width: 680px; margin: 0 auto; font-size: 1rem;">
+          Exploring the theological excellence of constant remembrance, authentic post-prayer formulas, and classical etiquette.
+        </p>
+      </div>
+
+      <!-- Section: Quranic Foundations -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          The Quranic Call to Constant Remembrance
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 14px;">
+          Throughout the Holy Quran, believers are commanded not merely to remember Allah occasionally, but to engage in <em>Dhikran Katheera</em> (abundant, continuous remembrance): <em>"O you who have believed, remember Allah with much remembrance and exalt Him morning and afternoon."</em> (Surah Al-Ahzab 33:41-42).
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main);">
+          The Prophet Muhammad ﷺ illustrated the stark contrast between those who maintain the life of the spirit through Dhikr and those who neglect it: <em>"The likeness of the one who remembers his Lord and the one who does not remember his Lord is like the living and the dead."</em> (Sahih al-Bukhari #6407). While the physical body requires water, oxygen, and nutrients, the spiritual heart suffocates and withers into spiritual death when starved of the remembrance of its Maker.
+        </p>
+      </section>
+
+      <!-- Section: Post-Salah Tasbih Fatimi -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          The Post-Salah Adhkar (Tasbih Fatimi)
+        </h3>
+        <div class="card" style="border-left: 4px solid var(--color-primary); padding: 22px; margin-bottom: 16px;">
+          <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
+            Abu Hurayrah (RA) reported that the Prophet ﷺ prescribed the quintessential post-prayer remembrance:
+          </p>
+          <ul style="padding-left: 20px; font-size: 0.92rem; line-height: 1.9; color: var(--color-text-main); margin-bottom: 12px;">
+            <li><strong>Subhanallah (سُبْحَانَ اللَّهِ):</strong> 33 Times (Glory be to Allah).</li>
+            <li><strong>Alhamdulillah (الْحَمْدُ لِلَّهِ):</strong> 33 Times (All praise is due to Allah).</li>
+            <li><strong>Allahu Akbar (اللَّهُ أَكْبَرُ):</strong> 33 Times (Allah is the Greatest).</li>
+            <li><strong>Sealing the 100th Recitation:</strong></li>
+          </ul>
+          <div class="ayah-arabic" style="font-size: 1.4rem; line-height: 2.2; margin-bottom: 8px;">
+            لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ
+          </div>
+          <p style="font-style: italic; color: var(--color-gold-dark); font-size: 0.9rem; margin-bottom: 6px;">
+            Lā ilāha illallāhu waḥdahū lā shareeka lah, lahul-mulku wa lahul-ḥamdu, wa huwa ‘alā kulli shay’in qadeer.
+          </p>
+          <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+            <em>"Whoever says this after every prayer will have his sins forgiven even if they were like the foam of the sea." (Sahih Muslim #597).</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Counting on Fingers vs Beads -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
+          Counting on Fingers versus Using a Tasbih / Digital Counter
+        </h3>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); margin-bottom: 12px;">
+          Abdullah ibn Amr (RA) narrated: <em>"I saw the Messenger of Allah ﷺ counting the glorifications on the fingers of his right hand."</em> (Sunan Abi Dawud #1502). The Prophet ﷺ explained that bodily fingers are endowed with speech and will testify on the Day of Resurrection to their owner's devotion.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main);">
+          However, when the Prophet ﷺ observed his wife Juwayriyah and other companions using date stones or pebbles to count large volumes of tasbeeh, he did not forbid them; instead, he approved the practice while teaching them more concise formulas. Prominent scholars across all four schools of law (including Ibn Taymiyyah and Imam an-Nawawi) affirmed that utilizing physical prayer beads or digital electronic counters is completely permissible without dislike, particularly for individuals striving to achieve high targets (e.g. 1,000 Salawat or Istighfar daily) without losing count.
+        </p>
+      </section>
+
+      <!-- Section: FAQs -->
+      <section style="margin-bottom: 36px;">
+        <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 14px;">
+          Frequently Asked Questions About Dhikr
+        </h3>
+        <div class="accordion-faq-group">
+          <details class="faq-card" open>
+            <summary class="faq-summary">Is it better to count on fingers or use a digital counter?</summary>
+            <div class="faq-content">
+              <p>Counting on the fingers of the right hand is the preferred prophetic Sunnah, as the fingers will testify on the Day of Judgment. However, using digital counters or prayer beads is fully permissible and widely recommended by scholars to maintain concentration during high-volume remembrance.</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">What is the reward of saying Subhanallahi wa bihamdihi 100 times?</summary>
+            <div class="faq-content">
+              <p>The Prophet ﷺ declared: 'Whoever says: Subhanallahi wa bihamdihi (Glory and praise be to Allah) 100 times a day will have his sins forgiven even if they were as abundant as the foam of the ocean' (Sahih al-Bukhari #6405).</p>
+            </div>
+          </details>
+
+          <details class="faq-card">
+            <summary class="faq-summary">What are the four most beloved words to Allah?</summary>
+            <div class="faq-content">
+              <p>The Prophet Muhammad ﷺ said: 'The most beloved words to Allah are four: Subhanallah, Alhamdulillah, La ilaha illallah, and Allahu Akbar; it does not matter with which of them you begin' (Sahih Muslim #2137).</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- Bottom Ad Slot -->
+  <div class="ad-slot-container" id="ad-banner-bottom" data-ad-slot="portal_bottom_leaderboard" style="display: none; min-height: 90px; margin: 20px auto; text-align: center;">
+    <!-- Ad container managed by PortalConfig -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="logo-group" style="margin-bottom: 15px;">
+          <div class="logo-icon">☪</div>
+          <div>
+            <div class="logo-text-title" style="color: #fff;">Islamic Knowledge Portal</div>
+            <div class="logo-text-subtitle">Digital Islamic Library</div>
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.75);">
+          An authentic, multilingual platform dedicated to providing verified Islamic knowledge according to the Quran and Sunnah.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Prayer & Worship</h4>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">Five Daily Prayers</a></li>
+          <li><a href="wudu-guide.html">Ablution (Wudu)</a></li>
+          <li><a href="janazah-guide.html">Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">Eid Prayer Guide</a></li>
+          <li><a href="prayer-times.html">Solar Prayer Times</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Knowledge & Text</h4>
+        <ul class="footer-links">
+          <li><a href="quran.html">Holy Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">Hadith Library</a></li>
+          <li><a href="kalimas.html">Six Kalimas</a></li>
+          <li><a href="duas.html">Duas & Adhkar</a></li>
+          <li><a href="pillars.html">Five Pillars</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Trust & Policies</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About & Editorial Board</a></li>
+          <li><a href="sources.html">Source Bibliography</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="contact.html">Contact & Corrections</a></li>
+          <li><a href="download-app.html" style="color: var(--color-gold); font-weight: 700;">📱 Offline Access</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
+        <div><a href="contact.html" style="color: inherit; text-decoration: underline;">Contact & Feedback</a> • <a href="https://github.com/jjjffdfde/NoorDeen/issues" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GitHub Issues</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let currentCount = 0;
+    let targetCount = 33;
+    let completedCycles = 0;
+    let soundEnabled = true;
+    let vibrateEnabled = true;
+
+    const valEl = document.getElementById('counter-value');
+    const targetLabel = document.getElementById('target-label');
+    const cyclesLabel = document.getElementById('cycles-count');
+    const phraseEl = document.getElementById('dhikr-phrase');
+    const meaningEl = document.getElementById('dhikr-meaning');
+    const tapBtn = document.getElementById('tap-tasbih-btn');
+    const undoBtn = document.getElementById('undo-tasbih-btn');
+    const resetBtn = document.getElementById('reset-tasbih-btn');
+    const soundBtn = document.getElementById('toggle-sound-btn');
+    const soundLbl = document.getElementById('sound-status-label');
+    const vibrateBtn = document.getElementById('toggle-vibrate-btn');
+    const vibrateLbl = document.getElementById('vibrate-status-label');
+    const customTargetInp = document.getElementById('inp-custom-target');
+    const setCustomTargetBtn = document.getElementById('btn-set-custom-target');
+
+    function syncUI() {
+      valEl.textContent = currentCount;
+      targetLabel.textContent = targetCount;
+      cyclesLabel.textContent = completedCycles;
+      if (soundLbl) soundLbl.textContent = soundEnabled ? 'ON' : 'OFF';
+      if (vibrateLbl) vibrateLbl.textContent = vibrateEnabled ? 'ON' : 'OFF';
+
+      IslamicTools.saveTasbihState({
+        count: currentCount,
+        target: targetCount,
+        cycles: completedCycles,
+        soundEnabled,
+        vibrateEnabled,
+        phrase: phraseEl.textContent,
+        meaning: meaningEl.textContent
+      });
+    }
+
+    function doTap() {
+      currentCount++;
+      if (soundEnabled) IslamicTools.playTasbihSound(820);
+      if (vibrateEnabled) IslamicTools.vibrateTasbih(35);
+
+      if (currentCount >= targetCount) {
+        completedCycles++;
+        currentCount = 0;
+        if (soundEnabled) {
+          IslamicTools.playTasbihSound(1050);
+          setTimeout(() => IslamicTools.playTasbihSound(1300), 80);
+        }
+        if (vibrateEnabled) IslamicTools.vibrateTasbih([50, 40, 80]);
+        if (window.App) window.App.showToast('Completed target cycle! Alhamdulillah.');
+      }
+      syncUI();
+    }
+
+    function doUndo() {
+      if (currentCount > 0) {
+        currentCount--;
+        if (soundEnabled) IslamicTools.playTasbihSound(500);
+        syncUI();
+        if (window.App) window.App.showToast(`Count decreased to ${currentCount}`);
+      } else {
+        if (window.App) window.App.showToast('Count is already 0');
+      }
+    }
+
+    function doReset() {
+      if (currentCount === 0 && completedCycles === 0) return;
+      const confirmed = window.confirm(`Reset current count (${currentCount}) and cycles (${completedCycles}) to zero?`);
+      if (confirmed) {
+        currentCount = 0;
+        completedCycles = 0;
+        syncUI();
+        if (window.App) window.App.showToast('Tasbih counter reset.');
+      }
+    }
+
+    tapBtn.addEventListener('click', doTap);
+    undoBtn.addEventListener('click', doUndo);
+    resetBtn.addEventListener('click', doReset);
+
+    soundBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      syncUI();
+    });
+
+    vibrateBtn.addEventListener('click', () => {
+      vibrateEnabled = !vibrateEnabled;
+      syncUI();
+    });
+
+    setCustomTargetBtn.addEventListener('click', () => {
+      const val = parseInt(customTargetInp.value, 10);
+      if (val && val > 0) {
+        targetCount = val;
+        currentCount = 0;
+        phraseEl.textContent = 'ذِكْرٌ مُخَصَّصٌ';
+        meaningEl.textContent = `Custom Remembrance (${targetCount}x)`;
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        syncUI();
+        if (window.App) window.App.showToast(`Custom goal set to ${targetCount}`);
+      }
+    });
+
+    // Preset selectors
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        targetCount = Number(btn.getAttribute('data-target'));
+        phraseEl.textContent = btn.getAttribute('data-phrase');
+        meaningEl.textContent = btn.getAttribute('data-meaning');
+        currentCount = 0;
+        syncUI();
+      });
+    });
+
+    // Keyboard support
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.code === 'Space' || e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        doTap();
+      } else if (e.key === 'Backspace' || e.key === '-') {
+        e.preventDefault();
+        doUndo();
+      }
+    });
+
+    // Restore saved state
+    const saved = IslamicTools.getTasbihState();
+    if (saved) {
+      currentCount = saved.count || 0;
+      targetCount = saved.target || 33;
+      completedCycles = saved.cycles || 0;
+      if (saved.soundEnabled !== undefined) soundEnabled = saved.soundEnabled;
+      if (saved.vibrateEnabled !== undefined) vibrateEnabled = saved.vibrateEnabled;
+      if (saved.phrase) phraseEl.textContent = saved.phrase;
+      if (saved.meaning) meaningEl.textContent = saved.meaning;
+    }
+    syncUI();
+  </script>
+</body>
+</html>

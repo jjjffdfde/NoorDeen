@@ -214,13 +214,17 @@
           <span>⚡</span>
           <span><strong>Install Web App (PWA)</strong> — Instant on Any Device</span>
         </button>
+        <a href="downloads/islamic-portal-release.apk" download="islamic-portal-release.apk" class="btn btn-primary" style="font-size: 1.02rem; padding: 14px 24px; display: inline-flex; align-items: center; gap: 8px;">
+          <span>🤖</span>
+          <span><strong>Download Android APK</strong> — Native Build v1.2.0</span>
+        </a>
         <a href="downloads/islamic-portal-offline-bundle.zip" download="islamic-portal-offline-bundle.zip" class="btn btn-outline" style="font-size: 1.02rem; padding: 14px 24px; display: inline-flex; align-items: center; gap: 8px;">
           <span>💻</span>
           <span><strong>Download Desktop Offline (.ZIP)</strong> — 812 KB</span>
         </a>
         <a href="#android-native-source" class="btn btn-outline" style="font-size: 0.95rem; padding: 14px 20px; display: inline-flex; align-items: center; gap: 8px;">
-          <span>🤖</span>
-          <span>Android Native Source (Capacitor)</span>
+          <span>🛠️</span>
+          <span>Developer Build Specs</span>
         </a>
       </div>
     </div>
@@ -230,9 +234,9 @@
       <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 14px;">
         Choose Your Preferred Offline Access Method
       </h2>
-      <div class="grid-responsive-2col" style="gap: 20px;">
+      <div class="grid-responsive-3col" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
         <!-- Option 1: PWA -->
-        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 2px solid var(--color-primary);">
+        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 2px solid var(--color-primary); display: flex; flex-direction: column;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
             <div style="font-weight: 700; color: var(--color-primary); font-size: 1.1rem;">
               ⚡ 1. Progressive Web App (PWA)
@@ -242,7 +246,7 @@
           <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 10px;">
             <strong>The best mobile experience for Android, iPhone, iPad, and Desktop.</strong> One-click installation via Google Chrome, Microsoft Edge, Samsung Internet, and Apple Safari.
           </p>
-          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px;">
+          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px; flex-grow: 1;">
             <li><strong>Zero Parse Errors:</strong> Android OS automatically generates a native WebAPK with an authentic package.</li>
             <li><strong>No Sideloading Warnings:</strong> No need to enable "unknown sources" or bypass security prompts.</li>
             <li><strong>100% Offline Access:</strong> Complete Quran, Hadith, Salah guides, and prayer times cached locally via Service Worker v4.</li>
@@ -253,15 +257,37 @@
           </button>
         </div>
 
-        <!-- Option 2: Desktop Offline ZIP Bundle -->
-        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+        <!-- Option 2: Native Android APK -->
+        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 2px solid var(--color-primary); display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="font-weight: 700; color: var(--color-primary); font-size: 1.1rem;">
+              🤖 2. Native Android APK (.APK)
+            </div>
+            <span style="background: var(--color-primary); color: #fff; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px; font-weight: 700;">DIRECT INSTALL</span>
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 10px;">
+            <strong>Official standalone signed Android APK for phones and tablets.</strong> Compatible with Android 5.0 (API 22) through Android 14 (API 34).
+          </p>
+          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px; flex-grow: 1;">
+            <li><strong>Binary AXML:</strong> Standard compiled binary manifest with zero package parser errors.</li>
+            <li><strong>Dalvik Bytecode & Resources:</strong> Native <code>classes.dex</code> and <code>resources.arsc</code> table.</li>
+            <li><strong>Cryptographically Signed:</strong> Verified RSA-2048 signing certificate (v1, v2, and v3).</li>
+            <li><strong>Bundled Web Assets:</strong> Self-contained offline assets with zero external network requirement.</li>
+          </ul>
+          <a href="downloads/islamic-portal-release.apk" download="islamic-portal-release.apk" class="btn btn-primary" style="display: block; text-align: center; font-size: 0.9rem; padding: 10px;">
+            🤖 Download Release APK (v1.2.0)
+          </a>
+        </div>
+
+        <!-- Option 3: Desktop Offline ZIP Bundle -->
+        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); display: flex; flex-direction: column;">
           <div style="font-weight: 700; color: var(--color-gold-dark); font-size: 1.1rem; margin-bottom: 8px;">
-            💻 2. Complete Desktop Offline Archive (.ZIP)
+            💻 3. Complete Desktop Offline Archive (.ZIP)
           </div>
           <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 10px;">
             <strong>Self-contained offline web package for PC, Mac, and Linux.</strong> Bundles all 25 HTML pages, stylesheets, scripts, datasets, and icons in a single 812 KB archive.
           </p>
-          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px;">
+          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px; flex-grow: 1;">
             <li>Extract to any directory (Desktop, Documents, or USB drive).</li>
             <li>Double-click <code>islamic-portal-web/index.html</code> to open in any web browser without internet.</li>
             <li>Includes comprehensive <code>OFFLINE-INSTRUCTIONS.txt</code> with optional local web server tips.</li>

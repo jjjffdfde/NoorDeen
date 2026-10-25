@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/private/
+
+# Sitemap Location
+Sitemap: https://jjjffdfde.github.io/NoorDeen/sitemap.xml
