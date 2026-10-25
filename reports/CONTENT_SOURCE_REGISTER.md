@@ -60,3 +60,20 @@
 | **Zakat Nisab** | International Fiqh Academy / Hanafi Standard | Silver: 612.36g (52.5 tolas) • Gold: 87.48g (7.5 tolas) |
 | **Gold Purity** | Goldsmith & Bullion Standards | 24K: 100%, 22K: 91.6%, 21K: 87.5%, 18K: 75.0% |
 | **Hijri Calendar** | Umm al-Qura Astronomical System | Julian Day conversion with dynamic local sighting offsets |
+
+---
+
+## 6. Educational Articles Library (Batch 1 Primary Sources)
+
+| Article Title & File | Primary Classical Sources & Authors | Juristic / Exegetical Reference Scope |
+| :--- | :--- | :--- |
+| **A Complete Beginner's Guide to Islam**<br>`articles/beginners-guide-to-islam.html` | *Jami' al-Bayan* (Al-Tabari), *Sharh al-Sunnah* (Al-Baghawi), *Al-Aqidah al-Tahawiyyah* | 6 Articles of Iman, Hadith Jibril (Muslim #8), conversion ethics, worship pacing |
+| **How to Read and Understand the Quran**<br>`articles/how-to-read-and-understand-quran.html` | *Al-Burhan fi 'Ulum al-Qur'an* (Al-Zarkashi), *Al-Itqan* (Al-Suyuti), *Fath al-Bari* | Surah/Ayah taxonomy, Makki vs Madani epochs, Tilawah vs Tadabbur, 15-min daily curriculum |
+| **Quran Translation vs Tafsir**<br>`articles/quran-translation-vs-tafsir.html` | *Tafsir al-Tabari*, *Tafsir Ibn Kathir*, *Mu'jam Mufradat Alfaz al-Qur'an* (Al-Raghib) | Linguistic *I'jaz*, untranslatability of Arabic divine speech, transliteration pitfalls |
+| **Tawhid and the Shahadah**<br>`articles/tawhid-and-the-shahadah.html` | *Kitab al-Tawhid* (Ibn Khuzaymah), *Tahdhib al-Lughah*, *Fath al-Majid* | Rububiyyah, Uluhiyyah, Asma' was-Sifat, 7 Conditions of Shahadah, negating Shirk |
+| **The Five Pillars of Islam**<br>`articles/five-pillars-of-islam.html` | *Sahih al-Bukhari* (#8), *Sahih Muslim* (#16), *Bidayat al-Mujtahid* (Ibn Rushd) | Architectural foundation analogy, balance of creed, ritual worship, and social responsibility |
+| **Salah: A Complete Beginner's Guide**<br>`articles/salah-complete-beginners-guide.html` | *Al-Majmu' Sharh al-Muhadhdhab* (Al-Nawawi), *Al-Mughni* (Ibn Qudamah), *Nayl al-Awtar* | Prerequisites, step-by-step physical postures & recitations, Madhhab variance, Sujud al-Sahw |
+| **Wudu, Ghusl and Tayammum Guide**<br>`articles/wudu-ghusl-tayammum-guide.html` | *Al-Umm* (Al-Shafi'i), *Al-Hidayah* (Al-Marghinani), *Fiqh al-Sunnah* (Sayyid Sabiq) | Surah Al-Ma'idah 5:6, Fara'id vs Sunan, nullifiers, footwear wiping (Mash), Ghusl, Tayammum |
+| **Hadith & Sunnah Authenticity**<br>`articles/hadith-and-sunnah-authenticity.html` | *Muqaddimah Ibn al-Salah*, *Nukhbat al-Fikar* (Ibn Hajar), *Tadrib al-Rawi* (Al-Suyuti) | Mustalah al-Hadith, Isnad/Matn anatomy, five Sahih conditions, Kutub al-Sittah editions |
+| **Daily Adhkar and Supplications**<br>`articles/daily-adhkar-and-supplications.html` | *Al-Adhkar* (Al-Nawawi), *Al-Wabil al-Sayyib* (Ibn al-Qayyim), *Hisnul Muslim* | Morning/evening protection, post-prayer tasbihat, Sayyid al-Istighfar, avoiding fabricated narrations |
+| **Zakat: Educational & Calculation Guide**<br>`articles/zakat-educational-calculation-guide.html` | *Al-Amwal* (Abu 'Ubayd), *Fiqh al-Zakat* (Al-Qaradawi), AAOIFI Shariah Standard No. 35 | Gold/Silver Nisab, Hawl, eligible assets, debt deductibility, 8 Quranic recipient classes (9:60) |

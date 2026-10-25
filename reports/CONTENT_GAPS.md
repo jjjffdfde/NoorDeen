@@ -45,4 +45,17 @@ flowchart TD
   B3 --> B4["Batch D: Expand Quran Thematic Profiles (30+ Surahs)"]
   B4 --> B5["Batch E: Build Islamic Glossary & Learning Pathways"]
   B5 --> B6["Batch F: Automated Verification, Re-packaging & Live Deployment"]
+  B6 --> B7["Batch 1 (Educational Articles): 10 In-Depth Treatises & 100-Topic Syllabus"]
 ```
+
+---
+
+## 3. Remediation of Educational Articles Gap (Batch 1 Complete)
+
+| Gap Identified | Delivered Remedy in Batch 1 | Metric Achieved |
+| :--- | :--- | :--- |
+| **Absence of Long-Form In-Depth Treatises** | Authored and published 10 comprehensive educational treatises (1,500–2,800 words each) in dedicated `/articles/` hub | **28,890 words** added across 11 files |
+| **Lack of Clear Subject Syllabus** | Developed master 100-topic educational syllabus across 17 classical Islamic disciplines ([`reports/KNOWLEDGE_LIBRARY_ROADMAP_100.md`](file:///e:/islamic%20websiye/reports/KNOWLEDGE_LIBRARY_ROADMAP_100.md)) | 100 planned topics documented with classical source references |
+| **Article Search Discovery** | Integrated all 11 article files into client-side `search.js` (`Ctrl+K`) and interactive category filter on `articles/index.html` | 100% discoverable through instant tokenized search |
+| **Search Engine Schema & Indexation** | Injected Schema.org `FAQPage` and `BreadcrumbList` JSON-LD into every article, indexed in `public/sitemap.xml` | 11 canonical article URLs indexed with weekly update frequency |
+| **Offline Distribution** | Added `/articles/` subpath handling to `public/js/app.js` and `public/service-worker.js`; updated `islamic-portal-offline-bundle.zip` | 100% offline accessible via PWA cache and 1.07 MB ZIP bundle |

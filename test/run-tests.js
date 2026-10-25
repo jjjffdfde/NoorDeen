@@ -1481,6 +1481,56 @@ async function runTestSuite() {
   assert(s37_appJs.includes('getPlatformInfo()'), 'Suite 37: app.js provides platform detection');
   assert(s37_appJs.includes('showPwaInstallGuidance()'), 'Suite 37: app.js provides structured PWA guidance dispatch');
 
+  // --- TEST SUITE 38: Educational Articles Library & Theological Depth ---
+  console.log('\n--- TEST SUITE 38: Educational Articles Library & Theological Depth ---');
+  const articlesDir = path.join(PUBLIC_DIR, 'articles');
+  assert(fs.existsSync(articlesDir), 'Suite 38: public/articles directory exists');
+
+  const expectedArticles = [
+    'beginners-guide-to-islam.html',
+    'how-to-read-and-understand-quran.html',
+    'quran-translation-vs-tafsir.html',
+    'tawhid-and-the-shahadah.html',
+    'five-pillars-of-islam.html',
+    'salah-complete-beginners-guide.html',
+    'wudu-ghusl-tayammum-guide.html',
+    'hadith-and-sunnah-authenticity.html',
+    'daily-adhkar-and-supplications.html',
+    'zakat-educational-calculation-guide.html'
+  ];
+
+  const indexArticleHtml = fs.readFileSync(path.join(articlesDir, 'index.html'), 'utf-8');
+  assert(indexArticleHtml.includes('100-Topic Master Islamic Educational Library'), 'Suite 38: articles/index.html includes 100-topic syllabus roadmap');
+
+  let totalArticleWords = 0;
+  expectedArticles.forEach(artFile => {
+    const artPath = path.join(articlesDir, artFile);
+    assert(fs.existsSync(artPath), `Suite 38: Article file exists: articles/${artFile}`);
+    const artContent = fs.readFileSync(artPath, 'utf-8');
+    assert(artContent.length > 40000, `Suite 38: articles/${artFile} has publication-grade payload (>40KB, actual: ${Math.round(artContent.length/1024)}KB)`);
+    assert(artContent.includes('toc-nav-list'), `Suite 38: articles/${artFile} renders structured Table of Contents`);
+    assert(artContent.includes('FAQPage'), `Suite 38: articles/${artFile} includes Schema.org FAQPage structured data`);
+    assert(artContent.includes('BreadcrumbList'), `Suite 38: articles/${artFile} includes Schema.org BreadcrumbList structured data`);
+    assert(artContent.includes('scholarly-bibliography'), `Suite 38: articles/${artFile} provides classical scholarly bibliography`);
+    assert(artContent.includes('js/config.js'), `Suite 38: articles/${artFile} includes config.js`);
+    
+    const words = artContent.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    assert(words >= 2000, `Suite 38: articles/${artFile} has comprehensive educational depth (${words} words >= 2,000 words)`);
+    totalArticleWords += words;
+  });
+
+  assert(totalArticleWords > 23000, `Suite 38: Batch 1 articles total over 23,000 words (actual: ${totalArticleWords} words)`);
+
+  const s38_searchJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  expectedArticles.forEach(artFile => {
+    assert(s38_searchJs.includes(`articles/${artFile}`), `Suite 38: search.js indexes articles/${artFile}`);
+  });
+
+  const s38_sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  expectedArticles.forEach(artFile => {
+    assert(s38_sitemap.includes(`articles/${artFile}`), `Suite 38: sitemap.xml indexes articles/${artFile}`);
+  });
+
   // SUMMARY
   console.log('\n====================================================');
   console.log(`TEST RESULTS SUMMARY:`);
