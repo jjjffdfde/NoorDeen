@@ -1,0 +1,334 @@
+[
+  {
+    "page": "/about.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/bookmarks.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/calendar.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/contact.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/download-app.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/duas.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/eid-guide.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/hadith.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/history.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 6,
+    "topOverflows": [
+      {
+        "selector": "polygon",
+        "right": 410,
+        "scrollWidth": 0,
+        "excess": 50
+      },
+      {
+        "selector": "section.hero-section",
+        "right": 360,
+        "scrollWidth": 405,
+        "excess": 45
+      },
+      {
+        "selector": "svg",
+        "right": 405,
+        "scrollWidth": 320,
+        "excess": 45
+      }
+    ]
+  },
+  {
+    "page": "/janazah-guide.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 22,
+    "topOverflows": [
+      {
+        "selector": "table",
+        "right": 548,
+        "scrollWidth": 525,
+        "excess": 188
+      },
+      {
+        "selector": "thead",
+        "right": 548,
+        "scrollWidth": 525,
+        "excess": 188
+      },
+      {
+        "selector": "tr",
+        "right": 548,
+        "scrollWidth": 525,
+        "excess": 188
+      }
+    ]
+  },
+  {
+    "page": "/kalimas.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/pillars.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/prayer-times.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/privacy.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/prophets.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/quran.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/sahaba.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/salah-guide.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 34,
+    "topOverflows": [
+      {
+        "selector": "table",
+        "right": 621,
+        "scrollWidth": 598,
+        "excess": 261
+      },
+      {
+        "selector": "thead",
+        "right": 621,
+        "scrollWidth": 598,
+        "excess": 261
+      },
+      {
+        "selector": "tr",
+        "right": 621,
+        "scrollWidth": 598,
+        "excess": 261
+      }
+    ]
+  },
+  {
+    "page": "/seerah.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/sources.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/tasbih.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/terms.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/wudu-guide.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  },
+  {
+    "page": "/zakat-calculator.html",
+    "docScrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "headerInnerScrollWidth": 360,
+    "headerInnerRight": 360,
+    "menuBtnRight": 348,
+    "menuBtnOverflows": false,
+    "overflowCount": 0,
+    "topOverflows": []
+  }
+]

@@ -1,0 +1,11 @@
+SourceId,ShortTitle,FullArabicTitle,Author,DeathAH,EditionOrCorpus,EvidenceTier,PrimaryScope,VerificationStatus
+SRC-BIO-01,Al-Isabah,الإصابة في تمييز الصحابة,Ibn Hajar al-Asqalani,852 AH,Dar al-Kutub al-Ilmiyyah (Beirut),Tier 4 (Classical Biographical),Comprehensive companion identification and grading,VERIFIED
+SRC-BIO-02,Usd al-Ghabah,أسد الغابة في معرفة الصحابة,Ibn al-Athir,630 AH,Dar Ibn Hazm (Beirut),Tier 4 (Classical Biographical),Extensive biographical corpus across 7700+ Sahaba,VERIFIED
+SRC-BIO-03,At-Tabaqat al-Kubra,الطبقات الكبرى,Ibn Sa'd,230 AH,Maktabat al-Khanji (Cairo),Tier 4 (Early Tabaqat),Generational biographical register of Sahaba and Tabi'un,VERIFIED
+SRC-BIO-04,Siyar A'lam an-Nubala,سير أعلام النبلاء,Shams al-Din adh-Dhahabi,748 AH,Mu'assasat ar-Risalah (Beirut),Tier 4 (Classical Biographical),Critical scholarly assessment and character virtues,VERIFIED
+SRC-BIO-05,Al-Isti'ab,الاستيعاب في معرفة الأصحاب,Ibn Abd al-Barr,463 AH,Dar al-Jil (Beirut),Tier 4 (Classical Biographical),Earliest surviving Western Islamic companion dictionary,VERIFIED
+SRC-HAD-01,Sahih al-Bukhari,صحيح البخاري - فضائل أصحاب النبي,Muhammad ibn Isma'il al-Bukhari,256 AH,Al-Sultaniyyah / Dar Tawq an-Najah,Tier 2 (Canonical Hadith),Unquestioned virtues and authenticated companion transmissions,VERIFIED
+SRC-HAD-02,Sahih Muslim,صحيح مسلم - فضائل الصحابة,Muslim ibn al-Hajjaj an-Naysaburi,261 AH,Dar Ihya al-Turath al-Arabi,Tier 2 (Canonical Hadith),Highest tier Hadith consensus on companion merits,VERIFIED
+SRC-HAD-03,Jami' at-Tirmidhi,جامع الترمذي - أبواب المناقب,Abu Isa Muhammad at-Tirmidhi,279 AH,Dar al-Gharb al-Islami,Tier 3 (Sunan Corpus),Detailed virtues of individual Sahaba and Asharah,VERIFIED
+SRC-HAD-04,Musnad Ahmad,مسند الإمام أحمد بن حنبل,Ahmad ibn Hanbal,241 AH,Mu'assasat ar-Risalah,Tier 3 (Musnad Corpus),Comprehensive chain-based companion narrations,VERIFIED
+SRC-HIS-01,Tarikh ar-Rusul wal-Muluk,تاريخ الرسل والملوك,Muhammad ibn Jarir at-Tabari,310 AH,Dar al-Ma'arif (Cairo),Tier 5 (Encyclopedic Chronicle),Caliphate political history and administrative records,VERIFIED

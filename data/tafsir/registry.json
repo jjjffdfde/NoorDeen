@@ -1,0 +1,56 @@
+{
+  "catalogVersion": "1.0.0",
+  "generatedAt": "2026-10-24T10:45:00Z",
+  "scholarlyStandard": "Sunni Classical & Contemporary Orthodoxy (Ahl al-Sunnah wal-Jama'ah)",
+  "totalRegisteredEditions": 3,
+  "editions": [
+    {
+      "id": "tafsir-ibn-kathir",
+      "slug": "ibn-kathir",
+      "title": "Tafsir al-Qur'an al-'Azim (تفسير القرآن العظيم)",
+      "popularTitle": "Tafsir Ibn Kathir",
+      "author": "Al-Hafiz 'Imad al-Din Isma'il ibn Kathir al-Qurashi (رحمه الله, 701–774 AH / 1300–1373 CE)",
+      "school": "Sunni / Athari / Shafi'i",
+      "methodology": "Tafsir bi'l-Ma'thur (Exegesis of Quran by Quran, Sunnah, and Sahaba traditions)",
+      "englishEdition": "Abridged English Translation by Safiur-Rahman al-Mubarakpuri (Darussalam, Riyadh)",
+      "languages": ["ar", "en", "ur"],
+      "coverage": "All 114 Surahs (Selected key verse exegeses bundled for offline study mode)",
+      "source": "Darussalam Publishers / King Saud University Quran Corpus",
+      "license": "Non-commercial Islamic Educational & Research Distribution",
+      "status": "verified",
+      "attribution": "Tafsir Ibn Kathir (Abridged), Darussalam Publishers, Riyadh."
+    },
+    {
+      "id": "tafsir-al-jalalayn",
+      "slug": "jalalayn",
+      "title": "Tafsir al-Jalalayn (تفسير الجلالين)",
+      "popularTitle": "Tafsir al-Jalalayn",
+      "author": "Jalal al-Din al-Mahalli (791–864 AH) & Jalal al-Din al-Suyuti (849–911 AH) (رحمهما الله)",
+      "school": "Sunni / Shafi'i",
+      "methodology": "Concise classical grammatical, linguistic, and contextual commentary (Lafzi)",
+      "englishEdition": "Translated by Dr. Feras Hamza (Great Books of Islamic Civilization)",
+      "languages": ["ar", "en"],
+      "coverage": "All 114 Surahs (Concise classical gloss across complete text)",
+      "source": "Royal Aal al-Bayt Institute for Islamic Thought / Altafsir.com",
+      "license": "Academic Open Educational Resource",
+      "status": "verified",
+      "attribution": "Tafsir al-Jalalayn, Royal Aal al-Bayt Institute for Islamic Thought, Amman, Jordan."
+    },
+    {
+      "id": "tafsir-al-muyassar",
+      "slug": "muyassar",
+      "title": "Al-Tafsir Al-Muyassar (التفسير الميسر)",
+      "popularTitle": "Al-Tafsir Al-Muyassar",
+      "author": "Scholarly Board under the supervision of King Fahd Glorious Quran Printing Complex (KFGQPC)",
+      "school": "Sunni / Salafi",
+      "methodology": "Simplified contemporary orthodox Arabic commentary based on authoritative consensus",
+      "englishEdition": "Arabic primary edition with contextual English annotations",
+      "languages": ["ar"],
+      "coverage": "All 114 Surahs (Complete verse-by-verse Medina Mushaf companion)",
+      "source": "King Fahd Glorious Quran Printing Complex, Medina Munawwarah",
+      "license": "King Fahd Quran Printing Complex Waqf Distribution",
+      "status": "verified",
+      "attribution": "Al-Tafsir Al-Muyassar, King Fahd Glorious Quran Printing Complex, Medina."
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/base-content.schema.json",
+  "title": "Base Islamic Content Entity",
+  "description": "Universal metadata schema for all educational resources in the Islamic Knowledge Portal.",
+  "type": "object",
+  "required": [
+    "id",
+    "contentType",
+    "title",
+    "slug",
+    "language",
+    "category",
+    "reviewStatus"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)+$",
+      "description": "Unique stable identifier (e.g. seerah-ch-01, sahaba-abu-bakr, hadith-bukhari-0001)."
+    },
+    "contentType": {
+      "type": "string",
+      "enum": [
+        "quran_verse",
+        "quran_surah",
+        "hadith_tradition",
+        "seerah_chapter",
+        "prophet_narrative",
+        "sahaba_biography",
+        "history_era",
+        "dua_supplication",
+        "worship_guide",
+        "fiqh_guide",
+        "kalima",
+        "tool_utility",
+        "educational_article"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200
+    },
+    "arabicTitle": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+      "default": "en"
+    },
+    "category": {
+      "type": "string",
+      "description": "ID of parent category in content-taxonomy.json"
+    },
+    "topics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sourceId", "citation"],
+        "properties": {
+          "sourceId": { "type": "string" },
+          "citation": { "type": "string" },
+          "volume": { "type": "string" },
+          "page": { "type": "string" },
+          "hadithNumber": { "type": "string" },
+          "ayahReference": { "type": "string" }
+        }
+      }
+    },
+    "relatedIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "RESEARCH_REQUIRED",
+        "DRAFT",
+        "SOURCE_REVIEW",
+        "LINGUISTIC_REVIEW",
+        "SCHOLARLY_REVIEW_REQUIRED",
+        "APPROVED_FOR_PUBLICATION",
+        "PUBLISHED",
+        "NEEDS_REVISION",
+        "ARCHIVED"
+      ]
+    },
+    "reviewMetadata": {
+      "type": "object",
+      "properties": {
+        "lastReviewDate": { "type": "string", "format": "date" },
+        "reviewerRole": { "type": "string" },
+        "reviewerNotes": { "type": "string" }
+      }
+    },
+    "license": {
+      "type": "string",
+      "default": "CC-BY-NC-4.0"
+    },
+    "seo": {
+      "type": "object",
+      "properties": {
+        "metaTitle": { "type": "string" },
+        "metaDescription": { "type": "string" },
+        "canonicalUrl": { "type": "string" },
+        "structuredDataType": { "type": "string" }
+      }
+    }
+  }
+}

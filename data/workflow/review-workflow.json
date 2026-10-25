@@ -1,0 +1,119 @@
+{
+  "$schema": "../schemas/workflow.schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2026-10-24T10:25:00Z",
+  "lifecycleStages": [
+    {
+      "id": "DISCOVERED",
+      "name": "Discovered",
+      "description": "Topic, event, biographical figure, or source identified for future platform inclusion.",
+      "allowedNextStates": ["RESEARCH_REQUIRED", "ARCHIVED"]
+    },
+    {
+      "id": "RESEARCH_REQUIRED",
+      "name": "Research Required",
+      "description": "Topic queued for primary source gathering, isnad evaluation, and scholarly references.",
+      "allowedNextStates": ["DRAFT", "ARCHIVED"]
+    },
+    {
+      "id": "DRAFT",
+      "name": "Draft in Progress",
+      "description": "Content being authored with structured headings, transliterations, and citation links.",
+      "allowedNextStates": ["SOURCE_REVIEW", "ARCHIVED"]
+    },
+    {
+      "id": "SOURCE_REVIEW",
+      "name": "Source & Provenance Review",
+      "description": "Verification that all claims, Hadith numbers, and dates match authentic editions.",
+      "allowedNextStates": ["LINGUISTIC_REVIEW", "NEEDS_REVISION"]
+    },
+    {
+      "id": "LINGUISTIC_REVIEW",
+      "name": "Linguistic & Transliteration Review",
+      "description": "Arabic diacritics, Urdu typography, ALA-LC transliteration, and English readability check.",
+      "allowedNextStates": ["SCHOLARLY_REVIEW_REQUIRED", "APPROVED_FOR_PUBLICATION", "NEEDS_REVISION"]
+    },
+    {
+      "id": "SCHOLARLY_REVIEW_REQUIRED",
+      "name": "Scholarly Review Required",
+      "description": "Mandatory human review by qualified Islamic scholar for theological and juristic claims.",
+      "allowedNextStates": ["APPROVED_FOR_PUBLICATION", "NEEDS_REVISION"]
+    },
+    {
+      "id": "APPROVED_FOR_PUBLICATION",
+      "name": "Approved for Publication",
+      "description": "Human review successfully signed off with documented provenance and license clearance.",
+      "allowedNextStates": ["PUBLISHED", "NEEDS_REVISION"]
+    },
+    {
+      "id": "PUBLISHED",
+      "name": "Live in Production",
+      "description": "Content actively served on website, bundled in PWA, and accessible to end-users.",
+      "allowedNextStates": ["NEEDS_REVISION", "ARCHIVED"]
+    },
+    {
+      "id": "NEEDS_REVISION",
+      "name": "Needs Revision",
+      "description": "Defect, typo, citation omission, or correction flag raised requiring editorial remedy.",
+      "allowedNextStates": ["DRAFT", "SOURCE_REVIEW"]
+    },
+    {
+      "id": "ARCHIVED",
+      "name": "Archived",
+      "description": "Superseded or retired content preserved for historical version tracking.",
+      "allowedNextStates": ["DISCOVERED"]
+    }
+  ],
+  "contentRiskTiers": [
+    {
+      "tier": 1,
+      "name": "Scriptural & Divine Text",
+      "categories": ["quran_arabic", "quran_translation"],
+      "minimumApprovalRole": "QUALIFIED_SCHOLARLY_COMMITTEE",
+      "aiGenerationAllowed": false,
+      "notes": "Zero modification of Quranic Arabic allowed. Automated translation strictly forbidden; peer-reviewed printed translations only."
+    },
+    {
+      "tier": 2,
+      "name": "Prophetic Sunnah & Fiqh Rulings",
+      "categories": ["hadith_tradition", "worship_guide", "creed"],
+      "minimumApprovalRole": "QUALIFIED_ISLAMIC_SCHOLAR",
+      "aiGenerationAllowed": false,
+      "notes": "Every Hadith must trace to canonical collections with authenticated grading. Madhhab differences must be noted."
+    },
+    {
+      "tier": 3,
+      "name": "Biographical & Historical Narratives",
+      "categories": ["seerah", "prophets", "sahaba", "history"],
+      "minimumApprovalRole": "SENIOR_ISLAMIC_HISTORIAN",
+      "aiGenerationAllowed": false,
+      "notes": "Narratives must cite classical works (Ibn Hisham, Ibn Sa'd, Tabari). Weak or contested stories must be labeled."
+    },
+    {
+      "tier": 4,
+      "name": "Technical Utilities & UI Labels",
+      "categories": ["tools", "astronomy", "ui_translations", "governance"],
+      "minimumApprovalRole": "LEAD_TECHNICAL_EDITOR",
+      "aiGenerationAllowed": true,
+      "notes": "Mathematical algorithms, UI button strings, and privacy policy legal disclosures."
+    }
+  ],
+  "editorialRoles": [
+    {
+      "role": "CONTENT_RESEARCHER",
+      "description": "Identifies primary classical sources, page references, and historical event chronologies."
+    },
+    {
+      "role": "TECHNICAL_EDITOR",
+      "description": "Validates JSON schemas, HTML semantics, SEO meta tags, and internal link integrity."
+    },
+    {
+      "role": "LINGUISTIC_REVIEWER",
+      "description": "Validates Arabic diacritics, Urdu Nastaliq styling, and English educational clarity."
+    },
+    {
+      "role": "QUALIFIED_ISLAMIC_SCHOLAR",
+      "description": "Formally credentialed scholar verifying theological orthodoxy, Hadith gradings, and Fiqh accuracy."
+    }
+  ]
+}

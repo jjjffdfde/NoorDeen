@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/hadith-tradition.schema.json",
+  "title": "Hadith Tradition Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "collection",
+    "hadithNumber",
+    "arabicText",
+    "translations",
+    "grade",
+    "gradingAuthority",
+    "narrator"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^hadith-[a-z]+-[0-9]+$" },
+    "collection": {
+      "type": "string",
+      "enum": [
+        "Sahih al-Bukhari",
+        "Sahih Muslim",
+        "Jami` at-Tirmidhi",
+        "Sunan Abi Dawud",
+        "Sunan an-Nasa'i",
+        "Sunan Ibn Majah",
+        "Muwatta Malik",
+        "Musnad Ahmad",
+        "Sunan ad-Darimi",
+        "Al-Arba'un al-Nawawiyyah"
+      ]
+    },
+    "bookName": { "type": "string" },
+    "bookNumber": { "type": "integer" },
+    "hadithNumber": { "type": "string" },
+    "numberingStandard": { "type": "string", "default": "Muhammad Fuad Abdul Baaqi" },
+    "narrator": { "type": "string" },
+    "arabicText": { "type": "string" },
+    "translations": {
+      "type": "object",
+      "required": ["en"],
+      "properties": {
+        "en": { "type": "string" },
+        "ur": { "type": "string" }
+      }
+    },
+    "grade": {
+      "type": "string",
+      "enum": [
+        "Sahih (Authentic - Muttafaqun 'Alayh)",
+        "Sahih (Authentic)",
+        "Hasan Sahih (Good & Authentic)",
+        "Hasan (Good)",
+        "Da'if (Weak - Preserved for Adab)",
+        "Mursal (Supported Tradition)"
+      ]
+    },
+    "gradingAuthority": { "type": "string" },
+    "topic": { "type": "string" },
+    "fiqhCommentary": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "content": { "type": "string" }
+      }
+    }
+  }
+}

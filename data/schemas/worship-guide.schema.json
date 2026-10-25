@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/worship-guide.schema.json",
+  "title": "Worship Guide Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "worshipType",
+    "title",
+    "prerequisites",
+    "steps",
+    "comparativeMadhhabAnalysis",
+    "sources"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^guide-[a-z0-9-]+$" },
+    "worshipType": {
+      "type": "string",
+      "enum": ["salah", "wudu", "ghusl", "tayammum", "janazah", "eid", "zakat", "fasting", "hajj", "umrah"]
+    },
+    "title": { "type": "string" },
+    "arabicTitle": { "type": "string" },
+    "prerequisites": { "type": "array", "items": { "type": "string" } },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stepNumber", "title", "instruction"],
+        "properties": {
+          "stepNumber": { "type": "integer" },
+          "title": { "type": "string" },
+          "instruction": { "type": "string" },
+          "arabicRecitation": { "type": "string" },
+          "transliteration": { "type": "string" },
+          "translation": { "type": "string" },
+          "rulingClassification": { "type": "string", "enum": ["fard", "wajib", "sunnah_muakkadah", "mustahabb"] }
+        }
+      }
+    },
+    "nullifiers": { "type": "array", "items": { "type": "string" } },
+    "comparativeMadhhabAnalysis": {
+      "type": "object",
+      "properties": {
+        "hanafi": { "type": "string" },
+        "shafii": { "type": "string" },
+        "maliki": { "type": "string" },
+        "hanbali": { "type": "string" }
+      }
+    },
+    "sources": { "type": "array", "minItems": 1 }
+  }
+}

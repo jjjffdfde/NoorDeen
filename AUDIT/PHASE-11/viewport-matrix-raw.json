@@ -1,0 +1,1730 @@
+[
+  {
+    "viewport": {
+      "name": "iPhone SE 1st Gen",
+      "width": 320,
+      "height": 568,
+      "isMobile": true,
+      "dpr": 2
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 320,
+        "headerSW": 320,
+        "menuRight": 312,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "Standard Android / Galaxy S5",
+      "width": 360,
+      "height": 640,
+      "isMobile": true,
+      "dpr": 2.625
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "Galaxy A Series (Tall)",
+      "width": 360,
+      "height": 800,
+      "isMobile": true,
+      "dpr": 2.625
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 360,
+        "headerSW": 360,
+        "menuRight": 352,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "iPhone 8 / SE 2nd & 3rd Gen",
+      "width": 375,
+      "height": 667,
+      "isMobile": true,
+      "dpr": 2
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 375,
+        "headerSW": 375,
+        "menuRight": 365,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "iPhone 12 / 13 / 14 / 15",
+      "width": 390,
+      "height": 844,
+      "isMobile": true,
+      "dpr": 3
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 390,
+        "headerSW": 390,
+        "menuRight": 380,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "Pixel 7 / Galaxy S21",
+      "width": 412,
+      "height": 915,
+      "isMobile": true,
+      "dpr": 2.625
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 412,
+        "headerSW": 412,
+        "menuRight": 402,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "iPhone XR / 11",
+      "width": 414,
+      "height": 896,
+      "isMobile": true,
+      "dpr": 2
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 414,
+        "headerSW": 414,
+        "menuRight": 404,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "iPhone 13 / 14 Pro Max",
+      "width": 428,
+      "height": 926,
+      "isMobile": true,
+      "dpr": 3
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 428,
+        "headerSW": 428,
+        "menuRight": 418,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "Android WVGA",
+      "width": 480,
+      "height": 800,
+      "isMobile": true,
+      "dpr": 1.5
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 480,
+        "headerSW": 480,
+        "menuRight": 470,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "qHD Screen",
+      "width": 540,
+      "height": 960,
+      "isMobile": true,
+      "dpr": 1.5
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 540,
+        "headerSW": 540,
+        "menuRight": 520,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "7-inch Tablet Portrait",
+      "width": 600,
+      "height": 960,
+      "isMobile": true,
+      "dpr": 1.5
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 600,
+        "headerSW": 600,
+        "menuRight": 580,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "iPad Portrait",
+      "width": 768,
+      "height": 1024,
+      "isMobile": false,
+      "dpr": 2
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 753,
+        "headerSW": 753,
+        "menuRight": 733,
+        "bottomNavVisible": true,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "10-inch Android Tablet Portrait",
+      "width": 800,
+      "height": 1280,
+      "isMobile": false,
+      "dpr": 1.5
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 785,
+        "headerSW": 785,
+        "menuRight": 765,
+        "bottomNavVisible": false,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "iPad Landscape",
+      "width": 1024,
+      "height": 768,
+      "isMobile": false,
+      "dpr": 2
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 1009,
+        "headerSW": 1009,
+        "menuRight": 989,
+        "bottomNavVisible": false,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "Small Laptop / Tablet Landscape",
+      "width": 1280,
+      "height": 800,
+      "isMobile": false,
+      "dpr": 1
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 1265,
+        "headerSW": 1265,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "name": "Full HD Desktop",
+      "width": 1920,
+      "height": 1080,
+      "isMobile": false,
+      "dpr": 1
+    },
+    "allPass": true,
+    "routes": [
+      {
+        "route": "/",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/quran.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/hadith.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/salah-guide.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prayer-times.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/seerah.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/prophets.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/sahaba.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/history.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/zakat-calculator.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/contact.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      },
+      {
+        "route": "/download-app.html",
+        "docSW": 1905,
+        "headerSW": 1905,
+        "menuRight": 0,
+        "bottomNavVisible": false,
+        "pass": true
+      }
+    ]
+  }
+]

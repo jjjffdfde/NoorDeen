@@ -1,0 +1,600 @@
+{
+  "seerah": [
+    {
+      "num": 1,
+      "id": "ch1",
+      "era": "pre-prophethood",
+      "title": "Arabia Before Revelation: Jahiliyyah, Makkan Sanctuary, and the Abrahamic Legacy",
+      "words": 827,
+      "hasSources": true
+    },
+    {
+      "num": 2,
+      "id": "ch2",
+      "era": "pre-prophethood",
+      "title": "Blessed Lineage, Birth in the Year of the Elephant, and Desert Infancy",
+      "words": 907,
+      "hasSources": true
+    },
+    {
+      "num": 3,
+      "id": "ch3",
+      "era": "pre-prophethood",
+      "title": "Childhood, Guardianship of Abu Talib, Youth, and Prophetic Shepherding",
+      "words": 850,
+      "hasSources": true
+    },
+    {
+      "num": 4,
+      "id": "ch4",
+      "era": "pre-prophethood",
+      "title": "Hilf al-Fudul (The League of the Virtuous), Syro-Arab Trade, and the Title Al-Amin",
+      "words": 692,
+      "hasSources": true
+    },
+    {
+      "num": 5,
+      "id": "ch5",
+      "era": "pre-prophethood",
+      "title": "Blessed Matrimony with Sayyidah Khadijah (RA) and Domestic Life",
+      "words": 757,
+      "hasSources": true
+    },
+    {
+      "num": 6,
+      "id": "ch6",
+      "era": "pre-prophethood",
+      "title": "Reconstruction of the Ka'bah and the Black Stone Arbitration",
+      "words": 825,
+      "hasSources": true
+    },
+    {
+      "num": 7,
+      "id": "ch7",
+      "era": "makkan-early",
+      "title": "Spiritual Solitude in Cave Hira and the Dawn of Revelation",
+      "words": 926,
+      "hasSources": true
+    },
+    {
+      "num": 8,
+      "id": "ch8",
+      "era": "makkan-early",
+      "title": "The Early Secret Call and the Sanctuary of Dar al-Arqam",
+      "words": 698,
+      "hasSources": true
+    },
+    {
+      "num": 9,
+      "id": "ch9",
+      "era": "makkan-early",
+      "title": "The Open Call at Mount Safa and the Onset of Persecution",
+      "words": 758,
+      "hasSources": true
+    },
+    {
+      "num": 10,
+      "id": "ch10",
+      "era": "makkan-early",
+      "title": "Persecution of the Vulnerable and the Migrations to Abyssinia",
+      "words": 964,
+      "hasSources": true
+    },
+    {
+      "num": 11,
+      "id": "ch11",
+      "era": "makkan-trials",
+      "title": "Conversions of Hamzah and Umar and the Boycott in Shi'b Abi Talib",
+      "words": 1227,
+      "hasSources": true
+    },
+    {
+      "num": 12,
+      "id": "ch12",
+      "era": "makkan-trials",
+      "title": "The Year of Sorrow (Am al-Huzn) and the Mission of Mercy to Ta'if",
+      "words": 1285,
+      "hasSources": true
+    },
+    {
+      "num": 13,
+      "id": "ch13",
+      "era": "makkan-trials",
+      "title": "Al-Isra wal-Mi'raj: The Miraculous Night Journey and Heavenly Ascension",
+      "words": 1086,
+      "hasSources": true
+    },
+    {
+      "num": 14,
+      "id": "ch14",
+      "era": "makkan-trials",
+      "title": "The Pledges of Al-Aqabah and the Yathrib Covenant",
+      "words": 1122,
+      "hasSources": true
+    },
+    {
+      "num": 15,
+      "id": "ch15",
+      "era": "madinan-establishment",
+      "title": "The Great Migration (Hijrah) and Arrival at Quba and Madinah",
+      "words": 1148,
+      "hasSources": true
+    },
+    {
+      "num": 16,
+      "id": "ch16",
+      "era": "madinan-establishment",
+      "title": "Building the Prophetic Mosque, Muwakhat, and the Charter of Madinah",
+      "words": 939,
+      "hasSources": true
+    },
+    {
+      "num": 17,
+      "id": "ch17",
+      "era": "battles-treaties",
+      "title": "The Shift of Qiblah and the Decisive Breakthrough at Badr",
+      "words": 1362,
+      "hasSources": true
+    },
+    {
+      "num": 18,
+      "id": "ch18",
+      "era": "battles-treaties",
+      "title": "The Crucible of Uhud: Lessons of Obedience, Sacrifice, and Resilience",
+      "words": 1396,
+      "hasSources": true
+    },
+    {
+      "num": 19,
+      "id": "ch19",
+      "era": "battles-treaties",
+      "title": "The Battle of the Trench (Khandaq) and Siege Warfare",
+      "words": 1246,
+      "hasSources": true
+    },
+    {
+      "num": 20,
+      "id": "ch20",
+      "era": "battles-treaties",
+      "title": "The Treaty of Al-Hudaybiyyah and the Bay'at al-Ridwan",
+      "words": 1203,
+      "hasSources": true
+    },
+    {
+      "num": 21,
+      "id": "ch21",
+      "era": "battles-treaties",
+      "title": "Letters to World Emperors and the Conquest of Khaybar",
+      "words": 1291,
+      "hasSources": true
+    },
+    {
+      "num": 22,
+      "id": "ch22",
+      "era": "zenith-legacy",
+      "title": "The Bloodless Conquest of Makkah and Universal Amnesty",
+      "words": 1411,
+      "hasSources": true
+    },
+    {
+      "num": 23,
+      "id": "ch23",
+      "era": "zenith-legacy",
+      "title": "Hunayn, the Siege of Ta'if, and the Hardship Expedition to Tabuk",
+      "words": 1279,
+      "hasSources": true
+    },
+    {
+      "num": 24,
+      "id": "ch24",
+      "era": "zenith-legacy",
+      "title": "The Year of Delegations and the Farewell Pilgrimage (Hajjat al-Wada')",
+      "words": 1109,
+      "hasSources": true
+    },
+    {
+      "num": 25,
+      "id": "ch25",
+      "era": "zenith-legacy",
+      "title": "The Passing to the Highest Companion and the Eternal Legacy",
+      "words": 1650,
+      "hasSources": true
+    }
+  ],
+  "sahaba": [
+    {
+      "num": 1,
+      "id": "abu-bakr",
+      "category": "caliphs",
+      "name": "Abu Bakr as-Siddiq (رضي الله عنه)",
+      "words": 891
+    },
+    {
+      "num": 2,
+      "id": "umar",
+      "category": "caliphs",
+      "name": "Umar ibn al-Khattab (رضي الله عنه)",
+      "words": 799
+    },
+    {
+      "num": 3,
+      "id": "uthman",
+      "category": "caliphs",
+      "name": "Uthman ibn Affan (رضي الله عنه)",
+      "words": 833
+    },
+    {
+      "num": 4,
+      "id": "ali",
+      "category": "caliphs",
+      "name": "Ali ibn Abi Talib (رضي الله عنه)",
+      "words": 820
+    },
+    {
+      "num": 5,
+      "id": "talhah",
+      "category": "promised-paradise",
+      "name": "Talhah ibn Ubaydullah (رضي الله عنه)",
+      "words": 679
+    },
+    {
+      "num": 6,
+      "id": "zubayr",
+      "category": "promised-paradise",
+      "name": "Az-Zubayr ibn al-Awwam (رضي الله عنه)",
+      "words": 673
+    },
+    {
+      "num": 7,
+      "id": "abdur-rahman",
+      "category": "promised-paradise",
+      "name": "Abdur-Rahman ibn Awf (رضي الله عنه)",
+      "words": 666
+    },
+    {
+      "num": 8,
+      "id": "sad-ibn-abi-waqqas",
+      "category": "promised-paradise",
+      "name": "Sa'd ibn Abi Waqqas (رضي الله عنه)",
+      "words": 713
+    },
+    {
+      "num": 9,
+      "id": "abu-ubaydah",
+      "category": "promised-paradise",
+      "name": "Abu Ubaydah ibn al-Jarrah (رضي الله عنه)",
+      "words": 718
+    },
+    {
+      "num": 10,
+      "id": "said-ibn-zayd",
+      "category": "promised-paradise",
+      "name": "Sa'id ibn Zayd (رضي الله عنه)",
+      "words": 690
+    },
+    {
+      "num": 11,
+      "id": "khadijah",
+      "category": "women-companions",
+      "name": "Khadijah bint Khuwaylid (رضي الله عنها)",
+      "words": 647
+    },
+    {
+      "num": 12,
+      "id": "aisha",
+      "category": "women-companions",
+      "name": "Aisha bint Abi Bakr (رضي الله عنها)",
+      "words": 622
+    },
+    {
+      "num": 13,
+      "id": "fatima",
+      "category": "women-companions",
+      "name": "Fatimah az-Zahra (رضي الله عنها)",
+      "words": 589
+    },
+    {
+      "num": 14,
+      "id": "umm-salamah",
+      "category": "women-companions",
+      "name": "Umm Salamah Hind bint Abi Umayyah (رضي الله عنها)",
+      "words": 687
+    },
+    {
+      "num": 15,
+      "id": "asma",
+      "category": "women-companions",
+      "name": "Asma bint Abi Bakr (رضي الله عنها)",
+      "words": 748
+    },
+    {
+      "num": 16,
+      "id": "hafsah",
+      "category": "women-companions",
+      "name": "Hafsah bint Umar (رضي الله عنها)",
+      "words": 626
+    },
+    {
+      "num": 17,
+      "id": "umm-sulaym",
+      "category": "women-companions",
+      "name": "Umm Sulaym bint Milhan (رضي الله عنها)",
+      "words": 742
+    },
+    {
+      "num": 18,
+      "id": "nusaybah",
+      "category": "women-companions",
+      "name": "Nusaybah bint Ka'b / Umm Umarah (رضي الله عنها)",
+      "words": 674
+    },
+    {
+      "num": 19,
+      "id": "sumayyah",
+      "category": "women-companions",
+      "name": "Sumayyah bint Khayyat (رضي الله عنها)",
+      "words": 677
+    },
+    {
+      "num": 20,
+      "id": "shifa",
+      "category": "women-companions",
+      "name": "Al-Shifa bint Abdullah (رضي الله عنها)",
+      "words": 619
+    },
+    {
+      "num": 21,
+      "id": "ibn-abbas",
+      "category": "scholars",
+      "name": "Abdullah ibn Abbas (رضي الله عنهما)",
+      "words": 758
+    },
+    {
+      "num": 22,
+      "id": "ibn-masud",
+      "category": "scholars",
+      "name": "Abdullah ibn Mas'ud (رضي الله عنه)",
+      "words": 675
+    },
+    {
+      "num": 23,
+      "id": "muadh-ibn-jabal",
+      "category": "scholars",
+      "name": "Mu'adh ibn Jabal (رضي الله عنه)",
+      "words": 710
+    },
+    {
+      "num": 24,
+      "id": "zayd-ibn-thabit",
+      "category": "scholars",
+      "name": "Zayd ibn Thabit (رضي الله عنه)",
+      "words": 679
+    },
+    {
+      "num": 25,
+      "id": "abu-hurayrah",
+      "category": "scholars",
+      "name": "Abu Hurayrah (رضي الله عنه)",
+      "words": 781
+    },
+    {
+      "num": 26,
+      "id": "abu-dharr",
+      "category": "scholars",
+      "name": "Abu Dharr al-Ghifari (رضي الله عنه)",
+      "words": 668
+    },
+    {
+      "num": 27,
+      "id": "bilal",
+      "category": "stalwarts",
+      "name": "Bilal ibn Rabah (رضي الله عنه)",
+      "words": 827
+    },
+    {
+      "num": 28,
+      "id": "salman",
+      "category": "stalwarts",
+      "name": "Salman al-Farsi (رضي الله عنه)",
+      "words": 777
+    },
+    {
+      "num": 29,
+      "id": "khalid",
+      "category": "stalwarts",
+      "name": "Khalid ibn al-Walid (رضي الله عنه)",
+      "words": 817
+    },
+    {
+      "num": 30,
+      "id": "musab",
+      "category": "stalwarts",
+      "name": "Mus'ab ibn Umayr (رضي الله عنه)",
+      "words": 776
+    }
+  ],
+  "prophets": [
+    {
+      "num": 1,
+      "id": "adam",
+      "name": "Adam (عليه السلام)",
+      "words": 757
+    },
+    {
+      "num": 2,
+      "id": "idris",
+      "name": "Idris / Enoch (عليه السلام)",
+      "words": 516
+    },
+    {
+      "num": 3,
+      "id": "nuh",
+      "name": "Nuh / Noah (عليه السلام)",
+      "words": 760
+    },
+    {
+      "num": 4,
+      "id": "hud",
+      "name": "Hud (عليه السلام)",
+      "words": 618
+    },
+    {
+      "num": 5,
+      "id": "salih",
+      "name": "Salih (عليه السلام)",
+      "words": 744
+    },
+    {
+      "num": 6,
+      "id": "ibrahim",
+      "name": "Ibrahim / Abraham (عليه السلام)",
+      "words": 777
+    },
+    {
+      "num": 7,
+      "id": "lut",
+      "name": "Lut / Lot (عليه السلام)",
+      "words": 706
+    },
+    {
+      "num": 8,
+      "id": "ismail",
+      "name": "Ismail / Ishmael (عليه السلام)",
+      "words": 694
+    },
+    {
+      "num": 9,
+      "id": "ishaq",
+      "name": "Ishaq / Isaac (عليه السلام)",
+      "words": 598
+    },
+    {
+      "num": 10,
+      "id": "yaqub",
+      "name": "Yaqub / Jacob / Israel (عليه السلام)",
+      "words": 724
+    },
+    {
+      "num": 11,
+      "id": "yusuf",
+      "name": "Yusuf / Joseph (عليه السلام)",
+      "words": 877
+    },
+    {
+      "num": 12,
+      "id": "ayyub",
+      "name": "Ayyub / Job (عليه السلام)",
+      "words": 709
+    },
+    {
+      "num": 13,
+      "id": "shuayb",
+      "name": "Shu'ayb / Jethro (عليه السلام)",
+      "words": 758
+    },
+    {
+      "num": 14,
+      "id": "dhul-kifl",
+      "name": "Dhul-Kifl / Ezekiel (?) (عليه السلام)",
+      "words": 641
+    },
+    {
+      "num": 15,
+      "id": "musa",
+      "name": "Musa / Moses (عليه السلام)",
+      "words": 907
+    },
+    {
+      "num": 16,
+      "id": "harun",
+      "name": "Harun / Aaron (عليه السلام)",
+      "words": 798
+    },
+    {
+      "num": 17,
+      "id": "dawud",
+      "name": "Dawud / David (عليه السلام)",
+      "words": 888
+    },
+    {
+      "num": 18,
+      "id": "sulayman",
+      "name": "Sulayman / Solomon (عليه السلام)",
+      "words": 842
+    },
+    {
+      "num": 19,
+      "id": "ilyas",
+      "name": "Ilyas / Elijah (عليه السلام)",
+      "words": 593
+    },
+    {
+      "num": 20,
+      "id": "al-yasa",
+      "name": "Al-Yasa' / Elisha (عليه السلام)",
+      "words": 568
+    },
+    {
+      "num": 21,
+      "id": "yunus",
+      "name": "Yunus / Jonah (عليه السلام)",
+      "words": 819
+    },
+    {
+      "num": 22,
+      "id": "zakariyya",
+      "name": "Zakariyya / Zechariah (عليه السلام)",
+      "words": 797
+    },
+    {
+      "num": 23,
+      "id": "yahya",
+      "name": "Yahya / John the Baptist (عليه السلام)",
+      "words": 706
+    },
+    {
+      "num": 24,
+      "id": "isa",
+      "name": "Isa / Jesus (عليه السلام)",
+      "words": 883
+    },
+    {
+      "num": 25,
+      "id": "muhammad",
+      "name": "Muhammad ﷺ (Khatam an-Nabiyyin)",
+      "words": 671
+    },
+    {
+      "num": 26,
+      "id": "maryam",
+      "name": "Maryam bint Imran (عليها السلام)",
+      "words": 807
+    },
+    {
+      "num": 27,
+      "id": "ashab-al-kahf",
+      "name": "Ashab al-Kahf / People of the Cave",
+      "words": 756
+    },
+    {
+      "num": 28,
+      "id": "luqman",
+      "name": "Luqman al-Hakim / Luqman the Wise",
+      "words": 692
+    },
+    {
+      "num": 29,
+      "id": "dhul-qarnayn",
+      "name": "Dhul-Qarnayn / The Possessor of Two Horns",
+      "words": 833
+    },
+    {
+      "num": 30,
+      "id": "ashab-al-ukhdud",
+      "name": "Ashab al-Ukhdud / People of the Ditch",
+      "words": 889
+    }
+  ],
+  "historyCount": 12,
+  "languages": []
+}

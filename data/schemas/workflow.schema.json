@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/workflow.schema.json",
+  "title": "Review Workflow Schema",
+  "type": "object",
+  "required": ["version", "lifecycleStages", "contentRiskTiers", "editorialRoles"],
+  "properties": {
+    "version": { "type": "string" },
+    "lastUpdated": { "type": "string" },
+    "lifecycleStages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description", "allowedNextStates"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "allowedNextStates": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "contentRiskTiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["tier", "name", "categories", "minimumApprovalRole", "aiGenerationAllowed"],
+        "properties": {
+          "tier": { "type": "integer" },
+          "name": { "type": "string" },
+          "categories": { "type": "array", "items": { "type": "string" } },
+          "minimumApprovalRole": { "type": "string" },
+          "aiGenerationAllowed": { "type": "boolean" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "editorialRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "description"],
+        "properties": {
+          "role": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

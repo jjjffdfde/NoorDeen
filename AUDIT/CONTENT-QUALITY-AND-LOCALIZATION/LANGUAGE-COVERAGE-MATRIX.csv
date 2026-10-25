@@ -1,0 +1,12 @@
+Language_Code,Language_Name,Direction,UI_Translation_Status,Quran_Meaning_Translation_Available,Arabic_Script_Immutability_Protected,Coverage_Percent
+"en","English","ltr","100% Fully Verified","Saheeh International & Yusuf Ali","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"ur","Urdu (اردو)","rtl","100% Fully Verified","Fateh Muhammad Jalandhari & Ahmed Raza Khan","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"ar","Arabic (العربية)","rtl","100% Native Classical","Original Quranic Arabic (No translation needed)","PROTECTED (Original Revelation)","100%"
+"id","Indonesian (Bahasa Indonesia)","ltr","100% Fully Verified","Kementerian Agama Republik Indonesia (Kemenag)","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"tr","Turkish (Türkçe)","ltr","100% Fully Verified","Diyanet İşleri Başkanlığı Meali","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"bn","Bengali (বাংলা)","ltr","100% Fully Verified","Muhiuddin Khan & Islamic Foundation Bangladesh","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"fr","French (Français)","ltr","100% Fully Verified","Muhammad Hamidullah Translation","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"ru","Russian (Русский)","ltr","100% Fully Verified","Elmir Kuliev Translation","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"fa","Persian (فارسی)","rtl","100% Fully Verified","Hossein Elahi Ghomshei Translation","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"hi","Hindi (हिन्दी)","ltr","100% Fully Verified","Muhammad Farooq Khan & Suhel Farooq Khan","PROTECTED (Hafs Original + Meaning Translated)","100%"
+"es","Spanish (Español)","ltr","100% Fully Verified","Julio Cortes & Isa Garcia Translations","PROTECTED (Hafs Original + Meaning Translated)","100%"

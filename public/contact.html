@@ -195,10 +195,10 @@
   <!-- Main Container -->
   <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 1000px;">
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+    <div class="grid-responsive-2col" style="margin-top: 10px;">
       
       <!-- Left Column: Contact Form -->
-      <div class="card" style="padding: 28px;">
+      <div class="card">
         <h2 style="font-size: 1.4rem; color: var(--color-primary); margin-bottom: 8px;">Send a Message or Report a Correction</h2>
         <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 20px;">
           All submissions are reviewed by our verification team against canonical sources before any textual revision is deployed.
@@ -253,7 +253,7 @@
 
       <!-- Right Column: Editorial Details & FAQ -->
       <div>
-        <div class="card" style="padding: 24px; margin-bottom: 24px; border-top: 4px solid var(--color-gold);">
+        <div class="card" style="margin-bottom: 24px; border-top: 4px solid var(--color-gold);">
           <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 12px;">Editorial Integrity & Review Protocol</h3>
           <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 12px;">
             The Islamic Knowledge Portal is committed to the highest standards of Islamic scholarship (E-E-A-T). Every report regarding text integrity is cross-checked against:
@@ -265,18 +265,18 @@
           </ul>
         </div>
 
-        <div class="card" style="padding: 24px; margin-bottom: 24px;">
+        <div class="card" style="margin-bottom: 24px;">
           <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 12px;">Direct Contact Information</h3>
-          <div style="font-size: 0.92rem; line-height: 2; color: var(--color-text-main);">
-            <div><strong>General Inquiries:</strong> contact@islamicknowledge.example.com</div>
-            <div><strong>Editorial Board:</strong> editorial@islamicknowledge.example.com</div>
-            <div><strong>Technical Support:</strong> support@islamicknowledge.example.com</div>
+          <div style="font-size: 0.92rem; line-height: 2; color: var(--color-text-main); word-break: break-word; overflow-wrap: anywhere;">
+            <div><strong>General Inquiries:</strong> <a href="mailto:contact@islamicknowledge.example.com" style="color: var(--color-primary); word-break: break-all;">contact@islamicknowledge.example.com</a></div>
+            <div><strong>Editorial Board:</strong> <a href="mailto:editorial@islamicknowledge.example.com" style="color: var(--color-primary); word-break: break-all;">editorial@islamicknowledge.example.com</a></div>
+            <div><strong>Technical Support:</strong> <a href="mailto:support@islamicknowledge.example.com" style="color: var(--color-primary); word-break: break-all;">support@islamicknowledge.example.com</a></div>
             <div><strong>Publisher Office:</strong> Global Digital Islamic Research Initiative</div>
             <div><strong>Response Time:</strong> 24–48 Business Hours</div>
           </div>
         </div>
 
-        <div class="card" style="padding: 24px; background: var(--color-surface);">
+        <div class="card" style="background: var(--color-surface);">
           <h3 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 12px;">Frequently Asked Questions</h3>
           <details class="faq-card" style="margin-bottom: 10px;">
             <summary class="faq-summary">How do you verify reported errors?</summary>

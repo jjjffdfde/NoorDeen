@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import http from 'http';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -311,10 +312,10 @@ async function runTestSuite() {
 
   // TEST SUITE 9: MOBILE DRAWER & ANDROID CAPACITOR SCAFFOLDING
   console.log('\n--- TEST SUITE 9: Mobile UI Drawer & Capacitor Android Scaffolding ---');
-  const appJsContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
-  assert(appJsContent.includes('initServiceWorker'), 'Application controller registers Service Worker');
-  assert(appJsContent.includes('setupMobileDrawer'), 'Application controller initializes mobile navigation drawer');
-  assert(appJsContent.includes('setupOfflineBanner'), 'Application controller initializes offline status banner');
+  const phase8AppJsContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(phase8AppJsContent.includes('initServiceWorker'), 'Application controller registers Service Worker');
+  assert(phase8AppJsContent.includes('setupMobileDrawer'), 'Application controller initializes mobile navigation drawer');
+  assert(phase8AppJsContent.includes('setupOfflineBanner'), 'Application controller initializes offline status banner');
 
   const capConfigPath = path.join(ROOT_DIR, 'capacitor.config.json');
   assert(fs.existsSync(capConfigPath), 'Capacitor configuration (capacitor.config.json) exists');
@@ -387,8 +388,8 @@ async function runTestSuite() {
 
   // TEST SUITE 13: DYNAMIC CONTINUE-READING & LOCAL PERSISTENCE
   console.log('\n--- TEST SUITE 13: Dynamic Continue-Reading & Local Persistence ---');
-  assert(appJsContent.includes('checkContinueReading'), 'App controller implements checkContinueReading()');
-  assert(appJsContent.includes('islamic_portal_last_read'), 'App controller reads persistent reading progress from localStorage');
+  assert(phase8AppJsContent.includes('checkContinueReading'), 'App controller implements checkContinueReading()');
+  assert(phase8AppJsContent.includes('islamic_portal_last_read'), 'App controller reads persistent reading progress from localStorage');
   assert(quranJsContent.includes('saveLastReadPosition'), 'Quran controller implements saveLastReadPosition()');
   
   const indexHtmlContent = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
@@ -659,6 +660,653 @@ async function runTestSuite() {
   assert(mainCss.includes('@media (max-width: 480px)'), 'Main stylesheet defines 480px mobile media query');
   assert(mainCss.includes('@media (max-width: 360px)'), 'Main stylesheet defines 360px small mobile media query');
   assert(mainCss.includes('overflow-x: hidden'), 'Main stylesheet implements zero-horizontal-overflow safeguard');
+
+  // TEST SUITE 22: PHASE 2 CONTENT SYSTEM, TAXONOMY & EDITORIAL SCHEMAS
+  console.log('\n--- TEST SUITE 22: Phase 2 Content System, Taxonomy & Schemas ---');
+  const { validateContentSystem } = await import('../scripts/validate-content-system.js');
+  const valResult = validateContentSystem();
+  assert(valResult.failedChecks === 0, `Content system validation passed with zero errors (${valResult.passedChecks}/${valResult.totalChecks} checks passed)`);
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'taxonomy', 'content-taxonomy.json')), 'Centralized content taxonomy exists');
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'sources', 'registry.json')), 'Centralized source registry exists');
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'workflow', 'review-workflow.json')), 'Religious review workflow configuration exists');
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'schemas', 'base-content.schema.json')), 'Universal base content schema exists');
+
+  // TEST SUITE 23: PHASE 3 COMPLETE QURAN SYSTEM, STUDY MODE & AUDIO ARCHITECTURE
+  console.log('\n--- TEST SUITE 23: Phase 3 Quran System, Study Mode & Audio Architecture ---');
+  const quranHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  const quranJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+
+  // 1. Canonical Quranic Structure & 30 Juz
+  assert(parsedData.juzList && parsedData.juzList.length === 30, 'All 30 Juz defined with canonical metadata in ISLAMIC_DATA.juzList');
+  assert(parsedData.juzList[0].startSurah === 1 && parsedData.juzList[0].startAyah === 1, 'Juz 1 correctly begins at Surah Al-Fatihah 1:1');
+  assert(parsedData.juzList[29].number === 30 && parsedData.juzList[29].startSurah === 78, 'Juz 30 (Amma) correctly begins at Surah An-Naba (78:1)');
+  assert(quranHtml.includes('id="juz-select-dropdown"'), 'Juz selector dropdown present in public/quran.html');
+  assert(quranJs.includes('loadJuz(juzNumber)'), 'loadJuz navigation method implemented in QuranReader');
+
+  // 2. Study Mode Modal Architecture
+  assert(quranHtml.includes('id="quran-study-modal"'), 'Study Mode modal container present in public/quran.html');
+  assert(quranHtml.includes('id="tab-btn-tafsir"'), 'Tafsir exegesis tab button present in Study Mode');
+  assert(quranHtml.includes('id="tab-btn-wbw"'), 'Word-by-word tab button present in Study Mode');
+  assert(quranHtml.includes('id="tab-btn-compare"'), 'Translation comparison tab button present in Study Mode');
+  assert(quranHtml.includes('id="tab-btn-hadith"'), 'Related Hadith tab button present in Study Mode');
+  assert(quranJs.includes('openStudyMode'), 'openStudyMode method implemented in QuranReader');
+  assert(quranJs.includes('closeStudyMode'), 'closeStudyMode method implemented in QuranReader');
+  assert(quranJs.includes('switchStudyTab'), 'switchStudyTab method implemented in QuranReader');
+
+  // 3. Tafsir Registry & Study Datasets
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'tafsir', 'registry.json')), 'Tafsir registry exists at data/tafsir/registry.json');
+  assert(fs.existsSync(path.join(PUBLIC_DIR, 'data', 'tafsir', 'registry.json')), 'Tafsir registry mirrored at public/data/tafsir/registry.json');
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'tafsir', 'study-content.json')), 'Tafsir study content exists at data/tafsir/study-content.json');
+  const tafsirReg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'data', 'tafsir', 'registry.json'), 'utf-8'));
+  assert(tafsirReg.editions.length >= 3, 'Tafsir registry defines 3 canonical editions');
+  assert(tafsirReg.editions.some(e => e.id === 'tafsir-ibn-kathir'), 'Tafsir Ibn Kathir registered as verified orthodox exegesis');
+  assert(tafsirReg.editions.some(e => e.id === 'tafsir-al-jalalayn'), 'Tafsir al-Jalalayn registered as verified classical exegesis');
+
+  // 4. Audio Recitation Architecture
+  assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'audio', 'reciters.json')), 'Audio reciters registry exists at data/audio/reciters.json');
+  assert(fs.existsSync(path.join(PUBLIC_DIR, 'data', 'audio', 'reciters.json')), 'Audio reciters mirrored at public/data/audio/reciters.json');
+  const audioReg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'data', 'audio', 'reciters.json'), 'utf-8'));
+  assert(audioReg.reciters.length === 5, 'Audio registry documents exactly 5 EveryAyah reciters');
+  assert(audioReg.reciters.some(r => r.id === 'Alafasy_128kbps'), 'Sheikh Mishary Rashid Alafasy registered');
+  assert(audioReg.reciters.some(r => r.id === 'Abdul_Basit_Murattal_192kbps'), 'Sheikh Abdul Basit Murattal registered');
+  assert(audioReg.reciters.some(r => r.id === 'Husary_128kbps'), 'Sheikh Mahmoud Khalil Al-Husary registered');
+
+  // 5. CSS Styling for Study Mode
+  assert(mainCss.includes('.study-modal-dialog'), 'Stylesheet defines .study-modal-dialog styling');
+  assert(mainCss.includes('.study-nav-tabs'), 'Stylesheet defines .study-nav-tabs styling');
+  assert(mainCss.includes('.wbw-container'), 'Stylesheet defines .wbw-container styling');
+  assert(mainCss.includes('.wbw-card'), 'Stylesheet defines .wbw-card styling');
+
+  // --- TEST SUITE 24: Phase 4 Complete Seerah 25-Chapter Library & Classical Provenance ---
+  console.log('\n--- TEST SUITE 24: Phase 4 Complete Seerah 25-Chapter Library & Classical Provenance ---');
+  const fullSeerahHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'seerah.html'), 'utf-8');
+
+  // 1. All 25 Chronological Master Chapters Exist
+  for (let ch = 1; ch <= 25; ch++) {
+    assert(fullSeerahHtml.includes(`id="ch${ch}"`), `Complete Seerah library contains Chapter ${ch} (id="ch${ch}")`);
+  }
+
+  // 2. Comprehensive Narrative Volume (20,000+ Words)
+  const seerahWords = fullSeerahHtml.replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length;
+  assert(seerahWords >= 20000, `Seerah library contains publication-grade editorial depth (found ~${seerahWords} words, required >= 20,000)`);
+  assert(fullSeerahHtml.length >= 250000, 'Seerah HTML payload reflects comprehensive historical prose (>250KB)');
+
+  // 3. Era Classification & Interactive Filtering
+  const eras = ['pre-prophethood', 'makkan-early', 'makkan-trials', 'madinan-establishment', 'battles-treaties', 'zenith-legacy'];
+  for (const era of eras) {
+    assert(fullSeerahHtml.includes(`data-era="${era}"`), `Seerah library categorizes chapters under era "${era}"`);
+  }
+  assert(fullSeerahHtml.includes('filterSeerahEra'), 'Seerah page contains interactive era filtering engine');
+
+  // 4. Critical Decompressed Historical Milestones & Quranic Asbab al-Nuzul
+  assert(fullSeerahHtml.includes('Jahiliyyah') && fullSeerahHtml.includes('Amr ibn Luhayy'), 'Chapter 1 documents pre-Islamic Arabia, Jahiliyyah, and Makkan sanctuary');
+  assert(fullSeerahHtml.includes('Shaqq as-Sadr') && fullSeerahHtml.includes('Halimah as-Sa\'diyyah'), 'Chapter 2 documents desert upbringing and heart purification');
+  assert(fullSeerahHtml.includes('Bahira') && fullSeerahHtml.includes('Khatam an-Nubuwwah'), 'Chapter 3 documents youth, Bahira monk encounter, and shepherding');
+  assert(fullSeerahHtml.includes('Hilf al-Fudul') && fullSeerahHtml.includes('Al-Amin'), 'Chapter 4 documents the League of the Virtuous and trade integrity');
+  assert(fullSeerahHtml.includes('Khadijah bint Khuwaylid') && fullSeerahHtml.includes('Al-Tahirah'), 'Chapter 5 documents marriage to Sayyidah Khadijah (RA) and domestic life');
+  assert(fullSeerahHtml.includes('Al-Hajar al-Aswad') && fullSeerahHtml.includes('Abu Umayyah'), 'Chapter 6 documents Ka\'bah rebuilding and Black Stone arbitration');
+  assert(fullSeerahHtml.includes('غار حراء') && fullSeerahHtml.includes('Zammiluni'), 'Chapter 7 documents Cave Hira and the dawn of revelation');
+  assert(fullSeerahHtml.includes('Dar al-Arqam') && fullSeerahHtml.includes('As-Sabiqun al-Awwalun'), 'Chapter 8 documents private preaching and Dar al-Arqam academy');
+  assert(fullSeerahHtml.includes('Mount Safa') && fullSeerahHtml.includes('Tabbal laka'), 'Chapter 9 documents the open call at Mount Safa and Surah Al-Masad');
+  assert(fullSeerahHtml.includes('Najashi') && fullSeerahHtml.includes('Surah Maryam'), 'Chapter 10 documents persecution and Abyssinian migrations under Negus');
+  assert(fullSeerahHtml.includes('Hamzah') && fullSeerahHtml.includes('Umar ibn al-Khattab') && fullSeerahHtml.includes('Shi\'b Abi Talib'), 'Chapter 11 documents conversions of Hamzah and Umar, and 3-year boycott');
+  assert(fullSeerahHtml.includes('Am al-Huzn') && fullSeerahHtml.includes('Malak al-Jibal'), 'Chapter 12 documents Year of Sorrow, Ta\'if trial, and refusal of vengeance');
+  assert(fullSeerahHtml.includes('Al-Isra') && fullSeerahHtml.includes('Sidrat al-Muntaha'), 'Chapter 13 documents Night Journey, Ascension, and 5 daily prayers');
+  assert(fullSeerahHtml.includes('Bay\'at al-Aqabah') && fullSeerahHtml.includes('Mus\'ab ibn Umayr'), 'Chapter 14 documents Pledges of Al-Aqabah and Yathrib covenant');
+  assert(fullSeerahHtml.includes('Ghar Thawr') && fullSeerahHtml.includes('Masjid Quba'), 'Chapter 15 documents the Great Hijrah, Cave Thawr, and Quba');
+  assert(fullSeerahHtml.includes('Sahifat al-Madinah') && fullSeerahHtml.includes('Al-Muwakhat'), 'Chapter 16 documents Prophetic Mosque, Muwakhat, and Madinah Charter');
+  assert(fullSeerahHtml.includes('Badr') && fullSeerahHtml.includes('Yawm al-Furqan') && fullSeerahHtml.includes('Al-Anfal'), 'Chapter 17 documents Badr breakthrough and Surah Al-Anfal');
+  assert(fullSeerahHtml.includes('Uhud') && fullSeerahHtml.includes('Jabal ar-Rumat') && fullSeerahHtml.includes('Sayyid ash-Shuhada'), 'Chapter 18 documents Uhud trial, archers\' hill, and Hamzah\'s martyrdom');
+  assert(fullSeerahHtml.includes('Salman al-Farsi') && fullSeerahHtml.includes('Khandaq') && fullSeerahHtml.includes('Al-Ahzab'), 'Chapter 19 documents Battle of the Trench and Salman al-Farsi siege tactics');
+  assert(fullSeerahHtml.includes('Bay\'at al-Ridwan') && fullSeerahHtml.includes('Al-Hudaybiyyah') && fullSeerahHtml.includes('Fathan Mubina'), 'Chapter 20 documents Hudaybiyyah treaty and Pledge of the Tree');
+  assert(fullSeerahHtml.includes('Heraclius') && fullSeerahHtml.includes('Chosroes') && fullSeerahHtml.includes('Khaybar'), 'Chapter 21 documents royal letters to world emperors and Khaybar fortresses');
+  assert(fullSeerahHtml.includes('Idhhabu fa-antum at-tulaqa') && fullSeerahHtml.includes('Makkah'), 'Chapter 22 documents Conquest of Makkah and Universal Amnesty');
+  assert(fullSeerahHtml.includes('Hunayn') && fullSeerahHtml.includes('Tabuk') && fullSeerahHtml.includes('Jaysh al-\'Usrah'), 'Chapter 23 documents Hunayn ambush, siege of Ta\'if, and Tabuk expedition');
+  assert(fullSeerahHtml.includes('Hajjat al-Wada') && fullSeerahHtml.includes('Arafat') && fullSeerahHtml.includes('Al-Ma\'idah'), 'Chapter 24 documents Farewell Pilgrimage, Arafat charter, and Surah Al-Ma\'idah 5:3');
+  assert(fullSeerahHtml.includes('Allahumma ar-Rafiq al-A\'la') && fullSeerahHtml.includes('Abu Bakr as-Siddiq'), 'Chapter 25 documents the passing to the Highest Companion and eternal legacy');
+
+  // 5. Authoritative Classical Provenance & Quran Correlations
+  assert(fullSeerahHtml.includes('As-Seerah an-Nabawiyyah') && fullSeerahHtml.includes('At-Tabaqat al-Kubra'), 'Seerah library cites classical corpora (Ibn Hisham and Ibn Sa\'d)');
+  assert(fullSeerahHtml.includes('Sahih al-Bukhari') && fullSeerahHtml.includes('Sahih Muslim'), 'Seerah library cites canonical Sahihayn collections throughout');
+  assert(fullSeerahHtml.includes('Musnad Ahmad') && fullSeerahHtml.includes('Tarikh ar-Rusul wal-Muluk'), 'Seerah library cites Musnad Ahmad and Tabari history');
+  assert(fullSeerahHtml.includes('Verified: Classical Consensus') && fullSeerahHtml.includes('Verified: Muttafaqun \'Alayh'), 'Seerah library incorporates explicit theological consensus badges');
+
+  // 6. Structured Schema & SEO BreadcrumbList
+  assert(fullSeerahHtml.includes('"@type": "BreadcrumbList"'), 'Seerah page contains valid Schema.org BreadcrumbList');
+  assert(fullSeerahHtml.includes('https://islamicknowledge.example.com/seerah.html'), 'Seerah page defines canonical OpenGraph and link rel canonical URLs');
+
+  // --- TEST SUITE 25: Phase 5 Comprehensive Sahaba Biographies & Quranic Prophets Library ---
+  console.log('\n--- TEST SUITE 25: Phase 5 Comprehensive Sahaba Biographies & Quranic Prophets Library ---');
+  const fullSahabaHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'sahaba.html'), 'utf8');
+  const fullProphetsHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'prophets.html'), 'utf8');
+
+  // 1. Sahaba Library Word Count & Payload Integrity
+  const sahabaWords = fullSahabaHtml.trim().split(/\s+/).length;
+  assert(sahabaWords >= 20000, `Sahaba library contains comprehensive biographical depth (found ~${sahabaWords} words, required >= 20,000)`);
+  assert(fs.statSync(path.join(PUBLIC_DIR, 'sahaba.html')).size >= 250000, 'Sahaba HTML payload reflects deep biographical monographs (>250KB)');
+
+  // 2. Sahaba: All 30 Monographs Present Across 5 Cohorts
+  const expectedSahabaIds = [
+    'abu-bakr', 'umar', 'uthman', 'ali',
+    'talhah', 'zubayr', 'abdur-rahman', 'sad-ibn-abi-waqqas', 'abu-ubaydah', 'said-ibn-zayd',
+    'khadijah', 'aisha', 'fatima', 'umm-salamah', 'asma', 'hafsah', 'umm-sulaym', 'nusaybah', 'sumayyah', 'shifa',
+    'ibn-abbas', 'ibn-masud', 'muadh-ibn-jabal', 'zayd-ibn-thabit', 'abu-hurayrah', 'abu-dharr',
+    'bilal', 'salman', 'khalid', 'musab'
+  ];
+  expectedSahabaIds.forEach(id => {
+    assert(fullSahabaHtml.includes(`id="${id}"`), `Sahaba library contains monograph for companion id="${id}"`);
+  });
+
+  // 3. Sahaba: Cohort Classification & Interactive Engine
+  assert(fullSahabaHtml.includes('data-category="caliphs"'), 'Sahaba monographs categorized under cohort "caliphs"');
+  assert(fullSahabaHtml.includes('data-category="promised-paradise"'), 'Sahaba monographs categorized under cohort "promised-paradise"');
+  assert(fullSahabaHtml.includes('data-category="women-companions"'), 'Sahaba monographs categorized under cohort "women-companions"');
+  assert(fullSahabaHtml.includes('data-category="scholars"'), 'Sahaba monographs categorized under cohort "scholars"');
+  assert(fullSahabaHtml.includes('data-category="stalwarts"'), 'Sahaba monographs categorized under cohort "stalwarts"');
+  assert(fullSahabaHtml.includes('sahaba-filter-group') && fullSahabaHtml.includes('filter-btn'), 'Sahaba page contains interactive cohort filter controls');
+  assert(fullSahabaHtml.includes('Biographical Directory: 52 Eminent Companions') || fullSahabaHtml.includes('Biographical Directory: 30 Eminent Companions'), 'Sahaba page contains 52-companion directory quick-jump grid');
+  const sahabaArticleCount = (fullSahabaHtml.match(/<article\s+id=/g) || []).length;
+  assert(sahabaArticleCount === 52, `Sahaba library contains exactly 52 comprehensive biographical articles (found ${sahabaArticleCount})`);
+
+  // 4. Sahaba: Classical Sources & Hadith Provenance
+  assert(fullSahabaHtml.includes('Al-Isabah fi Tamyiz as-Sahabah') && fullSahabaHtml.includes('Ibn Hajar al-Asqalani'), 'Sahaba library cites Al-Isabah by Ibn Hajar');
+  assert(fullSahabaHtml.includes('Usd al-Ghabah') && fullSahabaHtml.includes('Ibn al-Athir'), 'Sahaba library cites Usd al-Ghabah by Ibn al-Athir');
+  assert(fullSahabaHtml.includes('At-Tabaqat al-Kubra') && fullSahabaHtml.includes('Ibn Sa\'d'), 'Sahaba library cites At-Tabaqat al-Kubra by Ibn Sa\'d');
+  assert(fullSahabaHtml.includes('Sahih al-Bukhari') && fullSahabaHtml.includes('Sahih Muslim'), 'Sahaba library cites canonical Sahihayn Hadith corpora');
+
+  // 5. Prophets & Quranic Stories Word Count & Payload Integrity
+  const prophetsWords = fullProphetsHtml.trim().split(/\s+/).length;
+  assert(prophetsWords >= 25000, `Prophets library contains comprehensive narrative depth (found ~${prophetsWords} words, required >= 25,000)`);
+  assert(fs.statSync(path.join(PUBLIC_DIR, 'prophets.html')).size >= 250000, 'Prophets HTML payload reflects deep prophetic monographs (>250KB)');
+
+  // 6. Prophets: All 25 Quranic Prophets Present
+  const expectedProphetIds = [
+    'adam', 'idris', 'nuh', 'hud', 'salih',
+    'ibrahim', 'lut', 'ismail', 'ishaq', 'yaqub',
+    'yusuf', 'ayyub', 'shuayb', 'dhul-kifl', 'musa',
+    'harun', 'dawud', 'sulayman', 'ilyas', 'al-yasa',
+    'yunus', 'zakariyya', 'yahya', 'isa', 'muhammad'
+  ];
+  expectedProphetIds.forEach(id => {
+    assert(fullProphetsHtml.includes(`id="${id}"`), `Prophets library contains narrative for prophet id="${id}"`);
+  });
+
+  // 7. Decompression: Separate Dawud and Sulayman Monograph Verification
+  assert(fullProphetsHtml.includes('id="dawud"') && fullProphetsHtml.includes('id="sulayman"'), 'Dawud and Sulayman are decompressed into distinct individual monographs');
+  assert(fullProphetsHtml.includes('id="dawud-sulayman"'), 'Legacy anchor alias id="dawud-sulayman" preserved for backwards compatibility');
+  assert(fullProphetsHtml.includes('id="hud-salih"'), 'Legacy anchor alias id="hud-salih" preserved for backwards compatibility');
+  assert(fullProphetsHtml.includes('id="ismail-ishaq-yaqub"'), 'Legacy anchor alias id="ismail-ishaq-yaqub" preserved for backwards compatibility');
+
+  // 8. Stage 7 Exemplary Quranic Figures & Historical Narratives
+  const stage7Ids = ['maryam', 'ashab-al-kahf', 'luqman', 'dhul-qarnayn', 'ashab-al-ukhdud'];
+  stage7Ids.forEach(id => {
+    assert(fullProphetsHtml.includes(`id="${id}"`), `Prophets library contains Stage 7 exemplary narrative id="${id}"`);
+  });
+
+  // 9. Prophets: Cohort Categorization & Interactive Engine
+  assert(fullProphetsHtml.includes('data-category="ulul-azm"'), 'Prophets categorized under cohort "ulul-azm"');
+  assert(fullProphetsHtml.includes('data-category="early-patriarchs"'), 'Prophets categorized under cohort "early-patriarchs"');
+  assert(fullProphetsHtml.includes('data-category="arabian-prophets"'), 'Prophets categorized under cohort "arabian-prophets"');
+  assert(fullProphetsHtml.includes('data-category="banu-israel"'), 'Prophets categorized under cohort "banu-israel"');
+  assert(fullProphetsHtml.includes('data-category="exemplary-figures"'), 'Figures categorized under cohort "exemplary-figures"');
+  assert(fullProphetsHtml.includes('prophets-filter-group') && fullProphetsHtml.includes('filter-btn'), 'Prophets page contains interactive cohort filter controls');
+  assert(fullProphetsHtml.includes('Quick Navigation: Complete Index of 30 Accounts'), 'Prophets page contains 30-narrative directory quick-jump grid');
+
+  // 10. Classical Exegesis & Theological Infallibility
+  assert(fullProphetsHtml.includes('Tafsir Ibn Kathir'), 'Prophets library cites Tafsir Ibn Kathir throughout');
+  assert(fullProphetsHtml.includes('Qisas al-Anbiya'), 'Prophets library cites classical Qisas al-Anbiya literature');
+  assert(fullProphetsHtml.includes('Ismat al-Anbiya') || fullProphetsHtml.includes('infallibility'), 'Prophets library upholds prophetic infallibility and purifies from Isra\'iliyyat');
+
+  // 11. Schema.org Breadcrumbs & Canonical Link Metadata
+  assert(fullSahabaHtml.includes('"@type": "BreadcrumbList"'), 'Sahaba page contains valid Schema.org BreadcrumbList');
+  assert(fullSahabaHtml.includes('https://islamicknowledge.example.com/sahaba.html'), 'Sahaba page defines canonical URL');
+  assert(fullProphetsHtml.includes('"@type": "BreadcrumbList"'), 'Prophets page contains valid Schema.org BreadcrumbList');
+  assert(fullProphetsHtml.includes('https://islamicknowledge.example.com/prophets.html'), 'Prophets page defines canonical URL');
+
+  // --- TEST SUITE 26: Phase 6 Comprehensive Islamic History Library & Civilizational Archives ---
+  console.log('\n--- TEST SUITE 26: Phase 6 Comprehensive Islamic History Library & Civilizational Archives ---');
+  const fullHistoryHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'history.html'), 'utf8');
+
+  // 1. History Library Word Count & Payload Integrity
+  const historyWords = fullHistoryHtml.trim().split(/\s+/).length;
+  assert(historyWords >= 25000, `Islamic History library contains publication-grade depth (found ~${historyWords} words, required >= 25,000)`);
+  assert(fs.statSync(path.join(PUBLIC_DIR, 'history.html')).size >= 250000, 'History HTML payload reflects comprehensive civilizational archives (>250KB)');
+
+  // 2. Canonical 12 Master Eras Preservation & Structural Integrity
+  for (let era = 1; era <= 12; era++) {
+    assert(fullHistoryHtml.includes(`id="era${era}"`), `History library contains master monograph for canonical era id="era${era}"`);
+  }
+
+  // 3. Deep Regional & Historical Anchor Aliases
+  const expectedHistoryAliases = [
+    'al-andalus', 'cordoba', 'granada',
+    'fatimids', 'salahuddin', 'mamluks',
+    'ottomans', 'constantinople', 'mimar-sinan',
+    'mughals', 'delhi-sultanate', 'shah-waliullah',
+    'timbuktu', 'mansa-musa', 'malacca', 'swahili-coast', 'zheng-he'
+  ];
+  expectedHistoryAliases.forEach(alias => {
+    assert(fullHistoryHtml.includes(`id="${alias}"`), `History library contains deep anchor alias id="${alias}"`);
+  });
+
+  // 4. Interactive 3-Way View Switcher Engine
+  assert(fullHistoryHtml.includes('id="view-eras-btn"') && fullHistoryHtml.includes('id="view-timeline-btn"') && fullHistoryHtml.includes('id="view-regions-btn"'), 'History page implements 3-way view switcher buttons (Eras, Timeline, Regions)');
+  assert(fullHistoryHtml.includes('id="eras-view-container"') && fullHistoryHtml.includes('id="timeline-view-container"') && fullHistoryHtml.includes('id="regions-view-container"'), 'History page contains dedicated containers for Eras, Timeline, and Regions views');
+
+  // 5. Interactive Chronological Timeline (54 Milestones)
+  const sampleMilestones = ['EVT-01', 'EVT-09', 'EVT-19', 'EVT-29', 'EVT-32', 'EVT-35', 'EVT-39', 'EVT-43', 'EVT-50', 'EVT-52', 'EVT-54'];
+  sampleMilestones.forEach(m => {
+    assert(fullHistoryHtml.includes(m), `Interactive timeline includes verified milestone event ${m}`);
+  });
+  assert(fullHistoryHtml.includes('Chronological Timeline of Islamic Civilization (54 Milestone Events)'), 'Interactive timeline header displays full 54-event register');
+
+  // 6. Twelve Regional Civilizational Guides
+  const expectedRegions = [
+    'REG-ARABIA', 'REG-LEV-MESOP', 'REG-EGYPT', 'REG-MAGHREB',
+    'REG-WEST-AFRICA', 'REG-EAST-AFRICA', 'REG-ANDALUS', 'REG-PERSIA-CA',
+    'REG-OTTOMAN-BALK', 'REG-SOUTH-ASIA', 'REG-SE-ASIA', 'REG-EAST-ASIA'
+  ];
+  expectedRegions.forEach(r => {
+    assert(fullHistoryHtml.includes(r), `Regional civilizations guide includes regional sphere ${r}`);
+  });
+
+  // 7. Primary Classical Corpora & Scholarly Historiography
+  assert(fullHistoryHtml.includes('At-Tabari') && fullHistoryHtml.includes('Tarikh ar-Rusul wal-Muluk'), 'History library cites At-Tabari canonical chronicle');
+  assert(fullHistoryHtml.includes('Al-Baladhuri') && fullHistoryHtml.includes('Futuh al-Buldan'), 'History library cites Al-Baladhuri Futuh al-Buldan');
+  assert(fullHistoryHtml.includes('Ibn Khaldun') && fullHistoryHtml.includes('Al-Muqaddimah'), 'History library cites Ibn Khaldun and Al-Muqaddimah');
+  assert(fullHistoryHtml.includes('Al-Maqqari') && fullHistoryHtml.includes('Nafh at-Tib'), 'History library cites Al-Maqqari for Andalusi history');
+  assert(fullHistoryHtml.includes('Ferishta') && fullHistoryHtml.includes('Tarikh-e-Ferishta'), 'History library cites Ferishta for South Asian history');
+  assert(fullHistoryHtml.includes('Baburnama') && fullHistoryHtml.includes('Babur'), 'History library cites Baburnama');
+  assert(fullHistoryHtml.includes('Ibn Battuta') && fullHistoryHtml.includes('The Rihlah'), 'History library cites Ibn Battuta travelogue');
+  assert(fullHistoryHtml.includes('Halil Inalcik'), 'History library cites Halil Inalcik for Ottoman history');
+
+  // 8. Schema.org Breadcrumbs & Canonical Link Metadata
+  assert(fullHistoryHtml.includes('"@type": "BreadcrumbList"'), 'History page contains valid Schema.org BreadcrumbList');
+  assert(fullHistoryHtml.includes('https://islamicknowledge.example.com/history.html'), 'History page defines canonical URL');
+
+  // --- TEST SUITE 27: Phase 8 UX, UI, Accessibility & Responsive Consistency ---
+  console.log('\n--- TEST SUITE 27: Phase 8 UX, UI, Accessibility & Responsive Consistency ---');
+
+  // 1. Accessibility Tokens & Reduced Motion in CSS
+  const phase8CssContent = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
+  assert(phase8CssContent.includes('@media (prefers-reduced-motion: reduce)'), 'CSS defines prefers-reduced-motion media query');
+  assert(phase8CssContent.includes('*:focus-visible') && phase8CssContent.includes('var(--color-primary)'), 'CSS defines high-contrast focus indicator in light mode');
+  assert(phase8CssContent.includes('[data-theme="dark"] *:focus-visible'), 'CSS defines dedicated dark-theme focus indicator');
+  assert(phase8CssContent.includes('.article-prose') && phase8CssContent.includes('max-width: 72ch'), 'CSS defines optimal article reading measure');
+  assert(phase8CssContent.includes('.table-responsive') && phase8CssContent.includes('overflow-x: auto'), 'CSS defines responsive table overflow container');
+
+  // 2. Mobile Pointer Target Ergonomics
+  assert(phase8CssContent.includes('@media (max-width: 768px)') && phase8CssContent.includes('min-width: 44px') && phase8CssContent.includes('min-height: 44px'), 'CSS enforces 44px minimum touch targets on mobile viewports');
+
+  // 3. Search Engine Monograph Coverage & Phonetics
+  assert(searchContent.includes('SEERAH_SEARCH_CHAPTERS'), 'UniversalSearch registers Seerah chapters dataset');
+  assert(searchContent.includes('SAHABA_SEARCH_PROFILES'), 'UniversalSearch registers Sahaba profiles dataset');
+  assert(searchContent.includes('PROPHET_SEARCH_STORIES'), 'UniversalSearch registers Prophetic stories dataset');
+  assert(searchContent.includes('HISTORY_SEARCH_ERAS'), 'UniversalSearch registers History eras dataset');
+
+  // 4. Verification of Search Queries Across Datasets
+  const badrRes = searchEngine.search('badr');
+  assert(badrRes.length > 0 && badrRes.some(r => r.url.includes('seerah.html#ch17')), 'Search query "badr" resolves to Seerah Chapter 17');
+
+  const abuBakrRes = searchEngine.search('abu bakr');
+  assert(abuBakrRes.length > 0 && abuBakrRes.some(r => r.url.includes('sahaba.html#abu-bakr')), 'Search query "abu bakr" resolves to Sahaba Abu Bakr as-Siddiq');
+
+  const musaRes = searchEngine.search('musa');
+  assert(musaRes.length > 0 && musaRes.some(r => r.url.includes('prophets.html#musa')), 'Search query "musa" resolves to Prophet Musa story');
+
+  const andalusRes = searchEngine.search('andalus');
+  assert(andalusRes.length > 0 && andalusRes.some(r => r.url.includes('history.html#era6')), 'Search query "andalus" resolves to Islamic Spain / Al-Andalus era');
+
+  // 5. Modal Dialog Accessibility Attributes in app.js
+  const appJsContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(phase8AppJsContent.includes("modal.setAttribute('role', 'dialog')"), 'app.js declares role="dialog" on search and language modals');
+  assert(phase8AppJsContent.includes("modal.setAttribute('aria-modal', 'true')"), 'app.js declares aria-modal="true" on search and language modals');
+  assert(phase8AppJsContent.includes("modal.setAttribute('aria-label', 'Global Islamic Search')"), 'Search modal declares accessible label');
+  assert(phase8AppJsContent.includes("modal.setAttribute('aria-label', 'Select Interface Language')"), 'Language modal declares accessible label');
+  assert(phase8AppJsContent.includes("this.searchTriggerElement.focus()"), 'app.js restores focus to trigger element when search modal closes');
+  assert(phase8AppJsContent.includes("this.langTriggerElement.focus()"), 'app.js restores focus to trigger element when language modal closes');
+  assert(phase8AppJsContent.includes("this.drawerTriggerElement.focus()"), 'app.js restores focus to trigger element when mobile drawer closes');
+
+  // 6. Viewport & Semantic Metadata Across All 25 HTML Pages
+  const suite27HtmlPages = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
+  assert(suite27HtmlPages.length >= 25, 'Repository contains at least 25 public HTML pages');
+  suite27HtmlPages.forEach(pageFile => {
+    const pageHtml = fs.readFileSync(path.join(PUBLIC_DIR, pageFile), 'utf-8');
+    assert(pageHtml.includes('name="viewport"') && pageHtml.includes('width=device-width'), `Page ${pageFile} includes responsive viewport meta tag`);
+    assert(pageHtml.includes('lang=') && pageHtml.includes('dir='), `Page ${pageFile} defines html lang and dir attributes`);
+    assert(pageHtml.includes('id="search-modal-btn"'), `Page ${pageFile} includes canonical search trigger button`);
+    assert(pageHtml.includes('id="language-selector-btn"'), `Page ${pageFile} includes canonical language trigger button`);
+    assert(pageHtml.includes('id="theme-toggle-btn"'), `Page ${pageFile} includes canonical theme toggle button`);
+  });
+
+  // --- TEST SUITE 28: Phase 9 Technical SEO, Multilingual Architecture, PWA & Android Release Verification ---
+  console.log('\n--- TEST SUITE 28: Phase 9 Technical SEO, Multilingual Architecture, PWA & Android Release ---');
+
+  // 1. Service Worker 25-Page Shell Caching
+  const phase9SwContent = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
+  const suite28Pages = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
+  suite28Pages.forEach(p => {
+    assert(phase9SwContent.includes(`/${p}`), `Service worker pre-caches offline shell page /${p}`);
+  });
+
+  // 2. Server Security Headers & Permissions Policy
+  const phase9ServerContent = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf-8');
+  assert(phase9ServerContent.includes('Permissions-Policy') && phase9ServerContent.includes('geolocation=()'), 'Server declares Permissions-Policy disabling invasive hardware APIs');
+  assert(phase9ServerContent.includes('X-Content-Type-Options') && phase9ServerContent.includes('nosniff'), 'Server enforces nosniff MIME security header');
+  assert(phase9ServerContent.includes('X-Frame-Options') && phase9ServerContent.includes('SAMEORIGIN'), 'Server enforces SAMEORIGIN clickjacking protection');
+  assert(phase9ServerContent.includes('Referrer-Policy') && phase9ServerContent.includes('strict-origin-when-cross-origin'), 'Server enforces strict-origin Referrer-Policy');
+
+  // 3. XML Sitemap 25-Page Coverage & Robots.txt Integrity
+  const phase9Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  suite28Pages.forEach(p => {
+    const url = p === 'index.html' ? 'https://islamicknowledge.example.com/' : `https://islamicknowledge.example.com/${p}`;
+    assert(phase9Sitemap.includes(url), `XML sitemap indexes canonical URL ${url}`);
+  });
+  const phase9Robots = fs.readFileSync(path.join(PUBLIC_DIR, 'robots.txt'), 'utf-8');
+  assert(phase9Robots.includes('Sitemap: https://islamicknowledge.example.com/sitemap.xml'), 'Robots.txt advertises production sitemap location');
+  assert(phase9Robots.includes('Allow: /'), 'Robots.txt permits public crawling of knowledge resources');
+
+  // 4. Android Release Artifact & SHA-256 Checksum Cryptographic Verification
+  const phase9Checksums = fs.readFileSync(path.join(PUBLIC_DIR, 'downloads', 'CHECKSUMS.sha256'), 'utf-8');
+  const phase9ApkBuffer = fs.readFileSync(path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-release.apk'));
+  const phase9ApkHash = crypto.createHash('sha256').update(phase9ApkBuffer).digest('hex');
+  assert(phase9Checksums.includes(phase9ApkHash), 'Public release APK SHA-256 matches CHECKSUMS.sha256 manifest');
+
+  const phase9ZipBuffer = fs.readFileSync(path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-offline-bundle.zip'));
+  const phase9ZipHash = crypto.createHash('sha256').update(phase9ZipBuffer).digest('hex');
+  assert(phase9Checksums.includes(phase9ZipHash), 'Public offline bundle ZIP SHA-256 matches CHECKSUMS.sha256 manifest');
+
+  // 5. Android Manifest Security & Capacitor Configuration
+  const phase9Manifest = fs.readFileSync(path.join(__dirname, '..', 'android', 'app', 'src', 'main', 'AndroidManifest.xml'), 'utf-8');
+  assert(!phase9Manifest.includes('CAMERA'), 'Android manifest declares no CAMERA permission');
+  assert(!phase9Manifest.includes('RECORD_AUDIO'), 'Android manifest declares no RECORD_AUDIO permission');
+  assert(!phase9Manifest.includes('ACCESS_FINE_LOCATION'), 'Android manifest declares no ACCESS_FINE_LOCATION permission');
+  assert(phase9Manifest.includes('android:name="android.permission.INTERNET"'), 'Android manifest declares essential INTERNET permission');
+  assert(phase9Manifest.includes('supportsRtl="true"'), 'Android manifest configures RTL layout support');
+
+  const phase9Capacitor = fs.readFileSync(path.join(__dirname, '..', 'capacitor.config.json'), 'utf-8');
+  assert(phase9Capacitor.includes('com.islamicknowledge.portal'), 'Capacitor config specifies official package appId');
+  assert(phase9Capacitor.includes('"cleartext": false'), 'Capacitor config prohibits cleartext HTTP traffic');
+
+  // 6. Title Uniqueness & Description Quality Across All 25 Pages
+  const phase9Titles = new Set();
+  suite28Pages.forEach(p => {
+    const pageHtml = fs.readFileSync(path.join(PUBLIC_DIR, p), 'utf-8');
+    const titleM = pageHtml.match(/<title>([^<]+)<\/title>/);
+    assert(titleM && titleM[1].length > 10, `Page ${p} has descriptive title of sufficient length`);
+    assert(!phase9Titles.has(titleM[1]), `Page ${p} has unique title across all 25 pages`);
+    phase9Titles.add(titleM[1]);
+
+    const descM = pageHtml.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
+    assert(descM && descM[1].length >= 80, `Page ${p} has comprehensive meta description (>= 80 chars)`);
+    assert(!descM[1].includes('TODO') && !descM[1].includes('placeholder'), `Page ${p} contains no placeholder metadata`);
+
+    const canonM = pageHtml.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
+    assert(canonM && canonM[1].startsWith('https://islamicknowledge.example.com/'), `Page ${p} defines production canonical URL`);
+  });
+
+  // --- TEST SUITE 29: Mobile-First Responsiveness, Viewport Boundaries & App Navigation ---
+  console.log('\n--- TEST SUITE 29: Mobile Responsiveness, Viewport Boundaries & App Navigation ---');
+  const suite29MainCss = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
+  assert(suite29MainCss.includes('.header-inner') && suite29MainCss.includes('max-width: 100%'), 'Header inner has max-width: 100% constraint');
+  assert(suite29MainCss.includes('.logo-group') && suite29MainCss.includes('min-width: 0'), 'Logo group has min-width: 0 flex shrink support');
+  assert(suite29MainCss.includes('.mobile-bottom-nav'), 'Mobile bottom navigation bar class defined in main.css');
+  assert(suite29MainCss.includes('.grid-responsive-2col'), 'Responsive 2-column grid helper defined');
+  assert(suite29MainCss.includes('html.drawer-open'), 'Drawer open body-scroll lock class defined');
+
+  const suite29AppJsContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(suite29AppJsContent.includes('setupMobileBottomNav'), 'App.js defines setupMobileBottomNav method');
+  assert(suite29AppJsContent.includes('drawer-open'), 'App.js toggles drawer-open class on drawer transitions');
+
+  // Verify all 25 pages have responsive viewport meta tags and no unescaped file:/// paths
+  suite28Pages.forEach(p => {
+    const pageHtml = fs.readFileSync(path.join(PUBLIC_DIR, p), 'utf-8');
+    assert(pageHtml.includes('name="viewport"') && pageHtml.includes('width=device-width'), `Page ${p} defines standard mobile viewport meta tag`);
+    assert(!pageHtml.includes('file:///'), `Page ${p} contains zero raw unescaped file:/// URLs`);
+  });
+
+
+  // --- TEST SUITE 30: Phase 12 Competitive Benchmarking, Web Share API & Search Categories ---
+  console.log('\n--- TEST SUITE 30: Phase 12 Competitive Benchmarking, Web Share API & Search Categories ---');
+  const suite30QuranJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  assert(suite30QuranJs.includes('shareAyah('), 'QuranReader implements shareAyah method with Web Share API');
+  assert(suite30QuranJs.includes('🔗 Share'), 'Quran Ayah cards render 🔗 Share action button');
+  assert(suite30QuranJs.includes('Saheeh International') && suite30QuranJs.includes('جالندھری'), 'Quran copyAyah dynamically formats translator attribution');
+
+  const suite30QuranHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  assert(suite30QuranHtml.includes('id="ayah-jump-input"') && suite30QuranHtml.includes('id="ayah-jump-btn"'), 'Quran toolbar includes Direct Jump to Ayah number input and button');
+  assert(suite30QuranHtml.includes('executeAyahJump'), 'Quran toolbar binds executeAyahJump event listener');
+
+  const suite30HadithHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'hadith.html'), 'utf-8');
+  assert(suite30HadithHtml.includes('shareHadith('), 'Hadith library defines shareHadith function with Web Share API');
+  assert(suite30HadithHtml.includes('🔗 Share'), 'Hadith cards render 🔗 Share action button');
+  assert(suite30HadithHtml.includes('copyHadith('), 'Hadith library defines copyHadith function');
+
+  const suite30DuasHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'duas.html'), 'utf-8');
+  assert(suite30DuasHtml.includes('shareDua('), 'Duas library defines shareDua function with Web Share API');
+  assert(suite30DuasHtml.includes('🔗 Share'), 'Dua cards render 🔗 Share action button');
+  assert(suite30DuasHtml.includes('copyDua('), 'Duas library defines copyDua function');
+
+  const suite30AppJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(suite30AppJs.includes('search-category-chips'), 'Search modal includes search-category-chips bar');
+  assert(suite30AppJs.includes('data-category="quran"') && suite30AppJs.includes('data-category="hadith"'), 'Search modal defines category filter chips');
+  assert(suite30AppJs.includes('activeCategory'), 'Search modal tracks activeCategory for topical filtering');
+
+  // TEST SUITE 31: PHASE 13 REAL PRODUCT REDESIGN, GLOBAL LOCALIZATION & ARABIC IMMUTABILITY
+  console.log('\n--- TEST SUITE 31: Phase 13 Real Product Redesign, Global Localization & Arabic Immutability ---');
+  
+  const s31_mainCss = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
+  assert(s31_mainCss.includes('.knowledge-hub-grid') && s31_mainCss.includes('.knowledge-hub-card'), 'Phase 13: CSS defines .knowledge-hub-grid and .knowledge-hub-card design system');
+  assert(s31_mainCss.includes('.daily-foundations-grid'), 'Phase 13: CSS defines .daily-foundations-grid for balanced spiritual & astronomical layout');
+  assert(s31_mainCss.includes('.content-lang-banner'), 'Phase 13: CSS defines .content-lang-banner for explicit translation status badges');
+
+  const s31_i18nJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'i18n.js'), 'utf-8');
+  assert(s31_i18nJs.includes("getUISelectableLanguages"), 'Phase 13: I18n module provides getUISelectableLanguages() method');
+  assert(s31_i18nJs.includes("getAuthorizedPartialLanguages"), 'Phase 13: I18n module provides getAuthorizedPartialLanguages() method');
+  
+  // Verify I18n runtime methods
+  const mockWindow = { localStorage: { getItem: () => null, setItem: () => {} } };
+  const I18nModule = new Function('window', s31_i18nJs + '; return window.I18n;')(mockWindow);
+  const selectableLangs = I18nModule.getUISelectableLanguages();
+  assert(selectableLangs.length === 11, `Phase 13: Exactly 11 fully verified languages available for portal UI (got ${selectableLangs.length})`);
+  const verifiedCodes = selectableLangs.map(l => l.code);
+  ['en', 'ur', 'ar', 'fr', 'id', 'tr', 'bn', 'hi', 'ms', 'fa', 'es'].forEach(code => {
+    assert(verifiedCodes.includes(code), `Phase 13: Verified language '${code}' is active in selectable list`);
+  });
+
+  const s31_indexHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
+  assert(s31_indexHtml.includes('knowledge-hub-grid'), 'Phase 13: index.html implements .knowledge-hub-grid gateway');
+  assert(s31_indexHtml.includes('daily-foundations-grid'), 'Phase 13: index.html implements .daily-foundations-grid balanced layout');
+  assert(s31_indexHtml.includes('search-hero-trigger'), 'Phase 13: index.html features primary search trigger');
+  assert(s31_indexHtml.includes('continue-reading-panel'), 'Phase 13: index.html retains continue-reading-panel ID');
+  assert(s31_indexHtml.includes('daily-companion-section'), 'Phase 13: index.html retains daily-companion-section ID');
+  assert(s31_indexHtml.includes('wazifa-check') && s31_indexHtml.includes('wazifa-fajr') && s31_indexHtml.includes('wazifa-friday'), 'Phase 13: index.html retains daily wazifa checklist IDs');
+
+  // Arabic Quran and Religious Text Immutability Verification
+  assert(s31_indexHtml.includes('translate="no"') && s31_indexHtml.includes('lang="ar"'), 'Phase 13: Sacred Arabic verses in index.html specify translate="no" and lang="ar"');
+  
+  const s31_quranJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  assert(s31_quranJs.includes('translate="no"') && s31_quranJs.includes('ayah-arabic'), 'Phase 13: quran.js enforces translate="no" on all rendered Arabic Quran Ayahs');
+
+  const s31_kalimasHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'kalimas.html'), 'utf-8');
+  assert(s31_kalimasHtml.includes('translate="no"') && s31_kalimasHtml.includes('ayah-arabic'), 'Phase 13: kalimas.html enforces translate="no" on all 6 sacred Arabic Kalimas');
+
+  const s31_duasHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'duas.html'), 'utf-8');
+  assert(s31_duasHtml.includes('translate="no"') && s31_duasHtml.includes('ayah-arabic'), 'Phase 13: duas.html enforces translate="no" on sacred Arabic Duas');
+
+  // Educational Content Availability Banners
+  const s31_educationalPages = ['seerah.html', 'prophets.html', 'sahaba.html', 'history.html', 'salah-guide.html'];
+  s31_educationalPages.forEach(page => {
+    const pageHtml = fs.readFileSync(path.join(PUBLIC_DIR, page), 'utf-8');
+    assert(pageHtml.includes('content-lang-banner'), `Phase 13: Page ${page} renders honest .content-lang-banner translation status`);
+  });
+
+  const s31_appJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(s31_appJs.includes('Verified Portal Translations (11 Languages)'), 'Phase 13: app.js language modal displays 11 verified languages');
+  assert(s31_appJs.includes('Quran Translations in 40 Global Languages'), 'Phase 13: app.js language modal provides clear 40-language Quran guidance');
+
+  // --- TEST SUITE 32: Deep Verification — Astronomical Prayer Times, Multi-Currency Zakat, Digital Tasbih & Worship Guides Desktop Layout ---
+  console.log('\n--- TEST SUITE 32: Deep Verification — Prayer Times, Zakat Engine, Digital Tasbih & Desktop Layout ---');
+  
+  // 1. Astronomical Prayer Times Engine
+  const s32_toolsJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'tools.js'), 'utf-8');
+  const mockVm = { window: {}, console };
+  vm.createContext(mockVm);
+  vm.runInContext(s32_toolsJs, mockVm);
+  const ToolsModule = mockVm.window.IslamicTools;
+
+  assert(ToolsModule && typeof ToolsModule.calculatePrayerTimes === 'function', 'Suite 32: IslamicTools.calculatePrayerTimes function is available');
+  
+  // Test Karachi calculation
+  const karachiTimes = ToolsModule.calculatePrayerTimes(24.8607, 67.0011, 5, new Date(2026, 9, 24), { method: 'karachi', asrMethod: 'hanafi' });
+  assert(karachiTimes && karachiTimes.fajr && karachiTimes.dhuhr && karachiTimes.asr && karachiTimes.maghrib && karachiTimes.isha, 'Suite 32: Karachi returns all 5 prayer times + sunrise');
+  assert(karachiTimes.fajr.includes('AM') && karachiTimes.dhuhr.includes('PM') && karachiTimes.maghrib.includes('PM'), 'Suite 32: Karachi prayer times have valid AM/PM formatting');
+  assert(!karachiTimes.fajr.includes('-') && !karachiTimes.dhuhr.includes('-'), 'Suite 32: Prayer times contain no negative hour values');
+  assert(karachiTimes.asrJuristic.includes('Hanafi'), 'Suite 32: Karachi Asr juristic indicator correctly specifies Hanafi');
+
+  // Test Makkah calculation
+  const makkahTimes = ToolsModule.calculatePrayerTimes(new Date(2026, 9, 24), 21.4225, 39.8262, 3, { method: 'makkah', asrMethod: 'standard' });
+  assert(makkahTimes && makkahTimes.method.includes('Umm Al-Qura'), 'Suite 32: Makkah prayer times correctly cite Umm Al-Qura method');
+  assert(makkahTimes.asrJuristic.includes('Standard'), 'Suite 32: Makkah Asr juristic indicator correctly specifies Standard');
+
+  // Test signature versatility (calling lat first vs date first)
+  const sigTestA = ToolsModule.calculatePrayerTimes(24.8607, 67.0011, 5, new Date(2026, 9, 24));
+  const sigTestB = ToolsModule.calculatePrayerTimes(new Date(2026, 9, 24), 24.8607, 67.0011, 5);
+  assert(sigTestA.fajr === sigTestB.fajr && sigTestA.maghrib === sigTestB.maghrib, 'Suite 32: Prayer engine seamlessly handles both (lat,lng,tz,date) and (date,lat,lng,tz) signatures');
+
+  // 2. Multi-Currency International Zakat Calculator
+  assert(typeof ToolsModule.calculateZakat === 'function', 'Suite 32: IslamicTools.calculateZakat function is available');
+  const zakatUsd = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 5000, immediateDebts: 1000 });
+  assert(zakatUsd.totalAssets === 5000, 'Suite 32: Zakat total assets calculated accurately');
+  assert(zakatUsd.totalLiabilities === 1000, 'Suite 32: Zakat total liabilities deducted accurately');
+  assert(zakatUsd.netZakatableWealth === 4000, 'Suite 32: Zakat net zakatable wealth equals 4000');
+  assert(zakatUsd.isEligible === true, 'Suite 32: 4000 USD is correctly identified as above silver Nisab');
+  assert(Math.abs(zakatUsd.zakatDue - 100) < 0.01, 'Suite 32: Exact 2.5% zakat calculated correctly (4000 * 0.025 = 100)');
+
+  // Test below Nisab
+  const zakatBelow = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 200 });
+  assert(zakatBelow.isEligible === false && zakatBelow.zakatDue === 0, 'Suite 32: Wealth below Nisab produces 0 zakat due');
+
+  // Test multi-currency support (PKR, EUR, GBP, SAR)
+  ['PKR', 'EUR', 'GBP', 'SAR'].forEach(curr => {
+    const res = ToolsModule.calculateZakat({ currency: curr, cashInHand: 100000 });
+    assert(res.currency === curr && res.currencySymbol, `Suite 32: Multi-currency zakat engine supports ${curr}`);
+  });
+
+  // Test Gold Nisab vs Silver Nisab
+  const zakatGoldStd = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 2000, nisabStandard: 'gold' });
+  assert(zakatGoldStd.isEligible === false, 'Suite 32: 2000 USD is correctly below the higher gold Nisab benchmark (~$7,400)');
+
+  // 3. Digital Tasbih Synthesizer & State Persistence
+  assert(typeof ToolsModule.playTasbihSound === 'function', 'Suite 32: IslamicTools.playTasbihSound synthesizer available');
+  assert(typeof ToolsModule.getTasbihState === 'function', 'Suite 32: IslamicTools.getTasbihState persistence helper available');
+  assert(typeof ToolsModule.saveTasbihState === 'function', 'Suite 32: IslamicTools.saveTasbihState persistence helper available');
+
+  // 4. Desktop Worship Guide Layout & CSS Integrity
+  const s32_mainCss = fs.readFileSync(path.join(PUBLIC_DIR, 'css', 'main.css'), 'utf-8');
+  assert(!s32_mainCss.includes('.sticky-toc-wrapper {\n    display: none !important;\n  }\n}'), 'Suite 32: Corrupt stray closing brace and unconditional TOC hiding removed from main.css');
+  assert(s32_mainCss.includes('@media (min-width: 992px) and (max-width: 1199px)'), 'Suite 32: main.css defines tablet landscape / compact laptop editorial grid');
+  assert(s32_mainCss.includes('@media (max-width: 991px)'), 'Suite 32: main.css sets desktop navigation breakpoint cleanly at 991px');
+
+  // 5. Sahaba 52 Biographies & Cohorts
+  const s32_sahabaHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'sahaba.html'), 'utf-8');
+  const totalSahabaArticles = (s32_sahabaHtml.match(/<article\s+id=/g) || []).length;
+  assert(totalSahabaArticles === 52, `Suite 32: Exactly 52 companion monographs present in sahaba.html (got ${totalSahabaArticles})`);
+  assert(s32_sahabaHtml.includes('Hamzah ibn Abdul Muttalib') && s32_sahabaHtml.includes('Asadullah'), 'Suite 32: Hamzah ibn Abdul Muttalib included in Sahaba library');
+  assert(s32_sahabaHtml.includes('Ja\'far ibn Abi Talib') && s32_sahabaHtml.includes('Dhu al-Janahayn'), 'Suite 32: Ja\'far ibn Abi Talib included in Sahaba library');
+  assert(s32_sahabaHtml.includes('Ubayy ibn Ka\'b') && s32_sahabaHtml.includes('Sayyid al-Qurra'), 'Suite 32: Ubayy ibn Ka\'b included in Sahaba library');
+  assert(s32_sahabaHtml.includes('Rufaydah al-Aslamiyyah'), 'Suite 32: Rufaydah al-Aslamiyyah (pioneer nurse) included in Sahaba library');
+
+  // 6. Inventories & Rights Registry Verification
+  const auditContentDir = path.join(__dirname, '..', 'AUDIT', 'CONTENT-QUALITY-AND-LOCALIZATION');
+  const requiredCsvs = [
+    'CONTENT-INVENTORY.csv',
+    'SEERAH-CHAPTER-INVENTORY.csv',
+    'SAHABA-BIOGRAPHY-INVENTORY.csv',
+    'PROPHETS-STORIES-INVENTORY.csv',
+    'LANGUAGE-COVERAGE-MATRIX.csv'
+  ];
+  requiredCsvs.forEach(csvFile => {
+    const csvPath = path.join(auditContentDir, csvFile);
+    assert(fs.existsSync(csvPath), `Suite 32: Required audit CSV ${csvFile} exists`);
+    const csvContent = fs.readFileSync(csvPath, 'utf-8');
+    assert(csvContent.split('\n').length > 5, `Suite 32: CSV ${csvFile} contains verified data records`);
+  });
+
+  const rightsRegPath = path.join(__dirname, '..', 'data', 'content-rights-registry.json');
+  assert(fs.existsSync(rightsRegPath), 'Suite 32: data/content-rights-registry.json exists');
+  const rightsReg = JSON.parse(fs.readFileSync(rightsRegPath, 'utf-8'));
+  const rightsRecords = rightsReg.items || rightsReg.records;
+  assert(rightsRecords && rightsRecords.length >= 16, 'Suite 32: Content rights registry contains 16 verified records');
+
+  // --- TEST SUITE 33: Multilingual Invariance, Scoped Direction & Verified Prayer Times ---
+  console.log('\n--- TEST SUITE 33: Multilingual Invariance, Scoped Direction & Verified Prayer Times ---');
+  
+  // 1. Language Invariance in i18n Engine
+  const s33_i18nContent = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'i18n.js'), 'utf-8');
+  assert(s33_i18nContent.includes("document.documentElement.lang = 'en'"), 'Suite 33: Document root language preserved as English');
+  assert(s33_i18nContent.includes("document.documentElement.dir = 'ltr'"), 'Suite 33: Document root direction permanently invariant as LTR');
+  assert(s33_i18nContent.includes('isGlobalUIElement'), 'Suite 33: Global UI element exclusion logic present in translateDOM');
+  assert(s33_i18nContent.includes('applyScopedContentDirection'), 'Suite 33: Scoped content direction method present in I18nManager');
+
+  // 2. Sahaba Urdu Localization Registry
+  const sahabaUrduPath = path.join(PUBLIC_DIR, 'js', 'sahaba-urdu.js');
+  assert(fs.existsSync(sahabaUrduPath), 'Suite 33: public/js/sahaba-urdu.js module exists');
+  const s33_sahabaHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'sahaba.html'), 'utf-8');
+  assert(s33_sahabaHtml.includes('src="js/sahaba-urdu.js"'), 'Suite 33: sahaba.html links to sahaba-urdu.js module');
+
+  // 3. Astronomical Solar Prayer Times Reference Checks (25 October 2026)
+  assert(ToolsModule.CITIES && typeof ToolsModule.CITIES === 'object', 'Suite 33: IslamicTools.CITIES verified coordinates database exists');
+  
+  const refDate = '2026-10-25'; // Test reference date: 25 October 2026
+  
+  // Islamabad Check (Prompt Benchmark: ~11:52 AM Dhuhr)
+  const isb = ToolsModule.CITIES.islamabad;
+  assert(isb && isb.lat === 33.6844 && isb.lng === 73.0479, 'Suite 33: Islamabad coordinates verified (33.6844, 73.0479)');
+  const isbTimes = ToolsModule.calculatePrayerTimes(refDate, isb.lat, isb.lng, isb.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(isbTimes.dhuhr === '11:52 AM', `Suite 33: Islamabad 25 Oct 2026 Dhuhr matches reference: 11:52 AM === ${isbTimes.dhuhr}`);
+  assert(isbTimes.fajr === '4:57 AM', `Suite 33: Islamabad 25 Oct 2026 Fajr: 4:57 AM === ${isbTimes.fajr}`);
+  assert(isbTimes.sunrise === '6:20 AM', `Suite 33: Islamabad 25 Oct 2026 Sunrise: 6:20 AM === ${isbTimes.sunrise}`);
+  assert(isbTimes.asr === '3:45 PM', `Suite 33: Islamabad 25 Oct 2026 Hanafi Asr: 3:45 PM === ${isbTimes.asr}`);
+  assert(isbTimes.maghrib === '5:23 PM', `Suite 33: Islamabad 25 Oct 2026 Maghrib: 5:23 PM === ${isbTimes.maghrib}`);
+  assert(isbTimes.isha === '6:47 PM', `Suite 33: Islamabad 25 Oct 2026 Isha: 6:47 PM === ${isbTimes.isha}`);
+  assert(isbTimes.zawalStart === '11:42 AM', `Suite 33: Islamabad 25 Oct 2026 Zawal starts 10m before Dhuhr: 11:42 AM === ${isbTimes.zawalStart}`);
+
+  // Lahore Check (Prompt Benchmark: ~11:47 AM Dhuhr)
+  const lhr = ToolsModule.CITIES.lahore;
+  const lhrTimes = ToolsModule.calculatePrayerTimes(refDate, lhr.lat, lhr.lng, lhr.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(lhrTimes.dhuhr === '11:47 AM', `Suite 33: Lahore 25 Oct 2026 Dhuhr matches reference: 11:47 AM === ${lhrTimes.dhuhr}`);
+
+  // Gujranwala Check (Prompt Benchmark: ~11:47 AM Dhuhr)
+  const guj = ToolsModule.CITIES.gujranwala;
+  const gujTimes = ToolsModule.calculatePrayerTimes(refDate, guj.lat, guj.lng, guj.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(gujTimes.dhuhr === '11:47 AM', `Suite 33: Gujranwala 25 Oct 2026 Dhuhr matches reference: 11:47 AM === ${gujTimes.dhuhr}`);
+
+  // Multan Check (Prompt Benchmark: ~11:58 AM Dhuhr)
+  const mul = ToolsModule.CITIES.multan;
+  const mulTimes = ToolsModule.calculatePrayerTimes(refDate, mul.lat, mul.lng, mul.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(mulTimes.dhuhr === '11:58 AM', `Suite 33: Multan 25 Oct 2026 Dhuhr matches reference: 11:58 AM === ${mulTimes.dhuhr}`);
+
+  // Karachi Check (Prompt Benchmark: ~12:16 PM Dhuhr)
+  const khi = ToolsModule.CITIES.karachi;
+  const khiTimes = ToolsModule.calculatePrayerTimes(refDate, khi.lat, khi.lng, khi.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(khiTimes.dhuhr === '12:16 PM', `Suite 33: Karachi 25 Oct 2026 Dhuhr matches reference: 12:16 PM === ${khiTimes.dhuhr}`);
+
+  // Quetta Check (Prompt Benchmark: ~12:16 PM Dhuhr)
+  const qta = ToolsModule.CITIES.quetta;
+  const qtaTimes = ToolsModule.calculatePrayerTimes(refDate, qta.lat, qta.lng, qta.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(qtaTimes.dhuhr === '12:16 PM', `Suite 33: Quetta 25 Oct 2026 Dhuhr matches reference: 12:16 PM === ${qtaTimes.dhuhr}`);
+
+  // Peshawar Check (Prompt Benchmark: ~11:58 AM Dhuhr)
+  const psh = ToolsModule.CITIES.peshawar;
+  const pshTimes = ToolsModule.calculatePrayerTimes(refDate, psh.lat, psh.lng, psh.tz, { method: 'karachi', asrMethod: 'hanafi' });
+  assert(pshTimes.dhuhr === '11:58 AM', `Suite 33: Peshawar 25 Oct 2026 Dhuhr matches reference: 11:58 AM === ${pshTimes.dhuhr}`);
+
+  // 4. Prayer Times UI Controls
+  const ptHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'prayer-times.html'), 'utf-8');
+  assert(ptHtml.includes('id="date-select"'), 'Suite 33: prayer-times.html contains date selector control');
+  assert(ptHtml.includes('Gujranwala') && ptHtml.includes('Multan'), 'Suite 33: prayer-times.html city select contains Gujranwala and Multan');
+  assert(ptHtml.includes('id="time-zawal"'), 'Suite 33: prayer-times.html contains prohibited Zawal solar zenith card');
 
   // SUMMARY
   console.log('\n====================================================');

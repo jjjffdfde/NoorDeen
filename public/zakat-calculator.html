@@ -228,8 +228,58 @@
   <!-- Main Content -->
   <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 1000px;">
     
+    <!-- Multi-Currency & Nisab Benchmark Bar -->
+    <div class="card" style="margin-bottom: 24px; padding: 20px; width: 100%; box-sizing: border-box;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 14px;">
+        <!-- Currency Select -->
+        <div>
+          <label for="currency-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">🌐 Select Calculation Currency:</label>
+          <select id="currency-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="USD" selected>USD — United States Dollar ($)</option>
+            <option value="PKR">PKR — Pakistani Rupee (₨)</option>
+            <option value="EUR">EUR — Euro (€)</option>
+            <option value="GBP">GBP — British Pound (£)</option>
+            <option value="SAR">SAR — Saudi Riyal (﷼)</option>
+            <option value="AED">AED — UAE Dirham (د.إ)</option>
+            <option value="INR">INR — Indian Rupee (₹)</option>
+            <option value="BDT">BDT — Bangladeshi Taka (৳)</option>
+            <option value="CAD">CAD — Canadian Dollar (CA$)</option>
+            <option value="AUD">AUD — Australian Dollar (AU$)</option>
+            <option value="TRY">TRY — Turkish Lira (₺)</option>
+            <option value="IDR">IDR — Indonesian Rupiah (Rp)</option>
+            <option value="MYR">MYR — Malaysian Ringgit (RM)</option>
+          </select>
+        </div>
+
+        <!-- Nisab Standard -->
+        <div>
+          <label for="nisab-standard-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">⚖️ Nisab Benchmark Standard:</label>
+          <select id="nisab-standard-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="silver" selected>Silver Nisab (612.36g) — Recommended for Liquid Wealth</option>
+            <option value="gold">Gold Nisab (87.48g) — For Pure Physical Gold</option>
+          </select>
+        </div>
+
+        <!-- Gold Price Per Gram -->
+        <div>
+          <label for="inp-custom-gold" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">🏆 Gold Price / Gram (<span class="curr-sym">$</span>):</label>
+          <input type="number" id="inp-custom-gold" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.92rem; background: var(--color-surface); color: var(--color-text-main);" step="0.01">
+        </div>
+
+        <!-- Silver Price Per Gram -->
+        <div>
+          <label for="inp-custom-silver" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">🥈 Silver Price / Gram (<span class="curr-sym">$</span>):</label>
+          <input type="number" id="inp-custom-silver" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.92rem; background: var(--color-surface); color: var(--color-text-main);" step="0.01">
+        </div>
+      </div>
+      <div style="font-size: 0.82rem; color: var(--color-text-muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div><span>ℹ️ Standard Nisab Weights: </span><strong>Gold: 87.48g (7.5 tola)</strong> • <strong>Silver: 612.36g (52.5 tola)</strong>. Rates update automatically on currency change or manual input.</div>
+        <button id="btn-reset-rates" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.78rem;">Reset Market Rates</button>
+      </div>
+    </div>
+
     <!-- Calculator Grid Interface -->
-    <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 28px; margin-bottom: 60px;">
+    <div class="grid-responsive-2col" style="gap: 28px; margin-bottom: 60px;">
       
       <!-- Inputs Form -->
       <div class="card" style="padding: 24px;">
@@ -239,28 +289,56 @@
 
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div>
-            <label for="inp-cash" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Cash in Hand & Bank Accounts ($)</label>
-            <input type="number" id="inp-cash" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-cash" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Cash in Hand & Bank Accounts (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-cash" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+              <label for="inp-gold-grams" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Gold Weight (Grams)</label>
+              <input type="number" id="inp-gold-grams" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0" step="0.1">
+            </div>
+            <div>
+              <label for="inp-gold-karat" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Gold Purity (Karat)</label>
+              <select id="inp-gold-karat" class="btn btn-outline" style="width: 100%; border: 1px solid var(--color-border); padding: 9px 12px; border-radius: var(--radius-sm); font-size: 0.92rem; background: var(--color-surface); color: var(--color-text-main);">
+                <option value="24" selected>24K (Pure Gold - 100%)</option>
+                <option value="22">22K (Jewelry Standard - 91.6%)</option>
+                <option value="21">21K (Gulf Standard - 87.5%)</option>
+                <option value="18">18K (75.0%)</option>
+              </select>
+            </div>
           </div>
 
           <div>
-            <label for="inp-gold" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Value of Gold Held ($)</label>
-            <input type="number" id="inp-gold" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-gold-value" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Or Direct Value of Gold Held (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-gold-value" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+              <label for="inp-silver-grams" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Silver Weight (Grams)</label>
+              <input type="number" id="inp-silver-grams" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0" step="0.1">
+            </div>
+            <div>
+              <label for="inp-silver-value" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Or Direct Silver Value (<span class="curr-sym">$</span>)</label>
+              <input type="number" id="inp-silver-value" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
+            </div>
           </div>
 
           <div>
-            <label for="inp-silver" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Value of Silver Held ($)</label>
-            <input type="number" id="inp-silver" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-investments" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Shares, Stocks & Liquid Investments (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-investments" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
+            <span style="font-size: 0.78rem; color: var(--color-text-muted);">Pay 2.5% on full value if day trading, or 30% of market value for long-term passive equity.</span>
           </div>
 
           <div>
-            <label for="inp-investments" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Shares, Stocks & Liquid Investments ($)</label>
-            <input type="number" id="inp-investments" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-business" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Business Merchandise & Inventory for Sale (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-business" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
           </div>
 
           <div>
-            <label for="inp-business" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Business Merchandise & Inventory for Sale ($)</label>
-            <input type="number" id="inp-business" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-owed" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Debts / Money Owed to You (Receivables) (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-owed" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
           </div>
         </div>
 
@@ -270,22 +348,27 @@
 
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div>
-            <label for="inp-debts" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Immediate Debts Due Now ($)</label>
-            <input type="number" id="inp-debts" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-debts" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Immediate Debts Due Now (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-debts" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
           </div>
 
           <div>
-            <label for="inp-expenses" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Due Living Expenses / Bills Due Now ($)</label>
-            <input type="number" id="inp-expenses" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0">
+            <label for="inp-expenses" style="font-size: 0.88rem; font-weight: 600; display: block; margin-bottom: 4px;">Due Living Expenses / Bills Due Now (<span class="curr-sym">$</span>)</label>
+            <input type="number" id="inp-expenses" class="search-input" style="width: 100%; border: 1px solid var(--color-border); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 1rem; background: var(--color-surface); color: var(--color-text-main);" value="0" min="0">
           </div>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <button id="btn-clear-form" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">↺ Reset All Fields</button>
         </div>
       </div>
 
       <!-- Live Results Summary -->
       <div>
         <div class="card" style="border-top: 4px solid var(--color-gold); position: sticky; top: 100px; padding: 24px;">
-          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 16px;">
-            Calculation Summary
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span>Calculation Summary</span>
+            <span id="summary-currency-badge" style="font-size: 0.8rem; background: var(--color-primary-subtle); color: var(--color-primary); padding: 3px 8px; border-radius: 12px;">USD ($)</span>
           </h3>
 
           <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.92rem;">
@@ -304,8 +387,8 @@
           </div>
 
           <div style="display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 0.88rem; color: var(--color-text-light);">
-            <span>Nisab Threshold (Silver):</span>
-            <strong id="res-nisab">$581.74</strong>
+            <span>Nisab Threshold (<span id="res-nisab-name">Silver</span>):</span>
+            <strong id="res-nisab">$642.98</strong>
           </div>
 
           <!-- Status Banner -->
@@ -322,6 +405,14 @@
             </div>
             <div id="res-zakat-due" style="font-size: 2.3rem; font-weight: 800; color: var(--color-primary); margin-top: 6px;">
               $0.00
+            </div>
+          </div>
+
+          <!-- International Currency Equivalents -->
+          <div style="margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--color-border); font-size: 0.82rem;">
+            <div style="font-weight: 700; color: var(--color-text-muted); margin-bottom: 6px;">Equivalent Values in Key Currencies:</div>
+            <div id="currency-equivalents-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; color: var(--color-text-light);">
+              <!-- Rendered dynamically -->
             </div>
           </div>
         </div>
@@ -363,7 +454,7 @@
         <h3 style="font-size: 1.35rem; color: var(--color-primary); margin-bottom: 12px;">
           Modern Zakatable Assets: Stocks, 401(k), Real Estate & Crypto
         </h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="grid-responsive-2col" style="gap: 20px;">
           <div class="card" style="padding: 18px; background: var(--color-surface);">
             <h4 style="color: var(--color-primary); margin-bottom: 6px;">Stocks & Equities</h4>
             <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main);">
@@ -532,24 +623,56 @@
   <script src="js/search.js"></script>
   <script src="js/app.js"></script>
   <script>
+    const STORAGE_KEY = 'ikp_zakat_calculator_state';
+
+    function initRates() {
+      const currCode = document.getElementById('currency-select').value;
+      const rateInfo = (IslamicTools.CURRENCY_RATES && IslamicTools.CURRENCY_RATES[currCode]) || { symbol: '$', goldPerGram: 85.50, silverPerGram: 1.05 };
+
+      const goldInp = document.getElementById('inp-custom-gold');
+      const silverInp = document.getElementById('inp-custom-silver');
+      if (goldInp) goldInp.value = rateInfo.goldPerGram.toFixed(2);
+      if (silverInp) silverInp.value = rateInfo.silverPerGram.toFixed(2);
+
+      document.querySelectorAll('.curr-sym').forEach(el => el.textContent = rateInfo.symbol);
+      const badge = document.getElementById('summary-currency-badge');
+      if (badge) badge.textContent = `${currCode} (${rateInfo.symbol})`;
+    }
+
     function calculate() {
+      const currCode = document.getElementById('currency-select').value;
+      const nisabStd = document.getElementById('nisab-standard-select').value;
+      const customGold = parseFloat(document.getElementById('inp-custom-gold').value) || null;
+      const customSilver = parseFloat(document.getElementById('inp-custom-silver').value) || null;
+
       const vals = {
-        cashInHand: document.getElementById('inp-cash').value,
-        goldValue: document.getElementById('inp-gold').value,
-        silverValue: document.getElementById('inp-silver').value,
-        investments: document.getElementById('inp-investments').value,
-        businessGoods: document.getElementById('inp-business').value,
-        immediateDebts: document.getElementById('inp-debts').value,
-        dueExpenses: document.getElementById('inp-expenses').value,
-        silverPricePerGram: 0.95
+        currency: currCode,
+        nisabStandard: nisabStd,
+        customGoldPrice: customGold,
+        customSilverPrice: customSilver,
+        cashInHand: parseFloat(document.getElementById('inp-cash').value) || 0,
+        goldGrams: parseFloat(document.getElementById('inp-gold-grams').value) || 0,
+        goldKarat: parseFloat(document.getElementById('inp-gold-karat').value) || 24,
+        goldValue: parseFloat(document.getElementById('inp-gold-value').value) || 0,
+        silverGrams: parseFloat(document.getElementById('inp-silver-grams').value) || 0,
+        silverValue: parseFloat(document.getElementById('inp-silver-value').value) || 0,
+        investments: parseFloat(document.getElementById('inp-investments').value) || 0,
+        businessGoods: parseFloat(document.getElementById('inp-business').value) || 0,
+        moneyOwedToYou: parseFloat(document.getElementById('inp-owed').value) || 0,
+        immediateDebts: parseFloat(document.getElementById('inp-debts').value) || 0,
+        dueExpenses: parseFloat(document.getElementById('inp-expenses').value) || 0
       };
 
       const res = IslamicTools.calculateZakat(vals);
+      const sym = res.currencySymbol;
 
-      document.getElementById('res-total-assets').textContent = `$${res.totalAssets.toFixed(2)}`;
-      document.getElementById('res-total-liabilities').textContent = `$${res.totalLiabilities.toFixed(2)}`;
-      document.getElementById('res-net-wealth').textContent = `$${res.netZakatableWealth.toFixed(2)}`;
-      document.getElementById('res-nisab').textContent = `$${res.nisabThreshold.toFixed(2)}`;
+      const fmt = (num) => `${sym}${num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+      document.getElementById('res-total-assets').textContent = fmt(res.totalAssets);
+      document.getElementById('res-total-liabilities').textContent = fmt(res.totalLiabilities);
+      document.getElementById('res-net-wealth').textContent = fmt(res.netZakatableWealth);
+      document.getElementById('res-nisab').textContent = fmt(res.activeNisabThreshold);
+      document.getElementById('res-nisab-name').textContent = res.nisabStandard === 'gold' ? 'Gold (87.48g)' : 'Silver (612.36g)';
 
       const banner = document.getElementById('res-status-banner');
       const elig = document.getElementById('res-eligibility');
@@ -559,19 +682,82 @@
         banner.style.backgroundColor = '#DEF7EC';
         elig.textContent = '✓ Zakat is Obligatory (Above Nisab)';
         elig.style.color = '#03543F';
-        due.textContent = `$${res.zakatDue.toFixed(2)}`;
+        due.textContent = fmt(res.zakatDue);
       } else {
         banner.style.backgroundColor = 'var(--color-surface)';
         elig.textContent = 'Below Nisab Threshold (No Zakat Due)';
         elig.style.color = 'var(--color-text-muted)';
-        due.textContent = '$0.00';
+        due.textContent = fmt(0);
       }
+
+      // Equivalents table for international reference
+      const equivContainer = document.getElementById('currency-equivalents-grid');
+      if (equivContainer && IslamicTools.CURRENCY_RATES) {
+        const baseRate = IslamicTools.CURRENCY_RATES[currCode] ? IslamicTools.CURRENCY_RATES[currCode].ratePerUSD : 1;
+        const dueInUSD = res.zakatDue / baseRate;
+        const compareList = ['USD', 'PKR', 'EUR', 'GBP', 'SAR', 'AED'];
+        equivContainer.innerHTML = compareList.map(c => {
+          const r = IslamicTools.CURRENCY_RATES[c];
+          if (!r) return '';
+          const equivDue = dueInUSD * r.ratePerUSD;
+          return `<div><strong>${c} (${r.symbol}):</strong> ${r.symbol}${equivDue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>`;
+        }).join('');
+      }
+
+      // Auto-save state
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(vals));
+      } catch (e) {}
     }
+
+    function restoreSavedState() {
+      try {
+        const savedStr = localStorage.getItem(STORAGE_KEY);
+        if (!savedStr) return;
+        const s = JSON.parse(savedStr);
+        if (s.currency) document.getElementById('currency-select').value = s.currency;
+        if (s.nisabStandard) document.getElementById('nisab-standard-select').value = s.nisabStandard;
+        if (s.cashInHand !== undefined) document.getElementById('inp-cash').value = s.cashInHand;
+        if (s.goldGrams !== undefined) document.getElementById('inp-gold-grams').value = s.goldGrams;
+        if (s.goldKarat !== undefined) document.getElementById('inp-gold-karat').value = s.goldKarat;
+        if (s.goldValue !== undefined) document.getElementById('inp-gold-value').value = s.goldValue;
+        if (s.silverGrams !== undefined) document.getElementById('inp-silver-grams').value = s.silverGrams;
+        if (s.silverValue !== undefined) document.getElementById('inp-silver-value').value = s.silverValue;
+        if (s.investments !== undefined) document.getElementById('inp-investments').value = s.investments;
+        if (s.businessGoods !== undefined) document.getElementById('inp-business').value = s.businessGoods;
+        if (s.moneyOwedToYou !== undefined) document.getElementById('inp-owed').value = s.moneyOwedToYou;
+        if (s.immediateDebts !== undefined) document.getElementById('inp-debts').value = s.immediateDebts;
+        if (s.dueExpenses !== undefined) document.getElementById('inp-expenses').value = s.dueExpenses;
+      } catch (e) {}
+    }
+
+    document.getElementById('currency-select').addEventListener('change', () => {
+      initRates();
+      calculate();
+    });
+
+    document.getElementById('nisab-standard-select').addEventListener('change', calculate);
+    document.getElementById('inp-gold-karat').addEventListener('change', calculate);
+
+    document.getElementById('btn-reset-rates').addEventListener('click', () => {
+      initRates();
+      calculate();
+      if (window.App) window.App.showToast('Reset to default benchmark market rates.');
+    });
+
+    document.getElementById('btn-clear-form').addEventListener('click', () => {
+      document.querySelectorAll('.grid-responsive-2col input[type="number"]').forEach(inp => inp.value = 0);
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      calculate();
+      if (window.App) window.App.showToast('Calculator fields cleared.');
+    });
 
     document.querySelectorAll('input[type="number"]').forEach(inp => {
       inp.addEventListener('input', calculate);
     });
 
+    restoreSavedState();
+    initRates();
     calculate();
   </script>
 </body>

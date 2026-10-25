@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/taxonomy.schema.json",
+  "title": "Content Taxonomy Schema",
+  "type": "object",
+  "required": ["version", "domains"],
+  "properties": {
+    "version": { "type": "string" },
+    "lastUpdated": { "type": "string" },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "slug", "name", "arabicName", "currentRoute", "status", "categories"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^dom-[a-z0-9-]+$" },
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "arabicName": { "type": "string" },
+          "description": { "type": "string" },
+          "currentRoute": { "type": "string" },
+          "status": { "type": "string" },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "slug", "name", "type"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^cat-[a-z0-9-]+$" },
+                "slug": { "type": "string" },
+                "name": { "type": "string" },
+                "type": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

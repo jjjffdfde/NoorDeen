@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/sahaba-biography.schema.json",
+  "title": "Sahaba Biography Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "arabicName",
+    "category",
+    "conversionOrder",
+    "sources",
+    "coreVirtues"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^sahaba-[a-z0-9-]+$" },
+    "name": { "type": "string" },
+    "arabicName": { "type": "string" },
+    "honorific": { "type": "string", "default": "رضي الله عنه" },
+    "titleKunya": { "type": "string" },
+    "category": { "type": "string", "enum": ["caliph", "promised_paradise", "mother_of_believers", "ansar", "muhajir", "scholar", "martyr"] },
+    "conversionOrder": { "type": "string" },
+    "majorBattlesParticipated": { "type": "array", "items": { "type": "string" } },
+    "hadithNarratedCount": { "type": "integer" },
+    "coreVirtues": { "type": "array", "items": { "type": "string" } },
+    "sources": { "type": "array", "minItems": 1 },
+    "alIsabahEntryNumber": { "type": "string" }
+  }
+}

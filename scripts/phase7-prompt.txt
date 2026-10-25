@@ -1,0 +1,78 @@
+<USER_REQUEST>
+# ISLAMIC KNOWLEDGE PORTAL — PHASE 7 OF 10
+# COMPLETE PRACTICAL ISLAMIC LEARNING LIBRARY
+## Hadith, Duas, Salah, Wudu, Ghusl, Tayammum, Janazah, Eid, Jumuah, Ramadan, Fasting, Zakat, Hajj, Umrah and Verified Worship Education
+
+## YOUR ROLE
+
+Act as a senior Islamic educational content researcher, Hadith reference analyst, fiqh research specialist, Quran and Sunnah data-integrity engineer, Arabic and Urdu content editor, educational UX designer, structured-data architect, software engineer, localization engineer and QA specialist.
+
+I have an existing Islamic Knowledge Portal. Previous phases were intended to establish the following:
+
+- Phase 1: Deep project discovery and competitor research.
+- Phase 2: Information architecture, content schemas, source provenance and editorial review workflow.
+- Phase 3: Quran integrity, translations, reader, Tafsir and permitted audio.
+- Phase 4: The Seerah of Prophet Muhammad ﷺ.
+- Phase 5: Sahaba biographies and Prophets' narratives.
+- Phase 6: Islamic history and historical timelines.
+
+These phases may contain implementation gaps. Inspect their actual reports and code instead of assuming everything was completed correctly.
+
+Now execute PHASE 7 ONLY.
+
+The goal is to make the practical Islamic learning modules genuinely useful, properly structured, clearly presented and supported by traceable sources.
+
+This work must cover Hadith, duas and adhkar, Salah, purification, Janazah, Eid, Jumuah, Ramadan, fasting, Zakat, Hajj, Umrah and other related practical learning resources that are within the existing project scope.
+
+Do not simply create short generic summaries or a collection of empty module cards. Audit and improve the actual existing content, add appropriate missing content where reliable evidence and permissions exist, implement useful navigation and learning features, and verify the changes.
+
+Do not start Phase 8 or any future phase.
+
+---
+
+# ABSOLUTE EXECUTION AND SAFETY RULES
+
+1. Read the actual Phase 1–6 reports and inspec
+<truncated 37911 bytes>
+mptions.
+12. What Hajj and Umrah material is present.
+13. Which translations are actually available.
+14. What is available offline and under what conditions.
+15. Which permissions remain unresolved.
+16. Accessibility and responsive testing performed.
+17. Actual build and automated test results.
+18. Any remaining content, licensing, technical or scholarly issues.
+19. Files changed and their purpose.
+20. Confirmation that earlier phases and unrelated modules were preserved.
+
+Use the following evidence-based statuses:
+
+- PASS — verified through an actual test or source check within the stated scope.
+- FAIL — a reproducible defect remains.
+- PARTIAL — functionality or content coverage is incomplete.
+- BLOCKED — a specific source, permission, tool or dependency prevents completion.
+- NEEDS HUMAN REVIEW — qualified religious, linguistic or legal review remains necessary.
+
+Do not claim that every Hadith, dua or religious ruling is authenticated simply because it exists in the database.
+
+Do not describe a module as complete when key content or testing remains incomplete.
+
+---
+
+# FINAL EXECUTION INSTRUCTION
+
+Start by reading the actual Phase 1–6 reports and inspecting the existing practical Islamic modules.
+
+Audit the real datasets and page content, verify source and licensing information, repair structural or factual defects that can be safely resolved, improve the actual educational content, implement the necessary learning interfaces and test the results.
+
+Preserve all accurate existing material and functioning application features.
+
+Do not generate unsupported religious content, fabricate references or merge conflicting scholarly positions into one misleading procedure.
+
+Do not start Phase 8.
+
+Complete Phase 7 only, perform independent final verification, document the exact changes and remaining limitations, and stop until explicitly authorized to continue.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-24T10:21:37+05:00.
+</ADDITIONAL_METADATA>

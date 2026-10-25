@@ -1,0 +1,300 @@
+{
+  "$schema": "../schemas/taxonomy.schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2026-10-24T10:15:00Z",
+  "domains": [
+    {
+      "id": "dom-quran",
+      "slug": "quran",
+      "name": "Holy Quran",
+      "arabicName": "القرآن الكريم",
+      "description": "Divine revelation, text preservation, recitations, and translation editions.",
+      "currentRoute": "/quran",
+      "status": "active",
+      "categories": [
+        { "id": "cat-quran-text", "slug": "mushaf", "name": "Uthmani Mushaf Text", "type": "scripture" },
+        { "id": "cat-quran-translations", "slug": "translations", "name": "Verified Translations", "type": "translations" },
+        { "id": "cat-quran-audio", "slug": "recitations", "name": "Audio Recitations", "type": "audio" }
+      ]
+    },
+    {
+      "id": "dom-quran-study",
+      "slug": "quran-study",
+      "name": "Quran Study & Tafsir",
+      "arabicName": "علوم القرآن والتفسير",
+      "description": "Classical exegesis, word-by-word linguistics, occasions of revelation (Asbab al-Nuzul), and thematic reflections.",
+      "currentRoute": "/quran",
+      "status": "planned_phase_3",
+      "categories": [
+        { "id": "cat-tafsir", "slug": "tafsir", "name": "Classical Tafsir", "type": "exegesis" },
+        { "id": "cat-wbw", "slug": "word-by-word", "name": "Word-by-Word Morphology", "type": "linguistics" },
+        { "id": "cat-asbab", "slug": "asbab-al-nuzul", "name": "Occasions of Revelation", "type": "history" }
+      ]
+    },
+    {
+      "id": "dom-hadith",
+      "slug": "hadith",
+      "name": "Hadith & Prophetic Sunnah",
+      "arabicName": "الحديث النبوي الشريف",
+      "description": "Authentic traditions of Prophet Muhammad ﷺ, Kutub al-Sittah, scholarly gradings, and Fiqh al-Hadith commentary.",
+      "currentRoute": "/hadith",
+      "status": "active",
+      "categories": [
+        { "id": "cat-hadith-bukhari", "slug": "bukhari", "name": "Sahih al-Bukhari", "type": "canonical_hadith" },
+        { "id": "cat-hadith-muslim", "slug": "muslim", "name": "Sahih Muslim", "type": "canonical_hadith" },
+        { "id": "cat-hadith-tirmidhi", "slug": "tirmidhi", "name": "Jami` at-Tirmidhi", "type": "canonical_hadith" },
+        { "id": "cat-hadith-abudawud", "slug": "abu-dawud", "name": "Sunan Abi Dawud", "type": "canonical_hadith" },
+        { "id": "cat-hadith-nasai", "slug": "nasai", "name": "Sunan an-Nasa'i", "type": "canonical_hadith" },
+        { "id": "cat-hadith-ibnmajah", "slug": "ibn-majah", "name": "Sunan Ibn Majah", "type": "canonical_hadith" },
+        { "id": "cat-hadith-commentary", "slug": "fiqh-al-hadith", "name": "Fiqh al-Hadith", "type": "commentary" }
+      ]
+    },
+    {
+      "id": "dom-seerah",
+      "slug": "seerah",
+      "name": "Prophetic Biography (Seerah)",
+      "arabicName": "السيرة النبوية العطرة",
+      "description": "Chronological life of Prophet Muhammad ﷺ from Pre-Islamic Arabia to the Farewell Pilgrimage.",
+      "currentRoute": "/seerah",
+      "status": "active",
+      "categories": [
+        { "id": "cat-seerah-meccan", "slug": "meccan-period", "name": "Meccan Era (610–622 CE)", "type": "chronology" },
+        { "id": "cat-seerah-medinan", "slug": "medinan-period", "name": "Medinan Era (622–632 CE)", "type": "chronology" },
+        { "id": "cat-seerah-campaigns", "slug": "expeditions", "name": "Military Expeditions & Diplomacy", "type": "history" },
+        { "id": "cat-seerah-shamail", "slug": "shamail", "name": "Character & Physical Virtues", "type": "biography" }
+      ]
+    },
+    {
+      "id": "dom-prophets",
+      "slug": "prophets",
+      "name": "Stories of the Prophets",
+      "arabicName": "قصص الأنبياء عليهم السلام",
+      "description": "Authentic Quranic narratives of all 25 Prophets and righteous Quranic mentors.",
+      "currentRoute": "/prophets",
+      "status": "active",
+      "categories": [
+        { "id": "cat-prophets-antediluvian", "slug": "early-prophets", "name": "Early Prophets (Adam to Ibrahim)", "type": "biography" },
+        { "id": "cat-prophets-israelite", "slug": "israelite-prophets", "name": "Israelite Lineage (Yusuf to Isa)", "type": "biography" },
+        { "id": "cat-prophets-arabian", "slug": "arabian-prophets", "name": "Arabian Prophets (Hud, Salih, Shu'ayb)", "type": "biography" },
+        { "id": "cat-prophets-final", "slug": "final-messenger", "name": "Muhammad ﷺ (Seal of the Prophets)", "type": "biography" }
+      ]
+    },
+    {
+      "id": "dom-sahaba",
+      "slug": "sahaba",
+      "name": "Lives of the Sahaba",
+      "arabicName": "حياة الصحابة رضوان الله عليهم",
+      "description": "Biographical profiles of the Companions, Caliphs, Mothers of the Believers, and early scholars.",
+      "currentRoute": "/sahaba",
+      "status": "active",
+      "categories": [
+        { "id": "cat-sahaba-caliphs", "slug": "caliphs", "name": "Four Rightly Guided Caliphs", "type": "biography" },
+        { "id": "cat-sahaba-promised", "slug": "ten-promised-paradise", "name": "Ten Promised Paradise", "type": "biography" },
+        { "id": "cat-sahaba-mothers", "slug": "mothers-of-believers", "name": "Mothers of the Believers & Female Scholars", "type": "biography" },
+        { "id": "cat-sahaba-ansar", "slug": "ansar-leaders", "name": "Leaders of the Ansar", "type": "biography" },
+        { "id": "cat-sahaba-scholars", "slug": "companion-scholars", "name": "Jurists and Reciters", "type": "biography" }
+      ]
+    },
+    {
+      "id": "dom-history",
+      "slug": "history",
+      "name": "Islamic History & Civilizations",
+      "arabicName": "تاريخ الإسلام والحضارة الإسلامية",
+      "description": "1,400+ years of civilizational, scientific, and institutional heritage from 610 CE to the modern era.",
+      "currentRoute": "/history",
+      "status": "active",
+      "categories": [
+        { "id": "cat-hist-caliphates", "slug": "major-caliphates", "name": "Major Caliphates (Rashidun, Umayyad, Abbasid)", "type": "era" },
+        { "id": "cat-hist-regional", "slug": "regional-dynasties", "name": "Regional Dynasties (Andalusia, Mamluks, Seljuks)", "type": "era" },
+        { "id": "cat-hist-gunpowder", "slug": "gunpowder-empires", "name": "Gunpowder Empires (Ottoman, Safavid, Mughal)", "type": "era" },
+        { "id": "cat-hist-civilization", "slug": "science-institutions", "name": "Sciences, Libraries & Architecture", "type": "thematic" }
+      ]
+    },
+    {
+      "id": "dom-duas",
+      "slug": "duas",
+      "name": "Daily Duas & Prophetic Adhkar",
+      "arabicName": "الأدعية والأذكار النبوية",
+      "description": "Authentic supplications from Hisnul Muslim, daily morning/evening protection, and situational prayers.",
+      "currentRoute": "/duas",
+      "status": "active",
+      "categories": [
+        { "id": "cat-dua-daily", "slug": "morning-evening", "name": "Morning & Evening Adhkar", "type": "supplication" },
+        { "id": "cat-dua-worship", "slug": "prayer-supplications", "name": "Salah & Post-Prayer Duas", "type": "supplication" },
+        { "id": "cat-dua-situational", "slug": "life-events", "name": "Life Circumstances & Protection", "type": "supplication" },
+        { "id": "cat-dua-quranic", "slug": "rabbana-duas", "name": "Quranic Rabbana Supplications", "type": "supplication" }
+      ]
+    },
+    {
+      "id": "dom-salah",
+      "slug": "salah",
+      "name": "Salah (Daily Prayers)",
+      "arabicName": "الصلاة الركن الثاني",
+      "description": "Step-by-step prayer education, conditions, postures, recitations, comparative madhhab rulings, and voluntary prayers.",
+      "currentRoute": "/salah-guide",
+      "status": "active",
+      "categories": [
+        { "id": "cat-salah-fard", "slug": "five-daily-prayers", "name": "Five Obligatory Prayers", "type": "worship_guide" },
+        { "id": "cat-salah-rulings", "slug": "conditions-pillars", "name": "Conditions, Pillars & Nullifiers", "type": "fiqh_guide" },
+        { "id": "cat-salah-voluntary", "slug": "sunan-nafl", "name": "Sunan Rawatib, Tahajjud & Duha", "type": "worship_guide" },
+        { "id": "cat-salah-errors", "slug": "sajdah-sahw", "name": "Forgetfulness (Sajdah as-Sahw)", "type": "fiqh_guide" }
+      ]
+    },
+    {
+      "id": "dom-purification",
+      "slug": "purification",
+      "name": "Purification (Taharah)",
+      "arabicName": "الطهارة والوضوء والغسل",
+      "description": "Ritual purity, Wudu (minor ablution), Ghusl (major bath), Tayammum (dry ablution), and wiping over socks (Masah).",
+      "currentRoute": "/wudu-guide",
+      "status": "active",
+      "categories": [
+        { "id": "cat-pur-wudu", "slug": "wudu-steps", "name": "Step-by-Step Wudu", "type": "worship_guide" },
+        { "id": "cat-pur-ghusl", "slug": "ghusl-steps", "name": "Step-by-Step Ghusl", "type": "worship_guide" },
+        { "id": "cat-pur-tayammum", "slug": "tayammum-steps", "name": "Tayammum & Dry Ablution", "type": "worship_guide" },
+        { "id": "cat-pur-nullifiers", "slug": "nullifiers", "name": "Nullifiers & Masah Rulings", "type": "fiqh_guide" }
+      ]
+    },
+    {
+      "id": "dom-janazah",
+      "slug": "janazah",
+      "name": "Funeral Rites (Salat al-Janazah)",
+      "arabicName": "صلاة الجنازة وأحكام المقابر",
+      "description": "Funeral prayer procedure (4 Takbirs), adult and child supplications, washing (Ghusl al-Mayyit), shrouding, and cemetery etiquette.",
+      "currentRoute": "/janazah-guide",
+      "status": "active",
+      "categories": [
+        { "id": "cat-jan-prayer", "slug": "prayer-steps", "name": "4 Takbirs & Recitations", "type": "worship_guide" },
+        { "id": "cat-jan-washing", "slug": "shrouding-washing", "name": "Ghusl al-Mayyit & Shrouding", "type": "fiqh_guide" },
+        { "id": "cat-jan-etiquette", "slug": "visitation-condolence", "name": "Ta'ziyah & Cemetery Etiquette", "type": "adab_guide" }
+      ]
+    },
+    {
+      "id": "dom-eid",
+      "slug": "eid",
+      "name": "Eid Prayers & Celebrations",
+      "arabicName": "صلاة العيدين والتكبيرات",
+      "description": "Eid al-Fitr and Eid al-Adha prayer mechanics (6 vs 12 Takbirs), Takbirat al-Tashreeq schedule, Zakat al-Fitr, and Qurbani.",
+      "currentRoute": "/eid-guide",
+      "status": "active",
+      "categories": [
+        { "id": "cat-eid-prayers", "slug": "prayer-methods", "name": "Eid Prayer Mechanics", "type": "worship_guide" },
+        { "id": "cat-eid-tashreeq", "slug": "takbirat-tashreeq", "name": "Takbirat al-Tashreeq", "type": "devotion" },
+        { "id": "cat-eid-charity", "slug": "fitr-qurbani", "name": "Zakat al-Fitr & Udhiyyah (Qurbani)", "type": "fiqh_guide" }
+      ]
+    },
+    {
+      "id": "dom-jumuah",
+      "slug": "jumuah",
+      "name": "Friday Prayer (Salat al-Jumu'ah)",
+      "arabicName": "صلاة الجمعة وفضائلها",
+      "description": "Obligation of Friday congregation, Khutbah etiquette, Sunan of Friday, and Surah Al-Kahf recitation.",
+      "currentRoute": "/salah-guide",
+      "status": "planned_phase_7",
+      "categories": [
+        { "id": "cat-jum-rulings", "slug": "rulings", "name": "Jumu'ah Obligations & Conditions", "type": "fiqh_guide" },
+        { "id": "cat-jum-sunan", "slug": "sunan", "name": "Sunan of Friday & Surah Al-Kahf", "type": "adab_guide" }
+      ]
+    },
+    {
+      "id": "dom-fasting",
+      "slug": "fasting",
+      "name": "Fasting & Ramadan (Sawm)",
+      "arabicName": "الصيام وشهر رمضان المبارك",
+      "description": "Pillars of fasting, nullifiers, exemptions (travel, illness), Suhoor and Iftar etiquette, Taraweeh, and Laylatul Qadr.",
+      "currentRoute": "/pillars",
+      "status": "planned_phase_7",
+      "categories": [
+        { "id": "cat-fast-ramadan", "slug": "ramadan-rulings", "name": "Ramadan Fasting Rulings", "type": "fiqh_guide" },
+        { "id": "cat-fast-voluntary", "slug": "voluntary-fasting", "name": "Voluntary Fasting (Arafah, Ashura, Mondays)", "type": "worship_guide" },
+        { "id": "cat-fast-spiritual", "slug": "spiritual-benefits", "name": "Inner Secrets of Fasting", "type": "spirituality" }
+      ]
+    },
+    {
+      "id": "dom-zakat",
+      "slug": "zakat",
+      "name": "Zakat & Wealth Purification",
+      "arabicName": "الزكاة والصدقات",
+      "description": "Third pillar of Islam: Nisab thresholds, 2.5% wealth calculation, eligible recipients (Masarif), and Sadaqah Jariyah.",
+      "currentRoute": "/zakat-calculator",
+      "status": "active",
+      "categories": [
+        { "id": "cat-zak-calc", "slug": "calculator", "name": "Interactive Zakat Calculator", "type": "tool" },
+        { "id": "cat-zak-rulings", "slug": "fiqh-nisab", "name": "Nisab Standards & Asset Types", "type": "fiqh_guide" },
+        { "id": "cat-zak-recipients", "slug": "eight-categories", "name": "The Eight Eligible Recipients", "type": "theology" }
+      ]
+    },
+    {
+      "id": "dom-hajj",
+      "slug": "hajj",
+      "name": "Hajj & Umrah Pilgrimage",
+      "arabicName": "الحج والعمرة",
+      "description": "Fifth pillar of Islam: Ihram, Tawaf, Sa'i, Day of Arafah, Mina, Jamarat, Muzdalifah, and Umrah rituals.",
+      "currentRoute": "/pillars",
+      "status": "planned_phase_7",
+      "categories": [
+        { "id": "cat-hajj-steps", "slug": "hajj-guide", "name": "Step-by-Step Hajj Guide", "type": "worship_guide" },
+        { "id": "cat-hajj-umrah", "slug": "umrah-guide", "name": "Step-by-Step Umrah Guide", "type": "worship_guide" },
+        { "id": "cat-hajj-spiritual", "slug": "spiritual-dimensions", "name": "Spiritual Dimensions of Hajj", "type": "spirituality" }
+      ]
+    },
+    {
+      "id": "dom-creed",
+      "slug": "creed",
+      "name": "Islamic Creed & Foundations (Aqidah)",
+      "arabicName": "العقيدة وأركان الإيمان والإسلام",
+      "description": "Six Articles of Faith (Iman), Five Pillars of Islam, Six Kalimas, and Tawheed (Divine Unity).",
+      "currentRoute": "/pillars",
+      "status": "active",
+      "categories": [
+        { "id": "cat-creed-kalimas", "slug": "six-kalimas", "name": "Six Kalimas of Islam", "type": "creed" },
+        { "id": "cat-creed-pillars", "slug": "five-pillars", "name": "Five Pillars of Islam", "type": "creed" },
+        { "id": "cat-creed-articles", "slug": "six-articles-iman", "name": "Six Articles of Faith", "type": "creed" }
+      ]
+    },
+    {
+      "id": "dom-youth",
+      "slug": "youth",
+      "name": "Youth & Beginner Learning",
+      "arabicName": "تعليم النشء والمسلم الجديد",
+      "description": "Foundational, accessible learning paths for new Muslims, youth, and children.",
+      "currentRoute": "/salah-guide",
+      "status": "planned_phase_8",
+      "categories": [
+        { "id": "cat-youth-newmuslim", "slug": "new-muslim-essentials", "name": "New Muslim Essentials", "type": "curriculum" },
+        { "id": "cat-youth-stories", "slug": "morals-ethics", "name": "Islamic Manners (Adab) & Stories", "type": "education" }
+      ]
+    },
+    {
+      "id": "dom-scholarship",
+      "slug": "scholarship",
+      "name": "Scholarship, Sources & Methodology",
+      "arabicName": "المصادر والمنهج العلمي",
+      "description": "Classical Islamic bibliography, source provenance, four Sunni Madhhabs, and institutional editorial standards.",
+      "currentRoute": "/sources",
+      "status": "active",
+      "categories": [
+        { "id": "cat-sch-sources", "slug": "bibliography", "name": "Academic Bibliography", "type": "reference" },
+        { "id": "cat-sch-about", "slug": "methodology", "name": "Editorial Methodology & E-E-A-T", "type": "governance" },
+        { "id": "cat-sch-contact", "slug": "corrections", "name": "Feedback & Corrections Registry", "type": "governance" }
+      ]
+    },
+    {
+      "id": "dom-tools",
+      "slug": "tools",
+      "name": "Sacred Islamic Utilities",
+      "arabicName": "الأدوات والتطبيقات الإسلامية",
+      "description": "Astronomical prayer times, digital tasbih counter, zakat calculator, Hijri calendar converter, and private bookmarks.",
+      "currentRoute": "/prayer-times",
+      "status": "active",
+      "categories": [
+        { "id": "cat-tool-prayer", "slug": "prayer-times", "name": "Solar Prayer Times", "type": "tool" },
+        { "id": "cat-tool-tasbih", "slug": "tasbih", "name": "Digital Tasbih Counter", "type": "tool" },
+        { "id": "cat-tool-zakat", "slug": "zakat-calculator", "name": "Zakat Calculator", "type": "tool" },
+        { "id": "cat-tool-calendar", "slug": "calendar", "name": "Hijri Calendar", "type": "tool" },
+        { "id": "cat-tool-bookmarks", "slug": "bookmarks", "name": "Saved Bookmarks", "type": "tool" },
+        { "id": "cat-tool-app", "slug": "download-app", "name": "Offline App Download", "type": "distribution" }
+      ]
+    }
+  ]
+}

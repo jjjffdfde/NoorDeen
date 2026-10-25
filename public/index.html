@@ -3,57 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Islamic Knowledge Portal — Authentic Quran, Hadith, Duas & Education</title>
-  <meta name="description" content="Worldwide Islamic knowledge portal featuring the Holy Quran with translations, authentic Hadith collections, 6 Kalimas, daily supplications, Seerah, and prayer times.">
-  <meta name="keywords" content="Quran, Hadith, Bukhari, Muslim, Duas, Kalimas, Seerah, Islamic Knowledge, Prayer Times, Zakat Calculator, Islamic Education">
-  
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="Islamic Knowledge Portal — Authentic Quran, Hadith & Supplications">
-  <meta property="og:description" content="Explore the Holy Quran, authentic Hadith collections with verified gradings, Six Kalimas, and daily Adhkar.">
+  <title>Islamic Knowledge Portal — Comprehensive Islamic Learning Platform</title>
+  <meta name="description" content="A comprehensive digital library for authentic Islamic knowledge: Read Holy Quran with verified translations, study Kutub al-Sittah Hadith, and follow the Prophetic Seerah.">
+  <link rel="canonical" href="https://islamicknowledge.example.com/">
+
+  <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://islamicknowledge.example.com/">
-  
-  <!-- CSS Stylesheet -->
+  <meta property="og:title" content="Islamic Knowledge Portal — Comprehensive Islamic Learning Platform">
+  <meta property="og:description" content="Explore the Holy Quran with verse-by-verse translations, authentic Hadith collections with gradings, prophetic biographies, and practical worship guides.">
+  <meta property="og:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://islamicknowledge.example.com/">
+  <meta name="twitter:title" content="Islamic Knowledge Portal — Authentic Quran, Hadith, Seerah, Duas & Practice">
+  <meta name="twitter:description" content="A comprehensive, authentic digital gateway to Islamic knowledge and everyday practice.">
+  <meta name="twitter:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
+
+  <!-- Favicon & Stylesheet -->
+  <link rel="icon" type="image/svg+xml" href="icons/icon-192.svg">
   <link rel="stylesheet" href="css/main.css">
-  
-  <!-- Global Configuration & AdSense Compliance -->
-  <script src="js/config.js"></script>
-  
-  <!-- Schema.org JSON-LD Structured Data for Google Discoverability -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Islamic Knowledge Portal",
-    "url": "https://islamicknowledge.example.com/",
-    "description": "Comprehensive multilingual Islamic knowledge platform serving Muslims worldwide with authentic Quran, Hadith, Duas, and education.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://islamicknowledge.example.com/quran.html?search={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://islamicknowledge.example.com/#website",
+        "url": "https://islamicknowledge.example.com/",
+        "name": "Islamic Knowledge Portal",
+        "description": "Comprehensive authentic digital Islamic knowledge portal featuring Quran, Hadith, Duas, Seerah, and Islamic history.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://islamicknowledge.example.com/quran.html?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://islamicknowledge.example.com/#organization",
+        "name": "Islamic Knowledge Foundation",
+        "url": "https://islamicknowledge.example.com/",
+        "logo": "https://islamicknowledge.example.com/images/og-preview.png",
+        "sameAs": []
+      }
+    ]
   }
   </script>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0F5132">
-  <link rel="canonical" href="https://islamicknowledge.example.com/">
-
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://islamicknowledge.example.com/">
-  <meta name="twitter:title" content="Islamic Knowledge Portal — Authentic Quran, Hadith, Duas & Education">
-  <meta name="twitter:description" content="Worldwide Islamic knowledge portal featuring the Holy Quran with translations, authentic Hadith collections, 6 Kalimas, daily supplications, Seerah, and prayer times.">
-  <meta name="twitter:image" content="https://islamicknowledge.example.com/icons/icon-512.svg">
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Bar (Quick Prayer Times & Hijri Calendar) -->
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div style="display: flex; align-items: center; gap: 12px;">
         <span>🌙 <strong id="current-hijri-date">1447 AH</strong></span>
         <span style="opacity: 0.5;">|</span>
-        <span style="font-size: 0.8rem; opacity: 0.9;">Serving the Global Ummah with Authentic Knowledge</span>
+        <span style="font-size: 0.8rem; opacity: 0.9;">Serving the Global Ummah with Verified Classical Sources</span>
       </div>
       <div class="top-bar-links">
         <a href="prayer-times.html" class="top-bar-link">🕌 Prayer Times</a>
@@ -64,7 +73,6 @@
   </div>
 
   <!-- Header & Navigation -->
-    <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo-group">
@@ -78,7 +86,7 @@
       <!-- Desktop Nav -->
       <nav class="desktop-nav">
         <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item"><a href="index.html" class="active" data-i18n="navHome">Home</a></li>
 
           <!-- Quran Dropdown -->
           <li class="nav-item nav-dropdown">
@@ -158,53 +166,44 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section" style="position: relative; overflow: hidden;">
-    <!-- 2026 Spatial Floating Sacred Geometric Mandala -->
-    <svg class="hero-mandala-bg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
-      <circle cx="100" cy="100" r="75" stroke="currentColor" stroke-width="1.2"/>
-      <circle cx="100" cy="100" r="55" stroke="currentColor" stroke-width="0.8"/>
-      <polygon points="100,15 125,75 185,100 125,125 100,185 75,125 15,100 75,75" stroke="currentColor" stroke-width="1.5" fill="none"/>
-      <polygon points="100,25 120,80 175,100 120,120 100,175 80,120 25,100 80,80" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(45 100 100)"/>
-      <circle cx="100" cy="100" r="30" stroke="currentColor" stroke-width="1.5"/>
-      <circle cx="100" cy="100" r="8" fill="currentColor" opacity="0.4"/>
-    </svg>
-    <div class="hero-pattern"></div>
-    <div class="container" style="position: relative; z-index: 2;">
-      <div class="hero-badge">
-        ✨ Digital Library of Authentic Islamic Knowledge
+  <!-- Focused, Dignified Hero Section -->
+  <section class="clean-hero-section">
+    <div class="container" style="max-width: 860px;">
+      <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-primary-subtle); color: var(--color-primary); border-radius: 99px; font-size: 0.82rem; font-weight: 700; margin-bottom: 16px;">
+        ✨ Authentic Islamic Knowledge & Classical Sources
       </div>
-      <h1 class="hero-title" data-i18n="heroTitle">
+      <h1 class="hero-title" style="font-size: clamp(1.8rem, 4vw, 2.75rem); font-family: var(--font-heading); color: var(--color-primary); margin-bottom: 14px; line-height: 1.25;" data-i18n="heroTitle">
         The Digital Library of Authentic Islamic Knowledge
       </h1>
-      <p class="hero-subtitle" data-i18n="heroSubtitle">
+      <p class="hero-subtitle" style="font-size: 1.05rem; color: var(--color-text-muted); line-height: 1.65; max-width: 720px; margin: 0 auto 24px;" data-i18n="heroSubtitle">
         Read the Holy Quran with verse-by-verse translations, study authenticated Hadith from Kutub al-Sittah, and explore the Prophetic legacy.
       </p>
 
-      <!-- Search Trigger Box -->
-      <div class="search-container">
-        <div class="search-box">
-          <span class="search-icon">🔍</span>
+      <!-- Instant Phonetic Search Box -->
+      <div class="search-container" style="max-width: 620px; margin: 0 auto;">
+        <div class="search-box" style="display: flex; align-items: center; background: var(--color-card); border: 2px solid var(--color-primary); border-radius: var(--radius-sm); padding: 6px 8px; box-shadow: var(--shadow-md);">
+          <span class="search-icon" style="padding: 0 10px; font-size: 1.1rem; color: var(--color-primary);">🔍</span>
           <input 
             type="text" 
-            class="search-input global-search-trigger" 
+            class="search-input global-search-trigger search-hero-trigger" 
             placeholder="Search Surahs, Hadith, Duas, or Islamic topics..." 
             data-i18n="searchPlaceholder"
             readonly
+            style="flex: 1; border: none; background: transparent; padding: 10px 4px; font-size: 1rem; color: var(--color-text-main); outline: none; cursor: pointer;"
+            onclick="App.openSearchModal()"
           >
-          <button class="btn btn-primary" onclick="App.openSearchModal()" data-i18n="searchBtn">Search</button>
+          <button class="btn btn-primary" onclick="App.openSearchModal()" data-i18n="searchBtn" style="padding: 10px 22px; font-weight: 700;">Search</button>
         </div>
 
-        <!-- Quick Access Chips -->
-        <div class="hero-quick-chips">
-          <span style="font-size: 0.82rem; opacity: 0.85; margin-right: 4px;">Quick Access:</span>
-          <a href="quran.html?surah=1" class="hero-chip">📖 Al-Fatihah</a>
-          <a href="quran.html?surah=36" class="hero-chip">✨ Ya-Sin</a>
-          <a href="quran.html?surah=67" class="hero-chip">👑 Al-Mulk</a>
-          <a href="quran.html?surah=55" class="hero-chip">🕊️ Ar-Rahman</a>
-          <a href="quran.html?surah=2" class="hero-chip">🛡️ Ayatul Kursi</a>
-          <a href="duas.html" class="hero-chip">🤲 Daily Adhkar</a>
+        <!-- 6 Quick Destination Pills -->
+        <div class="hero-destinations-row">
+          <span style="font-size: 0.82rem; opacity: 0.85; margin-right: 4px; align-self: center; font-weight: 600;">Quick Access:</span>
+          <a href="quran.html" class="hero-destination-pill">📖 Quran Pak</a>
+          <a href="hadith.html" class="hero-destination-pill">📜 Hadith Library</a>
+          <a href="seerah.html" class="hero-destination-pill">🌹 Prophetic Seerah</a>
+          <a href="sahaba.html" class="hero-destination-pill">👥 Sahaba Biographies</a>
+          <a href="salah-guide.html" class="hero-destination-pill">🕌 Learn Salah</a>
+          <a href="duas.html" class="hero-destination-pill">🤲 Daily Adhkar</a>
         </div>
       </div>
     </div>
@@ -225,556 +224,542 @@
     </a>
   </div>
 
-  <!-- Top Sponsored Banner (Semantic CLS=0 Container) -->
-  <div class="container">
-    <div id="ad-slot-top-banner" class="ad-slot-container ad-slot-top-banner" role="region" aria-label="Sponsored Resource">
-      <span class="ad-slot-label">Sponsored Resource</span>
-    </div>
-  </div>
+  <!-- Main Content Body -->
+  <main class="container" style="padding-top: 36px;">
 
-  <!-- HIGH-RETENTION DAILY SPIRITUAL COMPANION (Rozana Kirdar & Wazaif Deck) -->
-  <section id="daily-companion-section" class="container daily-companion-section" aria-label="Daily Spiritual Companion">
-    <div class="daily-companion-card">
-      <div class="companion-header">
-        <div>
-          <div class="companion-badge-group">
-            <span class="companion-streak-badge" id="companion-streak-badge">🔥 1 Day Habit Streak</span>
-            <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-gold-dark);">✨ Sunnah Routine</span>
-          </div>
-          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary); margin-top: 6px; margin-bottom: 2px;">
-            Daily Spiritual Companion (روزانہ کردار و وظائف)
-          </h2>
-          <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0;">
-            Build a consistent spiritual habit with authentic Prophetic recitations and daily protection.
-          </p>
-        </div>
-
-        <!-- 3D Circular Progress Meter -->
-        <div class="companion-progress-box">
-          <div class="companion-ring-container">
-            <svg class="companion-ring-svg" viewBox="0 0 64 64">
-              <circle class="companion-ring-bg" cx="32" cy="32" r="28"></circle>
-              <circle id="companion-ring-progress" class="companion-ring-progress" cx="32" cy="32" r="28"></circle>
-            </svg>
-            <span id="companion-progress-val" class="companion-ring-text">0/5</span>
-          </div>
-          <div>
-            <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-text-main);">Daily Goal</div>
-            <div style="font-size: 0.74rem; color: var(--color-text-muted);">Refreshes every midnight</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5 Sunnah Wazaif Checklist -->
-      <div class="wazaif-list">
-        <!-- 1. Fajr -->
-        <div class="wazifa-item">
-          <div class="wazifa-left">
-            <input type="checkbox" class="wazifa-check" data-wazifa-id="fajr" id="wazifa-fajr" aria-label="Mark Fajr Surah Yaseen complete">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span class="wazifa-time-pill">🌅 Fajr</span>
-                <span class="wazifa-title">Surah Yaseen (Heart of Quran)</span>
-                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ یٰسٓ</span>
-                <span class="badge" style="background: rgba(180,83,9,0.12); color: #B45309; font-size: 0.72rem; padding: 2px 6px;">Pious Devotional (Mustahabb)</span>
-              </div>
-              <div class="wazifa-desc">Recitation & reflection after Fajr traditionally practiced by pious predecessors for barakah (Sunan ad-Darimi #3418, Mursal chain).</div>
-            </div>
-          </div>
-          <a href="quran.html?surah=36" class="wazifa-action-btn">Read Surah 36 →</a>
-        </div>
-
-        <!-- 2. Morning -->
-        <div class="wazifa-item">
-          <div class="wazifa-left">
-            <input type="checkbox" class="wazifa-check" data-wazifa-id="morning" id="wazifa-morning" aria-label="Mark Morning Azkar complete">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span class="wazifa-time-pill">☀️ Morning</span>
-                <span class="wazifa-title">Morning Adhkar & Ayatul Kursi</span>
-                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">صبح کے اذکار و آیت الکرسی</span>
-                <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px;">Established Sahih Sunnah</span>
-              </div>
-              <div class="wazifa-desc">Sayyidul Istighfar & Ayatul Kursi for comprehensive spiritual shield (Sahih al-Bukhari #2311, #6306; Sahih Muslim #2723).</div>
-            </div>
-          </div>
-          <a href="duas.html#sayyidul-istighfar" class="wazifa-action-btn">Daily Adhkar →</a>
-        </div>
-
-        <!-- 3. Maghrib -->
-        <div class="wazifa-item">
-          <div class="wazifa-left">
-            <input type="checkbox" class="wazifa-check" data-wazifa-id="maghrib" id="wazifa-maghrib" aria-label="Mark Maghrib Surah Waqiah complete">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span class="wazifa-time-pill">🌆 Maghrib</span>
-                <span class="wazifa-title">Surah Al-Waqi'ah (Sustenance & Barakah)</span>
-                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الواقعہ</span>
-                <span class="badge" style="background: rgba(180,83,9,0.12); color: #B45309; font-size: 0.72rem; padding: 2px 6px;">Traditional Devotional (Amal al-Salaf)</span>
-              </div>
-              <div class="wazifa-desc">Surah Al-Waqi'ah recited for spiritual barakah and freedom from poverty (Al-Bayhaqi, Shu'ab al-Iman #2269, Da'if chain in Fada'il).</div>
-            </div>
-          </div>
-          <a href="quran.html?surah=56" class="wazifa-action-btn">Read Surah 56 →</a>
-        </div>
-
-        <!-- 4. Isha / Sleep -->
-        <div class="wazifa-item">
-          <div class="wazifa-left">
-            <input type="checkbox" class="wazifa-check" data-wazifa-id="sleep" id="wazifa-sleep" aria-label="Mark Surah Mulk complete">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span class="wazifa-time-pill">🌙 Night / Sleep</span>
-                <span class="wazifa-title">Surah Al-Mulk (Deliverance from Grave)</span>
-                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الملک (تبارک الذی)</span>
-                <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px;">Authentic Sunnah (Hasan/Sahih)</span>
-              </div>
-              <div class="wazifa-desc">30 verses that intercede for their reciter until forgiven (Sunan Abi Dawud #1400; Jami' at-Tirmidhi #2891, Hasan/Sahih).</div>
-            </div>
-          </div>
-          <a href="quran.html?surah=67" class="wazifa-action-btn">Read Surah 67 →</a>
-        </div>
-
-        <!-- 5. Friday Special -->
-        <div class="wazifa-item">
-          <div class="wazifa-left">
-            <input type="checkbox" class="wazifa-check" data-wazifa-id="friday" id="wazifa-friday" aria-label="Mark Surah Kahf complete">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <span class="wazifa-time-pill">🕌 Friday Sunnah</span>
-                <span class="wazifa-title">Surah Al-Kahf (Light Between Two Jummahs)</span>
-                <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الکہف</span>
-                <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px;">Established Sahih Sunnah</span>
-              </div>
-              <div class="wazifa-desc">Light shining between two Fridays and protection from Dajjal (Al-Hakim 2/368; Al-Bayhaqi #5856; Sahih al-Jami' #6470).</div>
-            </div>
-          </div>
-          <a href="quran.html?surah=18" class="wazifa-action-btn">Read Surah 18 →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODERN BENTO GRID (Quran.com & Yaqeen Institute Contemporary Aesthetics) -->
-  <section class="container bento-section">
-    <div class="bento-grid">
-      
-      <!-- Bento Item 1: Live Astronomical Observatory & Next Prayer Countdown (Span 8) -->
-      <div class="bento-card bento-col-8" style="background: linear-gradient(145deg, var(--color-card) 0%, rgba(23,107,91,0.06) 100%);">
-        <div class="bento-card-header">
-          <span class="bento-pill">
-            <span>🕌</span> Astronomical Solar Observatory
-          </span>
-          <span id="bento-hijri-date" style="font-size: 0.82rem; font-weight: 700; color: var(--color-gold-dark);">
-            1447 AH • Umm al-Qura
-          </span>
-        </div>
-        
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
-          <div>
-            <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); font-weight: 700;">
-              Next Obligatory Prayer
-            </div>
-            <div class="prayer-countdown-box">
-              <span id="next-prayer-name" class="prayer-countdown-val" style="color: var(--color-primary);">Dhuhr</span>
-              <span id="next-prayer-time-remaining" class="prayer-countdown-lbl">Calculating solar angles...</span>
-            </div>
-            <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 0;">
-              Calculated using offline trigonometric solar zenith formulas without third-party GPS tracking.
-            </p>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 8px; align-self: center;">
-            <a href="prayer-times.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
-              Full Timetable & Qiblah →
-            </a>
-            <a href="salah-guide.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem; text-align: center;">
-              Learn Salah Steps
-            </a>
-          </div>
-        </div>
-
-        <!-- Mini Prayer Pills -->
-        <div style="display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap;" id="bento-mini-prayer-times">
-          <div style="flex: 1; min-width: 90px; background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
-            <div style="font-size: 0.72rem; color: var(--color-text-muted); font-weight: 700;">FAJR</div>
-            <div style="font-weight: 800; font-size: 0.92rem; color: var(--color-primary);" id="mini-fajr">05:12</div>
-          </div>
-          <div style="flex: 1; min-width: 90px; background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
-            <div style="font-size: 0.72rem; color: var(--color-text-muted); font-weight: 700;">DHUHR</div>
-            <div style="font-weight: 800; font-size: 0.92rem; color: var(--color-primary);" id="mini-dhuhr">12:28</div>
-          </div>
-          <div style="flex: 1; min-width: 90px; background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
-            <div style="font-size: 0.72rem; color: var(--color-text-muted); font-weight: 700;">ASR</div>
-            <div style="font-weight: 800; font-size: 0.92rem; color: var(--color-primary);" id="mini-asr">15:45</div>
-          </div>
-          <div style="flex: 1; min-width: 90px; background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
-            <div style="font-size: 0.72rem; color: var(--color-text-muted); font-weight: 700;">MAGHRIB</div>
-            <div style="font-weight: 800; font-size: 0.92rem; color: var(--color-primary);" id="mini-maghrib">18:15</div>
-          </div>
-          <div style="flex: 1; min-width: 90px; background: var(--color-surface); padding: 8px 12px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
-            <div style="font-size: 0.72rem; color: var(--color-text-muted); font-weight: 700;">ISHA</div>
-            <div style="font-weight: 800; font-size: 0.92rem; color: var(--color-primary);" id="mini-isha">19:38</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bento Item 2: Featured Editorial Pillar Guide (Span 4) -->
-      <div class="bento-card bento-col-4" style="background: linear-gradient(145deg, var(--color-card) 0%, rgba(181,139,80,0.06) 100%); border-top: 4px solid var(--color-gold);">
-        <div class="bento-card-header">
-          <span class="bento-pill bento-pill-gold">
-            <span>✨</span> Featured Fiqh Guide
-          </span>
-          <span style="font-size: 0.78rem; color: var(--color-text-muted);">18 min read</span>
-        </div>
-        <h3 style="font-size: 1.25rem; font-family: var(--font-heading); color: var(--color-primary); margin-bottom: 10px; line-height: 1.35;">
-          The Architecture of Daily Salah: Spiritual Secrets & Rulings
-        </h3>
-        <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 18px; flex-grow: 1;">
-          Comprehensive guide detailing the five daily prayers, rak'ah breakdowns, physical postures, common recitation errors, and rulings for travelers.
+    <!-- SECTION 1: THE 8 PILLARS KNOWLEDGE GATEWAY -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <div>
+        <h2 class="section-title" style="font-size: 1.55rem; color: var(--color-primary); font-family: var(--font-heading);">
+          <span>🏛️</span> Primary Knowledge Gateway
+        </h2>
+        <p class="section-subtitle" style="font-size: 0.92rem; color: var(--color-text-muted);">
+          Comprehensive authentic Islamic resources categorized from primary sacred scripture to daily practice
         </p>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <a href="salah-guide.html" class="btn btn-outline" style="flex: 1; text-align: center; font-size: 0.84rem; padding: 8px;">Learn Salah</a>
-          <a href="janazah-guide.html" class="btn btn-outline" style="flex: 1; text-align: center; font-size: 0.84rem; padding: 8px;">Janazah Guide</a>
-        </div>
       </div>
+    </div>
 
-      <!-- Bento Item 3: Verse of the Day with Instant Audio Playback (Span 6) -->
-      <div class="bento-card bento-col-6" style="border-top: 4px solid var(--color-gold);">
-        <div class="bento-card-header">
-          <span class="bento-pill bento-pill-gold">
-            <span>📖</span> Verse of the Day
+    <div class="knowledge-hub-grid">
+      
+      <!-- Card 1: Quran -->
+      <a href="quran.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">📖</div>
+        <h3 class="knowledge-hub-title">The Holy Quran Pak</h3>
+        <p class="knowledge-hub-desc">
+          Complete 114 Surahs and 6,236 Ayahs in verified Tanzil Uthmani script with independent translation switching, recitation audio, and Tafsir Ibn Kathir.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>114 Surahs • 30 Juz</span>
+          <span>Read & Listen →</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Hadith -->
+      <a href="hadith.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">📜</div>
+        <h3 class="knowledge-hub-title">Authentic Hadith Library</h3>
+        <p class="knowledge-hub-desc">
+          Canonical traditions from Sahih al-Bukhari, Sahih Muslim, and the Sunan collections with authenticated scholarly gradings and book numbering.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>Kutub al-Tis'ah • Sahih</span>
+          <span>Explore Hadiths →</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Seerah -->
+      <a href="seerah.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">🌹</div>
+        <h3 class="knowledge-hub-title">Prophetic Seerah</h3>
+        <p class="knowledge-hub-desc">
+          25 comprehensive chronological monographs detailing the blessed life, character, moral excellence, and historical milestones of Prophet Muhammad ﷺ.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>25 Monographs • Ibn Hisham</span>
+          <span>Read Seerah →</span>
+        </div>
+      </a>
+
+      <!-- Card 4: Sahaba -->
+      <a href="sahaba.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">👥</div>
+        <h3 class="knowledge-hub-title">Lives of the Sahaba</h3>
+        <p class="knowledge-hub-desc">
+          14 in-depth biographical accounts of the Rightly-Guided Caliphs, the 10 Promised Paradise, and the Mothers of the Believers with classical citations.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>14 Biographies • Siyar A'lam</span>
+          <span>Read Biographies →</span>
+        </div>
+      </a>
+
+      <!-- Card 5: Prophets -->
+      <a href="prophets.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">📜</div>
+        <h3 class="knowledge-hub-title">Stories of the Prophets</h3>
+        <p class="knowledge-hub-desc">
+          Authentic Quranic narratives of 17 Prophets from Adam (AS) to Isa (AS) derived from classical *Qisas al-Anbiya* with theological lessons.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>17 Prophets • Ibn Kathir</span>
+          <span>Explore Stories →</span>
+        </div>
+      </a>
+
+      <!-- Card 6: Islamic History -->
+      <a href="history.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">🏛️</div>
+        <h3 class="knowledge-hub-title">Islamic History Library</h3>
+        <p class="knowledge-hub-desc">
+          12 historical civilization eras tracing the Caliphates, Islamic Spain, the Golden Age of Sciences, the Mamluks, Ottomans, and Mughals.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>12 Eras • Civilizations</span>
+          <span>Explore History →</span>
+        </div>
+      </a>
+
+      <!-- Card 7: Practical Worship -->
+      <a href="salah-guide.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">🕌</div>
+        <h3 class="knowledge-hub-title">Practical Worship Guides</h3>
+        <p class="knowledge-hub-desc">
+          Step-by-step illustrated guides for Salah, Wudu, Ghusl, Tayammum, Janazah, and Eid prayers with cross-madhhab consensus and rulings.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>Salah • Wudu • Janazah</span>
+          <span>Learn Worship →</span>
+        </div>
+      </a>
+
+      <!-- Card 8: Duas & Adhkar -->
+      <a href="duas.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">🤲</div>
+        <h3 class="knowledge-hub-title">Masnoon Duas & Adhkar</h3>
+        <p class="knowledge-hub-desc">
+          Authentic supplications from *Hisn al-Muslim* for morning, evening, protection, and daily life with Arabic text, transliteration, and Urdu/English meanings.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>Hisn al-Muslim • Counters</span>
+          <span>Read Duas →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- SECTION 2: BALANCED DAILY FOUNDATIONS & SOLAR OBSERVATORY -->
+    <div class="daily-foundations-grid">
+      
+      <!-- Left: Today's Spiritual Wisdom -->
+      <div class="daily-wisdom-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 10px;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em;">
+            ✨ Today's Sacred Verse
           </span>
-          <span style="font-size: 0.8rem; background-color: var(--color-surface); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 600;">
+          <span style="font-size: 0.8rem; background: var(--color-surface); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 600;">
             Surah Al-Baqarah 2:255
           </span>
         </div>
-        <p class="font-quran" style="font-size: 1.45rem; line-height: 2.2; margin-bottom: 14px; color: var(--color-text-main);">
+
+        <p class="font-quran" style="font-size: 1.45rem; line-height: 2.1; margin-bottom: 12px; color: var(--color-text-main);" dir="rtl" lang="ar" translate="no">
           اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ...
         </p>
-        <p style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-main); margin-bottom: 16px;">
+        <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted); margin-bottom: 18px; flex-grow: 1;">
           "Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth..."
         </p>
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border-subtle); padding-top: 14px; margin-top: auto; flex-wrap: wrap; gap: 10px;">
-          <button id="instant-ayah-audio-btn" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 6px;" onclick="App.playDailyAyahAudio()">
-            <span>▶</span> <span>Listen (Alafasy)</span>
-          </button>
-          <a href="quran.html?surah=2#ayah-255" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.84rem;">
-            Read with Urdu Tarjuma →
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;">
+          <span style="font-size: 0.82rem; color: var(--color-gold-dark); font-weight: 700;">Ayatul Kursi • Greatest Ayah</span>
+          <a href="quran.html?surah=2&verse=255" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.85rem;">
+            Read in Quran →
           </a>
         </div>
       </div>
 
-      <!-- Bento Item 4: Hadith of the Day with Fiqh al-Hadith Commentary (Span 6) -->
-      <div class="bento-card bento-col-6" style="border-top: 4px solid var(--color-primary);">
-        <div class="bento-card-header">
-          <span class="bento-pill">
-            <span>📜</span> Authentic Sunnah
+      <!-- Right: Astronomical Solar Observatory -->
+      <div class="observatory-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 10px;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-gold-dark); text-transform: uppercase; letter-spacing: 0.05em;">
+            🕌 Astronomical Solar Observatory
           </span>
-          <span style="font-size: 0.78rem; background-color: #DEF7EC; color: #03543F; padding: 4px 10px; border-radius: var(--radius-full); font-weight: 700;">
-            Sahih al-Bukhari #1
+          <span id="bento-hijri-date" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted);">
+            1447 AH • Umm al-Qura
           </span>
         </div>
-        <p class="font-arabic" style="font-size: 1.35rem; line-height: 2.1; margin-bottom: 12px; color: var(--color-text-main);">
-          إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى...
-        </p>
-        <p style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-main); margin-bottom: 8px;">
-          "Actions are judged by motives (intentions), and every person will get what he intended..."
-        </p>
-        <div style="background: var(--color-surface); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
-          <strong>Fiqh al-Hadith:</strong> Imam ash-Shafi'i stated that this Hadith constitutes one-third of all religious knowledge. Sincerity of heart (Ikhlas) transforms ordinary daily activities into worship.
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border-subtle); padding-top: 14px; margin-top: auto;">
-          <span style="font-size: 0.78rem; color: var(--color-text-muted);">Narrated by Umar ibn al-Khattab (RA)</span>
-          <a href="hadith.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.84rem;">Explore Kutub al-Sittah →</a>
-        </div>
-      </div>
 
-      <!-- Bento Item 5: Offline Access & PWA Manager (Span 4) -->
-      <div class="bento-card bento-col-4" style="background: linear-gradient(145deg, var(--color-surface) 0%, var(--color-card) 100%);">
-        <div class="bento-card-header">
-          <span class="bento-pill">
-            <span>⚡</span> 100% Offline Access
-          </span>
-          <span style="font-size: 0.75rem; color: var(--color-gold-dark); font-weight: 700;">No Internet Needed</span>
+        <div>
+          <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); font-weight: 700;">
+            Next Obligatory Prayer
+          </div>
+          <div class="prayer-countdown-box" style="margin: 6px 0 14px;">
+            <span id="next-prayer-name" class="prayer-countdown-val" style="color: var(--color-primary); font-size: 1.75rem; font-weight: 800;">Dhuhr</span>
+            <span id="next-prayer-time-remaining" class="prayer-countdown-lbl" style="font-size: 0.88rem; color: var(--color-text-muted); display: block;">Calculating solar angles...</span>
+          </div>
         </div>
-        <h3 style="font-size: 1.2rem; font-family: var(--font-heading); color: var(--color-primary); margin-bottom: 8px;">
-          Install Web App (PWA)
-        </h3>
-        <p style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.55; margin-bottom: 16px; flex-grow: 1;">
-          Add to your Android, iPhone, or PC home screen. Access the Quran, solar prayer times, and supplications without mobile data charges.
-        </p>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button class="btn btn-primary" onclick="App.promptPwaInstall()" style="padding: 8px 16px; font-size: 0.88rem; width: 100%;">
-            ⚡ Add to Home Screen
-          </button>
-          <a href="download-app.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.84rem; text-align: center;">
-            Offline Access Center →
-          </a>
-        </div>
-      </div>
 
-      <!-- Bento Item 6: Essential Spiritual Surahs (Span 8) -->
-      <div class="bento-card bento-col-8">
-        <div class="bento-card-header">
-          <span class="bento-pill">
-            <span>📖</span> Essential Surahs (Thematic Reading)
-          </span>
-          <a href="quran.html" style="font-size: 0.82rem; color: var(--color-primary); text-decoration: none; font-weight: 700;">
-            All 114 Surahs →
-          </a>
+        <!-- Mini Prayer Times Row -->
+        <div style="display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;" id="bento-mini-prayer-times">
+          <div style="flex: 1; min-width: 55px; background: var(--color-surface); padding: 6px 8px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
+            <div style="font-size: 0.68rem; color: var(--color-text-muted); font-weight: 700;">FAJR</div>
+            <div style="font-weight: 800; font-size: 0.86rem; color: var(--color-primary);" id="mini-fajr">05:12</div>
+          </div>
+          <div style="flex: 1; min-width: 55px; background: var(--color-surface); padding: 6px 8px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
+            <div style="font-size: 0.68rem; color: var(--color-text-muted); font-weight: 700;">DHUHR</div>
+            <div style="font-weight: 800; font-size: 0.86rem; color: var(--color-primary);" id="mini-dhuhr">12:28</div>
+          </div>
+          <div style="flex: 1; min-width: 55px; background: var(--color-surface); padding: 6px 8px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
+            <div style="font-size: 0.68rem; color: var(--color-text-muted); font-weight: 700;">ASR</div>
+            <div style="font-weight: 800; font-size: 0.86rem; color: var(--color-primary);" id="mini-asr">15:45</div>
+          </div>
+          <div style="flex: 1; min-width: 55px; background: var(--color-surface); padding: 6px 8px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
+            <div style="font-size: 0.68rem; color: var(--color-text-muted); font-weight: 700;">MAGHRIB</div>
+            <div style="font-weight: 800; font-size: 0.86rem; color: var(--color-primary);" id="mini-maghrib">18:15</div>
+          </div>
+          <div style="flex: 1; min-width: 55px; background: var(--color-surface); padding: 6px 8px; border-radius: var(--radius-sm); text-align: center; border: 1px solid var(--color-border-subtle);">
+            <div style="font-size: 0.68rem; color: var(--color-text-muted); font-weight: 700;">ISHA</div>
+            <div style="font-weight: 800; font-size: 0.86rem; color: var(--color-primary);" id="mini-isha">19:38</div>
+          </div>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-          <a href="quran.html?surah=36" class="quick-card" style="padding: 12px; margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: var(--color-primary); font-size: 0.95rem;">36. Ya-Sin</strong>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted);">Heart of the Quran • 83 v.</div>
-              </div>
-              <span class="font-arabic" style="font-size: 1.2rem; color: var(--color-gold);">يس</span>
-            </div>
+
+        <div style="display: flex; gap: 8px; margin-top: auto;">
+          <a href="prayer-times.html" class="btn btn-primary" style="flex: 1; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
+            Full Timetable & Qibla →
           </a>
-          <a href="quran.html?surah=67" class="quick-card" style="padding: 12px; margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: var(--color-primary); font-size: 0.95rem;">67. Al-Mulk</strong>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted);">Grave Protection • 30 v.</div>
-              </div>
-              <span class="font-arabic" style="font-size: 1.2rem; color: var(--color-gold);">المُلْك</span>
-            </div>
-          </a>
-          <a href="quran.html?surah=18" class="quick-card" style="padding: 12px; margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: var(--color-primary); font-size: 0.95rem;">18. Al-Kahf</strong>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted);">Friday Light • 110 v.</div>
-              </div>
-              <span class="font-arabic" style="font-size: 1.2rem; color: var(--color-gold);">الكَهْف</span>
-            </div>
-          </a>
-          <a href="quran.html?surah=55" class="quick-card" style="padding: 12px; margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: var(--color-primary); font-size: 0.95rem;">55. Ar-Rahman</strong>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted);">Divine Favors • 78 v.</div>
-              </div>
-              <span class="font-arabic" style="font-size: 1.2rem; color: var(--color-gold);">الرَّحْمَٰن</span>
-            </div>
-          </a>
-          <a href="quran.html?surah=56" class="quick-card" style="padding: 12px; margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: var(--color-primary); font-size: 0.95rem;">56. Al-Waqi'ah</strong>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted);">The Inevitable • 96 v.</div>
-              </div>
-              <span class="font-arabic" style="font-size: 1.2rem; color: var(--color-gold);">الوَاقِعَة</span>
-            </div>
-          </a>
-          <a href="quran.html?surah=112" class="quick-card" style="padding: 12px; margin: 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: var(--color-primary); font-size: 0.95rem;">112. Al-Ikhlas</strong>
-                <div style="font-size: 0.78rem; color: var(--color-text-muted);">Tawhid (1/3 Quran) • 4 v.</div>
-              </div>
-              <span class="font-arabic" style="font-size: 1.2rem; color: var(--color-gold);">الإِخْلَاص</span>
-            </div>
+          <a href="salah-guide.html" class="btn btn-outline" style="flex: 1; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
+            Salah Guide
           </a>
         </div>
       </div>
 
     </div>
-  </section>
 
-  <!-- Popular Surahs Section -->
-  <section class="container" style="margin-bottom: 60px;">
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">
-          <span>📖</span> <span data-i18n="quranSectionTitle">The Noble Quran</span>
+    <!-- SECTION 3: AUTHENTIC SUNNAH WAZAIF & HABIT TRACKER (High-Retention Companion) -->
+    <section id="daily-companion-section" class="daily-companion-section" aria-label="Daily Spiritual Companion" style="margin-bottom: 48px;">
+      <div class="daily-companion-card" style="background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm);">
+        <div class="companion-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+          <div>
+            <div class="companion-badge-group" style="display: flex; gap: 8px; align-items: center; margin-bottom: 6px;">
+              <span class="companion-streak-badge" id="companion-streak-badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 99px;">🔥 1 Day Habit Streak</span>
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-gold-dark);">✨ Authentic Sunnah Routine</span>
+            </div>
+            <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-primary); margin: 0 0 4px; font-family: var(--font-heading);">
+              Daily Spiritual Companion (روزانہ کردار و وظائف)
+            </h2>
+            <p style="font-size: 0.86rem; color: var(--color-text-muted); margin: 0;">
+              Build a consistent devotional habit grounded in verified Hadith literature and classical Sunnah practices.
+            </p>
+          </div>
+
+          <!-- Circular Progress Meter -->
+          <div class="companion-progress-box" style="display: flex; align-items: center; gap: 12px;">
+            <div class="companion-ring-container" style="position: relative; width: 54px; height: 54px;">
+              <svg class="companion-ring-svg" viewBox="0 0 64 64" style="width: 54px; height: 54px; transform: rotate(-90deg);">
+                <circle class="companion-ring-bg" cx="32" cy="32" r="28" stroke="var(--color-border-subtle)" stroke-width="5" fill="none"></circle>
+                <circle id="companion-ring-progress" class="companion-ring-progress" cx="32" cy="32" r="28" stroke="var(--color-primary)" stroke-width="5" stroke-dasharray="175.9" stroke-dashoffset="175.9" stroke-linecap="round" fill="none"></circle>
+              </svg>
+              <span id="companion-progress-val" class="companion-ring-text" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; color: var(--color-primary);">0/5</span>
+            </div>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-text-main);">Daily Goal</div>
+              <div style="font-size: 0.74rem; color: var(--color-text-muted);">Refreshes daily at midnight</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Sunnah Wazaif Checklist -->
+        <div class="wazaif-list" style="display: flex; flex-direction: column; gap: 10px;">
+          
+          <!-- 1. Fajr -->
+          <div class="wazifa-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--color-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); flex-wrap: wrap; gap: 12px;">
+            <div class="wazifa-left" style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 260px;">
+              <input type="checkbox" class="wazifa-check" data-wazifa-id="fajr" id="wazifa-fajr" aria-label="Mark Fajr Surah Yaseen complete" style="width: 20px; height: 20px; accent-color: var(--color-primary); cursor: pointer; margin-top: 3px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span class="wazifa-time-pill" style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary); background: var(--color-card); padding: 2px 8px; border-radius: 4px;">🌅 Fajr</span>
+                  <span class="wazifa-title" style="font-weight: 700; font-size: 0.95rem; color: var(--color-text-main);">Surah Yaseen (Heart of Quran)</span>
+                  <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ یٰسٓ</span>
+                  <span class="badge" style="background: rgba(180,83,9,0.12); color: #B45309; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px;">Pious Devotional (Mustahabb)</span>
+                </div>
+                <div class="wazifa-desc" style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Recitation & reflection after Fajr traditionally practiced by pious predecessors for barakah (Sunan ad-Darimi #3418, Mursal chain).</div>
+              </div>
+            </div>
+            <a href="quran.html?surah=36" class="wazifa-action-btn btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Read Surah 36 →</a>
+          </div>
+
+          <!-- 2. Morning -->
+          <div class="wazifa-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--color-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); flex-wrap: wrap; gap: 12px;">
+            <div class="wazifa-left" style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 260px;">
+              <input type="checkbox" class="wazifa-check" data-wazifa-id="morning" id="wazifa-morning" aria-label="Mark Morning Adhkar complete" style="width: 20px; height: 20px; accent-color: var(--color-primary); cursor: pointer; margin-top: 3px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span class="wazifa-time-pill" style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary); background: var(--color-card); padding: 2px 8px; border-radius: 4px;">☀️ Morning</span>
+                  <span class="wazifa-title" style="font-weight: 700; font-size: 0.95rem; color: var(--color-text-main);">Sayyid al-Istighfar & Morning Protection</span>
+                  <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سید الاستغفار</span>
+                  <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px; border-radius: 4px;">Established Sahih Sunnah</span>
+                </div>
+                <div class="wazifa-desc" style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">The master supplication for divine forgiveness. If recited with conviction and one passes away that day, they enter Paradise (Sahih al-Bukhari #6306).</div>
+              </div>
+            </div>
+            <a href="duas.html#dua-sayyid-istighfar" class="wazifa-action-btn btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Recite Dua →</a>
+          </div>
+
+          <!-- 3. Post-Prayer -->
+          <div class="wazifa-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--color-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); flex-wrap: wrap; gap: 12px;">
+            <div class="wazifa-left" style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 260px;">
+              <input type="checkbox" class="wazifa-check" data-wazifa-id="prayer" id="wazifa-prayer" aria-label="Mark Tasbih Fatimi complete" style="width: 20px; height: 20px; accent-color: var(--color-primary); cursor: pointer; margin-top: 3px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span class="wazifa-time-pill" style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary); background: var(--color-card); padding: 2px 8px; border-radius: 4px;">🤲 Post-Prayer</span>
+                  <span class="wazifa-title" style="font-weight: 700; font-size: 0.95rem; color: var(--color-text-main);">Ayatul Kursi & Tasbih Fatimi (33-33-34)</span>
+                  <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px; border-radius: 4px;">Established Sahih Sunnah</span>
+                </div>
+                <div class="wazifa-desc" style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Whoever recites Ayatul Kursi after every obligatory prayer, nothing stands between him and Paradise except death (Sunan an-Nasa'i #9928, Sahih).</div>
+              </div>
+            </div>
+            <a href="tasbih.html" class="wazifa-action-btn btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Open Tasbih →</a>
+          </div>
+
+          <!-- 4. Night / Sleep -->
+          <div class="wazifa-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--color-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); flex-wrap: wrap; gap: 12px;">
+            <div class="wazifa-left" style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 260px;">
+              <input type="checkbox" class="wazifa-check" data-wazifa-id="sleep" id="wazifa-sleep" aria-label="Mark Surah Mulk complete" style="width: 20px; height: 20px; accent-color: var(--color-primary); cursor: pointer; margin-top: 3px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span class="wazifa-time-pill" style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary); background: var(--color-card); padding: 2px 8px; border-radius: 4px;">🌙 Night / Sleep</span>
+                  <span class="wazifa-title" style="font-weight: 700; font-size: 0.95rem; color: var(--color-text-main);">Surah Al-Mulk (Deliverance from Grave)</span>
+                  <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الملک (تبارک الذی)</span>
+                  <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px; border-radius: 4px;">Established Sahih Sunnah</span>
+                </div>
+                <div class="wazifa-desc" style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">30 verses that intercede for their reciter until forgiven (Sunan Abi Dawud #1400; Jami' at-Tirmidhi #2891, Hasan/Sahih).</div>
+              </div>
+            </div>
+            <a href="quran.html?surah=67" class="wazifa-action-btn btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Read Surah 67 →</a>
+          </div>
+
+          <!-- 5. Friday Special -->
+          <div class="wazifa-item" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--color-surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); flex-wrap: wrap; gap: 12px;">
+            <div class="wazifa-left" style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 260px;">
+              <input type="checkbox" class="wazifa-check" data-wazifa-id="friday" id="wazifa-friday" aria-label="Mark Surah Kahf complete" style="width: 20px; height: 20px; accent-color: var(--color-primary); cursor: pointer; margin-top: 3px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                  <span class="wazifa-time-pill" style="font-size: 0.75rem; font-weight: 700; color: var(--color-primary); background: var(--color-card); padding: 2px 8px; border-radius: 4px;">🕌 Friday Sunnah</span>
+                  <span class="wazifa-title" style="font-weight: 700; font-size: 0.95rem; color: var(--color-text-main);">Surah Al-Kahf (Light Between Two Jummahs)</span>
+                  <span style="font-family: var(--font-urdu); color: var(--color-gold-dark); font-size: 0.95rem;">سورۃ الکہف</span>
+                  <span class="badge" style="background: rgba(15,81,50,0.12); color: var(--color-primary); font-size: 0.72rem; padding: 2px 6px; border-radius: 4px;">Established Sahih Sunnah</span>
+                </div>
+                <div class="wazifa-desc" style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">Light shining between two Fridays and protection from Dajjal (Al-Hakim 2/368; Al-Bayhaqi #5856; Sahih al-Jami' #6470).</div>
+              </div>
+            </div>
+            <a href="quran.html?surah=18" class="wazifa-action-btn btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Read Surah 18 →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: ESSENTIAL SURAHS GATEWAY -->
+    <section style="margin-bottom: 48px;">
+      <div class="section-header" style="margin-bottom: 20px;">
+        <div>
+          <h2 class="section-title" style="font-size: 1.4rem; color: var(--color-primary); font-family: var(--font-heading);">
+            <span>📖</span> Essential Daily Surahs
+          </h2>
+          <p class="section-subtitle" style="font-size: 0.88rem; color: var(--color-text-muted);">
+            Frequently recited chapters in daily devotion, memorization, and prayer
+          </p>
+        </div>
+        <a href="quran.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 16px;">View All 114 Surahs →</a>
+      </div>
+
+      <div class="surah-grid">
+        <a href="quran.html?surah=1" class="surah-card">
+          <div class="surah-number-badge">1</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Al-Fatihah</div>
+            <div class="surah-translation-en">The Opening</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>7 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">الفَاتِحَة</div>
+        </a>
+        <a href="quran.html?surah=36" class="surah-card">
+          <div class="surah-number-badge">36</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Ya-Sin</div>
+            <div class="surah-translation-en">Ya Sin (Heart of Quran)</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>83 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">يس</div>
+        </a>
+        <a href="quran.html?surah=67" class="surah-card">
+          <div class="surah-number-badge">67</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Al-Mulk</div>
+            <div class="surah-translation-en">The Sovereignty</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>30 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">المُلْك</div>
+        </a>
+        <a href="quran.html?surah=55" class="surah-card">
+          <div class="surah-number-badge">55</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Ar-Rahman</div>
+            <div class="surah-translation-en">The Beneficent</div>
+            <div class="surah-meta-row"><span>Madani</span> • <span>78 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">الرَّحْمَن</div>
+        </a>
+        <a href="quran.html?surah=18" class="surah-card">
+          <div class="surah-number-badge">18</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Al-Kahf</div>
+            <div class="surah-translation-en">The Cave</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>110 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">الكَهْف</div>
+        </a>
+        <a href="quran.html?surah=112" class="surah-card">
+          <div class="surah-number-badge">112</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Al-Ikhlas</div>
+            <div class="surah-translation-en">The Sincerity (Tawhid)</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>4 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">الإِخْلَاص</div>
+        </a>
+        <a href="quran.html?surah=113" class="surah-card">
+          <div class="surah-number-badge">113</div>
+          <div class="surah-info">
+            <div class="surah-name-en">Al-Falaq</div>
+            <div class="surah-translation-en">The Daybreak</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>5 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">الفَلَق</div>
+        </a>
+        <a href="quran.html?surah=114" class="surah-card">
+          <div class="surah-number-badge">114</div>
+          <div class="surah-info">
+            <div class="surah-name-en">An-Nas</div>
+            <div class="surah-translation-en">Mankind</div>
+            <div class="surah-meta-row"><span>Makki</span> • <span>6 Verses</span></div>
+          </div>
+          <div class="surah-name-ar">النَّاس</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 5: AUTHENTIC QURAN AUDIO RECITATIONS -->
+    <section style="margin-bottom: 48px;">
+      <div class="section-header" style="margin-bottom: 20px;">
+        <div>
+          <h2 class="section-title" style="font-size: 1.4rem; color: var(--color-primary); font-family: var(--font-heading);">
+            <span>🎧</span> Authentic Quran Recitations
+          </h2>
+          <p class="section-subtitle" style="font-size: 0.88rem; color: var(--color-text-muted);">
+            Master reciters recorded under traditional Awqaf and Waqf standards
+          </p>
+        </div>
+        <a href="quran.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 6px 16px;">Open Full Quran Player</a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+        
+        <!-- Reciter 1 -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-primary); padding: 18px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.15rem;">🎙️</div>
+              <div>
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Sheikh Mishary Alafasy</h3>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Kuwait • Murattal 128kbps</span>
+              </div>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              Clear, melodic, and reverent recitation ideal for daily listening and memorization.
+            </p>
+          </div>
+          <a href="quran.html?surah=1&reciter=Alafasy_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 8px;">
+            ▶ Listen Surah Al-Fatihah
+          </a>
+        </div>
+
+        <!-- Reciter 2 -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-gold); padding: 18px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); background-color: var(--color-surface); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem;">🎙️</div>
+              <div>
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Sheikh Abdul Basit</h3>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Golden Throat of Islam</span>
+              </div>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              World-renowned classical Mujawwad recitation celebrated across the Islamic world.
+            </p>
+          </div>
+          <a href="quran.html?surah=36&reciter=Abdul_Basit_Murattal_192kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 8px;">
+            ▶ Listen Surah Ya-Sin
+          </a>
+        </div>
+
+        <!-- Reciter 3 -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-primary); padding: 18px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.15rem;">🎙️</div>
+              <div>
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Sheikh Al-Husary</h3>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Precision Tajweed Master</span>
+              </div>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              The standard reference for immaculate articulation, phonetics, and Tajweed rulings.
+            </p>
+          </div>
+          <a href="quran.html?surah=67&reciter=Husary_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 8px;">
+            ▶ Listen Surah Al-Mulk
+          </a>
+        </div>
+
+        <!-- Reciter 4 -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-gold); padding: 18px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); background-color: var(--color-surface); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem;">🎙️</div>
+              <div>
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Sheikh Al-Minshawi</h3>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Reverent & Emotional</span>
+              </div>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              Celebrated for deep humility (Khushu'), reverent tone, and profound emotional resonance.
+            </p>
+          </div>
+          <a href="quran.html?surah=55&reciter=Minshawy_Murattal_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 8px;">
+            ▶ Listen Surah Ar-Rahman
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: METHODOLOGY & INTEGRITY GUARANTEE -->
+    <section class="card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 28px; margin-bottom: 48px; text-align: center;">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🛡️</span>
+        <h2 style="font-size: 1.35rem; color: var(--color-primary); font-family: var(--font-heading); margin-bottom: 10px;">
+          Authenticity & Religious Data Integrity Guarantee
         </h2>
-        <p class="section-subtitle">Read popular and frequently recited Surahs with authenticated Uthmani script and verse-by-verse translations</p>
+        <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-muted); margin-bottom: 18px;">
+          Our portal strictly preserves the immutable original Arabic Quran text sourced from the Tanzil Project (Hafs 6,236 Ayahs), canonical Hadith narrations from *Kutub al-Sittah* with authenticated scholar gradings, and classical Seerah treatises. Zero invasive tracking, zero paywalls, and standalone offline accessibility.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="sources.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Source Provenance & Licensing</a>
+          <a href="download-app.html" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.85rem;">Download Standalone Android APK (142 KB)</a>
+        </div>
       </div>
-      <a href="quran.html" class="btn btn-primary" data-i18n="viewAll">View All 114 Surahs</a>
-    </div>
+    </section>
 
-    <div class="surah-grid">
-      <a href="quran.html?surah=1" class="surah-card">
-        <div class="surah-number-badge">1</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Al-Fatihah</div>
-          <div class="surah-translation-en">The Opening</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>7 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">الفَاتِحَة</div>
-      </a>
-      <a href="quran.html?surah=36" class="surah-card">
-        <div class="surah-number-badge">36</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Ya-Sin</div>
-          <div class="surah-translation-en">Ya Sin</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>83 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">يس</div>
-      </a>
-      <a href="quran.html?surah=67" class="surah-card">
-        <div class="surah-number-badge">67</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Al-Mulk</div>
-          <div class="surah-translation-en">The Sovereignty</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>30 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">المُلْك</div>
-      </a>
-      <a href="quran.html?surah=55" class="surah-card">
-        <div class="surah-number-badge">55</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Ar-Rahman</div>
-          <div class="surah-translation-en">The Beneficent</div>
-          <div class="surah-meta-row"><span>Madani</span> • <span>78 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">الرَّحْمَن</div>
-      </a>
-      <a href="quran.html?surah=18" class="surah-card">
-        <div class="surah-number-badge">18</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Al-Kahf</div>
-          <div class="surah-translation-en">The Cave</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>110 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">الكَهْف</div>
-      </a>
-      <a href="quran.html?surah=112" class="surah-card">
-        <div class="surah-number-badge">112</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Al-Ikhlas</div>
-          <div class="surah-translation-en">The Sincerity</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>4 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">الإِخْلَاص</div>
-      </a>
-      <a href="quran.html?surah=113" class="surah-card">
-        <div class="surah-number-badge">113</div>
-        <div class="surah-info">
-          <div class="surah-name-en">Al-Falaq</div>
-          <div class="surah-translation-en">The Daybreak</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>5 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">الفَلَق</div>
-      </a>
-      <a href="quran.html?surah=114" class="surah-card">
-        <div class="surah-number-badge">114</div>
-        <div class="surah-info">
-          <div class="surah-name-en">An-Nas</div>
-          <div class="surah-translation-en">Mankind</div>
-          <div class="surah-meta-row"><span>Makki</span> • <span>6 Verses</span></div>
-        </div>
-        <div class="surah-name-ar">النَّاس</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Authentic Quran Audio Recitations Section -->
-  <section class="container" style="margin-bottom: 60px;">
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">
-          <span>🎧</span> <span>Authentic Quran Recitations</span>
-        </h2>
-        <p class="section-subtitle">Listen to master reciters recorded under traditional Awqaf and Waqf standards</p>
-      </div>
-      <a href="quran.html" class="btn btn-outline">Open Full Quran Player</a>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-      
-      <!-- Reciter 1 -->
-      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-primary);">
-        <div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
-            <div>
-              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Mishary Alafasy</h3>
-              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Kuwait • Murattal 128kbps</span>
-            </div>
-          </div>
-          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
-            Renowned worldwide for soulful clarity, measured tajweed cadence, and emotional recitation.
-          </p>
-        </div>
-        <a href="quran.html?surah=1&reciter=Alafasy_128kbps" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
-          ▶ Listen Surah Al-Fatihah
-        </a>
-      </div>
-
-      <!-- Reciter 2 -->
-      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-brass);">
-        <div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-surface); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
-            <div>
-              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Abdul Basit</h3>
-              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Master Murattal 192kbps</span>
-            </div>
-          </div>
-          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
-            The legendary "Voice of Makkah", famed for majestic breath control, impeccable articulation, and golden tajweed.
-          </p>
-        </div>
-        <a href="quran.html?surah=36&reciter=Abdul_Basit_Murattal_192kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
-          ▶ Listen Surah Ya-Sin
-        </a>
-      </div>
-
-      <!-- Reciter 3 -->
-      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-primary);">
-        <div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-primary-subtle); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
-            <div>
-              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Al-Husary</h3>
-              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Awqaf Benchmark 128kbps</span>
-            </div>
-          </div>
-          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
-            The gold standard for Quranic memorization, revered across Islamic universities for flawless tajweed rules.
-          </p>
-        </div>
-        <a href="quran.html?surah=67&reciter=Husary_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
-          ▶ Listen Surah Al-Mulk
-        </a>
-      </div>
-
-      <!-- Reciter 4 -->
-      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-brass);">
-        <div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background-color: var(--color-surface); color: var(--color-gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎙️</div>
-            <div>
-              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main);">Sheikh Al-Minshawi</h3>
-              <span style="font-size: 0.75rem; color: var(--color-text-muted);">Egypt • Sad Voice of the Ummah</span>
-            </div>
-          </div>
-          <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
-            Celebrated for deep humility (Khushu'), reverent tone, and profound emotional resonance.
-          </p>
-        </div>
-        <a href="quran.html?surah=55&reciter=Minshawy_Murattal_128kbps" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 8px;">
-          ▶ Listen Surah Ar-Rahman
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Ethical AdSense Ready Slot Container -->
-  <div class="container">
-    <div class="adsense-container">
-      <div class="adsense-placeholder-tag">Educational Support / Advertisement Space</div>
-      <p style="font-size: 0.85rem; color: var(--color-text-muted);">
-        This website is built AdSense-ready under strict non-intrusive religious content guidelines. No ads obscure Quranic verses or disrupt spiritual reading.
-      </p>
-    </div>
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="site-footer">

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/seerah-chapter.schema.json",
+  "title": "Seerah Chapter Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "chapterNumber",
+    "title",
+    "period",
+    "historicalYearCe",
+    "sources",
+    "learningObjectives"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^seerah-ch-[0-9]{2}$" },
+    "chapterNumber": { "type": "integer", "minimum": 1, "maximum": 50 },
+    "title": { "type": "string" },
+    "arabicTitle": { "type": "string" },
+    "period": { "type": "string", "enum": ["pre_islamic", "early_meccan", "late_meccan", "early_medinan", "late_medinan"] },
+    "historicalYearCe": { "type": "string" },
+    "historicalYearAh": { "type": "string" },
+    "location": { "type": "string" },
+    "learningObjectives": { "type": "array", "items": { "type": "string" } },
+    "revealedSurahs": { "type": "array", "items": { "type": "integer" } },
+    "keyHistoricalEvents": { "type": "array", "items": { "type": "string" } },
+    "sources": { "type": "array", "minItems": 1 },
+    "theologicalVerificationBadge": { "type": "string" }
+  }
+}

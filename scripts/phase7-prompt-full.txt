@@ -1,0 +1,1157 @@
+<USER_REQUEST>
+# ISLAMIC KNOWLEDGE PORTAL — PHASE 7 OF 10
+# COMPLETE PRACTICAL ISLAMIC LEARNING LIBRARY
+## Hadith, Duas, Salah, Wudu, Ghusl, Tayammum, Janazah, Eid, Jumuah, Ramadan, Fasting, Zakat, Hajj, Umrah and Verified Worship Education
+
+## YOUR ROLE
+
+Act as a senior Islamic educational content researcher, Hadith reference analyst, fiqh research specialist, Quran and Sunnah data-integrity engineer, Arabic and Urdu content editor, educational UX designer, structured-data architect, software engineer, localization engineer and QA specialist.
+
+I have an existing Islamic Knowledge Portal. Previous phases were intended to establish the following:
+
+- Phase 1: Deep project discovery and competitor research.
+- Phase 2: Information architecture, content schemas, source provenance and editorial review workflow.
+- Phase 3: Quran integrity, translations, reader, Tafsir and permitted audio.
+- Phase 4: The Seerah of Prophet Muhammad ﷺ.
+- Phase 5: Sahaba biographies and Prophets' narratives.
+- Phase 6: Islamic history and historical timelines.
+
+These phases may contain implementation gaps. Inspect their actual reports and code instead of assuming everything was completed correctly.
+
+Now execute PHASE 7 ONLY.
+
+The goal is to make the practical Islamic learning modules genuinely useful, properly structured, clearly presented and supported by traceable sources.
+
+This work must cover Hadith, duas and adhkar, Salah, purification, Janazah, Eid, Jumuah, Ramadan, fasting, Zakat, Hajj, Umrah and other related practical learning resources that are within the existing project scope.
+
+Do not simply create short generic summaries or a collection of empty module cards. Audit and improve the actual existing content, add appropriate missing content where reliable evidence and permissions exist, implement useful navigation and learning features, and verify the changes.
+
+Do not start Phase 8 or any future phase.
+
+---
+
+# ABSOLUTE EXECUTION AND SAFETY RULES
+
+1. Read the actual Phase 1–6 reports and inspect the corresponding existing files.
+2. Preserve the existing website architecture, functioning routes, navbar, global language settings, Quran reader, Seerah, Sahaba, Prophets, history library and Android configuration.
+3. Preserve accurate existing religious content.
+4. Never invent Quranic text, Hadith, references, narrators, authenticity grades, chains of narration, scholarly consensus, religious rulings or prescribed rewards.
+5. Never describe AI-generated religious content as scholar-approved or independently authenticated.
+6. Never rewrite protected Quranic Arabic or alter source quotations to improve readability.
+7. Do not assume that every Hadith in a collection has a separately supplied grading or that every narration has the same evidential status.
+8. Verify the particular reference and edition when citing a Hadith, Quran passage or scholarly source.
+9. Distinguish established evidence, scholarly interpretation, disputed matters and unverified popular practices.
+10. Do not merge different fiqh-school procedures into one allegedly universal method where meaningful differences exist.
+11. Do not treat machine translation as an approved religious translation.
+12. Check actual licensing and attribution requirements before using translations, audio, illustrations or third-party datasets.
+13. Do not scrape copyrighted articles or copy other websites' content.
+14. Do not make claims about permissions merely because an API, website or recording is publicly accessible.
+15. Do not issue authoritative fatwas or claim that complex religious questions have a universally agreed answer when the evidence does not support it.
+16. Preserve all user data, bookmarks, preferences and existing content.
+17. Make small, traceable changes rather than unnecessary framework migrations.
+18. Do not create empty pages to increase the number of modules.
+19. Do not remove tests simply because they fail.
+20. Run the relevant tests before and after implementation.
+21. If an external source, license, dataset, credential or scholarly decision is unavailable, document the exact blocker and continue with other work.
+22. Do not start Phase 8 or change the scope of this phase.
+
+The core requirement is:
+
+**Every practical Islamic learning module must be helpful to a real learner, properly sourced, clearly explained, transparent about differences of opinion and verifiable without inventing religious information.**
+
+---
+
+# STAGE 1 — AUDIT THE EXISTING PRACTICAL ISLAMIC MODULES
+
+Read the actual previous phase reports, content model, editorial standards, source registry and review workflow.
+
+Locate every existing module related to:
+
+- Hadith collections.
+- Hadith search.
+- Daily duas.
+- Morning and evening adhkar.
+- Six Kalimas.
+- Prayer-related supplications.
+- Salah and prayer learning.
+- Wudu.
+- Ghusl.
+- Tayammum.
+- Janazah.
+- Eid al-Fitr and Eid al-Adha.
+- Jumuah.
+- Congregational prayer.
+- Ramadan.
+- Fasting.
+- Zakat.
+- Hajj.
+- Umrah.
+- Witr and other existing prayers.
+- Adhan and Iqamah.
+- Tasbih and other devotional tools.
+- Existing related tools and learning pages.
+
+Inspect the actual HTML pages, source files, datasets, APIs, components, route configuration, CSS, language resources and tests.
+
+Do not assume that a module is complete because a page or heading exists.
+
+For each module, determine:
+
+- Which actual content records exist.
+- How extensive the useful content is.
+- Whether the details are properly referenced.
+- Whether the translations and source metadata are available.
+- Whether any source or license information is missing.
+- Whether scholarly differences are handled appropriately.
+- Whether search and navigation work.
+- Whether the page is readable on mobile.
+- Whether the controls perform their advertised actions.
+- Whether offline capability is real or merely claimed.
+- Whether any content is duplicated, incomplete or unsupported.
+- Whether published claims require qualified review.
+
+Create:
+
+`AUDIT/PHASE-7/PRACTICAL-ISLAMIC-BASELINE.md`
+
+Do not repeat the entire Phase 1 audit. Focus on the requirements and defects specifically relevant to Phase 7.
+
+---
+
+# STAGE 2 — HADITH LIBRARY: DATA, REFERENCES, SEARCH AND PRESENTATION
+
+Improve the existing Hadith library before deciding whether to add another data provider or dataset.
+
+## 2.1 Research available collection sources
+
+Investigate:
+
+Sunnah.com:
+https://sunnah.com/
+
+Official Sunnah.com API repository:
+https://github.com/sunnah-com/api
+
+Sunnah.com API documentation:
+https://sunnah.stoplight.io/docs/api/
+
+Other sources may be considered when their origin, documentation, rights and actual content are sufficiently clear.
+
+These are research candidates. They do not automatically grant permission to redistribute every text, translation or database.
+
+Before enabling a new source, inspect its actual documentation, access requirements, content coverage and reuse conditions.
+
+Do not invent API endpoints.
+
+Do not embed API credentials in frontend JavaScript or Android resources.
+
+Do not assume that a public API repository establishes the licensing of every dataset or translation it serves.
+
+## 2.2 Audit existing Hadith records
+
+Inspect the actual available data for:
+
+- Sahih al-Bukhari.
+- Sahih Muslim.
+- Sunan Abi Dawud.
+- Jami at-Tirmidhi.
+- Sunan an-Nasa'i.
+- Sunan Ibn Majah.
+- Other existing collections whose data and permissions are established.
+
+For each collection, record the actual coverage. Do not claim that an entire collection has been implemented because a few sample narrations are present.
+
+For each Hadith record, preserve or support the available fields:
+
+- Stable record ID.
+- Collection.
+- Book or chapter.
+- Hadith number.
+- Reference-numbering system.
+- Arabic text.
+- Translation.
+- Translator or translation edition.
+- Narrator where reliably supplied.
+- Authenticity grade where supplied.
+- Grading source where available.
+- Relevant commentary or notes where licensed and available.
+- Source URL.
+- Content version and license information.
+- Related topics.
+- Review status.
+
+Do not invent missing narrator names or grades.
+
+Do not automatically label every record in a collection with a grade unless the selected source explicitly establishes that classification.
+
+If different numbering systems exist, identify the one being used and do not mix references silently.
+
+## 2.3 Hadith search and discovery
+
+Audit and improve the actual search system.
+
+Where the index supports the feature, enable:
+
+- Search by Arabic wording.
+- Search by translated wording.
+- Collection filters.
+- Book and chapter filters.
+- Hadith number lookup.
+- Narrator search where valid narrator data exists.
+- Topic filtering.
+- Available authenticity-grade filtering where source metadata supports it.
+- Search results linked to stable references.
+
+Use meaningful empty states and clear language indicators.
+
+Do not promise cross-language or narrator search if the underlying index lacks the required fields.
+
+Do not fabricate results when a query returns nothing.
+
+## 2.4 Hadith reader
+
+Create a consistent, readable Hadith display:
+
+- Clearly distinguish Arabic and translation.
+- Display the collection and reference number.
+- Display supplied grading information and its source where available.
+- Identify the translation edition.
+- Preserve source attribution.
+- Provide copy/share functionality where appropriate.
+- Link to genuine related topics and records.
+- Handle long narrations correctly on mobile.
+- Provide clear unavailable-data states.
+
+Do not give a generic authenticity badge when the record has no verified grade metadata.
+
+Do not write a new scholarly commentary simply by paraphrasing a Hadith and presenting that paraphrase as an authoritative interpretation.
+
+Where explanation is appropriate, distinguish editorial explanation from the source text.
+
+---
+
+# STAGE 3 — DAILY DUAS, ADHKAR AND SUPPLICATION LIBRARY
+
+Audit and expand the actual dua library using reliable and properly attributed sources.
+
+Do not aim to make the collection appear complete by inserting unsourced popular text.
+
+## 3.1 Categories to investigate
+
+Cover relevant, properly sourced content where available, including:
+
+- Morning adhkar.
+- Evening adhkar.
+- After-prayer supplications.
+- Waking up.
+- Going to sleep.
+- Before and after eating.
+- Entering and leaving the home.
+- Entering and leaving the mosque.
+- Wudu-related supplications where established.
+- Travel.
+- Protection and seeking refuge.
+- Forgiveness and repentance.
+- Gratitude and praise.
+- Anxiety, grief and distress.
+- Illness and visiting the sick.
+- Parents and family.
+- Children.
+- Seeking knowledge.
+- Ramadan and fasting.
+- Laylat al-Qadr.
+- Hajj and Umrah.
+- Janazah and bereavement.
+- Eid and other occasions.
+- Supplications explicitly present in the Quran.
+- Properly sourced prophetic supplications.
+- Other documented religious practices where appropriate.
+
+Adapt the categories to the actual available content and evidence.
+
+## 3.2 Dua record format
+
+Where fields genuinely exist, support:
+
+- Stable ID.
+- Category.
+- Title.
+- Arabic text.
+- Transliteration.
+- Urdu meaning.
+- Other approved translations.
+- Quran reference or Hadith collection.
+- Exact reference identifier where available.
+- Authenticity grade and grading source where supplied.
+- Source edition and translator.
+- Audio source where permitted.
+- License and attribution.
+- Review status.
+
+Do not force unsupported metadata into the record.
+
+Never invent a Hadith reference or authenticity grade.
+
+Distinguish among:
+
+- Quranic supplications.
+- Sourced prophetic supplications.
+- Other historically documented supplications.
+- Scholarly devotional texts.
+- Popular wording whose attribution is unverified.
+
+Do not present a popular supplication as a prophetic narration without evidence.
+
+Do not claim that a specific repetition count, exact time or promised reward is established unless the relevant evidence supports that precise claim.
+
+## 3.3 Improve the dua learning interface
+
+Where the current architecture supports it, provide:
+
+- Category browsing.
+- Search.
+- Arabic text.
+- Separate transliteration.
+- Clearly labelled translation.
+- Source references.
+- Audio controls when available and permitted.
+- Bookmarks.
+- Share functionality.
+- Useful related duas.
+- Offline availability status based on actual local data.
+- Readable mobile typography.
+- Clear missing-translation states.
+
+The layout should help users read and learn, rather than filling the screen with identical cards and repeated generic descriptions.
+
+---
+
+# STAGE 4 — SALAH: COMPLETE BEGINNER-FRIENDLY LEARNING SYSTEM
+
+Inspect the existing Salah guide and identify missing explanations, steps, recitations and source references.
+
+Improve it into a structured learning experience supported by trustworthy sources.
+
+## 4.1 Preparation and prerequisites
+
+Investigate and explain relevant topics such as:
+
+- Purification.
+- Appropriate clothing and covering requirements.
+- Prayer times and preparation.
+- Intention and its treatment in the selected source tradition.
+- Qiblah.
+- Adhan and Iqamah.
+- Mosque and congregation etiquette.
+- Other prerequisites supported by the adopted scholarly sources.
+
+Do not silently present disputed details as universally agreed.
+
+## 4.2 Prayer procedure
+
+Provide an understandable, sequential guide to the applicable prayer method.
+
+Topics may include:
+
+- Opening Takbir.
+- Standing.
+- Relevant recitations.
+- Ruku.
+- Standing after Ruku.
+- Sujud.
+- Sitting between prostrations.
+- Subsequent prayer positions and recitations.
+- Tashahhud.
+- Salawat.
+- Final supplications where applicable.
+- Salam.
+- Closing or subsequent practices where relevant to the selected method.
+
+Check the actual method and available authoritative references before producing or correcting the steps.
+
+Preserve correct source text for every Arabic recitation.
+
+Where the project provides transliteration and translation, ensure they correspond to the exact Arabic text.
+
+Do not automatically generate Arabic wording or present a machine-generated transliteration as verified.
+
+## 4.3 Types of prayer
+
+Where the project supports them, provide appropriately sourced guidance for:
+
+- Five daily obligatory prayers.
+- Witr.
+- Tahajjud.
+- Taraweeh.
+- Jumuah.
+- Eid.
+- Janazah.
+- Traveller-related prayer guidance.
+- Congregational prayer.
+- Other established prayers.
+
+Do not treat all these prayers as having identical structures.
+
+Do not copy one prayer's steps into another merely to reuse a template.
+
+## 4.4 School-specific differences
+
+Preserve the existing scholarly approach where one has been explicitly selected, but identify material differences of opinion where relevant.
+
+Investigate recognized Sunni legal schools and any other requested tradition only when reliable, appropriate sources are available.
+
+Do not invent school-specific practice.
+
+Clearly separate:
+
+- The method being displayed.
+- Its supporting source.
+- Alternative established practices.
+- Matters where scholars differ.
+
+Do not imply that a recognized alternative invalidates someone's prayer without reliable evidence.
+
+Do not turn the guide into a fatwa generator.
+
+## 4.5 Learning interface
+
+Use step-by-step navigation where useful.
+
+For each supported step, provide:
+
+- Step name.
+- Clear explanation.
+- Associated posture or sequence.
+- Actual source Arabic where relevant.
+- Available verified transliteration.
+- Urdu meaning.
+- Other available approved translations.
+- Source reference.
+- Audio where permitted.
+- Important qualification or school-specific note where relevant.
+
+Use original, appropriately licensed illustrations if they materially improve understanding.
+
+Do not use an illustration to introduce a disputed detail without explaining the selected method.
+
+Ensure that users can revisit previous steps, continue reading, adjust text size and view the source references easily.
+
+---
+
+# STAGE 5 — WUDU, GHUSL AND TAYAMMUM
+
+Create or improve separate, properly sourced guides for purification.
+
+## Wudu
+
+Investigate the actual source-supported procedure and explain the relevant prerequisites, steps, sequence, required actions and common mistakes.
+
+Explain the selected method and any material differences between established scholarly approaches.
+
+Preserve appropriate Arabic supplications where their source is established. Do not invent obligatory recitations or attach an unsupported reward to each action.
+
+## Ghusl
+
+Provide clear guidance on the requirements and procedure supported by the chosen sources.
+
+Distinguish required actions from recommended or customary practices where relevant.
+
+Handle privacy and sensitive personal questions respectfully.
+
+Do not present a disputed detail as universal simply because it appears in one tutorial.
+
+## Tayammum
+
+Explain the conditions under which the selected sources permit Tayammum, its procedure, relevant requirements and important differences.
+
+Do not invent medical, geographical or legal conditions.
+
+Explain that specific personal circumstances may require qualified guidance.
+
+## Shared features
+
+For each guide, provide:
+
+- Clear prerequisites.
+- Sequential steps.
+- Arabic references where relevant.
+- Urdu meanings and available approved translations.
+- Source references.
+- Appropriate illustrations or diagrams.
+- Common questions only when they can be answered reliably.
+- Mobile-readable layouts.
+- Print-friendly guidance where useful.
+- Clear distinction between established requirements and differences of opinion.
+
+Do not create a universal one-size-fits-all ruling where the sources do not support it.
+
+---
+
+# STAGE 6 — SALAT AL-JANAZAH
+
+Audit the existing Janazah module and implement or improve a specific guide for funeral prayer.
+
+Do not treat Janazah as an ordinary daily prayer.
+
+Investigate:
+
+- Purpose and general context.
+- Relevant prerequisites.
+- Standing and congregational arrangement.
+- Takbirs and associated recitations.
+- Relevant supplications.
+- The placement of source-supported recitations within the selected method.
+- Guidance for adult deceased persons.
+- Relevant guidance for children where supported.
+- Imam and congregation responsibilities where applicable.
+- Appropriate source references.
+- Relevant scholarly differences.
+
+Do not invent a funeral dua or place a supplication into an unsupported sequence.
+
+Do not incorrectly present Ruku or Sujud as components of Salat al-Janazah.
+
+Make it clear which method the guide explains and whether significant alternatives exist.
+
+Avoid disrespectful language and emotionally manipulative content.
+
+For matters with real procedural differences, display an accurate source-supported explanation and flag unresolved details for qualified review.
+
+Provide a clear, mobile-friendly step-by-step guide with actual references.
+
+---
+
+# STAGE 7 — EID AL-FITR AND EID AL-ADHA
+
+Audit or implement a distinct section for the two Eids.
+
+## Eid al-Fitr
+
+Where the available sources support the content, include:
+
+- Eid preparation.
+- Relevant purification and personal preparation guidance.
+- Takbirat related to Eid.
+- Eid prayer procedure.
+- Additional Takbirs according to the selected scholarly method.
+- Relevant recitations.
+- The place and structure of the khutbah where supported.
+- Zakat al-Fitr guidance.
+- Established Eid practices and relevant differences.
+- Properly sourced supplications where applicable.
+
+## Eid al-Adha
+
+Where the available sources support the content, include:
+
+- Eid preparation.
+- Eid prayer.
+- The relevant procedure and additional Takbirs according to the selected method.
+- Eid al-Adha and the Hajj context.
+- Qurbani or Udhiyah educational guidance.
+- Relevant timing and conditions according to the selected sources.
+- Relationships with Hajj where appropriate.
+- Properly sourced supplications.
+
+## Scholarly differences
+
+Do not combine the additional-Takbir procedures of different legal schools into one supposedly universal sequence.
+
+Clearly explain the method chosen for each guide and label material alternatives.
+
+Do not claim that a customary regional practice is an established religious obligation without adequate evidence.
+
+Distinguish obligations, recommendations, customs and disputed practices according to the actual sources.
+
+Keep Eid content separate from the full Hajj and Umrah curriculum reserved for this same phase's later stage.
+
+---
+
+# STAGE 8 — JUMUAH, CONGREGATIONAL PRAYER AND OTHER PRACTICAL GUIDANCE
+
+Inspect the existing content and improve relevant topics such as:
+
+- Jumuah prayer.
+- Adhan and Iqamah.
+- Congregational prayer.
+- Following the Imam.
+- Mosque etiquette.
+- Witr and other existing prayer guides.
+- Traveller-related prayer guidance.
+- Missed-prayer questions where reliable sources support the scope.
+- Taraweeh and Tahajjud.
+- Sajdah-related guidance where applicable.
+- Relevant prayer-related supplications.
+- Other established learning topics already in the project.
+
+Do not try to answer every possible religious question by generating a new article.
+
+Prioritize the topics that the actual site already supports or that Phase 1 identified as valuable gaps.
+
+For topics with meaningful scholarly differences, explain the selected source and the nature of the difference where relevant.
+
+For complicated personal rulings, provide dependable source information and recommend consultation with a qualified scholar rather than generating a definitive personalized ruling.
+
+---
+
+# STAGE 9 — RAMADAN AND FASTING LEARNING LIBRARY
+
+Develop an organized Ramadan and fasting section using the actual available source material.
+
+Investigate topics such as:
+
+- Overview of Ramadan.
+- Fasting fundamentals.
+- Suhoor and Iftar.
+- Intention and its treatment in the selected sources.
+- Matters that invalidate the fast.
+- Relevant exemptions and concessions.
+- Qada and Fidyah where applicable.
+- Illness, travel and related circumstances.
+- Menstruation and other relevant rules where supported.
+- Night prayers.
+- Taraweeh.
+- Laylat al-Qadr.
+- Itikaf.
+- Zakat al-Fitr.
+- Eid al-Fitr.
+- Quran reading and Ramadan learning plans.
+- Relevant authentic supplications.
+- End-of-Ramadan guidance.
+
+Do not flatten differences of opinion about fasting into one universal rule.
+
+Do not issue unsafe medical advice. For health-related situations, distinguish general religious guidance from medical decisions.
+
+For complex cases, clearly identify the relevant source tradition and the need for qualified personal guidance.
+
+Avoid inventing special rewards, fixed worship counts or exact statements that lack supporting evidence.
+
+## Ramadan learning experience
+
+Where it adds genuine value, provide:
+
+- A navigable learning index.
+- A Ramadan checklist based on properly sourced recommendations.
+- Relevant Quran or Hadith references.
+- Available daily duas.
+- Reading progress.
+- Clear distinctions between obligatory and recommended practices.
+- Practical explanations of the relevant rules.
+- Useful links to Fasting, Zakat, Zakat al-Fitr and Eid sections.
+
+Do not add a habit tracker that asserts unsupported religious benefits.
+
+If a personal routine tracker already exists, review each specific religious claim rather than assuming the current text is correct.
+
+---
+
+# STAGE 10 — ZAKAT EDUCATION AND CALCULATOR
+
+Audit the existing Zakat calculator and educational pages.
+
+Do not replace a functioning calculator without a demonstrated need.
+
+Verify its calculation logic against the actual chosen rules and explain the assumptions used.
+
+## Educational coverage
+
+Investigate relevant topics such as:
+
+- What Zakat is.
+- Eligibility and relevant conditions.
+- Nisab.
+- Relevant ownership and timing requirements.
+- Cash and savings.
+- Gold and silver.
+- Business inventory and qualifying business assets where appropriate.
+- Debts and liabilities where relevant to the selected method.
+- Agricultural produce, livestock or other specialized categories only when the project can support them correctly.
+- Zakat al-Fitr as a distinct topic.
+- Common calculation examples.
+- Relevant scholarly differences.
+- Source references.
+
+Do not assume that one simplified formula applies universally to every asset category or scholarly approach.
+
+## Calculator safeguards
+
+Inspect the actual input fields, formulas, rounding, defaults, validation and results.
+
+Requirements where appropriate:
+
+- Clearly state which method and assumptions the calculator uses.
+- Use accurate units and currency formatting.
+- Validate negative or invalid input.
+- Avoid double-counting assets.
+- Make assumptions visible to the user.
+- Preserve inputs and provide sensible error messages.
+- Provide example calculations with traceable arithmetic.
+- Separate educational examples from personalized religious rulings.
+- Avoid promising that a calculator result is universally definitive.
+
+Where a calculation depends on scholarly approach, asset type, debt treatment or other material assumptions, document these limitations and provide suitable method choices only when the implementation can be accurate and verified.
+
+Do not invent current gold or silver prices.
+
+If real prices are used, identify the data source and update behavior; if live pricing is unavailable, allow transparent manual input and clearly identify the date or assumptions used.
+
+Run unit tests against calculated results, including edge cases.
+
+---
+
+# STAGE 11 — HAJJ AND UMRAH LEARNING LIBRARY
+
+Create or improve the Hajj and Umrah modules based on actual, reliable source material.
+
+## Hajj educational guide
+
+Where supported, cover:
+
+- Introduction and types of Hajj.
+- Preparation.
+- Ihram.
+- Miqat.
+- Relevant intention and Talbiyah wording.
+- Restrictions during Ihram.
+- Arrival in Makkah.
+- Tawaf.
+- Sa'i.
+- The Day of Arafah.
+- Muzdalifah.
+- Mina.
+- Rami at the Jamarat.
+- Relevant sacrifice-related guidance.
+- Halq or Taqsir.
+- Tawaf al-Ifadah.
+- Subsequent Hajj rites.
+- Tawaf al-Wada where applicable.
+- Sequence and timing.
+- Common mistakes.
+- Exemptions, alternatives or concessions where the adopted sources support them.
+- Relevant source references.
+
+Different Hajj forms and scholarly procedures must be handled carefully.
+
+Do not merge steps from different forms of Hajj into an inaccurate single sequence.
+
+Identify the applicable form when explaining a procedure.
+
+## Umrah educational guide
+
+Where supported, cover:
+
+- Preparation.
+- Miqat and Ihram.
+- Intention and Talbiyah.
+- Entry into the Haram and related guidance.
+- Tawaf.
+- Sa'i.
+- Halq or Taqsir.
+- Completion of Umrah.
+- Relevant source-backed supplications.
+- Common mistakes and useful preparation information.
+
+Do not prescribe an unsupported dua for every circuit of Tawaf.
+
+Do not claim that a particular phrase must be recited at every step unless an appropriate source supports that requirement.
+
+## Visual learning
+
+Where useful and legally permissible, provide clear original diagrams or step illustrations.
+
+Ensure that illustrations represent the selected method correctly and do not conceal scholarly differences.
+
+Provide:
+
+- Sequential steps.
+- Arabic text where relevant.
+- Available approved translations.
+- Useful explanations.
+- Source citations.
+- Clear warnings about material differences.
+- Accessible diagrams.
+- Mobile-friendly navigation.
+
+Do not present the guide as a replacement for official Hajj instructions or qualified religious guidance for individual circumstances.
+
+Separate stable religious guidance from information that may depend on current travel arrangements or official administrative requirements.
+
+Do not invent live travel rules, visa requirements or current official schedules.
+
+---
+
+# STAGE 12 — MULTILINGUAL SUPPORT FOR PRACTICAL ISLAMIC CONTENT
+
+The website has a 40-language interface framework. Inspect the existing translation architecture and use the Phase 2 language model where compatible.
+
+Do not create a second, conflicting translation engine.
+
+For Hadith, duas, Salah, Wudu, Janazah, Eid, Ramadan, Zakat, Hajj and Umrah, distinguish between:
+
+- Interface translation.
+- Original Arabic.
+- Transliteration.
+- Urdu meaning.
+- Other approved language translations.
+- Published commentary or explanation.
+- Machine-generated draft content that has not been approved.
+
+## Requirements
+
+- Preserve the Arabic source text.
+- Keep transliteration separate from Arabic and translation.
+- Keep Urdu available as an independent option where actual authorized data exists.
+- Use only approved translations for public verified content.
+- Identify translators and editions where known.
+- Record translation coverage by module and language.
+- Handle RTL and LTR layouts correctly.
+- Display a clear unavailable-translation state.
+- Do not silently substitute an unrelated language.
+- Do not claim that all 40 languages have complete religious content merely because the interface supports 40 languages.
+
+If translations are not available, document the gap.
+
+Do not use AI translation to fill missing religious content and publish it as verified without appropriate review and permission.
+
+Do not translate the navbar or global UI as a side effect of selecting a content translation.
+
+Ensure that content preferences and global interface preferences remain separate where the existing application supports independent selection.
+
+---
+
+# STAGE 13 — AUDIO, MEDIA, LICENSING AND OFFLINE ACCESS
+
+Inspect the existing audio player, audio links and offline behavior.
+
+For each selected audio or media resource, verify the actual terms and permitted uses.
+
+Potential sources may include documented Quran-related audio resources and authorized educational providers, but permissions must be checked for the specific recording or collection.
+
+Before enabling a resource, establish whether the source permits:
+
+- Streaming.
+- Embedding.
+- Commercial application use where relevant.
+- Downloading.
+- Rehosting.
+- Offline caching.
+- Bundling in the Android APK.
+- Required attribution.
+
+Do not assume that a publicly accessible URL is copyright-free.
+
+Do not download content from YouTube or another platform without the relevant permission.
+
+For offline functionality, distinguish:
+
+- Bundled local content.
+- Content available only online.
+- Content permitted for local download.
+- Content requiring a documented synchronization method.
+- Content unavailable offline.
+
+Do not cache protected or private data indiscriminately.
+
+If authorized audio exists, verify the actual player behavior rather than simply checking for an audio element.
+
+For downloaded media, verify the file, completed-download state, playback and deletion.
+
+Do not falsely display a downloaded or offline-available status.
+
+---
+
+# STAGE 14 — PRACTICAL ISLAMIC LEARNING UX
+
+Improve the actual existing pages using the current website design system.
+
+Do not redesign unrelated pages or modify the navbar unnecessarily.
+
+For each practical learning module, prioritize a task-oriented layout.
+
+Examples:
+
+- A learner should be able to follow Salah step by step.
+- A learner should be able to open a dua and identify its Arabic, meaning and source.
+- A reader should be able to find a Hadith by reference.
+- A learner should be able to move through Hajj rites in the correct selected sequence.
+- A user should be able to distinguish general guidance from school-specific details.
+- A user should be able to identify when a claim requires further source or scholarly review.
+
+## Design requirements
+
+- Clear titles and introductions.
+- Logical headings.
+- Well-sized paragraphs.
+- Readable Arabic and Urdu typography.
+- Visible source references.
+- Clearly distinguished translation and transliteration.
+- Useful tables or steps where appropriate.
+- Search and filtering where valuable.
+- Related-content links.
+- Keyboard and screen-reader accessibility.
+- Responsive layout.
+- Useful loading, empty and error states.
+- Print-friendly learning material where useful.
+
+Do not turn every module into identical card layouts.
+
+Do not overuse decorative effects or force users to scroll through unnecessary introductory text before reaching the practical information.
+
+Prioritize clarity, usability and correctness.
+
+---
+
+# STAGE 15 — SEO AND PEOPLE-FIRST EDUCATIONAL CONTENT
+
+Audit actual pages created or materially updated in Phase 7.
+
+Use Google's official helpful-content guidance:
+
+https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+
+Ensure content is intended to help people learn rather than merely attract search traffic.
+
+For eligible pages, check:
+
+- Accurate title.
+- Useful introduction.
+- Appropriate heading hierarchy.
+- Original explanation.
+- Traceable references.
+- Relevant internal links.
+- Correct canonical URLs.
+- Accurate metadata.
+- Appropriate indexing.
+- Structured data only where supported.
+- No duplicate or thin pages.
+- No unsupported religious claims.
+- No keyword stuffing.
+- No fabricated authors or reviewers.
+
+Do not create a separate low-value page for every search phrase.
+
+Do not invent FAQs to add markup.
+
+Do not change Quranic text for SEO.
+
+Do not claim indexing or ranking success without evidence.
+
+---
+
+# STAGE 16 — COMPLETE TESTING AND DATA VALIDATION
+
+Run the existing test suite before making changes and again afterward.
+
+Inspect its assertions rather than trusting a previous report of passing tests.
+
+Create or extend tests for each implemented module.
+
+## Hadith tests
+
+- Unique record IDs.
+- Correct collection mapping.
+- Correct book and Hadith references.
+- Valid source metadata.
+- Correct translation association.
+- Accurate handling of supplied grading data.
+- No invented narrator or grade fields.
+- Search and filtering.
+- Proper empty states.
+- Broken source links.
+- No unauthorized credentials in frontend code.
+
+## Dua tests
+
+- Correct Arabic source records.
+- Valid source references where provided.
+- Correct translation association.
+- Distinction between verified and unverified attribution.
+- No duplicate or accidentally altered records.
+- Correct category and search functionality.
+- Proper source attribution.
+- Correct offline availability claims.
+
+## Salah and purification tests
+
+- Every step in the selected method has a source or review status appropriate to its content.
+- Sequence data is correctly ordered.
+- Arabic recitations are preserved.
+- Translations map to the correct source.
+- Alternative methods are clearly labelled where required.
+- Invalid or incomplete steps are not silently published as complete.
+- Learning navigation works.
+- Layout remains readable on mobile.
+
+## Janazah and Eid tests
+
+- The relevant module uses its own correct sequence.
+- No ordinary Salah Ruku/Sujud steps are accidentally inserted into Janazah instructions.
+- Relevant Takbir sequences match the selected and documented method.
+- Scholarly differences are correctly labelled.
+- Source references resolve.
+- No fabricated supplications.
+- Mobile step-by-step navigation works.
+
+## Ramadan and fasting tests
+
+- Dates and changing time-sensitive data are not invented.
+- Source references are preserved.
+- Rules are classified appropriately.
+- Material fiqh differences are not silently removed.
+- Daily routines do not make unsupported reward claims.
+- Interactive checklists work where present.
+
+## Zakat calculator tests
+
+- Correct arithmetic.
+- Invalid input handling.
+- Edge cases.
+- Currency display.
+- Explicit calculation assumptions.
+- No hard-coded invented market prices.
+- Results correspond to the implemented method.
+- No duplicate asset calculations where the defined method excludes them.
+
+## Hajj and Umrah tests
+
+- Correct selected sequence.
+- Distinct handling of supported Hajj forms.
+- Relevant source mapping.
+- No unsupported step-specific supplications.
+- Correct explanation of alternative procedures.
+- Valid internal references.
+- Accessible step navigation.
+
+## Cross-module regression tests
+
+- Global navigation unchanged unless a necessary defect fix is documented.
+- Global interface language continues to work.
+- Content translation and interface translation remain separate.
+- Quran Arabic remains unchanged.
+- Existing Seerah and biography pages continue working.
+- Existing historical routes remain valid.
+- Search does not regress.
+- Existing bookmarks and reading progress remain intact.
+- Mobile layouts remain functional.
+- Android functionality is not unintentionally affected.
+- No new console errors or broken imports.
+
+Run browser-based tests where available. If real device, audio or external service testing is unavailable, clearly report the limitation.
+
+Do not remove legitimate tests to obtain a passing count.
+
+---
+
+# STAGE 17 — HUMAN REVIEW AND RELIGIOUS CONTENT GOVERNANCE
+
+Use the existing Phase 2 editorial and source-provenance system.
+
+For significant practical religious content, track an appropriate status:
+
+- DRAFT.
+- SOURCE REVIEW REQUIRED.
+- SOURCE REVIEW COMPLETED.
+- LINGUISTIC REVIEW REQUIRED.
+- SCHOLARLY REVIEW REQUIRED.
+- APPROVED FOR PUBLICATION.
+- PUBLISHED.
+- NEEDS REVISION.
+
+Do not claim qualified scholarly approval unless an actual qualified person has reviewed the content.
+
+Distinguish a technical citation check from religious authentication.
+
+Flag questions involving:
+
+- Conflicting Hadith gradings.
+- Significant fiqh differences.
+- Complex Zakat calculations.
+- Special fasting circumstances.
+- Hajj or Umrah exceptions.
+- Ambiguous or disputed supplications.
+- Unclear historical or religious attributions.
+
+Where reliable evidence does not settle a matter, preserve the uncertainty and recommend qualified review instead of generating a definitive ruling.
+
+---
+
+# STAGE 18 — FINAL REPORTS AND ACCEPTANCE CRITERIA
+
+Save the final reports in:
+
+`AUDIT/PHASE-7/`
+
+Create or update:
+
+1. `PRACTICAL-ISLAMIC-BASELINE.md`
+2. `HADITH-COVERAGE-AND-SOURCES.csv`
+3. `DUA-COVERAGE-AND-SOURCES.csv`
+4. `SALAH-AND-PURIFICATION-REVIEW.md`
+5. `JANAZAH-AND-EID-REVIEW.md`
+6. `RAMADAN-FASTING-REVIEW.md`
+7. `ZAKAT-CALCULATOR-VALIDATION.md`
+8. `HAJJ-UMRAH-COVERAGE-AND-SOURCES.md`
+9. `TRANSLATION-AND-LICENSING-STATUS.csv`
+10. `CONTENT-CHANGES.md`
+11. `HUMAN-REVIEW-REQUIRED.md`
+12. `SEO-ACCESSIBILITY-AND-UX.md`
+13. `TEST-RESULTS.md`
+14. `FINAL-VERIFICATION.md`
+
+Use existing project documentation where it already covers the same information, instead of creating unnecessary duplicates.
+
+## Final report must state
+
+1. Which real modules were inspected.
+2. Which existing articles and records were improved.
+3. Which new content was added and why.
+4. Which collections and data sources were actually checked.
+5. Actual Hadith collection coverage and numbering conventions.
+6. Which records have source-supported grading information.
+7. Which duas have verified source metadata and which remain uncertain.
+8. Which Salah procedures and scholarly approaches are supported.
+9. What was reviewed for Janazah and Eid.
+10. What fasting and Ramadan guidance was implemented.
+11. Whether the Zakat calculator was validated and under which assumptions.
+12. What Hajj and Umrah material is present.
+13. Which translations are actually available.
+14. What is available offline and under what conditions.
+15. Which permissions remain unresolved.
+16. Accessibility and responsive testing performed.
+17. Actual build and automated test results.
+18. Any remaining content, licensing, technical or scholarly issues.
+19. Files changed and their purpose.
+20. Confirmation that earlier phases and unrelated modules were preserved.
+
+Use the following evidence-based statuses:
+
+- PASS — verified through an actual test or source check within the stated scope.
+- FAIL — a reproducible defect remains.
+- PARTIAL — functionality or content coverage is incomplete.
+- BLOCKED — a specific source, permission, tool or dependency prevents completion.
+- NEEDS HUMAN REVIEW — qualified religious, linguistic or legal review remains necessary.
+
+Do not claim that every Hadith, dua or religious ruling is authenticated simply because it exists in the database.
+
+Do not describe a module as complete when key content or testing remains incomplete.
+
+---
+
+# FINAL EXECUTION INSTRUCTION
+
+Start by reading the actual Phase 1–6 reports and inspecting the existing practical Islamic modules.
+
+Audit the real datasets and page content, verify source and licensing information, repair structural or factual defects that can be safely resolved, improve the actual educational content, implement the necessary learning interfaces and test the results.
+
+Preserve all accurate existing material and functioning application features.
+
+Do not generate unsupported religious content, fabricate references or merge conflicting scholarly positions into one misleading procedure.
+
+Do not start Phase 8.
+
+Complete Phase 7 only, perform independent final verification, document the exact changes and remaining limitations, and stop until explicitly authorized to continue.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-24T10:21:37+05:00.
+</ADDITIONAL_METADATA>

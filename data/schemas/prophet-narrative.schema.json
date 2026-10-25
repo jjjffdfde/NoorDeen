@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://islamicknowledge.example.com/schemas/prophet-narrative.schema.json",
+  "title": "Prophet Narrative Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "arabicName",
+    "quranicCitations",
+    "theologicalLessons",
+    "sources"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^prophet-[a-z0-9-]+$" },
+    "name": { "type": "string" },
+    "arabicName": { "type": "string" },
+    "biblicalEquivalent": { "type": "string" },
+    "lineage": { "type": "string" },
+    "peopleSentTo": { "type": "string" },
+    "miraclesGranted": { "type": "array", "items": { "type": "string" } },
+    "quranicCitations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["surah", "ayahRange"],
+        "properties": {
+          "surah": { "type": "integer" },
+          "surahName": { "type": "string" },
+          "ayahRange": { "type": "string" }
+        }
+      }
+    },
+    "theologicalLessons": { "type": "array", "items": { "type": "string" } },
+    "sources": { "type": "array", "minItems": 1 }
+  }
+}

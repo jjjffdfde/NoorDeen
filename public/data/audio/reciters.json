@@ -1,0 +1,80 @@
+{
+  "catalogVersion": "1.0.0",
+  "generatedAt": "2026-10-24T10:45:00Z",
+  "provider": "EveryAyah Open Recitation CDN (everyayah.com)",
+  "totalReciters": 5,
+  "streamingFormat": "MP3",
+  "cachingPolicy": "Service Worker Cache API permitted for personal offline listening; mass bundling restricted by APK package payload guidelines",
+  "reciters": [
+    {
+      "id": "Alafasy_128kbps",
+      "slug": "mishary-alafasy",
+      "name": "Sheikh Mishary Rashid Alafasy",
+      "arabicName": "الشيخ مشاري بن راشد العفاسي",
+      "style": "Murattal",
+      "riwayah": "Hafs 'an 'Asim",
+      "bitrate": "128 kbps",
+      "baseUrl": "https://everyayah.com/data/Alafasy_128kbps/",
+      "namingConvention": "{surahPadded3}{ayahPadded3}.mp3",
+      "license": "Open Educational Waqf for Islamic Distribution",
+      "attribution": "Recitation by Sheikh Mishary Rashid Alafasy, EveryAyah Project.",
+      "status": "active"
+    },
+    {
+      "id": "Abdul_Basit_Murattal_192kbps",
+      "slug": "abdul-basit-murattal",
+      "name": "Sheikh Abdul Basit Abdul Samad (Murattal)",
+      "arabicName": "الشيخ عبد الباسط عبد الصمد (مرتل)",
+      "style": "Murattal",
+      "riwayah": "Hafs 'an 'Asim",
+      "bitrate": "192 kbps",
+      "baseUrl": "https://everyayah.com/data/Abdul_Basit_Murattal_192kbps/",
+      "namingConvention": "{surahPadded3}{ayahPadded3}.mp3",
+      "license": "Historic Islamic Heritage Waqf / Public Educational Distribution",
+      "attribution": "Historic Murattal Recitation by Sheikh Abdul Basit Abdul Samad.",
+      "status": "active"
+    },
+    {
+      "id": "Husary_128kbps",
+      "slug": "mahmoud-al-husary",
+      "name": "Sheikh Mahmoud Khalil Al-Husary",
+      "arabicName": "الشيخ محمود خليل الحصري",
+      "style": "Murattal (Exemplary Tajweed)",
+      "riwayah": "Hafs 'an 'Asim",
+      "bitrate": "128 kbps",
+      "baseUrl": "https://everyayah.com/data/Husary_128kbps/",
+      "namingConvention": "{surahPadded3}{ayahPadded3}.mp3",
+      "license": "Egyptian Radio Archive / Islamic Cultural Waqf",
+      "attribution": "Canonical Tajweed Murattal Recitation by Sheikh Mahmoud Khalil Al-Husary.",
+      "status": "active"
+    },
+    {
+      "id": "Minshawy_Murattal_128kbps",
+      "slug": "mohamed-al-minshawi",
+      "name": "Sheikh Mohamed Siddiq Al-Minshawi (Murattal)",
+      "arabicName": "الشيخ محمد صديق المنشاوي (مرتل)",
+      "style": "Murattal",
+      "riwayah": "Hafs 'an 'Asim",
+      "bitrate": "128 kbps",
+      "baseUrl": "https://everyayah.com/data/Minshawy_Murattal_128kbps/",
+      "namingConvention": "{surahPadded3}{ayahPadded3}.mp3",
+      "license": "Egyptian Radio Archive / Islamic Cultural Waqf",
+      "attribution": "Recitation by Sheikh Mohamed Siddiq Al-Minshawi.",
+      "status": "active"
+    },
+    {
+      "id": "Abu_Bakr_Ash-Shaatree_128kbps",
+      "slug": "abu-bakr-al-shatri",
+      "name": "Sheikh Abu Bakr Al-Shatri",
+      "arabicName": "الشيخ أبو بكر الشاطري",
+      "style": "Murattal",
+      "riwayah": "Hafs 'an 'Asim",
+      "bitrate": "128 kbps",
+      "baseUrl": "https://everyayah.com/data/Abu_Bakr_Ash-Shaatree_128kbps/",
+      "namingConvention": "{surahPadded3}{ayahPadded3}.mp3",
+      "license": "Open Educational Waqf for Islamic Distribution",
+      "attribution": "Recitation by Sheikh Abu Bakr Al-Shatri.",
+      "status": "active"
+    }
+  ]
+}

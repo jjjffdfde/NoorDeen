@@ -1,0 +1,31 @@
+StoryId,StoryName,PrimarySurahs,ExplicitQuranicAyat,TafsirSource,HadithCorrelation,HistoricalChronicle,ConsensusStatus
+adam,Story of Adam,Al-Baqarah Al-A'raf Ta-Ha,2:30-39; 7:11-25; 20:115-123,Tafsir Ibn Kathir 1/130-155,Sahih al-Bukhari #3326; Muslim #2841,Tabari 1/86-135,Universal Consensus
+idris,Story of Idris,Maryam Al-Anbiya,19:56-57; 21:85-86,Tafsir Ibn Kathir 5/240-242,Sahih al-Bukhari #3887 (Mi'raj Hadith),Tabari 1/170-175,Universal Consensus
+nuh,Story of Nuh,Hud Al-Mu'minun Nuh,11:25-49; 23:23-30; 71:1-28,Tafsir Ibn Kathir 4/310-330,Sahih al-Bukhari #3340; Muslim #194,Ibn Kathir Qisas p.70-98,Universal Consensus
+hud,Story of Hud,Al-A'raf Hud Ash-Shu'ara,7:65-72; 11:50-60; 26:123-140,Tafsir Ibn Kathir 4/330-342,Sahih al-Bukhari #3206; Muslim #899,Tabari 1/215-230,Universal Consensus
+salih,Story of Salih,Al-A'raf Hud Ash-Shu'ara Ash-Shams,7:73-79; 11:61-68; 26:141-159; 91:11-15,Tafsir Ibn Kathir 4/345-355,Sahih al-Bukhari #3378; Muslim #2980,Ibn Kathir Qisas p.110-130,Universal Consensus
+ibrahim,Story of Ibrahim,Al-Baqarah Al-An'am Ibrahim Al-Anbiya,2:124-132; 6:74-83; 14:35-41; 21:51-71,Tafsir Ibn Kathir 1/390-410; 3/280-295,Sahih al-Bukhari #3348; Muslim #2371,Tabari 1/233-285,Universal Consensus
+lut,Story of Lut,Al-A'raf Hud Al-Hijr Ash-Shu'ara,7:80-84; 11:77-83; 15:57-77; 26:160-175,Tafsir Ibn Kathir 4/355-365,Sahih al-Bukhari #3348; Tirmidhi #1456,Ibn Kathir Qisas p.175-189,Universal Consensus
+ismail,Story of Ismail,Al-Baqarah Maryam As-Saffat,2:125-129; 19:54-55; 37:101-107,Tafsir Ibn Kathir 7/28-35; 1/405-415,Sahih al-Bukhari #3364 (Hadith of Hajar),Tabari 1/270-282,Universal Consensus
+ishaq,Story of Ishaq,Hud Al-Anbiya As-Saffat,11:71-73; 21:72; 37:112-113,Tafsir Ibn Kathir 4/350-353,Sahih al-Bukhari #3390,Ibn Kathir Qisas p.190-195,Universal Consensus
+yaqub,Story of Yaqub,Al-Baqarah Yusuf,2:132-133; 12:4-101,Tafsir Ibn Kathir 4/405-420,Sahih al-Bukhari #3383,Tabari 1/310-335,Universal Consensus
+yusuf,Story of Yusuf,Yusuf (Entire Surah),12:1-111,Tafsir Ibn Kathir 4/365-430,Sahih al-Bukhari #3353; Muslim #2378,Ibn Kathir Qisas p.205-245,Universal Consensus
+ayyub,Story of Ayyub,Al-Anbiya Sad,21:83-84; 38:41-44,Tafsir Ibn Kathir 5/360-365; 7/70-75,Sahih al-Bukhari #3391; Musnad Ahmad #11840,Ibn Kathir Qisas p.240-252,Universal Consensus
+shuayb,Story of Shu'ayb,Al-A'raf Hud Ash-Shu'ara Al-Ankabut,7:85-93; 11:84-95; 26:176-190; 29:36-37,Tafsir Ibn Kathir 4/360-370,Sahih al-Bukhari #3390,Tabari 1/365-380,Universal Consensus
+dhul-kifl,Story of Dhul-Kifl,Al-Anbiya Sad,21:85-86; 38:48,Tafsir Ibn Kathir 5/365-367; 7/78,Musnad Ahmad #4740,Tabari 1/360-364,Scholarly Consensus
+musa,Story of Musa,Al-Qasas Ta-Ha Ash-Shu'ara Al-A'raf,20:9-98; 26:10-68; 28:3-44; 7:103-162,Tafsir Ibn Kathir 6/180-230; 5/260-310,Sahih al-Bukhari #3394; Muslim #2373,Ibn Kathir Qisas p.255-330,Universal Consensus
+harun,Story of Harun,Ta-Ha Ash-Shu'ara Al-Qasas,20:29-36; 26:13; 28:34-35,Tafsir Ibn Kathir 5/285-290,Sahih al-Bukhari #3706; Muslim #2404,Tabari 1/450-465,Universal Consensus
+dawud,Story of Dawud,Al-Baqarah Al-Anbiya Sad Saba,2:251; 21:78-80; 34:10-11; 38:17-26,Tafsir Ibn Kathir 7/55-70; 1/690-695,Sahih al-Bukhari #3420; Muslim #1159,Ibn Kathir Qisas p.335-355,Universal Consensus
+sulayman,Story of Sulayman,Al-Anbiya An-Naml Saba Sad,21:81-82; 27:15-44; 34:12-14; 38:30-40,Tafsir Ibn Kathir 6/160-190; 7/72-76,Sahih al-Bukhari #3424; Muslim #1654,Tabari 1/485-515,Universal Consensus
+ilyas,Story of Ilyas,Al-An'am As-Saffat,6:85; 37:123-132,Tafsir Ibn Kathir 7/30-32,Mustadrak al-Hakim 2/590,Ibn Kathir Qisas p.320-324,Universal Consensus
+al-yasa,Story of Al-Yasa',Al-An'am Sad,6:86; 38:48,Tafsir Ibn Kathir 7/32-34; 7/78,Tabari 1/540,Ibn Kathir Qisas p.325-328,Universal Consensus
+yunus,Story of Yunus,Al-Anbiya As-Saffat Al-Qalam Yunus,21:87-88; 37:139-148; 68:48-50; 10:98,Tafsir Ibn Kathir 5/368-372; 7/40-45,Sahih al-Bukhari #3412; Muslim #2377,Tabari 1/545-555,Universal Consensus
+zakariyya,Story of Zakariyya,Ali 'Imran Maryam Al-Anbiya,3:37-41; 19:2-11; 21:89-90,Tafsir Ibn Kathir 2/35-40; 5/210-215,Sahih al-Bukhari #3430,Ibn Kathir Qisas p.370-380,Universal Consensus
+yahya,Story of Yahya,Ali 'Imran Maryam Al-Anbiya,3:39; 19:12-15; 21:90,Tafsir Ibn Kathir 5/215-220,Sahih al-Bukhari #3430; Muslim #2375,Tabari 1/585-595,Universal Consensus
+isa,Story of Isa,Ali 'Imran An-Nisa Maryam Al-Ma'idah,3:45-59; 4:156-159; 19:16-36; 5:110-118,Tafsir Ibn Kathir 2/45-65; 2/430-445,Sahih al-Bukhari #3435; Muslim #155,Ibn Kathir Qisas p.385-435,Universal Consensus
+muhammad,Prophet Muhammad Overview,Ali 'Imran Al-Ahzab Muhammad Al-Fath,3:144; 33:40; 47:2; 48:29,Tafsir Ibn Kathir 6/420-435,Sahih al-Bukhari #3532; Muslim #2276,Ibn Hisham / Ibn Sa'd (Seerah),Universal Consensus
+maryam,Maryam bint Imran,Ali 'Imran Maryam At-Tahrim,3:35-47; 19:16-36; 66:12,Tafsir Ibn Kathir 2/32-45; 5/220-235,Sahih al-Bukhari #3431; Muslim #2430,Tabari 1/590-605,Universal Consensus
+ashab-al-kahf,People of the Cave,Al-Kahf,18:9-26,Tafsir Ibn Kathir 5/140-165,Mustadrak al-Hakim 2/368,Tabari 8/185-210,Universal Consensus
+luqman,Luqman the Wise,Luqman,31:12-19,Tafsir Ibn Kathir 6/335-345,Sahih al-Bukhari #3360; Muslim #124,Tabari 10/190-205,Universal Consensus
+dhul-qarnayn,Dhul-Qarnayn,Al-Kahf,18:83-98,Tafsir Ibn Kathir 5/190-205,Sahih al-Bukhari #3346; Muslim #2880,Tabari 8/250-275,Universal Consensus
+ashab-al-ukhdud,People of the Ditch,Al-Buruj,85:4-10,Tafsir Ibn Kathir 8/365-375,Sahih Muslim #3005 (Hadith of the Boy & King),Ibn Hisham 1/35-42,Universal Consensus

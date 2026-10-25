@@ -1,0 +1,250 @@
+const fs = require('fs');
+const path = require('path');
+
+function escapeCsv(str) {
+  if (str === null || str === undefined) return '""';
+  const clean = String(str).replace(/"/g, '""').replace(/\r?\n|\r/g, ' ');
+  return `"${clean}"`;
+}
+
+const rows = [
+  [
+    'Module Name',
+    'Feature / Content Scope',
+    'Offline Capability Status',
+    'Primary Storage Mechanism',
+    'Data Source',
+    'Offline Fallback Behavior',
+    'Verification Status'
+  ],
+  [
+    'Holy Quran Arabic Text',
+    'All 114 Surahs, 6,236 canonical Hafs verses with full Tashkeel diacritics',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/data.js & quran.js',
+    'Zero network required; loads immediately from local JS memory',
+    'Verified (Tests 33-35)'
+  ],
+  [
+    'Holy Quran English Translation',
+    'Saheeh International full verse-by-verse translation',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/data.js',
+    'Instant local rendering; no API calls needed',
+    'Verified (Tests 33-35)'
+  ],
+  [
+    'Holy Quran Urdu Translation',
+    'Maulana Fateh Muhammad Jalandhry full authentic Urdu translation',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/data.js',
+    'Instant local rendering; no API calls needed',
+    'Verified (Tests 33-35)'
+  ],
+  [
+    'Multilingual Quran Translations',
+    '38 Additional International Language Editions (French, Turkish, Indonesian, etc.)',
+    'Cached After Visit / Modular',
+    'Browser Cache API & Registry',
+    'public/js/quran.js registry',
+    'Falls back gracefully to Saheeh International / Jalandhry if network is unavailable',
+    'Verified (Suite 3 & 28)'
+  ],
+  [
+    'Quran Recitation Audio',
+    '5 Renowned Reciters (Alafasy, Abdul Basit, Husary, Minshawi, etc.)',
+    'Cached After Playback',
+    'ServiceWorker AUDIO_CACHE (islamic-portal-audio-v1)',
+    'https://everyayah.com/data/ CDN',
+    'Serves pre-played verses offline; returns 503 "Audio unavailable offline" for un-cached ayahs',
+    'Verified (Suite 7 & 28)'
+  ],
+  [
+    'Authentic Hadith Library',
+    'Sahih al-Bukhari, Sahih Muslim, and major compilations with gradings and commentary',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/data.js & hadith.html',
+    'Completely available offline; instant client-side category filtering',
+    'Verified (Suite 4)'
+  ],
+  [
+    'Daily Duas & Prophetic Adhkar',
+    'Hisnul Muslim morning/evening, Rabbana Quranic, Janazah, Istikharah & Qunut',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/data.js & duas.html',
+    'Fully operational offline with interactive counters and transliteration',
+    'Verified (Suite 4 & 26)'
+  ],
+  [
+    'Six Kalimas of Islam',
+    'Kalimas 1 to 6 with Arabic Tashkeel, English/Urdu meanings & spiritual progression',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/data.js & kalimas.html',
+    'Instant local rendering; zero external dependency',
+    'Verified (Suite 4)'
+  ],
+  [
+    'Prophetic Seerah (Seerah Nabawiyyah)',
+    '25 Complete Chronological Chapters (24,000+ words) from Makkan dawn to Farewell Pilgrimage',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/seerah.html',
+    'Full scholarly text pre-rendered in HTML shell; reads completely offline',
+    'Verified (Suite 1 & 14)'
+  ],
+  [
+    'Stories of the Prophets (Qasas al-Anbiya)',
+    '25 Verified Prophetic Narratives from Adam (AS) to Isa (AS) with Quranic citations',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/prophets.html',
+    'Full monographs pre-rendered in HTML shell; reads completely offline',
+    'Verified (Suite 1 & 18)'
+  ],
+  [
+    'Lives of the Noble Sahaba',
+    '30 Detailed Biographical Monographs (Khulafa, Ashara Mubashara, Mothers of the Believers)',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/sahaba.html',
+    'Full monographs pre-rendered in HTML shell; reads completely offline',
+    'Verified (Suite 1 & 17)'
+  ],
+  [
+    'Islamic History & Civilizations',
+    '12 Defining Historical Eras across 14 Centuries with dynasties and civilization achievements',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/history.html',
+    'Full historical curricula pre-rendered in HTML shell; reads completely offline',
+    'Verified (Suite 1 & 22)'
+  ],
+  [
+    'Five Pillars of Islam',
+    'Theological treatise on Shahadah, Salah, Zakat, Sawm, and Hajj with proofs',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/pillars.html',
+    'Completely pre-rendered and offline accessible',
+    'Verified (Suite 1)'
+  ],
+  [
+    'Step-by-Step Salah Guide',
+    'Complete prayer postures, Arabic recitations, Fiqh Arkan, and audio cues',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/salah-guide.html',
+    'Fully operational offline with step switcher and interactive tabs',
+    'Verified (Suite 1 & 24)'
+  ],
+  [
+    'Wudu, Ghusl & Tayammum Guides',
+    'Fara\'id, Sunan, Masah over socks, major impurity cleansing, and dry ablution',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/wudu-guide.html',
+    'Fully pre-rendered and offline operational',
+    'Verified (Suite 1 & 24)'
+  ],
+  [
+    'Salat al-Janazah Funeral Guide',
+    '4 Takbirs step-by-step, adult and child funeral duas, Madhhab rulings',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/janazah-guide.html',
+    'Complete guide pre-rendered in HTML; reads completely offline',
+    'Verified (Suite 1 & 24)'
+  ],
+  [
+    'Eid Prayer Guide',
+    'Eid al-Fitr & al-Adha, Hanafi 6 vs Shafi\'i 12 Takbirs, Takbirat al-Tashreeq',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/eid-guide.html',
+    'Complete guide pre-rendered in HTML; reads completely offline',
+    'Verified (Suite 1 & 24)'
+  ],
+  [
+    'Obligatory Zakat Calculator',
+    'Dynamic 2.5% wealth computation, gold/silver nisab thresholds, 8 recipient categories',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/tools.js & zakat-calculator.html',
+    'Pure mathematical calculation executed locally in client browser JS',
+    'Verified (Suite 5)'
+  ],
+  [
+    'Astronomical Prayer Times Calculator',
+    'Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha calculated via solar zenith angles',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/tools.js & prayer-times.html',
+    'Local trigonometric algorithms run offline with selected city coordinates',
+    'Verified (Suite 5)'
+  ],
+  [
+    'Digital Tasbih Dhikr Counter',
+    'Interactive counter with sound feedback, custom targets, and prophetic adhkar presets',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/tasbih.html',
+    'Runs 100% offline; counts persist in device localStorage across sessions',
+    'Verified (Suite 1)'
+  ],
+  [
+    'Hijri-Gregorian Calendar Converter',
+    'Live Islamic date conversion and sacred months historical commentary',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/tools.js & calendar.html',
+    'Local algorithmic date converter; zero internet dependency',
+    'Verified (Suite 5)'
+  ],
+  [
+    'Personal Saved Bookmarks',
+    'Local storage bookmarks manager for Surahs, ayahs, and Hadith',
+    'Bundled Offline (100%)',
+    'Device LocalStorage',
+    'public/bookmarks.html',
+    'Zero cloud reliance; 100% private and persistent offline',
+    'Verified (Suite 1)'
+  ],
+  [
+    'Multilingual Interface System',
+    '11 Complete Dictionaries (English, Arabic, Urdu, French, Indonesian, Turkish, etc.)',
+    'Bundled Offline (100%)',
+    'Static Application Shell Cache',
+    'public/js/i18n.js',
+    'Dictionary strings bundled in core JS; instant UI switching offline',
+    'Verified (Suite 3)'
+  ],
+  [
+    'Global Trie Search Index',
+    'High-speed prefix and keyword search across 250+ historical and religious entities',
+    'Bundled Offline (100%)',
+    'In-Memory JavaScript Trie',
+    'public/js/search.js',
+    'Search index compiles in browser RAM; searches full database offline in < 5ms',
+    'Verified (Suite 27)'
+  ],
+  [
+    'Android APK & Web Bundle Downloads',
+    'Offline downloadable installer packages with SHA-256 cryptographic hashes',
+    'Bundled in Distribution (100%)',
+    'Local File System',
+    'public/downloads/',
+    'Files stored on local server disk; verified by automated checksum assertion',
+    'Verified (Suite 28)'
+  ]
+];
+
+const csvContent = rows.map(r => r.map(escapeCsv).join(',')).join('\n');
+const outPath = path.join(__dirname, '..', 'AUDIT', 'PHASE-9', 'OFFLINE-CAPABILITY-MATRIX.csv');
+fs.writeFileSync(outPath, csvContent, 'utf-8');
+console.log(`Generated ${outPath} with ${rows.length - 1} modules.`);
