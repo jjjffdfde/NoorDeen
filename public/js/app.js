@@ -2,9 +2,29 @@
  * ISLAMIC KNOWLEDGE PORTAL — MAIN APPLICATION CONTROLLER
  */
 
+// Early capture of PWA beforeinstallprompt event before page load
+let _earlyDeferredInstallPrompt = null;
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    _earlyDeferredInstallPrompt = e;
+    if (window.App && typeof window.App.onInstallPromptReady === 'function') {
+      window.App.onInstallPromptReady(e);
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    _earlyDeferredInstallPrompt = null;
+    if (window.App && typeof window.App.onAppInstalled === 'function') {
+      window.App.onAppInstalled();
+    }
+  });
+}
+
 class Application {
   constructor() {
     this.theme = localStorage.getItem('islamic_portal_theme') || 'light';
+    this.deferredPrompt = _earlyDeferredInstallPrompt;
     this.init();
   }
 
@@ -17,6 +37,7 @@ class Application {
     this.setupMobileBottomNav();
     this.setupOfflineBanner();
     this.initServiceWorker();
+    this.initPwaManager();
     this.renderHijriDate();
     this.checkContinueReading();
     this.highlightActiveNav();
@@ -75,15 +96,31 @@ class Application {
     return path.substring(0, path.lastIndexOf('/') + 1) || './';
   }
 
+  // Check if portal is currently executing as an installed standalone PWA
+  isAppInstalled() {
+    if (typeof window === 'undefined') return false;
+    const isStandaloneDisplay = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
+    const isIosStandalone = window.navigator && window.navigator.standalone === true;
+    const isAndroidApp = document.referrer && document.referrer.includes('android-app://');
+    return Boolean(isStandaloneDisplay || isIosStandalone || isAndroidApp);
+  }
+
+  // Detect user platform for tailored installation instructions
+  getPlatformInfo() {
+    if (typeof navigator === 'undefined') return { isIOS: false, isAndroid: false, isDesktop: true };
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isAndroid = /Android/i.test(ua);
+    const isChrome = /Chrome|CriOS/i.test(ua) && !/Edg/i.test(ua);
+    const isEdge = /Edg/i.test(ua);
+    const isSafari = /Safari/i.test(ua) && !/Chrome|CriOS|Edg/i.test(ua);
+    const isFirefox = /Firefox/i.test(ua);
+    const isDesktop = !isIOS && !isAndroid;
+    return { isIOS, isAndroid, isChrome, isEdge, isSafari, isFirefox, isDesktop };
+  }
+
   // Service Worker Registration for Offline Capability
   initServiceWorker() {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      this.deferredPrompt = e;
-      const btn = document.getElementById('pwa-install-btn');
-      if (btn) btn.style.display = 'inline-flex';
-    });
-
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         const basePath = this.getBasePath();
@@ -100,18 +137,119 @@ class Application {
     }
   }
 
+  // PWA UI Controller & Lifecycle Management
+  initPwaManager() {
+    if (_earlyDeferredInstallPrompt && !this.deferredPrompt) {
+      this.deferredPrompt = _earlyDeferredInstallPrompt;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.updatePwaUI());
+    } else {
+      this.updatePwaUI();
+    }
+  }
+
+  onInstallPromptReady(e) {
+    this.deferredPrompt = e;
+    this.updatePwaUI();
+  }
+
+  onAppInstalled() {
+    this.deferredPrompt = null;
+    this.showToast('🎉 Islamic Knowledge Portal successfully installed! Launch anytime from your Home Screen or App Drawer.');
+    this.updatePwaUI();
+  }
+
+  updatePwaUI() {
+    const btn = document.getElementById('pwa-install-btn');
+    const badge = document.getElementById('pwa-status-badge');
+    const isInstalled = this.isAppInstalled();
+
+    if (isInstalled) {
+      if (btn) {
+        btn.innerHTML = '<span>✔</span> <span><strong>App Installed</strong> (Running Standalone)</span>';
+        btn.classList.add('btn-installed');
+        btn.style.opacity = '0.9';
+      }
+      if (badge) {
+        badge.style.display = 'inline-block';
+        badge.innerHTML = '🟢 <strong>Active Standalone App:</strong> NoorDeen is installed and running natively on this device.';
+      }
+      return;
+    }
+
+    if (btn) {
+      if (this.deferredPrompt) {
+        btn.innerHTML = '<span>⚡</span> <span><strong>Install Web App (PWA)</strong> — Tap to Install</span>';
+      } else {
+        btn.innerHTML = '<span>⚡</span> <span><strong>Install Web App (PWA)</strong> — Instant on Any Device</span>';
+      }
+    }
+  }
+
   promptPwaInstall() {
+    if (this.isAppInstalled()) {
+      this.showToast('✔ Islamic Knowledge Portal is already installed and running on your device!');
+      return;
+    }
+
     if (this.deferredPrompt) {
       this.deferredPrompt.prompt();
       this.deferredPrompt.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
           this.showToast('Thank you for installing Islamic Knowledge Portal!');
+        } else {
+          console.log('[PWA] User dismissed install prompt');
         }
         this.deferredPrompt = null;
+        this.updatePwaUI();
+      }).catch(err => {
+        console.warn('[PWA] Prompt error:', err);
       });
-    } else {
-      this.showToast('To install: Tap your browser menu (⋮ or Share) and select "Add to Home Screen" or "Install App"');
+      return;
     }
+
+    // When deferredPrompt is not available (e.g. iOS Safari, desktop Firefox, or before browser heuristic fires)
+    this.showPwaInstallGuidance();
+  }
+
+  showPwaInstallGuidance() {
+    const card = document.getElementById('pwa-instructions-card');
+    const platform = this.getPlatformInfo();
+
+    if (card) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+      card.style.borderColor = 'var(--color-primary)';
+      card.style.boxShadow = '0 0 0 3px rgba(23,107,91,0.3)';
+      setTimeout(() => {
+        card.style.borderColor = '';
+        card.style.boxShadow = '';
+      }, 2500);
+
+      const iosGuide = document.getElementById('pwa-guide-ios');
+      const androidGuide = document.getElementById('pwa-guide-android');
+      const desktopGuide = document.getElementById('pwa-guide-desktop');
+
+      if (platform.isIOS && iosGuide) {
+        iosGuide.style.background = 'rgba(23,107,91,0.08)';
+      } else if (platform.isAndroid && androidGuide) {
+        androidGuide.style.background = 'rgba(23,107,91,0.08)';
+      } else if (platform.isDesktop && desktopGuide) {
+        desktopGuide.style.background = 'rgba(23,107,91,0.08)';
+      }
+    }
+
+    let toastMsg = 'Follow the quick installation steps displayed below!';
+    if (platform.isIOS) {
+      toastMsg = 'iOS Safari: Tap the Share button (⎋) below and select "Add to Home Screen" (+)';
+    } else if (platform.isDesktop) {
+      toastMsg = 'Desktop: Click the install icon (⊕) on the right side of your browser address bar';
+    } else if (platform.isAndroid) {
+      toastMsg = 'Android: Tap browser menu (⋮) and select "Install app" or "Add to Home screen"';
+    }
+    this.showToast(toastMsg, 5000);
   }
 
   // Offline / Online Connectivity Status Banner

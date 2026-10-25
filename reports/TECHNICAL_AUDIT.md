@@ -5,7 +5,7 @@
 **Audited Runtime:** Node.js v25.6.1 ES Modules on Windows 10/11  
 **Browser Engine:** Google Chrome 135+ / Headless CDP  
 **Compliance Standard:** WCAG 2.2 Level AA, OWASP Top 10 Frontend / Node Security  
-**Total Automated Verifications:** 1,408 Checks (1,122 Node.js Tests + 286 Chrome CDP Checks, 100% Pass)  
+**Total Automated Verifications:** 1,433 Checks (1,147 Node.js Tests + 286 Chrome CDP Checks, 100% Pass)  
 
 ---
 
@@ -104,6 +104,7 @@ The portal was evaluated using Chrome CDP automated script [`scripts/test-worshi
 | Static Pre-rendering & Report Verifications | Suite 34 | 28 | 100% Pass |
 | Subpath Resilience & Network-First SW | Suite 35 | 11 | 100% Pass |
 | Priority 0 Defects & Trust Verification | Suite 36 | 49 | 100% Pass |
-| **Total Node.js Unit/Integration Tests** | **Suites 1–36** | **1,122 Tests** | **100% Pass** |
+| PWA Raster Icons & Desktop Distribution | Suite 37 | 25 | 100% Pass |
+| **Total Node.js Unit/Integration Tests** | **Suites 1–37** | **1,147 Tests** | **100% Pass** |
 | **Chrome CDP Responsive Tests** | **11 Viewports × 26 Targets** | **286 Checks** | **100% Pass** |
-| **Cumulative Verified Checks** | — | **1,408 Checks** | **100% Pass** |
+| **Cumulative Verified Checks** | — | **1,433 Checks** | **100% Pass** |

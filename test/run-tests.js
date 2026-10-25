@@ -265,7 +265,7 @@ async function runTestSuite() {
   const swPath = path.join(PUBLIC_DIR, 'service-worker.js');
   assert(fs.existsSync(swPath), 'Service Worker (service-worker.js) exists');
   const swContent = fs.readFileSync(swPath, 'utf-8');
-  assert(swContent.includes('islamic-portal-shell-v3'), 'Service Worker defines cache version (v3)');
+  assert(swContent.includes('islamic-portal-shell-v4') || swContent.includes('islamic-portal-shell-v3'), 'Service Worker defines cache version (v4/v3)');
   assert(swContent.includes('islamic-portal-audio-v1'), 'Service Worker defines dedicated audio cache');
   assert(swContent.includes('self.addEventListener(\'install\''), 'Service Worker implements install event listener');
   assert(swContent.includes('self.addEventListener(\'fetch\''), 'Service Worker implements fetch strategy');
@@ -1428,6 +1428,56 @@ async function runTestSuite() {
     const content = fs.readFileSync(path.join(PUBLIC_DIR, f), 'utf-8');
     assert(content.includes('js/config.js'), `Suite 36: ${f} includes js/config.js for cookie consent and config management`);
   });
+
+  // --- TEST SUITE 37: PWA Raster Icons & Desktop Offline Distribution Bundle ---
+  console.log('\n--- TEST SUITE 37: PWA Raster Icons & Desktop Offline Distribution Bundle ---');
+
+  // 1. Web App Manifest PWA Installability Heuristics
+  const s37_manifest = JSON.parse(fs.readFileSync(path.join(PUBLIC_DIR, 'manifest.json'), 'utf-8'));
+  assert(s37_manifest.icons.some(i => i.src.includes('icon-192.png') && i.type === 'image/png'), 'Suite 37: manifest.json defines 192x192 PNG icon for Chromium PWA installability');
+  assert(s37_manifest.icons.some(i => i.src.includes('icon-512.png') && i.type === 'image/png'), 'Suite 37: manifest.json defines 512x512 PNG icon for Chromium PWA installability');
+  assert(s37_manifest.icons.some(i => i.src.includes('icon-maskable-192.png') && i.purpose === 'maskable'), 'Suite 37: manifest.json defines maskable 192x192 PNG icon');
+  assert(s37_manifest.icons.some(i => i.src.includes('icon-maskable-512.png') && i.purpose === 'maskable'), 'Suite 37: manifest.json defines maskable 512x512 PNG icon');
+  assert(s37_manifest.id === './index.html' || s37_manifest.id === 'index.html', 'Suite 37: manifest.json defines explicit PWA application identity');
+  assert(s37_manifest.scope === './' || s37_manifest.scope === '/', 'Suite 37: manifest.json defines explicit application navigation scope');
+
+  // 2. Raster PNG Icon Binaries on Disk
+  const s37_png192 = path.join(PUBLIC_DIR, 'icons', 'icon-192.png');
+  const s37_png512 = path.join(PUBLIC_DIR, 'icons', 'icon-512.png');
+  const s37_mask192 = path.join(PUBLIC_DIR, 'icons', 'icon-maskable-192.png');
+  const s37_mask512 = path.join(PUBLIC_DIR, 'icons', 'icon-maskable-512.png');
+  assert(fs.existsSync(s37_png192) && fs.statSync(s37_png192).size > 5000, 'Suite 37: 192x192 raster PNG exists and is valid size');
+  assert(fs.existsSync(s37_png512) && fs.statSync(s37_png512).size > 20000, 'Suite 37: 512x512 raster PNG exists and is valid size');
+  assert(fs.existsSync(s37_mask192) && fs.statSync(s37_mask192).size > 5000, 'Suite 37: Maskable 192x192 raster PNG exists and is valid size');
+  assert(fs.existsSync(s37_mask512) && fs.statSync(s37_mask512).size > 20000, 'Suite 37: Maskable 512x512 raster PNG exists and is valid size');
+
+  // 3. Service Worker Shell v4 & PNG Pre-Caching
+  const s37_sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
+  assert(s37_sw.includes("CACHE_VERSION = 'v4'"), 'Suite 37: Service Worker upgraded to CACHE_VERSION v4');
+  assert(s37_sw.includes('icon-192.png') && s37_sw.includes('icon-512.png'), 'Suite 37: Service Worker pre-caches raster PNG icons');
+
+  // 4. Offline Desktop Archive ZIP Verification
+  const s37_zipPath = path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-offline-bundle.zip');
+  assert(fs.existsSync(s37_zipPath), 'Suite 37: Desktop offline ZIP bundle exists');
+  const s37_zipSize = fs.statSync(s37_zipPath).size;
+  assert(s37_zipSize > 500000, 'Suite 37: Desktop offline ZIP bundle contains complete 25-page web app (>500 KB, actual: ' + Math.round(s37_zipSize/1024) + ' KB)');
+
+  // 5. Download Center PWA State & Guidance Elements
+  const s37_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
+  assert(s37_downloadHtml.includes('id="pwa-install-btn"'), 'Suite 37: download-app.html renders pwa-install-btn');
+  assert(s37_downloadHtml.includes('id="pwa-status-badge"'), 'Suite 37: download-app.html renders pwa-status-badge');
+  assert(s37_downloadHtml.includes('id="pwa-instructions-card"'), 'Suite 37: download-app.html renders pwa-instructions-card');
+  assert(s37_downloadHtml.includes('id="pwa-guide-android"'), 'Suite 37: download-app.html renders Android guidance panel');
+  assert(s37_downloadHtml.includes('id="pwa-guide-ios"'), 'Suite 37: download-app.html renders iOS Safari guidance panel');
+  assert(s37_downloadHtml.includes('id="pwa-guide-desktop"'), 'Suite 37: download-app.html renders Desktop guidance panel');
+  assert(s37_downloadHtml.includes('bundle-sha256-display'), 'Suite 37: download-app.html renders bundle-sha256-display');
+
+  // 6. Application Controller Early PWA Listeners
+  const s37_appJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(s37_appJs.includes('_earlyDeferredInstallPrompt'), 'Suite 37: app.js captures beforeinstallprompt early');
+  assert(s37_appJs.includes('isAppInstalled()'), 'Suite 37: app.js provides standalone app detection');
+  assert(s37_appJs.includes('getPlatformInfo()'), 'Suite 37: app.js provides platform detection');
+  assert(s37_appJs.includes('showPwaInstallGuidance()'), 'Suite 37: app.js provides structured PWA guidance dispatch');
 
   // SUMMARY
   console.log('\n====================================================');

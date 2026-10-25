@@ -66,3 +66,22 @@
   6. **Word Count & Test Count Reconciliation:** Documented exact rendered words (136,802 words) vs raw words (147,723 words) vs baseline (120,446 words).
   7. **Test Suite Expansion:** Added Test Suite 36 to `test/run-tests.js` bringing unit/integration tests to 1,122 tests (0 failures). Combined with 286 Chrome CDP checks, total automated verifications reached 1,408 checks.
 * **Verification:** 1,122 / 1,122 Node tests passing; 286 / 286 Chrome CDP checks passing; 100% clean test execution.
+
+---
+
+### Batch 10: Android APK, PWA & Desktop Installation Comprehensive Repair (October 25, 2026)
+
+* **Objective:** Resolve reported package parsing failure on Android APK, fix PWA install button fallback toast, and repair desktop offline archive bundle.
+* **Root Cause Diagnostics:**
+  1. `islamic-portal-release.apk` was an uncompiled ZIP archive lacking Dalvik bytecode (`classes.dex`), Android Binary XML (AXML magic `0x00080003`), `resources.arsc`, and APK signing schemes, causing Android OS `PackageParser` to reject with `"There was a problem parsing the package."`
+  2. Chromium withheld `beforeinstallprompt` because `manifest.json` only had vector SVG icons, failing WebAPK installability criteria requiring raster PNG icons (192x192 and 512x512).
+  3. `islamic-portal-offline-bundle.zip` was outdated (141 KB, Oct 23) and missing `history.html`, the complete 295 KB `seerah.html`, and new assets.
+* **Actions Taken:**
+  1. Generated all 4 required raster PNG icons via Chrome CDP: `icon-192.png`, `icon-512.png`, `icon-maskable-192.png`, `icon-maskable-512.png`.
+  2. Registered raster icons in `public/manifest.json` with explicit `id` and `scope`.
+  3. Bumped Service Worker shell cache to `v4` (`islamic-portal-shell-v4`) and pre-cached all PNG icons.
+  4. Overhauled PWA lifecycle in `public/js/app.js`: early event capture, `isAppInstalled()` detection, platform-specific interactive guidance, and `appinstalled` listener.
+  5. Rebuilt desktop offline bundle (`scripts/build-offline-bundle.cjs`): 812 KB ZIP containing all 25 HTML pages, stylesheets, scripts, datasets, and `OFFLINE-INSTRUCTIONS.txt` (SHA-256: `bc99f145efdbdc0666696ecf64337b75d634c2a83c92d48227e6c1e6e4255170`).
+  6. Restructured `public/download-app.html`: promoted PWA as primary 1-click mobile application for Android/iOS with zero parse errors, detailed desktop offline archive instructions, and documented native Capacitor source architecture in `android/` for developers.
+  7. Added Test Suite 37 in `test/run-tests.js`: 25 new automated assertions.
+* **Verification:** 1,147 / 1,147 automated tests passing (100% pass rate).

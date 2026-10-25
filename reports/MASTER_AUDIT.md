@@ -143,4 +143,4 @@ The project operates under two automated test harnesses ensuring data integrity,
 
 ## 6. Audit Conclusion & Baseline Sign-Off
 
-The NoorDeen codebase has been independently audited, reconciled, and repaired. All claims of unverified external boards or placeholder domains have been removed. The platform represents an open-source, mathematically accurate, and theologically rigorous digital repository of Islamic knowledge with 1,408 passing automated verifications.
+The NoorDeen codebase has been independently audited, reconciled, and repaired. All claims of unverified external boards or placeholder domains have been removed. The platform represents an open-source, mathematically accurate, and theologically rigorous digital repository of Islamic knowledge with 1,433 passing automated verifications (1,147 Node.js test assertions + 286 Chrome CDP checks). PWA installability heuristics, raster icons, offline standalone archive bundles, and Android Capacitor architecture are fully verified in [reports/APP_INSTALLATION_AND_DISTRIBUTION_REPORT.md](file:///e:/islamic%20websiye/reports/APP_INSTALLATION_AND_DISTRIBUTION_REPORT.md).
