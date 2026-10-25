@@ -64,7 +64,7 @@
         "name": "Should I use the Gold Nisab or the Silver Nisab threshold?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Classical scholars recommend using the Silver Nisab (595 grams / 200 Dirhams) for cash, liquid savings, and trade merchandise because its lower financial threshold benefits the poor by bringing more wealth into communal circulation. The Gold Nisab (85 grams / 20 Dinars) is strictly applied if one's wealth is held predominantly in physical gold."
+          "text": "Classical scholars recommend using the Silver Nisab threshold for cash, bank savings, and trade merchandise because its lower financial threshold benefits the poor by bringing more wealth into communal circulation. The Gold Nisab is strictly applied if one's wealth is held predominantly in physical gold. The portal provides both established juristic standards: (1) South Asian / Hanafi classical standard: Silver 612.36g (52.5 tolas) and Gold 87.48g (7.5 tolas); and (2) Contemporary Metric / OIC Fiqh standard: Silver 595g (200 Dirhams) and Gold 85g (20 Dinars)."
         }
       },
       {
@@ -255,8 +255,10 @@
         <div>
           <label for="nisab-standard-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">⚖️ Nisab Benchmark Standard:</label>
           <select id="nisab-standard-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
-            <option value="silver" selected>Silver Nisab (612.36g) — Recommended for Liquid Wealth</option>
-            <option value="gold">Gold Nisab (87.48g) — For Pure Physical Gold</option>
+            <option value="silver" selected>Silver Nisab (612.36g / 52.5 tola) — Hanafi Standard (Recommended)</option>
+            <option value="silver_metric">Silver Nisab (595g / 200 Dirhams) — OIC Contemporary Metric</option>
+            <option value="gold">Gold Nisab (87.48g / 7.5 tola) — Hanafi Standard (Physical Gold)</option>
+            <option value="gold_metric">Gold Nisab (85g / 20 Dinars) — OIC Contemporary Metric</option>
           </select>
         </div>
 
@@ -514,7 +516,7 @@
           <details class="faq-card" open>
             <summary class="faq-summary">Should I use the Gold Nisab or the Silver Nisab threshold?</summary>
             <div class="faq-content">
-              <p>Classical scholars recommend using the Silver Nisab (595 grams / 200 Dirhams) for cash, liquid savings, and trade merchandise because its lower financial threshold benefits the poor by bringing more wealth into communal circulation. The Gold Nisab (85 grams / 20 Dinars) is strictly applied if one's wealth is held predominantly in physical gold.</p>
+              <p>Classical scholars recommend using the Silver Nisab threshold for cash, liquid savings, and trade merchandise because its lower financial threshold benefits the poor by bringing more wealth into communal circulation. The Gold Nisab is strictly applied if one's wealth is held predominantly in physical gold. The portal provides both established juristic standards: (1) South Asian / Hanafi classical standard: Silver 612.36g (52.5 tolas) and Gold 87.48g (7.5 tolas); and (2) Contemporary Metric / OIC Fiqh standard: Silver 595g (200 Dirhams) and Gold 85g (20 Dinars).</p>
             </div>
           </details>
 
@@ -610,7 +612,7 @@
     <div class="footer-bottom">
       <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
-        <div>Contact: contact@noordeen.org</div>
+        <div><a href="contact.html" style="color: inherit; text-decoration: underline;">Contact & Feedback</a> • <a href="https://github.com/jjjffdfde/NoorDeen/issues" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GitHub Issues</a></div>
       </div>
     </div>
   </footer>
@@ -672,7 +674,7 @@
       document.getElementById('res-total-liabilities').textContent = fmt(res.totalLiabilities);
       document.getElementById('res-net-wealth').textContent = fmt(res.netZakatableWealth);
       document.getElementById('res-nisab').textContent = fmt(res.activeNisabThreshold);
-      document.getElementById('res-nisab-name').textContent = res.nisabStandard === 'gold' ? 'Gold (87.48g)' : 'Silver (612.36g)';
+      document.getElementById('res-nisab-name').textContent = res.activeNisabLabel || (res.nisabStandard.startsWith('gold') ? 'Gold Nisab' : 'Silver Nisab');
 
       const banner = document.getElementById('res-status-banner');
       const elig = document.getElementById('res-eligibility');
