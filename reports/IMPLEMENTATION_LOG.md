@@ -37,3 +37,17 @@
 ### Batch F & G: Semantic Structured Data & Accessibility Polish
 * **Fix Implemented:** Added rich `HowTo` structured schemas for Wudu, Salah, Janazah, and Eid guides. Validated WCAG 2.2 AA color contrast and zero horizontal overflow across 11 device viewports.
 * **Verification:** All 1,033 unit/integration tests and 286 headless Chrome CDP checks passing.
+
+---
+
+### Entry 4: Service Worker Cache Invalidation & Subpath Navigation Repair
+* **Date:** 25 October 2026
+* **Issues Addressed:** Discrepancy between root URL (`/NoorDeen/`) and `/NoorDeen/index.html` caused by Cache-First service-worker navigation intercepting stale content; root-slashed links in mobile drawer and bottom navigation navigating out of `/NoorDeen/` to domain root; remaining placeholder email domains.
+* **Actions Taken:**
+  1. Updated `public/service-worker.js` cache version to `islamic-portal-shell-v3`.
+  2. Implemented Network-First fetch strategy for navigation requests (`isNavigation`), ensuring fresh HTML is retrieved from network when online while maintaining offline cache fallback to `./index.html`.
+  3. Ensured `activate` event deletes legacy shell caches (`v1`, `v2`) while preserving `AUDIO_CACHE` and user data.
+  4. Added `getBasePath()` in `public/js/app.js` and updated mobile drawer and bottom nav links to resolve relative to `${base}` (`/NoorDeen/` or `/`), preventing domain root escapes.
+  5. Replaced all occurrences of `islamicknowledge.example.com` across 15 public files with `noordeen.org`.
+  6. Added Test Suite 35 to `test/run-tests.js` (1,080 / 1,080 tests passing).
+* **Verification:** 1,080 / 1,080 automated tests passing; 0 root-slashed relative links remaining; deployed to `main` and `gh-pages`.

@@ -265,10 +265,11 @@ async function runTestSuite() {
   const swPath = path.join(PUBLIC_DIR, 'service-worker.js');
   assert(fs.existsSync(swPath), 'Service Worker (service-worker.js) exists');
   const swContent = fs.readFileSync(swPath, 'utf-8');
-  assert(swContent.includes('islamic-portal-shell-v2'), 'Service Worker defines cache version');
+  assert(swContent.includes('islamic-portal-shell-v3'), 'Service Worker defines cache version (v3)');
   assert(swContent.includes('islamic-portal-audio-v1'), 'Service Worker defines dedicated audio cache');
   assert(swContent.includes('self.addEventListener(\'install\''), 'Service Worker implements install event listener');
-  assert(swContent.includes('self.addEventListener(\'fetch\''), 'Service Worker implements cache-first fetch strategy');
+  assert(swContent.includes('self.addEventListener(\'fetch\''), 'Service Worker implements fetch strategy');
+  assert(swContent.includes('isNavigation'), 'Service Worker implements network-first navigation strategy');
 
   const icon192 = path.join(PUBLIC_DIR, 'icons', 'icon-192.svg');
   const icon512 = path.join(PUBLIC_DIR, 'icons', 'icon-512.svg');
@@ -392,8 +393,8 @@ async function runTestSuite() {
   assert(phase8AppJsContent.includes('islamic_portal_last_read'), 'App controller reads persistent reading progress from localStorage');
   assert(quranJsContent.includes('saveLastReadPosition'), 'Quran controller implements saveLastReadPosition()');
   
-  const indexHtmlContent = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
-  assert(indexHtmlContent.includes('id="continue-reading-panel"'), 'Homepage includes continue-reading-panel container');
+  const s35_indexHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
+  assert(s35_indexHtml.includes('id="continue-reading-panel"'), 'Homepage includes continue-reading-panel container');
 
   // TEST SUITE 14: DEDICATED JANAZAH & EID PRAYER MODULES
   console.log('\n--- TEST SUITE 14: Dedicated Janazah & Eid Prayer Modules ---');
@@ -1356,6 +1357,28 @@ async function runTestSuite() {
   assert(s34_serverJs.includes('ROUTE_ALIASES'), 'Suite 34: server.js defines clean route aliases');
   assert(s34_serverJs.includes('X-Content-Type-Options') && s34_serverJs.includes('X-Frame-Options'), 'Suite 34: server.js enforces HTTP security headers');
   assert(s34_serverJs.includes('!filePath.startsWith(PUBLIC_DIR)'), 'Suite 34: server.js implements path traversal protection');
+
+  // --- TEST SUITE 35: Subpath Resilience, Network-First Navigation & Homepage Parity ---
+  console.log('\n--- TEST SUITE 35: Subpath Resilience, Network-First Navigation & Homepage Parity ---');
+  
+  // 1. Service Worker Network-First Navigation Strategy
+  assert(swContent.includes('isNavigation'), 'Suite 35: Service Worker differentiates navigation requests');
+  assert(swContent.includes('fetch(event.request)'), 'Suite 35: Navigation requests prefer network first');
+  assert(swContent.includes('cache.put(event.request, responseClone)'), 'Suite 35: Successful network navigation requests update cache');
+  assert(swContent.includes('caches.match(\'./index.html\')'), 'Suite 35: Offline navigation safely falls back to ./index.html');
+  assert(swContent.includes('key !== CACHE_NAME && key !== AUDIO_CACHE'), 'Suite 35: Legacy cache cleanup preserves audio cache while clearing stale shell');
+
+  // 2. Application Base-Path Resilience in app.js
+  const appJsCheck = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(appJsCheck.includes('getBasePath()'), 'Suite 35: app.js defines getBasePath() helper');
+  assert(appJsCheck.includes('href="${base}"'), 'Suite 35: Mobile drawer Home link uses base-path-aware URL');
+  assert(appJsCheck.includes('href="${base}quran.html"'), 'Suite 35: Mobile drawer Quran link uses base-path-aware URL');
+  assert(!/href=["']\/[a-zA-Z]/.test(appJsCheck), 'Suite 35: app.js contains zero root-slashed relative URLs');
+
+  // 3. Homepage Content & Canonical Equivalence
+  const suite35_indexHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf-8');
+  assert(suite35_indexHtml.includes('href="https://jjjffdfde.github.io/NoorDeen/"'), 'Suite 35: Canonical link targets preferred public homepage https://jjjffdfde.github.io/NoorDeen/');
+  assert(!suite35_indexHtml.includes('islamicknowledge.example.com'), 'Suite 35: Homepage contains zero placeholder domains');
 
   // SUMMARY
   console.log('\n====================================================');

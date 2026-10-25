@@ -4,8 +4,8 @@
 **Audit Date:** 25 October 2026  
 **Test Suite Runner:** `test/run-tests.js` (Node.js v25.6.1 ES Modules)  
 **Browser Automation:** `scripts/test-worship-comprehensive.cjs` (Google Chrome Headless CDP)  
-**Total Tests Executed:** 1,346 Checks (1,060 Unit/Integration + 286 Headless Chrome CDP)  
-**Passed Tests:** **1,346 (100% Pass Rate)**  
+**Total Tests Executed:** 1,366 Checks (1,080 Unit/Integration + 286 Headless Chrome CDP)  
+**Passed Tests:** **1,366 (100% Pass Rate)**  
 **Failed Tests:** **0**  
 **Skipped Tests:** **0**  
 
@@ -18,8 +18,8 @@ Every software module, computational algorithm, fiqh calculator, astronomical so
 ```
 ====================================================
 TEST RESULTS SUMMARY:
-  Total Suite Tests Executed: 1,060
-  Passed Tests:               1,060
+  Total Suite Tests Executed: 1,080
+  Passed Tests:               1,080
   Failed Tests:               0
   Skipped Tests:              0
   Chrome CDP Responsive Viewport Checks: 286 / 286 Passed (0px overflow)
@@ -183,6 +183,15 @@ TEST RESULTS SUMMARY:
   - Pre-rendered Sayyidul Istighfar, Dua Qunut, Dua Istikharah, and Dhul-Nun distress dua verified.
   - Pre-rendered Bukhari #1, Muslim #223, and Tirmidhi #2516 verified.
   - Word count verification: `duas.html` (5,431w > 4,000w), `hadith.html` (4,206w > 2,500w).
+
+### Suite 35: Subpath Resilience, Network-First Navigation & Homepage Parity
+* **Scope:** Service Worker network-first navigation strategy, safe cache invalidation of v2 shell, preservation of audio cache, base-path-aware URL resolution (`getBasePath()`) in mobile drawer and bottom navigation, and homepage canonical equivalence.
+* **Results:** 11 / 11 tests passed.
+  - Navigation requests routed via Network-First, updating cache when online and falling back to `./index.html` when offline.
+  - Old shell caches (`v1`, `v2`) removed upon service worker activation; `AUDIO_CACHE` preserved.
+  - `getBasePath()` dynamically formats mobile drawer and bottom nav links relative to `/NoorDeen/` or `/`.
+  - Zero root-slashed relative URLs (`/quran.html`, etc.) in `public/js/app.js`.
+  - Canonical and social URLs target `https://jjjffdfde.github.io/NoorDeen/` with 0 placeholder domains.
 
 ---
 
