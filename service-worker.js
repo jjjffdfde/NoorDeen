@@ -3,8 +3,8 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v3';
-const CACHE_NAME = 'islamic-portal-shell-v3';
+const CACHE_VERSION = 'v4';
+const CACHE_NAME = 'islamic-portal-shell-v4';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 
 const STATIC_ASSETS = [
@@ -44,6 +44,10 @@ const STATIC_ASSETS = [
   './js/quran.js',
   './js/app.js',
   './js/sahaba-urdu.js',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './icons/icon-maskable-192.png',
+  './icons/icon-maskable-512.png',
   './icons/icon-192.svg',
   './icons/icon-512.svg'
 ];

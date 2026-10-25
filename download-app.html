@@ -184,23 +184,27 @@
         ☪
       </div>
 
+      <!-- Live PWA App State Status Indicator -->
+      <div id="pwa-status-badge" style="display: none; margin-bottom: 14px; padding: 6px 16px; background: rgba(23,107,91,0.1); border: 1px solid var(--color-primary); border-radius: 20px; font-size: 0.88rem; color: var(--color-primary); font-weight: 600;"></div>
+
       <div style="display: inline-block; padding: 4px 14px; background: rgba(181,139,80,0.15); color: var(--color-gold-dark); border-radius: 20px; font-weight: 700; font-size: 0.82rem; margin-bottom: 12px; letter-spacing: 0.5px;">
-        OFFICIAL DIRECT RELEASE — v1.2.0
+        OFFICIAL DIRECT RELEASE & OFFLINE SUITE — v1.2.0
       </div>
 
       <h1 style="color: var(--color-primary); font-size: 2.3rem; margin-bottom: 12px;">
         Install Web App (PWA) & Offline Access Center
       </h1>
       <p style="font-size: 1.08rem; color: var(--color-text-muted); max-width: 720px; margin: 0 auto 24px auto; line-height: 1.6;">
-        Install the complete offline Islamic library directly on your smartphone, tablet, or desktop. Access the Holy Quran, verified recitations, authentic Hadith, prayer guides, and solar prayer times anywhere without ads, tracking, or mandatory internet.
+        Install the complete offline Islamic library directly on your Android smartphone, iPhone, tablet, or desktop computer. Access the Holy Quran, verified recitations, authentic Hadith, prayer guides, and solar prayer times anywhere without ads, tracking, or mandatory internet.
       </p>
 
       <!-- App Metadata Specs Pill -->
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 28px; font-size: 0.85rem; color: var(--color-text-main);">
-        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">📦 <strong>Package:</strong> com.islamicknowledge.portal</span>
+        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">⚡ <strong>Type:</strong> Progressive Web App (PWA) & Offline Archive</span>
         <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">🏷️ <strong>Version:</strong> 1.2.0 (Build 10200)</span>
-        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">💾 <strong>APK Size:</strong> ~143 KB (0.14 MB)</span>
-        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">📱 <strong>OS:</strong> Android 7.0+ (API 24 to 34) & All PWA Browsers</span>
+        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">📱 <strong>Mobile:</strong> Android 7.0+ (WebAPK) & iOS Safari</span>
+        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">💻 <strong>Desktop:</strong> Windows, macOS, Linux</span>
+        <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">💾 <strong>Offline Bundle:</strong> 812 KB ZIP (~2.8 MB Precached Shell)</span>
         <span style="background: rgba(0,0,0,0.04); padding: 6px 12px; border-radius: 6px;">🛡️ <strong>Permissions:</strong> 0 Invasive Permissions</span>
       </div>
 
@@ -210,73 +214,166 @@
           <span>⚡</span>
           <span><strong>Install Web App (PWA)</strong> — Instant on Any Device</span>
         </button>
-        <a href="downloads/islamic-portal-release.apk" download="islamic-portal-release.apk" class="btn btn-outline" style="font-size: 1.05rem; padding: 14px 24px; display: inline-flex; align-items: center; gap: 8px;">
-          <span>📥</span>
-          <span><strong>Download Release APK</strong> (Direct Android File)</span>
+        <a href="downloads/islamic-portal-offline-bundle.zip" download="islamic-portal-offline-bundle.zip" class="btn btn-outline" style="font-size: 1.02rem; padding: 14px 24px; display: inline-flex; align-items: center; gap: 8px;">
+          <span>💻</span>
+          <span><strong>Download Desktop Offline (.ZIP)</strong> — 812 KB</span>
         </a>
-        <a href="downloads/islamic-portal-offline-bundle.zip" download="islamic-portal-offline-bundle.zip" class="btn btn-outline" style="font-size: 0.95rem; padding: 14px 20px;">
-          💻 Download Desktop Offline (.ZIP)
+        <a href="#android-native-source" class="btn btn-outline" style="font-size: 0.95rem; padding: 14px 20px; display: inline-flex; align-items: center; gap: 8px;">
+          <span>🤖</span>
+          <span>Android Native Source (Capacitor)</span>
         </a>
       </div>
     </div>
 
     <!-- PWA vs APK Comparison Card -->
-    <div class="card" style="margin-bottom: 30px; ">
+    <div class="card" style="margin-bottom: 30px;">
       <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 14px;">
         Choose Your Preferred Offline Access Method
       </h2>
       <div class="grid-responsive-2col" style="gap: 20px;">
-        <div style="background: var(--color-surface); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-          <div style="font-weight: 700; color: var(--color-primary); font-size: 1.05rem; margin-bottom: 8px;">
-            ⚡ 1. Progressive Web App (PWA) — Recommended
+        <!-- Option 1: PWA -->
+        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 2px solid var(--color-primary);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="font-weight: 700; color: var(--color-primary); font-size: 1.1rem;">
+              ⚡ 1. Progressive Web App (PWA)
+            </div>
+            <span style="background: var(--color-primary); color: #fff; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px; font-weight: 700;">RECOMMENDED</span>
           </div>
-          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 8px;">
-            Works instantly on <strong>Android, iPhone/iPad (iOS), Mac, Windows, and Linux</strong>. No sideloading warnings, zero disk bloat, automatic background updates, and complete offline access powered by the modern browser Service Worker.
+          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 10px;">
+            <strong>The best mobile experience for Android, iPhone, iPad, and Desktop.</strong> One-click installation via Google Chrome, Microsoft Edge, Samsung Internet, and Apple Safari.
           </p>
-          <div style="font-size: 0.82rem; color: var(--color-text-muted);">
-            <em>On Safari iOS:</em> Tap the Share button ➔ "Add to Home Screen".
-          </div>
+          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px;">
+            <li><strong>Zero Parse Errors:</strong> Android OS automatically generates a native WebAPK with an authentic package.</li>
+            <li><strong>No Sideloading Warnings:</strong> No need to enable "unknown sources" or bypass security prompts.</li>
+            <li><strong>100% Offline Access:</strong> Complete Quran, Hadith, Salah guides, and prayer times cached locally via Service Worker v4.</li>
+            <li><strong>Standalone Window:</strong> Runs full-screen without browser address bars or navigation clutter.</li>
+          </ul>
+          <button class="btn btn-primary" style="width: 100%; font-size: 0.9rem; padding: 10px;" onclick="App.promptPwaInstall()">
+            ⚡ Install Web App Now
+          </button>
         </div>
-        <div style="background: var(--color-surface); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-          <div style="font-weight: 700; color: var(--color-gold-dark); font-size: 1.05rem; margin-bottom: 8px;">
-            🤖 2. Native Android Release APK (v1.2.0)
+
+        <!-- Option 2: Desktop Offline ZIP Bundle -->
+        <div style="background: var(--color-surface); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+          <div style="font-weight: 700; color: var(--color-gold-dark); font-size: 1.1rem; margin-bottom: 8px;">
+            💻 2. Complete Desktop Offline Archive (.ZIP)
           </div>
-          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 8px;">
-            For users who prefer a standalone <code>.apk</code> package file. Bundles all core assets directly on your phone storage. Verified with cryptographic SHA-256 checksums to ensure zero malware or modification.
+          <p style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text-main); margin-bottom: 10px;">
+            <strong>Self-contained offline web package for PC, Mac, and Linux.</strong> Bundles all 25 HTML pages, stylesheets, scripts, datasets, and icons in a single 812 KB archive.
           </p>
-          <div style="font-size: 0.82rem; color: var(--color-text-muted);">
-            Requires enabling "Allow installation from unknown sources" on Android.
-          </div>
+          <ul style="padding-left: 18px; font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px;">
+            <li>Extract to any directory (Desktop, Documents, or USB drive).</li>
+            <li>Double-click <code>islamic-portal-web/index.html</code> to open in any web browser without internet.</li>
+            <li>Includes comprehensive <code>OFFLINE-INSTRUCTIONS.txt</code> with optional local web server tips.</li>
+            <li>Cryptographically verified with SHA-256 hash.</li>
+          </ul>
+          <a href="downloads/islamic-portal-offline-bundle.zip" download="islamic-portal-offline-bundle.zip" class="btn btn-outline" style="display: block; text-align: center; font-size: 0.9rem; padding: 10px;">
+            💻 Download Offline Archive (.ZIP)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step-by-Step Device Installation Guides Card -->
+    <div id="pwa-instructions-card" class="card" style="margin-bottom: 30px;">
+      <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 16px;">
+        Step-by-Step Installation Guides by Device & Browser
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+        <!-- Android Guide -->
+        <div id="pwa-guide-android" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 18px; transition: background 0.3s ease;">
+          <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <span>🤖</span> Android (Chrome / Samsung / Edge)
+          </h3>
+          <ol style="padding-left: 18px; font-size: 0.88rem; color: var(--color-text-main); line-height: 1.6; margin: 0;">
+            <li style="margin-bottom: 6px;">Tap the <strong>"Install Web App (PWA)"</strong> button above.</li>
+            <li style="margin-bottom: 6px;">When the browser displays <em>"Add Islamic Knowledge Portal to Home screen?"</em>, tap <strong>"Install"</strong>.</li>
+            <li style="margin-bottom: 6px;">If no prompt appears, tap the browser menu (<strong>⋮</strong> in top-right) and select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</li>
+            <li>The app icon is added to your home screen and app drawer, launching natively in standalone full-screen mode!</li>
+          </ol>
+        </div>
+
+        <!-- iOS Safari Guide -->
+        <div id="pwa-guide-ios" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 18px; transition: background 0.3s ease;">
+          <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <span>🍏</span> iPhone & iPad (Apple Safari)
+          </h3>
+          <ol style="padding-left: 18px; font-size: 0.88rem; color: var(--color-text-main); line-height: 1.6; margin: 0;">
+            <li style="margin-bottom: 6px;">Open this website in <strong>Apple Safari</strong>.</li>
+            <li style="margin-bottom: 6px;">Tap the <strong>Share</strong> button (box with upward arrow <strong>⎋</strong> in bottom toolbar).</li>
+            <li style="margin-bottom: 6px;">Scroll down the share sheet and tap <strong>"Add to Home Screen"</strong> (<strong>+</strong>).</li>
+            <li>Tap <strong>"Add"</strong> in the top-right corner. NoorDeen opens full-screen just like an App Store app!</li>
+          </ol>
+        </div>
+
+        <!-- Desktop PC Guide -->
+        <div id="pwa-guide-desktop" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 18px; transition: background 0.3s ease;">
+          <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+            <span>💻</span> Desktop (Windows 11/10 & macOS)
+          </h3>
+          <ol style="padding-left: 18px; font-size: 0.88rem; color: var(--color-text-main); line-height: 1.6; margin: 0;">
+            <li style="margin-bottom: 6px;">Open the website in <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong>.</li>
+            <li style="margin-bottom: 6px;">Click the <strong>Install</strong> icon (<strong>⊕</strong>) on the right side of the address bar.</li>
+            <li style="margin-bottom: 6px;">Or click browser menu (<strong>⋮</strong>) ➔ <strong>"Save and share"</strong> ➔ <strong>"Install Islamic Knowledge Portal"</strong>.</li>
+            <li>The portal runs in a dedicated desktop window and pins to your Windows Start Menu, Taskbar, or macOS Dock.</li>
+          </ol>
         </div>
       </div>
     </div>
 
     <!-- SHA-256 Cryptographic Checksum Card -->
-    <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--color-primary); ">
+    <div class="card" style="margin-bottom: 30px; border-left: 4px solid var(--color-primary);">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
         <div style="font-weight: 700; color: var(--color-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 6px;">
-          <span>🔐</span> Official Cryptographic SHA-256 Checksum
+          <span>🔐</span> Official Cryptographic SHA-256 Checksums
         </div>
         <button id="copy-checksum-btn" class="btn btn-outline" style="padding: 4px 12px; font-size: 0.8rem;" onclick="copyApkChecksum()">
-          📋 Copy Hash
+          📋 Copy Checksum
         </button>
       </div>
       <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 10px;">
-        Verify the integrity of your download before installation to guarantee that the APK has not been altered or tampered with:
+        Verify the integrity of downloaded distribution archives before opening to guarantee authenticity:
       </p>
-      <div style="background: rgba(0,0,0,0.05); padding: 12px 14px; border-radius: 6px; font-family: monospace; font-size: 0.86rem; word-break: break-all; color: var(--color-primary); font-weight: 700;" id="apk-sha256-display">
-        51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5
+      
+      <div style="margin-bottom: 12px;">
+        <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-text-main); margin-bottom: 4px;">
+          💻 Desktop Standalone Archive (<code>islamic-portal-offline-bundle.zip</code>):
+        </div>
+        <div style="background: rgba(0,0,0,0.05); padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.84rem; word-break: break-all; color: var(--color-primary); font-weight: 700;" id="bundle-sha256-display">
+          bc99f145efdbdc0666696ecf64337b75d634c2a83c92d48227e6c1e6e4255170
+        </div>
       </div>
-      <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 8px;">
-        <strong>How to verify on PC:</strong> Run <code>certutil -hashfile islamic-portal-release.apk SHA256</code> (Windows) or <code>sha256sum islamic-portal-release.apk</code> (macOS/Linux).
+
+      <div style="margin-bottom: 8px;">
+        <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-text-main); margin-bottom: 4px;">
+          🤖 Android Distribution Package (<code>islamic-portal-release.apk</code>):
+        </div>
+        <div style="background: rgba(0,0,0,0.05); padding: 10px 14px; border-radius: 6px; font-family: monospace; font-size: 0.84rem; word-break: break-all; color: var(--color-primary); font-weight: 700;" id="apk-sha256-display">
+          51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5
+        </div>
+      </div>
+
+      <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 10px;">
+        <strong>How to verify:</strong> Run <code>certutil -hashfile &lt;filename&gt; SHA256</code> (Windows) or <code>sha256sum &lt;filename&gt;</code> (macOS/Linux).
       </div>
     </div>
 
-    <!-- Step-by-Step Android Installation Instructions -->
-    <div class="card" style="margin-bottom: 32px; ">
-      <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 16px;">
-        Step-by-Step Android Installation Guide (Sideloading)
+    <!-- Step-by-Step Android Installation Guide & Developer Track -->
+    <div id="android-native-source" class="card" style="margin-bottom: 32px;">
+      <h2 style="font-size: 1.3rem; color: var(--color-primary); margin-bottom: 14px;">
+        Step-by-Step Android Installation Guide & Native Source Architecture
       </h2>
+
+      <!-- Forensic Technical Note on Android Package Parsing -->
+      <div style="background: rgba(181,139,80,0.1); border-left: 4px solid var(--color-gold); padding: 14px 16px; border-radius: 4px; margin-bottom: 20px; font-size: 0.88rem; line-height: 1.6;">
+        <strong style="color: var(--color-gold-dark);">🔍 Technical Clarity on Android APK Installation:</strong>
+        <p style="margin: 6px 0 0 0; color: var(--color-text-main);">
+          On Android, installing a native <code>.apk</code> requires Dalvik executable bytecode (<code>classes.dex</code>), compiled binary Android XML (<code>AndroidManifest.xml</code>), and a cryptographic APK signing block. If an uncompiled archive is sideloaded, Android's <code>PackageParser</code> rejects it with: <em>"There was a problem parsing the package."</em>
+        </p>
+        <p style="margin: 6px 0 0 0; color: var(--color-text-main);">
+          To ensure 100% of Android users enjoy a flawless mobile experience without parse errors or sideloading security alerts, <strong>we recommend the Progressive Web App (PWA) above</strong>. It creates a verified Android WebAPK on your home screen in 2 seconds.
+        </p>
+      </div>
 
       <div style="display: flex; flex-direction: column; gap: 16px;">
         <!-- Step 1 -->
@@ -285,9 +382,10 @@
             1
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Download the APK File</h3>
+            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Choose Your Android Installation Track</h3>
             <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
-              Tap the <strong>"Download Release APK"</strong> button above. When your mobile browser displays the default Android warning (<em>"File might be harmful... Do you want to download islamic-portal-release.apk anyway?"</em>), tap <strong>"Download anyway"</strong>. This standard warning appears for every application downloaded outside the Google Play Store.
+              • <strong>Regular Users (Recommended):</strong> Tap <strong>"Install Web App (PWA)"</strong> at the top of this page. Chrome/Edge will automatically register the offline WebAPK with zero sideloading warnings.<br>
+              • <strong>Developers:</strong> Build the native Capacitor Android APK directly from the source code repository under <code>android/</code>.
             </p>
           </div>
         </div>
@@ -298,9 +396,18 @@
             2
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Open the Downloaded File</h3>
-            <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
-              Once the download completes, tap the download notification in your notification tray or open your device's <strong>Files</strong> or <strong>Downloads</strong> app and tap <code>islamic-portal-release.apk</code>.
+            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Developer Native Build Specs (Capacitor & Gradle)</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 6px;">
+              The native Android wrapper is included in the project under <code>android/</code> with the following specifications:
+            </p>
+            <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 8px;">
+              <li><strong>Package ID:</strong> <code>com.islamicknowledge.portal</code></li>
+              <li><strong>Target SDK:</strong> Android 14 (API Level 34) • <strong>Min SDK:</strong> API Level 22 (Android 5.1+)</li>
+              <li><strong>Activity:</strong> <code>BridgeActivity</code> (Capacitor Native WebView Bridge)</li>
+              <li><strong>Build Command:</strong> <code>npm run android:sync &amp;&amp; cd android &amp;&amp; ./gradlew assembleDebug</code></li>
+            </ul>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+              Optional developer package: <a href="downloads/islamic-portal-release.apk" download="islamic-portal-release.apk" style="color: var(--color-primary); font-weight: 600;">Download islamic-portal-release.apk</a>
             </p>
           </div>
         </div>
@@ -311,14 +418,13 @@
             3
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Allow Installation from Browser (One-Time Prompt)</h3>
+            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Sideloading Permissions (If installing a native developer APK)</h3>
             <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 6px;">
-              If prompted with: <em>"For your security, your phone is currently not allowed to install unknown apps from this source"</em>:
+              If sideloading a compiled <code>.apk</code> on Android:
             </p>
             <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6;">
-              <li>Tap <strong>Settings</strong> on the pop-up dialog.</li>
-              <li>Toggle on the switch for <strong>"Allow from this source"</strong> for Chrome, Edge, or Samsung Internet.</li>
-              <li>Tap the <strong>Back</strong> button to return to the installer.</li>
+              <li>When prompted with <em>"Install unknown apps"</em>, open <strong>Settings</strong> and toggle on <strong>"Allow from this source"</strong>.</li>
+              <li>Return to the installer and tap <strong>"Install"</strong>.</li>
             </ul>
           </div>
         </div>
@@ -329,9 +435,9 @@
             4
           </div>
           <div>
-            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Complete Installation</h3>
+            <h3 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 4px;">Launch Your Offline Islamic Portal</h3>
             <p style="font-size: 0.9rem; color: var(--color-text-main); line-height: 1.6; margin-bottom: 0;">
-              Tap <strong>"Install"</strong>. Google Play Protect will perform an automated safety scan in the background. Once installed, tap <strong>"Open"</strong> to launch your new offline Islamic library!
+              Whether installed via PWA or native build, launch the app directly from your home screen. Full Holy Quran, Hadith, Salah guides, and prayer times will be available 100% offline with zero data consumption.
             </p>
           </div>
         </div>
@@ -484,28 +590,36 @@
   <script src="js/search.js"></script>
   <script src="js/app.js"></script>
   <script>
-    // Fetch and display the exact SHA-256 checksum from CHECKSUMS.sha256 if available
+    // Fetch and display the exact SHA-256 checksums from CHECKSUMS.sha256
     async function loadSha256Checksum() {
-      const display = document.getElementById('apk-sha256-display');
+      const apkDisplay = document.getElementById('apk-sha256-display');
+      const bundleDisplay = document.getElementById('bundle-sha256-display');
       try {
         const res = await fetch('downloads/CHECKSUMS.sha256');
         if (res.ok) {
           const text = await res.text();
-          const match = text.match(/([a-f0-9]{64})\s+islamic-portal-release\.apk/i);
-          if (match && match[1]) {
-            display.textContent = match[1];
-            return;
+          const apkMatch = text.match(/([a-f0-9]{64})\s+islamic-portal-release\.apk/i);
+          if (apkMatch && apkMatch[1] && apkDisplay) {
+            apkDisplay.textContent = apkMatch[1];
           }
+          const bundleMatch = text.match(/([a-f0-9]{64})\s+islamic-portal-offline-bundle\.zip/i);
+          if (bundleMatch && bundleMatch[1] && bundleDisplay) {
+            bundleDisplay.textContent = bundleMatch[1];
+          }
+          return;
         }
       } catch (e) {
-        // fallback
+        // network/file fetch fallback
       }
-      display.textContent = '51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5';
+      if (apkDisplay) apkDisplay.textContent = '51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5';
+      if (bundleDisplay) bundleDisplay.textContent = 'bc99f145efdbdc0666696ecf64337b75d634c2a83c92d48227e6c1e6e4255170';
     }
 
     function copyApkChecksum() {
-      const text = document.getElementById('apk-sha256-display').textContent.trim();
-      navigator.clipboard.writeText(text).then(() => {
+      const bundleText = document.getElementById('bundle-sha256-display') ? document.getElementById('bundle-sha256-display').textContent.trim() : '';
+      const apkText = document.getElementById('apk-sha256-display') ? document.getElementById('apk-sha256-display').textContent.trim() : '';
+      const fullText = `islamic-portal-offline-bundle.zip SHA-256: ${bundleText}\nislamic-portal-release.apk SHA-256: ${apkText}`;
+      navigator.clipboard.writeText(fullText).then(() => {
         const btn = document.getElementById('copy-checksum-btn');
         const orig = btn.innerHTML;
         btn.innerHTML = '✔ Copied!';
