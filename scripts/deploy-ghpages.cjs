@@ -8,7 +8,7 @@ console.log('Fetching origin gh-pages parent SHA...');
 const parentSha = execSync('git rev-parse origin/gh-pages', { encoding: 'utf8' }).trim();
 console.log('Parent gh-pages SHA:', parentSha);
 
-const commitMsg = 'deploy: publish genuine Android release APK v1.2.0 (build 10200) and verified assets';
+const commitMsg = 'deploy: NoorDeen International Islamic Knowledge Library expansion (101 Hadiths, 102 Duas, 32 Tafsir profiles, 135 Glossary terms, 20 Pillars, APK v1.2.0)';
 const commitSha = execSync(`git commit-tree ${treeSha} -p ${parentSha} -m "${commitMsg}"`, { encoding: 'utf8' }).trim();
 console.log('Created commit for gh-pages:', commitSha);
 
