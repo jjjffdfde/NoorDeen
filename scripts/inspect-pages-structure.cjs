@@ -1,24 +1,26 @@
 const fs = require('fs');
 
-const pages = ['public/seerah.html', 'public/sahaba.html', 'public/prophets.html', 'public/history.html', 'public/hadith.html', 'public/duas.html'];
+function analyzeFile(filename) {
+  const content = fs.readFileSync('public/' + filename, 'utf8');
+  const articles = (content.match(/<article[\s>]/gi) || []).length;
+  const sections = (content.match(/<section[\s>]/gi) || []).length;
+  const h1 = (content.match(/<h1[\s>][\s\S]*?<\/h1>/gi) || []).map(h => h.replace(/<[^>]+>/g, '').trim());
+  const h2 = (content.match(/<h2[\s>][\s\S]*?<\/h2>/gi) || []).map(h => h.replace(/<[^>]+>/g, '').trim());
+  const h3 = (content.match(/<h3[\s>][\s\S]*?<\/h3>/gi) || []).map(h => h.replace(/<[^>]+>/g, '').trim());
 
-pages.forEach(file => {
-  const content = fs.readFileSync(file, 'utf8');
-  console.log('\n=== FILE: ' + file + ' (' + (content.length/1024).toFixed(1) + ' KB) ===');
-  
-  // Count articles, chapters, sections
-  const articleMatches = content.match(/<article/g) || [];
-  const sectionMatches = content.match(/<section/g) || [];
-  const h2Matches = content.match(/<h2[^>]*>(.*?)<\/h2>/g) || [];
-  const scriptMatches = content.match(/<script/g) || [];
-  
-  console.log('  <article> tags: ' + articleMatches.length);
-  console.log('  <section> tags: ' + sectionMatches.length);
-  console.log('  <h2> headings : ' + h2Matches.length);
-  console.log('  <script> tags : ' + scriptMatches.length);
-  
-  if (h2Matches.length > 0) {
-    console.log('  Sample <h2> (first 5):');
-    h2Matches.slice(0, 5).forEach((h, i) => console.log('    ' + (i+1) + ': ' + h.replace(/<[^>]+>/g, '').trim()));
-  }
-});
+  // Count sahaba-card or similar cards
+  const sahabaCards = (content.match(/class="[^"]*sahaba-card[^"]*"/gi) || []).length;
+  const prophetCards = (content.match(/class="[^"]*prophet-card[^"]*"/gi) || []).length;
+  const hadithCards = (content.match(/class="[^"]*hadith-card[^"]*"/gi) || []).length;
+  const duaCards = (content.match(/class="[^"]*dua-card[^"]*"/gi) || []).length;
+  const seerahCards = (content.match(/class="[^"]*seerah-card[^"]*"/gi) || []).length;
+  const historyCards = (content.match(/class="[^"]*history-card[^"]*"/gi) || []).length;
+
+  console.log(`=== ${filename} ===`);
+  console.log(`Articles: ${articles}, Sections: ${sections}`);
+  console.log(`H1 (${h1.length}):`, h1.join(' | '));
+  console.log(`H2 count: ${h2.length}, H3 count: ${h3.length}`);
+  console.log(`Cards -> sahaba: ${sahabaCards}, prophet: ${prophetCards}, hadith: ${hadithCards}, dua: ${duaCards}, seerah: ${seerahCards}, history: ${historyCards}`);
+}
+
+['sahaba.html', 'prophets.html', 'seerah.html', 'history.html', 'hadith.html', 'duas.html'].forEach(analyzeFile);

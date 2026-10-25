@@ -5,89 +5,357 @@
  */
 
 const SURAH_THEMATIC_DATA = {
-  1: {
-    period: "Early Meccan (Pre-Hijrah)",
-    themes: ["Praise & Glorification of Allah", "Divine Sovereignty & Day of Recompense", "Direct Supplication for Sincere Guidance", "The Straight Path (Sirat al-Mustaqeem)"],
-    asbab: "Revealed at the onset of prophetic revelation in Makkah, ordained as the essential foundation of every unit (Rak'ah) of prayer.",
-    virtues: "Proclaimed by Prophet Muhammad ﷺ as 'The Greatest Surah in the Quran' and the 'Seven Oft-Repeated Verses' (Sahih al-Bukhari #4474)."
+  "1": {
+    "period": "Early Meccan (Pre-Hijrah)",
+    "themes": [
+      "Praise & Glorification of Allah",
+      "Divine Sovereignty & Day of Recompense",
+      "Direct Supplication for Sincere Guidance",
+      "The Straight Path (Sirat al-Mustaqeem)"
+    ],
+    "asbab": "Revealed at the onset of prophetic revelation in Makkah, ordained as the essential foundation of every unit (Rak'ah) of prayer.",
+    "virtues": "Proclaimed by Prophet Muhammad ﷺ as 'The Greatest Surah in the Quran' and the 'Seven Oft-Repeated Verses' (Sahih al-Bukhari #4474)."
   },
-  2: {
-    period: "Early Medinan (Post-Hijrah)",
-    themes: ["Guidance for the God-Conscious (Muttaqeen)", "Covenant with Bani Isra'il & Adam's Creation", "Legislation of Salah, Zakat, Fasting & Hajj", "Prohibition of Riba (Usury) & Ayatul Kursi"],
-    asbab: "Revealed gradually over several years in Madinah to establish the civil, economic, and moral framework of the newly established Islamic society.",
-    virtues: "The Prophet ﷺ said: 'Do not turn your houses into graves; Satan flees from the house in which Surah Al-Baqarah is recited' (Sahih Muslim #780)."
+  "2": {
+    "period": "Early Medinan (Post-Hijrah)",
+    "themes": [
+      "Guidance for the God-Conscious (Muttaqeen)",
+      "Covenant with Bani Isra'il & Adam's Creation",
+      "Legislation of Salah, Zakat, Fasting & Hajj",
+      "Prohibition of Riba (Usury) & Ayatul Kursi"
+    ],
+    "asbab": "Revealed gradually over several years in Madinah to establish the civil, economic, and moral framework of the newly established Islamic society.",
+    "virtues": "The Prophet ﷺ said: 'Do not turn your houses into graves; Satan flees from the house in which Surah Al-Baqarah is recited' (Sahih Muslim #780)."
   },
-  36: {
-    period: "Middle Meccan",
-    themes: ["The Authenticity of Prophethood & Revelation", "The Reality of Physical Resurrection & Day of Judgment", "Signs of Divine Omnipotence in the Cosmos", "Fate of Previous Defiant Civilizations"],
-    asbab: "Revealed during the peak of Quraysh denial in Makkah to confront the polytheists regarding the certainty of resurrection and accountability.",
-    virtues: "Revered throughout Islamic history as the 'Heart of the Quran' for its poetic eloquence, vivid eschatological descriptions, and powerful theological arguments."
+  "3": {
+    "period": "Madani (3-5 AH)",
+    "themes": [
+      "Firmness in Faith against Theological Deviation",
+      "Dialogue with Christians of Najran and Prophethood of Isa (AS)",
+      "Lessons of the Battle of Uhud (Obedience and Steadfastness)",
+      "The Reality of Martyrdom and Divine Testing"
+    ],
+    "asbab": "Sections revealed concerning the Christian delegation from Najran, followed by extensive divine commentary on the trials and tactical lessons of the Battle of Uhud.",
+    "virtues": "Referred to alongside Al-Baqarah as 'Az-Zahrawayn' (The Two Radiant Surahs) that will shade their reciter like two clouds on the Day of Resurrection (Sahih Muslim #804)."
   },
-  67: {
-    period: "Meccan",
-    themes: ["Absolute Dominion & Sovereignty of Allah", "Cosmic Order and the Seven Heavens", "The Purpose of Life and Death as a Moral Test", "Warnings of the Fire and the Regret of Disbelievers"],
-    asbab: "Revealed to orient the human consciousness toward the grandeur of the Creator and the inevitability of the Hereafter.",
-    virtues: "Prophet Muhammad ﷺ stated: 'A Surah of thirty verses interceded for a man until he was forgiven: Tabarakalladhi biyadihil-Mulk' (Sunan Abi Dawud #1400)."
+  "4": {
+    "period": "Madani (4-7 AH)",
+    "themes": [
+      "Protection of Orphans, Widows, and Vulnerable Social Groups",
+      "Divine Laws of Inheritance (Mawarith) and Property Rights",
+      "Sanctity of Marriage, Reconciliation, and Prohibition of Injustice",
+      "Obedience to Allah, the Messenger, and Just Leaders (Ulul-Amr)"
+    ],
+    "asbab": "Revealed following the Battle of Uhud when dozens of Muslim men were martyred, establishing comprehensive legal protection and inheritance for bereaved families.",
+    "virtues": "Imam Ibn Kathir notes that Ibn Abbas stated this Surah contains eight verses that are better for this Ummah than everything upon which the sun rises."
   },
-  97: {
-    period: "Meccan",
-    themes: ["Descent of the Holy Quran", "The Magnificence of the Night of Decree (Laylatul Qadr)", "Descent of Angel Jibril and the Angels with Divine Decrees", "Peace Until the Break of Dawn"],
-    asbab: "Revealed to honor the night wherein the Quran was first sent down from the Preserved Tablet (Al-Lawh al-Mahfuz) to the lowest heaven.",
-    virtues: "Worship during this single night is declared better than a thousand months of continuous devotion (over 83 years and 4 months)."
+  "5": {
+    "period": "Late Madani (6-10 AH)",
+    "themes": [
+      "Fulfillment of Treaties, Covenants, and Obligations ('Uqud)",
+      "Dietary Prohibitions, Halal Food, and Etiquettes of Slaughtering",
+      "Ablution (Wudu), Ghusl, and Tayammum Canonical Injunctions",
+      "Finality and Perfection of Divine Law ('Al-Yawma Akmaltu Lakum')"
+    ],
+    "asbab": "Revealed largely after the Treaty of Hudaybiyyah and during the Farewell Pilgrimage, containing verse 5:3 which proclaimed the completion of the Islamic Deen.",
+    "virtues": "Aisha (RA) stated: 'Surah Al-Ma'idah was among the last Surahs to be revealed, so whatever you find in it of lawful matters, treat as lawful, and whatever of unlawful, treat as unlawful' (Al-Hakim; Sahih)."
   },
-  108: {
-    period: "Meccan",
-    themes: ["Divine Abundance Granted to the Prophet ﷺ", "Gratitude Expressed via Prayer and Sacrifice", "The Cutting Off and Humiliation of the Prophet's Enemies"],
-    asbab: "Revealed to comfort Prophet Muhammad ﷺ when his son al-Qasim died in infancy and the polytheist al-As ibn Wa'il taunted that he was 'Abtar' (cut off from posterity).",
-    virtues: "The Prophet ﷺ revealed that Al-Kawthar is a celestial river and basin in Paradise whose banks are of gold and drinking vessels as numerous as the stars."
+  "12": {
+    "period": "Late Meccan (Year of Sorrow)",
+    "themes": [
+      "The Unfolding of Divine Decree through Patience (Husn az-Zann)",
+      "Resistance against Temptation and Slander through Taqwa",
+      "Forgiveness and Kinship Harmony over Revenge",
+      "From the Depths of the Well to the Governance of Egypt"
+    ],
+    "asbab": "Revealed during the Prophet's period of profound grief after the deaths of Khadijah (RA) and Abu Talib, to solace him with the ultimate vindication of Prophet Yusuf (AS).",
+    "virtues": "Described directly by Allah Almighty as 'Ahsan al-Qasas' (The Most Beautiful of Narratives) in verse 12:3."
   },
-  112: {
-    period: "Early Meccan",
-    themes: ["Absolute Monotheism (Tawheed al-Khalis)", "The Self-Sufficiency of Allah (As-Samad)", "Negation of Offspring, Ancestry, and Partners", "Total Incomparability of the Divine Essence"],
-    asbab: "Revealed when the polytheists of Makkah asked the Prophet ﷺ: 'Describe the lineage and ancestry of your Lord to us.'",
-    virtues: "The Messenger of Allah ﷺ affirmed that reciting Surah Al-Ikhlas is equivalent to reciting one-third of the entire Quran (Sahih al-Bukhari #5013)."
+  "17": {
+    "period": "Late Meccan (Post-Ta'if)",
+    "themes": [
+      "The Miraculous Night Journey (Isra) from Makkah to Jerusalem",
+      "The Moral Charter: 14 Foundational Ethical Injunctions",
+      "Filial Piety: Extraordinary Gentleness toward Elderly Parents",
+      "The Incomparable Nature and Healing Power of the Holy Quran"
+    ],
+    "asbab": "Revealed to commemorate the bodily miraculous ascension and night journey of the Prophet ﷺ from the Sacred Mosque to Masjid al-Aqsa and through the celestial spheres.",
+    "virtues": "Aisha (RA) reported that the Prophet ﷺ would not sleep at night until he had recited Surah Bani Isra'il (Al-Isra) and Surah Az-Zumar (Jami` at-Tirmidhi #3405; Sahih)."
   },
-  113: {
-    period: "Meccan / Medinan",
-    themes: ["Seeking Refuge with the Lord of the Daybreak", "Protection Against the Evils of Darkness (Ghāsiq)", "Shield Against Sorcery and Occult Blowing on Knots", "Shield Against Malicious Envy and Jealousy (Ḥasad)"],
-    asbab: "Revealed alongside Surah An-Nas as complete spiritual armor against psychic harm, black magic, evil eye, and environmental perils.",
-    virtues: "The Prophet ﷺ consistently sought refuge with these two Surahs upon retiring to sleep and during sickness (Sahih al-Bukhari #5016)."
+  "18": {
+    "period": "Middle Meccan (Pre-Hijrah)",
+    "themes": [
+      "Trial of Faith (Companions of the Cave)",
+      "Trial of Wealth (The Two Gardens parable)",
+      "Trial of Knowledge (Musa & Al-Khidr)",
+      "Trial of Power (Dhul-Qarnayn & Gog and Magog)",
+      "Protection from the Fitnah of the False Messiah (Dajjal)"
+    ],
+    "asbab": "Revealed when the Quraysh posed three theological riddles supplied by the Jewish scholars of Yathrib to challenge the Prophet's authenticity: about the young men who fled, the great traveler of the horizons, and the nature of the Spirit (Ruh).",
+    "virtues": "The Prophet ﷺ said: 'Whoever memorizes the first ten verses of Surah Al-Kahf will be protected from the Dajjal' (Sahih Muslim #809), and 'Whoever recites Surah Al-Kahf on Friday, light will illuminate between him and the two Fridays' (Al-Bayhaqi; Sahih al-Jami' #6470)."
   },
-  114: {
-    period: "Meccan / Medinan",
-    themes: ["Seeking Sanctuary with the King and God of Mankind", "Protection from the Retreating Whisperer (Al-Waswas Al-Khannas)", "Spiritual Warfare Against Diabolical Temptations from Jinn and Men"],
-    asbab: "Revealed to safeguard the inner sanctuary of the human heart from doubts, whisperings, and psychic malice.",
-    virtues: "One of the twin Mu'awwidhatayn which the Prophet ﷺ described: 'People have never sought refuge with anything like them' (Sunan an-Nasa'i #5433)."
+  "19": {
+    "period": "Middle Meccan",
+    "themes": [
+      "Divine Mercy (Rahmah) bestowed upon Prophetic Households",
+      "The Miraculous Birth of Yahya (AS) to Elderly Zakariyya (AS)",
+      "The Immaculate Conception of Isa (AS) by Virgin Maryam (AS)",
+      "Rejection of Polytheistic Attributions of Sonship to the Divine"
+    ],
+    "asbab": "Recited by Ja'far ibn Abi Talib before Negus (King Ashamah) of Abyssinia, causing the Christian monarch and his bishops to weep and grant sanctuary to the Muslim refugees.",
+    "virtues": "The historic testimony that preserved the early Muslim community during the First Migration to Abyssinia."
   },
-  18: {
-    period: "Middle Meccan (Pre-Hijrah)",
-    themes: ["Trial of Faith (Companions of the Cave)", "Trial of Wealth (The Two Gardens parable)", "Trial of Knowledge (Musa & Al-Khidr)", "Trial of Power (Dhul-Qarnayn & Gog and Magog)", "Protection from the Fitnah of the False Messiah (Dajjal)"],
-    asbab: "Revealed when the Quraysh posed three theological riddles supplied by the Jewish scholars of Yathrib to challenge the Prophet's authenticity: about the young men who fled, the great traveler of the horizons, and the nature of the Spirit (Ruh).",
-    virtues: "The Prophet ﷺ said: 'Whoever memorizes the first ten verses of Surah Al-Kahf will be protected from the Dajjal' (Sahih Muslim #809), and 'Whoever recites Surah Al-Kahf on Friday, light will illuminate between him and the two Fridays' (Al-Bayhaqi; Sahih al-Jami' #6470)."
+  "24": {
+    "period": "Madani (5-6 AH)",
+    "themes": [
+      "Protection of Honor, Chaste Reputations, and Sanctity of the Home",
+      "The Parable of Divine Light (Ayat an-Nur: 24:35)",
+      "Injunctions of Hijab, Modesty, and Lowering the Gaze for Both Genders",
+      "Vindication of Mother of the Believers Aisha (RA) from Slander"
+    ],
+    "asbab": "Revealed following the Incident of the Slander (Hadith al-Ifk) to declare Sayyidah Aisha's divine innocence and mandate severe penalties for false accusations against women.",
+    "virtues": "Umar ibn al-Khattab wrote to the people of Kufa: 'Teach your women Surah An-Nur' due to its comprehensive foundations for family dignity and chastity."
   },
-  55: {
-    period: "Early Medinan / Late Meccan",
-    themes: ["The Expansive Beneficence of the Creator", "Cosmic Order, Balance, and Earthly Ecology (Al-Mizan)", "Dual Audience: Direct Invocations to Mankind and the Jinn", "The Iconic Refrain: 'Which of the favors of your Lord will you both deny?'", "Vivid Contrasts Between the Scorching Fire and the Twin Verdant Gardens of Paradise"],
-    asbab: "Revealed when polytheists challenged the revelation in Surah Al-Furqan: 'And what is the Most Merciful (Ar-Rahman)?' Allah responded by unveiling His cosmic majesty, linguistic gifts, astronomical choreography, and eternal gardens.",
-    virtues: "Celebrated in classical traditions as 'Arus al-Quran' (The Splendid Bride of the Quran) for its phonetic symmetry, rhythmic cadence, and overwhelming catalogue of divine generosity."
+  "36": {
+    "period": "Middle Meccan",
+    "themes": [
+      "The Authenticity of Prophethood & Revelation",
+      "The Reality of Physical Resurrection & Day of Judgment",
+      "Signs of Divine Omnipotence in the Cosmos",
+      "Fate of Previous Defiant Civilizations"
+    ],
+    "asbab": "Revealed during the peak of Quraysh denial in Makkah to confront the polytheists regarding the certainty of resurrection and accountability.",
+    "virtues": "Revered throughout Islamic history as the 'Heart of the Quran' for its poetic eloquence, vivid eschatological descriptions, and powerful theological arguments."
   },
-  56: {
-    period: "Middle Meccan",
-    themes: ["The Inevitable Cataclysm of the Resurrection (Al-Waqi'ah)", "The Threefold Stratification of Humanity (The Foremost / As-Sabiqoon, Companions of the Right, Companions of the Left)", "Empirical Signs of Divine Agency in Human Conception, Agriculture, Potable Rainwater, and Fire", "The Sanctity of the Preserved Tablet and Quranic Inviolability"],
-    asbab: "Revealed to confront stubborn pagan denial of physical bodily resurrection by appealing directly to natural empirical miracles: how life emerges from seed, rainwater falls from clouds, and embers kindle from green trees.",
-    virtues: "Abdullah ibn Mas'ud (RA) reported that the Messenger of Allah ﷺ said: 'Whoever recites Surah Al-Waqi'ah every night will never be afflicted by destitution or spiritual poverty' (Ibn as-Sunni #657; Al-Bayhaqi in Shu'ab al-Iman)."
+  "49": {
+    "period": "Late Madani (9 AH - Year of Delegations)",
+    "themes": [
+      "Veneration and Adab toward Prophet Muhammad ﷺ",
+      "Verifying News before Action to Prevent Harm (Tabayyun)",
+      "Universal Human Brotherhood and Equality across Races and Tribes",
+      "True Distinction Rests Exclusively upon Piety (Taqwa)"
+    ],
+    "asbab": "Revealed when desert tribes (Banu Tamim) arrived in Madinah calling out bluntly to the Prophet from outside his private apartments, establishing divine etiquettes of communication.",
+    "virtues": "Known as 'Surat al-Adab' (The Chapter of Manners) because it synthesizes personal, social, and international ethics in just 18 verses."
   },
-  93: {
-    period: "Early Meccan",
-    themes: ["Divine Consolation, Affirmation, and Continuous Shelter", "The Cosmic Contrast Between the Brightness of Dawn and the Tranquility of Night", "Past Providential Mercies as Guarantees of Future Goodness (Orphanhood, Guidance, Provision)", "Moral Injunctions: Compassion to the Orphan, Dignity to the Petitioner, and Joyful Proclamation of Divine Blessings"],
-    asbab: "Revealed after a brief cessation of revelation (Fatrat al-Wahy) during which the Quraysh taunted that Allah had forsaken Muhammad; Allah swore by the glorious morning that He had neither abandoned nor despised His chosen Prophet.",
-    virtues: "Universally acknowledged as one of the most comforting and emotionally restorative passages in scripture, bringing solace to those enduring loneliness, grief, or spiritual despondency."
+  "55": {
+    "period": "Early Medinan / Late Meccan",
+    "themes": [
+      "The Expansive Beneficence of the Creator",
+      "Cosmic Order, Balance, and Earthly Ecology (Al-Mizan)",
+      "Dual Audience: Direct Invocations to Mankind and the Jinn",
+      "The Iconic Refrain: 'Which of the favors of your Lord will you both deny?'",
+      "Vivid Contrasts Between the Scorching Fire and the Twin Verdant Gardens of Paradise"
+    ],
+    "asbab": "Revealed when polytheists challenged the revelation in Surah Al-Furqan: 'And what is the Most Merciful (Ar-Rahman)?' Allah responded by unveiling His cosmic majesty, linguistic gifts, astronomical choreography, and eternal gardens.",
+    "virtues": "Celebrated in classical traditions as 'Arus al-Quran' (The Splendid Bride of the Quran) for its phonetic symmetry, rhythmic cadence, and overwhelming catalogue of divine generosity."
   },
-  94: {
-    period: "Early Meccan",
-    themes: ["The Spiritual Expansion and Purifying of the Prophet's Breast (Sharh as-Sadr)", "Lifting the Crushing Burden of Grief and Responsibility", "The Eternal Elevation of the Prophet's Honor and Renown (Rafa'na Laka Dhikrak)", "The Fundamental Divine Axiom: 'Verily, with hardship comes ease'", "Dedication to Relentless Worship upon Completing Worldly Obligations"],
-    asbab: "Revealed directly following Surah Ad-Duha to reinforce prophetic resolve during the bitter social and economic boycotts enforced by the Quraysh aristocracy in Makkah.",
-    virtues: "Celebrated for the linguistic marvel in verses 5-6: the singular definite hardship ('al-'Usr') is enveloped by twofold indefinite ease ('Yusr'), guaranteeing that no solitary worldly crisis can ever overcome divine deliverance."
+  "56": {
+    "period": "Middle Meccan",
+    "themes": [
+      "The Inevitable Cataclysm of the Resurrection (Al-Waqi'ah)",
+      "The Threefold Stratification of Humanity (The Foremost / As-Sabiqoon, Companions of the Right, Companions of the Left)",
+      "Empirical Signs of Divine Agency in Human Conception, Agriculture, Potable Rainwater, and Fire",
+      "The Sanctity of the Preserved Tablet and Quranic Inviolability"
+    ],
+    "asbab": "Revealed to confront stubborn pagan denial of physical bodily resurrection by appealing directly to natural empirical miracles: how life emerges from seed, rainwater falls from clouds, and embers kindle from green trees.",
+    "virtues": "Abdullah ibn Mas'ud (RA) reported that the Messenger of Allah ﷺ said: 'Whoever recites Surah Al-Waqi'ah every night will never be afflicted by destitution or spiritual poverty' (Ibn as-Sunni #657; Al-Bayhaqi in Shu'ab al-Iman)."
+  },
+  "59": {
+    "period": "Madani (4 AH)",
+    "themes": [
+      "The Expulsion of the Traitorous Banu an-Nadir",
+      "Fair Distribution of War Trophies and Communal Wealth (Fay')",
+      "The Distinction between Muhajirun and Selfless Ansar",
+      "The Climax of Divine Names and Attributes (Verses 22-24)"
+    ],
+    "asbab": "Revealed regarding the siege and expulsion of the tribe of Banu an-Nadir after they violated their covenant and plotted assassination against the Prophet ﷺ.",
+    "virtues": "The Prophet ﷺ stated: 'Whoever recites the concluding verses of Surah Al-Hashr and dies that day or night, Paradise will be obligatory for him' (At-Tirmidhi #2922)."
+  },
+  "62": {
+    "period": "Madani (7 AH)",
+    "themes": [
+      "The Purpose of the Prophetic Mission: Tilawah, Tazkiyah, and Ta'leem",
+      "The Parable of Those Who Carry Scripture without Practicing It",
+      "The Absolute Obligation of Friday Congregational Prayer (Salat al-Jumu'ah)",
+      "Balancing Worldly Commerce with Sacred Remembrance"
+    ],
+    "asbab": "Revealed when a trade caravan arrived with musical fanfare during Friday prayer, prompting worshippers to rush out and teaching the supreme priority of sacred remembrance.",
+    "virtues": "The Prophet ﷺ frequently recited Surah Al-Jumu'ah and Surah Al-Munafiqun during the Friday congregational prayer (Sahih Muslim #877)."
+  },
+  "67": {
+    "period": "Meccan",
+    "themes": [
+      "Absolute Dominion & Sovereignty of Allah",
+      "Cosmic Order and the Seven Heavens",
+      "The Purpose of Life and Death as a Moral Test",
+      "Warnings of the Fire and the Regret of Disbelievers"
+    ],
+    "asbab": "Revealed to orient the human consciousness toward the grandeur of the Creator and the inevitability of the Hereafter.",
+    "virtues": "Prophet Muhammad ﷺ stated: 'A Surah of thirty verses interceded for a man until he was forgiven: Tabarakalladhi biyadihil-Mulk' (Sunan Abi Dawud #1400)."
+  },
+  "73": {
+    "period": "Early Meccan",
+    "themes": [
+      "Spiritual Preparation through Deep Night Vigil (Qiyam al-Layl)",
+      "Measured, Rhythmic Recitation of the Quran (Tartil)",
+      "Bearing Hardships with Dignified Patience (Hajr Jameel)",
+      "Ease and Divine Accommodation in Worship According to Ability"
+    ],
+    "asbab": "Revealed at the dawn of the Prophetic mission, commanding the Prophet ﷺ to spend hours standing in night prayer to fortify his soul for the heavy burden of revelation.",
+    "virtues": "Aisha (RA) stated that the night prayer prescribed in this Surah was mandatory upon the Prophet and early Sahaba for an entire year until Allah revealed the concession in the final verse."
+  },
+  "76": {
+    "period": "Madani (Early)",
+    "themes": [
+      "The Creation of Man from an Insignificant Drop to Be Tested",
+      "The Righteous (Al-Abrar) Feeding the Hungry, Orphans, and Captives",
+      "Exquisite Delights and Serene Comforts of the Gardens of Paradise",
+      "Constancy in Glorification Morning and Evening"
+    ],
+    "asbab": "Classical commentators relate that verses 8-9 were revealed regarding Ali and Fatimah (RA) who gave away their only food three nights consecutively to a pauper, orphan, and captive.",
+    "virtues": "The Prophet ﷺ regularly recited Surah As-Sajdah (32) and Surah Al-Insan (76) during the Fajr prayer on Friday mornings (Sahih al-Bukhari #891)."
+  },
+  "87": {
+    "period": "Early Meccan",
+    "themes": [
+      "Exalting the Divine Name of the Most High (Rabbikal-A'la)",
+      "Divine Ease Promised in the Acquisition of Quranic Memory",
+      "Reminding Beneficial Souls who Fear Accountability",
+      "The Ultimate Priority of the Everlasting Hereafter over Transitory Life"
+    ],
+    "asbab": "One of the earliest revelations instructing the Prophet ﷺ not to rush in anxious memorization of the Quran, for Allah would ensure he never forgets.",
+    "virtues": "The Prophet ﷺ loved this Surah immensely and recited it continuously in Witr, Eid, and Friday prayers alongside Surah Al-Ghashiyah (Sahih Muslim #878)."
+  },
+  "93": {
+    "period": "Early Meccan",
+    "themes": [
+      "Divine Consolation, Affirmation, and Continuous Shelter",
+      "The Cosmic Contrast Between the Brightness of Dawn and the Tranquility of Night",
+      "Past Providential Mercies as Guarantees of Future Goodness (Orphanhood, Guidance, Provision)",
+      "Moral Injunctions: Compassion to the Orphan, Dignity to the Petitioner, and Joyful Proclamation of Divine Blessings"
+    ],
+    "asbab": "Revealed after a brief cessation of revelation (Fatrat al-Wahy) during which the Quraysh taunted that Allah had forsaken Muhammad; Allah swore by the glorious morning that He had neither abandoned nor despised His chosen Prophet.",
+    "virtues": "Universally acknowledged as one of the most comforting and emotionally restorative passages in scripture, bringing solace to those enduring loneliness, grief, or spiritual despondency."
+  },
+  "94": {
+    "period": "Early Meccan",
+    "themes": [
+      "The Spiritual Expansion and Purifying of the Prophet's Breast (Sharh as-Sadr)",
+      "Lifting the Crushing Burden of Grief and Responsibility",
+      "The Eternal Elevation of the Prophet's Honor and Renown (Rafa'na Laka Dhikrak)",
+      "The Fundamental Divine Axiom: 'Verily, with hardship comes ease'",
+      "Dedication to Relentless Worship upon Completing Worldly Obligations"
+    ],
+    "asbab": "Revealed directly following Surah Ad-Duha to reinforce prophetic resolve during the bitter social and economic boycotts enforced by the Quraysh aristocracy in Makkah.",
+    "virtues": "Celebrated for the linguistic marvel in verses 5-6: the singular definite hardship ('al-'Usr') is enveloped by twofold indefinite ease ('Yusr'), guaranteeing that no solitary worldly crisis can ever overcome divine deliverance."
+  },
+  "95": {
+    "period": "Early Meccan",
+    "themes": [
+      "Divine Oath by Sacred Sanctuaries (Sinai, Makkah, and Holy Lands)",
+      "Human Dignity: Created in the Most Exquisite, Perfect Stature",
+      "Spiritual Degeneration: Reduced to the Lowest of the Low without Faith",
+      "Allah as the Most Just of all Judges (Ahkam al-Hakimeen)"
+    ],
+    "asbab": "Affirming that humanity possesses noble potential, which can only be safeguarded through sincere belief and righteous conduct.",
+    "virtues": "Al-Bara ibn Azib narrated that he heard the Prophet ﷺ reciting At-Tin during the Isha prayer in a voice more beautiful than any he had ever heard (Sahih al-Bukhari #769)."
+  },
+  "96": {
+    "period": "Earliest Meccan (610 CE)",
+    "themes": [
+      "The Inauguration of Prophethood: 'Read in the Name of your Lord!'",
+      "Divine Origin of Knowledge: Teaching by the Pen (Al-Qalam)",
+      "Human Transgression Arising from the Delusion of Self-Sufficiency",
+      "The Command of Closeness: 'Prostrate and draw near!'"
+    ],
+    "asbab": "Verses 1-5 constitute the very first divine words revealed to Prophet Muhammad ﷺ through Angel Jibril in the seclusion of Cave Hira on Jabal an-Nur.",
+    "virtues": "Marks the historical dawn of the final universal guidance and ends with an obligatory sajdat at-tilawah (verse 19)."
+  },
+  "97": {
+    "period": "Meccan",
+    "themes": [
+      "Descent of the Holy Quran",
+      "The Magnificence of the Night of Decree (Laylatul Qadr)",
+      "Descent of Angel Jibril and the Angels with Divine Decrees",
+      "Peace Until the Break of Dawn"
+    ],
+    "asbab": "Revealed to honor the night wherein the Quran was first sent down from the Preserved Tablet (Al-Lawh al-Mahfuz) to the lowest heaven.",
+    "virtues": "Worship during this single night is declared better than a thousand months of continuous devotion (over 83 years and 4 months)."
+  },
+  "103": {
+    "period": "Early Meccan",
+    "themes": [
+      "Divine Oath by Fleeting Time ('Asr)",
+      "Universal Human Loss (Khusr) as the Default Worldly State",
+      "The Four Essential Pillars of Salvation: Faith, Action, Truth, and Patience",
+      "Mutual Encouragement to Righteousness and Steadfast Endurance"
+    ],
+    "asbab": "Encapsulates the entirety of human destiny and salvation in just three succinct, profound verses.",
+    "virtues": "Imam ash-Shafi'i famously remarked: 'If people were to ponder deeply upon this Surah alone, it would suffice them for their spiritual and worldly salvation.'"
+  },
+  "108": {
+    "period": "Meccan",
+    "themes": [
+      "Divine Abundance Granted to the Prophet ﷺ",
+      "Gratitude Expressed via Prayer and Sacrifice",
+      "The Cutting Off and Humiliation of the Prophet's Enemies"
+    ],
+    "asbab": "Revealed to comfort Prophet Muhammad ﷺ when his son al-Qasim died in infancy and the polytheist al-As ibn Wa'il taunted that he was 'Abtar' (cut off from posterity).",
+    "virtues": "The Prophet ﷺ revealed that Al-Kawthar is a celestial river and basin in Paradise whose banks are of gold and drinking vessels as numerous as the stars."
+  },
+  "109": {
+    "period": "Early Meccan",
+    "themes": [
+      "Absolute Theological Demarcation: No Compromise in Monotheism",
+      "Rejection of Syncretism or Blending True Faith with Idolatry",
+      "The Integrity of Faith: 'To you your religion, and to me my religion'"
+    ],
+    "asbab": "Revealed when Quraysh chieftains offered the Prophet ﷺ a compromise: that Muslims worship their idols for a year, and the pagans worship Allah for a year.",
+    "virtues": "The Prophet ﷺ described it as 'Mu'adhilah min ash-Shirk' (Freedom from Polytheism) and recited it in the Sunnah before Fajr and after Maghrib (Sahih Muslim #726)."
+  },
+  "110": {
+    "period": "Late Madani (Mina / 10 AH)",
+    "themes": [
+      "The Victory of Allah and the Bloodless Liberation of Makkah",
+      "Crowds Entering Islam in Vast Multitudes",
+      "Divine Instruction: Responding to Triumphs with Tasbih, Hamd, and Istighfar",
+      "Gentle Prophetic Intimation of Approaching Departure from Earth"
+    ],
+    "asbab": "Revealed during the Days of Tashreeq at the Farewell Pilgrimage, signaling that the Prophet's divine mission was triumphantly completed.",
+    "virtues": "Known by Ibn Abbas (RA) and Umar (RA) as the announcement that the Prophet's blessed worldly lifespan was drawing to its sacred close (Sahih al-Bukhari #4970)."
+  },
+  "112": {
+    "period": "Early Meccan",
+    "themes": [
+      "Absolute Monotheism (Tawheed al-Khalis)",
+      "The Self-Sufficiency of Allah (As-Samad)",
+      "Negation of Offspring, Ancestry, and Partners",
+      "Total Incomparability of the Divine Essence"
+    ],
+    "asbab": "Revealed when the polytheists of Makkah asked the Prophet ﷺ: 'Describe the lineage and ancestry of your Lord to us.'",
+    "virtues": "The Messenger of Allah ﷺ affirmed that reciting Surah Al-Ikhlas is equivalent to reciting one-third of the entire Quran (Sahih al-Bukhari #5013)."
+  },
+  "113": {
+    "period": "Meccan / Medinan",
+    "themes": [
+      "Seeking Refuge with the Lord of the Daybreak",
+      "Protection Against the Evils of Darkness (Ghāsiq)",
+      "Shield Against Sorcery and Occult Blowing on Knots",
+      "Shield Against Malicious Envy and Jealousy (Ḥasad)"
+    ],
+    "asbab": "Revealed alongside Surah An-Nas as complete spiritual armor against psychic harm, black magic, evil eye, and environmental perils.",
+    "virtues": "The Prophet ﷺ consistently sought refuge with these two Surahs upon retiring to sleep and during sickness (Sahih al-Bukhari #5016)."
+  },
+  "114": {
+    "period": "Meccan / Medinan",
+    "themes": [
+      "Seeking Sanctuary with the King and God of Mankind",
+      "Protection from the Retreating Whisperer (Al-Waswas Al-Khannas)",
+      "Spiritual Warfare Against Diabolical Temptations from Jinn and Men"
+    ],
+    "asbab": "Revealed to safeguard the inner sanctuary of the human heart from doubts, whisperings, and psychic malice.",
+    "virtues": "One of the twin Mu'awwidhatayn which the Prophet ﷺ described: 'People have never sought refuge with anything like them' (Sunan an-Nasa'i #5433)."
   }
 };
 
