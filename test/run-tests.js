@@ -1380,6 +1380,55 @@ async function runTestSuite() {
   assert(suite35_indexHtml.includes('href="https://jjjffdfde.github.io/NoorDeen/"'), 'Suite 35: Canonical link targets preferred public homepage https://jjjffdfde.github.io/NoorDeen/');
   assert(!suite35_indexHtml.includes('islamicknowledge.example.com'), 'Suite 35: Homepage contains zero placeholder domains');
 
+  // --- TEST SUITE 36: Priority 0 Live Defects, Trust Transparency & Nisab Verification ---
+  console.log('\n--- TEST SUITE 36: Priority 0 Live Defects, Trust Transparency & Nisab Verification ---');
+
+  // 1. Contact Form & Channel Transparency
+  const s36_contactHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'contact.html'), 'utf-8');
+  assert(!s36_contactHtml.includes('contact@noordeen.org'), 'Suite 36: contact.html contains zero fake noordeen.org email references');
+  assert(!s36_contactHtml.includes('editorial@noordeen.org'), 'Suite 36: contact.html contains zero fake editorial email references');
+  assert(s36_contactHtml.includes('https://github.com/jjjffdfde/NoorDeen/issues'), 'Suite 36: contact.html links to authentic GitHub Issues repository');
+  assert(s36_contactHtml.includes('btn-github-issue') && s36_contactHtml.includes('btn-mailto'), 'Suite 36: contact.html provides real draft dispatch buttons');
+
+  // 2. Privacy Policy Authenticity
+  const s36_privacyHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'privacy.html'), 'utf-8');
+  assert(!s36_privacyHtml.includes('privacy@noordeen.org'), 'Suite 36: privacy.html contains zero fake privacy emails');
+  assert(s36_privacyHtml.includes('https://github.com/jjjffdfde/NoorDeen/issues'), 'Suite 36: privacy.html routes inquiries to public GitHub repository');
+
+  // 3. About Page Rigor
+  const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
+  assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
+  assert(s36_aboutHtml.includes('1,300+ rigorous checks'), 'Suite 36: about.html documents verified automated test suites');
+
+  // 4. Download APK Checksum Inlining
+  const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
+  assert(s36_downloadHtml.includes('51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5'), 'Suite 36: download-app.html inlines verified SHA-256 APK hash');
+  assert(!s36_downloadHtml.includes('calculating-sha256-checksum...'), 'Suite 36: download-app.html eliminates calculating checksum placeholder');
+
+  // 5. Dual Nisab Standards Verification in Tools Engine
+  const s36_zakatHanafiSilver = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 1000, nisabStandard: 'silver' });
+  const s36_zakatMetricSilver = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 1000, nisabStandard: 'silver_metric' });
+  const s36_zakatHanafiGold = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 1000, nisabStandard: 'gold' });
+  const s36_zakatMetricGold = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 1000, nisabStandard: 'gold_metric' });
+
+  assert(s36_zakatHanafiSilver.activeNisabGrams === 612.36, 'Suite 36: Hanafi Silver Nisab is exactly 612.36g');
+  assert(s36_zakatMetricSilver.activeNisabGrams === 595.00, 'Suite 36: Metric/OIC Silver Nisab is exactly 595.00g');
+  assert(s36_zakatHanafiGold.activeNisabGrams === 87.48, 'Suite 36: Hanafi Gold Nisab is exactly 87.48g');
+  assert(s36_zakatMetricGold.activeNisabGrams === 85.00, 'Suite 36: Metric/OIC Gold Nisab is exactly 85.00g');
+
+  // 6. Prayer Times Istiwa' Window Separation
+  const s36_prayerHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'prayer-times.html'), 'utf-8');
+  assert(s36_prayerHtml.includes('Prohibited Zenith Window (Istiwa\')'), 'Suite 36: prayer-times.html clearly designates Istiwa\' prohibited window');
+  assert(s36_prayerHtml.includes('Solar Noon / Dhuhr Begins (Zawal)'), 'Suite 36: prayer-times.html separates Dhuhr start from zenith');
+
+  // 7. Universal Config.js Presence
+  const s36_allHtml = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
+  assert(s36_allHtml.length === 25, 'Suite 36: Exactly 25 HTML pages exist');
+  s36_allHtml.forEach(f => {
+    const content = fs.readFileSync(path.join(PUBLIC_DIR, f), 'utf-8');
+    assert(content.includes('js/config.js'), `Suite 36: ${f} includes js/config.js for cookie consent and config management`);
+  });
+
   // SUMMARY
   console.log('\n====================================================');
   console.log(`TEST RESULTS SUMMARY:`);

@@ -288,16 +288,39 @@ const IslamicTools = (() => {
       const totalLiabilities = Number(immediateDebts) + Number(dueExpenses);
       const netZakatableWealth = Math.max(0, totalAssets - totalLiabilities);
 
-      // Classical Nisab Standards:
-      // Silver Nisab = 612.36g (approx. 52.5 tolas)
-      // Gold Nisab = 87.48g (approx. 7.5 tolas)
-      const silverNisabGrams = 612.36;
-      const goldNisabGrams = 87.48;
+      // Classical & Contemporary Nisab Standards:
+      // Subcontinent / Classical Hanafi: Silver = 612.36g (52.5 tolas), Gold = 87.48g (7.5 tolas)
+      // Contemporary International / OIC: Silver = 595.00g (200 dirhams), Gold = 85.00g (20 mithqals)
+      const silverHanafiGrams = 612.36;
+      const silverMetricGrams = 595.00;
+      const goldHanafiGrams = 87.48;
+      const goldMetricGrams = 85.00;
 
-      const silverNisabThreshold = silverNisabGrams * silverPricePerGram;
-      const goldNisabThreshold = goldNisabGrams * goldPricePerGram;
+      const silverNisabThreshold = silverHanafiGrams * silverPricePerGram;
+      const goldNisabThreshold = goldHanafiGrams * goldPricePerGram;
 
-      const activeNisabThreshold = nisabStandard === 'gold' ? goldNisabThreshold : silverNisabThreshold;
+      let activeNisabGrams = silverHanafiGrams;
+      let activeNisabThreshold = silverNisabThreshold;
+      let activeNisabLabel = 'Silver (Hanafi / 612.36g)';
+
+      if (nisabStandard === 'silver_metric') {
+        activeNisabGrams = silverMetricGrams;
+        activeNisabThreshold = silverMetricGrams * silverPricePerGram;
+        activeNisabLabel = 'Silver (OIC Metric / 595g)';
+      } else if (nisabStandard === 'gold' || nisabStandard === 'gold_hanafi') {
+        activeNisabGrams = goldHanafiGrams;
+        activeNisabThreshold = goldNisabThreshold;
+        activeNisabLabel = 'Gold (Hanafi / 87.48g)';
+      } else if (nisabStandard === 'gold_metric') {
+        activeNisabGrams = goldMetricGrams;
+        activeNisabThreshold = goldMetricGrams * goldPricePerGram;
+        activeNisabLabel = 'Gold (OIC Metric / 85g)';
+      } else {
+        activeNisabGrams = silverHanafiGrams;
+        activeNisabThreshold = silverNisabThreshold;
+        activeNisabLabel = 'Silver (Hanafi / 612.36g)';
+      }
+
       const isEligible = netZakatableWealth >= activeNisabThreshold;
       const zakatDue = isEligible ? netZakatableWealth * 0.025 : 0;
 
@@ -312,6 +335,8 @@ const IslamicTools = (() => {
         silverNisabThreshold,
         goldNisabThreshold,
         activeNisabThreshold,
+        activeNisabGrams,
+        activeNisabLabel,
         nisabStandard,
         isEligible,
         zakatDue

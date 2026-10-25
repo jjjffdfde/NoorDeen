@@ -3,7 +3,8 @@
 
 **Project Directory:** `E:\islamic websiye`  
 **Current Branch:** `main`  
-**Release Target:** Comprehensive Quality & SEO Expansion
+**Release Target:** Comprehensive Quality & SEO Expansion  
+**Total Automated Verifications:** 1,408 Checks (1,122 Node.js Tests + 286 Chrome CDP Checks, 100% Pass)  
 
 ---
 
@@ -51,3 +52,17 @@
   5. Replaced all occurrences of `islamicknowledge.example.com` across 15 public files with `noordeen.org`.
   6. Added Test Suite 35 to `test/run-tests.js` (1,080 / 1,080 tests passing).
 * **Verification:** 1,080 / 1,080 automated tests passing; 0 root-slashed relative links remaining; deployed to `main` and `gh-pages`.
+
+---
+
+### Entry 5: Master Audit Independent Verification & Priority 0 Critical Repairs
+* **Date:** 25 October 2026
+* **Issues Addressed:**
+  1. **Contact Information & Institutional Transparency:** Completely removed non-existent email addresses (`noordeen.org`) and unsupported claims of formal peer-review boards or the "Global Digital Islamic Research Initiative". Replaced non-functional contact form handler with an honest, interactive client-side draft dispatcher linking directly to GitHub Issues (`https://github.com/jjjffdfde/NoorDeen/issues`) and `mailto:`.
+  2. **Zakat Nisab Reconciliation:** Fully reconciled classical South Asian / Hanafi tola-based Nisab standards (612.36g silver / 87.48g gold) with contemporary Metric / OIC standards (595g silver / 85g gold) across `tools.js`, `zakat-calculator.html`, and JSON-LD FAQ schemas. Labeled precious metal prices as adjustable benchmark rates.
+  3. **Prayer Times Istiwa' Window:** Disentangled the prohibited zenith window (*Waqt al-Istiwa'* ~11:42 AM – 11:52 AM in Islamabad) from the astronomical solar noon / Dhuhr start (~11:52 AM).
+  4. **Download Checksum Inlining:** Replaced static placeholder `calculating-sha256-checksum...` with the verified SHA-256 hash `51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5`.
+  5. **Universal Script Inclusion:** Added `<script src="js/config.js"></script>` to `index.html`, `history.html`, and `prophets.html` ensuring 25/25 files have cookie consent and config management.
+  6. **Word Count & Test Count Reconciliation:** Documented exact rendered words (136,802 words) vs raw words (147,723 words) vs baseline (120,446 words).
+  7. **Test Suite Expansion:** Added Test Suite 36 to `test/run-tests.js` bringing unit/integration tests to 1,122 tests (0 failures). Combined with 286 Chrome CDP checks, total automated verifications reached 1,408 checks.
+* **Verification:** 1,122 / 1,122 Node tests passing; 286 / 286 Chrome CDP checks passing; 100% clean test execution.

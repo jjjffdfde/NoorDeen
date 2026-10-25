@@ -339,17 +339,17 @@
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-danger); padding: 24px;">
-        <div style="font-size: 1.1rem; color: var(--color-danger); font-weight: 700;" class="font-arabic">الزوال / الاستواء</div>
-        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-danger); margin: 6px 0;">Zawal (Zenith)</div>
-        <div id="time-zawal" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:42 AM</div>
-        <div style="font-size: 0.8rem; color: var(--color-danger); font-weight: 700; margin-top: 6px;">⚠️ Prohibited Prayer Window (~10m to Dhuhr)</div>
+        <div style="font-size: 1.1rem; color: var(--color-danger); font-weight: 700;" class="font-arabic">وقت الاستواء (المكروه)</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-danger); margin: 6px 0;">Prohibited Zenith Window (Istiwa')</div>
+        <div id="time-zawal" style="font-size: 1.9rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:42 AM – 11:52 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-danger); font-weight: 700; margin-top: 6px;">⚠️ Voluntary Prayers Prohibited (~10m until Dhuhr)</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
-        <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">الظهر</div>
-        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Dhuhr (Midday)</div>
+        <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">الظهر / الزوال</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Solar Noon / Dhuhr Begins (Zawal)</div>
         <div id="time-dhuhr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:52 AM</div>
-        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Sun Declines from Meridian (Zawal Ends)</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Sun Declines from Meridian (Zawal begins Dhuhr)</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
@@ -570,7 +570,7 @@
     <div class="footer-bottom">
       <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>&copy; 2026 Islamic Knowledge Portal. Authentic, verified, and free for all Muslims worldwide.</div>
-        <div>Contact: contact@noordeen.org</div>
+        <div><a href="contact.html" style="color: inherit; text-decoration: underline;">Contact & Feedback</a> • <a href="https://github.com/jjjffdfde/NoorDeen/issues" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">GitHub Issues</a></div>
       </div>
     </div>
   </footer>
@@ -648,7 +648,7 @@
       document.getElementById('time-fajr').textContent = times.fajr;
       document.getElementById('time-sunrise').textContent = times.sunrise;
       const zawalEl = document.getElementById('time-zawal');
-      if (zawalEl) zawalEl.textContent = times.zawalStart;
+      if (zawalEl) zawalEl.textContent = `${times.zawalStart} – ${times.dhuhr}`;
       document.getElementById('time-dhuhr').textContent = times.dhuhr;
       document.getElementById('time-asr').textContent = times.asr;
       document.getElementById('time-maghrib').textContent = times.maghrib;
