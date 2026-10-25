@@ -1,12 +1,14 @@
 {
-  "apkFilename": "islamic-portal-release.apk",
-  "apkSizeBytes": 142692,
-  "apkSizeMb": "0.14",
-  "apkSha256": "51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5",
-  "bundleFilename": "islamic-portal-offline-bundle.zip",
-  "bundleSizeBytes": 141183,
-  "bundleSizeMb": "0.13",
-  "bundleSha256": "f3d7fefb37747d7b4ab529646b7e7b75439d917b51f16bcf01cbc2a1fe3c6753",
-  "version": "1.2.0",
-  "buildDate": "2026-10-23"
+  "versionName": "1.2.0",
+  "versionCode": 10200,
+  "minSdk": 22,
+  "targetSdk": 34,
+  "compileSdk": 34,
+  "packageId": "com.islamicknowledge.portal",
+  "appName": "NoorDeen",
+  "apkSize": 957044,
+  "apkSha256": "413aa8666b82ec5f91dabd48648c28830ff6a6b82b8e494107a0b108a58c48e7",
+  "zipSize": 861181,
+  "zipSha256": "fe528dc6ab6193df02deac03aaff72cc41e5ff8b31ead38a3915de8c520149d1",
+  "lastUpdated": "2026-10-25T11:43:46.554Z"
 }

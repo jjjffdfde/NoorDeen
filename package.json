@@ -11,7 +11,8 @@
     "build:seo": "node scripts/seo-pwa-enhancer.js",
     "sync:android-assets": "node scripts/build-android-assets.cjs",
     "android:sync": "node scripts/build-android-assets.cjs && npx cap copy android",
-    "android:open": "npx cap open android"
+    "android:open": "npx cap open android",
+    "build:apk": "node scripts/build-complete-apk.cjs"
   },
   "dependencies": {
     "@capacitor/android": "^5.7.0",
