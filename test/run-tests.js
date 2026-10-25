@@ -773,7 +773,7 @@ async function runTestSuite() {
 
   // 6. Structured Schema & SEO BreadcrumbList
   assert(fullSeerahHtml.includes('"@type": "BreadcrumbList"'), 'Seerah page contains valid Schema.org BreadcrumbList');
-  assert(fullSeerahHtml.includes('https://islamicknowledge.example.com/seerah.html'), 'Seerah page defines canonical OpenGraph and link rel canonical URLs');
+  assert(fullSeerahHtml.includes('https://jjjffdfde.github.io/NoorDeen/seerah.html'), 'Seerah page defines canonical OpenGraph and link rel canonical URLs');
 
   // --- TEST SUITE 25: Phase 5 Comprehensive Sahaba Biographies & Quranic Prophets Library ---
   console.log('\n--- TEST SUITE 25: Phase 5 Comprehensive Sahaba Biographies & Quranic Prophets Library ---');
@@ -859,9 +859,9 @@ async function runTestSuite() {
 
   // 11. Schema.org Breadcrumbs & Canonical Link Metadata
   assert(fullSahabaHtml.includes('"@type": "BreadcrumbList"'), 'Sahaba page contains valid Schema.org BreadcrumbList');
-  assert(fullSahabaHtml.includes('https://islamicknowledge.example.com/sahaba.html'), 'Sahaba page defines canonical URL');
+  assert(fullSahabaHtml.includes('https://jjjffdfde.github.io/NoorDeen/sahaba.html'), 'Sahaba page defines canonical URL');
   assert(fullProphetsHtml.includes('"@type": "BreadcrumbList"'), 'Prophets page contains valid Schema.org BreadcrumbList');
-  assert(fullProphetsHtml.includes('https://islamicknowledge.example.com/prophets.html'), 'Prophets page defines canonical URL');
+  assert(fullProphetsHtml.includes('https://jjjffdfde.github.io/NoorDeen/prophets.html'), 'Prophets page defines canonical URL');
 
   // --- TEST SUITE 26: Phase 6 Comprehensive Islamic History Library & Civilizational Archives ---
   console.log('\n--- TEST SUITE 26: Phase 6 Comprehensive Islamic History Library & Civilizational Archives ---');
@@ -922,7 +922,7 @@ async function runTestSuite() {
 
   // 8. Schema.org Breadcrumbs & Canonical Link Metadata
   assert(fullHistoryHtml.includes('"@type": "BreadcrumbList"'), 'History page contains valid Schema.org BreadcrumbList');
-  assert(fullHistoryHtml.includes('https://islamicknowledge.example.com/history.html'), 'History page defines canonical URL');
+  assert(fullHistoryHtml.includes('https://jjjffdfde.github.io/NoorDeen/history.html'), 'History page defines canonical URL');
 
   // --- TEST SUITE 27: Phase 8 UX, UI, Accessibility & Responsive Consistency ---
   console.log('\n--- TEST SUITE 27: Phase 8 UX, UI, Accessibility & Responsive Consistency ---');
@@ -999,11 +999,11 @@ async function runTestSuite() {
   // 3. XML Sitemap 25-Page Coverage & Robots.txt Integrity
   const phase9Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
   suite28Pages.forEach(p => {
-    const url = p === 'index.html' ? 'https://islamicknowledge.example.com/' : `https://islamicknowledge.example.com/${p}`;
+    const url = p === 'index.html' ? 'https://jjjffdfde.github.io/NoorDeen/' : `https://jjjffdfde.github.io/NoorDeen/${p}`;
     assert(phase9Sitemap.includes(url), `XML sitemap indexes canonical URL ${url}`);
   });
   const phase9Robots = fs.readFileSync(path.join(PUBLIC_DIR, 'robots.txt'), 'utf-8');
-  assert(phase9Robots.includes('Sitemap: https://islamicknowledge.example.com/sitemap.xml'), 'Robots.txt advertises production sitemap location');
+  assert(phase9Robots.includes('Sitemap: https://jjjffdfde.github.io/NoorDeen/sitemap.xml'), 'Robots.txt advertises production sitemap location');
   assert(phase9Robots.includes('Allow: /'), 'Robots.txt permits public crawling of knowledge resources');
 
   // 4. Android Release Artifact & SHA-256 Checksum Cryptographic Verification
@@ -1042,7 +1042,7 @@ async function runTestSuite() {
     assert(!descM[1].includes('TODO') && !descM[1].includes('placeholder'), `Page ${p} contains no placeholder metadata`);
 
     const canonM = pageHtml.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
-    assert(canonM && canonM[1].startsWith('https://islamicknowledge.example.com/'), `Page ${p} defines production canonical URL`);
+    assert(canonM && canonM[1].startsWith('https://jjjffdfde.github.io/NoorDeen/'), `Page ${p} defines production canonical URL`);
   });
 
   // --- TEST SUITE 29: Mobile-First Responsiveness, Viewport Boundaries & App Navigation ---

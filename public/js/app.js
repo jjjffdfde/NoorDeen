@@ -79,7 +79,9 @@ class Application {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const swUrl = basePath + 'service-worker.js';
+        navigator.serviceWorker.register(swUrl)
           .then(registration => {
             console.log('[PWA] Service Worker registered successfully with scope:', registration.scope);
           })
