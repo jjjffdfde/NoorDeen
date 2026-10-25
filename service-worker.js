@@ -7,43 +7,44 @@ const CACHE_NAME = 'islamic-portal-shell-v2';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/quran.html',
-  '/hadith.html',
-  '/kalimas.html',
-  '/duas.html',
-  '/seerah.html',
-  '/prophets.html',
-  '/sahaba.html',
-  '/history.html',
-  '/pillars.html',
-  '/salah-guide.html',
-  '/wudu-guide.html',
-  '/janazah-guide.html',
-  '/eid-guide.html',
-  '/download-app.html',
-  '/prayer-times.html',
-  '/tasbih.html',
-  '/zakat-calculator.html',
-  '/calendar.html',
-  '/bookmarks.html',
-  '/about.html',
-  '/contact.html',
-  '/sources.html',
-  '/privacy.html',
-  '/terms.html',
-  '/manifest.json',
-  '/css/main.css',
-  '/js/config.js',
-  '/js/data.js',
-  '/js/i18n.js',
-  '/js/tools.js',
-  '/js/search.js',
-  '/js/quran.js',
-  '/js/app.js',
-  '/icons/icon-192.svg',
-  '/icons/icon-512.svg'
+  './',
+  './index.html',
+  './quran.html',
+  './hadith.html',
+  './kalimas.html',
+  './duas.html',
+  './seerah.html',
+  './prophets.html',
+  './sahaba.html',
+  './history.html',
+  './pillars.html',
+  './salah-guide.html',
+  './wudu-guide.html',
+  './janazah-guide.html',
+  './eid-guide.html',
+  './download-app.html',
+  './prayer-times.html',
+  './tasbih.html',
+  './zakat-calculator.html',
+  './calendar.html',
+  './bookmarks.html',
+  './about.html',
+  './contact.html',
+  './sources.html',
+  './privacy.html',
+  './terms.html',
+  './manifest.json',
+  './css/main.css',
+  './js/config.js',
+  './js/data.js',
+  './js/i18n.js',
+  './js/tools.js',
+  './js/search.js',
+  './js/quran.js',
+  './js/app.js',
+  './js/sahaba-urdu.js',
+  './icons/icon-192.svg',
+  './icons/icon-512.svg'
 ];
 
 // 1. Install Event: Pre-cache core shell
@@ -114,7 +115,7 @@ self.addEventListener('fetch', (event) => {
         }).catch(() => {
           // Fallback to index.html for navigation requests if offline
           if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match('./index.html') || caches.match('index.html');
           }
         });
       })
