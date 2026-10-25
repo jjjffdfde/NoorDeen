@@ -43,6 +43,60 @@
         }
       },
       {
+        "@type": "FAQPage",
+        "@id": "https://jjjffdfde.github.io/NoorDeen/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What Quranic text and narration standard does NoorDeen utilize?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NoorDeen utilizes the verified Tanzil Uthmani script according to the canonical Hafs 'an 'Asim narration, comprising all 114 Surahs and exactly 6,236 Ayahs. The script adheres strictly to the King Fahd Complex standard with authentic diacritics and verse numbering."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are Hadith narrations selected, sourced, and authenticated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every tradition is derived from the canonical Kutub al-Sittah (Sahih al-Bukhari, Sahih Muslim, Sunan Abi Dawud, Jami' at-Tirmidhi, Sunan an-Nasa'i, and Sunan Ibn Majah). Each Hadith entry explicitly records the Arabic text with Tashkeel, primary narrator, collection name, book and chapter number, and verified scholarly grading."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are astronomical prayer times and solar angles calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Prayer times are calculated locally using high-precision astronomical solar algorithms based on your latitude, longitude, and elevation. Supported calculation conventions include University of Islamic Sciences Karachi (18°/18°), Muslim World League (18°/17°), Islamic Society of North America (15°/15°), and Umm al-Qura Makkah, with customizable Hanafi (shadow length 2) and Shafi'i/Maliki/Hanbali (shadow length 1) Asr jurisprudence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does the Zakat Calculator offer both Gold and Silver Nisab options?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Classical jurisprudence recognizes both gold (20 Dinars / 85g or 87.48g Hanafi) and silver (200 Dirhams / 595g or 612.36g Hanafi) as Nisab thresholds. In contemporary economics, the silver threshold is lower, which maximally benefits the poor and eligible recipients (Masarif), whereas the gold threshold reflects original purchasing power parity. NoorDeen enables users to select their preferred standard with live valuation support."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can NoorDeen be installed and accessed completely offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. NoorDeen operates as an offline-first Progressive Web App (PWA) with Service Worker caching. Once visited or installed via Chrome, Edge, or Safari, the complete portal functions without an internet connection. Additionally, a standalone 25-page offline desktop bundle is available for instant offline study."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my prayer locations, calculation numbers, or reading bookmarks stored on remote servers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. NoorDeen operates under a strict client-side privacy architecture. All coordinates, calculation inputs, reading progress, and saved bookmarks reside exclusively in your device's local browser storage (localStorage). Zero user tracking, telemetry, or remote advertising profiles exist on our platform."
+            }
+          }
+        ]
+      },
+      {
         "@type": "Organization",
         "@id": "https://jjjffdfde.github.io/NoorDeen/#organization",
         "name": "Islamic Knowledge Foundation",
@@ -285,10 +339,10 @@
         <div class="knowledge-hub-icon-badge">👥</div>
         <h3 class="knowledge-hub-title">Lives of the Sahaba</h3>
         <p class="knowledge-hub-desc">
-          14 in-depth biographical accounts of the Rightly-Guided Caliphs, the 10 Promised Paradise, and the Mothers of the Believers with classical citations.
+          52 in-depth biographical accounts spanning the Four Rightly-Guided Caliphs, the Ten Promised Paradise (Asharah Mubasharah), Mothers of the Believers, and eminent Muhajirun & Ansar.
         </p>
         <div class="knowledge-hub-meta">
-          <span>14 Biographies • Siyar A'lam</span>
+          <span>52 Biographies • Siyar A'lam</span>
           <span>Read Biographies →</span>
         </div>
       </a>
@@ -298,10 +352,10 @@
         <div class="knowledge-hub-icon-badge">📜</div>
         <h3 class="knowledge-hub-title">Stories of the Prophets</h3>
         <p class="knowledge-hub-desc">
-          Authentic Quranic narratives of 17 Prophets from Adam (AS) to Isa (AS) derived from classical *Qisas al-Anbiya* with theological lessons.
+          Authentic Quranic narratives of all 25 Prophets explicitly mentioned in the Holy Quran from Adam (AS) to Muhammad ﷺ, plus 5 exemplary righteous figures from classical *Qisas al-Anbiya*.
         </p>
         <div class="knowledge-hub-meta">
-          <span>17 Prophets • Ibn Kathir</span>
+          <span>25 Prophets • Ibn Kathir</span>
           <span>Explore Stories →</span>
         </div>
       </a>
@@ -350,7 +404,7 @@
     <!-- SECTION 2: BALANCED DAILY FOUNDATIONS & SOLAR OBSERVATORY -->
     <div class="daily-foundations-grid">
       
-      <!-- Left: Today's Spiritual Wisdom -->
+      <!-- Left: Today's Spiritual Wisdom & Prophetic Guidance -->
       <div class="daily-wisdom-card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 10px;">
           <span style="font-size: 0.82rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em;">
@@ -364,15 +418,39 @@
         <p class="font-quran" style="font-size: 1.45rem; line-height: 2.1; margin-bottom: 12px; color: var(--color-text-main);" dir="rtl" lang="ar" translate="no">
           اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ...
         </p>
-        <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted); margin-bottom: 18px; flex-grow: 1;">
+        <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted); margin-bottom: 14px;">
           "Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth..."
         </p>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border-subtle); padding-top: 12px; flex-wrap: wrap; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--color-border-subtle); padding-top: 10px; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
           <span style="font-size: 0.82rem; color: var(--color-gold-dark); font-weight: 700;">Ayatul Kursi • Greatest Ayah</span>
-          <a href="quran.html?surah=2&verse=255" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.85rem;">
+          <a href="quran.html?surah=2&verse=255" class="btn btn-primary" style="padding: 5px 14px; font-size: 0.82rem;">
             Read in Quran →
           </a>
+        </div>
+
+        <!-- Prophetic Guidance (Daily Hadith) -->
+        <div style="margin-top: auto; padding-top: 14px; border-top: 2px solid var(--color-border-subtle);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-gold-dark); text-transform: uppercase; letter-spacing: 0.05em;">
+              📜 Daily Prophetic Guidance
+            </span>
+            <span style="font-size: 0.76rem; background: var(--color-surface); padding: 3px 8px; border-radius: var(--radius-sm); font-weight: 600;">
+              Sahih al-Bukhari #1
+            </span>
+          </div>
+          <p class="font-quran" style="font-size: 1.12rem; line-height: 1.85; margin-bottom: 8px; color: var(--color-text-main);" dir="rtl" lang="ar" translate="no">
+            إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى...
+          </p>
+          <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text-muted); margin-bottom: 10px;">
+            "Actions are judged solely by intentions, and every person will have only that which they intended..." — Narrated by Umar ibn al-Khattab (RA).
+          </p>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; color: var(--color-primary); font-weight: 700;">Foundation of Deen • Muttafaqun 'Alayh</span>
+            <a href="hadith.html" class="btn btn-outline" style="padding: 4px 12px; font-size: 0.8rem;">
+              Explore 40+ Hadiths →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -742,7 +820,253 @@
       </div>
     </section>
 
-    <!-- SECTION 6: METHODOLOGY & INTEGRITY GUARANTEE -->
+    <!-- SECTION 6: GUIDED ISLAMIC LEARNING PATHWAYS -->
+    <section style="margin-bottom: 48px;">
+      <div class="section-header" style="margin-bottom: 20px;">
+        <div>
+          <h2 class="section-title" style="font-size: 1.4rem; color: var(--color-primary); font-family: var(--font-heading);">
+            <span>🧭</span> Guided Islamic Learning Pathways
+          </h2>
+          <p class="section-subtitle" style="font-size: 0.88rem; color: var(--color-text-muted);">
+            Structured curriculum tracks designed for new Muslims, lifelong students, and daily worshipers
+          </p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px;">
+        
+        <!-- Track 1: Foundations of Faith -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--color-primary); padding: 20px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="font-size: 1.4rem;">🏛️</span>
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em;">Curriculum Track 1</span>
+                <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Foundations of Faith (Usul al-Deen)</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              Essential theological creed, the declarations of faith, and ritual purification required for daily communion with Allah.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px;">
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">1.</span> <a href="kalimas.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Six Kalimas & Tawheed</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">2.</span> <a href="pillars.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Five Pillars of Islam</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">3.</span> <a href="wudu-guide.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Step-by-Step Wudu & Purification</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">4.</span> <a href="salah-guide.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Five Daily Prayers (Salah Guide)</a>
+              </li>
+            </ul>
+          </div>
+          <a href="pillars.html" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 7px;">
+            Start Track 1 →
+          </a>
+        </div>
+
+        <!-- Track 2: Quranic Journey -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--color-gold); padding: 20px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="font-size: 1.4rem;">📖</span>
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-gold-dark); text-transform: uppercase; letter-spacing: 0.05em;">Curriculum Track 2</span>
+                <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main); margin: 0;">The Quranic Journey (Tilawah)</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              Systematic scriptural reading, reflection, memorization, and classical recitation with verified Tanzil Hafs Uthmani text.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px;">
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">1.</span> <a href="quran.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">114 Surahs Tanzil Hafs Text</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">2.</span> <a href="quran.html?surah=67" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Essential Devotional Surahs</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">3.</span> <a href="quran.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Master Reciters Audio Player</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">4.</span> <a href="bookmarks.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Saved Ayahs & Reading History</a>
+              </li>
+            </ul>
+          </div>
+          <a href="quran.html" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 7px;">
+            Start Track 2 →
+          </a>
+        </div>
+
+        <!-- Track 3: Prophetic Legacy -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--color-primary); padding: 20px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="font-size: 1.4rem;">🌹</span>
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em;">Curriculum Track 3</span>
+                <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Prophetic Legacy & Sunnah</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              Follow the life and moral character of Prophet Muhammad ﷺ, canonical Kutub al-Sittah Hadith, and companion biographies.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px;">
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">1.</span> <a href="seerah.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Chronological Prophetic Seerah</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">2.</span> <a href="hadith.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Kutub al-Sittah Hadith Library</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">3.</span> <a href="sahaba.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Lives of 52 Eminent Sahaba</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">4.</span> <a href="duas.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Masnoon Duas & Daily Adhkar</a>
+              </li>
+            </ul>
+          </div>
+          <a href="hadith.html" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 7px;">
+            Start Track 3 →
+          </a>
+        </div>
+
+        <!-- Track 4: Practical Worship & Tools -->
+        <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; border-top: 4px solid var(--color-gold); padding: 20px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+              <span style="font-size: 1.4rem;">⚖️</span>
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; color: var(--color-gold-dark); text-transform: uppercase; letter-spacing: 0.05em;">Curriculum Track 4</span>
+                <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text-main); margin: 0;">Practical Worship & Living</h3>
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 14px;">
+              High-precision astronomical prayer calculation, dual-Nisab Zakat assessment, and communal worship guidance.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px;">
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">1.</span> <a href="prayer-times.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Solar Prayer Times & Qibla</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">2.</span> <a href="zakat-calculator.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Dual-Nisab Zakat Calculator</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">3.</span> <a href="janazah-guide.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Funeral Prayer (Janazah) Guide</a>
+              </li>
+              <li style="display: flex; align-items: center; gap: 6px;">
+                <span style="color: var(--color-gold);">4.</span> <a href="tasbih.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Digital Tasbih & Dhikr Counter</a>
+              </li>
+            </ul>
+          </div>
+          <a href="prayer-times.html" class="btn btn-outline" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 7px;">
+            Start Track 4 →
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: FREQUENTLY ASKED QUESTIONS (AdSense E-E-A-T & SCHOLARLY INQUIRIES) -->
+    <section style="margin-bottom: 48px;">
+      <div class="section-header" style="margin-bottom: 20px;">
+        <div>
+          <h2 class="section-title" style="font-size: 1.4rem; color: var(--color-primary); font-family: var(--font-heading);">
+            <span>❓</span> Frequently Asked Questions (FAQ)
+          </h2>
+          <p class="section-subtitle" style="font-size: 0.88rem; color: var(--color-text-muted);">
+            Authoritative answers regarding our scriptural sources, calculation algorithms, privacy model, and offline usage
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-group">
+        
+        <!-- FAQ 1 -->
+        <details class="faq-card" open>
+          <summary class="faq-summary">
+            <span>What Quranic text and narration standard does NoorDeen utilize?</span>
+            <span class="faq-icon-indicator">▼</span>
+          </summary>
+          <div class="faq-content">
+            <p>
+              NoorDeen utilizes the verified Tanzil Uthmani script adhering strictly to the canonical <strong>Hafs 'an 'Asim</strong> narration, comprising all 114 Surahs and exactly 6,236 Ayahs. The script conforms directly to the King Fahd Glorious Quran Printing Complex standard in Madinah al-Munawwarah. Every verse is displayed with complete diacritics (Tashkeel) and pauses, and translations can be toggled without mutating or altering the sacred Arabic archetype.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="faq-card">
+          <summary class="faq-summary">
+            <span>How are Hadith narrations selected, sourced, and authenticated?</span>
+            <span class="faq-icon-indicator">▼</span>
+          </summary>
+          <div class="faq-content">
+            <p>
+              Every tradition in our Hadith library is sourced directly from the recognized canonical collections (<em>Kutub al-Sittah</em>): <em>Sahih al-Bukhari</em>, <em>Sahih Muslim</em>, <em>Sunan Abi Dawud</em>, <em>Jami' at-Tirmidhi</em>, <em>Sunan an-Nasa'i</em>, and <em>Sunan Ibn Majah</em>. Each entry features full Arabic text with Tashkeel, the primary narrator chain, collection and book citation, Hadith numbering, and explicit scholarly grading (e.g., <em>Muttafaqun 'Alayh</em>, <em>Sahih</em>, or <em>Hasan</em>). We strictly exclude unauthenticated or fabricated (<em>Mawdu'</em>) narrations.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="faq-card">
+          <summary class="faq-summary">
+            <span>How are astronomical prayer times and solar angles calculated?</span>
+            <span class="faq-icon-indicator">▼</span>
+          </summary>
+          <div class="faq-content">
+            <p>
+              Prayer times are calculated entirely on your device using high-precision astronomical solar positioning algorithms. The engine determines the solar transit (zenith/Zawal), equation of time, and solar declination based on your coordinates. We support internationally recognized calculation conventions including the University of Islamic Sciences Karachi (18° Fajr / 18° Isha), Muslim World League (18° / 17°), Islamic Society of North America (15° / 15°), and Umm al-Qura Makkah. Users can also select between Hanafi (shadow length ratio 2) and Shafi'i/Maliki/Hanbali (shadow length ratio 1) for Asr prayer.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="faq-card">
+          <summary class="faq-summary">
+            <span>Why does the Zakat Calculator offer both Gold and Silver Nisab options?</span>
+            <span class="faq-icon-indicator">▼</span>
+          </summary>
+          <div class="faq-content">
+            <p>
+              Classical Islamic jurisprudence established two standards for the poverty threshold (Nisab): 20 Dinars of Gold (85g metric / 87.48g Hanafi) and 200 Dirhams of Silver (595g metric / 612.36g Hanafi). In the modern global economy, the silver threshold represents a substantially lower monetary value, meaning more individuals become liable to pay Zakat, which directly maximizes support for the eight Quranic recipient categories (<em>Masarif al-Zakat</em>, Surah At-Tawbah 9:60). Conversely, some jurists advocate the gold standard to reflect original purchasing power. NoorDeen transparently provides both standards with configurable precious metal valuations.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="faq-card">
+          <summary class="faq-summary">
+            <span>Can NoorDeen be installed and accessed completely offline?</span>
+            <span class="faq-icon-indicator">▼</span>
+          </summary>
+          <div class="faq-content">
+            <p>
+              Yes. NoorDeen is engineered as an offline-first Progressive Web App (PWA). Modern browsers (Chrome, Edge, Safari, Brave) will prompt you to install the portal to your home screen or desktop. Once cached by our Service Worker, all 25 pages, Quran scriptures, Hadith texts, and calculation engines operate seamlessly without an internet connection. Furthermore, a standalone 25-page offline desktop bundle (ZIP) is available from our <a href="download-app.html" style="color: var(--color-primary); font-weight: 600;">Download Center</a> with SHA-256 verification.
+            </p>
+          </div>
+        </details>
+
+        <!-- FAQ 6 -->
+        <details class="faq-card">
+          <summary class="faq-summary">
+            <span>Are my prayer locations, calculation numbers, or reading bookmarks stored on remote servers?</span>
+            <span class="faq-icon-indicator">▼</span>
+          </summary>
+          <div class="faq-content">
+            <p>
+              No. NoorDeen operates under a strict zero-telemetry, client-side privacy architecture. Your GPS coordinates, city selections, Zakat financial numbers, Quran reading bookmarks, and Tasbih counts remain 100% within your device's browser local storage (<code>localStorage</code>). We do not operate remote tracking servers, advertising cookies, or behavioral trackers.
+            </p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- SECTION 8: METHODOLOGY & INTEGRITY GUARANTEE -->
     <section class="card" style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 28px; margin-bottom: 48px; text-align: center;">
       <div style="max-width: 720px; margin: 0 auto;">
         <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🛡️</span>
@@ -754,7 +1078,7 @@
         </p>
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
           <a href="sources.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Source Provenance & Licensing</a>
-          <a href="download-app.html" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.85rem;">Download Standalone Android APK (142 KB)</a>
+          <a href="download-app.html" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.85rem;">📱 Install Web App & Offline Bundle</a>
         </div>
       </div>
     </section>
