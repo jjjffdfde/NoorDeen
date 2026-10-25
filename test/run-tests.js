@@ -1308,6 +1308,51 @@ async function runTestSuite() {
   assert(ptHtml.includes('Gujranwala') && ptHtml.includes('Multan'), 'Suite 33: prayer-times.html city select contains Gujranwala and Multan');
   assert(ptHtml.includes('id="time-zawal"'), 'Suite 33: prayer-times.html contains prohibited Zawal solar zenith card');
 
+  // --- TEST SUITE 34: Master Baseline, Pre-rendered Dynamic Libraries & Reports ---
+  console.log('\n--- TEST SUITE 34: Master Baseline, Pre-rendered Libraries & Reports ---');
+  
+  // 1. Verify all 7 required reports exist and contain substantial content
+  const requiredReports = [
+    'MASTER_AUDIT.md',
+    'CONTENT_INVENTORY.md',
+    'SEO_AUDIT.md',
+    'TECHNICAL_AUDIT.md',
+    'CONTENT_SOURCE_REGISTER.md',
+    'IMPLEMENTATION_LOG.md',
+    'REMAINING_ISSUES.md'
+  ];
+  const reportsDir = path.join(__dirname, '..', 'reports');
+  assert(fs.existsSync(reportsDir), 'Suite 34: reports directory exists');
+  requiredReports.forEach(rep => {
+    const repPath = path.join(reportsDir, rep);
+    assert(fs.existsSync(repPath), `Suite 34: Report exists: reports/${rep}`);
+    const repSize = fs.statSync(repPath).size;
+    assert(repSize > 500, `Suite 34: Report reports/${rep} has substantial content (${repSize} bytes > 500 bytes)`);
+  });
+
+  // 2. Verify Duas Pre-rendered Static Cards
+  const s34_duasHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'duas.html'), 'utf-8');
+  assert(s34_duasHtml.includes('id="dua-sayyidul-istighfar"'), 'Suite 34: duas.html pre-renders Sayyidul Istighfar card');
+  assert(s34_duasHtml.includes('id="dua-qunut"'), 'Suite 34: duas.html pre-renders Dua Qunut card');
+  assert(s34_duasHtml.includes('id="dua-istikharah"'), 'Suite 34: duas.html pre-renders Dua Istikharah card');
+  assert(s34_duasHtml.includes('id="dua-distress"'), 'Suite 34: duas.html pre-renders Dhul-Nun distress supplication card');
+  const s34_duasWords = s34_duasHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  assert(s34_duasWords > 4000, `Suite 34: duas.html contains full encyclopedic text (${s34_duasWords} words > 4000 words)`);
+
+  // 3. Verify Hadith Pre-rendered Static Cards
+  const s34_hadithHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'hadith.html'), 'utf-8');
+  assert(s34_hadithHtml.includes('id="bukhari-1"'), 'Suite 34: hadith.html pre-renders Bukhari #1 (Innamal a\'malu bin-niyyat)');
+  assert(s34_hadithHtml.includes('id="muslim-223"'), 'Suite 34: hadith.html pre-renders Muslim #223 (Purity is half of Faith)');
+  assert(s34_hadithHtml.includes('id="tirmidhi-2516"'), 'Suite 34: hadith.html pre-renders Tirmidhi #2516 (Comprehensive Advice to Ibn Abbas)');
+  const s34_hadithWords = s34_hadithHtml.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  assert(s34_hadithWords > 2500, `Suite 34: hadith.html contains rich crawlable text (${s34_hadithWords} words > 2500 words)`);
+
+  // 4. Verify Server Clean Routes & Security
+  const s34_serverJs = fs.readFileSync(path.join(__dirname, '..', 'server.js'), 'utf-8');
+  assert(s34_serverJs.includes('ROUTE_ALIASES'), 'Suite 34: server.js defines clean route aliases');
+  assert(s34_serverJs.includes('X-Content-Type-Options') && s34_serverJs.includes('X-Frame-Options'), 'Suite 34: server.js enforces HTTP security headers');
+  assert(s34_serverJs.includes('!filePath.startsWith(PUBLIC_DIR)'), 'Suite 34: server.js implements path traversal protection');
+
   // SUMMARY
   console.log('\n====================================================');
   console.log(`TEST RESULTS SUMMARY:`);
