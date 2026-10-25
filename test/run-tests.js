@@ -1315,11 +1315,15 @@ async function runTestSuite() {
   const requiredReports = [
     'MASTER_AUDIT.md',
     'CONTENT_INVENTORY.md',
+    'CONTENT_QUALITY_AUDIT.md',
+    'CONTENT_SOURCE_REGISTER.md',
     'SEO_AUDIT.md',
     'TECHNICAL_AUDIT.md',
-    'CONTENT_SOURCE_REGISTER.md',
+    'UX_ACCESSIBILITY_AUDIT.md',
+    'MODULE_TEST_RESULTS.md',
     'IMPLEMENTATION_LOG.md',
-    'REMAINING_ISSUES.md'
+    'REMAINING_ISSUES.md',
+    'PAGES_DEPLOYMENT_REPORT.md'
   ];
   const reportsDir = path.join(__dirname, '..', 'reports');
   assert(fs.existsSync(reportsDir), 'Suite 34: reports directory exists');
