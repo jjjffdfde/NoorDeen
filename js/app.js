@@ -68,6 +68,13 @@ class Application {
     }
   }
 
+  // Get base path for project-subpath hosting (e.g. /NoorDeen/ vs /)
+  getBasePath() {
+    if (typeof window === 'undefined') return './';
+    const path = window.location.pathname;
+    return path.substring(0, path.lastIndexOf('/') + 1) || './';
+  }
+
   // Service Worker Registration for Offline Capability
   initServiceWorker() {
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -79,11 +86,12 @@ class Application {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const basePath = this.getBasePath();
         const swUrl = basePath + 'service-worker.js';
         navigator.serviceWorker.register(swUrl)
           .then(registration => {
             console.log('[PWA] Service Worker registered successfully with scope:', registration.scope);
+            registration.update().catch(() => {});
           })
           .catch(error => {
             console.warn('[PWA] Service Worker registration failed:', error);
@@ -143,6 +151,7 @@ class Application {
   setupMobileDrawer() {
     let overlay = document.getElementById('mobile-drawer-overlay');
     let drawer = document.getElementById('mobile-drawer');
+    const base = this.getBasePath();
 
     if (!overlay) {
       overlay = document.createElement('div');
@@ -166,25 +175,25 @@ class Application {
           <button class="btn-icon" onclick="App.closeMobileDrawer()" aria-label="Close menu">✕</button>
         </div>
         <ul class="mobile-drawer-links">
-          <li><a href="/" id="drawer-home"><span>🏠</span> <span data-i18n="nav.home">Home</span></a></li>
-          <li><a href="/quran.html" id="drawer-quran"><span>📖</span> <span data-i18n="nav.quran">Quran</span></a></li>
-          <li><a href="/hadith.html" id="drawer-hadith"><span>📜</span> <span data-i18n="nav.hadith">Hadith</span></a></li>
-          <li><a href="/kalimas.html" id="drawer-kalimas"><span>⭐</span> <span data-i18n="nav.kalimas">Kalimas</span></a></li>
-          <li><a href="/duas.html" id="drawer-duas"><span>🤲</span> <span data-i18n="nav.duas">Duas & Adhkar</span></a></li>
-          <li><a href="/seerah.html" id="drawer-seerah"><span>🕌</span> <span data-i18n="nav.seerah">Seerah</span></a></li>
-          <li><a href="/prophets.html" id="drawer-prophets"><span>✨</span> <span data-i18n="nav.prophets">Prophets</span></a></li>
-          <li><a href="/sahaba.html" id="drawer-sahaba"><span>👥</span> <span data-i18n="nav.sahaba">Sahaba</span></a></li>
-          <li><a href="/pillars.html" id="drawer-pillars"><span>🏛️</span> <span data-i18n="nav.pillars">Five Pillars</span></a></li>
-          <li><a href="/salah-guide.html" id="drawer-salah"><span>🧎</span> <span data-i18n="nav.salah">Salah Guide</span></a></li>
-          <li><a href="/janazah-guide.html" id="drawer-janazah"><span>⚰️</span> <span>Janazah Guide</span></a></li>
-          <li><a href="/eid-guide.html" id="drawer-eid"><span>🌙</span> <span>Eid Prayer Guide</span></a></li>
-          <li><a href="/download-app.html" id="drawer-download-app" style="color: var(--color-gold); font-weight: 700;"><span>📱</span> <span>Download Android App</span></a></li>
-          <li><a href="/wudu-guide.html" id="drawer-wudu"><span>💧</span> <span data-i18n="nav.wudu">Wudu Guide</span></a></li>
-          <li><a href="/prayer-times.html" id="drawer-prayer-times"><span>⏰</span> <span data-i18n="nav.prayerTimes">Prayer Times</span></a></li>
-          <li><a href="/tasbih.html" id="drawer-tasbih"><span>📿</span> <span data-i18n="nav.tasbih">Tasbih</span></a></li>
-          <li><a href="/zakat-calculator.html" id="drawer-zakat"><span>🪙</span> <span data-i18n="nav.zakat">Zakat</span></a></li>
-          <li><a href="/calendar.html" id="drawer-calendar"><span>📅</span> <span data-i18n="nav.calendar">Calendar</span></a></li>
-          <li><a href="/bookmarks.html" id="drawer-bookmarks"><span>🔖</span> <span data-i18n="nav.bookmarks">Bookmarks</span></a></li>
+          <li><a href="${base}" id="drawer-home"><span>🏠</span> <span data-i18n="nav.home">Home</span></a></li>
+          <li><a href="${base}quran.html" id="drawer-quran"><span>📖</span> <span data-i18n="nav.quran">Quran</span></a></li>
+          <li><a href="${base}hadith.html" id="drawer-hadith"><span>📜</span> <span data-i18n="nav.hadith">Hadith</span></a></li>
+          <li><a href="${base}kalimas.html" id="drawer-kalimas"><span>⭐</span> <span data-i18n="nav.kalimas">Kalimas</span></a></li>
+          <li><a href="${base}duas.html" id="drawer-duas"><span>🤲</span> <span data-i18n="nav.duas">Duas & Adhkar</span></a></li>
+          <li><a href="${base}seerah.html" id="drawer-seerah"><span>🕌</span> <span data-i18n="nav.seerah">Seerah</span></a></li>
+          <li><a href="${base}prophets.html" id="drawer-prophets"><span>✨</span> <span data-i18n="nav.prophets">Prophets</span></a></li>
+          <li><a href="${base}sahaba.html" id="drawer-sahaba"><span>👥</span> <span data-i18n="nav.sahaba">Sahaba</span></a></li>
+          <li><a href="${base}pillars.html" id="drawer-pillars"><span>🏛️</span> <span data-i18n="nav.pillars">Five Pillars</span></a></li>
+          <li><a href="${base}salah-guide.html" id="drawer-salah"><span>🧎</span> <span data-i18n="nav.salah">Salah Guide</span></a></li>
+          <li><a href="${base}janazah-guide.html" id="drawer-janazah"><span>⚰️</span> <span>Janazah Guide</span></a></li>
+          <li><a href="${base}eid-guide.html" id="drawer-eid"><span>🌙</span> <span>Eid Prayer Guide</span></a></li>
+          <li><a href="${base}download-app.html" id="drawer-download-app" style="color: var(--color-gold); font-weight: 700;"><span>📱</span> <span>Download Android App</span></a></li>
+          <li><a href="${base}wudu-guide.html" id="drawer-wudu"><span>💧</span> <span data-i18n="nav.wudu">Wudu Guide</span></a></li>
+          <li><a href="${base}prayer-times.html" id="drawer-prayer-times"><span>⏰</span> <span data-i18n="nav.prayerTimes">Prayer Times</span></a></li>
+          <li><a href="${base}tasbih.html" id="drawer-tasbih"><span>📿</span> <span data-i18n="nav.tasbih">Tasbih</span></a></li>
+          <li><a href="${base}zakat-calculator.html" id="drawer-zakat"><span>🪙</span> <span data-i18n="nav.zakat">Zakat</span></a></li>
+          <li><a href="${base}calendar.html" id="drawer-calendar"><span>📅</span> <span data-i18n="nav.calendar">Calendar</span></a></li>
+          <li><a href="${base}bookmarks.html" id="drawer-bookmarks"><span>🔖</span> <span data-i18n="nav.bookmarks">Bookmarks</span></a></li>
         </ul>
         <div style="padding: 16px; margin-top: auto; border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 10px;">
           <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="App.closeMobileDrawer(); App.openLanguageModal();">
@@ -200,10 +209,14 @@ class Application {
 
     // Mark current active link
     const currentPath = window.location.pathname;
+    const currentFile = currentPath.split('/').pop() || 'index.html';
+    const isCurrentHome = currentFile === '' || currentFile === 'index.html';
     const links = drawer.querySelectorAll('.mobile-drawer-links a');
     links.forEach(a => {
-      const href = a.getAttribute('href');
-      if (href === currentPath || (currentPath === '/' && href === '/') || (href !== '/' && currentPath.endsWith(href.replace('/', '')))) {
+      const href = a.getAttribute('href') || '';
+      const hrefFile = href.split('/').pop().split('?')[0].split('#')[0] || 'index.html';
+      const isHrefHome = href === base || hrefFile === '' || hrefFile === 'index.html';
+      if ((isCurrentHome && isHrefHome) || (!isCurrentHome && !isHrefHome && hrefFile === currentFile)) {
         a.classList.add('active');
       }
     });
@@ -268,26 +281,28 @@ class Application {
       nav.className = 'mobile-bottom-nav';
       nav.setAttribute('aria-label', 'Mobile Quick Navigation');
 
+      const base = this.getBasePath();
       const currentPath = window.location.pathname;
-      const isHome = currentPath === '/' || currentPath.endsWith('index.html') || currentPath === '';
-      const isQuran = currentPath.includes('quran.html');
-      const isPrayer = currentPath.includes('prayer-times.html');
-      const isDuas = currentPath.includes('duas.html');
+      const currentFile = currentPath.split('/').pop() || 'index.html';
+      const isHome = currentFile === '' || currentFile === 'index.html';
+      const isQuran = currentFile === 'quran.html';
+      const isPrayer = currentFile === 'prayer-times.html';
+      const isDuas = currentFile === 'duas.html';
 
       nav.innerHTML = `
-        <a href="/" class="bottom-nav-item ${isHome ? 'active' : ''}" aria-label="Home">
+        <a href="${base}" class="bottom-nav-item ${isHome ? 'active' : ''}" aria-label="Home">
           <span class="bottom-nav-icon">🏠</span>
           <span class="bottom-nav-label" data-i18n="nav.home">Home</span>
         </a>
-        <a href="/quran.html" class="bottom-nav-item ${isQuran ? 'active' : ''}" aria-label="Quran">
+        <a href="${base}quran.html" class="bottom-nav-item ${isQuran ? 'active' : ''}" aria-label="Quran">
           <span class="bottom-nav-icon">📖</span>
           <span class="bottom-nav-label" data-i18n="nav.quran">Quran</span>
         </a>
-        <a href="/prayer-times.html" class="bottom-nav-item ${isPrayer ? 'active' : ''}" aria-label="Prayer Times">
+        <a href="${base}prayer-times.html" class="bottom-nav-item ${isPrayer ? 'active' : ''}" aria-label="Prayer Times">
           <span class="bottom-nav-icon">⏰</span>
           <span class="bottom-nav-label" data-i18n="nav.prayerTimes">Prayer</span>
         </a>
-        <a href="/duas.html" class="bottom-nav-item ${isDuas ? 'active' : ''}" aria-label="Daily Duas">
+        <a href="${base}duas.html" class="bottom-nav-item ${isDuas ? 'active' : ''}" aria-label="Daily Duas">
           <span class="bottom-nav-icon">🤲</span>
           <span class="bottom-nav-label" data-i18n="nav.duas">Duas</span>
         </a>
