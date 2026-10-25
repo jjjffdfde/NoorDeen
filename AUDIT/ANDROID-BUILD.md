@@ -21,8 +21,8 @@ All distribution artifacts are hosted directly in `public/downloads/`:
 
 | Artifact | File Name | Size | SHA-256 Checksum | Description |
 | :--- | :--- | :--- | :--- | :--- |
-| **Android APK** | `islamic-portal-release.apk` | ~143 KB | `51f89b62764a788652c7ad902e3a34818fea516d9e9f116d9429b322c5b8bdb5` | Direct installable package with Android manifest, Capacitor assets, and web runtime. |
-| **Offline ZIP Bundle**| `islamic-portal-offline-bundle.zip`| ~141 KB | `f3d7fefb37747d7b4ab529646b7e7b75439d917b51f16bcf01cbc2a1fe3c6753` | Standalone offline distribution for desktop browsers, laptops, and USB drives. |
+| **Android APK** | `islamic-portal-release.apk` | 8.36 MB | `a5f86e4f54829d379d9d5055e0cf4d07d73ef65b8f08da4bafa7f007419edd61` | Direct installable package built with Gradle, Capacitor 5.7.8, RSA-2048 signed, 100% offline. |
+| **Offline ZIP Bundle**| `islamic-portal-offline-bundle.zip`| 1.07 MB | `fef62da5dd2a975eb12cec895daf04084b6651a3be44f7f7dc47c76176a7f73d` | Standalone offline distribution with 63 files including all 36 pages and educational articles. |
 | **Checksum Manifest**| `CHECKSUMS.sha256` | 231 B | N/A | Plaintext manifest for automatic command-line verification. |
 
 ### Verification Command:

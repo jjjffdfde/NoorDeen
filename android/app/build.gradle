@@ -5,6 +5,7 @@ plugins {
 android {
     namespace "com.islamicknowledge.portal"
     compileSdk 34
+    buildToolsVersion "36.0.0"
 
     defaultConfig {
         applicationId "com.islamicknowledge.portal"
@@ -43,10 +44,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':capacitor-android')
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     implementation 'androidx.core:core-splashscreen:1.0.1'

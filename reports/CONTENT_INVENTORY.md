@@ -1,9 +1,9 @@
 # CONTENT INVENTORY & PAGE-BY-PAGE AUDIT
-## Comprehensive Catalogue of All 25 Verified Pages and Modules
+## Comprehensive Catalogue of All 36 Verified Pages and Modules
 
 **Audit Date:** 25 October 2026  
-**Total Pages Inventoried:** Exactly 25 Physical HTML Files  
-**Total Visible Words across 25 Pages:** **154,899 Words** (Scripts, styles, and tags stripped)  
+**Total Pages Inventoried:** Exactly 36 Physical HTML Files (25 Root Tools + 11 Educational Articles)  
+**Total Visible Words across 36 Pages:** **201,759 Words** (Scripts, styles, and tags stripped)  
 **Dataset Scale:**
 - **Quranic Surahs:** 114 Surahs (6,236 Ayahs, Hafs 'an 'Asim standard)
 - **Hadith Library:** 101 Authenticated Traditions (Kutub al-Sittah)
@@ -13,11 +13,15 @@
 - **Prophetic Seerah:** 25 Chronological Chapters (27,600+ words)
 - **Islamic History:** 12 Historical Civilization Epochs (17,800+ words, 66 Milestones)
 - **Islamic Glossary:** 135 Terms across Creed, Fiqh, Quran, Hadith, and Tazkiyah
+- **Educational Articles Library:** 10 Comprehensive Treatises + Master Hub (28,890 words)
+- **100-Topic Master Educational Syllabus:** Fully documented across 17 classical Islamic disciplines
 - **20-Pillar Knowledge Taxonomy:** Fully integrated on Homepage and Topic Hubs
 
 ---
 
 ## 1. Complete Page Inventory Table
+
+### A. Root Pages & Interactive Worship Tools (25 Pages — 172,869 Words)
 
 | # | Route / File | Visible Words | Page Title | Status |
 | :- | :--- | :--- | :--- | :--- |
@@ -47,7 +51,23 @@
 | 24 | [`/terms` (`terms.html`)](file:///e:/islamic%20websiye/public/terms.html) | 341 words | `Terms of Service & Acceptable Use Policy — Islamic Knowledge Portal` | Complete & Verified |
 | 25 | [`/bookmarks` (`bookmarks.html`)](file:///e:/islamic%20websiye/public/bookmarks.html) | 96 words | `Your Saved Islamic Bookmarks — Private & Local Storage | Islamic Knowledge Portal` | Complete & Verified |
 
-| **TOTAL** | **25 Verified Pages** | **154,899 Words** | **Unified Islamic Knowledge Portal** | **100% Pass** |
+### B. Educational Articles Library (11 Pages — 28,890 Words)
+
+| # | Route / File | Visible Words | Page Title | Status |
+| :- | :--- | :--- | :--- | :--- |
+| 26 | [`/articles/` (`articles/index.html`)](file:///e:/islamic%20websiye/public/articles/index.html) | 2,505 words | `Islamic Educational Articles Library & 100-Topic Study Syllabus — NoorDeen` | Complete & Verified |
+| 27 | [`/articles/beginners-guide-to-islam.html`](file:///e:/islamic%20websiye/public/articles/beginners-guide-to-islam.html) | 2,718 words | `A Complete Beginner's Guide to Islam: Core Beliefs, Daily Practices & Path to Spiritual Peace` | Complete & Verified |
+| 28 | [`/articles/how-to-read-and-understand-quran.html`](file:///e:/islamic%20websiye/public/articles/how-to-read-and-understand-quran.html) | 2,495 words | `How to Read and Understand the Quran: Structure, Reflection (Tadabbur) & Daily Study Framework` | Complete & Verified |
+| 29 | [`/articles/quran-translation-vs-tafsir.html`](file:///e:/islamic%20websiye/public/articles/quran-translation-vs-tafsir.html) | 2,684 words | `Quran Translation vs Tafsir: Linguistic Inimitability, Exegetical Methodology & Classical Traditions` | Complete & Verified |
+| 30 | [`/articles/tawhid-and-the-shahadah.html`](file:///e:/islamic%20websiye/public/articles/tawhid-and-the-shahadah.html) | 2,554 words | `Tawhid and the Shahadah: Pure Monotheism, the Three Categories & Negating Shirk` | Complete & Verified |
+| 31 | [`/articles/five-pillars-of-islam.html`](file:///e:/islamic%20websiye/public/articles/five-pillars-of-islam.html) | 2,357 words | `The Five Pillars of Islam: An Exhaustive Learning Guide to the Architectural Foundations of Faith` | Complete & Verified |
+| 32 | [`/articles/salah-complete-beginners-guide.html`](file:///e:/islamic%20websiye/public/articles/salah-complete-beginners-guide.html) | 2,753 words | `Salah: A Complete Beginner's Learning Guide — Prerequisites, Movements, Recitations & Khushu'` | Complete & Verified |
+| 33 | [`/articles/wudu-ghusl-tayammum-guide.html`](file:///e:/islamic%20websiye/public/articles/wudu-ghusl-tayammum-guide.html) | 2,683 words | `Wudu, Ghusl, and Tayammum: A Practical Study Guide to Islamic Purification (Taharah)` | Complete & Verified |
+| 34 | [`/articles/hadith-and-sunnah-authenticity.html`](file:///e:/islamic%20websiye/public/articles/hadith-and-sunnah-authenticity.html) | 2,743 words | `Hadith and Sunnah: Collections, Reference Systems, and the Science of Hadith Authenticity` | Complete & Verified |
+| 35 | [`/articles/daily-adhkar-and-supplications.html`](file:///e:/islamic%20websiye/public/articles/daily-adhkar-and-supplications.html) | 2,643 words | `Daily Adhkar and Supplications: A Source-Based Guide to Morning, Evening & Bedtime Remembrances` | Complete & Verified |
+| 36 | [`/articles/zakat-educational-calculation-guide.html`](file:///e:/islamic%20websiye/public/articles/zakat-educational-calculation-guide.html) | 2,755 words | `Zakat: A Detailed Educational and Calculation Guide — Nisab, Eligible Assets & Beneficiaries` | Complete & Verified |
+
+| **TOTAL** | **36 Verified Pages** | **201,759 Words** | **Unified Islamic Knowledge Portal** | **100% Pass** |
 
 ---
 

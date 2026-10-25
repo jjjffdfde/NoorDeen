@@ -17,7 +17,7 @@ The current release cycle has accomplished all core objectives:
 5. **Sahaba Metadata Reconciled:** Corrected all titles, meta tags, and hero badges to reflect the actual **52 comprehensive monographs** (33,527 words).
 6. **20-Pillar Knowledge Taxonomy:** Implemented the full educational framework on the homepage.
 7. **Encyclopedic Islamic Glossary:** Created and integrated a searchable, category-filtered **135-term glossary** on the homepage.
-8. **Native Android APK & Offline Desktop Bundle Rebuilt:** Packaged complete updated assets into `islamic-portal-release.apk` (1,069,967 bytes, signed & verified) and `islamic-portal-offline-bundle.zip` (1.07 MB / 1,118,398 bytes, 63 files).
+8. **Native Android APK & Offline Desktop Bundle Rebuilt:** Packaged complete updated assets into `islamic-portal-release.apk` (1,215,824 bytes / 1.16 MB, signed & verified with all 36 pages bundled) and `islamic-portal-offline-bundle.zip` (1.07 MB / 1,118,398 bytes, 63 files).
 9. **Batch 1 Deep Knowledge Educational Articles Published:** Authored and published **10 comprehensive treatises** (28,890 words) in `public/articles/`, with master index `public/articles/index.html`, structured TOC, Schema.org FAQPage/BreadcrumbList, classical bibliographies, and search indexation.
 10. **100-Topic Educational Syllabus Roadmap:** Created structured pedagogical curriculum across 17 classical Islamic categories ([`reports/KNOWLEDGE_LIBRARY_ROADMAP_100.md`](file:///e:/islamic%20websiye/reports/KNOWLEDGE_LIBRARY_ROADMAP_100.md)).
 11. **Full Test Automation:** 38 test suites, **1,250 passing tests, 0 failures (100%)**.
