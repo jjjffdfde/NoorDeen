@@ -220,28 +220,105 @@
   <!-- Content -->
   <main class="container" style="padding-top: 40px; padding-bottom: 80px; max-width: 950px;">
     
-    <!-- City Selection Bar -->
-    <div class="card" style="margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; padding: 20px;">
-      <div>
-        <label for="city-select" style="font-weight: 700; margin-right: 10px; font-size: 0.95rem;">Select Major World City:</label>
-        <select id="city-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 10px 16px; font-weight: 600; font-size: 0.95rem; border: 1px solid var(--color-border); color: var(--color-text-main);">
-          <option value="21.4225,39.8262,3">Makkah al-Mukarramah (Saudi Arabia)</option>
-          <option value="24.4686,39.6142,3">Madinah al-Munawwarah (Saudi Arabia)</option>
-          <option value="31.7683,35.2137,3">Al-Quds / Jerusalem</option>
-          <option value="30.0444,31.2357,2">Cairo (Egypt)</option>
-          <option value="24.8607,67.0011,5">Karachi (Pakistan)</option>
-          <option value="33.6844,73.0479,5">Islamabad (Pakistan)</option>
-          <option value="23.8103,90.4125,6">Dhaka (Bangladesh)</option>
-          <option value="-6.2088,106.8456,7">Jakarta (Indonesia)</option>
-          <option value="3.1390,101.6869,8">Kuala Lumpur (Malaysia)</option>
-          <option value="41.0082,28.9784,3">Istanbul (Turkey)</option>
-          <option value="51.5074,-0.1278,0">London (UK)</option>
-          <option value="40.7128,-74.0060,-4">New York (USA)</option>
-        </select>
+    <!-- Advanced Prayer Settings Bar -->
+    <div class="card" style="margin-bottom: 24px; padding: 20px; width: 100%; box-sizing: border-box;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 16px;">
+        <!-- City Select -->
+        <div>
+          <label for="city-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">📍 Location / City:</label>
+          <select id="city-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="24.8607,67.0011,5,Asia/Karachi,Karachi">Karachi (Pakistan)</option>
+            <option value="31.5204,74.3587,5,Asia/Karachi,Lahore">Lahore (Pakistan)</option>
+            <option value="33.6844,73.0479,5,Asia/Karachi,Islamabad" selected>Islamabad (Pakistan)</option>
+            <option value="32.1877,74.1945,5,Asia/Karachi,Gujranwala">Gujranwala (Pakistan)</option>
+            <option value="30.1575,71.4524,5,Asia/Karachi,Multan">Multan (Pakistan)</option>
+            <option value="34.0151,71.5249,5,Asia/Karachi,Peshawar">Peshawar (Pakistan)</option>
+            <option value="30.1798,66.9750,5,Asia/Karachi,Quetta">Quetta (Pakistan)</option>
+            <option value="21.4225,39.8262,3,Asia/Riyadh,Makkah">Makkah al-Mukarramah (Saudi Arabia)</option>
+            <option value="24.4686,39.6142,3,Asia/Riyadh,Madinah">Madinah al-Munawwarah (Saudi Arabia)</option>
+            <option value="31.7683,35.2137,3,Asia/Jerusalem,Al-Quds">Al-Quds / Jerusalem</option>
+            <option value="30.0444,31.2357,2,Africa/Cairo,Cairo">Cairo (Egypt)</option>
+            <option value="23.8103,90.4125,6,Asia/Dhaka,Dhaka">Dhaka (Bangladesh)</option>
+            <option value="-6.2088,106.8456,7,Asia/Jakarta,Jakarta">Jakarta (Indonesia)</option>
+            <option value="3.1390,101.6869,8,Asia/Kuala_Lumpur,Kuala Lumpur">Kuala Lumpur (Malaysia)</option>
+            <option value="41.0082,28.9784,3,Europe/Istanbul,Istanbul">Istanbul (Turkey)</option>
+            <option value="25.2048,55.2708,4,Asia/Dubai,Dubai">Dubai (UAE)</option>
+            <option value="25.2854,51.5310,3,Asia/Qatar,Doha">Doha (Qatar)</option>
+            <option value="24.7136,46.6753,3,Asia/Riyadh,Riyadh">Riyadh (Saudi Arabia)</option>
+            <option value="51.5074,-0.1278,0,Europe/London,London">London (UK)</option>
+            <option value="48.8566,2.3522,1,Europe/Paris,Paris">Paris (France)</option>
+            <option value="43.6532,-79.3832,-5,America/Toronto,Toronto">Toronto (Canada)</option>
+            <option value="40.7128,-74.0060,-5,America/New_York,New York">New York (USA)</option>
+            <option value="-33.8688,151.2093,10,Australia/Sydney,Sydney">Sydney (Australia)</option>
+            <option value="35.6762,139.6503,9,Asia/Tokyo,Tokyo">Tokyo (Japan)</option>
+          </select>
+        </div>
+
+        <!-- Date Select -->
+        <div>
+          <label for="date-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">📅 Selected Calendar Date:</label>
+          <input type="date" id="date-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%; box-sizing: border-box;">
+        </div>
+
+        <!-- Calculation Method -->
+        <div>
+          <label for="method-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">📐 Calculation Method:</label>
+          <select id="method-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="karachi" selected>Univ. of Islamic Sciences, Karachi (18°/18°)</option>
+            <option value="mwl">Muslim World League (18°/17°)</option>
+            <option value="makkah">Umm Al-Qura, Makkah (18.5° / +90m)</option>
+            <option value="isna">ISNA — North America (15°/15°)</option>
+            <option value="egypt">Egyptian General Authority (19.5°/17.5°)</option>
+            <option value="tehran">Univ. of Tehran Geophysics (17.7°/14°)</option>
+          </select>
+        </div>
+
+        <!-- Asr Juristic Method -->
+        <div>
+          <label for="asr-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">⚖️ Asr Juristic School:</label>
+          <select id="asr-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="hanafi" selected>Hanafi (Shadow = 2x + Noon)</option>
+            <option value="standard">Standard / Shafi'i / Maliki / Hanbali (Shadow = 1x)</option>
+          </select>
+        </div>
+
+        <!-- High Latitude Rule -->
+        <div>
+          <label for="highlat-select" style="font-weight: 700; display: block; margin-bottom: 6px; font-size: 0.88rem;">🌐 High Latitude Rule:</label>
+          <select id="highlat-select" class="btn btn-outline" style="background-color: var(--color-surface); padding: 9px 12px; font-weight: 600; font-size: 0.88rem; border: 1px solid var(--color-border); color: var(--color-text-main); width: 100%;">
+            <option value="nightMiddle" selected>Middle of the Night (Nisf al-Layl)</option>
+            <option value="oneSeventh">One-Seventh of the Night (Sub' al-Layl)</option>
+            <option value="angleBased">Angle-Based Estimation (Taqdeer)</option>
+          </select>
+        </div>
       </div>
-      <button id="detect-location-btn" class="btn btn-primary" style="padding: 10px 18px; font-weight: 700;">
-        📍 Auto-Detect My Location
-      </button>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--color-border); padding-top: 14px;">
+        <button id="detect-location-btn" class="btn btn-primary" style="padding: 9px 16px; font-weight: 700; font-size: 0.88rem;">
+          📍 Auto-Detect My GPS Location
+        </button>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
+          <label for="toggle-format" style="font-weight: 600; cursor: pointer;">Time Format:</label>
+          <select id="toggle-format" class="btn btn-outline" style="background-color: var(--color-surface); padding: 6px 10px; font-size: 0.85rem; border: 1px solid var(--color-border);">
+            <option value="12" selected>12-Hour (AM / PM)</option>
+            <option value="24">24-Hour (Military)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Method & Next Prayer Notification Card -->
+    <div id="prayer-status-card" class="card" style="margin-bottom: 24px; padding: 18px 22px; background: var(--color-surface); border-left: 4px solid var(--color-primary); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+      <div>
+        <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700; letter-spacing: 0.05em;">Upcoming Prayer Window</div>
+        <div id="next-prayer-title" style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary); margin-top: 2px;">Dhuhr</div>
+        <div id="active-location-meta" style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 4px;">📍 Islamabad, Pakistan • Timezone: UTC+5 (Asia/Karachi)</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 0.85rem; color: var(--color-text-muted);">Calendar Date: <strong id="active-date-label" style="color: var(--color-text-main);">Today</strong></div>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 3px;">Method: <strong id="active-method-label" style="color: var(--color-text-main);">Univ. of Karachi (18°/18°)</strong></div>
+        <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 3px;">Asr School: <strong id="active-asr-label" style="color: var(--color-text-main);">Hanafi (2x shadow)</strong></div>
+      </div>
     </div>
 
     <!-- Prayer Times Grid -->
@@ -250,42 +327,49 @@
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
         <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">الفجر</div>
         <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Fajr (Dawn)</div>
-        <div id="time-fajr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">04:52 AM</div>
+        <div id="time-fajr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">04:57 AM</div>
         <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">True Dawn (18° Below Horizon)</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid #D97706; padding: 24px;">
         <div style="font-size: 1.1rem; color: #D97706; font-weight: 700;" class="font-arabic">الشروق</div>
         <div style="font-size: 1.25rem; font-weight: 800; color: #D97706; margin: 6px 0;">Sunrise (Shuruq)</div>
-        <div id="time-sunrise" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">06:15 AM</div>
+        <div id="time-sunrise" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">06:20 AM</div>
         <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Upper Limb Appears on Horizon</div>
+      </div>
+
+      <div class="card" style="text-align: center; border-top: 4px solid var(--color-danger); padding: 24px;">
+        <div style="font-size: 1.1rem; color: var(--color-danger); font-weight: 700;" class="font-arabic">الزوال / الاستواء</div>
+        <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-danger); margin: 6px 0;">Zawal (Zenith)</div>
+        <div id="time-zawal" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:42 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-danger); font-weight: 700; margin-top: 6px;">⚠️ Prohibited Prayer Window (~10m to Dhuhr)</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
         <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">الظهر</div>
         <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Dhuhr (Midday)</div>
-        <div id="time-dhuhr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">12:10 PM</div>
-        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Sun Declines from Meridian (Zawal)</div>
+        <div id="time-dhuhr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">11:52 AM</div>
+        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Sun Declines from Meridian (Zawal Ends)</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary); padding: 24px;">
         <div style="font-size: 1.1rem; color: var(--color-primary); font-weight: 700;" class="font-arabic">العصر</div>
         <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin: 6px 0;">Asr (Afternoon)</div>
-        <div id="time-asr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">03:32 PM</div>
-        <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Shadow Length Equals Object (Mithl 1)</div>
+        <div id="time-asr" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">03:45 PM</div>
+        <div id="asr-card-subtext" style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Hanafi: Shadow = 2x + Solar Noon</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid #B45309; padding: 24px;">
         <div style="font-size: 1.1rem; color: #B45309; font-weight: 700;" class="font-arabic">المغرب</div>
         <div style="font-size: 1.25rem; font-weight: 800; color: #B45309; margin: 6px 0;">Maghrib (Sunset)</div>
-        <div id="time-maghrib" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">06:05 PM</div>
+        <div id="time-maghrib" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">05:23 PM</div>
         <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Solar Disc Completely Disappears</div>
       </div>
 
       <div class="card" style="text-align: center; border-top: 4px solid var(--color-primary-dark); padding: 24px;">
         <div style="font-size: 1.1rem; color: var(--color-primary-dark); font-weight: 700;" class="font-arabic">العشاء</div>
         <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary-dark); margin: 6px 0;">Isha (Night)</div>
-        <div id="time-isha" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">07:35 PM</div>
+        <div id="time-isha" style="font-size: 2.2rem; font-weight: 800; color: var(--color-text-main); letter-spacing: -0.5px;">06:47 PM</div>
         <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 6px;">Disappearance of Red Evening Twilight</div>
       </div>
 
@@ -499,35 +583,162 @@
   <script src="js/search.js"></script>
   <script src="js/app.js"></script>
   <script>
-    function updateTimes() {
-      const val = document.getElementById('city-select').value;
-      const [lat, lng, tz] = val.split(',').map(Number);
-      const times = IslamicTools.calculatePrayerTimes(new Date(), lat, lng, tz);
+    let customCoords = null;
+    const STORAGE_KEY = 'ikp_prayer_times_state';
 
+    // Format Date to YYYY-MM-DD in local context
+    function formatDateYMD(d) {
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // Initialize date input to today
+    const dateInput = document.getElementById('date-select');
+    if (dateInput && !dateInput.value) {
+      dateInput.value = formatDateYMD(new Date());
+    }
+
+    // Restore saved settings from localStorage
+    try {
+      const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      if (savedState.city) document.getElementById('city-select').value = savedState.city;
+      if (savedState.date) dateInput.value = savedState.date;
+      if (savedState.method) document.getElementById('method-select').value = savedState.method;
+      if (savedState.asrMethod) document.getElementById('asr-select').value = savedState.asrMethod;
+      if (savedState.highLat) document.getElementById('highlat-select').value = savedState.highLat;
+      if (savedState.format) document.getElementById('toggle-format').value = savedState.format;
+    } catch(e) {}
+
+    function updateTimes() {
+      let lat, lng, tz, timezoneName = 'Asia/Karachi', cityName = 'Islamabad';
+      if (customCoords) {
+        lat = customCoords.lat;
+        lng = customCoords.lng;
+        tz = customCoords.tz;
+        timezoneName = customCoords.timezoneName || 'GPS Location';
+        cityName = 'My GPS Location';
+      } else {
+        const val = document.getElementById('city-select').value;
+        const parts = val.split(',');
+        lat = Number(parts[0]);
+        lng = Number(parts[1]);
+        tz = Number(parts[2]);
+        if (parts[3]) timezoneName = parts[3];
+        if (parts[4]) cityName = parts[4];
+      }
+
+      const method = document.getElementById('method-select').value;
+      const asrMethod = document.getElementById('asr-select').value;
+      const highLatMethod = document.getElementById('highlat-select').value;
+      const is24Hour = document.getElementById('toggle-format').value === '24';
+      const dateVal = dateInput.value || formatDateYMD(new Date());
+
+      const options = {
+        method,
+        asrMethod,
+        highLatMethod,
+        is24Hour
+      };
+
+      const times = IslamicTools.calculatePrayerTimes(dateVal, lat, lng, tz, options);
+
+      // Render updated prayer times
       document.getElementById('time-fajr').textContent = times.fajr;
       document.getElementById('time-sunrise').textContent = times.sunrise;
+      const zawalEl = document.getElementById('time-zawal');
+      if (zawalEl) zawalEl.textContent = times.zawalStart;
       document.getElementById('time-dhuhr').textContent = times.dhuhr;
       document.getElementById('time-asr').textContent = times.asr;
       document.getElementById('time-maghrib').textContent = times.maghrib;
       document.getElementById('time-isha').textContent = times.isha;
+
+      const asrSubtext = document.getElementById('asr-card-subtext');
+      if (asrSubtext) {
+        asrSubtext.textContent = asrMethod === 'hanafi'
+          ? 'Hanafi: Shadow = 2x + Solar Noon'
+          : 'Standard: Shadow = 1x + Solar Noon';
+      }
+
+      const methodNames = {
+        karachi: 'Univ. of Karachi (18°/18°)',
+        mwl: 'Muslim World League (18°/17°)',
+        makkah: 'Umm Al-Qura, Makkah',
+        isna: 'ISNA North America (15°/15°)',
+        egypt: 'Egyptian General Authority',
+        tehran: 'Univ. of Tehran'
+      };
+
+      document.getElementById('active-method-label').textContent = methodNames[method] || method;
+      document.getElementById('active-asr-label').textContent = asrMethod === 'hanafi' ? 'Hanafi (2x shadow)' : 'Standard / Shafi\'i (1x shadow)';
+
+      // Formatted Date Label
+      const dateParts = dateVal.split('-').map(Number);
+      const parsedDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+      const dateFormatted = parsedDate.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+      const activeDateEl = document.getElementById('active-date-label');
+      if (activeDateEl) activeDateEl.textContent = dateFormatted;
+
+      const locationMetaEl = document.getElementById('active-location-meta');
+      if (locationMetaEl) {
+        locationMetaEl.textContent = `📍 ${cityName} • Coordinates: ${lat.toFixed(4)}°, ${lng.toFixed(4)}° • Timezone: UTC${tz >= 0 ? '+' + tz : tz} (${timezoneName})`;
+      }
+
+      // Determine next upcoming prayer (relative to real current time)
+      const now = new Date();
+      const isToday = formatDateYMD(now) === dateVal;
+      let nextTitle = 'Fajr';
+      if (isToday) {
+        const curHour = now.getHours() + now.getMinutes() / 60;
+        if (curHour < times.raw.fajr) nextTitle = 'Fajr (Dawn)';
+        else if (curHour < times.raw.sunrise) nextTitle = 'Sunrise (Shuruq)';
+        else if (curHour < times.raw.dhuhr) nextTitle = 'Dhuhr (Midday)';
+        else if (curHour < times.raw.asr) nextTitle = 'Asr (Afternoon)';
+        else if (curHour < times.raw.maghrib) nextTitle = 'Maghrib (Sunset)';
+        else if (curHour < times.raw.isha) nextTitle = 'Isha (Night)';
+        else nextTitle = 'Fajr (Tomorrow Dawn)';
+      } else {
+        nextTitle = `Selected Date: ${dateFormatted}`;
+      }
+
+      const nextEl = document.getElementById('next-prayer-title');
+      if (nextEl) nextEl.textContent = nextTitle;
+
+      // Persist state in localStorage
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          city: document.getElementById('city-select').value,
+          date: dateVal,
+          method,
+          asrMethod,
+          highLat: highLatMethod,
+          format: is24Hour ? '24' : '12'
+        }));
+      } catch(e) {}
     }
 
-    document.getElementById('city-select').addEventListener('change', updateTimes);
+    document.getElementById('city-select').addEventListener('change', () => {
+      customCoords = null;
+      updateTimes();
+    });
+    dateInput.addEventListener('change', updateTimes);
+    document.getElementById('method-select').addEventListener('change', updateTimes);
+    document.getElementById('asr-select').addEventListener('change', updateTimes);
+    document.getElementById('highlat-select').addEventListener('change', updateTimes);
+    document.getElementById('toggle-format').addEventListener('change', updateTimes);
+
     document.getElementById('detect-location-btn').addEventListener('click', () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
-          const lat = pos.coords.latitude;
-          const lng = pos.coords.longitude;
-          const tz = -new Date().getTimezoneOffset() / 60;
-          const times = IslamicTools.calculatePrayerTimes(new Date(), lat, lng, tz);
-
-          document.getElementById('time-fajr').textContent = times.fajr;
-          document.getElementById('time-sunrise').textContent = times.sunrise;
-          document.getElementById('time-dhuhr').textContent = times.dhuhr;
-          document.getElementById('time-asr').textContent = times.asr;
-          document.getElementById('time-maghrib').textContent = times.maghrib;
-          document.getElementById('time-isha').textContent = times.isha;
-          if (window.App) window.App.showToast(`Updated to current location (${lat.toFixed(2)}°, ${lng.toFixed(2)}°)`);
+          customCoords = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            tz: -new Date().getTimezoneOffset() / 60,
+            timezoneName: 'Local Browser Timezone'
+          };
+          updateTimes();
+          if (window.App) window.App.showToast(`Updated to GPS location: ${customCoords.lat.toFixed(2)}°, ${customCoords.lng.toFixed(2)}°`);
         }, err => {
           if (window.App) window.App.showToast('Geolocation access denied. Using selected city.');
         });

@@ -14,6 +14,7 @@ class Application {
     this.setupLanguageModal();
     this.setupSearchModal();
     this.setupMobileDrawer();
+    this.setupMobileBottomNav();
     this.setupOfflineBanner();
     this.initServiceWorker();
     this.renderHijriDate();
@@ -205,6 +206,13 @@ class Application {
       }
     });
 
+    // Wire mobile menu buttons
+    document.querySelectorAll('.mobile-menu-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        this.drawerTriggerElement = btn;
+      });
+    });
+
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') this.closeMobileDrawer();
@@ -221,19 +229,73 @@ class Application {
   }
 
   openMobileDrawer() {
+    if (!this.drawerTriggerElement) {
+      this.drawerTriggerElement = document.activeElement;
+    }
     const overlay = document.getElementById('mobile-drawer-overlay');
     const drawer = document.getElementById('mobile-drawer');
     if (overlay) overlay.classList.add('active');
-    if (drawer) drawer.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (drawer) {
+      drawer.classList.add('active');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+    document.documentElement.classList.add('drawer-open');
   }
 
   closeMobileDrawer() {
     const overlay = document.getElementById('mobile-drawer-overlay');
     const drawer = document.getElementById('mobile-drawer');
     if (overlay) overlay.classList.remove('active');
-    if (drawer) drawer.classList.remove('active');
-    document.body.style.overflow = '';
+    if (drawer) {
+      drawer.classList.remove('active');
+      drawer.setAttribute('aria-hidden', 'true');
+    }
+    document.documentElement.classList.remove('drawer-open');
+    if (this.drawerTriggerElement) {
+      try { this.drawerTriggerElement.focus(); } catch (e) {}
+      this.drawerTriggerElement = null;
+    }
+  }
+
+  // Mobile App Bottom Navigation Bar
+  setupMobileBottomNav() {
+    let nav = document.getElementById('mobile-bottom-nav');
+    if (!nav) {
+      nav = document.createElement('nav');
+      nav.id = 'mobile-bottom-nav';
+      nav.className = 'mobile-bottom-nav';
+      nav.setAttribute('aria-label', 'Mobile Quick Navigation');
+
+      const currentPath = window.location.pathname;
+      const isHome = currentPath === '/' || currentPath.endsWith('index.html') || currentPath === '';
+      const isQuran = currentPath.includes('quran.html');
+      const isPrayer = currentPath.includes('prayer-times.html');
+      const isDuas = currentPath.includes('duas.html');
+
+      nav.innerHTML = `
+        <a href="/" class="bottom-nav-item ${isHome ? 'active' : ''}" aria-label="Home">
+          <span class="bottom-nav-icon">🏠</span>
+          <span class="bottom-nav-label" data-i18n="nav.home">Home</span>
+        </a>
+        <a href="/quran.html" class="bottom-nav-item ${isQuran ? 'active' : ''}" aria-label="Quran">
+          <span class="bottom-nav-icon">📖</span>
+          <span class="bottom-nav-label" data-i18n="nav.quran">Quran</span>
+        </a>
+        <a href="/prayer-times.html" class="bottom-nav-item ${isPrayer ? 'active' : ''}" aria-label="Prayer Times">
+          <span class="bottom-nav-icon">⏰</span>
+          <span class="bottom-nav-label" data-i18n="nav.prayerTimes">Prayer</span>
+        </a>
+        <a href="/duas.html" class="bottom-nav-item ${isDuas ? 'active' : ''}" aria-label="Daily Duas">
+          <span class="bottom-nav-icon">🤲</span>
+          <span class="bottom-nav-label" data-i18n="nav.duas">Duas</span>
+        </a>
+        <button class="bottom-nav-item" onclick="App.toggleMobileDrawer()" aria-label="Menu & Guides" type="button">
+          <span class="bottom-nav-icon">☰</span>
+          <span class="bottom-nav-label">Menu</span>
+        </button>
+      `;
+      document.body.appendChild(nav);
+    }
   }
 
   applyTheme(theme) {
@@ -292,18 +354,29 @@ class Application {
       if (mEl) mEl.textContent = times.maghrib;
       if (iEl) iEl.textContent = times.isha;
 
-      const timeToMinutes = (str) => {
-        const [h, m] = str.split(':').map(Number);
+      const timeToMinutes = (str, rawDec) => {
+        if (typeof rawDec === 'number' && !isNaN(rawDec)) {
+          return Math.round(rawDec * 60);
+        }
+        if (!str) return 0;
+        const parts = str.trim().split(/\s+/);
+        const timeParts = parts[0].split(':');
+        let h = parseInt(timeParts[0], 10);
+        const m = parseInt(timeParts[1], 10);
+        const ampm = parts[1] ? parts[1].toUpperCase() : null;
+        if (ampm === 'PM' && h < 12) h += 12;
+        if (ampm === 'AM' && h === 12) h = 0;
         return h * 60 + m;
       };
 
       const currentMins = now.getHours() * 60 + now.getMinutes();
+      const raw = times.raw || {};
       const schedule = [
-        { name: 'Fajr', mins: timeToMinutes(times.fajr) },
-        { name: 'Dhuhr', mins: timeToMinutes(times.dhuhr) },
-        { name: 'Asr', mins: timeToMinutes(times.asr) },
-        { name: 'Maghrib', mins: timeToMinutes(times.maghrib) },
-        { name: 'Isha', mins: timeToMinutes(times.isha) }
+        { name: 'Fajr', mins: timeToMinutes(times.fajr, raw.fajr) },
+        { name: 'Dhuhr', mins: timeToMinutes(times.dhuhr, raw.dhuhr) },
+        { name: 'Asr', mins: timeToMinutes(times.asr, raw.asr) },
+        { name: 'Maghrib', mins: timeToMinutes(times.maghrib, raw.maghrib) },
+        { name: 'Isha', mins: timeToMinutes(times.isha, raw.isha) }
       ];
 
       let next = schedule.find(p => p.mins > currentMins);
@@ -350,43 +423,72 @@ class Application {
   setupSearchModal() {
     const searchInputs = document.querySelectorAll('.global-search-trigger');
     searchInputs.forEach(input => {
-      input.addEventListener('focus', () => this.openSearchModal());
+      input.addEventListener('focus', () => {
+        this.searchTriggerElement = input;
+        this.openSearchModal();
+      });
     });
+
+    const searchBtn = document.getElementById('search-modal-btn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', () => {
+        this.searchTriggerElement = searchBtn;
+        this.openSearchModal();
+      });
+    }
 
     // Global keyboard shortcut: Ctrl+K or Cmd+K
     document.addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
+        this.searchTriggerElement = document.activeElement;
         this.openSearchModal();
       }
     });
   }
 
   openSearchModal() {
+    if (!this.searchTriggerElement) {
+      this.searchTriggerElement = document.activeElement;
+    }
     let modal = document.getElementById('search-modal');
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'search-modal';
       modal.className = 'modal-overlay';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Global Islamic Search');
       modal.innerHTML = `
         <div class="modal-content" style="max-width: 680px;">
           <div class="modal-header">
             <h3 style="font-size: 1.15rem; font-weight: 700;">Global Islamic Search (Phonetic & Multi-Region)</h3>
-            <button class="btn-icon" onclick="App.closeSearchModal()">✕</button>
+            <button class="btn-icon" onclick="App.closeSearchModal()" aria-label="Close search dialog">✕</button>
           </div>
           <div style="padding: 16px 24px 0;">
-            <input type="text" id="modal-search-input" class="search-input" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem;" placeholder="Search Surahs (e.g. Yaseen, Mulk, Waqiah, Rehman, Ayatul Kursi), Hadith, Duas...">
+            <input type="text" id="modal-search-input" class="search-input" style="width: 100%; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 1rem;" placeholder="Search Surahs (e.g. Yaseen, Mulk, Waqiah, Rehman, Ayatul Kursi), Hadith, Duas..." aria-label="Search across Quran, Hadith, Duas, Seerah, Sahaba, Prophets, and History">
           </div>
           <!-- Popular Daily Surahs Quick Access Row -->
           <div class="search-modal-quick-pills" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 24px; border-bottom: 1px solid var(--color-border-subtle); align-items: center; background: var(--color-surface);">
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-gold); margin-right: 4px;">Popular Daily Surahs:</span>
-            <a href="quran.html?surah=36" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">✨ Ya-Sin (36)</a>
-            <a href="quran.html?surah=67" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">👑 Al-Mulk (67)</a>
-            <a href="quran.html?surah=55" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">🕊️ Ar-Rahman (55)</a>
-            <a href="quran.html?surah=56" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">⚡ Al-Waqi'ah (56)</a>
-            <a href="quran.html?surah=2&verse=255" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">🛡️ Ayatul Kursi</a>
-            <a href="quran.html?surah=18" class="popular-surah-pill" style="font-size: 0.78rem; padding: 4px 10px;">🌟 Al-Kahf (18)</a>
+            <a href="quran.html?surah=36" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">✨ Ya-Sin (36)</a>
+            <a href="quran.html?surah=67" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">👑 Al-Mulk (67)</a>
+            <a href="quran.html?surah=55" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🕊️ Ar-Rahman (55)</a>
+            <a href="quran.html?surah=56" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">⚡ Al-Waqi'ah (56)</a>
+            <a href="quran.html?surah=2&verse=255" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🛡️ Ayatul Kursi</a>
+            <a href="quran.html?surah=18" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🌟 Al-Kahf (18)</a>
           </div>
+
+          <!-- Category Filter Chips (Phase 12 Search Enhancement) -->
+          <div class="search-category-chips" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 24px; border-bottom: 1px solid var(--color-border); align-items: center; background: var(--color-surface);">
+            <button class="search-filter-chip active" data-category="all" style="padding: 4px 10px; font-size: 0.76rem; border-radius: 99px; border: 1px solid var(--color-primary); background: var(--color-primary); color: #fff; cursor: pointer; font-weight: 600;">All</button>
+            <button class="search-filter-chip" data-category="quran" style="padding: 4px 10px; font-size: 0.76rem; border-radius: 99px; border: 1px solid var(--color-border); background: var(--color-card); color: var(--color-text-main); cursor: pointer; font-weight: 600;">📖 Quran</button>
+            <button class="search-filter-chip" data-category="hadith" style="padding: 4px 10px; font-size: 0.76rem; border-radius: 99px; border: 1px solid var(--color-border); background: var(--color-card); color: var(--color-text-main); cursor: pointer; font-weight: 600;">📜 Hadith</button>
+            <button class="search-filter-chip" data-category="duas" style="padding: 4px 10px; font-size: 0.76rem; border-radius: 99px; border: 1px solid var(--color-border); background: var(--color-card); color: var(--color-text-main); cursor: pointer; font-weight: 600;">🤲 Duas</button>
+            <button class="search-filter-chip" data-category="history" style="padding: 4px 10px; font-size: 0.76rem; border-radius: 99px; border: 1px solid var(--color-border); background: var(--color-card); color: var(--color-text-main); cursor: pointer; font-weight: 600;">🏛️ Seerah & History</button>
+            <button class="search-filter-chip" data-category="guides" style="padding: 4px 10px; font-size: 0.76rem; border-radius: 99px; border: 1px solid var(--color-border); background: var(--color-card); color: var(--color-text-main); cursor: pointer; font-weight: 600;">📚 Guides</button>
+          </div>
+
           <div class="modal-body" id="modal-search-results" style="max-height: 480px; overflow-y: auto;">
             <p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">Type at least 2 characters to search across verified texts in English, Arabic, or Urdu.</p>
           </div>
@@ -394,17 +496,61 @@ class Application {
       `;
       document.body.appendChild(modal);
 
+      // Keyboard Trap & Escape Listener on Modal
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          this.closeSearchModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll('input, button, a[href], [tabindex]:not([tabindex="-1"])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      // Close when clicking outside modal content
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          this.closeSearchModal();
+        }
+      });
+
       const input = document.getElementById('modal-search-input');
-      input.addEventListener('input', (e) => {
-        const query = e.target.value;
-        const results = window.UniversalSearch ? window.UniversalSearch.search(query) : [];
+      let activeCategory = 'all';
+
+      const renderCurrentSearchResults = () => {
+        const query = input.value;
+        const rawResults = window.UniversalSearch ? window.UniversalSearch.search(query) : [];
+        let results = rawResults;
+        if (activeCategory === 'quran') {
+          results = rawResults.filter(r => (r.type || '').includes('Quran'));
+        } else if (activeCategory === 'hadith') {
+          results = rawResults.filter(r => (r.type || '').includes('Hadith'));
+        } else if (activeCategory === 'duas') {
+          results = rawResults.filter(r => (r.type || '').includes('Supplication') || (r.type || '').includes('Kalimas'));
+        } else if (activeCategory === 'history') {
+          results = rawResults.filter(r => (r.type || '').includes('Seerah') || (r.type || '').includes('Sahaba') || (r.type || '').includes('Prophetic') || (r.type || '').includes('History'));
+        } else if (activeCategory === 'guides') {
+          results = rawResults.filter(r => (r.type || '').includes('Worship Guide'));
+        }
+
         const resBox = document.getElementById('modal-search-results');
         if (!query || query.trim().length < 2) {
-          resBox.innerHTML = '<p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">Type at least 2 characters to search across verified texts.</p>';
+          resBox.innerHTML = '<p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">Type at least 2 characters to search across verified texts in English, Arabic, or Urdu.</p>';
           return;
         }
         if (results.length === 0) {
-          resBox.innerHTML = '<p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">No verified matching records found.</p>';
+          resBox.innerHTML = '<p style="color: var(--color-text-muted); text-align: center; margin-top: 20px;">No verified matching records found in this category.</p>';
           return;
         }
         resBox.innerHTML = results.map(r => `
@@ -421,6 +567,25 @@ class Application {
             <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.4; margin: 0;">${r.snippet}</p>
           </a>
         `).join('');
+      };
+
+      input.addEventListener('input', renderCurrentSearchResults);
+
+      modal.querySelectorAll('.search-filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          modal.querySelectorAll('.search-filter-chip').forEach(c => {
+            c.style.background = 'var(--color-card)';
+            c.style.color = 'var(--color-text-main)';
+            c.style.borderColor = 'var(--color-border)';
+            c.classList.remove('active');
+          });
+          chip.style.background = 'var(--color-primary)';
+          chip.style.color = '#fff';
+          chip.style.borderColor = 'var(--color-primary)';
+          chip.classList.add('active');
+          activeCategory = chip.getAttribute('data-category');
+          renderCurrentSearchResults();
+        });
       });
     }
 
@@ -434,52 +599,121 @@ class Application {
   closeSearchModal() {
     const modal = document.getElementById('search-modal');
     if (modal) modal.style.display = 'none';
+    if (this.searchTriggerElement) {
+      try { this.searchTriggerElement.focus(); } catch (e) {}
+      this.searchTriggerElement = null;
+    }
   }
 
   // 40-Language Selector Modal
   setupLanguageModal() {
     const trigger = document.getElementById('language-selector-btn');
     if (trigger) {
-      trigger.addEventListener('click', () => this.openLanguageModal());
+      trigger.addEventListener('click', () => {
+        this.langTriggerElement = trigger;
+        this.openLanguageModal();
+      });
     }
   }
 
   openLanguageModal() {
+    if (!this.langTriggerElement) {
+      this.langTriggerElement = document.activeElement;
+    }
     let modal = document.getElementById('language-modal');
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'language-modal';
       modal.className = 'modal-overlay';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Select Interface Language');
 
       const languages = window.I18n ? window.I18n.getUISelectableLanguages() : [];
+      const currentCode = window.I18n ? window.I18n.currentLang : 'en';
 
       modal.innerHTML = `
-        <div class="modal-content" style="max-width: 500px;">
-          <div class="modal-header">
-            <h3 style="font-size: 1.15rem; font-weight: 700;">Select Interface Language</h3>
-            <button class="btn-icon" onclick="App.closeLanguageModal()">✕</button>
+        <div class="modal-content" style="max-width: 640px; max-height: 90vh; display: flex; flex-direction: column; padding: 0; overflow: hidden; border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
+          <div class="modal-header" style="padding: 16px 20px; border-bottom: 1px solid var(--color-border); background: var(--color-surface); flex-shrink: 0;">
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--color-text);">Select Interface Language</h3>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 2px 0 0 0;">Authentic scholarly translations for portal navigation & controls</p>
+            </div>
+            <button class="btn-icon" onclick="App.closeLanguageModal()" aria-label="Close language selector" style="font-size: 1.1rem; width: 34px; height: 34px;">✕</button>
           </div>
-          <div style="padding: 16px 24px 8px;">
-            <!-- Instant Reset to Default English Button -->
-            <button class="btn btn-primary" style="width: 100%; justify-content: center; gap: 8px; margin-bottom: 12px; font-weight: 700; padding: 12px; border-radius: var(--radius-sm); box-shadow: 0 4px 12px rgba(6, 95, 70, 0.2);" onclick="App.resetToDefaultLanguage()">
-              🔄 Reset to Default (English)
+
+          <div style="overflow-y: auto; padding: 18px 20px; flex: 1;">
+            <!-- Instant Reset / Default English Button -->
+            <button class="btn ${currentCode === 'en' ? 'btn-primary' : 'btn-outline'}" style="width: 100%; justify-content: center; gap: 8px; margin-bottom: 16px; font-weight: 700; padding: 11px 16px; border-radius: var(--radius-sm);" onclick="App.resetToDefaultLanguage()">
+              🔄 Default Interface (English / International)
             </button>
-            <p style="font-size: 0.86rem; color: var(--color-text-muted); margin-bottom: 4px;">Or switch to fully verified authentic translations:</p>
-          </div>
-          <div class="modal-body" style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px;" id="lang-modal-grid">
-            ${languages.map(l => `
-              <button class="btn btn-outline" style="justify-content: space-between; text-align: left; padding: 12px 18px; border-radius: var(--radius-sm);" onclick="App.selectLanguage('${l.code}')">
-                <div>
-                  <div style="font-weight: 700; font-size: 1rem;">${l.name}</div>
-                  <div style="font-size: 0.85rem; color: var(--color-primary);">${l.nativeName}</div>
-                </div>
-                ${l.dir === 'rtl' ? '<span style="font-size: 0.72rem; padding: 2px 8px; background-color: var(--color-surface); border-radius: 4px; font-weight: 700;">RTL</span>' : '<span style="font-size: 0.72rem; padding: 2px 8px; background-color: var(--color-surface); border-radius: 4px; font-weight: 700;">LTR</span>'}
-              </button>
-            `).join('')}
+
+            <div style="margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted);">
+                Verified Portal Translations (11 Languages)
+              </span>
+              <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 600;">100% Scholarly Verified</span>
+            </div>
+
+            <div class="modal-body" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; padding: 0; margin-bottom: 20px;" id="lang-modal-grid">
+              ${languages.map(l => {
+                const isActive = l.code === currentCode;
+                return `
+                <button class="btn btn-outline ${isActive ? 'lang-btn-active' : ''}" style="justify-content: space-between; text-align: left; padding: 10px 14px; border-radius: var(--radius-sm); border-color: ${isActive ? 'var(--color-primary)' : 'var(--color-border)'}; background: ${isActive ? 'rgba(6, 95, 70, 0.07)' : 'transparent'};" onclick="App.selectLanguage('${l.code}')">
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.95rem; color: var(--color-text);">${l.name} ${isActive ? '✓' : ''}</div>
+                    <div style="font-size: 0.82rem; color: var(--color-primary); font-family: var(--font-urdu, inherit);">${l.nativeName}</div>
+                  </div>
+                  <span style="font-size: 0.68rem; padding: 2px 6px; background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; font-weight: 700; color: var(--color-text-muted);">${l.dir === 'rtl' ? 'RTL' : 'LTR'}</span>
+                </button>
+              `;}).join('')}
+            </div>
+
+            <!-- Quran 40-Language Notice -->
+            <div style="padding: 14px 16px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 0.82rem; line-height: 1.5;">
+              <div style="font-weight: 700; color: var(--color-text); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                <span>📖</span> Quran Translations in 40 Global Languages
+              </div>
+              <p style="margin: 0 0 8px 0; color: var(--color-text-muted);">
+                Looking for Somali, Swahili, Russian, Chinese, German, Turkish, or other languages? The Holy Quran Reader supports verse-by-verse translation independent of your UI language while keeping the sacred Arabic text 100% immutable.
+              </p>
+              <a href="quran.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem; text-decoration: none;" onclick="App.closeLanguageModal()">
+                Open Quran Reader Translations →
+              </a>
+            </div>
           </div>
         </div>
       `;
       document.body.appendChild(modal);
+
+      // Keyboard Trap & Escape Listener on Modal
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          this.closeLanguageModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          const focusable = modal.querySelectorAll('input, button, a[href], [tabindex]:not([tabindex="-1"])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      // Close when clicking outside modal content
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          this.closeLanguageModal();
+        }
+      });
     }
     modal.style.display = 'flex';
   }
@@ -487,6 +721,10 @@ class Application {
   closeLanguageModal() {
     const modal = document.getElementById('language-modal');
     if (modal) modal.style.display = 'none';
+    if (this.langTriggerElement) {
+      try { this.langTriggerElement.focus(); } catch (e) {}
+      this.langTriggerElement = null;
+    }
   }
 
   resetToDefaultLanguage() {
@@ -494,6 +732,8 @@ class Application {
       window.I18n.resetToDefault();
       const label = document.getElementById('current-language-label');
       if (label) label.textContent = 'English';
+      const drawerLabel = document.getElementById('drawer-lang-label');
+      if (drawerLabel) drawerLabel.textContent = 'English';
       this.showToast('Restored default English interface');
     }
     this.closeLanguageModal();
@@ -505,6 +745,8 @@ class Application {
       const info = window.I18n.getLanguageInfo(code);
       const label = document.getElementById('current-language-label');
       if (label) label.textContent = info.nativeName;
+      const drawerLabel = document.getElementById('drawer-lang-label');
+      if (drawerLabel) drawerLabel.textContent = info.nativeName;
       this.showToast(`Language set to ${info.name} (${info.nativeName})`);
     }
     this.closeLanguageModal();

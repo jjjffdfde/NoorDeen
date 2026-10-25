@@ -214,8 +214,8 @@
     
     <!-- Presets Selector -->
     <div class="card" style="margin-bottom: 24px; text-align: center; padding: 22px;">
-      <label style="font-weight: 700; display: block; margin-bottom: 14px; font-size: 1rem; color: var(--color-primary);">Select Authentic Dhikr Preset:</label>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+      <label style="font-weight: 700; display: block; margin-bottom: 14px; font-size: 1rem; color: var(--color-primary);">Select Authentic Dhikr Preset or Custom Target:</label>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 16px;">
         <button class="btn btn-outline preset-btn active" data-target="33" data-phrase="سُبْحَانَ اللَّهِ" data-meaning="Glory be to Allah (33x)">
           Subhanallah (33x)
         </button>
@@ -234,11 +234,38 @@
         <button class="btn btn-outline preset-btn" data-target="100" data-phrase="سُبْحَانَ اللَّهِ وَبِحَمْدِهِ" data-meaning="Glory be to Allah and His praise (100x)">
           Subhanallahi wa bihamdihi (100x)
         </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ" data-meaning="O Allah, send blessings upon Muhammad ﷺ (100x)">
+          Salawat on Prophet ﷺ (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ" data-meaning="Sufficient for us is Allah, and He is the best Disposer of affairs (100x)">
+          Hasbunallah (100x)
+        </button>
+        <button class="btn btn-outline preset-btn" data-target="100" data-phrase="لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ" data-meaning="There is no power nor strength except through Allah (100x)">
+          Hawqalah (100x)
+        </button>
+      </div>
+
+      <!-- Custom Goal Bar -->
+      <div style="display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--color-border); padding-top: 14px;">
+        <label for="inp-custom-target" style="font-size: 0.88rem; font-weight: 600;">Custom Goal / Count:</label>
+        <input type="number" id="inp-custom-target" class="search-input" style="width: 100px; padding: 6px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 0.92rem; background: var(--color-surface); color: var(--color-text-main);" placeholder="e.g. 500" min="1" max="100000">
+        <button id="btn-set-custom-target" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem; font-weight: 600;">Set Goal</button>
       </div>
     </div>
 
     <!-- Interactive Counter Unit -->
-    <div class="counter-box" style="margin-bottom: 50px;">
+    <div class="counter-box" style="margin-bottom: 50px; position: relative;">
+      
+      <!-- Utility Toggle Controls Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding: 0 10px; flex-wrap: wrap; gap: 8px;">
+        <button id="toggle-sound-btn" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">
+          🔊 Sound: <span id="sound-status-label">ON</span>
+        </button>
+        <button id="toggle-vibrate-btn" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">
+          📳 Vibration: <span id="vibrate-status-label">ON</span>
+        </button>
+      </div>
+
       <div id="dhikr-phrase" class="font-arabic" style="font-size: 2.4rem; color: var(--color-primary); font-weight: 700; line-height: 1.6;">
         سُبْحَانَ اللَّهِ
       </div>
@@ -253,15 +280,22 @@
       </div>
 
       <!-- Giant Tap Button -->
-      <button id="tap-tasbih-btn" class="counter-btn-large" style="margin-bottom: 24px; cursor: pointer; user-select: none;">
+      <button id="tap-tasbih-btn" class="counter-btn-large" style="margin-bottom: 24px; cursor: pointer; user-select: none;" title="Tap or press Spacebar">
         TAP
       </button>
 
-      <!-- Action Buttons -->
-      <div style="display: flex; gap: 12px; justify-content: center;">
-        <button id="reset-tasbih-btn" class="btn btn-outline" style="padding: 10px 24px; font-weight: 600;">
+      <!-- Action Buttons: Undo, Reset -->
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <button id="undo-tasbih-btn" class="btn btn-outline" style="padding: 10px 22px; font-weight: 600; color: var(--color-text-muted);" title="Undo count by 1">
+          ↶ Undo (-1)
+        </button>
+        <button id="reset-tasbih-btn" class="btn btn-outline" style="padding: 10px 24px; font-weight: 600; border-color: rgba(220, 38, 38, 0.4); color: var(--color-danger);">
           ↺ Reset Count
         </button>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 0.8rem; color: var(--color-text-light);">
+        Keyboard shortcuts: <strong>Spacebar / Enter</strong> to count • <strong>Backspace / -</strong> to undo
       </div>
     </div>
 
@@ -437,6 +471,8 @@
     let currentCount = 0;
     let targetCount = 33;
     let completedCycles = 0;
+    let soundEnabled = true;
+    let vibrateEnabled = true;
 
     const valEl = document.getElementById('counter-value');
     const targetLabel = document.getElementById('target-label');
@@ -444,45 +480,138 @@
     const phraseEl = document.getElementById('dhikr-phrase');
     const meaningEl = document.getElementById('dhikr-meaning');
     const tapBtn = document.getElementById('tap-tasbih-btn');
+    const undoBtn = document.getElementById('undo-tasbih-btn');
     const resetBtn = document.getElementById('reset-tasbih-btn');
+    const soundBtn = document.getElementById('toggle-sound-btn');
+    const soundLbl = document.getElementById('sound-status-label');
+    const vibrateBtn = document.getElementById('toggle-vibrate-btn');
+    const vibrateLbl = document.getElementById('vibrate-status-label');
+    const customTargetInp = document.getElementById('inp-custom-target');
+    const setCustomTargetBtn = document.getElementById('btn-set-custom-target');
 
-    tapBtn.addEventListener('click', () => {
-      currentCount++;
+    function syncUI() {
       valEl.textContent = currentCount;
-      IslamicTools.playTasbihSound();
+      targetLabel.textContent = targetCount;
+      cyclesLabel.textContent = completedCycles;
+      if (soundLbl) soundLbl.textContent = soundEnabled ? 'ON' : 'OFF';
+      if (vibrateLbl) vibrateLbl.textContent = vibrateEnabled ? 'ON' : 'OFF';
 
-      if (navigator.vibrate) {
-        navigator.vibrate(30);
-      }
+      IslamicTools.saveTasbihState({
+        count: currentCount,
+        target: targetCount,
+        cycles: completedCycles,
+        soundEnabled,
+        vibrateEnabled,
+        phrase: phraseEl.textContent,
+        meaning: meaningEl.textContent
+      });
+    }
+
+    function doTap() {
+      currentCount++;
+      if (soundEnabled) IslamicTools.playTasbihSound(820);
+      if (vibrateEnabled) IslamicTools.vibrateTasbih(35);
 
       if (currentCount >= targetCount) {
         completedCycles++;
-        cyclesLabel.textContent = completedCycles;
         currentCount = 0;
-        valEl.textContent = currentCount;
-        if (window.App) window.App.showToast(`Completed target cycle! Alhamdulillah.`);
+        if (soundEnabled) {
+          IslamicTools.playTasbihSound(1050);
+          setTimeout(() => IslamicTools.playTasbihSound(1300), 80);
+        }
+        if (vibrateEnabled) IslamicTools.vibrateTasbih([50, 40, 80]);
+        if (window.App) window.App.showToast('Completed target cycle! Alhamdulillah.');
       }
+      syncUI();
+    }
+
+    function doUndo() {
+      if (currentCount > 0) {
+        currentCount--;
+        if (soundEnabled) IslamicTools.playTasbihSound(500);
+        syncUI();
+        if (window.App) window.App.showToast(`Count decreased to ${currentCount}`);
+      } else {
+        if (window.App) window.App.showToast('Count is already 0');
+      }
+    }
+
+    function doReset() {
+      if (currentCount === 0 && completedCycles === 0) return;
+      const confirmed = window.confirm(`Reset current count (${currentCount}) and cycles (${completedCycles}) to zero?`);
+      if (confirmed) {
+        currentCount = 0;
+        completedCycles = 0;
+        syncUI();
+        if (window.App) window.App.showToast('Tasbih counter reset.');
+      }
+    }
+
+    tapBtn.addEventListener('click', doTap);
+    undoBtn.addEventListener('click', doUndo);
+    resetBtn.addEventListener('click', doReset);
+
+    soundBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      syncUI();
     });
 
-    resetBtn.addEventListener('click', () => {
-      currentCount = 0;
-      valEl.textContent = currentCount;
+    vibrateBtn.addEventListener('click', () => {
+      vibrateEnabled = !vibrateEnabled;
+      syncUI();
+    });
+
+    setCustomTargetBtn.addEventListener('click', () => {
+      const val = parseInt(customTargetInp.value, 10);
+      if (val && val > 0) {
+        targetCount = val;
+        currentCount = 0;
+        phraseEl.textContent = 'ذِكْرٌ مُخَصَّصٌ';
+        meaningEl.textContent = `Custom Remembrance (${targetCount}x)`;
+        document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+        syncUI();
+        if (window.App) window.App.showToast(`Custom goal set to ${targetCount}`);
+      }
     });
 
     // Preset selectors
     document.querySelectorAll('.preset-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         targetCount = Number(btn.getAttribute('data-target'));
         phraseEl.textContent = btn.getAttribute('data-phrase');
         meaningEl.textContent = btn.getAttribute('data-meaning');
-        targetLabel.textContent = targetCount;
         currentCount = 0;
-        valEl.textContent = currentCount;
+        syncUI();
       });
     });
+
+    // Keyboard support
+    window.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.code === 'Space' || e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        doTap();
+      } else if (e.key === 'Backspace' || e.key === '-') {
+        e.preventDefault();
+        doUndo();
+      }
+    });
+
+    // Restore saved state
+    const saved = IslamicTools.getTasbihState();
+    if (saved) {
+      currentCount = saved.count || 0;
+      targetCount = saved.target || 33;
+      completedCycles = saved.cycles || 0;
+      if (saved.soundEnabled !== undefined) soundEnabled = saved.soundEnabled;
+      if (saved.vibrateEnabled !== undefined) vibrateEnabled = saved.vibrateEnabled;
+      if (saved.phrase) phraseEl.textContent = saved.phrase;
+      if (saved.meaning) meaningEl.textContent = saved.meaning;
+    }
+    syncUI();
   </script>
 </body>
 </html>

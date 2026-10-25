@@ -622,7 +622,15 @@ const TRANSLATIONS = {
 
 class I18nManager {
   constructor() {
-    this.currentLang = localStorage.getItem('islamic_portal_lang') || 'en';
+    let saved = 'en';
+    try {
+      if (typeof localStorage !== 'undefined' && typeof localStorage.getItem === 'function') {
+        saved = localStorage.getItem('islamic_portal_lang') || 'en';
+      }
+    } catch (e) {
+      saved = 'en';
+    }
+    this.currentLang = saved;
     if (!LANGUAGES.some(l => l.code === this.currentLang)) {
       this.currentLang = 'en';
     }
@@ -669,7 +677,11 @@ class I18nManager {
   }
 
   getUISelectableLanguages() {
-    return LANGUAGES.filter(l => l.code === 'en' || l.code === 'ur' || l.code === 'ar');
+    return LANGUAGES.filter(l => l.coverage === 'verified');
+  }
+
+  getAuthorizedPartialLanguages() {
+    return LANGUAGES.filter(l => l.coverage === 'authorized_partial');
   }
 
   getAllLanguages() {
@@ -679,27 +691,67 @@ class I18nManager {
   setLanguage(code) {
     if (!LANGUAGES.some(l => l.code === code)) return;
     this.currentLang = code;
-    localStorage.setItem('islamic_portal_lang', code);
+    try {
+      if (typeof localStorage !== 'undefined' && typeof localStorage.setItem === 'function') {
+        localStorage.setItem('islamic_portal_lang', code);
+      }
+    } catch (e) {}
     this.applyLanguage(code, true);
   }
 
   resetToDefault() {
+    try {
+      if (typeof localStorage !== 'undefined' && typeof localStorage.removeItem === 'function') {
+        localStorage.removeItem('islamic_portal_lang');
+      }
+    } catch (e) {}
     this.setLanguage('en');
   }
 
   applyLanguage(code, notify = true) {
     const info = this.getLanguageInfo(code);
     if (typeof document !== 'undefined') {
-      document.documentElement.lang = code;
-      document.documentElement.dir = info.dir;
+      // REQUIREMENT: Global website interface, navbar, header, footer, search, and layout
+      // MUST ALWAYS REMAIN ENGLISH AND LTR.
+      document.documentElement.lang = 'en';
+      document.documentElement.dir = 'ltr';
+      document.documentElement.setAttribute('data-content-lang', code);
 
-      // Apply translations across data-i18n elements
+      // Translate designated content areas only while preserving global interface in English
       this.translateDOM();
+
+      // Apply scoped RTL direction and localized styling to content blocks only
+      this.applyScopedContentDirection(code, info);
     }
 
     if (notify) {
       this.listeners.forEach(cb => cb(code, info));
     }
+  }
+
+  applyScopedContentDirection(code, info) {
+    if (typeof document === 'undefined') return;
+    const isRtl = info && info.dir === 'rtl';
+
+    // Target content containers only — NEVER navbar, header, footer, or global navigation
+    const contentContainers = document.querySelectorAll(
+      '.content-area, .editorial-content-body, .article-content, .card-content-body, .localized-content-scope, .hero-content'
+    );
+
+    contentContainers.forEach(container => {
+      if (code === 'en') {
+        container.removeAttribute('dir');
+        container.classList.remove('rtl-content', 'urdu-content-block', 'arabic-content-block');
+      } else if (isRtl) {
+        container.setAttribute('dir', 'rtl');
+        container.classList.add('rtl-content');
+        if (code === 'ur') container.classList.add('urdu-content-block');
+        if (code === 'ar') container.classList.add('arabic-content-block');
+      } else {
+        container.setAttribute('dir', 'ltr');
+        container.classList.remove('rtl-content', 'urdu-content-block', 'arabic-content-block');
+      }
+    });
   }
 
   translateDOM() {
@@ -709,6 +761,27 @@ class I18nManager {
     this.snapshotDefaultDOM();
 
     const elements = document.querySelectorAll('[data-i18n]');
+
+    // Known global interface keys that MUST ALWAYS REMAIN ENGLISH
+    const globalUIKeys = new Set([
+      'siteTitle', 'siteSubtitle',
+      'navHome', 'navQuran', 'navHadith', 'navKalimas', 'navDuas', 'navSeerah',
+      'navProphets', 'navSahaba', 'navEducation', 'navTools', 'navPrayerTimes',
+      'navTasbih', 'navZakat', 'navCalendar', 'navBookmarks', 'navSearch',
+      'navLanguage', 'navTheme', 'navWorship', 'navApp',
+      'aboutUs', 'sourcesAndLicensing', 'privacyPolicy', 'termsOfUse',
+      'editorialPolicy', 'contactUs', 'copyrightNotice', 'disclaimer',
+      'searchPlaceholder', 'searchBtn'
+    ]);
+
+    // Check if element belongs to the global interface
+    const isGlobalUIElement = (el, key) => {
+      if (globalUIKeys.has(key)) return true;
+      if (el.closest('.site-header, header, .desktop-nav, nav, .mobile-drawer, .bottom-nav, .site-footer, footer, #language-modal, #search-modal, .sticky-toc-wrapper, .header-actions')) {
+        return true;
+      }
+      return false;
+    };
 
     // If English, directly restore native DOM snapshot for 100% fidelity
     if (this.currentLang === 'en') {
@@ -726,9 +799,25 @@ class I18nManager {
       return;
     }
 
-    // Otherwise translate to the target language
+    // Otherwise translate designated content areas ONLY
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
+
+      // CRITICAL: Global interface elements must remain in English!
+      if (isGlobalUIElement(el, key)) {
+        if (el.dataset.i18nDefaultHtml) {
+          el.innerHTML = el.dataset.i18nDefaultHtml;
+        } else if (el.dataset.i18nDefaultText) {
+          el.textContent = el.dataset.i18nDefaultText;
+        }
+        return;
+      }
+
+      // SACRED SCRIPTURE INVARIANCE: Never mutate Arabic scripture
+      if (el.getAttribute('translate') === 'no' || el.classList.contains('font-arabic') || el.classList.contains('font-quran') || el.getAttribute('lang') === 'ar') {
+        return;
+      }
+
       const text = this.t(key);
       if (!text) return;
 
@@ -737,7 +826,6 @@ class I18nManager {
       } else {
         // Preserve child elements (such as .dropdown-caret, .search-kbd, badges, SVGs)
         if (el.children && el.children.length > 0) {
-          // Look for an existing primary text node
           let textNode = null;
           for (let i = 0; i < el.childNodes.length; i++) {
             const node = el.childNodes[i];
@@ -790,4 +878,11 @@ class I18nManager {
   }
 }
 
-window.I18n = new I18nManager();
+if (typeof window !== 'undefined') {
+  window.I18n = new I18nManager();
+} else if (typeof global !== 'undefined') {
+  global.I18n = new I18nManager();
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { I18nManager, LANGUAGES, TRANSLATIONS };
+}
