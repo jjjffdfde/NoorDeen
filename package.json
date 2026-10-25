@@ -12,7 +12,8 @@
     "sync:android-assets": "node scripts/build-android-assets.cjs",
     "android:sync": "node scripts/build-android-assets.cjs && npx cap copy android",
     "android:open": "npx cap open android",
-    "build:apk": "node scripts/build-complete-apk.cjs"
+    "build:apk": "node scripts/build-complete-apk.cjs",
+    "deploy:ghpages": "node scripts/deploy-ghpages.cjs"
   },
   "dependencies": {
     "@capacitor/android": "^5.7.0",
