@@ -58,6 +58,36 @@ const SURAH_THEMATIC_DATA = {
     themes: ["Seeking Sanctuary with the King and God of Mankind", "Protection from the Retreating Whisperer (Al-Waswas Al-Khannas)", "Spiritual Warfare Against Diabolical Temptations from Jinn and Men"],
     asbab: "Revealed to safeguard the inner sanctuary of the human heart from doubts, whisperings, and psychic malice.",
     virtues: "One of the twin Mu'awwidhatayn which the Prophet ﷺ described: 'People have never sought refuge with anything like them' (Sunan an-Nasa'i #5433)."
+  },
+  18: {
+    period: "Middle Meccan (Pre-Hijrah)",
+    themes: ["Trial of Faith (Companions of the Cave)", "Trial of Wealth (The Two Gardens parable)", "Trial of Knowledge (Musa & Al-Khidr)", "Trial of Power (Dhul-Qarnayn & Gog and Magog)", "Protection from the Fitnah of the False Messiah (Dajjal)"],
+    asbab: "Revealed when the Quraysh posed three theological riddles supplied by the Jewish scholars of Yathrib to challenge the Prophet's authenticity: about the young men who fled, the great traveler of the horizons, and the nature of the Spirit (Ruh).",
+    virtues: "The Prophet ﷺ said: 'Whoever memorizes the first ten verses of Surah Al-Kahf will be protected from the Dajjal' (Sahih Muslim #809), and 'Whoever recites Surah Al-Kahf on Friday, light will illuminate between him and the two Fridays' (Al-Bayhaqi; Sahih al-Jami' #6470)."
+  },
+  55: {
+    period: "Early Medinan / Late Meccan",
+    themes: ["The Expansive Beneficence of the Creator", "Cosmic Order, Balance, and Earthly Ecology (Al-Mizan)", "Dual Audience: Direct Invocations to Mankind and the Jinn", "The Iconic Refrain: 'Which of the favors of your Lord will you both deny?'", "Vivid Contrasts Between the Scorching Fire and the Twin Verdant Gardens of Paradise"],
+    asbab: "Revealed when polytheists challenged the revelation in Surah Al-Furqan: 'And what is the Most Merciful (Ar-Rahman)?' Allah responded by unveiling His cosmic majesty, linguistic gifts, astronomical choreography, and eternal gardens.",
+    virtues: "Celebrated in classical traditions as 'Arus al-Quran' (The Splendid Bride of the Quran) for its phonetic symmetry, rhythmic cadence, and overwhelming catalogue of divine generosity."
+  },
+  56: {
+    period: "Middle Meccan",
+    themes: ["The Inevitable Cataclysm of the Resurrection (Al-Waqi'ah)", "The Threefold Stratification of Humanity (The Foremost / As-Sabiqoon, Companions of the Right, Companions of the Left)", "Empirical Signs of Divine Agency in Human Conception, Agriculture, Potable Rainwater, and Fire", "The Sanctity of the Preserved Tablet and Quranic Inviolability"],
+    asbab: "Revealed to confront stubborn pagan denial of physical bodily resurrection by appealing directly to natural empirical miracles: how life emerges from seed, rainwater falls from clouds, and embers kindle from green trees.",
+    virtues: "Abdullah ibn Mas'ud (RA) reported that the Messenger of Allah ﷺ said: 'Whoever recites Surah Al-Waqi'ah every night will never be afflicted by destitution or spiritual poverty' (Ibn as-Sunni #657; Al-Bayhaqi in Shu'ab al-Iman)."
+  },
+  93: {
+    period: "Early Meccan",
+    themes: ["Divine Consolation, Affirmation, and Continuous Shelter", "The Cosmic Contrast Between the Brightness of Dawn and the Tranquility of Night", "Past Providential Mercies as Guarantees of Future Goodness (Orphanhood, Guidance, Provision)", "Moral Injunctions: Compassion to the Orphan, Dignity to the Petitioner, and Joyful Proclamation of Divine Blessings"],
+    asbab: "Revealed after a brief cessation of revelation (Fatrat al-Wahy) during which the Quraysh taunted that Allah had forsaken Muhammad; Allah swore by the glorious morning that He had neither abandoned nor despised His chosen Prophet.",
+    virtues: "Universally acknowledged as one of the most comforting and emotionally restorative passages in scripture, bringing solace to those enduring loneliness, grief, or spiritual despondency."
+  },
+  94: {
+    period: "Early Meccan",
+    themes: ["The Spiritual Expansion and Purifying of the Prophet's Breast (Sharh as-Sadr)", "Lifting the Crushing Burden of Grief and Responsibility", "The Eternal Elevation of the Prophet's Honor and Renown (Rafa'na Laka Dhikrak)", "The Fundamental Divine Axiom: 'Verily, with hardship comes ease'", "Dedication to Relentless Worship upon Completing Worldly Obligations"],
+    asbab: "Revealed directly following Surah Ad-Duha to reinforce prophetic resolve during the bitter social and economic boycotts enforced by the Quraysh aristocracy in Makkah.",
+    virtues: "Celebrated for the linguistic marvel in verses 5-6: the singular definite hardship ('al-'Usr') is enveloped by twofold indefinite ease ('Yusr'), guaranteeing that no solitary worldly crisis can ever overcome divine deliverance."
   }
 };
 
