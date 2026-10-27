@@ -126,7 +126,26 @@ Version `?v=20261027f`, service-worker cache `v19`.
 
 ---
 
-## 6. Honest limitations
+## 6. Live deployment verification (GitHub Pages)
+
+Deployed commit: `18f7f93` on `gh-pages` (tree from `74a1546:public`).
+
+| Live URL | Result |
+| :--- | :--- |
+| `https://jjjffdfde.github.io/NoorDeen/index.html` | 200; references `?v=20261027f` |
+| `.../data/dr-israr/catalog.js` | 200; byte-identical to local (SHA-256 `2ebaa3ec7dfa30433a5a804a25fc1610dfa620a27e184f8187932a58d8c3db17`) |
+| `.../js/search.js` | 200; contains the 4-character alias guard |
+| `.../about.html` | 200; states 1,519 assertions |
+| `.../service-worker.js` | 200; `CACHE_VERSION = 'v19'` |
+| `.../articles/islamic-finance-and-riba.html` | 200; references `?v=20261027f` |
+| `.../downloads/islamic-portal-release.apk` | 200; 1,412,579 bytes; live SHA-256 `c699475c…` matches local |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; live SHA-256 `5fa610ea…` matches local |
+
+The deployment push reported `0050117..18f7f93 -> gh-pages`. GitHub Pages served the new content on first re-check.
+
+---
+
+## 7. Honest limitations
 
 | Area | Limitation |
 | :--- | :--- |
@@ -143,7 +162,7 @@ Version `?v=20261027f`, service-worker cache `v19`.
 
 ---
 
-## 7. Required follow-up
+## 8. Required follow-up
 
 1. Batch 4 articles (topics 21–30): family, parenting, inheritance, neighbours.
 2. Continue module repair per `MODULE_REGISTRY.md` PARTIAL items.

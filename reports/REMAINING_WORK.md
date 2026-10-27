@@ -5,6 +5,8 @@
 
 **Last successful test:** `node test/run-tests.js` → **1,519 executed / 1,519 passed / 0 failed** (Suites 1–42). Browser checks: lecture catalog renders 148 cards with `fetch` blocked; article-page search works after lazy `data.js`; 12/12 nested result links return 200; `ayatul kursi` opens 2:255; alias ranking fixed. Post-change static/HTTP recheck of 52 pages: 0 new broken destinations, 0 empty/textless anchors.
 
+**Live deployment:** `gh-pages` commit `18f7f93` verified on `https://jjjffdfde.github.io/NoorDeen/` — index/article/catalog/search/SW all 200 with `?v=20261027f` / SW `v19`; live catalog.js, APK and bundle byte-identical to local (`c699475c…`, `5fa610ea…`).
+
 ---
 
 ## 1. Done in this cycle (for context)
