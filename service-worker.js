@@ -3,8 +3,8 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v20';
-const CACHE_NAME = 'islamic-portal-shell-v20';
+const CACHE_VERSION = 'v21';
+const CACHE_NAME = 'islamic-portal-shell-v21';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 
 const STATIC_ASSETS = [
@@ -38,15 +38,15 @@ const STATIC_ASSETS = [
   './privacy.html',
   './terms.html',
   './manifest.json',
-  './css/main.css?v=20261027g',
-  './js/config.js?v=20261027g',
-  './js/data.js?v=20261027g',
-  './js/i18n.js?v=20261027g',
-  './js/tools.js?v=20261027g',
-  './js/search.js?v=20261027g',
-  './js/quran.js?v=20261027g',
-  './js/app.js?v=20261027g',
-  './js/sahaba-urdu.js?v=20261027g',
+  './css/main.css?v=20261027h',
+  './js/config.js?v=20261027h',
+  './js/data.js?v=20261027h',
+  './js/i18n.js?v=20261027h',
+  './js/tools.js?v=20261027h',
+  './js/search.js?v=20261027h',
+  './js/quran.js?v=20261027h',
+  './js/app.js?v=20261027h',
+  './js/sahaba-urdu.js?v=20261027h',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',

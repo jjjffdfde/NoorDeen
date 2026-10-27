@@ -403,6 +403,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The Quranic command of neighbourliness, the Prophetic prohibition of harm, everyday rights, privacy, noise and shared spaces, conflict resolution, neighbours of other faiths, and community emergencies.",
     url: "articles/rights-of-neighbours-in-islam.html",
     keywords: ["neighbour","neighbor","neighbours","neighbors","community","privacy","noise","parking","shared spaces","kindness","other faiths","local community"]
+  },
+  {
+    title: "Business Ethics and Honest Trade in Islam: Trust, Truthfulness and Fair Measure",
+    snippet: "Why trade is lawful worship, truthful disclosure, honest weights and measures, mutual consent, riba in brief, hoarding and market abuse, advertising, modern business dilemmas, and a practical ethics checklist.",
+    url: "articles/business-ethics-and-honest-trade.html",
+    keywords: ["business","trade","commerce","merchant","honest trade","truthfulness","cheating","fraud","weights","measure","scales","gharar","hoarding","monopoly","advertising","consumer","dropshipping","profit","sales"]
+  },
+  {
+    title: "Contracts and Promises in Islam: Fulfilling the Covenant in Word and Deed",
+    snippet: "The Quranic command to fulfil contracts, promise-keeping as a sign of faith, the elements of a valid contract, writing and witnesses, lawful conditions, broken oaths, breach and repair, and digital contracts.",
+    url: "articles/contracts-and-promises-in-islam.html",
+    keywords: ["contract","contracts","promise","promises","covenant","agreement","oath","trust","amanah","witness","evidence","breach","conditions","terms","digital contract","clickwrap","reconciliation"]
+  },
+  {
+    title: "Debt and Loans in Islam: Borrowing, Repayment and Relief",
+    snippet: "The seriousness of debt, the permission to borrow, qard hasan, the prohibition of riba, documenting loans, repayment and delay, hardship and forgiveness, lending ethics, collateral and guarantees, and modern debt.",
+    url: "articles/debt-and-loans-in-islam.html",
+    keywords: ["debt","debts","loan","loans","borrowing","borrow","qard hasan","repayment","creditor","debtor","riba","interest","mortgage","credit card","guarantee","collateral","insolvency","bankruptcy","forgiveness"]
+  },
+  {
+    title: "Workers’ Rights and Fair Employment in Islam: Wages, Dignity and Justice",
+    snippet: "The dignity of work, the wage contract, fair pay, workload and safety, respect and non-discrimination, vulnerable workers, employee duties, disputes and collective action, and a practical checklist.",
+    url: "articles/workers-rights-in-islam.html",
+    keywords: ["workers","worker","employees","employment","labour","labor","wages","salary","pay","fair pay","employer","dismissal","safety","overtime","migrant workers","domestic workers","gig economy","strike","union"]
   }
 ];
 
