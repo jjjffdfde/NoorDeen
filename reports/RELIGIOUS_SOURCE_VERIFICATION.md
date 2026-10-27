@@ -137,7 +137,9 @@ No tool issues a fatwa. The zakat page states it is an estimate and refers speci
 - Bibliographies name classical works (e.g. al-Nawawi's *al-Majmu'*, Ibn Rushd's *Bidayat al-Mujtahid*) and contemporary standards (AAOIFI) rather than linking every title.
 - **Gap:** bibliography entries are mostly plain text, not hyperlinks. A future pass should add stable URLs/ISBNs.
 
-**Content-quality defect found and fixed this cycle:** 57 lines across `history.html`, `sahaba.html` and 10 older articles contained literal Markdown emphasis markers (`**text**`, `*text*`) in rendered HTML. These were converted to `<strong>`/`<em>` and re-verified in the browser (0 stray asterisks, balanced tags, no console errors).
+**Batch 4 (parents, parenting, inheritance, neighbours):** all four cite Qur'an by surah:ayah and hadith by collection, use a bibliography, and state that they are educational overviews. The inheritance article explicitly warns that fixed shares are a specialist field and that individual cases need a qualified scholar; it does not issue a fatwa or calculate a distribution. The parenting article distinguishes the Prophetic model from cultural custom and does not present corporal punishment as a religious obligation.
+
+**Content-quality defect found and fixed this cycle:** 57 lines across `history.html`, `sahaba.html` and 10 older articles contained literal Markdown emphasis markers (`**text**`, `*text*`) in rendered HTML. These were converted to `<strong>`/`<em>` and re-verified in the browser (0 stray asterisks, balanced tags, no console errors). A related generator defect (`*decision*` in `batch-2b.cjs`) was fixed before rebuilding, so the 29-article library contains no stray Markdown.
 
 ---
 
