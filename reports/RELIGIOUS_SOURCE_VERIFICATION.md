@@ -1,6 +1,6 @@
 # NoorDeen — Religious Source Verification
 
-**Audited:** 26 October 2026
+**Audited:** 27 October 2026
 **Scope:** Quran Arabic, translations, tafsir, hadith, duas, kalimas, Seerah, prophets, Sahaba, history, worship guides, articles, and the Dr. Israr Ahmed lecture catalogue.
 **Principle:** canonical text is never invented or silently "corrected"; where a source cannot be verified, the UI says so or the claim is removed. No item in this report is presented as a fatwa.
 
@@ -21,7 +21,7 @@
 | Sahaba | 52 monographs | Classical biographical corpora and hadith | Cohort structure; no fabricated rank claims |
 | History | 12 eras / 66 milestones | al-Tabari, Ibn al-Athir, Ibn Kathir and modern scholarship | Narrative history, not a specialist historiography |
 | Worship guides | Salah, wudu/ghusl/tayammum, janazah, Eid | Qur'an and hadith; madhhab differences noted | Practical steps checked; no AI fatwa |
-| Articles | 29 | Per-article bibliography section | 29/29 have a "Sources & Further Reading" section |
+| Articles | 33 | Per-article bibliography section | 33/33 have a "Sources & Further Reading" section |
 | Lecture catalogue | 148 records / 147 unique | tanzeem.org source pages + YouTube IDs | No media hosted; every record links back |
 
 ---
@@ -129,9 +129,9 @@ No tool issues a fatwa. The zakat page states it is an estimate and refers speci
 
 ---
 
-## 7. Articles (29)
+## 7. Articles (33)
 
-- **29/29** articles contain a "Sources & Further Reading" section.
+- **33/33** articles contain a "Sources & Further Reading" section.
 - Citations are by surah:ayah for the Qur'an and by collection (and often number) for hadith.
 - Articles explicitly state they are educational overviews, not personal fatwas.
 - Bibliographies name classical works (e.g. al-Nawawi's *al-Majmu'*, Ibn Rushd's *Bidayat al-Mujtahid*) and contemporary standards (AAOIFI) rather than linking every title.
@@ -139,7 +139,9 @@ No tool issues a fatwa. The zakat page states it is an estimate and refers speci
 
 **Batch 4 (parents, parenting, inheritance, neighbours):** all four cite Qur'an by surah:ayah and hadith by collection, use a bibliography, and state that they are educational overviews. The inheritance article explicitly warns that fixed shares are a specialist field and that individual cases need a qualified scholar; it does not issue a fatwa or calculate a distribution. The parenting article distinguishes the Prophetic model from cultural custom and does not present corporal punishment as a religious obligation.
 
-**Content-quality defect found and fixed this cycle:** 57 lines across `history.html`, `sahaba.html` and 10 older articles contained literal Markdown emphasis markers (`**text**`, `*text*`) in rendered HTML. These were converted to `<strong>`/`<em>` and re-verified in the browser (0 stray asterisks, balanced tags, no console errors). A related generator defect (`*decision*` in `batch-2b.cjs`) was fixed before rebuilding, so the 29-article library contains no stray Markdown.
+**Batch 5 (business ethics, contracts, debt, workers' rights):** all four cite Qur'an by surah:ayah and hadith by collection, carry a bibliography and an explicit "not a fatwa" statement, and direct specific modern cases (mortgages, credit cards, buy-now-pay-later, employment disputes) to a qualified scholar. The debt article does not declare any specific modern product halal or haram. Where a hadith number could not be stated with confidence, the article uses collection-level attribution instead of inventing a number.
+
+**Content-quality defect found and fixed this cycle:** 57 lines across `history.html`, `sahaba.html` and 10 older articles contained literal Markdown emphasis markers (`**text**`, `*text*`) in rendered HTML. These were converted to `<strong>`/`<em>` and re-verified in the browser (0 stray asterisks, balanced tags, no console errors). A related generator defect (`*decision*` in `batch-2b.cjs`) was fixed before rebuilding, so the 33-article library contains no stray Markdown.
 
 ---
 

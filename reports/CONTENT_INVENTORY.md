@@ -1,12 +1,12 @@
 # NoorDeen — Content Inventory
 
-**Audited:** 27 October 2026 (Batch 4 integrated; full re-measure of every page)
+**Audited:** 27 October 2026 (Batch 5 integrated; full re-measure of every page)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured from the current tree, not estimated.
-**Pages:** **56** — 26 root pages + 30 pages in `public/articles/` (29 articles + the library index)
-**Visible words across all pages (whole-page count):** **230,190**
-**Article body words (29 articles, excluding page chrome):** **54,432** — average **1,877**, minimum **1,538**, maximum **2,257**
-**Sitemap URLs:** **56** (`public/sitemap.xml`, 56 unique `<loc>` entries)
-**Full test suite:** **1,589 executed / 1,589 passed / 0 failed** (last run 27 October 2026)
+**Pages:** **60** — 26 root pages + 34 pages in `public/articles/` (33 articles + the library index)
+**Visible words across all pages (whole-page count):** **242,186**
+**Article body words (33 articles, excluding page chrome):** **64,160** — average **1,944**, minimum **1,538**, maximum **2,473**
+**Sitemap URLs:** **60** (`public/sitemap.xml`, 60 unique `<loc>` entries)
+**Full test suite:** **1,663 executed / 1,663 passed / 0 failed** (last run 27 October 2026)
 
 ---
 
@@ -47,46 +47,50 @@ Note: `dr-israr-ahmed.html` and `quran.html` have small static word counts becau
 
 ---
 
-## 2. Article library (30 pages, 29 articles)
+## 2. Article library (34 pages, 33 articles)
 
 The index is not an article. Article body counts below exclude the shared navigation, table of contents, related-reading block and footer; whole-page counts are higher.
 
 | # | File | Body words | Size | Topic |
 | --: | :--- | --: | --: | :--- |
-| 27 | `articles/index.html` | — (3,542 whole page) | 128 KB | Library index + 100-topic syllabus |
-| 28 | `articles/honouring-parents-in-islam.html` | 2,257 | 42 KB | Parents and family (Batch 4) |
-| 29 | `articles/seerah-of-prophet-muhammad.html` | 2,124 | 41 KB | Seerah (topic 11) |
-| 30 | `articles/islamic-parenting-guide.html` | 2,107 | 40 KB | Parenting (Batch 4) |
-| 31 | `articles/fasting-and-ramadan.html` | 2,084 | 41 KB | Fasting and Ramadan (topic 16) |
-| 32 | `articles/islamic-inheritance-basics.html` | 2,072 | 38 KB | Inheritance (Batch 4) |
-| 33 | `articles/salah-complete-beginners-guide.html` | 1,975 | 51 KB | Salah (topic 6) |
-| 34 | `articles/beginners-guide-to-islam.html` | 1,974 | 50 KB | Foundations (topic 1) |
-| 35 | `articles/rights-of-neighbours-in-islam.html` | 1,971 | 39 KB | Neighbours (Batch 4) |
-| 36 | `articles/stories-of-the-prophets.html` | 1,961 | 41 KB | Prophetic narratives (topic 12) |
-| 37 | `articles/ninety-nine-names-of-allah.html` | 1,955 | 41 KB | Names of Allah (topic 18) |
-| 38 | `articles/zakat-educational-calculation-guide.html` | 1,954 | 53 KB | Zakat (topic 10) |
-| 39 | `articles/wudu-ghusl-tayammum-guide.html` | 1,944 | 48 KB | Purification (topic 7) |
-| 40 | `articles/quran-translation-vs-tafsir.html` | 1,933 | 50 KB | Translation vs tafsir (topic 3) |
-| 41 | `articles/hajj-and-umrah-guide.html` | 1,926 | 39 KB | Hajj and Umrah (topic 17) |
-| 42 | `articles/hadith-and-sunnah-authenticity.html` | 1,913 | 49 KB | Hadith sciences (topic 8) |
-| 43 | `articles/daily-adhkar-and-supplications.html` | 1,886 | 48 KB | Adhkar (topic 9) |
-| 44 | `articles/tawhid-and-the-shahadah.html` | 1,854 | 47 KB | Tawhid (topic 4) |
-| 45 | `articles/sahaba-biographies.html` | 1,846 | 38 KB | Companions (topic 13) |
-| 46 | `articles/islamic-manners-and-character.html` | 1,800 | 39 KB | Adab (topic 15) |
-| 47 | `articles/islamic-finance-and-riba.html` | 1,798 | 38 KB | Riba and finance (topic 96 / published #101) |
-| 48 | `articles/how-to-read-and-understand-quran.html` | 1,785 | 47 KB | Quran study (topic 2) |
-| 49 | `articles/marriage-and-family-in-islam.html` | 1,726 | 38 KB | Marriage and family (topic 92 / #102) |
-| 50 | `articles/death-and-the-afterlife.html` | 1,722 | 38 KB | Death and afterlife (#103) |
-| 51 | `articles/repentance-dhikr-spiritual-development.html` | 1,709 | 39 KB | Tawbah and dhikr (topic 19) |
-| 52 | `articles/environment-and-stewardship.html` | 1,700 | 39 KB | Environment and stewardship (#105) |
-| 53 | `articles/new-muslim-learning-path.html` | 1,676 | 38 KB | New Muslim path (topic 20) |
-| 54 | `articles/halal-and-haram-food.html` | 1,649 | 37 KB | Halal and haram food (topic 95 / #104) |
-| 55 | `articles/five-pillars-of-islam.html` | 1,593 | 45 KB | Five pillars (topic 5) |
-| 56 | `articles/islamic-history-civilization.html` | 1,538 | 36 KB | History framework (topic 14) |
+| 27 | `articles/index.html` | — (3,603 whole page) | 137 KB | Library index + 100-topic syllabus |
+| 28 | `articles/contracts-and-promises-in-islam.html` | 2,473 | 42 KB | Contracts and promises (Batch 5) |
+| 29 | `articles/debt-and-loans-in-islam.html` | 2,473 | 41 KB | Debt and loans (Batch 5) |
+| 30 | `articles/workers-rights-in-islam.html` | 2,411 | 39 KB | Workers’ rights (Batch 5) |
+| 31 | `articles/business-ethics-and-honest-trade.html` | 2,371 | 39 KB | Business ethics (Batch 5) |
+| 32 | `articles/honouring-parents-in-islam.html` | 2,257 | 41 KB | Parents and family (Batch 4) |
+| 33 | `articles/seerah-of-prophet-muhammad.html` | 2,124 | 40 KB | Seerah (topic 11) |
+| 34 | `articles/islamic-parenting-guide.html` | 2,107 | 39 KB | Parenting (Batch 4) |
+| 35 | `articles/fasting-and-ramadan.html` | 2,084 | 40 KB | Fasting and Ramadan (topic 16) |
+| 36 | `articles/islamic-inheritance-basics.html` | 2,072 | 37 KB | Inheritance (Batch 4) |
+| 37 | `articles/salah-complete-beginners-guide.html` | 1,975 | 50 KB | Salah (topic 6) |
+| 38 | `articles/beginners-guide-to-islam.html` | 1,974 | 49 KB | Foundations (topic 1) |
+| 39 | `articles/rights-of-neighbours-in-islam.html` | 1,971 | 38 KB | Neighbours (Batch 4) |
+| 40 | `articles/stories-of-the-prophets.html` | 1,961 | 40 KB | Prophetic narratives (topic 12) |
+| 41 | `articles/ninety-nine-names-of-allah.html` | 1,955 | 40 KB | Names of Allah (topic 18) |
+| 42 | `articles/zakat-educational-calculation-guide.html` | 1,954 | 52 KB | Zakat (topic 10) |
+| 43 | `articles/wudu-ghusl-tayammum-guide.html` | 1,944 | 47 KB | Purification (topic 7) |
+| 44 | `articles/quran-translation-vs-tafsir.html` | 1,933 | 49 KB | Translation vs tafsir (topic 3) |
+| 45 | `articles/hajj-and-umrah-guide.html` | 1,926 | 38 KB | Hajj and Umrah (topic 17) |
+| 46 | `articles/hadith-and-sunnah-authenticity.html` | 1,913 | 48 KB | Hadith sciences (topic 8) |
+| 47 | `articles/daily-adhkar-and-supplications.html` | 1,886 | 47 KB | Adhkar (topic 9) |
+| 48 | `articles/tawhid-and-the-shahadah.html` | 1,854 | 46 KB | Tawhid (topic 4) |
+| 49 | `articles/sahaba-biographies.html` | 1,846 | 37 KB | Companions (topic 13) |
+| 50 | `articles/islamic-manners-and-character.html` | 1,800 | 38 KB | Adab (topic 15) |
+| 51 | `articles/islamic-finance-and-riba.html` | 1,798 | 37 KB | Riba and finance (topic 96 / published #101) |
+| 52 | `articles/how-to-read-and-understand-quran.html` | 1,785 | 46 KB | Quran study (topic 2) |
+| 53 | `articles/marriage-and-family-in-islam.html` | 1,726 | 37 KB | Marriage and family (topic 92 / #102) |
+| 54 | `articles/death-and-the-afterlife.html` | 1,722 | 37 KB | Death and afterlife (#103) |
+| 55 | `articles/repentance-dhikr-spiritual-development.html` | 1,709 | 38 KB | Tawbah and dhikr (topic 19) |
+| 56 | `articles/environment-and-stewardship.html` | 1,700 | 38 KB | Environment and stewardship (#105) |
+| 57 | `articles/new-muslim-learning-path.html` | 1,676 | 37 KB | New Muslim path (topic 20) |
+| 58 | `articles/halal-and-haram-food.html` | 1,649 | 37 KB | Halal and haram food (topic 95 / #104) |
+| 59 | `articles/five-pillars-of-islam.html` | 1,593 | 44 KB | Five pillars (topic 5) |
+| 60 | `articles/islamic-history-civilization.html` | 1,538 | 35 KB | History framework (topic 14) |
 
-**Article body total: 54,432 words across 29 articles**, averaging **1,877** words each. All 29 are inside the 1,500–2,500 word target.
+**Article body total: 64,160 words across 33 articles**, averaging **1,944** words each. All 33 are inside the 1,500–2,500 word target.
 
-Duplicate check: 5-word shingle Jaccard similarity across the 29 article bodies peaked at **0.030** (99 Names vs Repentance). The closest Batch 4 pair was **0.029** (Honouring Parents vs Neighbours), driven by shared Quranic quotations and shared family vocabulary rather than copied prose.
+Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies peaked at **0.0290** (99 Names vs Repentance). The closest Batch 5 pair was **0.0255** (Business Ethics vs Workers’ Rights), driven by shared Quranic quotations and shared economic vocabulary rather than copied prose.
 
 ---
 
@@ -114,8 +118,8 @@ Duplicate check: 5-word shingle Jaccard similarity across the 29 article bodies 
 
 | Artefact | Size | SHA-256 |
 | :--- | --: | :--- |
-| `downloads/islamic-portal-release.apk` | 1,456,011 bytes (1.39 MiB) | `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` |
-| `downloads/islamic-portal-offline-bundle.zip` | 1,355,278 bytes (1.29 MiB) | `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` |
+| `downloads/islamic-portal-release.apk` | 1,503,077 bytes (1.43 MiB) | `29ede4bd82d086fa17f516bf1ed24165697a700bbb065fbc39191259b5f620a9` |
+| `downloads/islamic-portal-offline-bundle.zip` | 1,401,639 bytes (1.34 MiB) | `a3493559328723c1e8cf7eeabac7af7a395f8d60f6a713ba24a6dc0cbb801c68` |
 
 Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte.
 
@@ -124,7 +128,7 @@ Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byt
 ## 5. What this inventory does *not* claim
 
 - Whole-page word counts include navigation and footer. Article body counts are reported separately above so the two are not confused.
-- 29 of the 100 roadmap topics are published. The index advertises the roadmap and marks unwritten topics as pending.
+- 33 of the 100 roadmap topics are published. The index advertises the roadmap and marks unwritten topics as pending.
 - Hadith and dua counts are counts of records in this repository, not a claim to represent the full corpus of any collection. 101 traditions is a curated selection, not Sahih al-Bukhari's 7,000+.
 - Tafsir coverage is 6 verses, not 6,236. The UI states this and offers an honest "no commentary bundled" message for other verses.
 - Offline Quran coverage is 10 surahs / 49 ayahs, with two partial surahs explicitly labelled. The remaining 104 surahs, audio and video require a network.

@@ -69,6 +69,17 @@
 - Rebuild regression found and fixed: `batch-2b.cjs` contained `*decision*`, which would have rendered literal asterisks; replaced with `<em>decision</em>`.
 - Stale copy found and fixed: download page now says 56 pages / ~1.29 MB; About page now says 1,589 assertions.
 
+### 2.7 Batch 5 articles
+
+- Four new pages generated from `scripts/article-content/batch-5a.cjs`: `business-ethics-and-honest-trade`, `contracts-and-promises-in-islam`, `debt-and-loans-in-islam`, `workers-rights-in-islam`.
+- Body words: 2,371 / 2,473 / 2,473 / 2,411 (9,728 total); all inside 1,500–2,500.
+- Each page loaded in Chromium: correct H1 and title, 11 TOC links, `FAQPage` + `BreadcrumbList` JSON-LD, canonical URL, `config.js`, no stray Markdown, an explicit "not a fatwa" statement, 0 console errors.
+- Search from an article page: `business ethics` → business article first; `contract promises` → contracts article; `debt repayment` → debt article first; `workers wages` → workers article. All destinations HTTP 200.
+- Integrated into `js/search.js`, `sitemap.xml` (60 URLs) and `articles/index.html` (cards #30–33, details block 110–113).
+- Link sweep of the four pages: 41 unique destinations, 0 failures; no duplicate IDs or `undefined`/`NaN`/`${` artefacts.
+- UTF-8 regression found and fixed: a PowerShell rewrite of `build-articles.cjs` corrupted the em dash in generated titles; restored from git and re-applied the version bump with the `edit` tool.
+- Stale copy updated: download page now says 60 pages / ~1.34 MB; About page now says 1,663 assertions.
+
 ---
 
 ## 3. Link and fragment audit
@@ -90,13 +101,13 @@ Re-run after the final edits and rebuild:
 
 | Metric | Result |
 | :--- | --: |
-| HTML pages scanned | 56 |
-| Unique internal destinations requested | 85 |
-| Non-200 | **1** — the literal JS template `' + escapeHtml(v.sourceUrl) + '` in `dr-israr-ahmed.html`; every rendered card uses a real Tanzeem URL |
+| HTML pages scanned | 60 |
+| Unique internal destinations requested | 80 |
+| Non-200 | **0** |
 | Empty / hash-only href | 0 |
 | `javascript:` href | 0 |
 | Textless anchors | 0 |
-| Fragment mismatches | 7 — all known runtime-generated IDs (`kalima-1…6`, bookmark template) |
+| Anchors scanned | 3,812 |
 
 The single non-200 and all seven fragment flags are the same documented false positives recorded in `BROKEN_LINKS_AND_EMPTY_CONTENT.md`; no new defect was introduced.
 
@@ -107,32 +118,33 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 1589
-Passed Tests:         1589
+Total Tests Executed: 1663
+Passed Tests:         1663
 Failed Tests:         0
 ```
 
-- Suites: 43 (Suite 43 added for Batch 4).
+- Suites: 44 (Suite 44 added for Batch 5).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
+- Suite 44: Batch 5 file/TOC/schema/bibliography/word-count/"not a fatwa"/search/sitemap/index integration.
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261027g`, service-worker cache `v20`.
+Version `?v=20261027h`, service-worker cache `v21`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 1,355,278 | `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` |
-| `public/downloads/islamic-portal-release.apk` | 1,456,011 | `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 1,401,639 | `a3493559328723c1e8cf7eeabac7af7a395f8d60f6a713ba24a6dc0cbb801c68` |
+| `public/downloads/islamic-portal-release.apk` | 1,503,077 | `29ede4bd82d086fa17f516bf1ed24165697a700bbb065fbc39191259b5f620a9` |
 
-- APK: 94 ZIP entries (3 core + 5 icons + 86 public assets); bundle: 85 files.
+- APK: 98 ZIP entries (3 core + 5 icons + 90 public assets); bundle: 89 files.
 - `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `config.js`, all HTML and the service worker hash-match `public/` inside both artefacts.
-- All four Batch 4 pages are present in both artefacts; the embedded `honouring-parents-in-islam.html` hash-matches the source byte-for-byte.
-- APK contains `?v=20261027g`, the lazy search loader, the alias guards and the 2:255 deep link.
+- All four Batch 5 pages are present in both artefacts.
+- APK contains `?v=20261027h`, the lazy search loader, the alias guards and the 2:255 deep link.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 
@@ -181,7 +193,7 @@ The deployment push reported `18f7f93..044fea4 -> gh-pages`. The first live poll
 
 ## 8. Required follow-up
 
-1. Batch 5 articles: business ethics, contracts and promises, debt, workers' rights.
+1. Batch 6 articles: Seerah epochs (roadmap topics 41–50).
 2. Continue module repair per `MODULE_REGISTRY.md` PARTIAL items.
 3. Device-test the APK when a device is available; add v2/v3 signing.
 4. Remove signing secrets from the repository (owner action).

@@ -1398,7 +1398,7 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('1,589 assertions'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('1,663 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
   // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
@@ -1765,6 +1765,49 @@ async function runTestSuite() {
 
   assert(batch4BodyWords >= 7000, `Suite 43: Batch 4 provides at least 7,000 body words (actual: ${batch4BodyWords})`);
   assert(batch4BodyWords <= 10000, `Suite 43: Batch 4 stays within 10,000 body words (actual: ${batch4BodyWords})`);
+
+  // --- TEST SUITE 44: Batch 5 Law, Trade & Employment Articles ---
+  console.log('\n--- TEST SUITE 44: Batch 5 Law, Trade & Employment Articles ---');
+  const batch5Articles = [
+    'business-ethics-and-honest-trade.html',
+    'contracts-and-promises-in-islam.html',
+    'debt-and-loans-in-islam.html',
+    'workers-rights-in-islam.html'
+  ];
+  const s44_searchJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  const s44_sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  let batch5BodyWords = 0;
+
+  batch5Articles.forEach(artFile => {
+    const artPath = path.join(articlesDir, artFile);
+    assert(fs.existsSync(artPath), `Suite 44: Article file exists: articles/${artFile}`);
+    const artContent = fs.readFileSync(artPath, 'utf-8');
+    assert(artContent.length >= 30000, `Suite 44: articles/${artFile} has publication-grade payload (>=30KB)`);
+    assert(artContent.includes('editorial-content-body'), `Suite 44: articles/${artFile} uses the editorial body container`);
+    assert(artContent.includes('toc-nav-list'), `Suite 44: articles/${artFile} renders a Table of Contents`);
+    assert(artContent.includes('FAQPage'), `Suite 44: articles/${artFile} includes FAQPage structured data`);
+    assert(artContent.includes('BreadcrumbList'), `Suite 44: articles/${artFile} includes BreadcrumbList structured data`);
+    assert(artContent.includes('scholarly-bibliography'), `Suite 44: articles/${artFile} provides a scholarly bibliography`);
+    assert(artContent.includes('js/config.js'), `Suite 44: articles/${artFile} includes config.js`);
+    assert(!/<script[^>]*src="https?:/.test(artContent), `Suite 44: articles/${artFile} loads no third-party scripts`);
+    assert(!/\*[A-Za-z]/.test(artContent.replace(/<script[\s\S]*?<\/script>/g, ' ')), `Suite 44: articles/${artFile} contains no stray Markdown emphasis`);
+    assert(/not a fatwa/i.test(artContent), `Suite 44: articles/${artFile} states that it is not a fatwa`);
+
+    const bodyMatch = artContent.match(/<article class="editorial-content-body"[^>]*>([\s\S]*?)<\/article>/);
+    assert(!!bodyMatch, `Suite 44: articles/${artFile} exposes the article body`);
+    const bodyText = bodyMatch ? bodyMatch[1].replace(/<[^>]+>/g, ' ') : '';
+    const bodyWords = (bodyText.match(/[A-Za-z0-9\u0600-\u06FF']+/g) || []).length;
+    assert(bodyWords >= 1500, `Suite 44: articles/${artFile} has at least 1,500 body words (actual: ${bodyWords})`);
+    assert(bodyWords <= 2500, `Suite 44: articles/${artFile} stays within 2,500 body words (actual: ${bodyWords})`);
+    batch5BodyWords += bodyWords;
+
+    assert(s44_searchJs.includes(`articles/${artFile}`), `Suite 44: search.js indexes articles/${artFile}`);
+    assert(s44_sitemap.includes(`articles/${artFile}`), `Suite 44: sitemap.xml indexes articles/${artFile}`);
+    assert(indexArticleHtml.includes(artFile), `Suite 44: articles/index.html links to articles/${artFile}`);
+  });
+
+  assert(batch5BodyWords >= 9000, `Suite 44: Batch 5 provides at least 9,000 body words (actual: ${batch5BodyWords})`);
+  assert(batch5BodyWords <= 10000, `Suite 44: Batch 5 stays within 10,000 body words (actual: ${batch5BodyWords})`);
 
   // SUMMARY
   console.log('\n====================================================');

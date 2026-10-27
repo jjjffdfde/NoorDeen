@@ -3,7 +3,7 @@
 **Date:** 27 October 2026  
 **Component:** `public/dr-israr-ahmed.html`, `public/data/dr-israr/catalog.json`, offline ZIP, Android assets  
 **Status:** Fixed in source, tested over HTTP with `fetch()` forcibly blocked, rebuilt into the offline bundle and APK.  
-**Note:** this is a historical snapshot from the lecture-catalog fix. Test counts and artefact hashes below are superseded by `FINAL_TEST_RESULTS.md` (1,589 assertions; APK `3acfb6d6…`, bundle `67cdee83…`).
+**Note:** this is a historical snapshot from the lecture-catalog fix. Test counts and artefact hashes below are superseded by `FINAL_TEST_RESULTS.md` (1,663 assertions; APK `29ede4bd…`, bundle `a3493559…`).
 
 ---
 

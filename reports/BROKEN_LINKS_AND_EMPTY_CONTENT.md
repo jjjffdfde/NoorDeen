@@ -101,9 +101,9 @@ Suite 41 in `test/run-tests.js`:
 - asserts the cookie banner uses `getBasePath()`;
 - asserts no document-relative search-result href remains.
 
-Full suite after these fixes: **1,589 executed / 1,589 passed / 0 failed**.
+Full suite after these fixes: **1,663 executed / 1,663 passed / 0 failed**.
 
-A post-Batch 4 static + HTTP recheck requested **85 unique internal destinations across 56 pages**: one non-200, the literal JS template `' + escapeHtml(v.sourceUrl) + '`, and seven fragment flags, all of which are the documented runtime false positives above. 0 empty/hash-only hrefs and 0 textless anchors. No new broken link was introduced.
+A post-Batch 5 static + HTTP recheck requested **80 unique internal destinations across 60 pages (3,812 anchors)**: **0 non-200**, 0 empty/hash-only hrefs and 0 textless anchors. A separate sweep of the four Batch 5 pages requested **41 unique destinations with 0 failures**. No new broken link was introduced.
 
 ## 8. Remaining limitations
 

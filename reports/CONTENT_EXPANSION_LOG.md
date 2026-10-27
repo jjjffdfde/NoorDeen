@@ -1,6 +1,6 @@
 # NoorDeen — Content Expansion Log
 
-**Last updated:** 27 October 2026 (Batch 4 integrated; distribution rebuilt)
+**Last updated:** 27 October 2026 (Batch 5 integrated; distribution rebuilt)
 **Counting method:** rendered text only — `<script>`, `<style>` and tags removed, then tokens counted. Two figures are reported where they differ:
 - **Whole-page words** include navigation, table of contents, related-reading block and footer.
 - **Article body words** cover the `<article class="editorial-content-body">` region and exclude that shared chrome; they are the honest measure of article length.
@@ -24,11 +24,34 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Dr. Israr Ahmed library** | New route + catalog + search/sitemap/nav/SW integration | **148 records / 147 unique uploads / 7 series** |
 | **Batch 3 articles** | 5 articles (finance/riba, marriage, death/afterlife, halal food, environment) | **8,547 body words**, 1,709 average; all ≥1,637 body words |
 | **Batch 4 articles** | 4 articles (parents, parenting, inheritance, neighbours) | **8,407 body words**, 2,102 average; all ≥1,971 body words |
+| **Batch 5 articles** | 4 articles (business ethics, contracts, debt, workers’ rights) | **9,728 body words**, 2,432 average; all ≥2,371 body words |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
 
-## 2. Batch 4 detail (this cycle)
+## 2. Batch 5 detail (this cycle)
+
+Generated from `scripts/article-content/batch-5a.cjs` through `scripts/build-articles.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
+
+| # | Topic | Slug | Body words | Whole-page words |
+| --: | :--- | :--- | --: | --: |
+| 30 | Business ethics and honest trade | `business-ethics-and-honest-trade` | 2,371 | 2,697 |
+| 31 | Contracts and promises | `contracts-and-promises-in-islam` | 2,473 | 2,796 |
+| 32 | Debt and loans | `debt-and-loans-in-islam` | 2,473 | 2,805 |
+| 33 | Workers’ rights and fair employment | `workers-rights-in-islam` | 2,411 | 2,728 |
+| | **Total** | | **9,728** | **11,026** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, an explicit “not a fatwa” statement, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #30–33, details block 110–113), and are reachable from the article library.
+
+**Quality gate:** all four are inside the 1,500–2,500 body-word target. Batch 5 was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs. The closest shingle similarity between any two of the 33 articles is **0.0290** (99 Names vs Repentance); the closest Batch 5 pair is **0.0255** (Business Ethics vs Workers’ Rights), consistent with shared Quranic quotations rather than copied prose.
+
+**Batch 5 verification:** each of the four pages was loaded in Chromium at `http://localhost:3400`, with H1, title, TOC link count, body-word count, JSON-LD presence, canonical URL, config.js load and console output checked. Search from an article page returned the correct first result for `business ethics`, `contract promises`, `debt repayment` and `workers wages`; the article index filter returned 1, 3, 3 and 1 cards respectively and reset to 33. A link sweep of the four pages checked 41 unique destinations with 0 failures.
+
+**Honest note on numbering:** the library now contains 33 articles. Twenty cover roadmap topics 1–20; three map to topics 92, 95 and 96; two additional topics (death/afterlife and environment) are recorded as 103 and 105; Batch 4 adds four family/community topics as publication numbers 106–109; Batch 5 adds four law/employment topics as 110–113. Those publication numbers are not a claim that 113 roadmap topics are written.
+
+---
+
+## 2a. Batch 4 detail (previous cycle)
 
 Generated from `scripts/article-content/batch-4a.cjs` through `scripts/build-articles.cjs`, so all four share the Batch 1/2/3 template, TOC, schema, navigation and footer.
 
@@ -42,11 +65,11 @@ Generated from `scripts/article-content/batch-4a.cjs` through `scripts/build-art
 
 Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, a "not a personal fatwa" disclaimer, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #26–29, details block 106–109), and are reachable from the article library.
 
-**Quality gate:** all four are inside the 1,500–2,500 body-word target. Batch 4 was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors and body-container integrity. The closest shingle similarity between any two of the 29 articles is **0.030** (99 Names vs Repentance); the closest Batch 4 pair is **0.029** (Honouring Parents vs Neighbours), consistent with shared Quranic quotations rather than copied prose.
+**Quality gate:** all four are inside the 1,500–2,500 body-word target. Batch 4 was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors and body-container integrity. At the time of Batch 4 the closest shingle similarity between any two of the 29 articles was **0.030** (99 Names vs Repentance); the closest Batch 4 pair was **0.029** (Honouring Parents vs Neighbours), consistent with shared Quranic quotations rather than copied prose.
 
 **Batch 4 verification:** each of the four pages was loaded in Chromium at `http://localhost:3400`, with H1, title, TOC link count, body-word count, JSON-LD presence, canonical URL, config.js load and console output checked. Search from an article page returned the correct first result for `parenting`, `inheritance` and `neighbour`; destination pages returned HTTP 200.
 
-**Honest note on numbering:** the library now contains 29 articles. Twenty cover roadmap topics 1–20; three map to topics 92, 95 and 96; two additional topics (death/afterlife and environment) are recorded as 103 and 105; Batch 4 adds four family/community topics as publication numbers 106–109. Those publication numbers are not a claim that 109 roadmap topics are written.
+**Honest note on numbering (historical):** at the time of Batch 4 the library contained 29 articles. Twenty covered roadmap topics 1–20; three mapped to topics 92, 95 and 96; two additional topics (death/afterlife and environment) were recorded as 103 and 105; Batch 4 added four family/community topics as publication numbers 106–109. Those publication numbers were never a claim that 109 roadmap topics were written. The current totals are in section 2 (Batch 5) and section 5.
 
 ---
 
@@ -87,7 +110,7 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 | No keyboard skip link | Keyboard users had to tab through the whole header | `app.js` injects a skip link targeting `#main-content`; `main` receives `tabindex="-1"`; visible-state CSS added |
 | Literal Markdown in rendered HTML | `**bold**` / `*italic*` shown as asterisks on `history.html`, `sahaba.html` and 10 articles | Converted to `<strong>` / `<em>`; 0 stray asterisks remain (contact page's 4 are required-field markers) |
 | Mojibake in `sahaba.html` and `history.html` | Arabic text rendered as `╪ú╪¿┘ê…` after a PowerShell-based restore from the offline ZIP; ~1,145 words appeared missing | Both files were re-extracted from git HEAD as UTF-8, Markdown was converted, asset versions re-applied, and the orphan search modal removed. Arabic characters restored (6,696 in sahaba, 733 visible in history), 0 mojibake, 0 console errors |
-| Markdown leakage on rebuild | `scripts/article-content/batch-2b.cjs` stored `*decision*`; rebuilding the whole library would have rendered literal asterisks | Replaced with `<em>decision</em>` and rebuilt; 0 stray Markdown across the 29 articles |
+| Markdown leakage on rebuild | `scripts/article-content/batch-2b.cjs` stored `*decision*`; rebuilding the whole library would have rendered literal asterisks | Replaced with `<em>decision</em>` and rebuilt; 0 stray Markdown across the 33 articles |
 | Stale distribution copy | Download page still said 52 pages / 1.24 MB; About page said 1,519 assertions | Updated to 56 pages / ~1.29 MB ZIP and 1,589 assertions; both are now asserted by Suite 36 |
 
 ---
@@ -99,21 +122,21 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 | HTML pages | **56** (26 root + 30 article) |
 | Visible words, all pages | **230,190** |
 | Articles published | **29** (23 roadmap topics + 6 additional topics) |
-| Article body words | **54,432**, average **1,877**, min **1,538**, max **2,257** |
+| Article body words | **64,160**, average **1,944**, min **1,538**, max **2,473** |
 | Hadith records | 101 |
 | Dua records | 102 |
 | Kalimas | 6 |
 | Lecture records | 148 (147 unique) |
-| Automated assertions | **1,589 passing, 0 failing** |
-| Sitemap URLs | 56 |
-| Release APK | 1,456,011 bytes (1.39 MiB), 56 HTML pages, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 1,355,278 bytes (1.29 MiB), 85 files |
+| Automated assertions | **1,663 passing, 0 failing** |
+| Sitemap URLs | 60 |
+| Release APK | 1,503,077 bytes (1.43 MiB), 60 HTML pages, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 1,401,639 bytes (1.34 MiB), 89 files |
 
 ---
 
 ## 6. What is still missing
 
-- **77 roadmap topics** remain unwritten (the 100-topic list minus the 23 covered).
+- **67 roadmap topics** remain unwritten (the 100-topic list minus the 23 covered).
 - **Tafsir** covers 6 verses, not the full Quran.
 - **Offline Quran** covers 10 surahs / 49 ayahs, not 114.
 - **No lecture transcripts or translations**; the library is a catalog of embeds.

@@ -92,6 +92,10 @@ Tested from the home page and from an article page.
 | `parenting` (Batch 4 article page) | Parenting article first | Parenting article first | Pass |
 | `inheritance` (Batch 4 article page) | Inheritance article | Inheritance article | Pass |
 | `neighbour` (Batch 4 article page) | Neighbours article first | Neighbours article, then manners article | Pass |
+| `business ethics` (Batch 5 article page) | Business ethics article first | Business ethics article | Pass |
+| `contract promises` (Batch 5 article page) | Contracts article | Contracts article | Pass |
+| `debt repayment` (Batch 5 article page) | Debt article first | Debt article, then workers article | Pass |
+| `workers wages` (Batch 5 article page) | Workers article | Workers article | Pass |
 
 **Snippets:** results show text drawn from the matching record (title, translation, or snippet field), not a generic label. Page-type labels are specific: "Educational Article", "Islamic Tool", "Lecture Library", "Download", "Quran", "Hadith", "Dua".
 
@@ -131,9 +135,9 @@ The catalog distinguishes `file`, `network`, `invalid` and `empty` failure modes
 - Alias matching guards (`needle.length >= 4`) are present.
 - Ayatul Kursi returns the `surah=2&ayah=255` destination.
 
-Full suite result after these changes: **1,589 executed / 1,589 passed / 0 failed**.
+Full suite result after these changes: **1,663 executed / 1,663 passed / 0 failed**.
 
-Batch 4 adds four article records to the index (`honouring-parents-in-islam`, `islamic-parenting-guide`, `islamic-inheritance-basics`, `rights-of-neighbours-in-islam`). Search from an article page returned the correct first result for `parenting`, `inheritance` and `neighbour`; each destination returned HTTP 200. Suite 43 asserts that all four slugs are present in `search.js`, `sitemap.xml` and `articles/index.html`.
+Batch 4 adds four article records to the index (`honouring-parents-in-islam`, `islamic-parenting-guide`, `islamic-inheritance-basics`, `rights-of-neighbours-in-islam`); Batch 5 adds four more (`business-ethics-and-honest-trade`, `contracts-and-promises-in-islam`, `debt-and-loans-in-islam`, `workers-rights-in-islam`). Search from an article page returned the correct first result for each Batch 5 query; each destination returned HTTP 200. Suite 44 asserts that all four Batch 5 slugs are present in `search.js`, `sitemap.xml` and `articles/index.html`.
 
 ---
 

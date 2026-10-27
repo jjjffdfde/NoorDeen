@@ -1,7 +1,7 @@
 # NoorDeen — Content Gaps
 
 **Updated:** 27 October 2026
-**Scope:** what is still missing or limited after the Batch 4 release. Closed items are listed briefly in section 1 so this file is not mistaken for a stale wish-list.
+**Scope:** what is still missing or limited after the Batch 5 release. Closed items are listed briefly in section 1 so this file is not mistaken for a stale wish-list.
 
 ---
 
@@ -12,7 +12,7 @@
 | Hadith library too small | 101 curated records across 6 collections | 101 cards; search, collection/topic/grade filters, copy |
 | Duas too few | 102 entries, 17 category filters | 102 cards; morning filter → 7; counter and copy |
 | No glossary | 135 searchable terms with categories and Arabic | Homepage glossary search |
-| No long-form library | 29 articles, 54,432 body words | 1,538–2,257 words each; TOC, schema, bibliography |
+| No long-form library | 33 articles, 64,160 body words | 1,538–2,473 words each; TOC, schema, bibliography |
 | No lecture library | 148 Dr. Israr records / 147 unique uploads | Search "Arbaeen" → 73; series filter → 9 |
 | Sahaba count mislabelled | 52 monographs, 6 cohorts | Filter → 14 women, reset → 52 |
 | Missing Arabic in sahaba/history | Restored from git HEAD as UTF-8 | 6,696 Arabic chars in sahaba; 0 mojibake |
@@ -28,7 +28,7 @@
 | Gap | Current | What would close it | Why it is not closed |
 | :--- | :--- | :--- | :--- |
 | **Tafsir** | 6 verses (1:1, 1:2, 1:5, 1:6, 2:255, 112:1) | A licensed or public-domain tafsir with translator attribution, verse by verse | Licensing and editorial review; inventing text is not an option |
-| **Roadmap articles** | 23 of 100 topics (29 articles incl. 6 additional topics) | 77 more roadmap articles at 1,500–2,500 body words | Time; each needs sources and review |
+| **Roadmap articles** | 23 of 100 topics (33 articles incl. additional topics) | 67 more roadmap articles at 1,500–2,500 body words | Time; each needs sources and review |
 | **Offline Quran** | 10 surahs / 49 ayahs (36 and 67 partial) | Bundle all 114 surahs | Payload growth and text-licence confirmation |
 | **Hadith corpus** | 101 curated records | Explicit selection policy plus a larger reviewed set | Full collections are thousands of records and need grading review |
 | **Lecture archive** | 10 of 74 tanzeem.org pages | Continue the same scrape-and-verify method | Time; must preserve duplicate handling and source links |

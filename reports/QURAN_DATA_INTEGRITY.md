@@ -138,4 +138,4 @@ Relevant assertions:
 - Suite 23: reader controls, tafsir fallback, audio architecture.
 - Suite 41: deep-link resolution and Ayatul Kursi destination.
 
-Full suite at the time of writing: **1,589 executed / 1,589 passed / 0 failed**.
+Full suite at the time of writing: **1,663 executed / 1,663 passed / 0 failed**.
