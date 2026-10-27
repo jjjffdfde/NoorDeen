@@ -113,7 +113,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 37 | Articles index | PASS | 29 cards; search `riba` → 1, `marriage` → 1, `parenting` → 1, reset → 29; roadmap statuses updated; 29 unique links. | 23 of 100 roadmap topics published (29 articles incl. 6 additional topics). |
+| 37 | Articles index | PASS | 29 cards; in-page filter `riba` → 1, `marriage` → 1, `parenting` → 2 (marriage + parenting guide), reset → 29; roadmap statuses updated; 29 unique links. | 23 of 100 roadmap topics published (29 articles incl. 6 additional topics). |
 | 38 | Educational articles (29) | PARTIAL | All 29 render; TOC anchors resolve; 2 JSON-LD blocks each; body length 1,538–2,257 words; max 5-word shingle similarity 0.030. Batch 4 pages loaded in Chromium with 0 console errors. | Coverage is 23/100 roadmap topics; no scholarly sign-off. |
 | 39 | Glossary | PASS | 135 terms with categories, Arabic script and search. | Definitions are concise, not encyclopaedic. |
 | 40 | Learning pathways | PASS | Homepage pathways section now has the previously missing `#guided-learning` anchor; cards link to guides and articles. | — |
