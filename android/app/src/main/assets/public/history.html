@@ -125,6 +125,8 @@
             </div>
           </li>
 
+          <li class="nav-item"><a href="dr-israr-ahmed.html">🎬 Lectures</a></li>
+
           <!-- App Pill -->
           <li class="nav-item">
             <a href="download-app.html" class="nav-app-pill">
@@ -2756,64 +2758,7 @@
   </footer>
 
   <!-- Search Modal -->
-  <div id="search-modal" class="modal-backdrop" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog search-modal-dialog">
-      <div class="search-modal-header">
-        <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="global-search-input" class="search-input" placeholder="Search Quran, Hadith, Duas, History, Guides... (Phonetic & Multi-script)" autocomplete="off">
-        </div>
-        <button id="search-modal-close" class="modal-close-btn" aria-label="Close search">✕</button>
-      </div>
-      <div id="search-modal-results" class="search-modal-results">
-        <div class="search-initial-state">
-          <p>Type to search across the entire Islamic Knowledge Portal...</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Interactive View Switcher Engine Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const viewErasBtn = document.getElementById('view-eras-btn');
-      const viewTimelineBtn = document.getElementById('view-timeline-btn');
-      const viewRegionsBtn = document.getElementById('view-regions-btn');
-
-      const erasContainer = document.getElementById('eras-view-container');
-      const timelineContainer = document.getElementById('timeline-view-container');
-      const regionsContainer = document.getElementById('regions-view-container');
-      const eraNavIndex = document.getElementById('era-nav-index');
-
-      function switchView(activeBtn, showContainer) {
-        // Reset buttons
-        [viewErasBtn, viewTimelineBtn, viewRegionsBtn].forEach(btn => {
-          btn.classList.remove('active', 'btn-primary');
-          btn.classList.add('btn-outline');
-        });
-        activeBtn.classList.add('active', 'btn-primary');
-        activeBtn.classList.remove('btn-outline');
-
-        // Toggle containers
-        erasContainer.style.display = 'none';
-        timelineContainer.style.display = 'none';
-        regionsContainer.style.display = 'none';
-        showContainer.style.display = 'block';
-
-        if (showContainer === erasContainer) {
-          eraNavIndex.style.display = 'block';
-        } else {
-          eraNavIndex.style.display = 'none';
-        }
-      }
-
-      viewErasBtn.addEventListener('click', () => switchView(viewErasBtn, erasContainer));
-      viewTimelineBtn.addEventListener('click', () => switchView(viewTimelineBtn, timelineContainer));
-      viewRegionsBtn.addEventListener('click', () => switchView(viewRegionsBtn, regionsContainer));
-    });
-  </script>
-
-  <!-- Core JavaScript Assets -->
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
   <script src="js/search.js"></script>

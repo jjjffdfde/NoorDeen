@@ -112,6 +112,30 @@
   outline-offset: 2px;
 }
 
+/* Keyboard skip link — hidden until focused */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  padding: 10px 18px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus,
+.skip-link:focus-visible,
+.skip-link.skip-link-visible {
+  left: 0;
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+main:focus {
+  outline: none;
+}
+
 html {
   font-family: var(--font-sans);
   background-color: var(--color-bg);

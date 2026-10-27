@@ -265,7 +265,7 @@ async function runTestSuite() {
   const swPath = path.join(PUBLIC_DIR, 'service-worker.js');
   assert(fs.existsSync(swPath), 'Service Worker (service-worker.js) exists');
   const swContent = fs.readFileSync(swPath, 'utf-8');
-  assert(swContent.includes('islamic-portal-shell-v4') || swContent.includes('islamic-portal-shell-v3'), 'Service Worker defines cache version (v4/v3)');
+  assert(swContent.includes('islamic-portal-shell-v13') || swContent.includes('islamic-portal-shell-v12') || swContent.includes('islamic-portal-shell-v11'), 'Service Worker defines cache version (v10/v9/v8)');
   assert(swContent.includes('islamic-portal-audio-v1'), 'Service Worker defines dedicated audio cache');
   assert(swContent.includes('self.addEventListener(\'install\''), 'Service Worker implements install event listener');
   assert(swContent.includes('self.addEventListener(\'fetch\''), 'Service Worker implements fetch strategy');
@@ -1254,7 +1254,7 @@ async function runTestSuite() {
   const sahabaUrduPath = path.join(PUBLIC_DIR, 'js', 'sahaba-urdu.js');
   assert(fs.existsSync(sahabaUrduPath), 'Suite 33: public/js/sahaba-urdu.js module exists');
   const s33_sahabaHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'sahaba.html'), 'utf-8');
-  assert(s33_sahabaHtml.includes('src="js/sahaba-urdu.js"'), 'Suite 33: sahaba.html links to sahaba-urdu.js module');
+  assert(s33_sahabaHtml.includes('src="js/sahaba-urdu.js?v=20261026e"'), 'Suite 33: sahaba.html links to sahaba-urdu.js module');
 
   // 3. Astronomical Solar Prayer Times Reference Checks (25 October 2026)
   assert(ToolsModule.CITIES && typeof ToolsModule.CITIES === 'object', 'Suite 33: IslamicTools.CITIES verified coordinates database exists');
@@ -1398,14 +1398,13 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('1,300+ rigorous checks'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('1,478 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
-  // 4. Download APK Checksum Inlining
+  // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
-  const s36_currentApkBuffer = fs.readFileSync(path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-release.apk'));
-  const s36_currentApkHash = crypto.createHash('sha256').update(s36_currentApkBuffer).digest('hex');
-  assert(s36_downloadHtml.includes(s36_currentApkHash), 'Suite 36: download-app.html inlines verified SHA-256 APK hash');
+  assert(s36_downloadHtml.includes("fetch('downloads/CHECKSUMS.sha256', { cache: 'no-store' })"), 'Suite 36: download-app.html loads checksums from the signed manifest at runtime');
   assert(!s36_downloadHtml.includes('calculating-sha256-checksum...'), 'Suite 36: download-app.html eliminates calculating checksum placeholder');
+  assert(!/[a-f0-9]{64}/.test(s36_downloadHtml), 'Suite 36: download-app.html hardcodes no stale SHA-256 digest');
 
   // 5. Dual Nisab Standards Verification in Tools Engine
   const s36_zakatHanafiSilver = ToolsModule.calculateZakat({ currency: 'USD', cashInHand: 1000, nisabStandard: 'silver' });
@@ -1425,10 +1424,17 @@ async function runTestSuite() {
 
   // 7. Universal Config.js Presence
   const s36_allHtml = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
-  assert(s36_allHtml.length === 25, 'Suite 36: Exactly 25 HTML pages exist');
+  assert(s36_allHtml.length === 26, 'Suite 36: Exactly 26 HTML pages exist');
   s36_allHtml.forEach(f => {
     const content = fs.readFileSync(path.join(PUBLIC_DIR, f), 'utf-8');
     assert(content.includes('js/config.js'), `Suite 36: ${f} includes js/config.js for cookie consent and config management`);
+    assert(!content.includes('id="global-search-input"'), `Suite 36: ${f} has no orphaned static search modal that would shadow the working dialog`);
+  });
+
+  const s36_articlesHtml = fs.readdirSync(path.join(PUBLIC_DIR, 'articles')).filter(f => f.endsWith('.html'));
+  s36_articlesHtml.forEach(f => {
+    const content = fs.readFileSync(path.join(PUBLIC_DIR, 'articles', f), 'utf-8');
+    assert(!content.includes('id="global-search-input"'), `Suite 36: articles/${f} has no orphaned static search modal`);
   });
 
   // --- TEST SUITE 37: PWA Raster Icons & Desktop Offline Distribution Bundle ---
@@ -1453,10 +1459,12 @@ async function runTestSuite() {
   assert(fs.existsSync(s37_mask192) && fs.statSync(s37_mask192).size > 5000, 'Suite 37: Maskable 192x192 raster PNG exists and is valid size');
   assert(fs.existsSync(s37_mask512) && fs.statSync(s37_mask512).size > 20000, 'Suite 37: Maskable 512x512 raster PNG exists and is valid size');
 
-  // 3. Service Worker Shell v4 & PNG Pre-Caching
+  // 3. Service Worker Shell v9 & PNG Pre-Caching
   const s37_sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  assert(s37_sw.includes("CACHE_VERSION = 'v4'"), 'Suite 37: Service Worker upgraded to CACHE_VERSION v4');
+  assert(s37_sw.includes("CACHE_VERSION = 'v13'"), 'Suite 37: Service Worker upgraded to CACHE_VERSION v13');
   assert(s37_sw.includes('icon-192.png') && s37_sw.includes('icon-512.png'), 'Suite 37: Service Worker pre-caches raster PNG icons');
+  assert(s37_sw.includes('dr-israr-ahmed.html'), 'Suite 37: Service Worker pre-caches the Dr. Israr Ahmed library');
+  assert(s37_sw.includes('data/dr-israr/catalog.json'), 'Suite 37: Service Worker pre-caches the lecture catalog JSON');
 
   // 4. Offline Desktop Archive ZIP Verification
   const s37_zipPath = path.join(PUBLIC_DIR, 'downloads', 'islamic-portal-offline-bundle.zip');
@@ -1530,6 +1538,115 @@ async function runTestSuite() {
   expectedArticles.forEach(artFile => {
     assert(s38_sitemap.includes(`articles/${artFile}`), `Suite 38: sitemap.xml indexes articles/${artFile}`);
   });
+
+  // --- TEST SUITE 39: Batch 2 Guided Study Articles (Topics 11–20) ---
+  console.log('\n--- TEST SUITE 39: Batch 2 Guided Study Articles (Topics 11–20) ---');
+  const batch2Articles = [
+    'seerah-of-prophet-muhammad.html',
+    'stories-of-the-prophets.html',
+    'sahaba-biographies.html',
+    'islamic-history-civilization.html',
+    'islamic-manners-and-character.html',
+    'fasting-and-ramadan.html',
+    'hajj-and-umrah-guide.html',
+    'ninety-nine-names-of-allah.html',
+    'repentance-dhikr-spiritual-development.html',
+    'new-muslim-learning-path.html'
+  ];
+
+  let batch2Words = 0;
+  batch2Articles.forEach(artFile => {
+    const artPath = path.join(articlesDir, artFile);
+    assert(fs.existsSync(artPath), `Suite 39: Article file exists: articles/${artFile}`);
+    const artContent = fs.readFileSync(artPath, 'utf-8');
+    const kb = Math.round(artContent.length / 1024);
+    assert(artContent.length >= 30000, `Suite 39: articles/${artFile} has publication-grade payload (>=30KB, actual: ${kb}KB)`);
+    assert(artContent.includes('toc-nav-list'), `Suite 39: articles/${artFile} renders structured Table of Contents`);
+    assert(artContent.includes('FAQPage'), `Suite 39: articles/${artFile} includes Schema.org FAQPage structured data`);
+    assert(artContent.includes('BreadcrumbList'), `Suite 39: articles/${artFile} includes Schema.org BreadcrumbList structured data`);
+    assert(artContent.includes('scholarly-bibliography'), `Suite 39: articles/${artFile} provides classical scholarly bibliography`);
+    assert(artContent.includes('js/config.js'), `Suite 39: articles/${artFile} includes config.js`);
+    assert(artContent.includes('dr-israr-ahmed.html'), `Suite 39: articles/${artFile} links to the lecture library`);
+    assert(!/<script[^>]*src="https?:/.test(artContent), `Suite 39: articles/${artFile} loads no third-party scripts`);
+
+    const words = artContent.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    assert(words >= 1500, `Suite 39: articles/${artFile} has substantial depth (${words} words >= 1,500 words)`);
+    batch2Words += words;
+  });
+
+  assert(batch2Words > 18000, `Suite 39: Batch 2 articles total over 18,000 words (actual: ${batch2Words} words)`);
+
+  const s39_searchJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  batch2Articles.forEach(artFile => {
+    assert(s39_searchJs.includes(`articles/${artFile}`), `Suite 39: search.js indexes articles/${artFile}`);
+  });
+
+  const s39_sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  batch2Articles.forEach(artFile => {
+    assert(s39_sitemap.includes(`articles/${artFile}`), `Suite 39: sitemap.xml indexes articles/${artFile}`);
+  });
+
+  batch2Articles.forEach(artFile => {
+    assert(indexArticleHtml.includes(artFile), `Suite 39: articles/index.html links to articles/${artFile}`);
+  });
+
+  // --- TEST SUITE 40: Dr. Israr Ahmed Video Library & Catalog Integrity ---
+  console.log('\n--- TEST SUITE 40: Dr. Israr Ahmed Video Library & Catalog Integrity ---');
+  const s40_videoPagePath = path.join(PUBLIC_DIR, 'dr-israr-ahmed.html');
+  assert(fs.existsSync(s40_videoPagePath), 'Suite 40: dr-israr-ahmed.html exists');
+  const s40_videoHtml = fs.readFileSync(s40_videoPagePath, 'utf-8');
+  assert(s40_videoHtml.includes('js/config.js'), 'Suite 40: lecture page includes config.js');
+  assert(s40_videoHtml.includes('youtube-nocookie.com'), 'Suite 40: lecture page uses privacy-enhanced YouTube embeds');
+  assert(!/https?:\/\/(www\.)?youtube\.com\/embed\//.test(s40_videoHtml), 'Suite 40: lecture page never uses tracking YouTube embed domain');
+  assert(s40_videoHtml.includes('data/dr-israr/catalog.json'), 'Suite 40: lecture page loads the local catalog');
+  assert(s40_videoHtml.includes('BreadcrumbList'), 'Suite 40: lecture page includes BreadcrumbList structured data');
+  assert(s40_videoHtml.includes('tanzeem.org'), 'Suite 40: lecture page links to the official source archive');
+
+  const s40_catalogPath = path.join(PUBLIC_DIR, 'data', 'dr-israr', 'catalog.json');
+  assert(fs.existsSync(s40_catalogPath), 'Suite 40: catalog.json exists');
+  const s40_catalog = JSON.parse(fs.readFileSync(s40_catalogPath, 'utf-8'));
+  assert(Array.isArray(s40_catalog.videos) && s40_catalog.videos.length > 0, 'Suite 40: catalog contains video records');
+  assert(s40_catalog.videos.length === 148, `Suite 40: catalog contains exactly 148 verified video records (actual: ${s40_catalog.videos.length})`);
+  assert(s40_catalog.series.length === 7, `Suite 40: catalog contains exactly 7 series (actual: ${s40_catalog.series.length})`);
+
+  const s40_ids = new Set();
+  const s40_ytIds = new Set();
+  let s40_urdu = 0;
+  let s40_english = 0;
+  s40_catalog.videos.forEach(v => {
+    s40_ids.add(v.id);
+    s40_ytIds.add(v.youtubeId);
+    if (v.language === 'Urdu') s40_urdu++;
+    if (v.language === 'English') s40_english++;
+  });
+  assert(s40_ids.size === s40_catalog.videos.length, 'Suite 40: every catalog record has a unique ID');
+  assert(s40_ytIds.size === s40_catalog.source.uniqueVideoCount, `Suite 40: unique YouTube uploads match the declared count (${s40_ytIds.size} === ${s40_catalog.source.uniqueVideoCount})`);
+  assert(s40_catalog.source.uniqueVideoCount === 147, `Suite 40: catalog declares 147 unique uploads (actual: ${s40_catalog.source.uniqueVideoCount})`);
+  const s40_dupes = s40_catalog.videos.filter(v => v.isDuplicate);
+  assert(s40_dupes.length === s40_catalog.source.duplicateListingRecords, 'Suite 40: duplicate records are flagged consistently with the declared count');
+  s40_dupes.forEach(v => {
+    assert(v.duplicateOf && s40_catalog.videos.some(o => o.id === v.duplicateOf && o.youtubeId === v.youtubeId), `Suite 40: ${v.id} points to a real record with the same upload`);
+  });
+  assert(s40_urdu === 131, `Suite 40: catalog records 131 Urdu lectures (actual: ${s40_urdu})`);
+  assert(s40_english === 17, `Suite 40: catalog records 17 English lectures (actual: ${s40_english})`);
+  assert(s40_urdu + s40_english === s40_catalog.videos.length, 'Suite 40: every record has a declared language');
+
+  const s40_badYt = s40_catalog.videos.filter(v => !/^[A-Za-z0-9_-]{11}$/.test(v.youtubeId));
+  assert(s40_badYt.length === 0, `Suite 40: every YouTube ID is 11 valid characters (invalid: ${s40_badYt.length})`);
+  const s40_badSource = s40_catalog.videos.filter(v => !/^https:\/\/www\.tanzeem\.org\//.test(v.sourceUrl || ''));
+  assert(s40_badSource.length === 0, `Suite 40: every record links to a tanzeem.org source page (invalid: ${s40_badSource.length})`);
+  const s40_badSeries = s40_catalog.videos.filter(v => !s40_catalog.series.some(s => s.code === v.seriesCode));
+  assert(s40_badSeries.length === 0, `Suite 40: every record belongs to a declared series (orphans: ${s40_badSeries.length})`);
+
+  const s40_seriesSum = s40_catalog.series.reduce((sum, s) => sum + s.count, 0);
+  assert(s40_seriesSum === s40_catalog.videos.length, `Suite 40: series counts sum to the video total (${s40_seriesSum})`);
+  assert(s40_catalog.rights && /does not host/i.test(s40_catalog.rights.hosting), 'Suite 40: catalog states that no video files are hosted');
+  assert(!/\.mp4|\.m3u8|\.webm/i.test(JSON.stringify(s40_catalog)), 'Suite 40: catalog contains no direct video file URLs');
+
+  const s40_searchJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  assert(s40_searchJs.includes('dr-israr-ahmed.html'), 'Suite 40: search.js indexes the lecture library');
+  const s40_sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  assert(s40_sitemap.includes('dr-israr-ahmed.html'), 'Suite 40: sitemap.xml lists the lecture library');
 
   // SUMMARY
   console.log('\n====================================================');

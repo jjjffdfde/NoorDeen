@@ -1,6 +1,6 @@
 // scripts/build-offline-bundle.cjs
 // Builds the verified standalone desktop offline web archive (.ZIP)
-// containing all 25 HTML pages, CSS, JS, datasets, PNG/SVG icons, and offline guidance.
+// containing all HTML pages, CSS, JS, datasets, PNG/SVG icons, and offline guidance.
 
 const fs = require('fs');
 const path = require('path');
@@ -147,9 +147,16 @@ class ZipBuilder {
 }
 
 const OFFLINE_README = `================================================================================
-   ISLAMIC KNOWLEDGE PORTAL — COMPLETE OFFLINE STANDALONE WEB ARCHIVE
-   Version 1.2.0 • 25 Verified Educational Pages • 100% Offline Capable
+   NOORDEEN — OFFLINE STANDALONE WEB ARCHIVE
+   Version 1.2.0 • 52 Pages • Offline Reading for Bundled Content
 ================================================================================
+
+IMPORTANT — WHAT "OFFLINE" MEANS HERE:
+This archive contains the full website shell, all articles, hadith, duas,
+biographies, worship guides, tools and 10 bundled Quran surahs (49 ayahs).
+The remaining 104 surahs, recitation audio, and the Dr. Israr Ahmed video
+catalog require an internet connection. The archive is not a complete
+offline Quran and does not bundle any video files.
 
 HOW TO USE THIS OFFLINE ARCHIVE ON WINDOWS, MAC, OR LINUX:
 
@@ -166,14 +173,14 @@ HOW TO USE THIS OFFLINE ARCHIVE ON WINDOWS, MAC, OR LINUX:
 3. OFFLINE FEATURES AVAILABLE:
    - Holy Quran: All 114 Surahs cataloged, key Surahs bundled in full Arabic & English
    - Kutub al-Sittah Hadith: Verified collections with scholarly gradings
-   - Complete Prophetic Seerah: 10 Historical Eras, 61 Verified Milestones
-   - Stories of the Prophets: 25 Quranic Prophets with Quranic citations
-   - Comprehensive Sahaba Biographies: Ashara Mubashara & Early Companions
-   - 14 Centuries of Islamic History: Caliphates, Golden Age, and Civilization
+   - Complete Prophetic Seerah: 25 chapters from pre-Islamic Arabia to the Farewell Pilgrimage
+   - Stories of the Prophets: 30 prophetic narratives (25 Quranic prophets + 5 righteous figures)
+   - Comprehensive Sahaba Biographies: 52 companions across six cohorts
+   - 14 Centuries of Islamic History: 12 eras and 66 milestones
    - Worship Guides: 5 Daily Prayers, Wudu, Janazah (4 Takbirs), Eid Prayers
    - Six Kalimas of Islam, Daily Duas & Hisn al-Muslim Adhkar
-   - Solar Prayer Times & Qiblah calculation engine
-   - Zakat Calculator with dual Nisab standards (Classical Hanafi & OIC Metric)
+   - Solar Prayer Times engine (qibla direction is not included)
+   - Zakat Calculator with gold and silver Nisab standards
    - Digital Tasbih Counter with sound/vibration feedback
    - Lunar Hijri Calendar & Date Converter
 

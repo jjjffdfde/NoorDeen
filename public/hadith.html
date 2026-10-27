@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Authentic Hadith Library — Sahih al-Bukhari, Muslim & Kutub al-Sittah with Fiqh Commentary</title>
   <meta name="description" content="Search authentic Hadith collections with verified scholarly gradings, references, Arabic text, English, Urdu translations, and Fiqh al-Hadith commentary.">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261026e">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/hadith.html">
@@ -123,6 +123,8 @@
               <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
             </div>
           </li>
+
+          <li class="nav-item"><a href="dr-israr-ahmed.html">🎬 Lectures</a></li>
 
           <!-- App Pill -->
           <li class="nav-item">
@@ -4472,12 +4474,12 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/tools.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config.js?v=20261026e"></script>
+  <script src="js/data.js?v=20261026e"></script>
+  <script src="js/i18n.js?v=20261026e"></script>
+  <script src="js/tools.js?v=20261026e"></script>
+  <script src="js/search.js?v=20261026e"></script>
+  <script src="js/app.js?v=20261026e"></script>
   <script>
         // Extended Scholarly Commentary Registry (Fiqh al-Hadith)
     const HADITH_COMMENTARY = {
@@ -4687,8 +4689,9 @@
       if (!h) return;
       const urduPart = h.ur ? `\n\n${h.ur}\n— اردو ترجمہ` : '';
       const text = `${h.ar}\n\n"${h.en}"${urduPart}\n\nNarrated by: ${h.narrator}\nReference: ${h.collection} #${h.number} (${h.grade}${h.gradeScholar ? ' - ' + h.gradeScholar : ''})`;
-      navigator.clipboard.writeText(text).then(() => {
-        if (window.App) window.App.showToast('Hadith copied with citation!');
+      const copier = window.App && window.App.copyText ? window.App.copyText(text) : Promise.resolve(false);
+      copier.then((ok) => {
+        if (window.App) window.App.showToast(ok ? 'Hadith copied with citation!' : 'Copy failed — please select the text manually.');
       });
     }
 

@@ -1,5 +1,7 @@
 # NOORDEEN — MASTER REPOSITORY BASELINE & ARCHITECTURAL AUDIT
 
+> **Historical baseline:** figures here (1,250 assertions, 36 pages, 1.16 MB APK, 1.07 MB bundle) describe commit `77010d5` on 25 October 2026. Current state: 47 pages, 1,473 assertions, 5.94 MB APK, 1.18 MB bundle — see `reports/CONTENT_COUNTS.md` and `reports/WEBSITE_TEST_RESULTS.md`.
+
 **Audit Date:** 25 October 2026  
 **Auditor / Agent:** Antigravity Advanced Agentic Coding System  
 **Repository:** `https://github.com/jjjffdfde/NoorDeen`  

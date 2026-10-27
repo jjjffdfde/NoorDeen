@@ -1,99 +1,98 @@
-# NOORDEEN — OFFLINE VERIFICATION & ARCHITECTURE REPORT
+# NoorDeen — Offline Verification Report
 
-**Verification Date:** 25 October 2026  
-**Status:** 100% Offline Functional Across PWA, Standalone Bundle, and Native Android Package  
-**Repository:** `https://github.com/jjjffdfde/NoorDeen`  
-**Live Website:** `https://jjjffdfde.github.io/NoorDeen/`  
+**Date:** 26 October 2026
+**Scope verified:** service worker shell, desktop offline bundle, Android asset package
+**Headline:** the site is **partially** offline. Articles, hadith, duas, guides, biographies, history and 10 bundled surahs work without a network. The other 104 surahs, recitation audio, and all lecture videos do **not**.
 
----
-
-## 1. Offline Architectural Strategy
-
-NoorDeen is designed to provide full offline reading and devotional practice across three complementary deployment formats:
-1. **PWA (Progressive Web App):** Managed via Service Worker `v5` caching all essential HTML pages, CSS, JS, and raster assets.
-2. **Standalone Desktop Bundle (`.zip`):** A portable zero-install directory containing all 36 pages, runnable directly from local disk via file or lightweight local web server.
-3. **Native Android APK:** A self-contained Android application packaging all web assets and scripts directly inside `assets/public/` with zero dependency on internet connectivity.
-
-```mermaid
-flowchart TD
-  subgraph Storage ["Offline Data Stores"]
-    S1["assets/public/ (Native APK)"]
-    S2["Service Worker Cache v5 (PWA)"]
-    S3["localStorage (User Data)"]
-    S4["Offline ZIP Bundle (Desktop)"]
-  end
-
-  subgraph Capabilities ["Available 100% Offline"]
-    C1["Full 114 Surahs Quran Text"]
-    C2["101 Authenticated Hadiths & Fiqh"]
-    C3["102 Masnoon Duas & Repetition Counters"]
-    C4["52 Sahaba & 30 Prophet Narratives"]
-    C5["10 In-Depth Educational Articles"]
-    C6["UISK Solar Prayer Times Engine"]
-    C7["Dual Nisab Zakat Calculator"]
-    C8["Interactive Digital Tasbih with Sound"]
-    C9["Personal Bookmarks & Study Notes"]
-  end
-
-  S1 --> Capabilities
-  S2 --> Capabilities
-  S4 --> Capabilities
-  S3 --> C8
-  S3 --> C9
-```
+Earlier versions of this report claimed "100% offline". That claim was wrong and has been removed from the site and from this report.
 
 ---
 
-## 2. Service Worker Caching & Invalidation (PWA)
+## 1. What works offline, and what does not
 
-### Caching Architecture
-- **Service Worker File:** `public/service-worker.js`
-- **Cache Name:** `noordeen-v5`
-- **Pre-cached Static Assets (`STATIC_ASSETS`):**
-  - All 25 root HTML pages (`index.html`, `quran.html`, `hadith.html`, `duas.html`, `salah-guide.html`, etc.)
-  - All 11 educational article pages (`articles/index.html`, `articles/beginners-guide-to-islam.html`, etc.)
-  - Core stylesheets: `css/main.css`
-  - Core JavaScript modules: `js/config.js`, `js/data.js`, `js/i18n.js`, `js/tools.js`, `js/search.js`, `js/quran.js`, `js/app.js`, `js/sahaba-urdu.js`
-  - PWA manifest and icons: `manifest.json`, `icons/icon-192x192.png`, `icons/icon-512x512.png`, `icons/maskable-icon-512x512.png`
-
-### Caching Lifecycle & Invalidation:
-- **Install Event:** Pre-caches all entries in `STATIC_ASSETS`. Calls `self.skipWaiting()` for immediate activation.
-- **Activate Event:** Iterates over all existing caches via `caches.keys()`. Automatically deletes stale cache versions (e.g. `noordeen-v1`, `noordeen-v2`, `noordeen-v3`, `noordeen-v4`) preserving only `noordeen-v5`. Calls `clients.claim()`.
-- **Fetch Handler:** Stale-while-revalidate strategy for same-origin resources. If network fetch fails, immediately serves matching resource from Cache Storage.
-- **Navigation Fallback:** If an HTML page request encounters offline network failure and is not pre-cached, falls back gracefully to `./index.html`.
-
----
-
-## 3. Standalone Desktop Distribution Bundle
-
-- **Bundle Path:** `public/downloads/islamic-portal-offline-bundle.zip`
-- **File Size:** `1,118,398 bytes (1.07 MB)`
-- **Total Files Packaged:** Exactly 63 files
-- **SHA-256:** `fef62da5dd2a975eb12cec895daf04084b6651a3be44f7f7dc47c76176a7f73d`
-- **Package Contents:**
-  - 25 Root HTML pages
-  - 11 Educational article HTML pages in `articles/`
-  - `css/main.css`
-  - 8 JavaScript modules in `js/`
-  - PWA Manifest and app icons
-  - `README.txt` with offline usage instructions
+| Capability | Offline? | Detail |
+| :--- | :---: | :--- |
+| Homepage, articles index, 20 articles | ✅ | Static HTML, no network needed |
+| Hadith library (101 traditions) | ✅ | Dataset bundled in `js/data.js`, pre-rendered in `hadith.html` |
+| Duas & adhkar (102 supplications) | ✅ | Same pattern |
+| Six Kalimas | ✅ | Static |
+| Sahaba (52 monographs), Prophets (30), Seerah (25 chapters), History (12 eras) | ✅ | Static HTML |
+| Worship guides (Salah, Wudu, Ghusl/Tayammum, Janazah, Eid) | ✅ | Static HTML |
+| Prayer times, zakat calculator, Hijri calendar, tasbih, bookmarks | ✅ | Client-side computation and `localStorage` |
+| Quran text — **10 surahs, 49 ayahs** | ✅ | Bundled in `ISLAMIC_DATA.offlineSurahs`: 1, 36, 67, 97, 108, 109, 110, 112, 113, 114 |
+| Quran text — **remaining 104 surahs** | ❌ | Fetched from `api.alquran.cloud`; unavailable offline unless previously cached by the service worker |
+| Recitation audio | ❌ | Streamed from a CDN; only files you played before may be in the audio cache |
+| Dr. Israr Ahmed lectures (148 records) | ❌ | YouTube embeds; catalog and metadata load offline, video does not |
+| Study Mode tafsir beyond 6 bundled verses | ❌ | Only 1:1, 1:2, 1:5, 1:6, 2:255, 112:1 have bundled commentary; the UI says so explicitly |
+| Download centre checksums inside the APK | ❌ | `downloads/` is excluded from both the ZIP and the APK |
 
 ---
 
-## 4. Native Android APK Offline Runtime
+## 2. Service worker (PWA)
 
-- **Package Path:** `public/downloads/islamic-portal-release.apk`
-- **File Size:** `1,215,824 bytes (1.16 MB)`
-- **SHA-256:** `69912a1f6fb5890309fb72307cde94d3bc9696b7b32ae171bf03e8fb08993b06`
-- **Airplane Mode Operation:**
-  - The Android app does NOT open a remote web page. All assets are loaded from `file:///android_asset/public/` (or via Capacitor custom HTTPS scheme `https://localhost`).
-  - Quran reading, Hadith exploration, Duas, biographies, prayer time calculations, and the 10 educational articles operate completely without internet connectivity.
-  - Optional features requiring live connectivity (such as online audio streaming from Tanzil CDN) fail gracefully with visible alerts without crashing the application.
+- **File:** `public/service-worker.js`
+- **Cache:** `islamic-portal-shell-v6` (`CACHE_VERSION = 'v6'`), audio cache `islamic-portal-audio-v1`
+- **Pre-cached on install:** 44 entries — all 26 root HTML pages, `manifest.json`, `css/main.css`, 8 JS modules, 6 icons, plus `dr-israr-ahmed.html` and `data/dr-israr/catalog.json`.
+- **Article pages are not pre-cached.** They use a network-first navigation strategy: a page you visit online is cached on the way through, so it opens offline afterwards. A page you have **never** visited falls back to `index.html` when offline. This is deliberate (keeps install light) and is a real limitation.
+- **Activation** deletes any cache that is not the current shell or the audio cache, which is why the version bump to `v6` clears stale `v5` shells.
+- **Audio requests** (`everyayah.com`, `*.mp3`) are cache-first; a miss returns a 503 "Audio unavailable offline" response rather than hanging.
+- **External API calls** are network-first with cache fallback.
+
+A stale-cache incident was observed during testing: after 13 pages were changed, the browser kept serving the old shell from `v5`. Verification was therefore repeated on a fresh port with the service worker unregistered and caches cleared. The `v6` bump fixes this for real users.
 
 ---
 
-## 5. Offline Data Privacy & User Storage
+## 3. Desktop offline bundle
 
-- **Bookmarks & Notes:** Persisted in client `localStorage` under key `noordeen_bookmarks`. Zero data sent to remote servers.
-- **Tasbih State:** Persisted in `localStorage` under key `noordeen_tasbih_count`.
-- **Prayer Coordinates:** Stored locally in `localStorage` under `noordeen_user_coords`.
+| Field | Value |
+| :--- | :--- |
+| Path | `public/downloads/islamic-portal-offline-bundle.zip` |
+| Size | **1,241,211 bytes (1.18 MB)** |
+| SHA-256 | `137cd7b22e659a1a846ad8dc4486b3f9eb261ee467a8e5abee42ffb8af01498a` |
+| ZIP entries | 75 |
+| HTML pages | **47** (26 root + 21 article pages) |
+| Nested `.apk` | 0 |
+| Nested `.zip` | 0 |
+| Included | `islamic-portal-web/` tree, `OFFLINE-INSTRUCTIONS.txt` at root and inside the folder |
+| Excluded | `public/downloads/` (prevents a bundle that contains itself) |
+
+Contents spot-checked inside the archive: `islamic-portal-web/dr-israr-ahmed.html`, `islamic-portal-web/data/dr-israr/catalog.json`, `islamic-portal-web/articles/fasting-and-ramadan.html`, and `OFFLINE-INSTRUCTIONS.txt` are all present.
+
+Because it is a static site, opening `index.html` from disk works for reading, but `fetch()`-based features (Quran API, YouTube embeds, checksum manifest) are blocked by `file://` origin rules in most browsers. Serving the folder with a tiny local server is the reliable path; the instructions file says so.
+
+---
+
+## 4. Android package
+
+- **Path:** `public/downloads/islamic-portal-release.apk`
+- **Size:** 6,232,774 bytes (5.94 MB)
+- **SHA-256:** `87763ba4b3bea482944dd170cb81b0e47cfe03778213ee0852292a928fbab2ed`
+- **Bundled web assets:** 47 HTML pages + 74 files under `assets/public/`, service worker `v6`
+- **Excluded:** `assets/public/downloads/*` — 0 files. Links to the APK/ZIP/checksums from inside the app will not resolve.
+- **Not verified on a device.** `adb devices` returned no attached devices and no emulator was running, so "works in airplane mode" is an expectation from the architecture, not an observation. See `reports/ANDROID_BUILD_REPORT.md`.
+
+---
+
+## 5. Local data and privacy
+
+| Data | Storage | Leaves the device? |
+| :--- | :--- | :---: |
+| Bookmarks | `localStorage` (`noordeen_bookmarks`) | No |
+| Tasbih count | `localStorage` (`noordeen_tasbih_count`) | No |
+| Prayer coordinates | `localStorage` (`noordeen_user_coords`) | No |
+| Language/theme preference | `localStorage` | No |
+| Reading position | `localStorage` | No |
+
+No analytics, advertising, or tracking scripts are loaded by the site. External requests are limited to: Quran Cloud API (surah text), a recitation CDN (audio), and `youtube-nocookie.com` (lecture embeds, only after a click).
+
+---
+
+## 6. How this was verified
+
+1. Parsed the bundle ZIP central directory in Node.js and counted entries, HTML pages and nested archives.
+2. Parsed the APK the same way (997 entries) and confirmed 47 HTML pages, no nested archives, no `downloads/` files.
+3. Read `service-worker.js` and confirmed cache name, pre-cache list and fetch strategies.
+4. Loaded the site in Chromium, unregistered the service worker, cleared caches, and re-tested on a fresh port to avoid stale-shell false positives.
+5. Confirmed the download page's wording and that both checksum fields are populated from `CHECKSUMS.sha256`.
+
+**Not verified:** airplane-mode behaviour on a real phone, offline audio playback after a first play, and PWA install prompts on iOS.

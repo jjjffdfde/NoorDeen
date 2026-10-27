@@ -125,6 +125,8 @@
             </div>
           </li>
 
+          <li class="nav-item"><a href="dr-israr-ahmed.html">🎬 Lectures</a></li>
+
           <!-- App Pill -->
           <li class="nav-item">
             <a href="download-app.html" class="nav-app-pill">
@@ -2223,56 +2225,7 @@
   </footer>
 
   <!-- Search Modal -->
-  <div id="search-modal" class="modal-backdrop" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog search-modal-dialog">
-      <div class="search-modal-header">
-        <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="global-search-input" class="search-input" placeholder="Search Quran, Hadith, Duas, Guides, Tools... (Phonetic & Multi-script)" autocomplete="off">
-        </div>
-        <button id="search-modal-close" class="modal-close-btn" aria-label="Close search">✕</button>
-      </div>
-      <div id="search-modal-results" class="search-modal-results">
-        <div class="search-initial-state">
-          <p>Type to search across the entire Islamic Knowledge Portal...</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Filter & Interactive Engine Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterButtons = document.querySelectorAll('.prophets-filter-group .filter-btn');
-      const prophetCards = document.querySelectorAll('#prophets-container .prophet-card');
-
-      filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter');
-
-          // Update active button state
-          filterButtons.forEach(b => {
-            b.classList.remove('active', 'btn-primary');
-            b.classList.add('btn-outline');
-          });
-          btn.classList.add('active', 'btn-primary');
-          btn.classList.remove('btn-outline');
-
-          // Filter monographs
-          prophetCards.forEach(card => {
-            const cardCat = card.getAttribute('data-category');
-            if (filter === 'all' || cardCat === filter) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
-
-  <!-- Core JavaScript Assets -->
   <script src="js/config.js"></script>
   <script src="js/app.js"></script>
   <script src="js/search.js"></script>

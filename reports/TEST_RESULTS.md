@@ -1,5 +1,7 @@
 # NOORDEEN — AUTOMATED TEST RESULTS & QUALITY VERIFICATION
 
+> **Superseded:** the current test run is documented in `reports/WEBSITE_TEST_RESULTS.md` (26 October 2026): 40 suites, 1,473 assertions, 0 failures, 47 pages. This file describes the 25 October baseline and is kept for history.
+
 **Test Execution Date:** 25 October 2026  
 **Test Suite Runner:** `test/run-tests.js` (Node.js test harness)  
 **Total Test Suites:** Exactly 38 Suites  

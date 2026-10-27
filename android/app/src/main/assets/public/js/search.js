@@ -165,6 +165,12 @@ const SURAH_SEARCH_ALIASES = {
 // 3. Educational & Practice Guides with Topic Keywords
 const EDUCATIONAL_SEARCH_PAGES = [
   {
+    title: "Dr. Israr Ahmed Video Library (Verified Catalog)",
+    snippet: "148 verified lecture records across 7 series, including Arbaeen-e-Nawawi, Al-Huda and Muntakhab Nisab, linked to the official Tanzeem-e-Islami archive.",
+    url: "dr-israr-ahmed.html",
+    keywords: ["dr israr", "israr ahmed", "israr ahmad", "tanzeem", "bayan ul quran", "arbaeen", "arbaeen e nawawi", "al huda", "muntakhab nisab", "lectures", "videos", "taqreer", "bayan", "ڈاکٹر اسرار", "اسرار احمد", "بیان"]
+  },
+  {
     title: "Complete Janazah (Funeral Prayer) Guide",
     snippet: "4 Takbirs step-by-step, adult and child duas, Madhhab differences, and graveyard etiquette.",
     url: "janazah-guide.html",
@@ -283,6 +289,66 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "Comprehensive Zakat treatise: Gold and Silver Nisab, eligible wealth, debt deductions, and 8 Quranic categories.",
     url: "articles/zakat-educational-calculation-guide.html",
     keywords: ["zakat guide","zakat calculation","nisab","gold nisab","silver nisab","wealth purification","8 recipients","masarif"]
+  },
+  {
+    title: "Seerah of Prophet Muhammad ﷺ: A Guided Journey",
+    snippet: "Chronological, source-based introduction to the Prophet's life, the Hijrah, Madinah, and the Farewell Sermon.",
+    url: "articles/seerah-of-prophet-muhammad.html",
+    keywords: ["seerah","sirah","prophet muhammad","life of prophet","hijrah","makkah","madinah","farewell sermon","biography","seerat"]
+  },
+  {
+    title: "Stories of the Prophets: Quranic Narratives and Their Lessons",
+    snippet: "Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud, Sulayman, Ayyub and Isa with verse references and themes.",
+    url: "articles/stories-of-the-prophets.html",
+    keywords: ["stories of the prophets","qisas al anbiya","adam","nuh","ibrahim","yusuf","musa","isa","ayyub","sulayman","prophet stories"]
+  },
+  {
+    title: "The Sahaba: Lives That Shaped the Ummah",
+    snippet: "Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal and Salman, with principles for discussing their differences.",
+    url: "articles/sahaba-biographies.html",
+    keywords: ["sahaba","companions","abu bakr","umar","uthman","ali","khadijah","aisha","bilal","salman farsi","rashidun","sahabi"]
+  },
+  {
+    title: "Islamic History and Civilization: A Framework for Study",
+    snippet: "Rashidun, Umayyad, Abbasid, Al-Andalus, Ottoman, Safavid and Mughal periods, colonialism and modernity.",
+    url: "articles/islamic-history-civilization.html",
+    keywords: ["islamic history","civilization","rashidun","umayyad","abbasid","andalus","ottoman","mughal","safavid","caliphate","history framework"]
+  },
+  {
+    title: "Islamic Manners and Character: Adab in Daily Life",
+    snippet: "Adab with Allah, parents, family, neighbours and guests; speech, anger, humility, gratitude and habits.",
+    url: "articles/islamic-manners-and-character.html",
+    keywords: ["adab","manners","character","akhlaq","parents","neighbours","backbiting","anger","humility","gratitude","kindness"]
+  },
+  {
+    title: "Understanding Fasting and Ramadan: A Complete Learning Guide",
+    snippet: "Obligation, exemptions, suhoor and iftar, invalidators, Tarawih, Laylat al-Qadr, Zakat al-Fitr and I'tikaf.",
+    url: "articles/fasting-and-ramadan.html",
+    keywords: ["fasting","ramadan","sawm","suhoor","iftar","tarawih","laylat al qadr","zakat al fitr","itikaf","roza"]
+  },
+  {
+    title: "Hajj and Umrah: A Learning Guide",
+    snippet: "Conditions, Ihram, the rites of Dhul Hijjah, Tawaf, Sa'i, Arafah, Muzdalifah, Mina, sacrifice and preparation.",
+    url: "articles/hajj-and-umrah-guide.html",
+    keywords: ["hajj","umrah","ihram","tawaf","sai","arafah","muzdalifah","mina","jamarat","dhul hijjah","pilgrimage","haj guide"]
+  },
+  {
+    title: "Understanding the 99 Names of Allah",
+    snippet: "The hadith and its meaning, whether the number is exhaustive, categories of names, and how to memorise properly.",
+    url: "articles/ninety-nine-names-of-allah.html",
+    keywords: ["99 names","names of allah","asma ul husna","al rahman","al ghafur","al wadud","tawhid al asma","sifat","allah names"]
+  },
+  {
+    title: "Repentance, Dhikr and Spiritual Development",
+    snippet: "Conditions of tawbah, dhikr and adhkar, self-accounting, diseases of the heart, and a 30-day plan.",
+    url: "articles/repentance-dhikr-spiritual-development.html",
+    keywords: ["tawbah","repentance","dhikr","adhkar","istighfar","muhasabah","spirituality","tazkiyah","heart","sins","forgiveness"]
+  },
+  {
+    title: "A Structured Learning Path for New Muslims",
+    snippet: "A realistic 12-month path: shahadah, prayer, pillars, Quran, Seerah, hadith, halal and haram, and community.",
+    url: "articles/new-muslim-learning-path.html",
+    keywords: ["new muslim","convert","revert","learning path","beginner muslim","shahadah","how to become muslim","new shahada","islam journey"]
   }
 ];
 
@@ -1126,10 +1192,13 @@ const UniversalSearch = {
     // 2. Search Educational & Practice Modules
     EDUCATIONAL_SEARCH_PAGES.forEach(page => {
       let matched = false;
+      let titleMatch = false;
       if (page.title.toLowerCase().includes(rawLower) || page.snippet.toLowerCase().includes(rawLower)) {
         matched = true;
+        titleMatch = true;
       } else if (normalized.length >= 2 && normalizeIslamicQuery(page.title).includes(normalized)) {
         matched = true;
+        titleMatch = true;
       } else if (page.keywords) {
         for (const kw of page.keywords) {
           if (rawLower.includes(kw) || kw.includes(rawLower) || (normalized.length >= 2 && normalizeIslamicQuery(kw).includes(normalized))) {
@@ -1145,7 +1214,7 @@ const UniversalSearch = {
           title: page.title,
           snippet: page.snippet,
           url: page.url,
-          priority: 80
+          priority: titleMatch ? 90 : 80
         });
       }
     });

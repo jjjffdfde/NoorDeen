@@ -1,113 +1,124 @@
-# NOORDEEN KNOWLEDGE LIBRARY — RECONCILED CONTENT COUNTS & COLLECTION BASELINE
+# NoorDeen — Reconciled Content Counts
 
-**Audit & Reconciliation Date:** 25 October 2026  
-**Repository:** `https://github.com/jjjffdfde/NoorDeen`  
-**Live Site:** `https://jjjffdfde.github.io/NoorDeen/`  
-**Audit Standard:** Strict separation between underlying dataset records, pre-rendered static DOM nodes, and dynamic runtime arrays.
+**Reconciled:** 26 October 2026
+**Rule:** a "record count" means entries in a dataset; a "unique count" means distinct items after duplicates. They are never mixed.
 
 ---
 
-## 1. Executive Summary of Reconciled Counts
+## 1. Master table
 
-| Collection / Module | Primary Route | Source Dataset Record Count | Pre-rendered Static HTML Count | Verification & Reconciliation Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **Holy Quran Surahs** | [`/quran` (`quran.html`)](file:///e:/islamic%20websiye/public/quran.html) | **114 Surahs** (`ISLAMIC_DATA.surahs`) | 114 Surahs interactive directory | **Reconciled (100%)** — Exact Hafs standard (6,236 Ayahs) |
-| **Quran Juz (Ajza)** | [`/quran` (`quran.html`)](file:///e:/islamic%20websiye/public/quran.html) | **30 Juz** (`ISLAMIC_DATA.juzList`) | 30 Juz quick-access tabs | **Reconciled (100%)** — Exact traditional boundary divisions |
-| **Offline Quran Surahs** | [`/quran` (`quran.html`)](file:///e:/islamic%20websiye/public/quran.html) | **10 Complete Surahs** (Surahs 1, 36, 67, 97, 108, 110, 111, 112, 113, 114) | Static text & Tanzil offline fallback | **Reconciled (100%)** — Stored in `ISLAMIC_DATA.offlineSurahs` |
-| **Hadith Traditions** | [`/hadith` (`hadith.html`)](file:///e:/islamic%20websiye/public/hadith.html) | **45 Authenticated Traditions** (`ISLAMIC_DATA.hadiths`) | 23 Static crawlable HTML cards | **Expansion Active** — Expanding dataset to 100+ traditions & pre-rendering all |
-| **Masnoon Duas & Adhkar** | [`/duas` (`duas.html`)](file:///e:/islamic%20websiye/public/duas.html) | **50 Verified Supplications** (`ISLAMIC_DATA.duas`) | 33 Static crawlable HTML cards | **Expansion Active** — Expanding dataset to 100+ supplications & pre-rendering all |
-| **Six Kalimas** | [`/kalimas` (`kalimas.html`)](file:///e:/islamic%20websiye/public/kalimas.html) | **6 Kalimas** (`ISLAMIC_DATA.kalimas`) | 6 Static cards with Arabic/Urdu/English | **Reconciled (100%)** — Complete with transliteration, translation, and Fiqh notes |
-| **Lives of the Sahaba** | [`/sahaba` (`sahaba.html`)](file:///e:/islamic%20websiye/public/sahaba.html) | **52 Comprehensive Monographs** (`sahaba.html`) | 52 Static articles with cohort classification | **Reconciled & Corrected** — Title and metadata updated from obsolete "30" to exact 52 |
-| **Stories of the Prophets** | [`/prophets` (`prophets.html`)](file:///e:/islamic%20websiye/public/prophets.html) | **30 Prophetic Narratives** (`prophets.html`) | 30 Static articles | **Reconciled (100%)** — 25 Quranic Prophets + 5 classical righteous figures |
-| **Prophetic Seerah** | [`/seerah` (`seerah.html`)](file:///e:/islamic%20websiye/public/seerah.html) | **25 Chronological Chapters** (`seerah.html`) | 25 Static articles | **Reconciled (100%)** — Pre-Islamic Arabia to Farewell Pilgrimage |
-| **Islamic History Eras** | [`/history` (`history.html`)](file:///e:/islamic%20websiye/public/history.html) | **12 Civilization Epochs** (`history.html`) | 12 Static articles, 66 milestone subsections | **Reconciled (100%)** — Caliphate to Modern Eras |
-| **Five Pillars of Islam** | [`/pillars` (`pillars.html`)](file:///e:/islamic%20websiye/public/pillars.html) | **5 Foundational Pillars** (`pillars.html`) | 5 Deep pedagogical guides | **Reconciled (100%)** — Shahadah, Salah, Zakat, Sawm, Hajj |
-| **Step-by-Step Worship Guides** | Guides: Salah, Wudu, Janazah, Eid | **4 Comprehensive Guides** (4 HTML files) | 4 Dedicated procedural guides | **Reconciled (100%)** — Fardh, Sunnah, Adab, common mistakes |
-| **Astronomical Calculators & Tools** | Prayer Times, Zakat, Tasbih, Calendar | **4 Dedicated Interactive Tools** | 4 Dynamic calculation engines | **Reconciled (100%)** — Solar UISK math, Dual Nisab, Hijri sync |
-| **Institutional & Trust Pages** | About, Contact, Sources, Privacy, Terms | **5 Compliance & Citation Pages** | 5 Fully accessible crawlable pages | **Reconciled (100%)** — Zero fake emails, GitHub Issues linked, verified test disclosures |
-
----
-
-## 2. Granular Inventory of Key Collections
-
-### A. Holy Quran
-- **Surahs:** Exactly 114 Surahs, ordered sequentially according to the Uthmani codex (1: Al-Fatihah to 114: An-Nas).
-- **Ayahs:** 6,236 Ayahs (standard Kufic counting system transmitted through Hafs 'an 'Asim).
-- **Juz Divisions:** 30 Juz with designated starting Surah, starting Ayah, ending Surah, and ending Ayah.
-- **Offline Text Cache:** 10 essential Surahs stored locally in memory for instant offline reading without network requests.
-
-### B. Hadith Traditions
-- **Current Dataset (`ISLAMIC_DATA.hadiths`):** 45 authenticated traditions.
-- **Current HTML Pre-rendered Cards:** 23 cards in `hadith.html`.
-- **Target Expansion:** 100+ traditions spanning:
-  1. *Sahih al-Bukhari*
-  2. *Sahih Muslim*
-  3. *Sunan Abi Dawud*
-  4. *Jami` at-Tirmidhi*
-  5. *Sunan an-Nasa'i*
-  6. *Sunan Ibn Majah*
-  7. *Muwatta Malik*
-  8. *Riyad as-Salihin*
-- **Data Attributes per Record:** `id`, `collection`, `number`, `book`, `ar` (Arabic text with tashkeel), `en` (English translation), `ur` (Urdu translation), `narrator`, `grade` (with scholarly authority), `topic`, `explanation`, `lessons`.
-
-### C. Masnoon Duas & Adhkar
-- **Current Dataset (`ISLAMIC_DATA.duas`):** 50 supplications.
-- **Current HTML Pre-rendered Cards:** 33 cards in `duas.html`.
-- **Target Expansion:** 100+ supplications categorized across 17 life domains:
-  1. Morning and evening adhkar (Adhkar as-Sabah wal-Masa)
-  2. Daily worship and prayer preparation
-  3. Before and after Salah (Adhkar ba'd as-Salah)
-  4. Quranic Rabbana supplications
-  5. Repentance and forgiveness (Istighfar)
-  6. Travel and journeys (Dua as-Safar)
-  7. Eating, drinking, and sustenance
-  8. Entering and leaving home and mosque
-  9. Sleep and waking (Adhkar an-Nawm)
-  10. Distress, grief, anxiety, and hardship
-  11. Illness, pain, and visiting the sick (Dua al-Marid)
-  12. Family, marital harmony, and children
-  13. Fasting and Ramadan (Dua al-Iftar)
-  14. Hajj and Umrah (Talbiyah, Tawaf, Safa/Marwa)
-  15. Funerals and bereavement (Janazah)
-  16. Eid and seasonal blessings
-  17. Daily interpersonal manners and protection from evil eye
-
-### D. Sahaba Biographies (Companions)
-- **Total Monograph Count:** Exactly **52 monographs** rendered in `public/sahaba.html`.
-- **Cohort Breakdown:**
-  - *Rightly-Guided Caliphs (Khulafa ar-Rashidun):* 4 (Abu Bakr, Umar, Uthman, Ali)
-  - *Ten Promised Paradise (Asharah Mubasharah):* 6 additional (Talhah, Az-Zubayr, Abdur-Rahman ibn Awf, Sa'd ibn Abi Waqqas, Abu Ubaydah ibn al-Jarrah, Sa'id ibn Zayd)
-  - *Mothers of the Believers (Ummahat al-Mu'minin) & Women Companions:* 12 (Khadijah, Aisha, Fatimah, Umm Salamah, Asma bint Abi Bakr, Hafsah, Umm Sulaym, Sawdah, Zaynab bint Khuzaymah, Umm Ayman, Rufaydah al-Aslamiyyah, Umm Haram)
-  - *Foremost Scholars, Jurists & Reciters:* 14 (Ibn Abbas, Ibn Mas'ud, Mu'adh ibn Jabal, Abu Hurairah, Zayd ibn Thabit, Abu ad-Darda, Jabir ibn Abdullah, Anas ibn Malik, Ubayy ibn Ka'b, Abdullah ibn Umar, Abdullah ibn Amr, Abu Musa al-Ash'ari, Salman al-Farsi, Hudhayfah ibn al-Yaman)
-  - *Stalwarts, Commanders & Martyrs:* 10 (Hamzah ibn Abdul-Muttalib, Mus'ab ibn Umayr, Bilal ibn Rabah, Khalid ibn al-Walid, Abu Dharr al-Ghifari, Ammar ibn Yasir, Zayd ibn Harithah, Usamah ibn Zayd, Al-Bara ibn Malik, Thabit ibn Qays)
-  - *Ansar Leaders & Stalwarts:* 6 (Sa'd ibn Mu'adh, As'ad ibn Zurarah, Sa'd ibn Ubadah, Ubadah ibn as-Samit, Abu Ayyub al-Ansari, Qatadah ibn an-Nu'man)
-- **Total Word Count:** 33,527 rendered words in `sahaba.html`.
-
-### E. Stories of the Prophets (Qisas al-Anbiya)
-- **Total Prophetic Narratives:** Exactly **30 narratives** rendered in `public/prophets.html`.
-- **Quranic Prophets (25):** Adam, Idris, Nuh, Hud, Salih, Ibrahim, Lut, Ismail, Ishaq, Yaqub, Yusuf, Ayyub, Shu'ayb, Musa, Harun, Dawud, Sulayman, Ilyas, Al-Yasa, Yunus, Dhul-Kifl, Zakariyya, Yahya, Isa, Muhammad ﷺ.
-- **Additional Righteous / Prophetic Figures (5):** Sheeth (Seth), Yusha ibn Nun (Joshua), Khidr, Uzayr (Ezra), Luqman the Wise.
-- **Total Word Count:** 23,267 rendered words in `prophets.html`.
-
-### F. Prophetic Seerah
-- **Total Chronological Chapters:** Exactly **25 chapters** in `public/seerah.html`.
-- **Span:** From Pre-Islamic Arabia and Ancestry of the Prophet ﷺ to the Farewell Pilgrimage and Completion of the Divine Message.
-- **Total Word Count:** 27,656 rendered words.
-
-### G. Islamic History
-- **Total Historical Epochs:** Exactly **12 epochs** in `public/history.html`.
-- **Subsections / Milestones:** 66 structured milestone analyses.
-- **Span:** Rashidun Caliphate (632 CE) through Umayyads, Abbasids, Andalus, Crusades era, Mamluks, Seljuks, Ottomans, Safavids, Mughals, Islamic contributions to science and philosophy, to the Modern Era.
-- **Total Word Count:** 17,884 rendered words.
+| Collection | Route | Records | Unique | Rendered statically? |
+| :--- | :--- | --: | --: | :--- |
+| Quran surahs | `/quran` | 114 | 114 | Directory yes; text via API |
+| Quran juz | `/quran` | 30 | 30 | Yes |
+| Quran offline text | `/quran` | 10 surahs / 49 ayahs | 10 | Yes, bundled |
+| Hadith | `/hadith` | **101** | 101 | Yes |
+| Duas & adhkar | `/duas` | **102** | 102 | Yes |
+| Six kalimas | `/kalimas` | 6 | 6 | Yes |
+| Sahaba monographs | `/sahaba` | **52** | 52 | Yes |
+| Prophetic narratives | `/prophets` | **30** | 30 | Yes |
+| Seerah chapters | `/seerah` | **25** | 25 | Yes |
+| History eras | `/history` | **12** | 12 | Yes |
+| Worship guides | Salah / Wudu / Janazah / Eid | 4 | 4 | Yes |
+| Interactive tools | Prayer times / Zakat / Tasbih / Calendar | 4 | 4 | Client-side |
+| Glossary terms | `index.html` | **135** | 135 | Yes |
+| Articles | `/articles/` | **20** + index | 20 | Yes |
+| Lecture catalog | `/dr-israr-ahmed` | **148** | **147** | Client-side from JSON |
+| Study-mode tafsir | `data/tafsir/study-content.json` | **6 verses** | 6 | Client-side |
+| Surah thematic profiles | `js/quran.js` | **32** | 32 | Client-side |
+| HTML pages | site-wide | **47** | 47 | — |
 
 ---
 
-## 3. Discrepancy Reconciliation Summary
+## 2. Hadith breakdown
 
-1. **Sahaba Count Inconsistency:**  
-   - *Previous Defect:* `sahaba.html` HTML `<title>` stated `(30 Monographs)` and meta tags stated `30 foremost Sahaba`, whereas the document body contained 52 full biographical monographs.  
-   - *Correction Executed:* Updated `<title>`, `<meta name="description">`, Open Graph, Twitter cards, and hero banner to state `52 Monographs` and `33,500+ Words`.
+| Collection | Records |
+| :--- | --: |
+| Sahih al-Bukhari | 42 |
+| Sahih Muslim | 25 |
+| Jami` at-Tirmidhi | 14 |
+| Sunan Abi Dawud | 10 |
+| Sunan Ibn Majah | 6 |
+| Sunan an-Nasa'i | 4 |
+| **Total** | **101** |
 
-2. **Hadith & Dua Pre-rendering vs Dataset:**  
-   - *Previous State:* `data.js` contained 45 Hadiths and 50 Duas, while `hadith.html` had 23 pre-rendered cards and `duas.html` had 33 pre-rendered cards.  
-   - *Resolution Plan:* Expand `data.js` to 100+ Hadiths and 100+ Duas with complete classical citations, and sync the static pre-rendered HTML cards so search crawlers and users without JavaScript receive the full encyclopedic depth.
+Each record has: `id`, `collection`, `number`, `book`, `ar`, `en`, `ur`, `narrator`, `grade`, `topic`.
+
+**Correction:** earlier revisions of this file said 45 hadiths and 50 duas. Those figures were stale by the time the datasets were expanded; the measured values are 101 and 102.
+
+---
+
+## 3. Dua breakdown
+
+102 supplications, each with Arabic, transliteration, English, Urdu, a repetition target and a reference. They cover daily adhkar, prayer, Quranic Rabbana supplications, travel, food, sleep, distress, illness, family, fasting, Hajj, funerals, Eid and protection. All 102 are pre-rendered in `duas.html`; the 17-domain categorisation is applied in the page's filter UI.
+
+---
+
+## 4. Offline Quran text
+
+Bundled in `ISLAMIC_DATA.offlineSurahs`:
+
+| Surah | Name | Ayahs |
+| --: | :--- | --: |
+| 1 | Al-Fatihah | 7 |
+| 36 | Ya-Sin | 6 |
+| 67 | Al-Mulk | 4 |
+| 97 | Al-Qadr | 5 |
+| 108 | Al-Kawthar | 3 |
+| 109 | Al-Kafirun | 6 |
+| 110 | An-Nasr | 3 |
+| 112 | Al-Ikhlas | 4 |
+| 113 | Al-Falaq | 5 |
+| 114 | An-Nas | 6 |
+| | **10 surahs** | **49 ayahs** |
+
+**Correction:** an earlier revision listed Surah 111 and omitted Surah 109. The list above matches `js/data.js`.
+
+The remaining **104 surahs** are fetched from the Quran Cloud API and need a network connection.
+
+---
+
+## 5. Lecture catalog
+
+| Metric | Value |
+| :--- | --: |
+| Listing entries retrieved | 150 |
+| Records kept | 148 |
+| Excluded index pages | 2 |
+| Unique YouTube uploads | 147 |
+| Duplicate listing records | 1 (`04-002-016` → `04-002-001`) |
+| Series | 7 |
+| Urdu | 131 |
+| English | 17 |
+
+Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
+
+---
+
+## 6. Site size
+
+| Metric | Value |
+| :--- | :--- |
+| HTML pages | 47 (26 root + 21 article) |
+| Visible words, all pages | 209,021 |
+| Root pages | 161,370 words |
+| Article pages | 47,651 words (44,673 across the 20 articles) |
+| Sitemap URLs | 47 |
+| Desktop bundle | 1,241,211 bytes / 1.18 MB / 75 entries / 47 HTML |
+| Bundle SHA-256 | `137cd7b22e659a1a846ad8dc4486b3f9eb261ee467a8e5abee42ffb8af01498a` |
+| Release APK | 6,232,774 bytes / 5.94 MB |
+| APK SHA-256 | `87763ba4b3bea482944dd170cb81b0e47cfe03778213ee0852292a928fbab2ed` |
+| Automated assertions | 1,473 passing / 0 failing |
+
+**Correction:** earlier revisions quoted a 1.16 MB APK and a 1.07 MB bundle. Both artifacts were rebuilt with the current 47 pages and the 10 new articles.
+
+---
+
+## 7. What these numbers do not mean
+
+- 101 hadiths ≠ the full corpus of any collection.
+- 102 duas ≠ the complete *Hisn al-Muslim*.
+- 6 tafsir verses ≠ tafsir of the Quran.
+- 10 offline surahs ≠ an offline mushaf.
+- 20 articles ≠ the 100-topic library; 80 topics are unwritten.
+- 148 lecture records ≠ Dr. Israr Ahmed's complete body of work; the archive itself has 74 pages and only 10 were retrieved.

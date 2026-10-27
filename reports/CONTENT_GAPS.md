@@ -1,61 +1,70 @@
-# NOORDEEN — CONTENT GAPS & VERIFIED REMEDIATION MATRIX
+# NoorDeen — Content Gaps
 
-**Audit Date:** October 25, 2026  
-**Status:** In Progress / Active Execution  
-**Benchmark Competitors:** IslamWeb, Dawat-e-Islami, IslamOnline, IslamiCity, Islam360
-
----
-
-## 1. Benchmarked Content Gaps Analysis
-
-From comprehensive analysis of international Islamic knowledge portals (see [`reports/COMPETITOR_CONTENT_BENCHMARK.md`](file:///e:/islamic%20websiye/reports/COMPETITOR_CONTENT_BENCHMARK.md)), NoorDeen has an exceptional foundation with 25 routes, 136,800+ rendered words, and offline PWA/APK capabilities. However, compared to world-class benchmarks, the following strategic content gaps must be remediated:
-
-### 1.1 Centralized Islamic Glossary & Terminology Index
-- **Gap:** Competitors (IslamiCity, IslamWeb) maintain extensive glossaries of theological and Arabic terms. NoorDeen currently uses terms like *Nisab*, *Istiwa'*, *Zawal*, *Khushoo'*, *Takbirat*, *Sunnah Mu'akkadah*, *Tawheed*, and *Shirk* without a centralized, searchable glossary linking to contextual definitions.
-- **Remediation:** Build an encyclopedic Islamic Glossary module featuring 100+ foundational theological, jurisprudential, and Arabic terms with precise phonetic transliterations, Arabic script, concise definitions, and classical citations.
-
-### 1.2 Hadith Library Collection Depth
-- **Gap:** Currently `ISLAMIC_DATA.hadiths` contains 45 traditions, with 23 pre-rendered in `hadith.html`. Islam360 and IslamWeb offer extensive multi-chapter collections.
-- **Remediation:** Expand `ISLAMIC_DATA.hadiths` toward 100+ verified traditions spanning Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasa'i, and Ibn Majah. Include full Arabic text with vowel markings, English and Urdu translations, narrator, collection number, authenticity grade, thematic tags, and practical Fiqh takeaways. Pre-render records in static HTML for immediate search indexation.
-
-### 1.3 Masnoon Duas & Adhkar Collection Depth
-- **Gap:** Currently `ISLAMIC_DATA.duas` contains 50 supplications, with 33 pre-rendered in `duas.html`. Benchmarks like Dawat-e-Islami and *Hisn al-Muslim* apps offer 100+ supplications across all life events.
-- **Remediation:** Expand `ISLAMIC_DATA.duas` toward 100+ source-verified supplications covering all 17 life domains (Morning/Evening, Prayers, Food, Travel, Sickness, Bereavement, Protection, Repentance, Sleep, Istikharah, Fasting, Hajj). Ensure every entry contains Arabic, transliteration, English, Urdu, repetition count, and authentic reference.
-
-### 1.4 Quranic Thematic Tafsir & Surah Context Profiles
-- **Gap:** `quran.js` currently provides thematic profile overviews for only 9 Surahs. Students reading the Quran lack thematic orientation for pivotal Surahs (e.g. Al-Kahf [18], Ar-Rahman [55], Al-Waqi'ah [56], Al-Hashr [59], Al-Jumu'ah [62], Al-Mulk [67], and the Short Surahs of Juz 'Amma).
-- **Remediation:** Expand `SURAH_THEMATIC_DATA` to profile 30+ prominent Surahs, providing revelation context (Makki vs Madani), primary theological themes, central lessons, and authentic Hadith virtues.
-
-### 1.5 Structured Beginner Learning Pathways
-- **Gap:** Visitors encounter a vast catalog of 25 pages without structured progressive study paths (e.g. "New Muslim Foundations", "Mastering the Daily Salah", "Purification & Wudu", "Understanding Islamic Monotheism").
-- **Remediation:** Implement interactive learning journeys on the homepage and study modules, interconnecting the Creed (Kalimas), Worship (Salah/Wudu), Duas, and Seerah into coherent progressive curricula.
-
-### 1.6 Sahaba Count Reconciliation
-- **Gap:** Discrepancy identified between `sahaba.html` HTML title `(30 Monographs)` and the actual 52 comprehensive monographs present in the page body.
-- **Remediation:** Reconciled `<title>`, meta descriptions, Open Graph, Twitter cards, and hero banners to accurately declare 52 Monographs and 33,500+ words.
+**Updated:** 26 October 2026
+**Scope:** what is still missing or limited after the Batch 3 release and the sahaba/history encoding repair. Closed items are listed briefly in section 1 so this file is not mistaken for a stale wish-list.
 
 ---
 
-## 2. Implementation Execution Plan
+## 1. Closed since the first audit
 
-```mermaid
-flowchart TD
-  B1["Batch A: Reconcile Sahaba & Baseline Inventories"] --> B2["Batch B: Expand Hadith Collection (100+ Traditions)"]
-  B2 --> B3["Batch C: Expand Duas & Adhkar (100+ Supplications)"]
-  B3 --> B4["Batch D: Expand Quran Thematic Profiles (30+ Surahs)"]
-  B4 --> B5["Batch E: Build Islamic Glossary & Learning Pathways"]
-  B5 --> B6["Batch F: Automated Verification, Re-packaging & Live Deployment"]
-  B6 --> B7["Batch 1 (Educational Articles): 10 In-Depth Treatises & 100-Topic Syllabus"]
-```
-
----
-
-## 3. Remediation of Educational Articles Gap (Batch 1 Complete)
-
-| Gap Identified | Delivered Remedy in Batch 1 | Metric Achieved |
+| Gap | Closed with | Verified |
 | :--- | :--- | :--- |
-| **Absence of Long-Form In-Depth Treatises** | Authored and published 10 comprehensive educational treatises (1,500–2,800 words each) in dedicated `/articles/` hub | **28,890 words** added across 11 files |
-| **Lack of Clear Subject Syllabus** | Developed master 100-topic educational syllabus across 17 classical Islamic disciplines ([`reports/KNOWLEDGE_LIBRARY_ROADMAP_100.md`](file:///e:/islamic%20websiye/reports/KNOWLEDGE_LIBRARY_ROADMAP_100.md)) | 100 planned topics documented with classical source references |
-| **Article Search Discovery** | Integrated all 11 article files into client-side `search.js` (`Ctrl+K`) and interactive category filter on `articles/index.html` | 100% discoverable through instant tokenized search |
-| **Search Engine Schema & Indexation** | Injected Schema.org `FAQPage` and `BreadcrumbList` JSON-LD into every article, indexed in `public/sitemap.xml` | 11 canonical article URLs indexed with weekly update frequency |
-| **Offline Distribution** | Added `/articles/` subpath handling to `public/js/app.js` and `public/service-worker.js`; updated `islamic-portal-offline-bundle.zip` | 100% offline accessible via PWA cache and 1.07 MB ZIP bundle |
+| Hadith library too small | 101 curated records across 6 collections | 101 cards; search, collection/topic/grade filters, copy |
+| Duas too few | 102 entries, 17 category filters | 102 cards; morning filter → 7; counter and copy |
+| No glossary | 135 searchable terms with categories and Arabic | Homepage glossary search |
+| No long-form library | 25 articles, 45,901 body words | 1,536–2,114 words each; TOC, schema, bibliography |
+| No lecture library | 148 Dr. Israr records / 147 unique uploads | Search "Arbaeen" → 73; series filter → 9 |
+| Sahaba count mislabelled | 52 monographs, 6 cohorts | Filter → 14 women, reset → 52 |
+| Missing Arabic in sahaba/history | Restored from git HEAD as UTF-8 | 6,696 Arabic chars in sahaba; 0 mojibake |
+| Stale download hashes | Network-first `CHECKSUMS.sha256` + `{cache:'no-store'}` | Displayed hashes match files |
+| No keyboard skip link | Global injection by `app.js` | Present on all pages; target and CSS verified |
+
+---
+
+## 2. Open gaps, ranked
+
+### P1 — credibility and coverage
+
+| Gap | Current | What would close it | Why it is not closed |
+| :--- | :--- | :--- | :--- |
+| **Tafsir** | 6 verses (1:1, 1:2, 1:5, 1:6, 2:255, 112:1) | A licensed or public-domain tafsir with translator attribution, verse by verse | Licensing and editorial review; inventing text is not an option |
+| **Roadmap articles** | 25 of 100 topics | 75 more articles at 1,500–2,500 body words | Time; each needs sources and review |
+| **Offline Quran** | 10 surahs / 49 ayahs (36 and 67 partial) | Bundle all 114 surahs | Payload growth and text-licence confirmation |
+| **Hadith corpus** | 101 curated records | Explicit selection policy plus a larger reviewed set | Full collections are thousands of records and need grading review |
+| **Lecture archive** | 10 of 74 tanzeem.org pages | Continue the same scrape-and-verify method | Time; must preserve duplicate handling and source links |
+| **Scholar review** | None | Named reviewers with dates per module | Cannot be simulated |
+
+### P2 — product and verification
+
+| Gap | Detail |
+| :--- | :--- |
+| **APK install not tested** | No `adb`, emulator or device in this environment. Build structure and v1 signature verified only. |
+| **No v2/v3 signature** | `apksigner` and Android SDK build-tools are unavailable. `targetSdk 34` devices may reject a v1-only APK. |
+| **In-app download links** | `downloads/` is excluded from APK and ZIP; the download page's file links cannot resolve inside the app. |
+| **Responsive verification** | Breakpoints exist (991/768/600/480/360), but the browser tool cannot change viewport (`innerWidth` stays 1000). 320/375/768/1024/1440 were reviewed in code, not visually. |
+| **Screen reader** | No NVDA/JAWS/VoiceOver session. Heading-level jumps exist on 23 pages (`h2 → h4`). |
+| **Contrast** | Palette pairs were not measured with a contrast calculator. |
+| **Cross-browser** | Only Chromium was exercised. Firefox, Safari/iOS and Samsung Internet are untested. |
+| **Performance measurement** | No Lighthouse or CrUX data. `data.js` is 246 KB and parsed on every page; `sahaba.html` is 431 KB. |
+| **Translation** | 11 of 40 language entries have UI dictionaries; articles are English-only. No native review recorded. |
+| **Quran editions** | 40 registered; English and Urdu exercised live. Others validated structurally only. |
+| **Audio/video playback** | URL construction verified; playback not watched end-to-end (headless environment). |
+
+### P3 — deliberately deferred
+
+Fatwa/Q&A service, sequenced courses with progress, quizzes, qibla direction, iOS app, full human translation of the biography libraries, audio for hadith/duas. Each needs authority, licensing or platform access that the project does not have.
+
+---
+
+## 3. Claim discipline
+
+The site must not claim:
+
+- that tafsir is complete or verbatim;
+- that the offline bundle contains the full Quran;
+- that 40 languages are fully translated;
+- that the APK has been device-tested or is v2/v3 signed;
+- that any content carries scholarly endorsement or a fatwa;
+- that performance or accessibility has been certified.
+
+Where a limit exists, the UI states it. The tafsir panel, download page, language modal and lecture page are the reference implementations of this policy.

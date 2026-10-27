@@ -1,5 +1,7 @@
 # NOORDEEN — COMPETITOR CONTENT BENCHMARK & ARCHITECTURAL COMPARISON
 
+> **Superseded:** this file reflects the 25 October 2026 audit, when the site had 45 hadiths, 50 duas, 36 pages and no glossary. Current figures and comparison are in `reports/COMPETITOR_BENCHMARK.md` (26 October 2026). Keep this file for history only.
+
 **Date of Audit:** October 25, 2026  
 **Auditor:** NoorDeen Senior Knowledge Engineer & Architectural Reviewer  
 **Repository:** [https://github.com/jjjffdfde/NoorDeen](https://github.com/jjjffdfde/NoorDeen)  

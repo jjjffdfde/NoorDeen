@@ -1218,38 +1218,40 @@ class QuranReader {
     const key = `${this.activeStudyAyah.surah}:${this.activeStudyAyah.ayah}`;
     const studyItem = this.studyData && this.studyData[key];
 
-    if (this.studyTafsirEdition === 'jalalayn') {
-      if (tafsirMeta) tafsirMeta.textContent = "Tafsir al-Jalalayn — Jalal al-Din al-Mahalli & Jalal al-Din al-Suyuti (رحمهما الله) • Concise Grammatical & Contextual Commentary";
-      if (studyItem && studyItem.tafsirJalalayn) {
-        tafsirContent.innerHTML = `
-          <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--color-gold);">
-            <p style="margin: 0; line-height: 1.8;">${studyItem.tafsirJalalayn}</p>
-          </div>
-        `;
-      } else {
-        tafsirContent.innerHTML = `
-          <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--color-gold);">
-            <p style="margin: 0; line-height: 1.8;"><strong>Tafsir al-Jalalayn Commentary:</strong> This verse in Surah ${this.surahData?.englishName || ''} conveys divine guidance established upon classical Arabic grammar and authoritative Sunnah consensus. For extensive verse commentary, refer to the full printed text published by the Royal Aal al-Bayt Institute for Islamic Thought.</p>
-          </div>
-        `;
-      }
-    } else {
-      // Default: Ibn Kathir
-      if (tafsirMeta) tafsirMeta.textContent = "Tafsir al-Qur'an al-'Azim — Al-Hafiz Ibn Kathir (رحمه الله, 774 AH) • Classical Exegesis bi'l-Ma'thur (Quran explained by Quran & Sunnah)";
-      if (studyItem && studyItem.tafsirIbnKathir) {
-        tafsirContent.innerHTML = `
-          <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--color-primary);">
-            <p style="margin: 0; line-height: 1.8;">${studyItem.tafsirIbnKathir}</p>
-          </div>
-        `;
-      } else {
-        tafsirContent.innerHTML = `
-          <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid var(--color-primary);">
-            <p style="margin: 0; line-height: 1.8;"><strong>Tafsir Ibn Kathir Commentary:</strong> In his authoritative exegesis, Al-Hafiz Ibn Kathir explains this verse within the historical and spiritual context of Surah ${this.surahData?.englishName || ''}. He emphasizes obedience to divine decree and adherence to the prophetic Sunnah. Consult the Darussalam 10-volume English edition for unabridged historical narrations.</p>
-          </div>
-        `;
-      }
+    const surahName = this.surahData ? this.surahData.englishName : '';
+    const isJalalayn = this.studyTafsirEdition === 'jalalayn';
+    const bundledText = studyItem ? (isJalalayn ? studyItem.tafsirJalalayn : studyItem.tafsirIbnKathir) : null;
+    const borderColor = isJalalayn ? 'var(--color-gold)' : 'var(--color-primary)';
+
+    if (tafsirMeta) {
+      tafsirMeta.textContent = isJalalayn
+        ? "Tafsir al-Jalalayn — Jalal al-Din al-Mahalli & Jalal al-Din al-Suyuti (رحمهما الله) • Concise Grammatical & Contextual Commentary"
+        : "Tafsir al-Qur'an al-'Azim — Al-Hafiz Ibn Kathir (رحمه الله, 774 AH) • Classical Exegesis bi'l-Ma'thur (Quran explained by Quran & Sunnah)";
     }
+
+    if (bundledText) {
+      tafsirContent.innerHTML = `
+        <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${borderColor};">
+          <p style="margin: 0; line-height: 1.8;">${bundledText}</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Honest fallback: no commentary is bundled for this verse. Do not invent one.
+    tafsirContent.innerHTML = `
+      <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${borderColor};">
+        <p style="margin: 0 0 10px 0; line-height: 1.8;">
+          <strong>No commentary is bundled for ${surahName ? 'Surah ' + surahName + ', ' : ''}verse ${key}.</strong>
+          NoorDeen currently bundles verified commentary for a small set of key verses (Al-Fatihah, Ayat al-Kursi and Al-Ikhlas). Rather than display a fabricated or paraphrased explanation attributed to a classical scholar, this panel shows nothing here.
+        </p>
+        <p style="margin: 0; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">
+          Read the full tafsir in a published edition, or consult
+          <a href="https://quran.com/${key.split(':')[0]}/tafsirs" target="_blank" rel="noopener noreferrer">Quran.com's tafsir section</a>
+          and verify against the printed source.
+        </p>
+      </div>
+    `;
   }
 
   renderStudyWBW() {

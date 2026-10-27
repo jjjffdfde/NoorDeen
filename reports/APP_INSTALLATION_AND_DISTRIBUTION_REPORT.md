@@ -1,5 +1,7 @@
 # NOORDEEN — ANDROID APK, PWA, AND DESKTOP INSTALLATION AUDIT & REPAIR REPORT
 
+> **Superseded:** APK size, hash and page count in this report are from 25 October 2026. Current build: 6,232,774 bytes, SHA-256 `87763ba4b3bea482944dd170cb81b0e47cfe03778213ee0852292a928fbab2ed`, 47 bundled pages, not device-tested. See `reports/ANDROID_BUILD_REPORT.md`.
+
 **Project:** NoorDeen (Islamic Knowledge Portal)  
 **Repository:** [https://github.com/jjjffdfde/NoorDeen](https://github.com/jjjffdfde/NoorDeen)  
 **Live URL:** [https://jjjffdfde.github.io/NoorDeen/](https://jjjffdfde.github.io/NoorDeen/)  

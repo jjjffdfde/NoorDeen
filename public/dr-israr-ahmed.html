@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Israr Ahmed Video Library — Verified Lecture Catalog | NoorDeen</title>
+  <meta name="description" content="Browse a verified catalog of 148 Dr. Israr Ahmed lectures across 7 series, including Arbaeen-e-Nawawi and Al-Huda. Each entry links to the official Tanzeem-e-Islami archive and embeds the original YouTube upload. No video files are rehosted.">
+  <link rel="stylesheet" href="css/main.css?v=20261026e">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0F5132">
+  <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NoorDeen Islamic Knowledge Library">
+  <meta property="og:url" content="https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html">
+  <meta property="og:title" content="Dr. Israr Ahmed Video Library — Verified Lecture Catalog">
+  <meta property="og:description" content="148 verified lecture records across 7 series, linked to the official Tanzeem-e-Islami archive. Original YouTube embeds only.">
+  <meta property="og:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dr. Israr Ahmed Video Library — NoorDeen">
+  <meta name="twitter:description" content="A verified, source-linked catalog of Dr. Israr Ahmed lectures. Original uploads embedded; nothing rehosted.">
+  <meta name="twitter:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jjjffdfde.github.io/NoorDeen/" },
+      { "@type": "ListItem", "position": 2, "name": "Dr. Israr Ahmed Video Library", "item": "https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Dr. Israr Ahmed Video Library",
+    "description": "A verified catalog of Dr. Israr Ahmed lectures linked to the official Tanzeem-e-Islami archive.",
+    "url": "https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html",
+    "about": {
+      "@type": "Person",
+      "name": "Dr. Israr Ahmed",
+      "alternateName": "ڈاکٹر اسرار احمد",
+      "description": "Pakistani Islamic scholar (1932–2010), founder of Tanzeem-e-Islami and the Quran Academy."
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "NoorDeen Islamic Knowledge Library",
+      "url": "https://jjjffdfde.github.io/NoorDeen/"
+    }
+  }
+  </script>
+
+  <style>
+    .video-hero {
+      background: radial-gradient(circle at 50% 20%, #176B5B 0%, #0B3B2E 100%);
+      color: #fff;
+      padding: 56px 0 48px;
+      text-align: center;
+    }
+    .video-hero h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); margin: 0 0 14px; color: #fff; }
+    .video-hero p { max-width: 780px; margin: 0 auto; color: #E7F3EE; line-height: 1.75; font-size: 1.02rem; }
+    .video-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
+    .video-stat {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      padding: 12px 22px;
+      min-width: 118px;
+    }
+    .video-stat strong { display: block; font-size: 1.5rem; color: #F4D58D; }
+    .video-stat span { font-size: 0.8rem; letter-spacing: 0.03em; text-transform: uppercase; color: #D7E9E2; }
+    .video-controls {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+      margin: 26px 0 8px;
+    }
+    .video-controls label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); margin-bottom: 6px; }
+    .video-controls input, .video-controls select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-main);
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    .video-results-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin: 10px 0 22px; color: var(--color-text-muted); font-size: 0.9rem; }
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+    .video-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .video-card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.10); }
+    .video-thumb-wrap { position: relative; aspect-ratio: 16 / 9; background: #0B3B2E; cursor: pointer; }
+    .video-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-play-badge {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.18);
+    }
+    .video-play-badge span {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: rgba(15,81,50,0.92); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+      border: 2px solid rgba(255,255,255,0.85);
+    }
+    .video-thumb-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+    .video-series-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 7px; }
+    .video-card-title { font-size: 1rem; font-weight: 700; line-height: 1.45; margin: 0 0 10px; color: var(--color-text-main); }
+    .video-card-meta { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 6px 12px; }
+    .video-card-actions { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+    .video-card-actions a, .video-card-actions button {
+      font-size: 0.8rem; padding: 8px 12px; border-radius: 8px; text-decoration: none;
+      border: 1px solid var(--color-border); background: transparent; color: var(--color-primary);
+      cursor: pointer; font-weight: 600;
+    }
+    .video-card-actions a:hover, .video-card-actions button:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .series-card { border: 1px solid var(--color-border); border-radius: 12px; padding: 18px; background: var(--color-surface); }
+    .series-card h3 { margin: 0 0 6px; font-size: 1rem; color: var(--color-primary); }
+    .series-card p { margin: 0; font-size: 0.86rem; color: var(--color-text-muted); }
+    .source-note { border-left: 4px solid var(--color-gold); background: var(--color-surface-alt, #F8F5EC); padding: 18px 20px; border-radius: 0 10px 10px 0; margin: 30px 0; font-size: 0.92rem; line-height: 1.75; }
+    .empty-state { text-align: center; padding: 50px 20px; color: var(--color-text-muted); border: 1px dashed var(--color-border); border-radius: 14px; }
+    @media (max-width: 760px) {
+      .video-controls { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-group">
+        <div class="logo-icon">☪</div>
+        <div class="logo-text-wrapper">
+          <div class="logo-text-title" data-i18n="siteTitle">NoorDeen</div>
+          <div class="logo-text-subtitle" data-i18n="siteSubtitle">International Islamic Knowledge Library</div>
+        </div>
+      </a>
+
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" data-i18n="navHome">Home</a></li>
+          <li class="nav-item"><a href="articles/index.html">📚 Articles</a></li>
+
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navQuran">Holy Quran</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="quran.html" class="nav-dropdown-item">📖 Complete Quran (114 Surahs)</a>
+              <a href="bookmarks.html" class="nav-dropdown-item">🔖 Bookmarked Ayahs</a>
+              <a href="articles/how-to-read-and-understand-quran.html" class="nav-dropdown-item">🔍 How to Read the Quran</a>
+              <a href="articles/quran-translation-vs-tafsir.html" class="nav-dropdown-item">📜 Translation vs Tafsir</a>
+            </div>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navHadith">Hadith & Duas</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
+              <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
+              <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
+            </div>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
+              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
+              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
+              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
+              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
+            </div>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button class="nav-btn" aria-haspopup="true">
+              <span data-i18n="navTools">Islamic Tools</span> <span class="dropdown-caret">▾</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="prayer-times.html" class="nav-dropdown-item">⏱️ Solar Prayer Times</a>
+              <a href="zakat-calculator.html" class="nav-dropdown-item">💰 Zakat Calculation Engine</a>
+              <a href="tasbih.html" class="nav-dropdown-item">📿 Digital Tasbih Counter</a>
+              <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
+            </div>
+          </li>
+
+          <li class="nav-item"><a href="dr-israr-ahmed.html" class="active" style="color: var(--color-gold); font-weight: 700;">🎬 Lectures</a></li>
+
+          <li class="nav-item">
+            <a href="download-app.html" class="nav-app-pill">
+              <span>📱</span> <span data-i18n="navApp">App</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="search-modal-btn" class="search-trigger-btn" aria-label="Search Portal (Ctrl+K)">
+          <span>🔍</span>
+          <span class="search-trigger-text" data-i18n="navSearch">Search...</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button id="language-selector-btn" class="btn btn-outline" title="Select Language">
+          🌐 <span id="current-language-label">English</span>
+        </button>
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Theme" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="btn-icon mobile-menu-btn" onclick="App.toggleMobileDrawer()" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="video-hero">
+    <div class="container">
+      <h1>Dr. Israr Ahmed Video Library</h1>
+      <p>
+        A verified, source-linked catalog of lectures by <strong>Dr. Israr Ahmed</strong> (ڈاکٹر اسرار احمد, رحمہ اللہ),
+        founder of Tanzeem-e-Islami and the Quran Academy. Every record below points to the official
+        Tanzeem-e-Islami archive. NoorDeen does not host or re-upload any video file.
+      </p>
+      <div class="video-stats">
+        <div class="video-stat"><strong id="stat-videos">148</strong><span>Lecture records</span></div>
+        <div class="video-stat"><strong id="stat-unique">147</strong><span>Unique uploads</span></div>
+        <div class="video-stat"><strong id="stat-series">7</strong><span>Series</span></div>
+        <div class="video-stat"><strong id="stat-urdu">131</strong><span>Urdu</span></div>
+        <div class="video-stat"><strong id="stat-english">17</strong><span>English</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding-top: 36px; padding-bottom: 80px;">
+
+    <div class="source-note">
+      <strong>Coverage and rights.</strong> This catalog covers <strong>pages 1–10</strong> of the official
+      <a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer">Tanzeem-e-Islami speaker archive</a>
+      (150 listing entries retrieved 26 October 2026), of which 148 contain an embedded video and 2 are index pages.
+      Two of those 148 records point to the same YouTube upload, so the catalog represents <strong>147 unique videos</strong>.
+      The archive itself has 74 pages, so this is a substantial but deliberately partial catalog — it is not the complete
+      recorded output of Dr. Israr Ahmed. Videos load only after you click, through YouTube's privacy-enhanced
+      <code>youtube-nocookie.com</code> player, or you may open the original source page.
+    </div>
+
+    <div class="video-controls">
+      <div>
+        <label for="video-search">Search titles (English, Roman Urdu, Urdu script)</label>
+        <input type="text" id="video-search" placeholder="e.g. Arbaeen, Tobha, Hadeed, نماز..." autocomplete="off">
+      </div>
+      <div>
+        <label for="video-series">Series</label>
+        <select id="video-series">
+          <option value="all">All series</option>
+        </select>
+      </div>
+      <div>
+        <label for="video-language">Language</label>
+        <select id="video-language">
+          <option value="all">All languages</option>
+          <option value="Urdu">Urdu</option>
+          <option value="English">English</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="video-results-meta">
+      <span id="video-count">Loading catalog…</span>
+      <button id="video-reset" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Reset filters</button>
+    </div>
+
+    <div id="video-grid" class="video-grid" aria-live="polite"></div>
+    <div id="video-empty" class="empty-state" style="display:none;">
+      <p style="font-size: 1.1rem; margin-bottom: 8px;">No lectures match these filters.</p>
+      <p>Try a shorter search term or reset the filters.</p>
+    </div>
+
+    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">Series in this catalog</h2>
+    <div id="series-grid" class="series-grid"></div>
+
+    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">How to use this library</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+      <div class="series-card">
+        <h3>1. Choose a series</h3>
+        <p>Arbaeen-e-Nawawi explains forty foundational hadiths. Al-Huda is a structured study course through selected surahs. Muntakhab Nisab covers essential Islamic studies.</p>
+      </div>
+      <div class="series-card">
+        <h3>2. Follow the episode order</h3>
+        <p>Each card shows its verified series code and episode number. Sorting is by series and episode, not by upload date, so the study sequence stays intact.</p>
+      </div>
+      <div class="series-card">
+        <h3>3. Read alongside the lecture</h3>
+        <p>Pair a lecture with our <a href="articles/hadith-and-sunnah-authenticity.html">hadith sciences guide</a>, <a href="articles/quran-translation-vs-tafsir.html">translation vs tafsir article</a>, or the <a href="quran.html">Quran reader</a>.</p>
+      </div>
+      <div class="series-card">
+        <h3>4. Verify at the source</h3>
+        <p>Every card links to the original Tanzeem-e-Islami page. If a video is removed or made private by its owner, the source link remains the authoritative record.</p>
+      </div>
+    </div>
+
+    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">Related reading on NoorDeen</h2>
+    <ul style="line-height: 2; font-size: 0.98rem;">
+      <li><a href="articles/hadith-and-sunnah-authenticity.html">Understanding Hadith, Collections and Authenticity</a></li>
+      <li><a href="articles/quran-translation-vs-tafsir.html">Quran Translation vs Tafsir</a></li>
+      <li><a href="articles/how-to-read-and-understand-quran.html">How to Read and Understand the Quran</a></li>
+      <li><a href="seerah.html">Seerah of Prophet Muhammad ﷺ</a></li>
+      <li><a href="sources.html">NoorDeen sourcing and bibliography</a></li>
+    </ul>
+
+    <div style="margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+      <a href="index.html" class="btn btn-outline" style="text-decoration:none;">← Back to Home</a>
+      <a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none;">Open Official Archive →</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-title">About the Portal</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; color: #D1D5DB; margin-bottom: 14px;">
+          An authentic, universally accessible digital repository of core Islamic texts, classical scholarship, and worship tools, serving seekers of knowledge worldwide.
+        </p>
+        <div style="font-size: 0.8rem; color: var(--color-gold);">
+          Hafs Uthmanic Standard • Six Canonical Hadith Books • Four Sunnite Madhhabs
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Sacred Knowledge</div>
+        <ul class="footer-links">
+          <li><a href="quran.html">📖 Complete Quran (114 Surahs)</a></li>
+          <li><a href="hadith.html">📜 Authentic Hadith Collections</a></li>
+          <li><a href="duas.html">🤲 Daily Duas & Adhkar</a></li>
+          <li><a href="kalimas.html">⭐ Six Kalimas with Audio</a></li>
+          <li><a href="seerah.html">🌹 Seerah of Prophet Muhammad ﷺ</a></li>
+          <li><a href="prophets.html">📜 Stories of the Prophets</a></li>
+          <li><a href="sahaba.html">👥 Lives of the Sahaba</a></li>
+          <li><a href="history.html">📜 Islamic History</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Worship Guides & Tools</div>
+        <ul class="footer-links">
+          <li><a href="salah-guide.html">🕌 Five Daily Prayers (Salah)</a></li>
+          <li><a href="wudu-guide.html">💧 Step-by-Step Wudu Guide</a></li>
+          <li><a href="janazah-guide.html">⚰️ Funeral Prayer (Janazah)</a></li>
+          <li><a href="eid-guide.html">🌙 Eid Prayer (Fitr & Adha)</a></li>
+          <li><a href="zakat-calculator.html">💰 Zakat Calculation Engine</a></li>
+          <li><a href="prayer-times.html">⏱️ Solar Prayer Times</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Legal & Trust</div>
+        <ul class="footer-links">
+          <li><a href="about.html">🏛️ About Us & Methodology</a></li>
+          <li><a href="sources.html">📚 Sourcing & Bibliography</a></li>
+          <li><a href="contact.html">✉️ Contact & Corrections</a></li>
+          <li><a href="privacy.html">🛡️ Privacy Policy & Cookies</a></li>
+          <li><a href="terms.html">⚖️ Terms of Use</a></li>
+          <li><a href="download-app.html">📱 Download App (PWA & APK)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <div>© 2026 NoorDeen. All Rights Reserved. Dedicated to Authentic Public Learning.</div>
+        <div style="display: flex; gap: 16px;">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="contact.html">Contact</a>
+          <a href="sources.html">Sources</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js?v=20261026e"></script>
+  <script src="js/i18n.js?v=20261026e"></script>
+  <script src="js/search.js?v=20261026e"></script>
+  <script src="js/app.js?v=20261026e"></script>
+
+  <script>
+  (function () {
+    var catalog = null;
+    var cards = [];
+
+    function normalise(s) {
+      return (s || '')
+        .toLowerCase()
+        .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
+        .replace(/[إأآاٱ]/g, 'ا')
+        .replace(/[ىيی]/g, 'ی')
+        .replace(/[ةهہ]/g, 'ہ')
+        .replace(/[كک]/g, 'ک')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function renderSeriesOptions(series) {
+      var sel = document.getElementById('video-series');
+      series.forEach(function (s) {
+        var opt = document.createElement('option');
+        opt.value = s.code;
+        opt.textContent = s.name + ' (' + s.count + ')';
+        sel.appendChild(opt);
+      });
+    }
+
+    function renderSeriesGrid(series) {
+      var grid = document.getElementById('series-grid');
+      grid.innerHTML = series.map(function (s) {
+        return '<div class="series-card">' +
+          '<h3>' + escapeHtml(s.name) + '</h3>' +
+          '<p><strong>' + s.count + '</strong> lecture' + (s.count === 1 ? '' : 's') + ' · ' + escapeHtml(s.language) + ' · code ' + escapeHtml(s.code) + '</p>' +
+          '</div>';
+      }).join('');
+    }
+
+    function createCard(v, index) {
+      var card = document.createElement('article');
+      card.className = 'video-card';
+      card.setAttribute('data-series', v.seriesCode);
+      card.setAttribute('data-language', v.language);
+      card.setAttribute('data-search', normalise(v.fullTitle + ' ' + v.series));
+
+      var episodeLabel = v.episode !== null ? 'Episode ' + v.episode : 'Lecture';
+      card.innerHTML =
+        '<div class="video-thumb-wrap" data-yt="' + escapeHtml(v.youtubeId) + '" role="button" tabindex="0" aria-label="Play ' + escapeHtml(v.title) + '">' +
+          '<img loading="lazy" src="https://i.ytimg.com/vi/' + encodeURIComponent(v.youtubeId) + '/mqdefault.jpg" alt="Thumbnail for ' + escapeHtml(v.title) + '">' +
+          '<div class="video-play-badge"><span>▶</span></div>' +
+        '</div>' +
+        '<div class="video-card-body">' +
+          '<div class="video-series-tag">' + escapeHtml(v.series) + '</div>' +
+          '<h3 class="video-card-title">' + escapeHtml(v.title) + '</h3>' +
+          '<div class="video-card-meta">' +
+            '<span>🎞️ ' + episodeLabel + '</span>' +
+            '<span>🗣️ ' + escapeHtml(v.language) + '</span>' +
+            '<span>🔗 ' + escapeHtml(v.id) + '</span>' +
+            (v.isDuplicate ? '<span title="This archive listing embeds the same upload as another entry">♻️ Same upload as ' + escapeHtml(v.duplicateOf) + '</span>' : '') +
+          '</div>' +
+          '<div class="video-card-actions">' +
+            '<button type="button" class="js-play">▶ Play here</button>' +
+            '<a href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.youtubeId) + '" target="_blank" rel="noopener noreferrer">YouTube ↗</a>' +
+            '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Source ↗</a>' +
+          '</div>' +
+        '</div>';
+
+      var thumb = card.querySelector('.video-thumb-wrap');
+      var play = function () {
+        thumb.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.youtubeId) +
+          '?autoplay=1&rel=0" title="' + escapeHtml(v.title) +
+          '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      };
+      thumb.addEventListener('click', play);
+      thumb.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+      });
+      card.querySelector('.js-play').addEventListener('click', play);
+      return card;
+    }
+
+    function applyFilters() {
+      var q = normalise(document.getElementById('video-search').value);
+      var series = document.getElementById('video-series').value;
+      var lang = document.getElementById('video-language').value;
+      var shown = 0;
+
+      cards.forEach(function (card) {
+        var okSearch = !q || card.getAttribute('data-search').indexOf(q) !== -1;
+        var okSeries = series === 'all' || card.getAttribute('data-series') === series;
+        var okLang = lang === 'all' || card.getAttribute('data-language') === lang;
+        var visible = okSearch && okSeries && okLang;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      });
+
+      document.getElementById('video-count').textContent = shown + ' of ' + cards.length + ' lecture records shown';
+      document.getElementById('video-empty').style.display = shown === 0 ? 'block' : 'none';
+    }
+
+    function reset() {
+      document.getElementById('video-search').value = '';
+      document.getElementById('video-series').value = 'all';
+      document.getElementById('video-language').value = 'all';
+      applyFilters();
+    }
+
+    fetch('data/dr-israr/catalog.json')
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (data) {
+        catalog = data;
+        var grid = document.getElementById('video-grid');
+        var frag = document.createDocumentFragment();
+        data.videos.forEach(function (v, i) {
+          var card = createCard(v, i);
+          frag.appendChild(card);
+          cards.push(card);
+        });
+        grid.appendChild(frag);
+
+        document.getElementById('stat-videos').textContent = data.videos.length;
+        document.getElementById('stat-unique').textContent = data.source.uniqueVideoCount;
+        document.getElementById('stat-series').textContent = data.series.length;
+        var urdu = data.videos.filter(function (v) { return v.language === 'Urdu'; }).length;
+        document.getElementById('stat-urdu').textContent = urdu;
+        document.getElementById('stat-english').textContent = data.videos.length - urdu;
+
+        renderSeriesOptions(data.series);
+        renderSeriesGrid(data.series);
+        applyFilters();
+
+        document.getElementById('video-search').addEventListener('input', applyFilters);
+        document.getElementById('video-series').addEventListener('change', applyFilters);
+        document.getElementById('video-language').addEventListener('change', applyFilters);
+        document.getElementById('video-reset').addEventListener('click', reset);
+      })
+      .catch(function (err) {
+        document.getElementById('video-count').textContent = 'Catalog could not be loaded (' + err.message + ').';
+        document.getElementById('video-grid').innerHTML =
+          '<div class="empty-state" style="grid-column: 1 / -1;">' +
+          '<p>The local catalog file could not be read.</p>' +
+          '<p><a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer">Open the official Tanzeem-e-Islami archive instead →</a></p>' +
+          '</div>';
+      });
+  })();
+  </script>
+</body>
+</html>

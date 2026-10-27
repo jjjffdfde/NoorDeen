@@ -22,8 +22,9 @@
 
   <!-- Favicon & Stylesheet -->
   <link rel="icon" type="image/svg+xml" href="icons/icon-192.svg">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261026e">
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0F5132">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -51,7 +52,7 @@
             "name": "What Quranic text and narration standard does NoorDeen utilize?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "NoorDeen utilizes the verified Tanzil Uthmani script according to the canonical Hafs 'an 'Asim narration, comprising all 114 Surahs and exactly 6,236 Ayahs. The script adheres strictly to the King Fahd Complex standard with authentic diacritics and verse numbering."
+              "text": "NoorDeen reads the Qur'an in the verified Tanzil Uthmani script according to the canonical Hafs 'an 'Asim narration, with all 114 Surahs and 6,236 Ayahs available in the reader. The complete text is fetched from the verified Quran Cloud API; ten surahs (49 ayahs) are bundled for offline reading. The Arabic script follows the King Fahd Complex standard with diacritics and verse numbering and is never altered by translation toggling."
             }
           },
           {
@@ -114,7 +115,7 @@
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <span>🌙 <strong id="current-hijri-date">1447 AH</strong></span>
+        <span>🌙 <strong id="current-hijri-date">Hijri Calendar</strong></span>
         <span style="opacity: 0.5;">|</span>
         <span style="font-size: 0.8rem; opacity: 0.9;">Serving the Global Ummah with Verified Classical Sources</span>
       </div>
@@ -195,6 +196,8 @@
               <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
             </div>
           </li>
+
+          <li class="nav-item"><a href="dr-israr-ahmed.html">🎬 Lectures</a></li>
 
           <!-- App Pill -->
           <li class="nav-item">
@@ -301,7 +304,7 @@
         <div class="knowledge-hub-icon-badge">📖</div>
         <h3 class="knowledge-hub-title">The Holy Quran Pak</h3>
         <p class="knowledge-hub-desc">
-          Complete 114 Surahs and 6,236 Ayahs in verified Tanzil Uthmani script with independent translation switching, recitation audio, and Tafsir Ibn Kathir.
+          Complete 114 Surahs and 6,236 Ayahs in verified Tanzil Uthmani script with independent translation switching and recitation audio. Ten surahs (49 ayahs) are bundled for offline reading; the rest load from the verified Quran Cloud API. Study Mode includes bundled commentary for selected key verses.
         </p>
         <div class="knowledge-hub-meta">
           <span>114 Surahs • 30 Juz</span>
@@ -353,7 +356,7 @@
         <div class="knowledge-hub-icon-badge">📜</div>
         <h3 class="knowledge-hub-title">Stories of the Prophets</h3>
         <p class="knowledge-hub-desc">
-          Authentic Quranic narratives of all 25 Prophets explicitly mentioned in the Holy Quran from Adam (AS) to Muhammad ﷺ, plus 5 exemplary righteous figures from classical *Qisas al-Anbiya*.
+          Authentic Quranic narratives of all 25 Prophets explicitly mentioned in the Holy Quran from Adam (AS) to Muhammad ﷺ, plus 5 exemplary righteous figures from classical <em>Qisas al-Anbiya</em>.
         </p>
         <div class="knowledge-hub-meta">
           <span>25 Prophets • Ibn Kathir</span>
@@ -392,11 +395,24 @@
         <div class="knowledge-hub-icon-badge">🤲</div>
         <h3 class="knowledge-hub-title">Masnoon Duas & Adhkar</h3>
         <p class="knowledge-hub-desc">
-          Authentic supplications from *Hisn al-Muslim* for morning, evening, protection, and daily life with Arabic text, transliteration, and Urdu/English meanings.
+          Authentic supplications from <em>Hisn al-Muslim</em> for morning, evening, protection, and daily life with Arabic text, transliteration, and Urdu/English meanings.
         </p>
         <div class="knowledge-hub-meta">
           <span>Hisn al-Muslim • Counters</span>
           <span>Read Duas →</span>
+        </div>
+      </a>
+
+      <!-- Card 9: Dr. Israr Ahmed Lectures -->
+      <a href="dr-israr-ahmed.html" class="knowledge-hub-card">
+        <div class="knowledge-hub-icon-badge">🎬</div>
+        <h3 class="knowledge-hub-title">Dr. Israr Ahmed Lectures</h3>
+        <p class="knowledge-hub-desc">
+          A verified catalog of 148 lecture records (147 unique uploads) across 7 series — Arbaeen-e-Nawawi, Al-Huda and Muntakhab Nisab — linked to the official Tanzeem-e-Islami archive.
+        </p>
+        <div class="knowledge-hub-meta">
+          <span>131 Urdu • 17 English</span>
+          <span>Browse Lectures →</span>
         </div>
       </a>
 
@@ -462,7 +478,7 @@
             🕌 Astronomical Solar Observatory
           </span>
           <span id="bento-hijri-date" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted);">
-            1447 AH • Umm al-Qura
+            Umm al-Qura
           </span>
         </div>
 
@@ -502,7 +518,7 @@
 
         <div style="display: flex; gap: 8px; margin-top: auto;">
           <a href="prayer-times.html" class="btn btn-primary" style="flex: 1; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
-            Full Timetable & Qibla →
+            Full Prayer Timetable →
           </a>
           <a href="salah-guide.html" class="btn btn-outline" style="flex: 1; text-align: center; font-size: 0.85rem; padding: 8px 12px;">
             Salah Guide
@@ -822,7 +838,7 @@
     </section>
 
     <!-- SECTION 6: GUIDED ISLAMIC LEARNING PATHWAYS -->
-    <section style="margin-bottom: 48px;">
+    <section id="guided-learning" style="margin-bottom: 48px;">
       <div class="section-header" style="margin-bottom: 20px;">
         <div>
           <h2 class="section-title" style="font-size: 1.4rem; color: var(--color-primary); font-family: var(--font-heading);">
@@ -950,7 +966,7 @@
             </p>
             <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 0.84rem; display: flex; flex-direction: column; gap: 8px;">
               <li style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: var(--color-gold);">1.</span> <a href="prayer-times.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Solar Prayer Times & Qibla</a>
+                <span style="color: var(--color-gold);">1.</span> <a href="prayer-times.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Solar Prayer Times</a>
               </li>
               <li style="display: flex; align-items: center; gap: 6px;">
                 <span style="color: var(--color-gold);">2.</span> <a href="zakat-calculator.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Dual-Nisab Zakat Calculator</a>
@@ -4002,7 +4018,7 @@
           </summary>
           <div class="faq-content">
             <p>
-              NoorDeen utilizes the verified Tanzil Uthmani script adhering strictly to the canonical <strong>Hafs 'an 'Asim</strong> narration, comprising all 114 Surahs and exactly 6,236 Ayahs. The script conforms directly to the King Fahd Glorious Quran Printing Complex standard in Madinah al-Munawwarah. Every verse is displayed with complete diacritics (Tashkeel) and pauses, and translations can be toggled without mutating or altering the sacred Arabic archetype.
+              NoorDeen reads the Qur'an in the verified Tanzil Uthmani script adhering strictly to the canonical <strong>Hafs 'an 'Asim</strong> narration, with all 114 Surahs and 6,236 Ayahs available in the reader. The complete text is retrieved from the verified Quran Cloud API, and <strong>ten surahs (49 ayahs)</strong> are bundled locally for offline reading. The Arabic script conforms to the King Fahd Glorious Quran Printing Complex standard in Madinah al-Munawwarah. Every verse is displayed with diacritics (Tashkeel) and pauses, and translations can be toggled without mutating or altering the sacred Arabic archetype.
             </p>
           </div>
         </details>
@@ -4083,7 +4099,7 @@
           Authenticity & Religious Data Integrity Guarantee
         </h2>
         <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-muted); margin-bottom: 18px;">
-          Our portal strictly preserves the immutable original Arabic Quran text sourced from the Tanzil Project (Hafs 6,236 Ayahs), canonical Hadith narrations from *Kutub al-Sittah* with authenticated scholar gradings, and classical Seerah treatises. Zero invasive tracking, zero paywalls, and standalone offline accessibility.
+          Our portal strictly preserves the immutable original Arabic Quran text sourced from the Tanzil Project (Hafs 6,236 Ayahs), canonical Hadith narrations from <em>Kutub al-Sittah</em> with authenticated scholar gradings, and classical Seerah treatises. Zero invasive tracking, zero paywalls, and standalone offline accessibility.
         </p>
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
           <a href="sources.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">Source Provenance & Licensing</a>
@@ -4161,12 +4177,12 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/tools.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config.js?v=20261026e"></script>
+  <script src="js/data.js?v=20261026e"></script>
+  <script src="js/i18n.js?v=20261026e"></script>
+  <script src="js/tools.js?v=20261026e"></script>
+  <script src="js/search.js?v=20261026e"></script>
+  <script src="js/app.js?v=20261026e"></script>
 
   <script>
     // Islamic Glossary Real-time Search and Category Filter

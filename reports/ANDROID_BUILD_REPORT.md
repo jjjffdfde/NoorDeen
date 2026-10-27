@@ -1,83 +1,162 @@
-# NOORDEEN — ANDROID NATIVE APPLICATION & APK BUILD REPORT
+# NoorDeen — Android Build Report
 
-**Build Date:** 25 October 2026  
-**Build Target:** Standalone Android Native APK (No Remote WebView Reliance)  
-**Application Name:** NoorDeen  
-**Package Identifier:** `com.islamicknowledge.portal`  
-**Version:** `1.2.0` (Version Code: `10200`)  
-**Repository:** `https://github.com/jjjffdfde/NoorDeen`  
-**Live Download Center:** `https://jjjffdfde.github.io/NoorDeen/download-app.html`  
-
----
-
-## 1. Executive Summary & Build Architecture
-
-The NoorDeen Android application has been configured, packaged, signed, and independently verified as a genuine native Android package. It is engineered with:
-1. **Zero Remote-Website Reliance:** Unlike a thin WebView wrapper that merely points to `https://jjjffdfde.github.io/NoorDeen/`, all 36 HTML pages, stylesheets, scripts, data dictionaries, and educational treatises are packaged directly inside the application's `assets/public/` directory.
-2. **Offline-First Execution:** The app executes seamlessly in airplane mode, loading from local assets without requiring network access.
-3. **Subpath Neutrality:** Uses Capacitor's custom HTTPS scheme (`https://localhost/` or `https://com.islamicknowledge.portal/`) and relative base-path resolution in `public/js/app.js` to ensure that both root pages and subpath pages (`/articles/`) resolve correctly without broken links.
-4. **Android SDK & Toolchain Alignment:** Fully configured with Android SDK 34 (`android-34`), build-tools `36.0.0`, Java 17 OpenJDK (`17.0.10`), and Gradle 8.2.1 / AGP 8.2.1.
+**Build verified:** 26 October 2026
+**Build host:** Windows 11 (AMD64), PowerShell
+**Project:** `E:\islamic websiye`
+**Package:** `com.islamicknowledge.portal`
+**Version:** 1.2.0 (`versionCode` 10200)
+**Result:** Release APK builds successfully, is signed, and its structure is verified. **It has not been installed or run on any device or emulator.**
 
 ---
 
-## 2. Android Manifest & Build Specifications
+## 1. What was actually executed
 
-| Parameter | Configured Value | Verification Method |
-|:---|:---|:---|
-| **Application ID** | `com.islamicknowledge.portal` | Verified in `AndroidManifest.xml`, `capacitor.config.json`, `build.gradle` |
-| **Application Name** | `NoorDeen` | Verified in strings and manifest |
-| **Version Name** | `1.2.0` | Reconciled across `package.json`, Gradle, and download page |
-| **Version Code** | `10200` | Aligned with version 1.2.0 |
-| **Compile SDK** | `34` (Android 14) | Verified in `android/app/build.gradle` |
-| **Minimum SDK** | `22` (Android 5.1 Lollipop) | Compatible with >98% of active Android devices worldwide |
-| **Target SDK** | `34` (Android 14) | Compliant with Google Play Store target API level requirements |
-| **App Icons** | Mipmap PNGs | mdpi (48x48), hdpi (72x72), xhdpi (96x96), xxhdpi (144x144), xxxhdpi (192x192) |
-| **Permissions** | Minimal & Declared | `android.permission.INTERNET` (for optional Quran audio streaming only) |
+```powershell
+node scripts/build-android-assets.cjs
+# "Android assets synced successfully."
 
----
-
-## 3. Toolchain & Environmental Provenance
-
-- **Java Development Kit (JDK):** Microsoft OpenJDK `17.0.10+7-LTS` (64-Bit Server VM).
-- **Android SDK:** Installed at `C:\Program Files\Unity\Hub\Editor\6000.6.4f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK`.
-  - Platforms: `android-34`, `android-36`.
-  - Build-Tools: `36.0.0` (includes `apksigner.bat`, `aapt.exe`, `zipalign.exe`).
-  - Platform-Tools: `adb.exe`, `fastboot.exe`.
-- **Gradle Version:** Gradle Wrapper `8.2.1` with Android Gradle Plugin `8.2.1`.
-- **Capacitor CLI:** `@capacitor/cli` v5.7.8, `@capacitor/core` v5.7.8, `@capacitor/android` v5.7.8.
-
----
-
-## 4. Release APK Artifact Verification
-
-### Release APK Details
-- **Output Artifact:** `public/downloads/islamic-portal-release.apk`
-- **Gradle Release Output:** `android/app/build/outputs/apk/release/app-release.apk`
-- **Gradle Debug Output:** `android/app/build/outputs/apk/debug/app-debug.apk`
-- **File Size:** **8,364,255 bytes (7.97 MB)**
-- **SHA-256 Checksum:** `a5f86e4f54829d379d9d5055e0cf4d07d73ef65b8f08da4bafa7f007419edd61`
-- **Archive Contents:** Aligned and signed package containing compiled Dalvik bytecode (`classes.dex`, `classes2.dex`), `resources.arsc`, Capacitor native bridge runtime, AndroidX compatibility libraries, and all 36 web pages, stylesheets, scripts, and data dictionaries bundled in `assets/public/` for 100% offline functionality.
-
-### Cryptographic Signature Verification (`jarsigner`):
-```text
-s = signature was verified 
-m = entry is listed in manifest
-k = at least one certificate was found in keystore
-
-- Signed by "CN=NoorDeen, OU=Mobile Applications, O=Islamic Knowledge Portal, L=Singapore, C=SG"
-    Digest algorithm: SHA-256
-    Signature algorithm: SHA256withRSA, 2048-bit key
-    Certificate validity: Valid from 25/10/2026 to 12/03/2054
-
-jar verified.
+cd android
+gradlew.bat assembleRelease --console=plain --offline
+# BUILD SUCCESSFUL in 10s
+# 64 actionable tasks: 3 executed, 61 up-to-date
 ```
 
+- The Gradle build was run **offline** (`--offline`) against an already-populated dependency cache.
+- `--offline` is not a claim that the app works offline; it only describes how Gradle resolved dependencies.
+- The web assets were re-synced from `public/` immediately before this build, so the APK contains the current site (including the 10 new articles and the Dr. Israr Ahmed lecture library).
+
+### Toolchain (verified on this machine)
+
+| Component | Value |
+| :--- | :--- |
+| JDK | Microsoft OpenJDK 17 (`java -version` = 17.x) |
+| Gradle wrapper | 8.2.1 |
+| Android Gradle Plugin | 8.2.1 |
+| Android SDK | `C:\Program Files\Unity\Hub\Editor\6000.6.4f1\Editor\Data\PlaybackEngines\AndroidPlayer\SDK` (declared in `android/local.properties`) |
+| Build-tools | 36.0.0 |
+| Platform-tools | present (`adb.exe` available) |
+| compileSdk / targetSdk / minSdk | 34 / 34 / 22 |
+
 ---
 
-## 5. Device & Emulator Testing Status
+## 2. Release artifact
 
-- **Host Environment:** Windows 11 AMD64 (build environment).
-- **Physical Device:** No physical Android device was connected via USB during this automated build session (`adb devices` reported 0 attached devices).
-- **Virtual Device / Emulator:** No Android Virtual Device (AVD) was actively running during this build session.
-- **Bytecode & Package Integrity:** Independently verified via Dalvik bytecode analysis, AXML binary verification, ZIP archive 4-byte boundary alignment, and `jarsigner` cryptographic certificate validation.
-- **Live Distribution:** Hosted at `https://jjjffdfde.github.io/NoorDeen/downloads/islamic-portal-release.apk` with verified checksum manifest at `https://jjjffdfde.github.io/NoorDeen/downloads/CHECKSUMS.sha256`.
+| Field | Value |
+| :--- | :--- |
+| Gradle output | `android/app/build/outputs/apk/release/app-release.apk` |
+| Published copy | `public/downloads/islamic-portal-release.apk` |
+| Size | **6,232,774 bytes (5.94 MB)** |
+| SHA-256 | `87763ba4b3bea482944dd170cb81b0e47cfe03778213ee0852292a928fbab2ed` |
+| Version metadata | `versionCode` 10200, `versionName` 1.2.0 (`output-metadata.json`) |
+
+The published APK in `public/downloads/` is a byte-for-byte copy of the Gradle output above. The hash is also written into `public/downloads/CHECKSUMS.sha256`; the download page reads that manifest at runtime instead of hardcoding a digest.
+
+---
+
+## 3. Structural verification (what was checked, and how)
+
+The APK is a ZIP container, so it was parsed directly (central directory read in Node.js) rather than trusted on file name alone:
+
+| Check | Result |
+| :--- | :--- |
+| ZIP entries | 997 |
+| `AndroidManifest.xml` present | yes |
+| `classes.dex` present | yes |
+| `resources.arsc` present | yes |
+| Nested `.apk` files | **0** |
+| Nested `.zip` files | **0** |
+| `assets/public/index.html` | present |
+| `assets/public/dr-israr-ahmed.html` | present |
+| `assets/public/data/dr-israr/catalog.json` | present |
+| `assets/public/articles/fasting-and-ramadan.html` | present |
+| HTML pages under `assets/public/` | **47** (26 root + 21 article pages) |
+| Files under `assets/public/` | 74 |
+| `assets/public/downloads/*` | **0** — the downloads folder is deliberately excluded |
+| `assets/public/service-worker.js` | present, cache `islamic-portal-shell-v6` |
+
+An earlier published APK in this repo had contained a nested copy of the APK and of the offline ZIP inside `assets/public/downloads/`. That build was replaced. The current artifact contains **no nested archives**, and the build script that copies assets excludes `public/downloads/`.
+
+---
+
+## 4. Signature verification
+
+Verified with `apksigner.bat verify --verbose --print-certs` from build-tools 36.0.0:
+
+```text
+Verifies
+Verified using v1 scheme (JAR signing): true
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Number of signers: 1
+Signer #1 certificate DN: CN=NoorDeen, OU=Mobile Applications, O=Islamic Knowledge Portal, L=Singapore, C=SG
+Signer #1 certificate SHA-256 digest: 3cdfcc28ef87bfe7d73fb05b209802af254d36f1de211782b25673d4d3c1f136
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+```
+
+`apksigner` also printed warnings that a few `META-INF/*` metadata entries are not covered by the JAR signature. That is normal for AGP-produced APKs and does not affect the v2 signature that Android actually verifies at install time.
+
+Notes on honesty:
+- The APK is **v1 + v2 signed only**. It is not v3/v3.1/v4 signed.
+- PowerShell may report exit code 1 for the `apksigner` invocation because the tool writes warnings to stderr; the tool's own verdict line is `Verifies`.
+
+---
+
+## 5. Device and runtime testing status
+
+| Test | Status |
+| :--- | :--- |
+| `adb devices` | **No devices attached** (empty list) |
+| Install on physical device | **Not performed** |
+| Install on emulator / AVD | **Not performed** (no AVD running) |
+| Launch app, navigate pages on device | **Not performed** |
+| Offline behavior on device (airplane mode) | **Not performed** |
+| Screenshots from the running app | **None captured** |
+
+Therefore this report does **not** claim that the app installs, launches, or behaves correctly on Android hardware. What is verified is: it compiles, it packages the current web assets, it is signed, and its archive structure is valid. Runtime behavior on a device remains unverified.
+
+---
+
+## 6. Known limitations of the packaged app
+
+1. **`downloads/` is not inside the APK.** Any in-app link to `downloads/islamic-portal-release.apk`, `downloads/islamic-portal-offline-bundle.zip`, or `downloads/CHECKSUMS.sha256` will not resolve inside the installed app. The download page inside the app will show its "Unavailable — open CHECKSUMS.sha256" fallback for the checksum fields.
+2. **Quran coverage offline is partial.** 10 surahs (49 ayahs) are bundled; the other 104 surahs are fetched from the Quran Cloud API and need a network connection.
+3. **Audio and video need network.** Recitation audio streams from a CDN, and Dr. Israr Ahmed lectures are YouTube embeds — neither is bundled.
+4. **No device-level testing** has been done (see section 5).
+
+---
+
+## 7. Security finding — release signing material is committed (P0, not changed)
+
+- `android/app/build.gradle` contains the release `storePassword` and `keyPassword` as **plaintext string literals**.
+- `android/app/release.keystore` is **tracked by git** (`git ls-files` lists it), and `.gitignore` does not exclude it.
+- Anyone with repository read access can therefore sign APKs that Android will accept as updates to this app.
+
+The passwords are deliberately **not reproduced in this report**. This was left unchanged because rotating the signing key and rewriting the build configuration is an owner decision (it changes the app's update identity). Recommended remediation is recorded in `reports/REMAINING_WORK.md`.
+
+---
+
+## 8. Reproducing this build
+
+```powershell
+# 1. Sync web assets into the Android project
+node scripts/build-android-assets.cjs
+
+# 2. Build the release APK
+cmd /c "cd android && gradlew.bat assembleRelease --console=plain --offline"
+
+# 3. Publish + hash
+Copy-Item android\app\build\outputs\apk\release\app-release.apk public\downloads\islamic-portal-release.apk -Force
+Get-FileHash public\downloads\islamic-portal-release.apk -Algorithm SHA256
+
+# 4. Refresh the checksum manifest (also rebuilds the desktop ZIP)
+node scripts/build-offline-bundle.cjs
+```
+
+To install on a device once one is connected:
+
+```powershell
+& "$env:ANDROID_SDK_ROOT\platform-tools\adb.exe" install -r public\downloads\islamic-portal-release.apk
+```

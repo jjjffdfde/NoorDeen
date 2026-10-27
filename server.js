@@ -138,8 +138,9 @@ const server = http.createServer((req, res) => {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-    // Set Caching Headers (Immutable for CSS/JS with hashes, short for HTML)
-    if (ext === '.html') {
+    // Set caching headers: HTML and unversioned code/data must revalidate so
+    // fixes reach returning visitors; binary media can be cached for a day.
+    if (ext === '.html' || ext === '.js' || ext === '.css' || ext === '.json' || ext === '.webmanifest' || ext === '.sha256') {
       res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     } else {
       res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day

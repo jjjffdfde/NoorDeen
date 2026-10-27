@@ -319,6 +319,7 @@ class Application {
         <ul class="mobile-drawer-links">
           <li><a href="${base}" id="drawer-home"><span>🏠</span> <span data-i18n="nav.home">Home</span></a></li>
           <li><a href="${base}articles/index.html" id="drawer-articles" style="color: var(--color-gold); font-weight: 700;"><span>📚</span> <span>Educational Articles</span></a></li>
+          <li><a href="${base}dr-israr-ahmed.html" id="drawer-lectures"><span>🎬</span> <span>Dr. Israr Ahmed Lectures</span></a></li>
           <li><a href="${base}quran.html" id="drawer-quran"><span>📖</span> <span data-i18n="nav.quran">Quran</span></a></li>
           <li><a href="${base}hadith.html" id="drawer-hadith"><span>📜</span> <span data-i18n="nav.hadith">Hadith</span></a></li>
           <li><a href="${base}kalimas.html" id="drawer-kalimas"><span>⭐</span> <span data-i18n="nav.kalimas">Kalimas</span></a></li>
