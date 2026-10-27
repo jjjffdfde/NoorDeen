@@ -211,7 +211,7 @@ function build(article) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${esc(metaTitle)} — NoorDeen Islamic Library</title>
   <meta name="description" content="${esc(description)}">
-  <link rel="stylesheet" href="../css/main.css?v=20261027f">
+  <link rel="stylesheet" href="../css/main.css?v=20261027g">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="${SITE}/articles/${slug}.html">
@@ -334,10 +334,10 @@ ${relatedHtml}
 
 ${FOOTER}
 
-  <script src="../js/config.js?v=20261027f"></script>
-  <script src="../js/i18n.js?v=20261027f"></script>
-  <script src="../js/search.js?v=20261027f"></script>
-  <script src="../js/app.js?v=20261027f"></script>
+  <script src="../js/config.js?v=20261027g"></script>
+  <script src="../js/i18n.js?v=20261027g"></script>
+  <script src="../js/search.js?v=20261027g"></script>
+  <script src="../js/app.js?v=20261027g"></script>
 </body>
 </html>
 `;

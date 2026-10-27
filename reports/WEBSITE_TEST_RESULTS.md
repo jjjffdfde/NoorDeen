@@ -2,9 +2,9 @@
 
 **Date:** 27 October 2026
 **Harness:** `test/run-tests.js` (Node.js, run as `node test/run-tests.js`)
-**Suites:** 42
-**Assertions executed:** **1,519**
-**Passed:** **1,519**
+**Suites:** 43
+**Assertions executed:** **1,589**
+**Passed:** **1,589**
 **Failed:** **0**
 **Harness exit code:** 0
 **Verdict:** the automated suite passes. That is a statement about the assertions in the suite, not proof that every page is perfect.
@@ -26,8 +26,8 @@ Observed tail of the run:
 ```text
 ====================================================
 TEST RESULTS SUMMARY:
-  Total Tests Executed: 1519
-  Passed Tests:         1519
+  Total Tests Executed: 1589
+  Passed Tests:         1589
   Failed Tests:         0
   Failed Checks:        0
 ====================================================
@@ -35,7 +35,7 @@ TEST RESULTS SUMMARY:
 🎉 ALL TESTS PASSED SUCCESSFULLY!
 ```
 
-**Baseline for comparison:** the 26 October run reported **1,473 / 1,473 passing**. This cycle added Suite 41 (URL resolution, catalog loader, lazy search) and Suite 42 (Daily Companion dates and streaks), plus extra assertions in both.
+**Baseline for comparison:** the previous 27 October run reported **1,519 / 1,519 passing**. This cycle added Suite 43 (Batch 4 family/community articles) and updated Suite 36 to the current assertion count.
 
 ---
 
@@ -84,7 +84,8 @@ TEST RESULTS SUMMARY:
 | 39 | **Batch 2 articles (topics 11–20)** — new | Pass |
 | 40 | **Dr. Israr Ahmed video library and catalog integrity** — new | Pass |
 | 41 | **URL resolution, catalog loader, lazy search dataset** — new | Pass |
-| 42 | **Daily Companion local dates and streak integrity** — new | Pass |
+| 42 | **Daily Companion local dates and streak integrity** | Pass |
+| 43 | **Batch 4 family/community articles (4 articles)** — new | Pass |
 
 Suite 39 checks, for each of the 10 new articles: file exists, ≥30 KB, ≥1,500 words, has a TOC, `FAQPage` + `BreadcrumbList` JSON-LD, a scholarly bibliography, `config.js`, a link to the lecture library, no third-party scripts, and an entry in `search.js`, `sitemap.xml` and `articles/index.html`.
 
@@ -93,6 +94,8 @@ Suite 40 checks: the lecture page exists, uses `youtube-nocookie.com` only, neve
 Suite 41 checks: `UniversalSearch.resolveUrl` against root, GitHub Pages subpath, fragments, query strings, absolute URLs and `file://` bases; search results, quick pills, the language-modal Quran link and the Quran fallback all use the resolver; the cookie banner builds its privacy link from `getBasePath()`; article pages contain no eager `data.js`; `App.ensureSearchData()` lazy-loads the dataset on first dialog open; alias matching requires at least four characters; Ayatul Kursi resolves to `surah=2&ayah=255`.
 
 Suite 42 checks: Daily Companion uses a local date key rather than UTC, does not require the Friday item outside Friday, records the completion date rather than the page visit, cannot award a second streak day on repeated toggles, and shows an honest zero-streak message after a gap.
+
+Suite 43 checks each Batch 4 article for file existence, ≥30 KB payload, editorial body container, TOC, `FAQPage` + `BreadcrumbList` JSON-LD, scholarly bibliography, `config.js`, no third-party scripts, no stray Markdown, and a body length of 1,500–2,500 words; it also checks search, sitemap and index integration, and a Batch 4 total of 7,000–10,000 words.
 
 ---
 
@@ -106,7 +109,7 @@ Checked on a fresh server port with the service worker unregistered, so cached s
 | `articles/index.html` | 20 article cards total; 10 in the Batch 2 container; all 10 Batch 2 links resolve to the expected slugs |
 | `articles/fasting-and-ramadan.html` | H1 renders, 2,043 words of article text, 12 TOC links, **0 broken anchors**, `BreadcrumbList` + `FAQPage` (5 questions) JSON-LD, bibliography present, lecture-library link in nav, **0 console errors** |
 | `dr-israr-ahmed.html` | 148 cards render, "148 of 148 lecture records shown", stat row reads 148 / 147 / 7 / 131 / 17, duplicate badge appears on `04-002-016` ("Same upload as 04-002-001"), language filter returns "17 of 148", click-to-load embed URL is `https://www.youtube-nocookie.com/embed/8FXHsF8AigA?autoplay=1&rel=0`, **0 console errors** |
-| `download-app.html` | No "100% offline" wording remains; mentions 47 pages, ten bundled surahs, 104 surahs needing network; both SHA-256 fields are filled from `downloads/CHECKSUMS.sha256` at runtime |
+| `download-app.html` | No "100% offline" wording remains; now states 56 pages / ~1.29 MB ZIP, ten bundled surahs and 104 surahs needing network; both SHA-256 fields are filled from `downloads/CHECKSUMS.sha256` at runtime |
 | Global search | Opening the search dialog and typing `ramadan` returns the Ramadan article **first**, then `calendar.html`, then a prophet entry; `israr` returns the lecture library; `seerah` returns the Seerah article first. 0 console errors. |
 
 Search ranking change made during this cycle: title/snippet matches now score 90 while keyword-only matches score 80, so an article whose title contains the query outranks incidental keyword hits.
@@ -124,7 +127,20 @@ Search ranking change made during this cycle: title/snippet matches now score 90
 | `ayatul kursi` deep link | `quran.html?surah=2&ayah=255`; `#ayah-255` highlighted and scrolled into view |
 | `سورہ واقعہ` / `tabarakallazi` | Surah 56 first / Surah 67 only |
 | Daily Companion, Tuesday | 4/4 items, streak 1; retoggle stays 1; continue 3→4; 3-day gap resets to 0 with honest message |
-| Rendered link crawl, 52 pages | 123 unique destinations, 0 broken, 0 empty/textless anchors |
+| Rendered link crawl, 56 pages | 85 unique destinations, 0 real broken, 0 empty/textless anchors (1 template false positive + 7 runtime-fragment false positives) |
+
+### 3.2 Batch 4 verification
+
+| Check | Result |
+| :--- | :--- |
+| `honouring-parents-in-islam.html` | H1 correct; 10 TOC links; 2,257 body words; FAQ/Breadcrumb schema; canonical URL; 0 console errors |
+| `islamic-parenting-guide.html` | H1 correct; 10 TOC links; 2,107 body words; schema/canonical present; 0 console errors |
+| `islamic-inheritance-basics.html` | H1 correct; 9 TOC links; 2,072 body words; schema/canonical present; 0 console errors |
+| `rights-of-neighbours-in-islam.html` | H1 correct; 10 TOC links; 1,971 body words; schema/canonical present; 0 console errors |
+| Search from article page: `parenting` | Parenting article first; href `/articles/islamic-parenting-guide.html` |
+| Search from article page: `inheritance` | Inheritance article; destination HTTP 200 |
+| Search from article page: `neighbour` | Neighbours article first, manners article second; destination HTTP 200 |
+| `articles/index.html` | Batch 4 details block and cards #26–29 present; 29 cards / 29 unique links |
 
 ---
 
@@ -150,6 +166,8 @@ These were real defects surfaced by testing, not cosmetic changes:
 13. **Wrong dua anchor.** `#dua-sayyid-istighfar` corrected to `#dua-sayyidul-istighfar`.
 14. **Alias search ranked the wrong surah.** One-letter containment matches are now blocked; `سورہ واقعہ` → 56, `tabarakallazi` → 67 only.
 15. **Ayatul Kursi lacked a deep link.** Now returns `surah=2&ayah=255`, and the reader highlights the ayah.
+16. **Markdown leakage on library rebuild.** `batch-2b.cjs` stored `*decision*`; a full rebuild would have rendered literal asterisks. Replaced with `<em>decision</em>` and rebuilt; 0 stray Markdown across 29 articles.
+17. **Stale page/size/test copy.** Download page said 52 pages / 1.24 MB; About page said 1,519 assertions. Updated to 56 pages / ~1.29 MB and 1,589 assertions, and Suite 36 now asserts the new count.
 
 ---
 

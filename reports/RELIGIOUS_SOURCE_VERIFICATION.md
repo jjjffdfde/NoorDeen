@@ -21,7 +21,7 @@
 | Sahaba | 52 monographs | Classical biographical corpora and hadith | Cohort structure; no fabricated rank claims |
 | History | 12 eras / 66 milestones | al-Tabari, Ibn al-Athir, Ibn Kathir and modern scholarship | Narrative history, not a specialist historiography |
 | Worship guides | Salah, wudu/ghusl/tayammum, janazah, Eid | Qur'an and hadith; madhhab differences noted | Practical steps checked; no AI fatwa |
-| Articles | 25 | Per-article bibliography section | 25/25 have a "Sources & Further Reading" section |
+| Articles | 29 | Per-article bibliography section | 29/29 have a "Sources & Further Reading" section |
 | Lecture catalogue | 148 records / 147 unique | tanzeem.org source pages + YouTube IDs | No media hosted; every record links back |
 
 ---
@@ -129,9 +129,9 @@ No tool issues a fatwa. The zakat page states it is an estimate and refers speci
 
 ---
 
-## 7. Articles (25)
+## 7. Articles (29)
 
-- **25/25** articles contain a "Sources & Further Reading" section.
+- **29/29** articles contain a "Sources & Further Reading" section.
 - Citations are by surah:ayah for the Qur'an and by collection (and often number) for hadith.
 - Articles explicitly state they are educational overviews, not personal fatwas.
 - Bibliographies name classical works (e.g. al-Nawawi's *al-Majmu'*, Ibn Rushd's *Bidayat al-Mujtahid*) and contemporary standards (AAOIFI) rather than linking every title.

@@ -1,7 +1,7 @@
 # NoorDeen — SEO, Accessibility and Performance Audit
 
-**Audited:** 26 October 2026
-**Scope:** all 52 HTML pages, `robots.txt`, `sitemap.xml`, structured data, accessibility markup, asset weight and caching.
+**Audited:** 27 October 2026
+**Scope:** all 56 HTML pages, `robots.txt`, `sitemap.xml`, structured data, accessibility markup, asset weight and caching.
 **Method:** static analysis of every HTML file plus browser checks of representative pages. Lighthouse, CrUX field data and a screen reader were **not available**; no score is invented.
 
 ---
@@ -10,36 +10,33 @@
 
 | Signal | Pages with signal | Total pages |
 | :--- | --: | --: |
-| `<title>` (5+ chars) | 52 | 52 |
-| Meta description | 52 | 52 |
-| Canonical URL | 52 | 52 |
-| Open Graph title | 52 | 52 |
-| Twitter card | 52 | 52 |
-| JSON-LD block | 52 | 52 |
-| `<h1>` | 52 | 52 |
-| Viewport meta | 52 | 52 |
-| Manifest link | 52 | 52 |
-| Theme-color | 52 | 52 |
-| `<html lang="en">` | 52 | 52 |
+| `<title>` (5+ chars) | 56 | 56 |
+| Meta description | 56 | 56 |
+| Canonical URL | 56 | 56 |
+| Open Graph title | 56 | 56 |
+| Twitter card | 56 | 56 |
+| JSON-LD block | 56 | 56 |
+| `<h1>` | 56 | 56 |
+| Viewport meta | 56 | 56 |
+| Manifest link | 56 | 56 |
+| Theme-color | 56 | 56 |
+| `<html lang="en">` | 56 | 56 |
 
-**Sitemap:** 52 unique `<loc>` entries, including 26 article URLs. **Robots:** valid `User-agent` rules; sitemap referenced.
+**Sitemap:** 56 unique `<loc>` entries, including 30 article-directory URLs. **Robots:** valid `User-agent` rules; sitemap referenced.
 
 **Structured data types present**
 
 | Type | Count |
 | :--- | --: |
-| `BreadcrumbList` | 51 |
-| `ListItem` | 135 |
-| `FAQPage` | 38 |
-| `Question` / `Answer` | 187 each |
-| `Organization` | 2 |
-| `WebSite` | 2 |
+| `BreadcrumbList` | 55 |
+| `FAQPage` | 41 |
+| `Organization` | 1 |
+| `WebSite` (inside `@graph`) | 1 |
 | `CollectionPage` | 1 |
-| `SoftwareApplication` / `Offer` | 1 each |
-| `Person` | 1 |
-| `SearchAction` | 1 |
+| `SoftwareApplication` | 1 |
+| JSON-LD blocks (all types) | 100 |
 
-**Fix applied this cycle:** `index.html` was the only page missing `theme-color`; it now has `#0F5132`, so the count is 52/52.
+**Earlier fix retained:** `index.html` has `theme-color` `#0F5132`; all 56 pages now carry it.
 
 **Honest limits**
 
@@ -56,7 +53,7 @@
 | Control | Status |
 | :--- | :--- |
 | `<html lang="en" dir="ltr">` on every page | Present |
-| Single `<h1>` per page | Present (52/52) |
+| Single `<h1>` per page | Present (56/56) |
 | Images with `alt` | 0 images missing `alt` |
 | `:focus-visible` outline (light and dark) | Present in CSS |
 | Search dialog labels and close button labels | Present |
@@ -91,22 +88,22 @@ The About page no longer claims WCAG 2.1 AA certification.
 
 | Item | Size |
 | :--- | --: |
-| `public/` excluding downloads | ~5.34 MB |
+| `public/` excluding downloads | ~5.35 MB |
 | `js/data.js` | 246 KB |
 | `js/quran.js` | 81 KB |
 | `css/main.css` | 61 KB |
-| `js/search.js` | 57 KB |
+| `js/search.js` | 59 KB |
 | `js/app.js` | 48 KB |
 | `js/i18n.js` | 41 KB |
 | `js/tools.js` | 19 KB |
-| Largest pages | `sahaba.html` 431 KB, `hadith.html` 410 KB, `duas.html` 400 KB, `index.html` 315 KB |
-| Offline bundle | 1,312,528 bytes (1.25 MB), 81 files |
-| APK | 1,412,579 bytes (1.4 MB), 90 entries |
+| Largest pages | `sahaba.html` 441 KB, `hadith.html` 420 KB, `duas.html` 409 KB, `index.html` 322 KB |
+| Offline bundle | 1,355,278 bytes (1.29 MiB), 85 files |
+| APK | 1,456,011 bytes (1.39 MiB), 94 entries |
 
 ### 3.2 Loading strategy
 
 - HTML is **network-first** in the service worker, so deployments are picked up immediately.
-- Static same-origin assets are **cache-first**; all asset URLs carry `?v=20261026e` and the shell cache is `v13`.
+- Static same-origin assets are **cache-first**; all asset URLs carry `?v=20261027g` and the shell cache is `v20`.
 - Downloads and `.sha256` files are **network-first** after this cycle's stale-checksum fix.
 - External Quran API calls are network-first with cache fallback.
 - No web fonts are downloaded; the design uses system font stacks, avoiding render-blocking font requests.
@@ -147,14 +144,14 @@ These are marked **unavailable**, not passed. A browser timing run was attempted
 
 | Area | Rating | Basis |
 | :--- | :--- | :--- |
-| Technical SEO metadata | Strong | 52/52 on all core tags; valid sitemap and robots |
+| Technical SEO metadata | Strong | 56/56 on all core tags; valid sitemap and robots |
 | Structured data | Good | Breadcrumb, FAQ, article, organisation, website; not Rich-Results-tested |
 | Semantic HTML | Fair | Single h1 and landmarks, but 23 heading-level jumps |
 | Keyboard access | Fair | Focus styles, skip link, Escape handling; skip-link focus not machine-verified |
 | Screen-reader readiness | Unverified | No assistive technology session |
 | Responsive layout | Unverified | Breakpoints present; viewport not changeable in this environment |
 | Payload efficiency | Fair | No web fonts, but large data.js and 400 KB content pages |
-| Caching/offline | Good | Versioned assets, SW v13, network-first HTML, network-first checksums |
+| Caching/offline | Good | Versioned assets, SW v20, network-first HTML, network-first checksums |
 | Measured performance | Unavailable | No Lighthouse/CrUX |
 
 No numeric score is claimed. The site's public copy was corrected to avoid implying certification.

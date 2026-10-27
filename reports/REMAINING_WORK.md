@@ -1,11 +1,11 @@
 # NoorDeen — Remaining Work
 
 **Updated:** 27 October 2026
-**Status:** the lecture-catalog, search, URL-resolution and Daily Companion defects are fixed and verified. The site is usable. It is not complete; content expansion and device-level Android verification are the largest open items.
+**Status:** Batch 4 (four family/community articles) is integrated and verified; the lecture-catalog, search, URL-resolution and Daily Companion defects remain fixed. The site is usable. It is not complete; content expansion and device-level Android verification are the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **1,519 executed / 1,519 passed / 0 failed** (Suites 1–42). Browser checks: lecture catalog renders 148 cards with `fetch` blocked; article-page search works after lazy `data.js`; 12/12 nested result links return 200; `ayatul kursi` opens 2:255; alias ranking fixed. Post-change static/HTTP recheck of 52 pages: 0 new broken destinations, 0 empty/textless anchors.
+**Last successful test:** `node test/run-tests.js` → **1,589 executed / 1,589 passed / 0 failed** (Suites 1–43). Browser checks: all four Batch 4 pages render with correct H1/TOC/schema and 0 console errors; `parenting`, `inheritance` and `neighbour` search results resolve to HTTP 200; lecture catalog still renders 148 cards with `fetch` blocked. Post-change static/HTTP recheck of 56 pages: 85 unique destinations, only the 1 known template and 7 known runtime-fragment false positives, 0 empty/textless anchors.
 
-**Live deployment:** `gh-pages` commit `18f7f93` verified on `https://jjjffdfde.github.io/NoorDeen/` — index/article/catalog/search/SW all 200 with `?v=20261027f` / SW `v19`; live catalog.js, APK and bundle byte-identical to local (`c699475c…`, `5fa610ea…`).
+**Live deployment:** pending this Batch 4 deploy. Previous verified deployment was `gh-pages` commit `18f7f93` with `?v=20261027f` / SW `v19`; this cycle ships `?v=20261027g` / SW `v20` and new artefact hashes.
 
 ---
 
@@ -21,8 +21,10 @@
 | Dua anchor | `#dua-sayyidul-istighfar` corrected |
 | Alias ranking | `سورہ واقعہ` → 56; `tabarakallazi` → 67 only |
 | Ayatul Kursi | Deep link `surah=2&ayah=255`, highlighted |
-| Tests | 1,519 assertions, 0 failures |
-| Builds | Bundle 1,312,528 bytes / `5fa610…`; APK 1,412,579 bytes / `c69947…`; version `20261027f`, SW `v19` |
+| Batch 4 articles | 4 new pages, 8,407 body words total; integrated into search/sitemap/index; browser-verified |
+| Stale copy | Download page corrected to 56 pages / ~1.29 MB; About page corrected to 1,589 assertions |
+| Tests | 1,589 assertions, 0 failures |
+| Builds | Bundle 85 files / 1,355,278 bytes / `67cdee…`; APK 94 entries / 1,456,011 bytes / `3acfb6…`; version `20261027g`, SW `v20` |
 
 ---
 
@@ -68,7 +70,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | Gap | Current | Target | Notes |
 | :--- | :--- | :--- | :--- |
 | Tafsir | 6 verses | All 6,236, or a clearly scoped selection | Largest credibility gap; requires licensed text or a public-domain edition with attribution |
-| Articles | 25 of 100 topics | 75 more topics | ~1,500–2,500 body words each; the roadmap already exists |
+| Articles | 29 published / 23 roadmap topics | 77 more roadmap topics | ~1,500–2,500 body words each; the roadmap already exists |
 | Offline Quran | 10 surahs / 49 ayahs | 114 surahs | Full text is a few MB; feasible to bundle once licensing is confirmed |
 | Hadith | 101 curated | Full collections or an explicit selection policy | Full Sahih al-Bukhari alone is thousands of records |
 | Lecture catalog | 10 of 74 archive pages | Remaining 64 pages | Same scrape-and-verify method; keep duplicate handling |
@@ -77,8 +79,8 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 | Batch | Topics | Focus |
 | :--- | :--- | :--- |
-| 4 | 21–30 | Family, parenting, inheritance, neighbours |
-| 5 | 31–40 | Business ethics, contracts, Islamic finance |
+| 4 | 21–30 | Family, parenting, inheritance, neighbours — **DONE** (4 articles) |
+| 5 | 31–40 | Business ethics, contracts, debt and workers' rights |
 | 6 | 41–50 | Seerah epochs in depth |
 | 7 | 51–60 | Rightly-guided caliphs |
 | 8 | 61–70 | Islamic golden age: science, philosophy, medicine |
@@ -130,6 +132,6 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 ## 7. Exact next task
 
-**Write Batch 4 (roadmap topics 21–30): family, parenting, inheritance and neighbours.** Use `scripts/article-content/batch-4a.cjs`, generate through `scripts/build-articles.cjs`, keep every article between 1,500 and 2,500 body words, add sources sections, then register each in `js/search.js`, `sitemap.xml` and `articles/index.html`.
+**Write Batch 5: four articles on business ethics, contracts and promises, debt, and workers' rights.** Use a new `scripts/article-content/batch-5a.cjs`, generate through `scripts/build-articles.cjs`, keep every article between 1,500 and 2,500 body words, cite Quranic verses, hadith collections and classical fiqh sources, and add an explicit "not a fatwa / consult a qualified scholar" section. Register each in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #30–33, details block 110–113), then add Suite 44.
 
-Before starting: run `node test/run-tests.js` to confirm the **1,519-assertion** baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md`.
+Before starting: run `node test/run-tests.js` to confirm the **1,589-assertion** baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md` / `MODULE_REGISTRY.md` / `MODULE_FUNCTIONAL_TESTS.md` / `FINAL_TEST_RESULTS.md` / `WEBSITE_TEST_RESULTS.md`.

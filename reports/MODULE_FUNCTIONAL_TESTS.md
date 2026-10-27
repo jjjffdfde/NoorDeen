@@ -2,17 +2,17 @@
 
 **Executed:** 27 October 2026
 **Harness:** `node test/run-tests.js` (HTTP server on port 3000) + browser automation on `http://localhost:3400`
-**Result:** **1,519 assertions executed / 1,519 passed / 0 failed**; browser checks listed below; no console errors on any page exercised.
+**Result:** **1,589 assertions executed / 1,589 passed / 0 failed**; browser checks listed below; no console errors on any page exercised.
 
 This report records what was actually exercised. Items that could not be tested are listed separately in section 7 and are not counted as passes.
 
 ---
 
-## 1. Automated suite coverage (42 suites)
+## 1. Automated suite coverage (43 suites)
 
 | Suite | Area | Representative assertions | Result |
 | --: | :--- | :--- | :--- |
-| 1 | Required files and static assets | 52 HTML pages, CSS, JS, data, manifest, SW, downloads | PASS |
+| 1 | Required files and static assets | 56 HTML pages, CSS, JS, data, manifest, SW, downloads | PASS |
 | 2 | Design system and palette | CSS variables, typography, responsive rules | PASS |
 | 3 | 40-language framework | Exactly 40 language entries; verified/partial/in-progress split | PASS |
 | 4 | Quran and religious data | 114 surahs in canonical order; 6,236 ayahs; hadith/dua/kalima shapes | PASS |
@@ -47,13 +47,14 @@ This report records what was actually exercised. Items that could not be tested 
 | 33 | Multilingual invariance and scoped direction | RTL only in content containers | PASS |
 | 34 | Master baseline and pre-rendered libraries | Page counts, pre-rendered hadith/duas | PASS |
 | 35 | Subpath resilience and network-first navigation | Article subpath links, SW navigation strategy | PASS |
-| 36 | P0 defects and trust transparency | Claims removed, Nisab values, 1,519-test statement | PASS |
-| 37 | PWA raster icons and offline bundle | PNG icons, bundle metadata, cache `v19` | PASS |
+| 36 | P0 defects and trust transparency | Claims removed, Nisab values, 1,589-test statement | PASS |
+| 37 | PWA raster icons and offline bundle | PNG icons, bundle metadata, cache `v20` | PASS |
 | 38 | Educational articles library | Article depth, TOC, schema, indexing | PASS |
 | 39 | Batch 2 articles (topics 11–20) | Search/sitemap/index integration | PASS |
 | 40 | Dr. Israr catalogue | 148 records, 147 unique, series sums, no hosted video | PASS |
 | 41 | URL resolution, catalog loader, lazy search | `resolveUrl` cases, `catalog.js`, `ensureSearchData`, alias guards | PASS |
 | 42 | Daily Companion dates and streaks | Local date key, completion-based streak, Friday optionality | PASS |
+| 43 | Batch 4 family/community articles | 4 files, TOC/schema/bibliography, 1,500–2,500 body words, search/sitemap/index integration, total 7,000–10,000 words | PASS |
 
 ---
 
@@ -154,11 +155,13 @@ This report records what was actually exercised. Items that could not be tested 
 
 | Check | Result |
 | :--- | :--- |
-| Index cards / unique links | 25 / 25 |
-| Search `riba` / `marriage` / reset | 1 / 1 / 25 |
-| Batch 3 cards | 5 |
-| New article pages: h1/title, TOC anchors, JSON-LD | PASS (2 blocks each, 0 missing anchors) |
-| Body length range | 1,536–2,114 words |
+| Index cards / unique links | 29 / 29 |
+| Search `riba` / `marriage` / `parenting` / reset | 1 / 1 / 1 / 29 |
+| Batch 4 cards | 4 |
+| New article pages: h1/title, TOC anchors, JSON-LD | PASS (10/9/10 TOC links; 2 JSON-LD blocks each; canonical correct) |
+| Body length range | 1,538–2,257 words |
+| Batch 4 body words | 2,257 / 2,107 / 2,072 / 1,971 (8,407 total) |
+| Search from Batch 4 page | `parenting` → parenting article first; `inheritance` → inheritance article; `neighbour` → neighbours article + manners; destinations HTTP 200 |
 | Max 5-word shingle similarity | 0.030 (no near-duplicates) |
 | Console errors on new pages | 0 |
 
@@ -168,9 +171,9 @@ This report records what was actually exercised. Items that could not be tested 
 | :--- | :--- |
 | APK and ZIP links | HTTP 200 |
 | `CHECKSUMS.sha256` fetch | HTTP 200 |
-| Displayed APK hash | `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` (matches file) |
-| Displayed bundle hash | `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` (matches file) |
-| Stale-checksum defect | **Found and fixed**: SW served `downloads/` cache-first; now network-first with cache fallback; cache now `v19` |
+| Displayed APK hash | `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` (matches file) |
+| Displayed bundle hash | `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` (matches file) |
+| Stale-checksum defect | **Found and fixed**: SW served `downloads/` cache-first; now network-first with cache fallback; cache now `v20` |
 
 ### 2.9 Contact
 
@@ -196,8 +199,9 @@ This report records what was actually exercised. Items that could not be tested 
 | Lecture records | 148 | 148 (147 unique) | PASS |
 | Tafsir verses | 6 | 6 | PASS |
 | Glossary terms | 135 | 135 | PASS |
-| Sitemap URLs | 52 | 52 unique (26 article URLs) | PASS |
-| HTML pages | 52 | 52 | PASS |
+| Sitemap URLs | 56 | 56 unique (30 article-directory URLs) | PASS |
+| HTML pages | 56 | 56 | PASS |
+| Article body words | 1,500–2,500 each | 1,538–2,257 (29 articles) | PASS |
 
 ---
 
@@ -238,6 +242,8 @@ This report records what was actually exercised. Items that could not be tested 
 | Wrong dua anchor | `sayyid` vs `sayyidul` | Href corrected | PASS |
 | Alias search ranked wrong surah | One-letter containment matches | Minimum 4-character guards | PASS |
 | Ayatul Kursi no deep link | Missing `ayah` parameter | `surah=2&ayah=255` + highlight | PASS |
+| Markdown leakage on library rebuild | `batch-2b.cjs` source contained `*decision*` | Replaced with `<em>decision</em>`; rebuilt all generated pages | PASS (0 stray asterisks in 29 articles) |
+| Stale page/size/test copy | Download page said 52 pages / 1.24 MB; About said 1,519 assertions | Updated to 56 pages / 1.29 MB and 1,589 assertions; Suite 36 now asserts the new value | PASS |
 
 ---
 
@@ -245,10 +251,10 @@ This report records what was actually exercised. Items that could not be tested 
 
 | Artefact | Value |
 | :--- | :--- |
-| Offline bundle | 81 files, 1,312,528 bytes, SHA-256 `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` |
-| APK | 1,412,579 bytes, SHA-256 `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` |
-| APK ZIP entries | 90 |
-| APK HTML pages | 52 |
+| Offline bundle | 85 files, 1,355,278 bytes, SHA-256 `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` |
+| APK | 1,456,011 bytes, SHA-256 `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` |
+| APK ZIP entries | 94 |
+| APK HTML pages | 56 |
 | Nested APK/ZIP in APK | None |
 | APK signature | Valid v1 JAR signature (SHA256withRSA, 2048-bit); no `APK Sig Block 42` |
 | Checksums file | Matches both files byte-for-byte |

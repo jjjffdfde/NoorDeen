@@ -89,6 +89,9 @@ Tested from the home page and from an article page.
 | `ayatul kursi` | 2:255 with deep link | 2:255, highlighted | Pass |
 | `سورہ واقعہ` | Surah 56 | Surah 56 | Pass |
 | `tabarakallazi` | Surah 67 | Surah 67 only | Pass |
+| `parenting` (Batch 4 article page) | Parenting article first | Parenting article first | Pass |
+| `inheritance` (Batch 4 article page) | Inheritance article | Inheritance article | Pass |
+| `neighbour` (Batch 4 article page) | Neighbours article first | Neighbours article, then manners article | Pass |
 
 **Snippets:** results show text drawn from the matching record (title, translation, or snippet field), not a generic label. Page-type labels are specific: "Educational Article", "Islamic Tool", "Lecture Library", "Download", "Quran", "Hadith", "Dua".
 
@@ -128,7 +131,9 @@ The catalog distinguishes `file`, `network`, `invalid` and `empty` failure modes
 - Alias matching guards (`needle.length >= 4`) are present.
 - Ayatul Kursi returns the `surah=2&ayah=255` destination.
 
-Full suite result after these changes: **1,519 executed / 1,519 passed / 0 failed**.
+Full suite result after these changes: **1,589 executed / 1,589 passed / 0 failed**.
+
+Batch 4 adds four article records to the index (`honouring-parents-in-islam`, `islamic-parenting-guide`, `islamic-inheritance-basics`, `rights-of-neighbours-in-islam`). Search from an article page returned the correct first result for `parenting`, `inheritance` and `neighbour`; each destination returned HTTP 200. Suite 43 asserts that all four slugs are present in `search.js`, `sitemap.xml` and `articles/index.html`.
 
 ---
 

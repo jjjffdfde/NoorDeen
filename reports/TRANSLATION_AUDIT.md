@@ -104,7 +104,7 @@ Because `getUISelectableLanguages()` filters on `coverage === 'verified'`, a use
 | Duas | Yes (102) | Yes (102) | Yes (102) | All three fields present |
 | Kalimas | Yes (6) | Yes (6) | Yes (6) | Arabic immutable |
 | Quran ayahs (bundled) | English + Urdu for 10 surahs | Yes | Yes | Other languages require network |
-| Articles (25) | English only | No | No | Educational prose is English-only |
+| Articles (29) | English only | No | No | Educational prose is English-only |
 | Seerah / Prophets / Sahaba / History | English only | No | No | Proper names and Quranic quotations retain Arabic |
 | UI dictionaries | 11 languages | Yes | Yes | 50 keys each |
 

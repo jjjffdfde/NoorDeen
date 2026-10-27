@@ -59,6 +59,16 @@
 - Search returns `quran.html?surah=2&ayah=255`.
 - Reader highlights `#ayah-255` and scrolls to it.
 
+### 2.6 Batch 4 articles
+
+- Four new pages generated from `scripts/article-content/batch-4a.cjs`: `honouring-parents-in-islam`, `islamic-parenting-guide`, `islamic-inheritance-basics`, `rights-of-neighbours-in-islam`.
+- Body words: 2,257 / 2,107 / 2,072 / 1,971 (8,407 total); all inside 1,500–2,500.
+- Each page loaded in Chromium: correct H1 and title, 9–10 TOC links, `FAQPage` + `BreadcrumbList` JSON-LD, canonical URL, `config.js`, no stray Markdown, 0 console errors.
+- Search from an article page: `parenting` → parenting article first; `inheritance` → inheritance article; `neighbour` → neighbours article first. All destinations HTTP 200.
+- Integrated into `js/search.js`, `sitemap.xml` (56 URLs) and `articles/index.html` (cards #26–29, details block 106–109).
+- Rebuild regression found and fixed: `batch-2b.cjs` contained `*decision*`, which would have rendered literal asterisks; replaced with `<em>decision</em>`.
+- Stale copy found and fixed: download page now says 56 pages / ~1.29 MB; About page now says 1,589 assertions.
+
 ---
 
 ## 3. Link and fragment audit
@@ -80,8 +90,8 @@ Re-run after the final edits and rebuild:
 
 | Metric | Result |
 | :--- | --: |
-| HTML pages scanned | 52 |
-| Unique internal destinations requested | 81 |
+| HTML pages scanned | 56 |
+| Unique internal destinations requested | 85 |
 | Non-200 | **1** — the literal JS template `' + escapeHtml(v.sourceUrl) + '` in `dr-israr-ahmed.html`; every rendered card uses a real Tanzeem URL |
 | Empty / hash-only href | 0 |
 | `javascript:` href | 0 |
@@ -97,30 +107,32 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 1519
-Passed Tests:         1519
+Total Tests Executed: 1589
+Passed Tests:         1589
 Failed Tests:         0
 ```
 
-- Suites: 42 (Suites 41 and 42 added this cycle).
+- Suites: 43 (Suite 43 added for Batch 4).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
+- Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261027f`, service-worker cache `v19`.
+Version `?v=20261027g`, service-worker cache `v20`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 1,312,528 | `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` |
-| `public/downloads/islamic-portal-release.apk` | 1,412,579 | `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 1,355,278 | `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` |
+| `public/downloads/islamic-portal-release.apk` | 1,456,011 | `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` |
 
-- APK: 90 files; bundle: 81 files.
+- APK: 94 ZIP entries (3 core + 5 icons + 86 public assets); bundle: 85 files.
 - `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `config.js`, all HTML and the service worker hash-match `public/` inside both artefacts.
-- APK contains `?v=20261027f`, the lazy search loader, the alias guards and the 2:255 deep link.
+- All four Batch 4 pages are present in both artefacts; the embedded `honouring-parents-in-islam.html` hash-matches the source byte-for-byte.
+- APK contains `?v=20261027g`, the lazy search loader, the alias guards and the 2:255 deep link.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 

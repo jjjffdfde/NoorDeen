@@ -452,7 +452,7 @@ module.exports = [
         heading: 'The Danger of Procrastination',
         html: P('The most common trap is postponing repentance. "I will change after Ramadan", "after I finish this project", "when I am older." The Qur\'an warns against dying in heedlessness, and the Prophet ﷺ advised taking advantage of five before five, including health before illness and life before death (narrated by al-Hakim and others).') +
           P('Procrastination often hides a deeper issue: attachment to the sin, fear of social consequences, or a mistaken belief that Allah will not forgive. Each of these needs its own remedy.') +
-          P('A practical rule: do not delay the *decision* even if you cannot immediately fix every consequence. Turn to Allah now, then take the practical steps.')
+          P('A practical rule: do not delay the <em>decision</em> even if you cannot immediately fix every consequence. Turn to Allah now, then take the practical steps.')
       },
       {
         id: 'dhikr',

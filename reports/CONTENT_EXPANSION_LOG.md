@@ -1,6 +1,6 @@
 # NoorDeen — Content Expansion Log
 
-**Last updated:** 26 October 2026 (Batch 3 integrated; sahaba/history encoding repair)
+**Last updated:** 27 October 2026 (Batch 4 integrated; distribution rebuilt)
 **Counting method:** rendered text only — `<script>`, `<style>` and tags removed, then tokens counted. Two figures are reported where they differ:
 - **Whole-page words** include navigation, table of contents, related-reading block and footer.
 - **Article body words** cover the `<article class="editorial-content-body">` region and exclude that shared chrome; they are the honest measure of article length.
@@ -23,28 +23,30 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 2 articles** | 10 articles (topics 11–20) | 22,325 whole-page words; **18,218 body words**, 1,822 average |
 | **Dr. Israr Ahmed library** | New route + catalog + search/sitemap/nav/SW integration | **148 records / 147 unique uploads / 7 series** |
 | **Batch 3 articles** | 5 articles (finance/riba, marriage, death/afterlife, halal food, environment) | **8,547 body words**, 1,709 average; all ≥1,637 body words |
+| **Batch 4 articles** | 4 articles (parents, parenting, inheritance, neighbours) | **8,407 body words**, 2,102 average; all ≥1,971 body words |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
 
-## 2. Batch 3 detail (this cycle)
+## 2. Batch 4 detail (this cycle)
 
-Generated from `scripts/article-content/batch-3a.cjs` through `scripts/build-articles.cjs`, so all five share the Batch 1/2 template, TOC, schema, navigation and footer.
+Generated from `scripts/article-content/batch-4a.cjs` through `scripts/build-articles.cjs`, so all four share the Batch 1/2/3 template, TOC, schema, navigation and footer.
 
 | # | Topic | Slug | Body words | Whole-page words |
 | --: | :--- | :--- | --: | --: |
-| 21 / 96 | Islamic finance and riba | `islamic-finance-and-riba` | 1,792 | 2,104 |
-| 22 / 92 | Marriage and family | `marriage-and-family-in-islam` | 1,722 | 2,036 |
-| 23 / 103 | Death and the afterlife | `death-and-the-afterlife` | 1,712 | 2,038 |
-| 24 / 95 | Halal and haram food | `halal-and-haram-food` | 1,637 | 1,948 |
-| 25 / 105 | Environment and stewardship | `environment-and-stewardship` | 1,684 | 2,021 |
-| | **Total** | | **8,547** | **10,147** |
+| 26 | Honouring parents (`birr al-walidayn`) | `honouring-parents-in-islam` | 2,257 | 2,620 |
+| 27 | Islamic parenting | `islamic-parenting-guide` | 2,107 | 2,448 |
+| 28 | Islamic inheritance (`mawarith`) | `islamic-inheritance-basics` | 2,072 | 2,411 |
+| 29 | Rights of neighbours | `rights-of-neighbours-in-islam` | 1,971 | 2,320 |
+| | **Total** | | **8,407** | **9,799** |
 
-Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, a "not a personal fatwa" disclaimer, and links to related libraries. All five are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html`, and all five are linked from the roadmap section where a matching topic exists (92, 95, 96).
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, a "not a personal fatwa" disclaimer, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #26–29, details block 106–109), and are reachable from the article library.
 
-**Quality gate:** all five are inside the 1,500–2,500 body-word target. The two shortest (Halal 1,637, Environment 1,684) were expanded with an extra sourced section before release rather than padded with filler. The closest shingle similarity between any two articles is **0.030** (99 Names vs Repentance), so there are no near-duplicates.
+**Quality gate:** all four are inside the 1,500–2,500 body-word target. Batch 4 was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors and body-container integrity. The closest shingle similarity between any two of the 29 articles is **0.030** (99 Names vs Repentance); the closest Batch 4 pair is **0.029** (Honouring Parents vs Neighbours), consistent with shared Quranic quotations rather than copied prose.
 
-**Honest note on numbering:** the library now contains 25 articles. Twenty cover roadmap topics 1–20; three more map to topics 92, 95 and 96; two additional topics (death/afterlife and environment) are recorded in the index's Batch 3 section as 103 and 105. The "101–105" labels are publication numbers, not a claim that 105 roadmap topics are written.
+**Batch 4 verification:** each of the four pages was loaded in Chromium at `http://localhost:3400`, with H1, title, TOC link count, body-word count, JSON-LD presence, canonical URL, config.js load and console output checked. Search from an article page returned the correct first result for `parenting`, `inheritance` and `neighbour`; destination pages returned HTTP 200.
+
+**Honest note on numbering:** the library now contains 29 articles. Twenty cover roadmap topics 1–20; three map to topics 92, 95 and 96; two additional topics (death/afterlife and environment) are recorded as 103 and 105; Batch 4 adds four family/community topics as publication numbers 106–109. Those publication numbers are not a claim that 109 roadmap topics are written.
 
 ---
 
@@ -85,6 +87,8 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 | No keyboard skip link | Keyboard users had to tab through the whole header | `app.js` injects a skip link targeting `#main-content`; `main` receives `tabindex="-1"`; visible-state CSS added |
 | Literal Markdown in rendered HTML | `**bold**` / `*italic*` shown as asterisks on `history.html`, `sahaba.html` and 10 articles | Converted to `<strong>` / `<em>`; 0 stray asterisks remain (contact page's 4 are required-field markers) |
 | Mojibake in `sahaba.html` and `history.html` | Arabic text rendered as `╪ú╪¿┘ê…` after a PowerShell-based restore from the offline ZIP; ~1,145 words appeared missing | Both files were re-extracted from git HEAD as UTF-8, Markdown was converted, asset versions re-applied, and the orphan search modal removed. Arabic characters restored (6,696 in sahaba, 733 visible in history), 0 mojibake, 0 console errors |
+| Markdown leakage on rebuild | `scripts/article-content/batch-2b.cjs` stored `*decision*`; rebuilding the whole library would have rendered literal asterisks | Replaced with `<em>decision</em>` and rebuilt; 0 stray Markdown across the 29 articles |
+| Stale distribution copy | Download page still said 52 pages / 1.24 MB; About page said 1,519 assertions | Updated to 56 pages / ~1.29 MB ZIP and 1,589 assertions; both are now asserted by Suite 36 |
 
 ---
 
@@ -92,18 +96,18 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **52** (26 root + 26 article) |
-| Visible words, all pages | **220,829** |
-| Articles published | **25** (23 roadmap topics + 2 additional topics) |
-| Article body words | **45,901**, average **1,836**, min **1,536**, max **2,114** |
+| HTML pages | **56** (26 root + 30 article) |
+| Visible words, all pages | **230,190** |
+| Articles published | **29** (23 roadmap topics + 6 additional topics) |
+| Article body words | **54,432**, average **1,877**, min **1,538**, max **2,257** |
 | Hadith records | 101 |
 | Dua records | 102 |
 | Kalimas | 6 |
 | Lecture records | 148 (147 unique) |
-| Automated assertions | **1,519 passing, 0 failing** |
-| Sitemap URLs | 52 |
-| Release APK | 1,412,579 bytes (1.4 MB), 52 HTML pages, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 1,312,528 bytes (1.25 MB), 81 files |
+| Automated assertions | **1,589 passing, 0 failing** |
+| Sitemap URLs | 56 |
+| Release APK | 1,456,011 bytes (1.39 MiB), 56 HTML pages, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 1,355,278 bytes (1.29 MiB), 85 files |
 
 ---
 

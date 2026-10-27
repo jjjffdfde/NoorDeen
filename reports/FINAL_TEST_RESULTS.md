@@ -1,7 +1,7 @@
 # NoorDeen — Final Test Results
 
 **Run date:** 27 October 2026
-**Tree state:** working tree on `main` (uncommitted), after the lecture-catalog, search, URL-resolution, Daily Companion and asset-version fixes.
+**Tree state:** working tree on `main` (uncommitted), after the Batch 4 content integration, stale-copy corrections and asset-version bump.
 **Server:** local Node server (`node server.js`), browser automation on `http://localhost:3400`, test harness on port 3000.
 
 ---
@@ -10,9 +10,9 @@
 
 | Category | Count | Status |
 | :--- | --: | :--- |
-| Automated assertions executed | **1,519** | **1,519 passed, 0 failed** |
+| Automated assertions executed | **1,589** | **1,589 passed, 0 failed** |
 | Root pages smoke-tested in browser | 26 | Passed |
-| Article pages browser-tested | 4 representative + 10 batch pages | Passed |
+| Article pages browser-tested | 4 Batch 4 pages + representative earlier batches | Passed |
 | Console errors observed | 0 | Passed |
 | Unavailable checks (environment limits) | 11 categories | Reported, not counted as passes |
 
@@ -32,20 +32,20 @@ Final output:
 
 ```
 TEST RESULTS SUMMARY:
-  Total Tests Executed: 1519
-  Passed Tests:         1519
+  Total Tests Executed: 1589
+  Passed Tests:         1589
   Failed Tests:         0
 
 ALL TESTS PASSED SUCCESSFULLY! The portal is production-ready.
 ```
 
-The suite runs 42 groups covering files, design tokens, the 40-language framework, Quran and hadith data, astronomy, HTTP routing, PWA/service worker, SEO/schema, Android scaffolding, internal links, persistence, worship modules, downloads, Urdu translation, dua filters, audit reports, editorial depth, search/i18n, biography libraries, content taxonomy, Quran study mode, UX/accessibility, mobile boundaries, benchmarks, redesign invariants, tools, multilingual scoping, pre-rendered libraries, subpath resilience, P0 transparency, PWA icons/offline bundle, the article library, Batch 2 integration, the Dr. Israr catalogue, URL resolution/catalog loading/lazy search, and Daily Companion dates/streaks.
+The suite runs 43 groups covering files, design tokens, the 40-language framework, Quran and hadith data, astronomy, HTTP routing, PWA/service worker, SEO/schema, Android scaffolding, internal links, persistence, worship modules, downloads, Urdu translation, dua filters, audit reports, editorial depth, search/i18n, biography libraries, content taxonomy, Quran study mode, UX/accessibility, mobile boundaries, benchmarks, redesign invariants, tools, multilingual scoping, pre-rendered libraries, subpath resilience, P0 transparency, PWA icons/offline bundle, the article library, Batch 2 integration, the Dr. Israr catalogue, URL resolution/catalog loading/lazy search, Daily Companion dates/streaks, and Batch 4 family/community articles.
 
 **Defects found by the suite during this cycle and fixed:**
 
 | Failure | Cause | Fix |
 | :--- | :--- | :--- |
-| `Suite 36: about.html documents verified automated test suites` | About page still said "1,478 assertions" | Updated to "1,519 assertions" |
+| `Suite 36: about.html documents verified automated test suites` | About page still said "1,478 assertions" | Updated to "1,589 assertions" |
 | `Suite 36: download-app.html loads checksums from the signed manifest at runtime` | Assertion expected the pre-`no-store` fetch string | Updated assertion to the current `fetch(..., { cache: 'no-store' })` call |
 | `Suite 36: history.html has no orphaned static search modal` | The restored `history.html` still contained `#global-search-input` | Removed the static modal block; `app.js` provides the dialog |
 
@@ -59,7 +59,7 @@ The suite runs 42 groups covering files, design tokens, the 40-language framewor
 | :--- | :--- |
 | Skip link injected on every page, targets `#main-content`, `main` has `tabindex="-1"` | Pass |
 | Skip-link visible-state CSS applies (`left: 0`, 3 px gold outline) when the class is present | Pass |
-| `theme-color` present on all 52 pages (`#0F5132`) | Pass |
+| `theme-color` present on all 56 pages (`#0F5132`) | Pass |
 | Search modal: `riba` → 1 article result; `zakat` → calculator first; `marriage` → article + Seerah + hadith | Pass |
 | Search result labels are page-type-specific | Pass |
 | Language modal: 11 verified languages; Urdu switch; English reset | Pass |
@@ -149,13 +149,16 @@ The suite runs 42 groups covering files, design tokens, the 40-language framewor
 
 | Check | Result |
 | :--- | :--- |
-| Index cards / unique links | 25 / 25 |
-| Search `riba` → 1; reset → 25 | Pass |
-| Body length range (all 25) | 1,536–2,114 words |
+| Index cards / unique links | 29 / 29 |
+| Search `riba` → 1; reset → 29 | Pass |
+| Body length range (all 29) | 1,538–2,257 words |
 | TOC anchors resolve | 0 missing |
 | JSON-LD blocks | 2 per article |
 | Stray Markdown | 0 |
-| Console errors on Batch 3 pages | 0 |
+| Console errors on Batch 4 pages | 0 |
+| Batch 4 H1/title/canonical | Correct on all four |
+| Batch 4 TOC links | 10 / 10 / 9 / 10 |
+| Batch 4 search destinations | 200 |
 
 ### 3.8 Download centre
 
@@ -163,9 +166,9 @@ The suite runs 42 groups covering files, design tokens, the 40-language framewor
 | :--- | :--- |
 | APK and ZIP links | HTTP 200 |
 | `CHECKSUMS.sha256` | HTTP 200; `Cache-Control: max-age=0, must-revalidate` |
-| Displayed APK hash | `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` (matches file) |
-| Displayed bundle hash | `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` (matches file) |
-| Service worker cache after load | `islamic-portal-shell-v19` |
+| Displayed APK hash | `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` (matches file) |
+| Displayed bundle hash | `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` (matches file) |
+| Service worker cache after load | `islamic-portal-shell-v20` |
 | Stale-hash defect | Fixed: downloads and `.sha256` are network-first; page fetches with `{cache:'no-store'}` |
 
 ### 3.9 Contact
@@ -194,9 +197,9 @@ The suite runs 42 groups covering files, design tokens, the 40-language framewor
 | Lecture records | 148 (147 unique) | 148 (147 unique) | Pass |
 | Tafsir verses | 6 | 6 | Pass |
 | Glossary terms | 135 | 135 | Pass |
-| Sitemap URLs | 52 unique | 52 unique | Pass |
-| HTML pages | 52 | 52 | Pass |
-| Article body words | 1,500–2,500 each | 1,536–2,114 | Pass |
+| Sitemap URLs | 56 unique | 56 unique | Pass |
+| HTML pages | 56 | 56 | Pass |
+| Article body words | 1,500–2,500 each | 1,538–2,257 (29 articles) | Pass |
 
 ---
 
@@ -204,10 +207,10 @@ The suite runs 42 groups covering files, design tokens, the 40-language framewor
 
 | Artefact | Value |
 | :--- | :--- |
-| Offline bundle | 81 files, **1,312,528 bytes**, SHA-256 `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` |
-| APK | **1,412,579 bytes**, SHA-256 `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` |
-| APK ZIP entries | 90 |
-| APK HTML pages | 52 |
+| Offline bundle | 85 files, **1,355,278 bytes**, SHA-256 `67cdee83dc4c4d31aa73c9e35545c85e06e406d53857f3612dbbfa7c1dbd5d94` |
+| APK | **1,456,011 bytes**, SHA-256 `3acfb6d6411f144de475735d5825d788af29ed914acca04457f58fd243b3e1f6` |
+| APK ZIP entries | 94 |
+| APK HTML pages | 56 |
 | Nested APK/ZIP inside APK | None |
 | APK signature | Valid JAR v1 (`jar verified`, SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent |
 | `CHECKSUMS.sha256` | Matches both files byte-for-byte |
