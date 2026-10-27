@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **1,589 executed / 1,589 passed / 0 failed** (Suites 1–43). Browser checks: all four Batch 4 pages render with correct H1/TOC/schema and 0 console errors; `parenting`, `inheritance` and `neighbour` search results resolve to HTTP 200; lecture catalog still renders 148 cards with `fetch` blocked. Post-change static/HTTP recheck of 56 pages: 85 unique destinations, only the 1 known template and 7 known runtime-fragment false positives, 0 empty/textless anchors.
 
-**Live deployment:** pending this Batch 4 deploy. Previous verified deployment was `gh-pages` commit `18f7f93` with `?v=20261027f` / SW `v19`; this cycle ships `?v=20261027g` / SW `v20` and new artefact hashes.
+**Live deployment:** `gh-pages` commit `044fea4` verified on `https://jjjffdfde.github.io/NoorDeen/` — all four Batch 4 pages, index, sitemap (56 URLs), search data and SW `v20` return 200 with `?v=20261027g`; live APK (1,456,011 bytes / `3acfb6d6…`) and bundle (1,355,278 bytes / `67cdee83…`) match local; live article-page search `inheritance` resolves to the inheritance article (200) with 0 console errors.
 
 ---
 

@@ -1,7 +1,7 @@
 # NoorDeen — Final Test Results
 
 **Run date:** 27 October 2026
-**Tree state:** working tree on `main` (uncommitted), after the Batch 4 content integration, stale-copy corrections and asset-version bump.
+**Tree state:** `main` commit `8d9b903`, after the Batch 4 content integration, stale-copy corrections and asset-version bump; deployed to `gh-pages` as `044fea4`.
 **Server:** local Node server (`node server.js`), browser automation on `http://localhost:3400`, test harness on port 3000.
 
 ---

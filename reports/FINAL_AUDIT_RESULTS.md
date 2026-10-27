@@ -140,20 +140,25 @@ Version `?v=20261027g`, service-worker cache `v20`.
 
 ## 6. Live deployment verification (GitHub Pages)
 
-Deployed commit: `18f7f93` on `gh-pages` (tree from `74a1546:public`).
+Deployed commit: `044fea4` on `gh-pages` (tree from `8d9b903:public`).
 
 | Live URL | Result |
 | :--- | :--- |
-| `https://jjjffdfde.github.io/NoorDeen/index.html` | 200; references `?v=20261027f` |
-| `.../data/dr-israr/catalog.js` | 200; byte-identical to local (SHA-256 `2ebaa3ec7dfa30433a5a804a25fc1610dfa620a27e184f8187932a58d8c3db17`) |
-| `.../js/search.js` | 200; contains the 4-character alias guard |
-| `.../about.html` | 200; states 1,519 assertions |
-| `.../service-worker.js` | 200; `CACHE_VERSION = 'v19'` |
-| `.../articles/islamic-finance-and-riba.html` | 200; references `?v=20261027f` |
-| `.../downloads/islamic-portal-release.apk` | 200; 1,412,579 bytes; live SHA-256 `c699475c…` matches local |
-| `.../downloads/islamic-portal-offline-bundle.zip` | 200; live SHA-256 `5fa610ea…` matches local |
+| `https://jjjffdfde.github.io/NoorDeen/index.html` | 200; references `?v=20261027g` |
+| `.../articles/honouring-parents-in-islam.html` | 200; Batch 4 content live |
+| `.../articles/islamic-parenting-guide.html` | 200; H1, canonical and 2,064 rendered body words verified in Chromium; 0 console errors |
+| `.../articles/islamic-inheritance-basics.html` | 200; Batch 4 content live |
+| `.../articles/rights-of-neighbours-in-islam.html` | 200; Batch 4 content live |
+| `.../articles/index.html` | 200; links all four Batch 4 pages |
+| `.../sitemap.xml` | 200; 56 `<loc>` entries including all four Batch 4 URLs |
+| `.../js/search.js` | 200; contains all four Batch 4 slugs; live search `inheritance` returned the inheritance article with an absolute Pages URL (destination 200) |
+| `.../about.html` | 200; states 1,589 assertions |
+| `.../service-worker.js` | 200; `CACHE_VERSION = 'v20'` |
+| `.../downloads/islamic-portal-release.apk` | 200; 1,456,011 bytes; live SHA-256 `3acfb6d6…` matches local |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; 1,355,278 bytes; live SHA-256 `67cdee83…` matches local |
+| `.../downloads/CHECKSUMS.sha256` | 200; both hashes match the served files |
 
-The deployment push reported `0050117..18f7f93 -> gh-pages`. GitHub Pages served the new content on first re-check.
+The deployment push reported `18f7f93..044fea4 -> gh-pages`. The first live poll still served the previous build; a re-check after the Pages build completed served `?v=20261027g` / SW `v20` and all Batch 4 pages.
 
 ---
 
@@ -176,7 +181,7 @@ The deployment push reported `0050117..18f7f93 -> gh-pages`. GitHub Pages served
 
 ## 8. Required follow-up
 
-1. Batch 4 articles (topics 21–30): family, parenting, inheritance, neighbours.
+1. Batch 5 articles: business ethics, contracts and promises, debt, workers' rights.
 2. Continue module repair per `MODULE_REGISTRY.md` PARTIAL items.
 3. Device-test the APK when a device is available; add v2/v3 signing.
 4. Remove signing secrets from the repository (owner action).
