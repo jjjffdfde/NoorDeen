@@ -29,6 +29,7 @@ class Application {
   }
 
   init() {
+    this.injectSkipLink();
     this.applyTheme(this.theme);
     this.setupThemeToggle();
     this.setupLanguageModal();
@@ -43,6 +44,26 @@ class Application {
     this.highlightActiveNav();
     this.initSpiritualCompanion();
     if (window.I18n) window.I18n.init();
+  }
+
+  // Keyboard accessibility: a skip link that appears on first Tab press
+  injectSkipLink() {
+    if (typeof document === 'undefined' || document.querySelector('.skip-link')) return;
+    const main = document.querySelector('main');
+    if (!main) return;
+    if (!main.id) main.id = 'main-content';
+    if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+    const link = document.createElement('a');
+    link.className = 'skip-link';
+    link.href = '#' + main.id;
+    link.textContent = 'Skip to main content';
+    link.addEventListener('click', () => {
+      main.focus({ preventScroll: true });
+      main.scrollIntoView({ block: 'start' });
+    });
+    link.addEventListener('focus', () => link.classList.add('skip-link-visible'));
+    link.addEventListener('blur', () => link.classList.remove('skip-link-visible'));
+    document.body.insertBefore(link, document.body.firstChild);
   }
 
   // Dynamic Continue Reading Session Manager
@@ -319,6 +340,7 @@ class Application {
         <ul class="mobile-drawer-links">
           <li><a href="${base}" id="drawer-home"><span>🏠</span> <span data-i18n="nav.home">Home</span></a></li>
           <li><a href="${base}articles/index.html" id="drawer-articles" style="color: var(--color-gold); font-weight: 700;"><span>📚</span> <span>Educational Articles</span></a></li>
+          <li><a href="${base}dr-israr-ahmed.html" id="drawer-lectures"><span>🎬</span> <span>Dr. Israr Ahmed Lectures</span></a></li>
           <li><a href="${base}quran.html" id="drawer-quran"><span>📖</span> <span data-i18n="nav.quran">Quran</span></a></li>
           <li><a href="${base}hadith.html" id="drawer-hadith"><span>📜</span> <span data-i18n="nav.hadith">Hadith</span></a></li>
           <li><a href="${base}kalimas.html" id="drawer-kalimas"><span>⭐</span> <span data-i18n="nav.kalimas">Kalimas</span></a></li>
@@ -397,7 +419,14 @@ class Application {
       drawer.classList.add('active');
       drawer.setAttribute('aria-hidden', 'false');
     }
+    document.querySelectorAll('.mobile-menu-btn').forEach(btn => btn.setAttribute('aria-expanded', 'true'));
     document.documentElement.classList.add('drawer-open');
+    if (drawer) {
+      const focusTarget = drawer.querySelector('a, button');
+      if (focusTarget) {
+        try { focusTarget.focus(); } catch (e) {}
+      }
+    }
   }
 
   closeMobileDrawer() {
@@ -408,6 +437,7 @@ class Application {
       drawer.classList.remove('active');
       drawer.setAttribute('aria-hidden', 'true');
     }
+    document.querySelectorAll('.mobile-menu-btn').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
     document.documentElement.classList.remove('drawer-open');
     if (this.drawerTriggerElement) {
       try { this.drawerTriggerElement.focus(); } catch (e) {}
@@ -484,13 +514,13 @@ class Application {
 
   renderHijriDate() {
     const date = new Date();
-    const hijriStr = window.IslamicTools ? window.IslamicTools.getHijriDate(date) : '1447 AH';
-    
+    const hijriStr = window.IslamicTools ? window.IslamicTools.getHijriDate(date) : '';
+
     const el = document.getElementById('current-hijri-date');
-    if (el) el.textContent = hijriStr;
+    if (el && hijriStr) el.textContent = hijriStr;
 
     const bentoEl = document.getElementById('bento-hijri-date');
-    if (bentoEl) bentoEl.textContent = `${hijriStr} • Astronomical`;
+    if (bentoEl && hijriStr) bentoEl.textContent = `${hijriStr} • Astronomical`;
 
     this.updateBentoPrayerTimes();
   }
@@ -797,7 +827,7 @@ class Application {
           <div class="modal-header" style="padding: 16px 20px; border-bottom: 1px solid var(--color-border); background: var(--color-surface); flex-shrink: 0;">
             <div>
               <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--color-text);">Select Interface Language</h3>
-              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 2px 0 0 0;">Authentic scholarly translations for portal navigation & controls</p>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin: 2px 0 0 0;">Community-reviewed interface translations — coverage varies by language</p>
             </div>
             <button class="btn-icon" onclick="App.closeLanguageModal()" aria-label="Close language selector" style="font-size: 1.1rem; width: 34px; height: 34px;">✕</button>
           </div>
@@ -812,7 +842,7 @@ class Application {
               <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted);">
                 Verified Portal Translations (11 Languages)
               </span>
-              <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 600;">100% Scholarly Verified</span>
+              <span style="font-size: 0.75rem; color: var(--color-primary); font-weight: 600;">Reviewed interface strings</span>
             </div>
 
             <div class="modal-body" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; padding: 0; margin-bottom: 20px;" id="lang-modal-grid">
@@ -835,7 +865,7 @@ class Application {
                 <span>📖</span> Quran Translations in 40 Global Languages
               </div>
               <p style="margin: 0 0 8px 0; color: var(--color-text-muted);">
-                Looking for Somali, Swahili, Russian, Chinese, German, Turkish, or other languages? The Holy Quran Reader supports verse-by-verse translation independent of your UI language while keeping the sacred Arabic text 100% immutable.
+                Looking for Somali, Swahili, Russian, Chinese, German, Turkish, or other languages? The Holy Quran Reader offers verse-by-verse translation in many languages, independent of your UI language, while keeping the sacred Arabic text unchanged. Translation coverage and review status vary by language — the reader labels which editions are available.
               </p>
               <a href="quran.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem; text-decoration: none;" onclick="App.closeLanguageModal()">
                 Open Quran Reader Translations →
@@ -1011,6 +1041,35 @@ class Application {
     });
 
     updateUI();
+  }
+
+  // Clipboard helper with a legacy fallback for browsers/contexts that deny
+  // the async Clipboard API (for example, an unfocused document).
+  async copyText(text) {
+    if (!text) return false;
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (e) {
+      // Fall through to the selection-based fallback.
+    }
+    try {
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.top = '-1000px';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(area);
+      return Boolean(ok);
+    } catch (e) {
+      return false;
+    }
   }
 
   // Toast Notification

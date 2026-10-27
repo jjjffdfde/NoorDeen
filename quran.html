@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Holy Quran Reader — All 114 Surahs & 30 Juz with Translations</title>
   <meta name="description" content="Read and listen to the Holy Quran with authentic Uthmani script, verse-by-verse Urdu and English translations, and audio recitation.">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261026e">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/quran.html">
@@ -123,6 +123,8 @@
               <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
             </div>
           </li>
+
+          <li class="nav-item"><a href="dr-israr-ahmed.html">🎬 Lectures</a></li>
 
           <!-- App Pill -->
           <li class="nav-item">
@@ -517,13 +519,13 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/tools.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/quran.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config.js?v=20261026e"></script>
+  <script src="js/data.js?v=20261026e"></script>
+  <script src="js/i18n.js?v=20261026e"></script>
+  <script src="js/tools.js?v=20261026e"></script>
+  <script src="js/search.js?v=20261026e"></script>
+  <script src="js/quran.js?v=20261026e"></script>
+  <script src="js/app.js?v=20261026e"></script>
   <script>
     // Initialize Quran Reader
     const quranApp = new QuranReader();
@@ -572,11 +574,34 @@
       });
     }
 
-    // Check URL parameters for surah
+    // Check URL parameters for Surah + Ayah (supports ?ayah=, legacy ?verse= and #ayah-N)
     const urlParams = new URLSearchParams(window.location.search);
-    const surahParam = urlParams.get('surah') || 1;
-    dropdown.value = surahParam;
-    quranApp.loadSurah(surahParam);
+    const hashMatch = /^#ayah-(\d+)$/.exec(window.location.hash || '');
+    const requestedSurah = parseInt(urlParams.get('surah'), 10);
+    const requestedAyah = parseInt(urlParams.get('ayah') || urlParams.get('verse'), 10)
+      || (hashMatch ? parseInt(hashMatch[1], 10) : 0);
+    const initialSurah = (requestedSurah >= 1 && requestedSurah <= 114) ? requestedSurah : 1;
+    dropdown.value = initialSurah;
+    quranApp.loadSurah(initialSurah).then((loaded) => {
+      if (loaded && requestedAyah > 0) {
+        setTimeout(() => quranApp.scrollToAyah(requestedAyah), 150);
+      }
+    });
+
+    // Back / forward navigation between deep links
+    window.addEventListener('popstate', () => {
+      const p = new URLSearchParams(window.location.search);
+      const s = parseInt(p.get('surah'), 10) || 1;
+      const a = parseInt(p.get('ayah') || p.get('verse'), 10) || 0;
+      dropdown.value = s;
+      if (s !== quranApp.currentSurah) {
+        quranApp.loadSurah(s).then((loaded) => {
+          if (loaded && a > 0) setTimeout(() => quranApp.scrollToAyah(a), 150);
+        });
+      } else if (a > 0) {
+        quranApp.scrollToAyah(a);
+      }
+    });
 
     // Sync saved font size
     const fontSlider = document.getElementById('quran-font-slider');
@@ -607,8 +632,9 @@
 
     // Event listeners
     dropdown.addEventListener('change', (e) => {
-      quranApp.loadSurah(e.target.value);
-      history.pushState(null, '', `quran.html?surah=${e.target.value}`);
+      quranApp.loadSurah(e.target.value).then((loaded) => {
+        if (loaded) history.pushState(null, '', `quran.html?surah=${quranApp.currentSurah}`);
+      });
     });
 
     fontSlider.addEventListener('input', (e) => {

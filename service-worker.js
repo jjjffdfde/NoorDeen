@@ -3,8 +3,8 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v4';
-const CACHE_NAME = 'islamic-portal-shell-v4';
+const CACHE_VERSION = 'v13';
+const CACHE_NAME = 'islamic-portal-shell-v13';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 
 const STATIC_ASSETS = [
@@ -19,6 +19,8 @@ const STATIC_ASSETS = [
   './sahaba.html',
   './history.html',
   './pillars.html',
+  './dr-israr-ahmed.html',
+  './data/dr-israr/catalog.json',
   './salah-guide.html',
   './wudu-guide.html',
   './janazah-guide.html',
@@ -35,15 +37,15 @@ const STATIC_ASSETS = [
   './privacy.html',
   './terms.html',
   './manifest.json',
-  './css/main.css',
-  './js/config.js',
-  './js/data.js',
-  './js/i18n.js',
-  './js/tools.js',
-  './js/search.js',
-  './js/quran.js',
-  './js/app.js',
-  './js/sahaba-urdu.js',
+  './css/main.css?v=20261026e',
+  './js/config.js?v=20261026e',
+  './js/data.js?v=20261026e',
+  './js/i18n.js?v=20261026e',
+  './js/tools.js?v=20261026e',
+  './js/search.js?v=20261026e',
+  './js/quran.js?v=20261026e',
+  './js/app.js?v=20261026e',
+  './js/sahaba-urdu.js?v=20261026e',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',
@@ -129,6 +131,25 @@ self.addEventListener('fetch', (event) => {
                  (await caches.match('./')) ||
                  (await caches.match('index.html'));
         })
+    );
+    return;
+  }
+
+  // Checksums and downloadable release assets must never be served stale:
+  // Network-First with cache fallback so a rebuilt APK/ZIP hash is visible immediately.
+  if (url.pathname.includes('/downloads/') || url.pathname.endsWith('.sha256')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }

@@ -408,7 +408,31 @@ const IslamicTools = (() => {
         });
         return formatter.format(date);
       } catch {
-        return '1447 AH';
+        return 'Hijri date unavailable';
+      }
+    },
+
+    // Structured Um al-Qura conversion used by the calendar page.
+    // Returns null when the runtime cannot perform a reliable conversion;
+    // callers must show an honest "unavailable" state instead of guessing.
+    toHijri(date = new Date()) {
+      const d = date instanceof Date ? date : new Date(date);
+      if (isNaN(d.getTime())) return null;
+      try {
+        const formatter = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+        const parts = formatter.formatToParts(d);
+        const get = (type) => (parts.find(p => p.type === type) || {}).value || '';
+        const day = parseInt(get('day'), 10);
+        const year = parseInt(get('year'), 10);
+        const monthName = get('month');
+        if (!day || !year || !monthName) return null;
+        return { day, monthName, year, formatted: formatter.format(d) };
+      } catch {
+        return null;
       }
     }
   };

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Six Kalimas of Islam — Arabic, Transliteration, English & Urdu Meanings, Fiqh & Commentary</title>
   <meta name="description" content="Learn and master the Six Kalimas of Islam with authentic Arabic Tashkeel, accurate phonetic transliteration, verified English and Urdu translations, spiritual commentary, and theological progression from Tayyibah to Radd al-Kufr.">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261026e">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/kalimas.html">
@@ -166,6 +166,8 @@
               <a href="calendar.html" class="nav-dropdown-item">📅 Lunar Hijri Calendar</a>
             </div>
           </li>
+
+          <li class="nav-item"><a href="dr-israr-ahmed.html">🎬 Lectures</a></li>
 
           <!-- App Pill -->
           <li class="nav-item">
@@ -483,12 +485,12 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/config.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/tools.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config.js?v=20261026e"></script>
+  <script src="js/data.js?v=20261026e"></script>
+  <script src="js/i18n.js?v=20261026e"></script>
+  <script src="js/tools.js?v=20261026e"></script>
+  <script src="js/search.js?v=20261026e"></script>
+  <script src="js/app.js?v=20261026e"></script>
   <script>
     // Detailed Fiqh and Theological Commentary for each Kalima
     const KALIMA_COMMENTARY = {
@@ -584,9 +586,46 @@
           </div>
 
           ${commentaryHtml}
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--color-border);">
+            <button class="btn btn-outline" style="padding: 6px 14px; font-size: 0.84rem;" onclick="copyKalima(${k.id})" aria-label="Copy Kalima ${k.id} with translation">
+              📋 Copy
+            </button>
+            <button class="btn btn-outline" style="padding: 6px 14px; font-size: 0.84rem;" onclick="shareKalima(${k.id})" aria-label="Share Kalima ${k.id}">
+              🔗 Share
+            </button>
+            <span style="font-size: 0.78rem; color: var(--color-text-muted); align-self: center;">
+              Common devotional formula — verify wording with a qualified teacher.
+            </span>
+          </div>
         </div>
       `;
     }).join('');
+
+    window.copyKalima = function (id) {
+      const k = ISLAMIC_DATA.kalimas.find(x => x.id === Number(id));
+      if (!k) return;
+      const text = `${k.name}\n\n${k.ar}\n\n${k.tr}\n\n"${k.en}"\n\n${k.ur}\n\n— NoorDeen Six Kalimas`;
+      const copier = window.App && window.App.copyText ? window.App.copyText(text) : Promise.resolve(false);
+      copier.then(ok => {
+        if (window.App) window.App.showToast(ok ? 'Kalima copied with translation!' : 'Copy failed — please select the text manually.');
+      });
+    };
+
+    window.shareKalima = function (id) {
+      const k = ISLAMIC_DATA.kalimas.find(x => x.id === Number(id));
+      if (!k) return;
+      const shareData = {
+        title: `${k.name} — NoorDeen`,
+        text: `${k.name}\n\n${k.ar}\n\n"${k.en}"\n\n${k.ur}`,
+        url: `${window.location.origin}${window.location.pathname}#kalima-${k.id}`
+      };
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => window.copyKalima(k.id));
+      } else {
+        window.copyKalima(k.id);
+      }
+    };
   </script>
 </body>
 </html>
