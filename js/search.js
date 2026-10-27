@@ -379,6 +379,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "Khalifah and mizan, water and waste, kindness to animals, planting trees, moderation in consumption, and practical environmental action.",
     url: "articles/environment-and-stewardship.html",
     keywords: ["environment","stewardship","khalifah","mizan","climate","water","waste","animals","trees","conservation","ecology","moderation","israf","nature"]
+  },
+  {
+    title: "Honouring Parents (Birr al-Walidayn): Rights, Limits and Care in Old Age",
+    snippet: "The Quranic command to honour parents, what birr includes, the limits of obedience, non-Muslim parents, care in old age, family conflict, and what can be done after a parent dies.",
+    url: "articles/honouring-parents-in-islam.html",
+    keywords: ["parents","mother","father","birr","walidayn","filial piety","elderly care","ageing","obedience","non-muslim parents","family","gratitude","dua for parents"]
+  },
+  {
+    title: "Raising Children in Islam: Parenting with Mercy, Structure and Purpose",
+    snippet: "Children as a trust, the Prophetic model of mercy, teaching tawhid and prayer, discipline without harm, emotional health, fairness, screens and parenting adult children.",
+    url: "articles/islamic-parenting-guide.html",
+    keywords: ["parenting","children","child","raising kids","family","mercy","discipline","tarbiyah","prayer at seven","screens","fairness","motherhood","fatherhood","teenagers"]
+  },
+  {
+    title: "Islamic Inheritance (Mawarith): Rights, Shares and Practical Duties",
+    snippet: "Why inheritance is Quranic law, what must be paid before distribution, the fixed shares, the one-third will, common injustices, orphans and minors, and how to seek a qualified calculation.",
+    url: "articles/islamic-inheritance-basics.html",
+    keywords: ["inheritance","mawarith","faraid","will","wasiyyah","estate","heirs","daughter share","son share","one third","orphans","debts","probate"]
+  },
+  {
+    title: "Neighbours in Islam: Rights, Boundaries and Community",
+    snippet: "The Quranic command of neighbourliness, the Prophetic prohibition of harm, everyday rights, privacy, noise and shared spaces, conflict resolution, neighbours of other faiths, and community emergencies.",
+    url: "articles/rights-of-neighbours-in-islam.html",
+    keywords: ["neighbour","neighbor","neighbours","neighbors","community","privacy","noise","parking","shared spaces","kindness","other faiths","local community"]
   }
 ];
 
