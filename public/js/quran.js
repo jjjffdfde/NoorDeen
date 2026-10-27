@@ -700,8 +700,8 @@ class QuranReader {
           </p>
           <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
             <button type="button" class="btn btn-primary" onclick="quranApp.retryLoadSurah()">Retry loading Surah ${surahNum}</button>
-            <a href="quran.html?surah=1" class="btn btn-outline">Read Surah Al-Fatihah (bundled)</a>
-            <a href="quran.html?surah=112" class="btn btn-outline">Read Surah Al-Ikhlas (bundled)</a>
+            <a href="${window.App ? App.resolveUrl('quran.html?surah=1') : 'quran.html?surah=1'}" class="btn btn-outline">Read Surah Al-Fatihah (bundled)</a>
+            <a href="${window.App ? App.resolveUrl('quran.html?surah=112') : 'quran.html?surah=112'}" class="btn btn-outline">Read Surah Al-Ikhlas (bundled)</a>
           </div>
         </div>
       `;

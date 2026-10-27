@@ -265,7 +265,7 @@ async function runTestSuite() {
   const swPath = path.join(PUBLIC_DIR, 'service-worker.js');
   assert(fs.existsSync(swPath), 'Service Worker (service-worker.js) exists');
   const swContent = fs.readFileSync(swPath, 'utf-8');
-  assert(swContent.includes('islamic-portal-shell-v13') || swContent.includes('islamic-portal-shell-v12') || swContent.includes('islamic-portal-shell-v11'), 'Service Worker defines cache version (v10/v9/v8)');
+  assert(/islamic-portal-shell-v\d+/.test(swContent), 'Service Worker defines a versioned shell cache');
   assert(swContent.includes('islamic-portal-audio-v1'), 'Service Worker defines dedicated audio cache');
   assert(swContent.includes('self.addEventListener(\'install\''), 'Service Worker implements install event listener');
   assert(swContent.includes('self.addEventListener(\'fetch\''), 'Service Worker implements fetch strategy');
@@ -1254,7 +1254,7 @@ async function runTestSuite() {
   const sahabaUrduPath = path.join(PUBLIC_DIR, 'js', 'sahaba-urdu.js');
   assert(fs.existsSync(sahabaUrduPath), 'Suite 33: public/js/sahaba-urdu.js module exists');
   const s33_sahabaHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'sahaba.html'), 'utf-8');
-  assert(s33_sahabaHtml.includes('src="js/sahaba-urdu.js?v=20261026e"'), 'Suite 33: sahaba.html links to sahaba-urdu.js module');
+  assert(/src="js\/sahaba-urdu\.js\?v=[0-9a-z]+"/i.test(s33_sahabaHtml), 'Suite 33: sahaba.html links to sahaba-urdu.js module');
 
   // 3. Astronomical Solar Prayer Times Reference Checks (25 October 2026)
   assert(ToolsModule.CITIES && typeof ToolsModule.CITIES === 'object', 'Suite 33: IslamicTools.CITIES verified coordinates database exists');
@@ -1398,7 +1398,7 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('1,478 assertions'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('1,519 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
   // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
@@ -1461,7 +1461,7 @@ async function runTestSuite() {
 
   // 3. Service Worker Shell v9 & PNG Pre-Caching
   const s37_sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  assert(s37_sw.includes("CACHE_VERSION = 'v13'"), 'Suite 37: Service Worker upgraded to CACHE_VERSION v13');
+  assert(/CACHE_VERSION = 'v\d+'/.test(s37_sw), 'Suite 37: Service Worker declares a versioned shell cache');
   assert(s37_sw.includes('icon-192.png') && s37_sw.includes('icon-512.png'), 'Suite 37: Service Worker pre-caches raster PNG icons');
   assert(s37_sw.includes('dr-israr-ahmed.html'), 'Suite 37: Service Worker pre-caches the Dr. Israr Ahmed library');
   assert(s37_sw.includes('data/dr-israr/catalog.json'), 'Suite 37: Service Worker pre-caches the lecture catalog JSON');
@@ -1647,6 +1647,82 @@ async function runTestSuite() {
   assert(s40_searchJs.includes('dr-israr-ahmed.html'), 'Suite 40: search.js indexes the lecture library');
   const s40_sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
   assert(s40_sitemap.includes('dr-israr-ahmed.html'), 'Suite 40: sitemap.xml lists the lecture library');
+
+  // --- TEST SUITE 41: Link Resolution & Offline Lecture Catalog ---
+  console.log('\n--- TEST SUITE 41: Link Resolution & Offline Lecture Catalog ---');
+  const s41_appJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  const s41_quranJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  const s41_lectureHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'dr-israr-ahmed.html'), 'utf-8');
+
+  // Root-aware resolver: results from /articles/* must climb back to the site root.
+  assert(searchEngine.resolveUrl('articles/x.html', '/NoorDeen/') === '/NoorDeen/articles/x.html', 'Suite 41: resolver keeps GitHub Pages base path');
+  assert(searchEngine.resolveUrl('quran.html', '/') === '/quran.html', 'Suite 41: resolver maps root pages to the site root');
+  assert(searchEngine.resolveUrl('duas.html#d1', '/NoorDeen/') === '/NoorDeen/duas.html#d1', 'Suite 41: resolver preserves in-page fragments');
+  assert(searchEngine.resolveUrl('https://example.com/x', '/NoorDeen/') === 'https://example.com/x', 'Suite 41: resolver leaves absolute URLs untouched');
+  assert(searchEngine.resolveUrl('#ayah-3', '/NoorDeen/') === '#ayah-3', 'Suite 41: resolver leaves bare anchors untouched');
+  const s41_fileBase = '/C:/Users/Admin/AppData/Local/Temp/noor-bundle/islamic-portal-web/';
+  assert(searchEngine.resolveUrl('quran.html', s41_fileBase) === s41_fileBase + 'quran.html', 'Suite 41: resolver supports file:// bundle roots');
+  assert(searchEngine.resolveUrl('', '/NoorDeen/') === '', 'Suite 41: resolver tolerates empty input');
+
+  // Regression: short Arabic names/aliases must not match inside longer queries.
+  assert(searchEngine.search('سورہ واقعہ')[0].url.includes('surah=56'), 'Suite 41: Urdu "سورہ واقعہ" ranks Al-Waqi\'ah (56) first');
+  const s41_tabarak = searchEngine.search('tabarakallazi');
+  assert(s41_tabarak.length === 1 && s41_tabarak[0].url.includes('surah=67'), 'Suite 41: "tabarakallazi" returns only Al-Mulk (67)');
+  assert(searchEngine.search('ayatul kursi')[0].url.includes('ayah=255'), 'Suite 41: "ayatul kursi" deep-links to 2:255');
+
+  // Wiring: no dynamically rendered link may use a document-relative href.
+  assert(s41_appJs.includes('resolveUrl(url)'), 'Suite 41: app.js exposes a root-aware resolveUrl helper');
+  assert(s41_appJs.includes('${this.resolveUrl(r.url)}'), 'Suite 41: search result links use the resolver');
+  assert(!s41_appJs.includes('<a href="${r.url}"'), 'Suite 41: search results no longer emit document-relative hrefs');
+  assert(s41_appJs.includes("this.resolveUrl('quran.html?surah=36')"), 'Suite 41: search quick-pills use the resolver');
+  assert(s41_appJs.includes("this.resolveUrl('quran.html')"), 'Suite 41: language modal Quran link uses the resolver');
+  assert(s41_quranJs.includes('App.resolveUrl('), 'Suite 41: Quran offline fallback links use the resolver');
+
+  // Embedded catalog must stay byte-identical in content to catalog.json.
+  const s41_catalogJsPath = path.join(PUBLIC_DIR, 'data', 'dr-israr', 'catalog.js');
+  assert(fs.existsSync(s41_catalogJsPath), 'Suite 41: catalog.js exists for file:// and Android loading');
+  const s41_catalogJs = fs.readFileSync(s41_catalogJsPath, 'utf-8');
+  const s41_payloadMatch = s41_catalogJs.match(/window\.__DR_ISRAR_CATALOG__\s*=\s*(\{[\s\S]*\});\s*$/);
+  assert(Boolean(s41_payloadMatch), 'Suite 41: catalog.js assigns window.__DR_ISRAR_CATALOG__');
+  const s41_embedded = JSON.parse(s41_payloadMatch[1]);
+  assert(JSON.stringify(s41_embedded) === JSON.stringify(s40_catalog), 'Suite 41: embedded catalog exactly matches catalog.json');
+
+  // Loader must prefer the embedded payload, validate it, and distinguish failures.
+  const s41_catalogTagIdx = s41_lectureHtml.indexOf('data/dr-israr/catalog.js');
+  const s41_embeddedUseIdx = s41_lectureHtml.indexOf('window.__DR_ISRAR_CATALOG__');
+  assert(s41_catalogTagIdx > -1 && s41_embeddedUseIdx > s41_catalogTagIdx, 'Suite 41: lecture page loads catalog.js before using it');
+  assert(s41_lectureHtml.includes('function validateCatalog('), 'Suite 41: lecture loader validates the catalog schema');
+  assert(s41_lectureHtml.includes("location.protocol === 'file:'"), 'Suite 41: lecture loader detects file:// failures');
+  assert(s41_lectureHtml.includes("messages[kind]"), 'Suite 41: lecture loader exposes distinct error states');
+  assert(s41_lectureHtml.includes('Retry loading catalog'), 'Suite 41: network failures offer a retry action');
+
+  const s41_sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
+  assert(s41_sw.includes("'./data/dr-israr/catalog.js'"), 'Suite 41: service worker pre-caches the embedded catalog');
+
+  const s41_configJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'config.js'), 'utf-8');
+  assert(s41_configJs.includes('getBasePath()'), 'Suite 41: config.js exposes a deployment-root helper');
+  assert(s41_configJs.includes('${this.getBasePath()}privacy.html'), 'Suite 41: cookie-banner privacy link is root-aware');
+  assert(!s41_configJs.includes('<a href="privacy.html"'), 'Suite 41: cookie banner no longer emits a document-relative privacy link');
+
+  // Article pages omit data.js for weight; search must load it on demand.
+  assert(s41_appJs.includes('ensureSearchData()'), 'Suite 41: app.js can lazy-load the search dataset');
+  assert(s41_appJs.includes("this.resolveUrl('js/data.js')"), 'Suite 41: lazy dataset URL is deployment-root aware');
+  assert(s41_appJs.includes('this.ensureSearchData();'), 'Suite 41: opening search triggers the lazy dataset load');
+  const s41_articleHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'articles', 'islamic-finance-and-riba.html'), 'utf-8');
+  assert(!s41_articleHtml.includes('js/data.js'), 'Suite 41: article pages stay lightweight (no eager data.js)');
+
+  // --- TEST SUITE 42: Daily Companion Local Date & Streak Integrity ---
+  console.log('\n--- TEST SUITE 42: Daily Companion Local Date & Streak Integrity ---');
+  const s42_appJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
+  assert(s42_appJs.includes('getLocalDateKey(date = new Date())'), 'Suite 42: companion uses a local-date helper');
+  assert(!/toISOString\(\)\.slice\(0, 10\)/.test(s42_appJs), 'Suite 42: no UTC-based YYYY-MM-DD day keys remain');
+  assert(s42_appJs.includes("['fajr', 'morning', 'prayer', 'sleep']"), 'Suite 42: non-Friday required list matches real checkbox IDs');
+  assert(!s42_appJs.includes("'maghrib', 'sleep'"), 'Suite 42: streak no longer references a nonexistent maghrib checkbox');
+  assert(s42_appJs.includes("? ['fajr', 'morning', 'prayer', 'sleep', 'friday']"), 'Suite 42: Friday item is required only on Friday');
+  assert(s42_appJs.includes('islamic_portal_last_completed_date'), 'Suite 42: streak records a completion date, not a page visit');
+  assert(s42_appJs.includes('alreadyCounted'), 'Suite 42: repeated toggles cannot award a second streak day');
+  assert(s42_appJs.includes('wazifa-optional'), 'Suite 42: Friday row is marked optional outside Friday');
+  assert(s42_appJs.includes('Start your streak today'), 'Suite 42: zero-streak state is honest');
 
   // SUMMARY
   console.log('\n====================================================');

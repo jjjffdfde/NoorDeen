@@ -1,14 +1,14 @@
 # NoorDeen — Module Functional Tests
 
-**Executed:** 26 October 2026
+**Executed:** 27 October 2026
 **Harness:** `node test/run-tests.js` (HTTP server on port 3000) + browser automation on `http://localhost:3400`
-**Result:** **1,478 assertions executed / 1,478 passed / 0 failed**; browser checks listed below; no console errors on any page exercised.
+**Result:** **1,519 assertions executed / 1,519 passed / 0 failed**; browser checks listed below; no console errors on any page exercised.
 
 This report records what was actually exercised. Items that could not be tested are listed separately in section 7 and are not counted as passes.
 
 ---
 
-## 1. Automated suite coverage (40 suites)
+## 1. Automated suite coverage (42 suites)
 
 | Suite | Area | Representative assertions | Result |
 | --: | :--- | :--- | :--- |
@@ -47,11 +47,13 @@ This report records what was actually exercised. Items that could not be tested 
 | 33 | Multilingual invariance and scoped direction | RTL only in content containers | PASS |
 | 34 | Master baseline and pre-rendered libraries | Page counts, pre-rendered hadith/duas | PASS |
 | 35 | Subpath resilience and network-first navigation | Article subpath links, SW navigation strategy | PASS |
-| 36 | P0 defects and trust transparency | Claims removed, Nisab values, 1,478-test statement | PASS |
-| 37 | PWA raster icons and offline bundle | PNG icons, bundle metadata, cache `v13` | PASS |
+| 36 | P0 defects and trust transparency | Claims removed, Nisab values, 1,519-test statement | PASS |
+| 37 | PWA raster icons and offline bundle | PNG icons, bundle metadata, cache `v19` | PASS |
 | 38 | Educational articles library | Article depth, TOC, schema, indexing | PASS |
 | 39 | Batch 2 articles (topics 11–20) | Search/sitemap/index integration | PASS |
 | 40 | Dr. Israr catalogue | 148 records, 147 unique, series sums, no hosted video | PASS |
+| 41 | URL resolution, catalog loader, lazy search | `resolveUrl` cases, `catalog.js`, `ensureSearchData`, alias guards | PASS |
+| 42 | Daily Companion dates and streaks | Local date key, completion-based streak, Friday optionality | PASS |
 
 ---
 
@@ -74,6 +76,11 @@ This report records what was actually exercised. Items that could not be tested 
 | Offline banner appears when `navigator.onLine` is forced false | PASS |
 | Skip link present on every page; `#main-content` target and `tabindex="-1"` | PASS (presence/CSS); keyboard focus not emulatable — see §7 |
 | No console errors on 26 root pages | PASS |
+| Search from an article page (`yaseen`, `intention`, `mercy`, `ayatul kursi`) | PASS after lazy `data.js` load |
+| Nested search-result links and quick pills from an article page | PASS (12/12 HTTP 200) |
+| `ayatul kursi` → 2:255; reader highlights `#ayah-255` | PASS |
+| `سورہ واقعہ` → 56 first; `tabarakallazi` → 67 only | PASS |
+| Daily Companion Tuesday 4/4, streak 1; retoggle no double award; gap resets to 0 | PASS |
 
 ### 2.2 Quran reader
 
@@ -134,8 +141,11 @@ This report records what was actually exercised. Items that could not be tested 
 | Check | Result |
 | :--- | :--- |
 | Cards rendered | 148 |
-| Search "Arbaeen" | 73 |
-| Series filter | 9 |
+| Renders with `window.fetch` forced to reject (embedded `catalog.js`) | 148 |
+| Payload removed **and** fetch blocked | Honest error + retry, 0 fabricated cards |
+| Search `muntakhab` | 2 |
+| Series filter | 2 |
+| English language filter | 17 |
 | Reset | 148 |
 | Duplicate badge on `04-002-016` | PASS |
 | No console errors | PASS |
@@ -158,9 +168,9 @@ This report records what was actually exercised. Items that could not be tested 
 | :--- | :--- |
 | APK and ZIP links | HTTP 200 |
 | `CHECKSUMS.sha256` fetch | HTTP 200 |
-| Displayed APK hash | `d9d59d18c164567bea648f6c9d1907c890ce61118c4cac85f85c41651c9e02dc` (matches file) |
-| Displayed bundle hash | `e4fbdeeb0eac24f309d0a10d46f2b11880049b2bc5f017db777c738f646f94d6` (matches file) |
-| Stale-checksum defect | **Found and fixed**: SW served `downloads/` cache-first; now network-first with cache fallback; cache bumped to `v13` |
+| Displayed APK hash | `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` (matches file) |
+| Displayed bundle hash | `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` (matches file) |
+| Stale-checksum defect | **Found and fixed**: SW served `downloads/` cache-first; now network-first with cache fallback; cache now `v19` |
 
 ### 2.9 Contact
 
@@ -215,11 +225,19 @@ This report records what was actually exercised. Items that could not be tested 
 | Search results all labelled "Worship Guide" | Static label in `search.js` | Label derived from URL/page type | PASS |
 | Homepage `#guided-learning` dead anchor | Section had no `id` | Added `id="guided-learning"` | PASS |
 | Hardcoded `1447 AH` before JS | Static fallbacks in `index.html`, `calendar.html` | Neutral labels; live date renders 1448 AH | PASS |
-| Stale download checksums | SW cache-first for `/downloads/` | Network-first for downloads and `.sha256`; SW `v13` | PASS |
+| Stale download checksums | SW cache-first for `/downloads/` | Network-first for downloads and `.sha256`; SW cache bumped (now `v19`) | PASS |
 | Missing theme-color on homepage | Omitted meta tag | Added `#0F5132` | PASS |
 | No skip link | Never implemented | Injected globally by `app.js` + CSS | PASS (presence/CSS) |
-| About page stale test claim | Text said "1,300+ checks" | Updated to 1,478 assertions; removed WCAG claim | PASS |
+| About page stale test claim | Text said "1,300+ checks" | Updated to 1,519 assertions; removed WCAG claim | PASS |
 | Qibla claims without feature | Copy referenced qibla bearing | Claims removed from home, download, sources | PASS |
+| Lecture catalog `Failed to fetch` | `fetch()` blocked under `file://` | Embedded `catalog.js` + schema validation + distinct errors/retry | PASS |
+| Article-page search empty | `data.js` omitted, never loaded | `App.ensureSearchData()` lazy load + query re-dispatch | PASS |
+| Nested result URLs 404 | Root-relative URLs resolved under `/articles/` | `resolveUrl` on all runtime links | PASS |
+| Cookie privacy link 404 | Hard-coded relative href | `getBasePath()` prefix | PASS |
+| Daily Companion wrong date / duplicate streak | UTC key, visit-based award, bad `maghrib` ID | Local key, completion-based streak, corrected ID | PASS |
+| Wrong dua anchor | `sayyid` vs `sayyidul` | Href corrected | PASS |
+| Alias search ranked wrong surah | One-letter containment matches | Minimum 4-character guards | PASS |
+| Ayatul Kursi no deep link | Missing `ayah` parameter | `surah=2&ayah=255` + highlight | PASS |
 
 ---
 
@@ -227,9 +245,9 @@ This report records what was actually exercised. Items that could not be tested 
 
 | Artefact | Value |
 | :--- | :--- |
-| Offline bundle | 80 files, 1,298,402 bytes, SHA-256 `e4fbdeeb0eac24f309d0a10d46f2b11880049b2bc5f017db777c738f646f94d6` |
-| APK | 1,398,233 bytes, SHA-256 `d9d59d18c164567bea648f6c9d1907c890ce61118c4cac85f85c41651c9e02dc` |
-| APK ZIP entries | 89 |
+| Offline bundle | 81 files, 1,312,528 bytes, SHA-256 `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` |
+| APK | 1,412,579 bytes, SHA-256 `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` |
+| APK ZIP entries | 90 |
 | APK HTML pages | 52 |
 | Nested APK/ZIP in APK | None |
 | APK signature | Valid v1 JAR signature (SHA256withRSA, 2048-bit); no `APK Sig Block 42` |

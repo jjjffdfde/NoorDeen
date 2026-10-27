@@ -70,6 +70,15 @@ const PortalConfig = {
     });
   },
 
+  // Deployment-root helper so runtime-generated links (cookie banner, etc.)
+  // work from /articles/* pages and from the file:// offline bundle.
+  getBasePath() {
+    if (typeof window === 'undefined') return './';
+    const p = window.location.pathname;
+    if (p.includes('/articles/')) return p.substring(0, p.indexOf('/articles/') + 1);
+    return p.substring(0, p.lastIndexOf('/') + 1) || './';
+  },
+
   // Initialize Cookie Consent Bar (GDPR, CCPA & AdSense compliant)
   initCookieConsent() {
     const consent = localStorage.getItem(this.COOKIE_CONSENT_KEY);
@@ -87,7 +96,7 @@ const PortalConfig = {
           <div class="cookie-consent-text">
             <span>🍪</span>
             <p>
-              We use necessary cookies and local storage to persist your Quran reading progress, prayer times, and preferences. We respect your privacy and never sell personal data. Review our <a href="privacy.html" style="color: var(--color-gold); text-decoration: underline;">Privacy Policy</a>.
+              We use necessary cookies and local storage to persist your Quran reading progress, prayer times, and preferences. We respect your privacy and never sell personal data. Review our <a href="${this.getBasePath()}privacy.html" style="color: var(--color-gold); text-decoration: underline;">Privacy Policy</a>.
             </p>
           </div>
           <div class="cookie-consent-actions">

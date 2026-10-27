@@ -100,8 +100,8 @@ The About page no longer claims WCAG 2.1 AA certification.
 | `js/i18n.js` | 41 KB |
 | `js/tools.js` | 19 KB |
 | Largest pages | `sahaba.html` 431 KB, `hadith.html` 410 KB, `duas.html` 400 KB, `index.html` 315 KB |
-| Offline bundle | 1,298,402 bytes (1.24 MB), 80 files |
-| APK | 1,398,233 bytes (1.4 MB), 89 entries |
+| Offline bundle | 1,312,528 bytes (1.25 MB), 81 files |
+| APK | 1,412,579 bytes (1.4 MB), 90 entries |
 
 ### 3.2 Loading strategy
 

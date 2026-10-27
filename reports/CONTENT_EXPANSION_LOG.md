@@ -100,10 +100,10 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 | Dua records | 102 |
 | Kalimas | 6 |
 | Lecture records | 148 (147 unique) |
-| Automated assertions | **1,478 passing, 0 failing** |
+| Automated assertions | **1,519 passing, 0 failing** |
 | Sitemap URLs | 52 |
-| Release APK | 1,398,233 bytes (1.4 MB), 52 HTML pages, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 1,298,402 bytes (1.24 MB), 80 files |
+| Release APK | 1,412,579 bytes (1.4 MB), 52 HTML pages, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 1,312,528 bytes (1.25 MB), 81 files |
 
 ---
 

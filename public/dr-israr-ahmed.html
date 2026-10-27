@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Israr Ahmed Video Library — Verified Lecture Catalog | NoorDeen</title>
   <meta name="description" content="Browse a verified catalog of 148 Dr. Israr Ahmed lectures across 7 series, including Arbaeen-e-Nawawi and Al-Huda. Each entry links to the official Tanzeem-e-Islami archive and embeds the original YouTube upload. No video files are rehosted.">
-  <link rel="stylesheet" href="css/main.css?v=20261026e">
+  <link rel="stylesheet" href="css/main.css?v=20261027f">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html">
@@ -394,10 +394,13 @@
     </div>
   </footer>
 
-  <script src="js/config.js?v=20261026e"></script>
-  <script src="js/i18n.js?v=20261026e"></script>
-  <script src="js/search.js?v=20261026e"></script>
-  <script src="js/app.js?v=20261026e"></script>
+  <script src="js/config.js?v=20261027f"></script>
+  <script src="js/i18n.js?v=20261027f"></script>
+  <script src="js/search.js?v=20261027f"></script>
+  <script src="js/app.js?v=20261027f"></script>
+  <!-- Embedded catalog: lets the lecture library work over file:// (offline ZIP)
+       and inside the Android WebView, where fetch() of local JSON is blocked. -->
+  <script src="data/dr-israr/catalog.js?v=20261027f"></script>
 
   <script>
   (function () {
@@ -511,9 +514,52 @@
       applyFilters();
     }
 
-    fetch('data/dr-israr/catalog.json')
-      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (data) {
+    function showCatalogError(kind, detail) {
+      var messages = {
+        file: 'This page was opened directly from disk (file://), where browsers block reading local JSON files. The embedded catalog payload is missing from this copy of the offline archive.',
+        network: 'The catalog request failed. Check your connection, then retry.',
+        invalid: 'The catalog data failed validation, so no lecture records were rendered.',
+        empty: 'The catalog loaded successfully but contains zero lecture records.'
+      };
+      var count = document.getElementById('video-count');
+      if (count) count.textContent = 'Catalog could not be loaded.';
+      var grid = document.getElementById('video-grid');
+      if (!grid) return;
+      grid.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;">' +
+        '<p><strong>' + escapeHtml(messages[kind] || messages.invalid) + '</strong></p>' +
+        (detail ? '<p style="font-size:0.85rem;color:var(--color-text-muted);">' + escapeHtml(detail) + '</p>' : '') +
+        (kind === 'network' ? '<p><button type="button" class="btn btn-primary" id="catalog-retry">Retry loading catalog</button></p>' : '') +
+        '<p><a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer">Open the official Tanzeem-e-Islami archive instead →</a></p>' +
+        '</div>';
+      var retry = document.getElementById('catalog-retry');
+      if (retry) retry.addEventListener('click', function () { window.location.reload(); });
+    }
+
+    function validateCatalog(data) {
+      if (!data || typeof data !== 'object' || Array.isArray(data)) return 'The catalog root is not an object.';
+      if (data.schemaVersion !== 1) return 'Unsupported schema version: ' + data.schemaVersion + '.';
+      if (!data.speaker || typeof data.speaker.name !== 'string') return 'Speaker metadata is missing.';
+      if (!data.source || typeof data.source.primary !== 'string') return 'Source metadata is missing.';
+      if (!Array.isArray(data.series)) return 'The series list is missing.';
+      if (!Array.isArray(data.videos)) return 'The video list is missing.';
+      if (data.videos.length === 0) return 'EMPTY';
+      for (var i = 0; i < data.videos.length; i++) {
+        var v = data.videos[i];
+        var where = 'Record ' + (i + 1);
+        if (!v || typeof v !== 'object') return where + ' is not an object.';
+        if (!v.id || !v.title || !v.series || !v.seriesCode || !v.language) return where + ' is missing id, title, series or language.';
+        if (!/^https:\/\//i.test(String(v.sourceUrl || ''))) return where + ' (' + v.id + ') has an invalid source URL.';
+        if (!/^[A-Za-z0-9_-]{6,}$/.test(String(v.youtubeId || ''))) return where + ' (' + v.id + ') has an invalid YouTube id.';
+      }
+      return null;
+    }
+
+    function renderCatalog(data) {
+      var problem = validateCatalog(data);
+      if (problem === 'EMPTY') { showCatalogError('empty'); return; }
+      if (problem) { showCatalogError('invalid', problem); return; }
+
+      try {
         catalog = data;
         var grid = document.getElementById('video-grid');
         var frag = document.createDocumentFragment();
@@ -539,15 +585,30 @@
         document.getElementById('video-series').addEventListener('change', applyFilters);
         document.getElementById('video-language').addEventListener('change', applyFilters);
         document.getElementById('video-reset').addEventListener('click', reset);
-      })
-      .catch(function (err) {
-        document.getElementById('video-count').textContent = 'Catalog could not be loaded (' + err.message + ').';
-        document.getElementById('video-grid').innerHTML =
-          '<div class="empty-state" style="grid-column: 1 / -1;">' +
-          '<p>The local catalog file could not be read.</p>' +
-          '<p><a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer">Open the official Tanzeem-e-Islami archive instead →</a></p>' +
-          '</div>';
-      });
+      } catch (e) {
+        showCatalogError('invalid', 'Rendering failed: ' + (e && e.message ? e.message : String(e)));
+      }
+    }
+
+    function loadCatalog() {
+      // 1. Embedded payload: works over file://, http(s):// and the Android WebView.
+      if (window.__DR_ISRAR_CATALOG__) {
+        renderCatalog(window.__DR_ISRAR_CATALOG__);
+        return;
+      }
+      // 2. Fallback for older copies of the archive that only ship catalog.json.
+      fetch('data/dr-israr/catalog.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(renderCatalog)
+        .catch(function (err) {
+          showCatalogError(
+            location.protocol === 'file:' ? 'file' : 'network',
+            err && err.message ? err.message : String(err)
+          );
+        });
+    }
+
+    loadCatalog();
   })();
   </script>
 </body>

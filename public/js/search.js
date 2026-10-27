@@ -1141,6 +1141,18 @@ const UniversalSearch = {
   normalize: normalizeIslamicQuery,
   aliases: SURAH_SEARCH_ALIASES,
 
+  /**
+   * Resolve a site-root-relative path (e.g. "articles/x.html") against the
+   * deployment root ("/", "/NoorDeen/", or a file:// bundle directory).
+   * Absolute URLs, protocol-relative URLs and in-page anchors pass through.
+   */
+  resolveUrl(url, basePath) {
+    if (!url) return url;
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url)) return url;
+    const base = basePath || '/';
+    return base + String(url).replace(/^\.?\//, '');
+  },
+
   search(query) {
     if (!query || query.trim().length < 2) return [];
     const raw = query.trim();
@@ -1148,6 +1160,10 @@ const UniversalSearch = {
     const normalized = normalizeIslamicQuery(raw);
     const results = [];
     const matchedSurahNumbers = new Set();
+    // "Ayatul Kursi" is a verse (2:255), not just Surah Al-Baqarah. Deep-link
+    // to the verse so the reader scrolls to it instead of opening the surah top.
+    const ayatulKursiQuery = /ayat[\s-]*(ul|al)?[\s-]*kursi|kursi/i.test(rawLower)
+      || /آیت\s*الکرسی|آیۃ\s*الکرسی|اية\s*الكرسي/.test(raw);
 
     // 1. Search Surahs using Exact Aliases and Normalized Phonetics
     if (typeof ISLAMIC_DATA !== 'undefined' && ISLAMIC_DATA.surahs) {
@@ -1177,8 +1193,11 @@ const UniversalSearch = {
         if (!isMatch && normalized.length >= 2) {
           const normEnglish = normalizeIslamicQuery(s.englishName);
           const normArabic = normalizeIslamicQuery(s.name);
-          if (normEnglish.includes(normalized) || normalized.includes(normEnglish) ||
-              normArabic.includes(normalized) || normalized.includes(normArabic)) {
+          // Never let a 1–2 character name (e.g. Surah Qaf "ق") match as a
+          // substring of a longer query such as "واقعہ".
+          const contains = (haystack, needle) => needle.length >= 4 && haystack.includes(needle);
+          if (contains(normEnglish, normalized) || contains(normArabic, normalized) ||
+              contains(normalized, normEnglish) || contains(normalized, normArabic)) {
             isMatch = true;
             matchReason = s.englishName;
           }
@@ -1189,13 +1208,19 @@ const UniversalSearch = {
         if (!isMatch && aliasInfo && aliasInfo.aliases) {
           for (const alias of aliasInfo.aliases) {
             const normAlias = normalizeIslamicQuery(alias);
-            if (rawLower === alias.toLowerCase() || (normalized.length >= 2 && normAlias === normalized)) {
+            const aliasLower = alias.toLowerCase();
+            if (rawLower === aliasLower || (normalized.length >= 2 && normAlias === normalized)) {
               isMatch = true;
               aliasExactMatch = true;
               matchReason = alias;
               break;
-            } else if (rawLower.includes(alias.toLowerCase()) || 
-                      (normalized.length >= 4 && normAlias.length >= 4 && normAlias.includes(normalized))) {
+            } else if (
+              // Only allow containment for aliases long enough to be meaningful;
+              // a 3-letter alias such as "ala" must not match inside
+              // "tabarakallazi".
+              (aliasLower.length >= 4 && rawLower.includes(aliasLower)) ||
+              (normalized.length >= 4 && normAlias.length >= 4 && normAlias.includes(normalized))
+            ) {
               isMatch = true;
               matchReason = alias;
               break;
@@ -1206,13 +1231,16 @@ const UniversalSearch = {
         if (isMatch) {
           matchedSurahNumbers.add(s.number);
           const urduPreview = SURAH_URDU_PREVIEWS[s.number] || `اردو ترجمہ مولانا فتح محمد جالندھری • ${s.numberOfAyahs} آیات`;
+          const isAyatulKursi = s.number === 2 && ayatulKursiQuery;
           results.push({
             type: `📖 Surah #${s.number}`,
-            title: `Surah ${s.englishName} (${s.name}) • ${urduName}`,
+            title: isAyatulKursi
+              ? `Ayat al-Kursi (2:255) • Surah Al-Baqarah • ${urduName}`
+              : `Surah ${s.englishName} (${s.name}) • ${urduName}`,
             subtitle: `${s.englishNameTranslation} • ${s.numberOfAyahs} Verses • ${s.revelationType}`,
             urduPreview: urduPreview,
             snippet: `${s.englishNameTranslation} • ${s.numberOfAyahs} Verses • ${s.revelationType} • ${urduPreview}`,
-            url: `quran.html?surah=${s.number}`,
+            url: isAyatulKursi ? 'quran.html?surah=2&ayah=255' : `quran.html?surah=${s.number}`,
             priority: aliasExactMatch ? 150 : 100
           });
         }

@@ -1,9 +1,9 @@
 # NoorDeen — Remaining Work
 
-**Updated:** 26 October 2026
-**Status:** Batch 3 content, the lecture library, the trust fixes and the sahaba/history encoding repair are shipped and tested. The site is usable. It is not complete, and several items below matter more than adding more pages.
+**Updated:** 27 October 2026
+**Status:** the lecture-catalog, search, URL-resolution and Daily Companion defects are fixed and verified. The site is usable. It is not complete; content expansion and device-level Android verification are the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **1,478 executed / 1,478 passed / 0 failed**, after the sahaba/history restore and the removal of the orphaned `history.html` search modal. Browser smoke on 26 root pages and 4 article pages: 0 console errors, 0 duplicate IDs, 0 unresolved anchors, 0 stray Markdown, 0 mojibake.
+**Last successful test:** `node test/run-tests.js` → **1,519 executed / 1,519 passed / 0 failed** (Suites 1–42). Browser checks: lecture catalog renders 148 cards with `fetch` blocked; article-page search works after lazy `data.js`; 12/12 nested result links return 200; `ayatul kursi` opens 2:255; alias ranking fixed. Post-change static/HTTP recheck of 52 pages: 0 new broken destinations, 0 empty/textless anchors.
 
 ---
 
@@ -11,17 +11,16 @@
 
 | Item | Verified outcome |
 | :--- | :--- |
-| Batch 3 articles (5) | 8,547 body words; all 25 articles 1,536–2,114 body words |
-| Search labels | Page-type-specific ("Educational Article", "Islamic Tool", "Lecture Library", "Download") |
-| Homepage anchor | `#guided-learning` added |
-| Hijri fallback | Hardcoded `1447 AH` removed; live date 15 Jumada I 1448 AH |
-| Download checksums | SW and page are network-first; displayed hashes match files |
-| Theme colour | 52/52 pages |
-| Skip link | Injected globally; `#main-content`, `tabindex="-1"`, visible-state CSS |
-| Markdown leakage | 0 stray asterisks in rendered text |
-| Encoding repair | `sahaba.html` / `history.html` restored as UTF-8 from git HEAD; 0 mojibake |
-| Tests | 1,478 assertions, 0 failures |
-| Builds | Bundle 1,298,402 bytes / `e4fbde…`; APK 1,398,233 bytes / `d9d59d…` |
+| Lecture catalog | Embedded `catalog.js`; 148 cards with fetch blocked; honest error + retry when payload missing; search/filters 2/2/17/148 |
+| Article-page search | `App.ensureSearchData()` lazy-loads `data.js`; `yaseen`, `intention`, `mercy`, `ayatul kursi` return results |
+| Nested result URLs | `resolveUrl` applied; six `zakat` results and six pills HTTP 200 |
+| Cookie privacy link | `getBasePath()`; `/privacy.html` 200 from article pages |
+| Daily Companion | Local date key; completion-based streak; Friday optional; gap resets to 0 |
+| Dua anchor | `#dua-sayyidul-istighfar` corrected |
+| Alias ranking | `سورہ واقعہ` → 56; `tabarakallazi` → 67 only |
+| Ayatul Kursi | Deep link `surah=2&ayah=255`, highlighted |
+| Tests | 1,519 assertions, 0 failures |
+| Builds | Bundle 1,312,528 bytes / `5fa610…`; APK 1,412,579 bytes / `c69947…`; version `20261027f`, SW `v19` |
 
 ---
 
@@ -131,4 +130,4 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 **Write Batch 4 (roadmap topics 21–30): family, parenting, inheritance and neighbours.** Use `scripts/article-content/batch-4a.cjs`, generate through `scripts/build-articles.cjs`, keep every article between 1,500 and 2,500 body words, add sources sections, then register each in `js/search.js`, `sitemap.xml` and `articles/index.html`.
 
-Before starting: run `node test/run-tests.js` to confirm the 1,478-assertion baseline is still green.
+Before starting: run `node test/run-tests.js` to confirm the **1,519-assertion** baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md`.

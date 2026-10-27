@@ -1,10 +1,10 @@
 # NoorDeen — Website Test Results
 
-**Date:** 26 October 2026
+**Date:** 27 October 2026
 **Harness:** `test/run-tests.js` (Node.js, run as `node test/run-tests.js`)
-**Suites:** 40
-**Assertions executed:** **1,473**
-**Passed:** **1,473**
+**Suites:** 42
+**Assertions executed:** **1,519**
+**Passed:** **1,519**
 **Failed:** **0**
 **Harness exit code:** 0
 **Verdict:** the automated suite passes. That is a statement about the assertions in the suite, not proof that every page is perfect.
@@ -26,8 +26,8 @@ Observed tail of the run:
 ```text
 ====================================================
 TEST RESULTS SUMMARY:
-  Total Tests Executed: 1473
-  Passed Tests:         1473
+  Total Tests Executed: 1519
+  Passed Tests:         1519
   Failed Tests:         0
   Failed Checks:        0
 ====================================================
@@ -35,7 +35,7 @@ TEST RESULTS SUMMARY:
 🎉 ALL TESTS PASSED SUCCESSFULLY!
 ```
 
-**Baseline for comparison:** before this work cycle the same harness reported **1,250 / 1,250 passing**. The count grew because Suites 36–40 were extended and two new suites were added.
+**Baseline for comparison:** the 26 October run reported **1,473 / 1,473 passing**. This cycle added Suite 41 (URL resolution, catalog loader, lazy search) and Suite 42 (Daily Companion dates and streaks), plus extra assertions in both.
 
 ---
 
@@ -83,10 +83,16 @@ TEST RESULTS SUMMARY:
 | 38 | Batch 1 articles library (10 articles) | Pass |
 | 39 | **Batch 2 articles (topics 11–20)** — new | Pass |
 | 40 | **Dr. Israr Ahmed video library and catalog integrity** — new | Pass |
+| 41 | **URL resolution, catalog loader, lazy search dataset** — new | Pass |
+| 42 | **Daily Companion local dates and streak integrity** — new | Pass |
 
 Suite 39 checks, for each of the 10 new articles: file exists, ≥30 KB, ≥1,500 words, has a TOC, `FAQPage` + `BreadcrumbList` JSON-LD, a scholarly bibliography, `config.js`, a link to the lecture library, no third-party scripts, and an entry in `search.js`, `sitemap.xml` and `articles/index.html`.
 
 Suite 40 checks: the lecture page exists, uses `youtube-nocookie.com` only, never the tracking embed domain, loads the local catalog, links to `tanzeem.org`, has `BreadcrumbList`; the catalog has 148 records, 7 series, 131 Urdu / 17 English, unique IDs, 11-character YouTube IDs, tanzeem.org source URLs on every record, no orphan series, series counts summing to 148, 147 declared unique uploads, a consistent duplicate flag, and no `.mp4/.m3u8/.webm` URLs anywhere.
+
+Suite 41 checks: `UniversalSearch.resolveUrl` against root, GitHub Pages subpath, fragments, query strings, absolute URLs and `file://` bases; search results, quick pills, the language-modal Quran link and the Quran fallback all use the resolver; the cookie banner builds its privacy link from `getBasePath()`; article pages contain no eager `data.js`; `App.ensureSearchData()` lazy-loads the dataset on first dialog open; alias matching requires at least four characters; Ayatul Kursi resolves to `surah=2&ayah=255`.
+
+Suite 42 checks: Daily Companion uses a local date key rather than UTC, does not require the Friday item outside Friday, records the completion date rather than the page visit, cannot award a second streak day on repeated toggles, and shows an honest zero-streak message after a gap.
 
 ---
 
@@ -105,6 +111,21 @@ Checked on a fresh server port with the service worker unregistered, so cached s
 
 Search ranking change made during this cycle: title/snippet matches now score 90 while keyword-only matches score 80, so an article whose title contains the query outranks incidental keyword hits.
 
+### 3.1 27 October cycle
+
+| Check | Result |
+| :--- | :--- |
+| `dr-israr-ahmed.html` with `window.fetch` forced to reject | 148 cards rendered from the embedded `catalog.js` payload |
+| Same page with payload removed **and** fetch blocked | Distinct error state + retry; **0 fabricated records** |
+| Catalog search `muntakhab` / series filter / English filter / reset | 2 / 2 / 17 / 148 |
+| Article page search `yaseen`, `intention`, `mercy`, `ayatul kursi` | Results returned after lazy `data.js` load |
+| Six `zakat` results + six quick pills from an article page | All HTTP 200 |
+| Cookie-banner privacy link from an article page | `/privacy.html` → 200 |
+| `ayatul kursi` deep link | `quran.html?surah=2&ayah=255`; `#ayah-255` highlighted and scrolled into view |
+| `سورہ واقعہ` / `tabarakallazi` | Surah 56 first / Surah 67 only |
+| Daily Companion, Tuesday | 4/4 items, streak 1; retoggle stays 1; continue 3→4; 3-day gap resets to 0 with honest message |
+| Rendered link crawl, 52 pages | 123 unique destinations, 0 broken, 0 empty/textless anchors |
+
 ---
 
 ## 4. Defects found and fixed in this cycle
@@ -118,6 +139,17 @@ These were real defects surfaced by testing, not cosmetic changes:
 5. **Service worker served stale pages.** The cache was `v5`; with 13 pages changed, browsers kept the old shell. Cache bumped to `v6` (`islamic-portal-shell-v6`).
 6. **Stale page counts.** Several pages and the bundle README still said 36/37 pages; corrected to 47.
 7. **Stale checksum test.** Suite 36 asserted the APK hash was inlined in the HTML, which contradicts the runtime-loading fix. The assertion now requires runtime loading and forbids hardcoded digests.
+
+### 4.1 27 October cycle
+
+8. **Lecture catalog `Failed to fetch`.** `fetch()` of local JSON is blocked under `file://`. A generated `catalog.js` payload is now preferred, with schema validation and distinct `file` / `network` / `invalid` / `empty` states plus retry.
+9. **Article-page search returned nothing.** Article pages omit `data.js`; `App.ensureSearchData()` now loads it on first dialog open and re-runs the query.
+10. **Nested result URLs 404'd.** Root-relative index URLs were inserted directly into `href`; all runtime links now pass through `resolveUrl`.
+11. **Cookie-banner privacy link 404'd on articles.** Hard-coded relative link replaced with `getBasePath()`.
+12. **Daily Companion date/streak defects.** UTC date key replaced with a local key; nonexistent `maghrib` ID corrected; Friday item made optional outside Friday; streaks award on completion, not visit.
+13. **Wrong dua anchor.** `#dua-sayyid-istighfar` corrected to `#dua-sayyidul-istighfar`.
+14. **Alias search ranked the wrong surah.** One-letter containment matches are now blocked; `سورہ واقعہ` → 56, `tabarakallazi` → 67 only.
+15. **Ayatul Kursi lacked a deep link.** Now returns `surah=2&ayah=255`, and the reader highlights the ayah.
 
 ---
 

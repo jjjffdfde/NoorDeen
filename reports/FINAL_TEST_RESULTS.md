@@ -1,7 +1,7 @@
 # NoorDeen — Final Test Results
 
-**Run date:** 26 October 2026
-**Tree state:** working tree on `main` (uncommitted), after Batch 3 content, trust fixes, skip-link/theme-color work, and the sahaba/history encoding repair.
+**Run date:** 27 October 2026
+**Tree state:** working tree on `main` (uncommitted), after the lecture-catalog, search, URL-resolution, Daily Companion and asset-version fixes.
 **Server:** local Node server (`node server.js`), browser automation on `http://localhost:3400`, test harness on port 3000.
 
 ---
@@ -10,11 +10,11 @@
 
 | Category | Count | Status |
 | :--- | --: | :--- |
-| Automated assertions executed | **1,478** | **1,478 passed, 0 failed** |
+| Automated assertions executed | **1,519** | **1,519 passed, 0 failed** |
 | Root pages smoke-tested in browser | 26 | Passed |
-| Article pages browser-tested | 4 representative + 5 Batch 3 | Passed |
+| Article pages browser-tested | 4 representative + 10 batch pages | Passed |
 | Console errors observed | 0 | Passed |
-| Unavailable checks (environment limits) | 8 categories | Reported, not counted as passes |
+| Unavailable checks (environment limits) | 11 categories | Reported, not counted as passes |
 
 **No assertion was skipped.** The unavailable items in section 6 could not be executed in this environment and are listed separately rather than claimed.
 
@@ -32,20 +32,20 @@ Final output:
 
 ```
 TEST RESULTS SUMMARY:
-  Total Tests Executed: 1478
-  Passed Tests:         1478
+  Total Tests Executed: 1519
+  Passed Tests:         1519
   Failed Tests:         0
 
 ALL TESTS PASSED SUCCESSFULLY! The portal is production-ready.
 ```
 
-The suite runs 40 groups covering files, design tokens, the 40-language framework, Quran and hadith data, astronomy, HTTP routing, PWA/service worker, SEO/schema, Android scaffolding, internal links, persistence, worship modules, downloads, Urdu translation, dua filters, audit reports, editorial depth, search/i18n, biography libraries, content taxonomy, Quran study mode, UX/accessibility, mobile boundaries, benchmarks, redesign invariants, tools, multilingual scoping, pre-rendered libraries, subpath resilience, P0 transparency, PWA icons/offline bundle, the article library, Batch 2 integration and the Dr. Israr catalogue.
+The suite runs 42 groups covering files, design tokens, the 40-language framework, Quran and hadith data, astronomy, HTTP routing, PWA/service worker, SEO/schema, Android scaffolding, internal links, persistence, worship modules, downloads, Urdu translation, dua filters, audit reports, editorial depth, search/i18n, biography libraries, content taxonomy, Quran study mode, UX/accessibility, mobile boundaries, benchmarks, redesign invariants, tools, multilingual scoping, pre-rendered libraries, subpath resilience, P0 transparency, PWA icons/offline bundle, the article library, Batch 2 integration, the Dr. Israr catalogue, URL resolution/catalog loading/lazy search, and Daily Companion dates/streaks.
 
 **Defects found by the suite during this cycle and fixed:**
 
 | Failure | Cause | Fix |
 | :--- | :--- | :--- |
-| `Suite 36: about.html documents verified automated test suites` | About page still said "1,300+ rigorous checks" | Updated to "1,478 assertions" |
+| `Suite 36: about.html documents verified automated test suites` | About page still said "1,478 assertions" | Updated to "1,519 assertions" |
 | `Suite 36: download-app.html loads checksums from the signed manifest at runtime` | Assertion expected the pre-`no-store` fetch string | Updated assertion to the current `fetch(..., { cache: 'no-store' })` call |
 | `Suite 36: history.html has no orphaned static search modal` | The restored `history.html` still contained `#global-search-input` | Removed the static modal block; `app.js` provides the dialog |
 
@@ -67,6 +67,11 @@ The suite runs 40 groups covering files, design tokens, the 40-language framewor
 | Mobile drawer: open/close, `aria-expanded`, `aria-hidden`, Escape | Pass |
 | Offline banner toggles with `navigator.onLine` | Pass |
 | 26 root pages: 0 console errors, 0 duplicate IDs, 0 unresolved anchors, 0 `NaN`/`undefined`/`Invalid Date` | Pass |
+| Article-page search (`yaseen`, `intention`, `mercy`, `ayatul kursi`) after lazy `data.js` load | Pass |
+| Nested results + quick pills from an article page | 12/12 HTTP 200 |
+| `ayatul kursi` → 2:255, `#ayah-255` highlighted | Pass |
+| `سورہ واقعہ` → 56 first; `tabarakallazi` → 67 only | Pass |
+| Daily Companion: 4/4, streak 1, retoggle no double award, gap resets to 0 | Pass |
 
 ### 3.2 Quran reader
 
@@ -131,9 +136,12 @@ The suite runs 40 groups covering files, design tokens, the 40-language framewor
 | Check | Result |
 | :--- | :--- |
 | Cards | 148 |
-| Search "Arbaeen" | 73 |
+| Cards with `window.fetch` forced to reject (embedded `catalog.js`) | 148 |
+| Payload removed **and** fetch blocked | Honest error + retry, 0 fabricated cards |
+| Search `muntakhab` | 2 |
+| Series filter | 2 |
+| English filter | 17 |
 | Clear search | 148 |
-| Series filter | 9 |
 | Duplicate badge on `04-002-016` | Present |
 | Console errors | 0 |
 
@@ -155,9 +163,9 @@ The suite runs 40 groups covering files, design tokens, the 40-language framewor
 | :--- | :--- |
 | APK and ZIP links | HTTP 200 |
 | `CHECKSUMS.sha256` | HTTP 200; `Cache-Control: max-age=0, must-revalidate` |
-| Displayed APK hash | `d9d59d18c164567bea648f6c9d1907c890ce61118c4cac85f85c41651c9e02dc` (matches file) |
-| Displayed bundle hash | `e4fbdeeb0eac24f309d0a10d46f2b11880049b2bc5f017db777c738f646f94d6` (matches file) |
-| Service worker cache after load | `islamic-portal-shell-v13` |
+| Displayed APK hash | `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` (matches file) |
+| Displayed bundle hash | `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` (matches file) |
+| Service worker cache after load | `islamic-portal-shell-v19` |
 | Stale-hash defect | Fixed: downloads and `.sha256` are network-first; page fetches with `{cache:'no-store'}` |
 
 ### 3.9 Contact
@@ -196,9 +204,9 @@ The suite runs 40 groups covering files, design tokens, the 40-language framewor
 
 | Artefact | Value |
 | :--- | :--- |
-| Offline bundle | 80 files, **1,298,402 bytes**, SHA-256 `e4fbdeeb0eac24f309d0a10d46f2b11880049b2bc5f017db777c738f646f94d6` |
-| APK | **1,398,233 bytes**, SHA-256 `d9d59d18c164567bea648f6c9d1907c890ce61118c4cac85f85c41651c9e02dc` |
-| APK ZIP entries | 89 |
+| Offline bundle | 81 files, **1,312,528 bytes**, SHA-256 `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` |
+| APK | **1,412,579 bytes**, SHA-256 `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` |
+| APK ZIP entries | 90 |
 | APK HTML pages | 52 |
 | Nested APK/ZIP inside APK | None |
 | APK signature | Valid JAR v1 (`jar verified`, SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent |

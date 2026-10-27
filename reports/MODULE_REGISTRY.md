@@ -1,6 +1,6 @@
 # NoorDeen — Module Registry
 
-**Generated:** 26 October 2026
+**Generated:** 27 October 2026
 **Scope:** every user-facing module, data service and distribution artefact under `public/`, plus the Android build.
 **Method:** modules were discovered by walking `public/**/*.html`, `public/js/*.js`, `public/data/**`, `public/service-worker.js`, `public/manifest.json`, `scripts/build-*.cjs` and `test/run-tests.js`. Status is based on automated assertions plus browser checks performed in this cycle. A module is only marked **PASS** where both its rendering and its primary interaction were exercised. Coverage limits are recorded even when the module works.
 
@@ -37,7 +37,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | --: | :--- | :--- | :--- | :--- |
 | 1 | Header navigation, desktop dropdowns | PASS | Present on all 52 pages; links resolve (3,111 local refs checked, 0 real broken); active-state highlighter runs without error. | Dropdown interaction is CSS/JS hover + click; not separately keyboard-audited. |
 | 2 | Mobile drawer menu | PASS | Opens/closes; `aria-expanded` toggles `true`/`false`; `aria-hidden` toggles; focus moves into the drawer; Escape closes. | — |
-| 3 | Global search modal + `Ctrl+K` | PASS | `riba` → 1 result; `zakat` → Zakat Calculator first; `marriage` → article + Seerah chapter + hadith; `barzakh` → death article; `halal food` → article. Result labels now derive from page type. | Search is client-side over a curated index (52 pages + datasets), not a full-text corpus index. |
+| 3 | Global search modal + `Ctrl+K` | PASS | `riba` → 1 result; `zakat` → Zakat Calculator first; `marriage` → article + Seerah chapter + hadith; `barzakh` → death article; `halal food` → article. Works from article pages via lazy `data.js`; nested result links return 200; `ayatul kursi` → 2:255; `سورہ واقعہ` → 56; `tabarakallazi` → 67 only. | Search is client-side over a curated index (52 pages + datasets), not a full-text corpus index. |
 | 4 | Language selector + English reset | PASS | Modal offers 11 verified languages; switching to Urdu translates content areas while UI stays `lang="en"` / `dir="ltr"`; reset restores English. | Only 11 of 40 registry languages have UI dictionaries (see `TRANSLATION_AUDIT.md`). |
 | 5 | Theme toggle (light/dark) | PASS | `data-theme` persisted in `localStorage`; both palettes defined; contrast pairs present in CSS. | No automated contrast-ratio calculation in this cycle. |
 | 6 | Footer, breadcrumbs, internal links | PASS | Footer present on all pages; breadcrumb nav present; 0 broken local links. | — |
@@ -105,7 +105,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 36 | Dr. Israr Ahmed catalogue | PARTIAL | 148 records / 147 unique uploads / 7 series; 148 cards render; search "Arbaeen" → 73; series filter → 9; reset → 148; duplicate `04-002-016` flagged. | Covers archive pages 1–10 of 74; playback is online-only via `youtube-nocookie.com`; no transcripts or translations. |
+| 36 | Dr. Israr Ahmed catalogue | PARTIAL | 148 records / 147 unique uploads / 7 series; 148 cards render; search `muntakhab` → 2; series filter → 2; English filter → 17; reset → 148; duplicate `04-002-016` flagged. Renders 148 cards with `fetch` blocked (embedded `catalog.js`); payload removed + fetch blocked shows an honest error, not fabricated rows. | Covers archive pages 1-10 of 74; playback is online-only via `youtube-nocookie.com`; no transcripts or translations. |
 
 ---
 
@@ -125,7 +125,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
 | 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and now network-first; displayed hashes match files (`d9d59d…` APK, `e4fbde…` ZIP); sizes and page counts corrected. | APK is JAR-signed v1 only; installation not device-tested. |
-| 42 | About page | PASS | Test count updated to 1,478; removed WCAG certification and peer-review claims. | — |
+| 42 | About page | PASS | Test count updated to 1,519; removed WCAG certification and peer-review claims. | - |
 | 43 | Sources / methodology | PASS | Bibliography, grading policy, tafsir policy; qibla claim removed. | — |
 | 44 | Contact / corrections | PASS | Required and email validation block invalid submit; valid submit shows an honest "no backend" panel with GitHub issue + mailto dispatch. | No server-side inbox. |
 | 45 | Privacy and terms | PASS | Static policies render; no analytics or ad scripts active by default. | Legal review not performed. |
@@ -138,8 +138,8 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | --: | :--- | :--- | :--- | :--- |
 | 46 | Data layer (`data.js`, `catalog.json`, `study-content.json`) | PASS | 114 surahs / 6,236 ayahs; 101 hadith; 102 duas; 6 kalimas; 148 lecture records; 6 tafsir verses; all parse without error. | Tafsir and lecture coverage are explicitly partial. |
 | 47 | Search index and sitemap | PASS | 52 sitemap URLs (52 unique); 26 article URLs; all 52 pages indexed in `search.js`; robots.txt valid. | Client-side index only. |
-| 48 | Service worker and offline bundle | PARTIAL | SW `v13`; shell precache; HTML network-first; checksums/downloads now network-first; bundle 80 files / 1,298,402 bytes / `e4fbde…`. | Full offline Quran, audio and video are not included; no device install test. |
-| 49 | Android APK | BLOCKED | 89 ZIP entries; 52 HTML pages; no nested APK/ZIP; `jarsigner` reports a valid v1 signature (SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent. | No v2/v3 signing block; `targetSdk 34`; `adb`/`apksigner` unavailable; **installation not tested**. Plaintext signing passwords and a tracked keystore are a P0 issue (not changed by owner instruction). |
+| 48 | Service worker and offline bundle | PARTIAL | SW `v19`; shell precache; HTML network-first; checksums/downloads now network-first; bundle 81 files / 1,312,528 bytes / `5fa610…`. | Full offline Quran, audio and video are not included; no device install test. |
+| 49 | Android APK | BLOCKED | 90 ZIP entries; 52 HTML pages; no nested APK/ZIP; `jarsigner` reports a valid v1 signature (SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent. | No v2/v3 signing block; `targetSdk 34`; `adb`/`apksigner` unavailable; **installation not tested**. Plaintext signing passwords and a tracked keystore are a P0 issue (not changed by owner instruction). |
 | 50 | Accessibility baseline | PARTIAL | 0 `<img>` without `alt`; `:focus-visible` styles; ARIA on drawer/search/language modals; skip link added; single `<h1>` per page. | No full WCAG 2.1 AA audit; no screen-reader session; focus visibility in headless not verifiable. |
 | 51 | Responsive layout | PARTIAL | CSS breakpoints at 991/992/1200/1024/960/900/820/768/600/480/360 px; mobile drawer and bottom nav implemented. | Browser tool cannot change viewport (`innerWidth` stays 1000), so 320/375/768/1024/1440 rendering was not visually verified in this cycle. |
 | 52 | SEO and structured data | PASS | 52/52 pages have canonical, description, OG, Twitter, JSON-LD, viewport, manifest, theme-color; `BreadcrumbList` / `FAQPage` / `Article` schemas on articles. | No Lighthouse/field Core Web Vitals data; no backlink or ranking evidence. |
@@ -158,7 +158,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | D6 | P1 | Only 11 of 40 language entries have UI dictionaries. | **Accepted** — selector offers only verified languages. |
 | D7 | P2 | No qibla direction feature. | **Accepted** — claims removed from site copy. |
 | D8 | P2 | Responsive breakpoints not visually verified in this environment. | **Open** — static/code-level review only. |
-| D9 | P2 | 77 roadmap article topics unwritten. | **Open** — tracked in `REMAINING_WORK.md`. |
+| D9 | P2 | 75 roadmap article topics unwritten. | **Open** — tracked in `REMAINING_WORK.md`. |
 | D10 | P3 | Skip-link keyboard activation not machine-verified (headless focus limitation). | **Open** — implementation and CSS verified. |
 
-No module is currently in **FAIL** state after the fixes in this cycle (search labels, stale checksum caching, missing homepage anchor, hardcoded Hijri year, article/sitemap/search integration).
+No module is currently in **FAIL** state after the fixes in this cycle (lecture-catalog `file://` loading, article-page lazy search, nested URL resolution, cookie privacy link, Daily Companion dates/streaks, dua anchor, alias ranking and Ayatul Kursi deep link).

@@ -121,6 +121,21 @@ class Application {
     return path.substring(0, path.lastIndexOf('/') + 1) || './';
   }
 
+  // Resolve a site-root-relative URL (e.g. "articles/x.html" or "quran.html")
+  // against the current deployment root. Works for "/", "/NoorDeen/" and the
+  // file:// offline bundle, where a plain relative href would resolve inside
+  // the current subdirectory (the cause of /articles/articles/... links).
+  resolveUrl(url) {
+    if (!url) return url;
+    const base = this.getBasePath();
+    if (typeof window !== 'undefined' && window.UniversalSearch && typeof window.UniversalSearch.resolveUrl === 'function') {
+      return window.UniversalSearch.resolveUrl(url, base);
+    }
+    // Fallback if search.js is unavailable.
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url)) return url;
+    return base + String(url).replace(/^\.?\//, '');
+  }
+
   // Check if portal is currently executing as an installed standalone PWA
   isAppInstalled() {
     if (typeof window === 'undefined') return false;
@@ -637,10 +652,46 @@ class Application {
     });
   }
 
+  // Article pages intentionally omit the 250 KB data.js bundle. Load it on
+  // demand the first time search is opened, then re-run the current query.
+  ensureSearchData() {
+    if (typeof ISLAMIC_DATA !== 'undefined') return Promise.resolve();
+    if (this._searchDataPromise) return this._searchDataPromise;
+    const appScript = Array.from(document.scripts).find(s => /\/app\.js(\?|$)/.test(s.src));
+    const versionMatch = appScript && appScript.src.match(/[?&]v=([^&]+)/);
+    const src = this.resolveUrl('js/data.js') + (versionMatch ? `?v=${versionMatch[1]}` : '');
+    this._searchDataPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.onload = () => {
+        const input = document.getElementById('modal-search-input');
+        if (input && input.value.trim().length >= 2) {
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        resolve();
+      };
+      script.onerror = () => {
+        this._searchDataPromise = null;
+        reject(new Error('Search dataset could not be loaded'));
+      };
+      document.head.appendChild(script);
+    }).catch((err) => {
+      if (window.App && typeof window.App.showToast === 'function') {
+        window.App.showToast('Search dataset could not be loaded. Check your connection and retry.', 4000);
+      }
+      return err;
+    });
+    return this._searchDataPromise;
+  }
+
   openSearchModal() {
     if (!this.searchTriggerElement) {
       this.searchTriggerElement = document.activeElement;
     }
+    // Article pages do not ship data.js; fetch it in the background so the
+    // first query can find Quran, Hadith, Kalimas and Duas records.
+    this.ensureSearchData();
     let modal = document.getElementById('search-modal');
     if (!modal) {
       modal = document.createElement('div');
@@ -661,12 +712,12 @@ class Application {
           <!-- Popular Daily Surahs Quick Access Row -->
           <div class="search-modal-quick-pills" style="display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 24px; border-bottom: 1px solid var(--color-border-subtle); align-items: center; background: var(--color-surface);">
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-gold); margin-right: 4px;">Popular Daily Surahs:</span>
-            <a href="quran.html?surah=36" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">✨ Ya-Sin (36)</a>
-            <a href="quran.html?surah=67" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">👑 Al-Mulk (67)</a>
-            <a href="quran.html?surah=55" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🕊️ Ar-Rahman (55)</a>
-            <a href="quran.html?surah=56" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">⚡ Al-Waqi'ah (56)</a>
-            <a href="quran.html?surah=2&verse=255" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🛡️ Ayatul Kursi</a>
-            <a href="quran.html?surah=18" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🌟 Al-Kahf (18)</a>
+            <a href="${this.resolveUrl('quran.html?surah=36')}" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">✨ Ya-Sin (36)</a>
+            <a href="${this.resolveUrl('quran.html?surah=67')}" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">👑 Al-Mulk (67)</a>
+            <a href="${this.resolveUrl('quran.html?surah=55')}" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🕊️ Ar-Rahman (55)</a>
+            <a href="${this.resolveUrl('quran.html?surah=56')}" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">⚡ Al-Waqi'ah (56)</a>
+            <a href="${this.resolveUrl('quran.html?surah=2&verse=255')}" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🛡️ Ayatul Kursi</a>
+            <a href="${this.resolveUrl('quran.html?surah=18')}" class="popular-surah-pill" style="font-size: 0.78rem; padding: 6px 10px; min-height: 32px; display: inline-flex; align-items: center;">🌟 Al-Kahf (18)</a>
           </div>
 
           <!-- Category Filter Chips (Phase 12 Search Enhancement) -->
@@ -744,7 +795,7 @@ class Application {
           return;
         }
         resBox.innerHTML = results.map(r => `
-          <a href="${r.url}" style="display: block; padding: 12px 14px; border-bottom: 1px solid var(--color-border-subtle); text-decoration: none; color: inherit; transition: background 0.15s ease;" onmouseover="this.style.background='var(--color-surface)'" onmouseout="this.style.background='transparent'">
+          <a href="${this.resolveUrl(r.url)}" style="display: block; padding: 12px 14px; border-bottom: 1px solid var(--color-border-subtle); text-decoration: none; color: inherit; transition: background 0.15s ease;" onmouseover="this.style.background='var(--color-surface)'" onmouseout="this.style.background='transparent'">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
               <span style="font-weight: 700; color: var(--color-primary); font-size: 1rem;">${r.title}</span>
               <span style="font-size: 0.75rem; padding: 2px 8px; border-radius: 99px; background-color: var(--color-surface); font-weight: 600;">${r.type}</span>
@@ -867,7 +918,7 @@ class Application {
               <p style="margin: 0 0 8px 0; color: var(--color-text-muted);">
                 Looking for Somali, Swahili, Russian, Chinese, German, Turkish, or other languages? The Holy Quran Reader offers verse-by-verse translation in many languages, independent of your UI language, while keeping the sacred Arabic text unchanged. Translation coverage and review status vary by language — the reader labels which editions are available.
               </p>
-              <a href="quran.html" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem; text-decoration: none;" onclick="App.closeLanguageModal()">
+              <a href="${this.resolveUrl('quran.html')}" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.78rem; text-decoration: none;" onclick="App.closeLanguageModal()">
                 Open Quran Reader Translations →
               </a>
             </div>
@@ -960,12 +1011,22 @@ class Application {
     });
   }
 
+  // Local calendar date key (YYYY-MM-DD). Never use toISOString(): it is UTC
+  // and would roll the "day" over at the wrong local time.
+  getLocalDateKey(date = new Date()) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
   // Daily Spiritual Companion (Rozana Kirdar & Wazaif Deck)
   initSpiritualCompanion() {
     const container = document.getElementById('daily-companion-section');
     if (!container) return;
 
-    const todayStr = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const todayStr = this.getLocalDateKey();
+    const isFriday = new Date().getDay() === 5;
     const storageKey = `islamic_portal_wazaif_${todayStr}`;
     let state = {};
     try {
@@ -974,19 +1035,38 @@ class Application {
       state = {};
     }
 
-    // Calculate streak
-    let streak = parseInt(localStorage.getItem('islamic_portal_streak') || '1', 10);
-    const lastActiveDate = localStorage.getItem('islamic_portal_last_active_date');
-    if (lastActiveDate) {
-      const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().slice(0, 10);
-      if (lastActiveDate !== todayStr && lastActiveDate !== yesterdayStr) {
-        streak = 1;
-      }
+    // The Friday item is a Friday-only obligation. On other days it remains
+    // available as an optional extra but is not required to complete the day.
+    const requiredIds = isFriday
+      ? ['fajr', 'morning', 'prayer', 'sleep', 'friday']
+      : ['fajr', 'morning', 'prayer', 'sleep'];
+
+    // Streak = consecutive days on which every required item was completed.
+    // Merely opening the page must not extend a streak.
+    const lastCompleted = localStorage.getItem('islamic_portal_last_completed_date')
+      || localStorage.getItem('islamic_portal_last_active_date');
+    let streak = parseInt(localStorage.getItem('islamic_portal_streak') || '0', 10);
+    if (!Number.isFinite(streak) || streak < 0) streak = 0;
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = this.getLocalDateKey(yesterday);
+
+    // A gap of more than one day breaks the streak. Today's completion is
+    // handled below so reloading a completed day never adds a second day.
+    if (lastCompleted && lastCompleted !== todayStr && lastCompleted !== yesterdayStr) {
+      streak = 0;
+      localStorage.setItem('islamic_portal_streak', '0');
     }
-    localStorage.setItem('islamic_portal_last_active_date', todayStr);
-    localStorage.setItem('islamic_portal_streak', String(streak));
+
+    // Migration / recovery: if today's checklist is already complete but the
+    // completion was never recorded (older builds only stored a page-visit
+    // date), record it now so the badge and streak agree.
+    if (lastCompleted !== todayStr && requiredIds.every(k => state[k])) {
+      streak = lastCompleted === yesterdayStr ? streak + 1 : Math.max(streak, 1);
+      localStorage.setItem('islamic_portal_streak', String(streak));
+      localStorage.setItem('islamic_portal_last_completed_date', todayStr);
+    }
 
     const updateUI = () => {
       const checkboxes = container.querySelectorAll('.wazifa-check');
@@ -995,7 +1075,7 @@ class Application {
         const id = cb.dataset.wazifaId;
         if (state[id]) {
           cb.checked = true;
-          completedCount++;
+          if (requiredIds.includes(id)) completedCount++;
           const itemRow = cb.closest('.wazifa-item');
           if (itemRow) itemRow.classList.add('completed');
         } else {
@@ -1005,20 +1085,29 @@ class Application {
         }
       });
 
+      const totalRequired = requiredIds.length;
+      const shownCount = Math.min(completedCount, totalRequired);
       const progressVal = document.getElementById('companion-progress-val');
       const ringCircle = document.getElementById('companion-ring-progress');
-      if (progressVal) progressVal.textContent = `${completedCount}/5`;
+      if (progressVal) progressVal.textContent = `${shownCount}/${totalRequired}`;
       if (ringCircle) {
         const circumference = 175.9; // 2 * PI * 28
-        const offset = circumference - (completedCount / 5) * circumference;
+        const offset = circumference - (shownCount / totalRequired) * circumference;
         ringCircle.style.strokeDashoffset = offset;
+      }
+
+      const fridayRow = container.querySelector('[data-wazifa-id="friday"]');
+      if (fridayRow) {
+        const row = fridayRow.closest('.wazifa-item');
+        if (row) row.classList.toggle('wazifa-optional', !isFriday);
       }
 
       const streakBadge = document.getElementById('companion-streak-badge');
       if (streakBadge) {
-        streakBadge.textContent = completedCount === 5 
-          ? `🔥 ${streak} Day Streak (All Completed!)` 
-          : `🔥 ${streak} Day Habit Streak`;
+        const allDoneToday = requiredIds.every(k => state[k]);
+        streakBadge.textContent = allDoneToday
+          ? `🔥 ${streak} Day Streak (Today Complete)`
+          : (streak > 0 ? `🔥 ${streak} Day Habit Streak` : '🌱 Start your streak today');
       }
     };
 
@@ -1028,13 +1117,15 @@ class Application {
         state[id] = e.target.checked;
         localStorage.setItem(storageKey, JSON.stringify(state));
 
-        const allDone = ['fajr', 'morning', 'maghrib', 'sleep', 'friday'].every(k => state[k]);
-        if (allDone && !state._streakBonusGiven) {
-          state._streakBonusGiven = true;
-          localStorage.setItem(storageKey, JSON.stringify(state));
-          streak += 1;
+        const allDone = requiredIds.every(k => state[k]);
+        const alreadyCounted = localStorage.getItem('islamic_portal_last_completed_date') === todayStr;
+        if (allDone && !alreadyCounted) {
+          // Extend the streak only if the previous completed day was yesterday;
+          // otherwise today starts a new streak at 1.
+          streak = lastCompleted === yesterdayStr ? streak + 1 : 1;
           localStorage.setItem('islamic_portal_streak', String(streak));
-          this.showToast('✨ MashaAllah! All 5 daily Sunnah wazaif completed today! May Allah accept it.');
+          localStorage.setItem('islamic_portal_last_completed_date', todayStr);
+          this.showToast('✨ MashaAllah! Today’s required wazaif are complete. May Allah accept it.');
         }
         updateUI();
       }

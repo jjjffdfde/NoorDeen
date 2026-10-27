@@ -1,7 +1,8 @@
 # Dr. Israr Ahmed Lecture Catalog — Methodology and Coverage
 
 **Catalog built:** 26 October 2026
-**File:** `public/data/dr-israr/catalog.json`
+**Last verified:** 27 October 2026
+**Files:** `public/data/dr-israr/catalog.json` (source of truth), `public/data/dr-israr/catalog.js` (generated embedded payload)
 **Page:** `public/dr-israr-ahmed.html`
 **Source:** [tanzeem.org — Dr. Israr Ahmed speaker archive](https://www.tanzeem.org/video_speakers/dr-israr-ahmed/)
 
@@ -68,7 +69,7 @@ The two excluded entries, with reasons, are recorded in the JSON itself:
 
 Series counts sum exactly to 148, and Suite 40 asserts this.
 
-**Browser check (26 October 2026):** 148 cards render; search `Arbaeen` → 73; series filter → 9; clearing the search → 148; the duplicate badge is visible on `04-002-016`; 0 console errors.
+**Browser check (27 October 2026):** 148 cards render; search `muntakhab` → 2; series filter → 2; English filter → 17; reset → 148; the duplicate badge is visible on `04-002-016`; 0 console errors. With `window.fetch` forced to reject, 148 cards still render from the embedded payload. With the payload removed **and** fetch blocked, the page shows a specific error and retry control with 0 fabricated records.
 
 ---
 
@@ -110,9 +111,13 @@ Coverage by series is uneven by nature: `03-004` (Al-Huda) alone accounts for 72
 | Play | Click-to-load `youtube-nocookie.com` embed with `autoplay=1&rel=0` |
 | Source link | Every card links to its tanzeem.org page |
 | Duplicate badge | Shown on `04-002-016` only |
-| Failure state | If the catalog cannot be fetched, the page shows a link to the official archive instead of an empty grid |
+| Failure state | Distinct `file` / `network` / `invalid` / `empty` states with a retry control; never an empty grid or invented rows |
 
-Browser-verified on 26 October 2026: 148 cards rendered, "148 of 148 lecture records shown", English filter "17 of 148", embed URL `https://www.youtube-nocookie.com/embed/8FXHsF8AigA?autoplay=1&rel=0`, zero console errors.
+Browser-verified on 27 October 2026: 148 cards rendered with `fetch` blocked, "148 of 148 lecture records shown", English filter "17 of 148", embed URL `https://www.youtube-nocookie.com/embed/8FXHsF8AigA?autoplay=1&rel=0`, zero console errors.
+
+### 6.1 Why the embedded payload exists
+
+Under `file://` (the offline bundle and the APK's WebView), browsers block `fetch()` of local JSON. That produced the reported `Failed to fetch` on the lecture page. `scripts/build-lecture-catalog-js.cjs` now generates `catalog.js`, which assigns the same records to `window.__DR_ISRAR_CATALOG__`. The loader prefers that payload and falls back to `fetch` over HTTP. `catalog.json` remains the source of truth; the generator validates that the two stay in sync, and Suite 41 asserts the parity.
 
 ---
 

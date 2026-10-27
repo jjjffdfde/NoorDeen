@@ -1,12 +1,12 @@
 # NoorDeen — Content Inventory
 
-**Audited:** 26 October 2026 (after Batch 3 integration and the sahaba/history encoding repair)
+**Audited:** 27 October 2026 (test-count refresh; content unchanged since Batch 3)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the whole `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured, not estimated.
 **Pages:** **52** — 26 root pages + 26 pages in `public/articles/`
 **Visible words across all pages (whole-page count):** **220,829**
 **Article body words (25 articles, excluding page chrome):** **45,901** — average **1,836**, minimum **1,536**, maximum **2,114**
 **Sitemap URLs:** **52** (`public/sitemap.xml`, 52 unique `<loc>` entries)
-**Full test suite:** **1,478 executed / 1,478 passed / 0 failed** (last run after these content changes)
+**Full test suite:** **1,519 executed / 1,519 passed / 0 failed** (last run 27 October 2026)
 
 ---
 
@@ -110,8 +110,8 @@ Duplicate check: 5-word shingle Jaccard similarity across the 25 article bodies 
 
 | Artefact | Size | SHA-256 |
 | :--- | --: | :--- |
-| `downloads/islamic-portal-release.apk` | 1,398,233 bytes (1.4 MB) | `d9d59d18c164567bea648f6c9d1907c890ce61118c4cac85f85c41651c9e02dc` |
-| `downloads/islamic-portal-offline-bundle.zip` | 1,298,402 bytes (1.24 MB) | `e4fbdeeb0eac24f309d0a10d46f2b11880049b2bc5f017db777c738f646f94d6` |
+| `downloads/islamic-portal-release.apk` | 1,412,579 bytes (1.4 MB) | `c699475c5e0e0fb872e92b5f52de522438abd3354ea8d26e531437bf473b9cc0` |
+| `downloads/islamic-portal-offline-bundle.zip` | 1,312,528 bytes (1.25 MB) | `5fa610ea33a7754b0dceeb127416c201d366a598b2d54032bfc4b5dedaceb9e4` |
 
 Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte.
 
