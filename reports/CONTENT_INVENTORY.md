@@ -123,6 +123,8 @@ Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies 
 
 Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte.
 
+**Live deployment:** `gh-pages` commit `fe311386` (tree from `b61587d:public`) was verified on `https://jjjffdfde.github.io/NoorDeen/` on 27 October 2026. The live APK is 1,503,077 bytes with SHA-256 `29ede4bd…` and the live bundle is 1,401,639 bytes with SHA-256 `a3493559…` — both match the local files. Sitemap serves 60 URLs, the service worker is `v21`, and all four Batch 5 pages return 200.
+
 ---
 
 ## 5. What this inventory does *not* claim

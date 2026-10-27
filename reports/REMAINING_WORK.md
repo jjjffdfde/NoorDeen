@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **1,663 executed / 1,663 passed / 0 failed** (Suites 1–44). Browser checks: all four Batch 5 pages render with correct H1/TOC/schema and 0 console errors; `business ethics`, `contract promises`, `debt repayment` and `workers wages` return the correct first result; the article index filter returns 1 / 3 / 3 / 1 and resets to 33; lecture catalog still renders 148 cards with `fetch` blocked. Post-change static/HTTP recheck of the four new pages: 41 unique destinations, 0 failures.
 
-**Live deployment:** the previous Batch 4 deployment (`gh-pages` `044fea4`) was verified live; the Batch 5 deployment is pending in this cycle (see `FINAL_AUDIT_RESULTS.md` for the final commit and hashes).
+**Live deployment:** `gh-pages` commit `fe31138` verified on `https://jjjffdfde.github.io/NoorDeen/` — all four Batch 5 pages, index, sitemap (60 URLs), search data and SW `v21` return 200 with `?v=20261027h`; live APK (1,503,077 bytes / `29ede4bd…`) and bundle (1,401,639 bytes / `a3493559…`) match local; the live About page states 1,663 assertions.
 
 ---
 

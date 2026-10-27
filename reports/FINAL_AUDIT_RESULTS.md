@@ -152,6 +152,29 @@ Version `?v=20261027h`, service-worker cache `v21`.
 
 ## 6. Live deployment verification (GitHub Pages)
 
+### 6.1 Batch 5 deployment (this cycle) — verified
+
+Deployed commit: `fe311386d8bbc16ccc46096baa7c252a96ae28b5` on `gh-pages` (tree from `b61587d:public`).
+
+| Live URL | Result |
+| :--- | :--- |
+| `https://jjjffdfde.github.io/NoorDeen/index.html` | 200; references `?v=20261027h` |
+| `.../articles/business-ethics-and-honest-trade.html` | 200; 40,300 bytes |
+| `.../articles/contracts-and-promises-in-islam.html` | 200; 42,573 bytes |
+| `.../articles/debt-and-loans-in-islam.html` | 200; 41,627 bytes |
+| `.../articles/workers-rights-in-islam.html` | 200; 39,794 bytes |
+| `.../articles/index.html` | 200; 140,587 bytes; links all four Batch 5 pages |
+| `.../sitemap.xml` | 200; 60 `<loc>` entries including all four Batch 5 URLs |
+| `.../about.html` | 200; states 1,663 assertions |
+| `.../service-worker.js` | 200; `CACHE_VERSION = 'v21'` |
+| `.../downloads/islamic-portal-release.apk` | 200; 1,503,077 bytes; live SHA-256 `29ede4bd82d086fa…` matches local |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; 1,401,639 bytes; live SHA-256 `a3493559328723c1…` matches local |
+| `.../downloads/CHECKSUMS.sha256` | 200; both hashes match the served files |
+
+The deployment push reported `044fea4..fe31138 -> gh-pages`. The GitHub Pages CDN served the previous build for several minutes (`max-age=600`); a re-check after cache expiry served `?v=20261027h` / SW `v21` and all four Batch 5 pages.
+
+### 6.2 Batch 4 deployment (previous cycle, historical)
+
 Deployed commit: `044fea4` on `gh-pages` (tree from `8d9b903:public`).
 
 | Live URL | Result |
@@ -170,7 +193,7 @@ Deployed commit: `044fea4` on `gh-pages` (tree from `8d9b903:public`).
 | `.../downloads/islamic-portal-offline-bundle.zip` | 200; 1,355,278 bytes; live SHA-256 `67cdee83…` matches local |
 | `.../downloads/CHECKSUMS.sha256` | 200; both hashes match the served files |
 
-The deployment push reported `18f7f93..044fea4 -> gh-pages`. The first live poll still served the previous build; a re-check after the Pages build completed served `?v=20261027g` / SW `v20` and all Batch 4 pages.
+The Batch 4 deployment push reported `18f7f93..044fea4 -> gh-pages`. The first live poll still served the previous build; a re-check after the Pages build completed served `?v=20261027g` / SW `v20` and all Batch 4 pages.
 
 ---
 
