@@ -65,17 +65,18 @@ All canonical data lives in `public/js/data.js` as a single global `ISLAMIC_DATA
 | :--- | ---: | :--- |
 | `surahs` | 114 | Metadata only (name, English name, ayah count, revelation type, juz start) |
 | `juzList` | 30 | Start/end surah and ayah boundaries |
-| `offlineSurahs` | 10 surahs / **49 ayahs** | Al-Fatihah, Ya-Sin, Al-Mulk, Al-Qadr, Al-Kawthar, Al-Kafirun, An-Nasr, Al-Ikhlas, Al-Falaq, An-Nas |
+| `offlineSurahs` | 10 surahs / **49 ayahs** (legacy fallback) | Superseded by the bundled corpus; retained only if a chunk cannot be loaded |
+| Bundled Quran corpus | **114 surahs / 6,236 ayahs** | `public/data/quran/surahs/*.json` + `manifest.json`; Arabic, English, Urdu, transliteration |
 | `hadiths` | 101 | Fields: `id, collection, number, book, ar, en, ur, narrator, grade, topic` |
 | `kalimas` | 6 | — |
 | `duas` | 102 | Fields: `id, cat, title, ar, tr, en, ur, target, ref`; 19 categories |
 
 ### Quran reader behaviour (`public/js/quran.js`)
 
-- If a surah exists in `offlineSurahs`, it renders from bundled data.
-- Otherwise it calls `https://api.alquran.cloud/v1/surah/{n}/editions/{editions}`.
+- The reader first asks `QuranStore.getSurah(n)` (memory → IndexedDB → service-worker cache → network) for the bundled corpus.
+- If a chunk is unavailable, it falls back to the legacy `offlineSurahs` entry, then to `https://api.alquran.cloud/v1/surah/{n}/editions/{editions}`.
 - Audio streams from `https://everyayah.com/data/{reciter}/{surah}{ayah}.mp3`.
-- Therefore **the website is not fully offline for the Quran**; only 10 surahs / 49 ayahs are bundled.
+- Therefore **the Quran text is fully offline** (114 surahs / 6,236 ayahs); recitation audio and lecture video are not.
 
 ### Search (`public/js/search.js`)
 

@@ -1,6 +1,6 @@
 # NoorDeen — Religious Source Verification
 
-**Audited:** 27 October 2026
+**Audited:** 28 October 2026
 **Scope:** Quran Arabic, translations, tafsir, hadith, duas, kalimas, Seerah, prophets, Sahaba, history, worship guides, articles, and the Dr. Israr Ahmed lecture catalogue.
 **Principle:** canonical text is never invented or silently "corrected"; where a source cannot be verified, the UI says so or the claim is removed. No item in this report is presented as a fatwa.
 
@@ -10,8 +10,8 @@
 
 | Content class | Records | Source basis | Verification status |
 | :--- | --: | :--- | :--- |
-| Quran Arabic text | 114 surahs / 6,236 ayahs (metadata); 10 surahs / 49 ayahs bundled | Hafs ʿUthmani text via `api.alquran.cloud` (`quran-uthmani`); bundled text stored verbatim | Verified structurally; canonical ayah total matches 6,236 |
-| Quran translations | 40 editions registered; English + Urdu exercised | Named translator per edition; Saheeh International (EN), Fateh Muhammad Jalandhry (UR) | English/Urdu live-verified; remaining editions registry-verified only |
+| Quran Arabic text | 114 surahs / 6,236 ayahs, all bundled | Hafs ʿUthmani text via `api.alquran.cloud` (`quran-uthmani`); text stored verbatim per ayah | Verified structurally; canonical ayah total and per-surah counts match |
+| Quran translations | 40 editions registered; English, Urdu and transliteration bundled for all 6,236 ayahs | Named translator per edition; Saheeh International (EN), Fateh Muhammad Jalandhry (UR) | Bundled editions validated for every ayah; remaining editions registry-verified only |
 | Tafsir | 6 verses | Editorial English summary of classical commentary | **Labelled as a summary, not a verbatim translation** |
 | Hadith | 101 | Bukhari 42, Muslim 25, Tirmidhi 14, Abu Dawud 10, Nasa'i 4, Ibn Majah 6 | All graded Sahih or Hasan; numbers retained |
 | Duas | 102 | Qur'anic verses and six hadith collections | 102/102 non-empty references; 99 unique |
@@ -31,7 +31,8 @@
 ### 2.1 Arabic text
 - The reader requests the **Hafs ʿUthmani** edition and never rewrites the Arabic.
 - Canonical metadata is checked by the suite: 114 surahs in order and 6,236 ayahs total.
-- Bundled offline text covers 10 surahs / 49 ayahs. Surahs 36 (6 of 83) and 67 (4 of 30) are **partial** and the UI says "Showing X of Y verses bundled" rather than implying completeness.
+- **All 114 surahs and 6,236 ayahs are bundled** as JSON chunks in `public/data/quran/surahs/`. Suite 45 verifies every per-surah ayah count against the canonical metadata, that every ayah carries Arabic/English/Urdu/transliteration, that no byte-order mark remains, and that the basmalah is not duplicated into the first ayah.
+- The corpus was fetched once from `api.alquran.cloud` and validated wholesale before writing; the ingestion script aborts without writing if any count differs.
 - Translation switching changes only the translation field; the Arabic verse remains in place.
 
 ### 2.2 Translations

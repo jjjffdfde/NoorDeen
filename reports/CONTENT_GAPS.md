@@ -1,6 +1,6 @@
 # NoorDeen — Content Gaps
 
-**Updated:** 27 October 2026
+**Updated:** 28 October 2026
 **Scope:** what is still missing or limited after the Batch 5 release. Closed items are listed briefly in section 1 so this file is not mistaken for a stale wish-list.
 
 ---
@@ -18,6 +18,8 @@
 | Missing Arabic in sahaba/history | Restored from git HEAD as UTF-8 | 6,696 Arabic chars in sahaba; 0 mojibake |
 | Stale download hashes | Network-first `CHECKSUMS.sha256` + `{cache:'no-store'}` | Displayed hashes match files |
 | No keyboard skip link | Global injection by `app.js` | Present on all pages; target and CSS verified |
+| Offline Quran only 10 surahs / 49 ayahs | 114 surahs / 6,236 ayahs bundled as JSON chunks and pre-cached by the service worker | Suite 45 (114 files, 6,236 ayahs) + browser render of Ya-Sin (83/83) and Al-Kahf (110/110) |
+| No persistent player state or khatam tracking | Player state in `localStorage`; khatam planner with 15/30/60-day goals | Reload restored surah 18 / repeat / 1.25×; khatam showed 110 ayahs / 1.8% |
 
 ---
 
@@ -29,7 +31,6 @@
 | :--- | :--- | :--- | :--- |
 | **Tafsir** | 6 verses (1:1, 1:2, 1:5, 1:6, 2:255, 112:1) | A licensed or public-domain tafsir with translator attribution, verse by verse | Licensing and editorial review; inventing text is not an option |
 | **Roadmap articles** | 23 of 100 topics (33 articles incl. additional topics) | 67 more roadmap articles at 1,500–2,500 body words | Time; each needs sources and review |
-| **Offline Quran** | 10 surahs / 49 ayahs (36 and 67 partial) | Bundle all 114 surahs | Payload growth and text-licence confirmation |
 | **Hadith corpus** | 101 curated records | Explicit selection policy plus a larger reviewed set | Full collections are thousands of records and need grading review |
 | **Lecture archive** | 10 of 74 tanzeem.org pages | Continue the same scrape-and-verify method | Time; must preserve duplicate handling and source links |
 | **Scholar review** | None | Named reviewers with dates per module | Cannot be simulated |
@@ -47,7 +48,7 @@
 | **Cross-browser** | Only Chromium was exercised. Firefox, Safari/iOS and Samsung Internet are untested. |
 | **Performance measurement** | No Lighthouse or CrUX data. `data.js` is 246 KB and parsed on every page; `sahaba.html` is 441 KB. |
 | **Translation** | 11 of 40 language entries have UI dictionaries; articles are English-only. No native review recorded. |
-| **Quran editions** | 40 registered; English and Urdu exercised live. Others validated structurally only. |
+| **Quran editions** | 40 registered; English, Urdu and transliteration bundled for all 6,236 ayahs; the other 37 validated structurally only. |
 | **Audio/video playback** | URL construction verified; playback not watched end-to-end (headless environment). |
 
 ### P3 — deliberately deferred
@@ -61,7 +62,7 @@ Fatwa/Q&A service, sequenced courses with progress, quizzes, qibla direction, iO
 The site must not claim:
 
 - that tafsir is complete or verbatim;
-- that the offline bundle contains the full Quran;
+- that the offline bundle contains recitation audio or lecture video;
 - that 40 languages are fully translated;
 - that the APK has been device-tested or is v2/v3 signed;
 - that any content carries scholarly endorsement or a fatwa;

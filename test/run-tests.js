@@ -969,7 +969,7 @@ async function runTestSuite() {
   assert(phase8AppJsContent.includes("this.drawerTriggerElement.focus()"), 'app.js restores focus to trigger element when mobile drawer closes');
 
   // 6. Viewport & Semantic Metadata Across All 25 HTML Pages
-  const suite27HtmlPages = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
+  const suite27HtmlPages = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html') && f !== 'offline.html');
   assert(suite27HtmlPages.length >= 25, 'Repository contains at least 25 public HTML pages');
   suite27HtmlPages.forEach(pageFile => {
     const pageHtml = fs.readFileSync(path.join(PUBLIC_DIR, pageFile), 'utf-8');
@@ -985,7 +985,7 @@ async function runTestSuite() {
 
   // 1. Service Worker 25-Page Shell Caching
   const phase9SwContent = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  const suite28Pages = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
+  const suite28Pages = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html') && f !== 'offline.html');
   suite28Pages.forEach(p => {
     assert(phase9SwContent.includes(`/${p}`), `Service worker pre-caches offline shell page /${p}`);
   });
@@ -1365,8 +1365,8 @@ async function runTestSuite() {
   assert(swContent.includes('isNavigation'), 'Suite 35: Service Worker differentiates navigation requests');
   assert(swContent.includes('fetch(event.request)'), 'Suite 35: Navigation requests prefer network first');
   assert(swContent.includes('cache.put(event.request, responseClone)'), 'Suite 35: Successful network navigation requests update cache');
-  assert(swContent.includes('caches.match(\'./index.html\')'), 'Suite 35: Offline navigation safely falls back to ./index.html');
-  assert(swContent.includes('key !== CACHE_NAME && key !== AUDIO_CACHE'), 'Suite 35: Legacy cache cleanup preserves audio cache while clearing stale shell');
+  assert(swContent.includes("caches.match('./offline.html')"), 'Suite 35: Offline navigation falls back to the informative offline page');
+  assert(swContent.includes('key !== CACHE_NAME && key !== AUDIO_CACHE && key !== QURAN_CACHE'), 'Suite 35: Legacy cache cleanup preserves audio and Quran corpus caches');
 
   // 2. Application Base-Path Resilience in app.js
   const appJsCheck = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'app.js'), 'utf-8');
@@ -1398,7 +1398,7 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('1,663 assertions'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('1,710 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
   // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
@@ -1423,8 +1423,8 @@ async function runTestSuite() {
   assert(s36_prayerHtml.includes('Solar Noon / Dhuhr Begins (Zawal)'), 'Suite 36: prayer-times.html separates Dhuhr start from zenith');
 
   // 7. Universal Config.js Presence
-  const s36_allHtml = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html'));
-  assert(s36_allHtml.length === 26, 'Suite 36: Exactly 26 HTML pages exist');
+  const s36_allHtml = fs.readdirSync(PUBLIC_DIR).filter(f => f.endsWith('.html') && f !== 'offline.html');
+  assert(s36_allHtml.length === 26, 'Suite 36: Exactly 26 indexable HTML pages exist');
   s36_allHtml.forEach(f => {
     const content = fs.readFileSync(path.join(PUBLIC_DIR, f), 'utf-8');
     assert(content.includes('js/config.js'), `Suite 36: ${f} includes js/config.js for cookie consent and config management`);
@@ -1808,6 +1808,125 @@ async function runTestSuite() {
 
   assert(batch5BodyWords >= 9000, `Suite 44: Batch 5 provides at least 9,000 body words (actual: ${batch5BodyWords})`);
   assert(batch5BodyWords <= 10000, `Suite 44: Batch 5 stays within 10,000 body words (actual: ${batch5BodyWords})`);
+
+  // --- TEST SUITE 45: Full Offline Quran Corpus (114 Surahs / 6,236 Ayahs) ---
+  console.log('\n--- TEST SUITE 45: Full Offline Quran Corpus ---');
+  const quranDir = path.join(PUBLIC_DIR, 'data', 'quran');
+  const quranSurahDir = path.join(quranDir, 'surahs');
+  const quranManifestPath = path.join(quranDir, 'manifest.json');
+  assert(fs.existsSync(quranManifestPath), 'Suite 45: Quran corpus manifest exists');
+  const quranManifest = JSON.parse(fs.readFileSync(quranManifestPath, 'utf-8'));
+  assert(quranManifest.totalSurahs === 114, 'Suite 45: manifest declares 114 surahs');
+  assert(quranManifest.totalAyahs === 6236, 'Suite 45: manifest declares 6,236 ayahs');
+  assert(Array.isArray(quranManifest.surahs) && quranManifest.surahs.length === 114, 'Suite 45: manifest indexes every surah chunk');
+  assert(quranManifest.totalBytes > 4000000, `Suite 45: corpus payload is complete (${quranManifest.totalBytes} bytes)`);
+
+  let q45Files = 0;
+  let q45Ayahs = 0;
+  let q45Bytes = 0;
+  let q45MissingFields = 0;
+  let q45BadCounts = 0;
+  let q45Bom = 0;
+  let q45BasmalahLeak = 0;
+  let q45BadArabic = 0;
+  const q45Counts = {};
+  parsedData.surahs.forEach((meta) => { q45Counts[meta.number] = meta.numberOfAyahs; });
+
+  for (let n = 1; n <= 114; n += 1) {
+    const file = path.join(quranSurahDir, `${String(n).padStart(3, '0')}.json`);
+    if (!fs.existsSync(file)) continue;
+    q45Files += 1;
+    const raw = fs.readFileSync(file, 'utf-8');
+    q45Bytes += Buffer.byteLength(raw, 'utf-8');
+    if (raw.charCodeAt(0) === 0xFEFF) q45Bom += 1;
+    const chunk = JSON.parse(raw);
+    if (chunk.ayahs.length !== q45Counts[n] || chunk.numberOfAyahs !== q45Counts[n]) q45BadCounts += 1;
+    if (n !== 1 && n !== 9) {
+      const first = chunk.ayahs[0].ar || '';
+      if (first.includes('بِسْمِ ٱللَّهِ')) q45BasmalahLeak += 1;
+    }
+    chunk.ayahs.forEach((ayah) => {
+      q45Ayahs += 1;
+      if (!ayah.ar || !ayah.en || !ayah.ur || !ayah.tr) q45MissingFields += 1;
+      if (!/[\u0600-\u06FF]/.test(ayah.ar)) q45BadArabic += 1;
+    });
+  }
+
+  assert(q45Files === 114, `Suite 45: all 114 surah chunk files exist (actual: ${q45Files})`);
+  assert(q45Ayahs === 6236, `Suite 45: all 6,236 ayahs are bundled (actual: ${q45Ayahs})`);
+  assert(q45BadCounts === 0, `Suite 45: every surah matches its canonical ayah count (mismatches: ${q45BadCounts})`);
+  assert(q45MissingFields === 0, `Suite 45: every ayah carries Arabic, English, Urdu and transliteration (missing: ${q45MissingFields})`);
+  assert(q45Bom === 0, 'Suite 45: no byte-order marks remain in the Arabic text');
+  assert(q45BasmalahLeak === 0, 'Suite 45: basmalah is not duplicated into the first ayah of any surah');
+  assert(q45BadArabic === 0, `Suite 45: every Arabic field contains Arabic script (invalid: ${q45BadArabic})`);
+  assert(Math.abs(q45Bytes - quranManifest.totalBytes) < 1024, 'Suite 45: manifest byte total matches the files on disk');
+
+  const q45Fatihah = JSON.parse(fs.readFileSync(path.join(quranSurahDir, '001.json'), 'utf-8'));
+  const q45Ikhlas = JSON.parse(fs.readFileSync(path.join(quranSurahDir, '112.json'), 'utf-8'));
+  const q45Baqarah = JSON.parse(fs.readFileSync(path.join(quranSurahDir, '002.json'), 'utf-8'));
+  const q45Yasin = JSON.parse(fs.readFileSync(path.join(quranSurahDir, '036.json'), 'utf-8'));
+  const q45Normalize = (text) => text
+    .replace(/[\u064B-\u0655\u0670\u06D6-\u06ED\u0640\u06DF]/g, '')
+    .replace(/[\u0622\u0623\u0625\u0671]/g, '\u0627');
+  assert(q45Fatihah.ayahs.length === 7 && q45Fatihah.ayahs[0].ar.includes('بِسْمِ'), 'Suite 45: Al-Fatihah 1:1 is the basmalah');
+  assert(q45Normalize(q45Ikhlas.ayahs[0].ar) === q45Normalize('قُلْ هُوَ ٱللَّهُ أَحَدٌ'), 'Suite 45: Al-Ikhlas 112:1 matches the Uthmani text');
+  assert(q45Baqarah.ayahs.length === 286 && q45Normalize(q45Baqarah.ayahs[254].ar).startsWith(q45Normalize('ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ')), 'Suite 45: Al-Baqarah 2:255 (Ayat al-Kursi) is present and complete');
+  assert(q45Yasin.ayahs.length === 83 && q45Yasin.ayahs[0].ar === 'يسٓ', 'Suite 45: Ya-Sin now contains all 83 ayahs');
+
+  // --- TEST SUITE 46: Phase 1 Player, Khatam Planner & Offline Shell ---
+  console.log('\n--- TEST SUITE 46: Phase 1 Player, Khatam Planner & Offline Shell ---');
+  const s46StorePath = path.join(PUBLIC_DIR, 'js', 'quran-store.js');
+  assert(fs.existsSync(s46StorePath), 'Suite 46: quran-store.js exists');
+  const s46StoreSrc = fs.readFileSync(s46StorePath, 'utf-8');
+  assert(s46StoreSrc.includes('indexedDB.open') && s46StoreSrc.includes('objectStore'), 'Suite 46: store persists surahs in IndexedDB');
+  assert(s46StoreSrc.includes('computeKhatamPlan') && s46StoreSrc.includes('computeKhatamProgress'), 'Suite 46: store implements khatam planning and progress');
+  assert(s46StoreSrc.includes('buildAudioUrl') && s46StoreSrc.includes('everyayah.com'), 'Suite 46: store builds documented EveryAyah audio URLs');
+  assert(s46StoreSrc.includes("'ayah3'") && s46StoreSrc.includes("'ayah5'"), 'Suite 46: repeat modes include 3x and 5x memorisation loops');
+  assert(s46StoreSrc.includes('0.75') && s46StoreSrc.includes('1.25'), 'Suite 46: playback speeds include 0.75x, 1x and 1.25x');
+
+  const s46Sandbox = { console, module: { exports: {} } };
+  s46Sandbox.globalThis = s46Sandbox;
+  const vm46 = await import('vm');
+  vm46.default.createContext(s46Sandbox);
+  vm46.default.runInContext(s46StoreSrc, s46Sandbox);
+  const s46Store = s46Sandbox.QuranStore;
+  assert(!!s46Store, 'Suite 46: quran-store.js exposes window.QuranStore');
+  assert(s46Store.buildAudioUrl('Alafasy_128kbps', 2, 255) === 'https://everyayah.com/data/Alafasy_128kbps/002255.mp3', 'Suite 46: audio URL padding is correct');
+  const s46Plan30 = s46Store.computeKhatamPlan(30, '2026-10-28');
+  const s46Plan15 = s46Store.computeKhatamPlan(15, '2026-10-28');
+  const s46Plan60 = s46Store.computeKhatamPlan(60, '2026-10-28');
+  assert(s46Plan30.ayahsPerDay === 208 && s46Plan30.pagesPerDay === 21, 'Suite 46: 30-day plan yields 208 ayahs / 21 pages per day');
+  assert(s46Plan15.ayahsPerDay === 416 && s46Plan60.ayahsPerDay === 104, 'Suite 46: 15-day and 60-day targets are correct');
+  assert(s46Plan30.finishDate === '2026-11-26', 'Suite 46: plan finish date is calculated from the start date');
+  const s46Counts = s46Store.ayahCountsFromMetadata(parsedData.surahs);
+  const s46Progress = s46Store.computeKhatamProgress({ completedSurahs: [1], lastRead: { surah: 2, ayah: 10 } }, s46Counts);
+  assert(s46Progress.ayahsRead === 17 && s46Progress.surahsCompleted === 1, 'Suite 46: khatam progress counts completed surahs plus the current position');
+  assert(s46Store.nextRepeatMode('ayah5') === 'surah' && s46Store.nextRepeatMode('surah') === 'none', 'Suite 46: repeat mode cycle wraps correctly');
+  assert(s46Store.nextPlaybackSpeed(1.25) === 0.75, 'Suite 46: playback speed cycle wraps correctly');
+
+  const s46QuranHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  assert(s46QuranHtml.includes('js/quran-store.js'), 'Suite 46: Quran page loads the offline store');
+  assert(s46QuranHtml.includes('khatam-progress-bar') && s46QuranHtml.includes('khatam-goal-select'), 'Suite 46: Quran page renders the khatam planner');
+  assert(s46QuranHtml.includes('cyclePlaybackSpeed'), 'Suite 46: speed control cycles 0.75x/1x/1.25x');
+  assert(s46QuranHtml.includes('aria-live="polite"'), 'Suite 46: now-playing title announces changes to screen readers');
+  assert(s46QuranHtml.includes('role="progressbar"') && s46QuranHtml.includes('aria-valuenow'), 'Suite 46: khatam progress exposes progressbar semantics');
+
+  const s46QuranJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  assert(s46QuranJs.includes('useCorpusSurah') && s46QuranJs.includes('QuranStore.getSurah'), 'Suite 46: reader loads surahs from the bundled corpus');
+  assert(s46QuranJs.includes('persistPlayerState') && s46QuranJs.includes('restorePlayerState'), 'Suite 46: player state survives navigation and reloads');
+  assert(s46QuranJs.includes('mediaSession') && s46QuranJs.includes('MediaMetadata'), 'Suite 46: lock-screen / media-key controls are wired');
+  assert(s46QuranJs.includes('handleAyahEnded') && s46QuranJs.includes('ayahRepeatPlayed'), 'Suite 46: 3x/5x ayah repetition is implemented');
+
+  const s46Sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
+  assert(s46Sw.includes("CACHE_VERSION = 'v22'"), 'Suite 46: service worker cache version is v22');
+  assert(s46Sw.includes('QURAN_CACHE') && s46Sw.includes('preCacheQuranCorpus'), 'Suite 46: service worker pre-caches the Quran corpus');
+  assert(s46Sw.includes("'./offline.html'"), 'Suite 46: offline page is pre-cached');
+  assert(s46Sw.includes("caches.match('./offline.html')"), 'Suite 46: navigation fallback serves the offline page, not the homepage');
+  assert(!s46Sw.includes("(await caches.match('./index.html')) ||"), 'Suite 46: blind homepage redirect removed');
+
+  const s46OfflineHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'offline.html'), 'utf-8');
+  assert(s46OfflineHtml.includes('You are offline') && s46OfflineHtml.includes('quran.html'), 'Suite 46: offline page explains the state and links to cached content');
+  assert(s46OfflineHtml.includes('noindex'), 'Suite 46: offline page is excluded from search indexing');
 
   // SUMMARY
   console.log('\n====================================================');

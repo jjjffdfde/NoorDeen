@@ -1,14 +1,14 @@
 # NoorDeen — Module Functional Tests
 
-**Executed:** 27 October 2026
+**Executed:** 28 October 2026
 **Harness:** `node test/run-tests.js` (HTTP server on port 3000) + browser automation on `http://localhost:3400`
-**Result:** **1,663 assertions executed / 1,663 passed / 0 failed**; browser checks listed below; no console errors on any page exercised.
+**Result:** **1,710 assertions executed / 1,710 passed / 0 failed**; browser checks listed below; no console errors on any page exercised.
 
 This report records what was actually exercised. Items that could not be tested are listed separately in section 7 and are not counted as passes.
 
 ---
 
-## 1. Automated suite coverage (44 suites)
+## 1. Automated suite coverage (46 suites)
 
 | Suite | Area | Representative assertions | Result |
 | --: | :--- | :--- | :--- |
@@ -47,8 +47,8 @@ This report records what was actually exercised. Items that could not be tested 
 | 33 | Multilingual invariance and scoped direction | RTL only in content containers | PASS |
 | 34 | Master baseline and pre-rendered libraries | Page counts, pre-rendered hadith/duas | PASS |
 | 35 | Subpath resilience and network-first navigation | Article subpath links, SW navigation strategy | PASS |
-| 36 | P0 defects and trust transparency | Claims removed, Nisab values, 1,663-test statement | PASS |
-| 37 | PWA raster icons and offline bundle | PNG icons, bundle metadata, cache `v21` | PASS |
+| 36 | P0 defects and trust transparency | Claims removed, Nisab values, 1,710-test statement | PASS |
+| 37 | PWA raster icons and offline bundle | PNG icons, bundle metadata, cache `v22` | PASS |
 | 38 | Educational articles library | Article depth, TOC, schema, indexing | PASS |
 | 39 | Batch 2 articles (topics 11–20) | Search/sitemap/index integration | PASS |
 | 40 | Dr. Israr catalogue | 148 records, 147 unique, series sums, no hosted video | PASS |
@@ -56,6 +56,8 @@ This report records what was actually exercised. Items that could not be tested 
 | 42 | Daily Companion dates and streaks | Local date key, completion-based streak, Friday optionality | PASS |
 | 43 | Batch 4 family/community articles | 4 files, TOC/schema/bibliography, 1,500–2,500 body words, search/sitemap/index integration, total 7,000–10,000 words | PASS |
 | 44 | Batch 5 law/trade/employment articles | 4 files, TOC/schema/bibliography, 1,500–2,500 body words, search/sitemap/index integration, total 9,000–10,000 words | PASS |
+| 45 | Full offline Quran corpus | 114 chunks, 6,236 ayahs, per-surah counts, four fields per ayah, no BOM, no duplicated basmalah, spot checks | PASS |
+| 46 | Phase 1 player, khatam planner and offline shell | IndexedDB store, khatam maths, repeat/speed cycles, Media Session, corpus precache, offline fallback | PASS |
 
 ---
 
@@ -77,7 +79,7 @@ This report records what was actually exercised. Items that could not be tested 
 | Theme toggle persists across reload | PASS |
 | Offline banner appears when `navigator.onLine` is forced false | PASS |
 | Skip link present on every page; `#main-content` target and `tabindex="-1"` | PASS (presence/CSS); keyboard focus not emulatable — see §7 |
-| No console errors on 26 root pages | PASS |
+| No console errors on 26 indexable root pages + offline page | PASS |
 | Search from an article page (`yaseen`, `intention`, `mercy`, `ayatul kursi`) | PASS after lazy `data.js` load |
 | Nested search-result links and quick pills from an article page | PASS (12/12 HTTP 200) |
 | `ayatul kursi` → 2:255; reader highlights `#ayah-255` | PASS |
@@ -97,7 +99,10 @@ This report records what was actually exercised. Items that could not be tested 
 | Study Mode 1:1 and 2:255 render tafsir + word-by-word; 2:1 shows "No commentary is bundled" | PASS |
 | Compare and related-hadith tabs render; generic hadith labelled "Not verse-specific" | PASS |
 | Bookmark 1:1 → bookmarks page deep link; hash scroll to ayah 7; remove → empty state | PASS |
-| Offline: complete surahs 1 (7) and 114 (6) render; 36 shows 6/83 and 67 shows 4/30 with banner + retry; online fetch replaces partial | PASS |
+| Offline: all 114 surahs load from the bundled corpus; Ya-Sin rendered 83/83 and Al-Kahf 110/110 with English + Urdu; SW cache holds 114 chunks | PASS |
+| Khatam planner: 15/30/60-day goals, 30-day → 208 ayahs / 21 pages, mark-surah-complete → 110 ayahs / 1.8%, reset | PASS |
+| Player state (surah 18, repeat `ayah`, speed 1.25×) restored after reload; Media Session handlers registered | PASS |
+| `offline.html` explains the offline state, links to the cached Quran and is `noindex` | PASS |
 
 ### 2.3 Hadith, duas, kalimas
 
@@ -172,9 +177,11 @@ This report records what was actually exercised. Items that could not be tested 
 | :--- | :--- |
 | APK and ZIP links | HTTP 200 |
 | `CHECKSUMS.sha256` fetch | HTTP 200 |
-| Displayed APK hash | `29ede4bd82d086fa17f516bf1ed24165697a700bbb065fbc39191259b5f620a9` (matches file) |
-| Displayed bundle hash | `a3493559328723c1e8cf7eeabac7af7a395f8d60f6a713ba24a6dc0cbb801c68` (matches file) |
-| Stale-checksum defect | **Found and fixed**: SW served `downloads/` cache-first; now network-first with cache fallback; cache now `v21` |
+| Displayed APK hash | `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` (matches file) |
+| Displayed bundle hash | `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` (matches file) |
+| APK size / version | 3,127,079 bytes; v1.3.0 (build 10300) |
+| Bundle size / files | 3,010,751 bytes; 206 files; 61 HTML pages; 114 Quran chunks |
+| Stale-checksum defect | **Found and fixed**: SW served `downloads/` cache-first; now network-first with cache fallback; cache now `v22` |
 
 ### 2.9 Contact
 
@@ -192,6 +199,7 @@ This report records what was actually exercised. Items that could not be tested 
 | :--- | --: | --: | :--- |
 | Surahs | 114 | 114 | PASS |
 | Ayahs | 6,236 | 6,236 | PASS |
+| Offline Quran chunks | 114 files / 6,236 ayahs | 114 files / 6,236 ayahs / 4,653,659 bytes | PASS |
 | Hadith records | 101 | 101 | PASS |
 | Hadith collections | 6 | Bukhari 42, Muslim 25, Tirmidhi 14, Abu Dawud 10, Nasa'i 4, Ibn Majah 6 | PASS |
 | Hadith grades | All sahih/hasan | 74 Sahih, 22 Sahih (Al-Albani), 3 Hasan (Al-Albani), 1 Hasan (Authentic), 1 Hasan Sahih | PASS |
@@ -201,7 +209,7 @@ This report records what was actually exercised. Items that could not be tested 
 | Tafsir verses | 6 | 6 | PASS |
 | Glossary terms | 135 | 135 | PASS |
 | Sitemap URLs | 60 | 60 unique (34 article-directory URLs) | PASS |
-| HTML pages | 60 | 60 | PASS |
+| HTML pages | 61 (60 indexable + offline fallback) | 61 | PASS |
 | Article body words | 1,500–2,500 each | 1,538–2,473 (33 articles) | PASS |
 
 ---
@@ -244,7 +252,9 @@ This report records what was actually exercised. Items that could not be tested 
 | Alias search ranked wrong surah | One-letter containment matches | Minimum 4-character guards | PASS |
 | Ayatul Kursi no deep link | Missing `ayah` parameter | `surah=2&ayah=255` + highlight | PASS |
 | Markdown leakage on library rebuild | `batch-2b.cjs` source contained `*decision*` | Replaced with `<em>decision</em>`; rebuilt all generated pages | PASS (0 stray asterisks in 33 articles) |
-| Stale page/size/test copy | Download page said 56 pages / 1.29 MB; About said 1,589 assertions | Updated to 60 pages / 1.34 MB and 1,663 assertions; Suite 36 now asserts the new value | PASS |
+| Stale page/size/test copy | Download page said 56 pages / 1.29 MB; About said 1,589 assertions | Updated to 61 pages / 2.87 MB and 1,710 assertions; Suite 36 asserts the new value | PASS |
+| False "v1, v2 and v3 signed" copy | Download page overstated the APK signature scheme | Copy now states the v1 JAR signature only | PASS |
+| Stale "ten bundled surahs" copy | Homepage FAQ, meta description and download page predated the full corpus | Updated to 114 surahs / 6,236 ayahs | PASS |
 
 ---
 
@@ -252,10 +262,11 @@ This report records what was actually exercised. Items that could not be tested 
 
 | Artefact | Value |
 | :--- | :--- |
-| Offline bundle | 89 files, 1,401,639 bytes, SHA-256 `a3493559328723c1e8cf7eeabac7af7a395f8d60f6a713ba24a6dc0cbb801c68` |
-| APK | 1,503,077 bytes, SHA-256 `29ede4bd82d086fa17f516bf1ed24165697a700bbb065fbc39191259b5f620a9` |
-| APK ZIP entries | 98 |
-| APK HTML pages | 60 |
+| Offline bundle | 206 files, 3,010,751 bytes, SHA-256 `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
+| APK | 3,127,079 bytes, SHA-256 `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
+| APK version | 1.3.0 (build 10300) |
+| APK ZIP entries | 215 (including 114 Quran corpus chunks) |
+| APK HTML pages | 61 |
 | Nested APK/ZIP in APK | None |
 | APK signature | Valid v1 JAR signature (SHA256withRSA, 2048-bit); no `APK Sig Block 42` |
 | Checksums file | Matches both files byte-for-byte |
@@ -273,7 +284,7 @@ This report records what was actually exercised. Items that could not be tested 
 | Lighthouse / field Core Web Vitals | No Lighthouse or CrUX access | **UNAVAILABLE** |
 | End-to-end audio playback | Headless environment has no audio output; URL construction verified only | **PARTIAL** |
 | Video playback inside embeds | Requires YouTube network session and user gesture; embed URL verified only | **PARTIAL** |
-| All 40 Quran translation editions live | Only a subset fetched; registry validated statically | **PARTIAL** |
+| All 40 Quran translation editions live | English, Urdu and transliteration are bundled for all 6,236 ayahs; the other 37 editions are registry-validated only | **PARTIAL** |
 | Full WCAG 2.1 AA conformance | Requires manual audit | **UNAVAILABLE** |
 
 These are reported as unavailable, not as passes. The site's own copy now matches this list.

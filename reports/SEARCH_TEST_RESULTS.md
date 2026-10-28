@@ -1,5 +1,7 @@
 # NoorDeen — Search Test Results
 
+> **Historical snapshot.** Counts, hashes and test totals in this report predate the 28 October 2026 Phase 1 release (1,710 assertions; 61 pages; 114-surah corpus; APK 3,127,079 bytes / `1a7e02…`; bundle 3,010,751 bytes / `4fbb2c…`). See `reports/FINAL_TEST_RESULTS.md` and `reports/FINAL_AUDIT_RESULTS.md` for current figures.
+
 **Date:** 27 October 2026
 **Scope:** global search modal (`Ctrl+K`), quick-search pills, article-page search, lecture-catalog search and filters, deep-link destinations, alias/phonetic ranking.
 **Method:** browser automation against `http://localhost:3400` with the service worker unregistered and caches cleared, plus 41 automated assertions in `test/run-tests.js` (Suite 41).

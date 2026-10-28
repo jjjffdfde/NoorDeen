@@ -1,0 +1,836 @@
+{
+  "catalogVersion": "1.0.0",
+  "generatedAt": "2026-10-28T05:27:41.407Z",
+  "generatedBy": "scripts/fetch-quran-corpus.cjs",
+  "source": {
+    "provider": "Al Quran Cloud",
+    "endpoint": "https://api.alquran.cloud/v1/quran/{edition}",
+    "license": "See individual edition metadata; Tanzil Uthmani text and published translations",
+    "retrievedAt": "2026-10-28T05:27:41.408Z"
+  },
+  "editions": [
+    {
+      "id": "quran-uthmani",
+      "field": "ar",
+      "language": "ar"
+    },
+    {
+      "id": "en.sahih",
+      "field": "en",
+      "language": "en"
+    },
+    {
+      "id": "ur.jalandhry",
+      "field": "ur",
+      "language": "ur"
+    },
+    {
+      "id": "en.transliteration",
+      "field": "tr",
+      "language": "en"
+    }
+  ],
+  "totalSurahs": 114,
+  "totalAyahs": 6236,
+  "totalBytes": 4653659,
+  "surahs": [
+    {
+      "number": 1,
+      "file": "001.json",
+      "ayahs": 7,
+      "bytes": 2414,
+      "juzStart": 1
+    },
+    {
+      "number": 2,
+      "file": "002.json",
+      "ayahs": 286,
+      "bytes": 355574,
+      "juzStart": 1
+    },
+    {
+      "number": 3,
+      "file": "003.json",
+      "ayahs": 200,
+      "bytes": 203443,
+      "juzStart": 3
+    },
+    {
+      "number": 4,
+      "file": "004.json",
+      "ayahs": 176,
+      "bytes": 214612,
+      "juzStart": 4
+    },
+    {
+      "number": 5,
+      "file": "005.json",
+      "ayahs": 120,
+      "bytes": 159806,
+      "juzStart": 6
+    },
+    {
+      "number": 6,
+      "file": "006.json",
+      "ayahs": 165,
+      "bytes": 179489,
+      "juzStart": 7
+    },
+    {
+      "number": 7,
+      "file": "007.json",
+      "ayahs": 206,
+      "bytes": 199762,
+      "juzStart": 8
+    },
+    {
+      "number": 8,
+      "file": "008.json",
+      "ayahs": 75,
+      "bytes": 74004,
+      "juzStart": 9
+    },
+    {
+      "number": 9,
+      "file": "009.json",
+      "ayahs": 129,
+      "bytes": 148242,
+      "juzStart": 10
+    },
+    {
+      "number": 10,
+      "file": "010.json",
+      "ayahs": 109,
+      "bytes": 104166,
+      "juzStart": 11
+    },
+    {
+      "number": 11,
+      "file": "011.json",
+      "ayahs": 123,
+      "bytes": 111679,
+      "juzStart": 11
+    },
+    {
+      "number": 12,
+      "file": "012.json",
+      "ayahs": 111,
+      "bytes": 103501,
+      "juzStart": 12
+    },
+    {
+      "number": 13,
+      "file": "013.json",
+      "ayahs": 43,
+      "bytes": 49657,
+      "juzStart": 13
+    },
+    {
+      "number": 14,
+      "file": "014.json",
+      "ayahs": 52,
+      "bytes": 49261,
+      "juzStart": 13
+    },
+    {
+      "number": 15,
+      "file": "015.json",
+      "ayahs": 99,
+      "bytes": 43406,
+      "juzStart": 14
+    },
+    {
+      "number": 16,
+      "file": "016.json",
+      "ayahs": 128,
+      "bytes": 109410,
+      "juzStart": 14
+    },
+    {
+      "number": 17,
+      "file": "017.json",
+      "ayahs": 111,
+      "bytes": 92915,
+      "juzStart": 15
+    },
+    {
+      "number": 18,
+      "file": "018.json",
+      "ayahs": 110,
+      "bytes": 94075,
+      "juzStart": 15
+    },
+    {
+      "number": 19,
+      "file": "019.json",
+      "ayahs": 98,
+      "bytes": 58339,
+      "juzStart": 16
+    },
+    {
+      "number": 20,
+      "file": "020.json",
+      "ayahs": 135,
+      "bytes": 81831,
+      "juzStart": 16
+    },
+    {
+      "number": 21,
+      "file": "021.json",
+      "ayahs": 112,
+      "bytes": 73396,
+      "juzStart": 17
+    },
+    {
+      "number": 22,
+      "file": "022.json",
+      "ayahs": 78,
+      "bytes": 73718,
+      "juzStart": 17
+    },
+    {
+      "number": 23,
+      "file": "023.json",
+      "ayahs": 118,
+      "bytes": 64836,
+      "juzStart": 18
+    },
+    {
+      "number": 24,
+      "file": "024.json",
+      "ayahs": 64,
+      "bytes": 76122,
+      "juzStart": 18
+    },
+    {
+      "number": 25,
+      "file": "025.json",
+      "ayahs": 77,
+      "bytes": 54723,
+      "juzStart": 18
+    },
+    {
+      "number": 26,
+      "file": "026.json",
+      "ayahs": 227,
+      "bytes": 84410,
+      "juzStart": 19
+    },
+    {
+      "number": 27,
+      "file": "027.json",
+      "ayahs": 93,
+      "bytes": 68231,
+      "juzStart": 19
+    },
+    {
+      "number": 28,
+      "file": "028.json",
+      "ayahs": 88,
+      "bytes": 81943,
+      "juzStart": 20
+    },
+    {
+      "number": 29,
+      "file": "029.json",
+      "ayahs": 69,
+      "bytes": 58487,
+      "juzStart": 20
+    },
+    {
+      "number": 30,
+      "file": "030.json",
+      "ayahs": 60,
+      "bytes": 48112,
+      "juzStart": 21
+    },
+    {
+      "number": 31,
+      "file": "031.json",
+      "ayahs": 34,
+      "bytes": 30511,
+      "juzStart": 21
+    },
+    {
+      "number": 32,
+      "file": "032.json",
+      "ayahs": 30,
+      "bytes": 21935,
+      "juzStart": 21
+    },
+    {
+      "number": 33,
+      "file": "033.json",
+      "ayahs": 73,
+      "bytes": 76307,
+      "juzStart": 21
+    },
+    {
+      "number": 34,
+      "file": "034.json",
+      "ayahs": 54,
+      "bytes": 49648,
+      "juzStart": 22
+    },
+    {
+      "number": 35,
+      "file": "035.json",
+      "ayahs": 45,
+      "bytes": 43492,
+      "juzStart": 22
+    },
+    {
+      "number": 36,
+      "file": "036.json",
+      "ayahs": 83,
+      "bytes": 43775,
+      "juzStart": 22
+    },
+    {
+      "number": 37,
+      "file": "037.json",
+      "ayahs": 182,
+      "bytes": 60725,
+      "juzStart": 23
+    },
+    {
+      "number": 38,
+      "file": "038.json",
+      "ayahs": 88,
+      "bytes": 45752,
+      "juzStart": 23
+    },
+    {
+      "number": 39,
+      "file": "039.json",
+      "ayahs": 75,
+      "bytes": 67244,
+      "juzStart": 23
+    },
+    {
+      "number": 40,
+      "file": "040.json",
+      "ayahs": 85,
+      "bytes": 70539,
+      "juzStart": 24
+    },
+    {
+      "number": 41,
+      "file": "041.json",
+      "ayahs": 54,
+      "bytes": 46890,
+      "juzStart": 24
+    },
+    {
+      "number": 42,
+      "file": "042.json",
+      "ayahs": 53,
+      "bytes": 48857,
+      "juzStart": 25
+    },
+    {
+      "number": 43,
+      "file": "043.json",
+      "ayahs": 89,
+      "bytes": 52216,
+      "juzStart": 25
+    },
+    {
+      "number": 44,
+      "file": "044.json",
+      "ayahs": 59,
+      "bytes": 22604,
+      "juzStart": 25
+    },
+    {
+      "number": 45,
+      "file": "045.json",
+      "ayahs": 37,
+      "bytes": 28702,
+      "juzStart": 25
+    },
+    {
+      "number": 46,
+      "file": "046.json",
+      "ayahs": 35,
+      "bytes": 36737,
+      "juzStart": 26
+    },
+    {
+      "number": 47,
+      "file": "047.json",
+      "ayahs": 38,
+      "bytes": 33658,
+      "juzStart": 26
+    },
+    {
+      "number": 48,
+      "file": "048.json",
+      "ayahs": 29,
+      "bytes": 33414,
+      "juzStart": 26
+    },
+    {
+      "number": 49,
+      "file": "049.json",
+      "ayahs": 18,
+      "bytes": 19640,
+      "juzStart": 26
+    },
+    {
+      "number": 50,
+      "file": "050.json",
+      "ayahs": 45,
+      "bytes": 22947,
+      "juzStart": 26
+    },
+    {
+      "number": 51,
+      "file": "051.json",
+      "ayahs": 60,
+      "bytes": 23709,
+      "juzStart": 26
+    },
+    {
+      "number": 52,
+      "file": "052.json",
+      "ayahs": 49,
+      "bytes": 20414,
+      "juzStart": 27
+    },
+    {
+      "number": 53,
+      "file": "053.json",
+      "ayahs": 62,
+      "bytes": 22881,
+      "juzStart": 27
+    },
+    {
+      "number": 54,
+      "file": "054.json",
+      "ayahs": 55,
+      "bytes": 23208,
+      "juzStart": 27
+    },
+    {
+      "number": 55,
+      "file": "055.json",
+      "ayahs": 78,
+      "bytes": 26451,
+      "juzStart": 27
+    },
+    {
+      "number": 56,
+      "file": "056.json",
+      "ayahs": 96,
+      "bytes": 27827,
+      "juzStart": 27
+    },
+    {
+      "number": 57,
+      "file": "057.json",
+      "ayahs": 29,
+      "bytes": 34403,
+      "juzStart": 27
+    },
+    {
+      "number": 58,
+      "file": "058.json",
+      "ayahs": 22,
+      "bytes": 27207,
+      "juzStart": 28
+    },
+    {
+      "number": 59,
+      "file": "059.json",
+      "ayahs": 24,
+      "bytes": 26351,
+      "juzStart": 28
+    },
+    {
+      "number": 60,
+      "file": "060.json",
+      "ayahs": 13,
+      "bytes": 20539,
+      "juzStart": 28
+    },
+    {
+      "number": 61,
+      "file": "061.json",
+      "ayahs": 14,
+      "bytes": 12770,
+      "juzStart": 28
+    },
+    {
+      "number": 62,
+      "file": "062.json",
+      "ayahs": 11,
+      "bytes": 9935,
+      "juzStart": 28
+    },
+    {
+      "number": 63,
+      "file": "063.json",
+      "ayahs": 11,
+      "bytes": 11037,
+      "juzStart": 28
+    },
+    {
+      "number": 64,
+      "file": "064.json",
+      "ayahs": 18,
+      "bytes": 15151,
+      "juzStart": 28
+    },
+    {
+      "number": 65,
+      "file": "065.json",
+      "ayahs": 12,
+      "bytes": 16727,
+      "juzStart": 28
+    },
+    {
+      "number": 66,
+      "file": "066.json",
+      "ayahs": 12,
+      "bytes": 14827,
+      "juzStart": 28
+    },
+    {
+      "number": 67,
+      "file": "067.json",
+      "ayahs": 30,
+      "bytes": 19250,
+      "juzStart": 29
+    },
+    {
+      "number": 68,
+      "file": "068.json",
+      "ayahs": 52,
+      "bytes": 20557,
+      "juzStart": 29
+    },
+    {
+      "number": 69,
+      "file": "069.json",
+      "ayahs": 52,
+      "bytes": 17965,
+      "juzStart": 29
+    },
+    {
+      "number": 70,
+      "file": "070.json",
+      "ayahs": 44,
+      "bytes": 15253,
+      "juzStart": 29
+    },
+    {
+      "number": 71,
+      "file": "071.json",
+      "ayahs": 28,
+      "bytes": 14052,
+      "juzStart": 29
+    },
+    {
+      "number": 72,
+      "file": "072.json",
+      "ayahs": 28,
+      "bytes": 16813,
+      "juzStart": 29
+    },
+    {
+      "number": 73,
+      "file": "073.json",
+      "ayahs": 20,
+      "bytes": 12385,
+      "juzStart": 29
+    },
+    {
+      "number": 74,
+      "file": "074.json",
+      "ayahs": 56,
+      "bytes": 17125,
+      "juzStart": 29
+    },
+    {
+      "number": 75,
+      "file": "075.json",
+      "ayahs": 40,
+      "bytes": 11682,
+      "juzStart": 29
+    },
+    {
+      "number": 76,
+      "file": "076.json",
+      "ayahs": 31,
+      "bytes": 15927,
+      "juzStart": 29
+    },
+    {
+      "number": 77,
+      "file": "077.json",
+      "ayahs": 50,
+      "bytes": 13897,
+      "juzStart": 29
+    },
+    {
+      "number": 78,
+      "file": "078.json",
+      "ayahs": 40,
+      "bytes": 12408,
+      "juzStart": 30
+    },
+    {
+      "number": 79,
+      "file": "079.json",
+      "ayahs": 46,
+      "bytes": 13474,
+      "juzStart": 30
+    },
+    {
+      "number": 80,
+      "file": "080.json",
+      "ayahs": 42,
+      "bytes": 10294,
+      "juzStart": 30
+    },
+    {
+      "number": 81,
+      "file": "081.json",
+      "ayahs": 29,
+      "bytes": 7798,
+      "juzStart": 30
+    },
+    {
+      "number": 82,
+      "file": "082.json",
+      "ayahs": 19,
+      "bytes": 5642,
+      "juzStart": 30
+    },
+    {
+      "number": 83,
+      "file": "083.json",
+      "ayahs": 36,
+      "bytes": 11620,
+      "juzStart": 30
+    },
+    {
+      "number": 84,
+      "file": "084.json",
+      "ayahs": 25,
+      "bytes": 7712,
+      "juzStart": 30
+    },
+    {
+      "number": 85,
+      "file": "085.json",
+      "ayahs": 22,
+      "bytes": 7469,
+      "juzStart": 30
+    },
+    {
+      "number": 86,
+      "file": "086.json",
+      "ayahs": 17,
+      "bytes": 4561,
+      "juzStart": 30
+    },
+    {
+      "number": 87,
+      "file": "087.json",
+      "ayahs": 19,
+      "bytes": 5349,
+      "juzStart": 30
+    },
+    {
+      "number": 88,
+      "file": "088.json",
+      "ayahs": 26,
+      "bytes": 6811,
+      "juzStart": 30
+    },
+    {
+      "number": 89,
+      "file": "089.json",
+      "ayahs": 30,
+      "bytes": 9777,
+      "juzStart": 30
+    },
+    {
+      "number": 90,
+      "file": "090.json",
+      "ayahs": 20,
+      "bytes": 5710,
+      "juzStart": 30
+    },
+    {
+      "number": 91,
+      "file": "091.json",
+      "ayahs": 15,
+      "bytes": 4756,
+      "juzStart": 30
+    },
+    {
+      "number": 92,
+      "file": "092.json",
+      "ayahs": 21,
+      "bytes": 5691,
+      "juzStart": 30
+    },
+    {
+      "number": 93,
+      "file": "093.json",
+      "ayahs": 11,
+      "bytes": 3285,
+      "juzStart": 30
+    },
+    {
+      "number": 94,
+      "file": "094.json",
+      "ayahs": 8,
+      "bytes": 2155,
+      "juzStart": 30
+    },
+    {
+      "number": 95,
+      "file": "095.json",
+      "ayahs": 8,
+      "bytes": 2566,
+      "juzStart": 30
+    },
+    {
+      "number": 96,
+      "file": "096.json",
+      "ayahs": 19,
+      "bytes": 5265,
+      "juzStart": 30
+    },
+    {
+      "number": 97,
+      "file": "097.json",
+      "ayahs": 5,
+      "bytes": 1975,
+      "juzStart": 30
+    },
+    {
+      "number": 98,
+      "file": "098.json",
+      "ayahs": 8,
+      "bytes": 5465,
+      "juzStart": 30
+    },
+    {
+      "number": 99,
+      "file": "099.json",
+      "ayahs": 8,
+      "bytes": 2683,
+      "juzStart": 30
+    },
+    {
+      "number": 100,
+      "file": "100.json",
+      "ayahs": 11,
+      "bytes": 3186,
+      "juzStart": 30
+    },
+    {
+      "number": 101,
+      "file": "101.json",
+      "ayahs": 11,
+      "bytes": 2844,
+      "juzStart": 30
+    },
+    {
+      "number": 102,
+      "file": "102.json",
+      "ayahs": 8,
+      "bytes": 2356,
+      "juzStart": 30
+    },
+    {
+      "number": 103,
+      "file": "103.json",
+      "ayahs": 3,
+      "bytes": 1175,
+      "juzStart": 30
+    },
+    {
+      "number": 104,
+      "file": "104.json",
+      "ayahs": 9,
+      "bytes": 2552,
+      "juzStart": 30
+    },
+    {
+      "number": 105,
+      "file": "105.json",
+      "ayahs": 5,
+      "bytes": 1710,
+      "juzStart": 30
+    },
+    {
+      "number": 106,
+      "file": "106.json",
+      "ayahs": 4,
+      "bytes": 1466,
+      "juzStart": 30
+    },
+    {
+      "number": 107,
+      "file": "107.json",
+      "ayahs": 7,
+      "bytes": 2041,
+      "juzStart": 30
+    },
+    {
+      "number": 108,
+      "file": "108.json",
+      "ayahs": 3,
+      "bytes": 1032,
+      "juzStart": 30
+    },
+    {
+      "number": 109,
+      "file": "109.json",
+      "ayahs": 6,
+      "bytes": 1979,
+      "juzStart": 30
+    },
+    {
+      "number": 110,
+      "file": "110.json",
+      "ayahs": 3,
+      "bytes": 1447,
+      "juzStart": 30
+    },
+    {
+      "number": 111,
+      "file": "111.json",
+      "ayahs": 5,
+      "bytes": 1631,
+      "juzStart": 30
+    },
+    {
+      "number": 112,
+      "file": "112.json",
+      "ayahs": 4,
+      "bytes": 1077,
+      "juzStart": 30
+    },
+    {
+      "number": 113,
+      "file": "113.json",
+      "ayahs": 5,
+      "bytes": 1556,
+      "juzStart": 30
+    },
+    {
+      "number": 114,
+      "file": "114.json",
+      "ayahs": 6,
+      "bytes": 1641,
+      "juzStart": 30
+    }
+  ]
+}

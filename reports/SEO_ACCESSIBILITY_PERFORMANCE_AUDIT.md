@@ -96,14 +96,16 @@ The About page no longer claims WCAG 2.1 AA certification.
 | `js/app.js` | 48 KB |
 | `js/i18n.js` | 41 KB |
 | `js/tools.js` | 19 KB |
-| Largest pages | `sahaba.html` 441 KB, `hadith.html` 420 KB, `duas.html` 409 KB, `index.html` 322 KB |
-| Offline bundle | 1,401,639 bytes (1.34 MiB), 89 files |
-| APK | 1,503,077 bytes (1.43 MiB), 98 entries |
+| Largest pages | `sahaba.html` 441 KB, `hadith.html` 420 KB, `duas.html` 409 KB, `index.html` 315 KB |
+| Offline bundle | 3,010,751 bytes (2.87 MiB), 206 files |
+| APK | 3,127,079 bytes (2.98 MiB), 215 entries |
+| Quran corpus | 114 JSON chunks, 4,653,659 bytes total (about 41 KB per surah) |
 
 ### 3.2 Loading strategy
 
 - HTML is **network-first** in the service worker, so deployments are picked up immediately.
-- Static same-origin assets are **cache-first**; all asset URLs carry `?v=20261027h` and the shell cache is `v21`.
+- Static same-origin assets are **cache-first**; all asset URLs carry `?v=20261027h` and the shell cache is `v22`.
+- The 114 Quran chunks live in a separate `islamic-portal-quran-v1` cache, checked before the shell, so corpus updates do not invalidate the app shell.
 - Downloads and `.sha256` files are **network-first** after this cycle's stale-checksum fix.
 - External Quran API calls are network-first with cache fallback.
 - No web fonts are downloaded; the design uses system font stacks, avoiding render-blocking font requests.
@@ -151,7 +153,7 @@ These are marked **unavailable**, not passed. A browser timing run was attempted
 | Screen-reader readiness | Unverified | No assistive technology session |
 | Responsive layout | Unverified | Breakpoints present; viewport not changeable in this environment |
 | Payload efficiency | Fair | No web fonts, but large data.js and 400 KB content pages |
-| Caching/offline | Good | Versioned assets, SW v21, network-first HTML, network-first checksums |
+| Caching/offline | Good | Versioned assets, SW v22, network-first HTML, dedicated Quran corpus cache, network-first checksums |
 | Measured performance | Unavailable | No Lighthouse/CrUX |
 
 No numeric score is claimed. The site's public copy was corrected to avoid implying certification.

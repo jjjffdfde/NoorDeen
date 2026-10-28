@@ -86,6 +86,26 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 
 ---
 
+## 3a. Phase 1 detail — full Quran corpus (this cycle)
+
+| Item | Value |
+| :--- | :--- |
+| Source | `api.alquran.cloud`: `quran-uthmani`, `en.sahih`, `ur.jalandhry`, `en.transliteration` |
+| Validation | Every surah's ayah count checked against the canonical metadata in `public/js/data.js` before writing; the script aborts on any mismatch |
+| Output | 114 files in `public/data/quran/surahs/` plus `manifest.json` |
+| Total | **6,236 ayahs / 4,653,659 bytes** |
+| Fields per ayah | `num`, `ar`, `en`, `ur`, `tr` (+ `sajda`, `juz`, `page` where present) |
+| Text hygiene | Byte-order mark stripped; basmalah removed from the first ayah of every surah except 1 and 9 using the exact 1:1 text |
+| Offline layers | Service worker `islamic-portal-quran-v1` (114 entries) and IndexedDB `noordeen-quran` |
+| Reader | `QuranStore.getSurah()` preferred; 83/83 Ya-Sin and 110/110 Al-Kahf verified in Chromium |
+| Player | Persistent surah/ayah/reciter/speed/repeat; 3× and 5× ayah loops; Media Session |
+| Khatam | 15/30/60-day goals; progress from completed surahs plus current position |
+| New tests | Suites 45 (corpus) and 46 (player/khatam/offline shell) |
+
+No Quranic text was generated or "corrected" by hand. The only transformations are the documented BOM strip and basmalah de-duplication, both verified by Suite 45.
+
+---
+
 ## 4. Corrections made in this cycle
 
 | Defect | Impact | Fix |
@@ -119,26 +139,27 @@ Full breakdown: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **56** (26 root + 30 article) |
-| Visible words, all pages | **230,190** |
-| Articles published | **29** (23 roadmap topics + 6 additional topics) |
+| HTML pages | **61** (26 root + 34 article pages + `offline.html`) |
+| Visible words, 60 indexable pages | **241,702** |
+| Articles published | **33** (23 roadmap topics + 10 additional topics) |
 | Article body words | **64,160**, average **1,944**, min **1,538**, max **2,473** |
+| Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
 | Kalimas | 6 |
 | Lecture records | 148 (147 unique) |
-| Automated assertions | **1,663 passing, 0 failing** |
+| Automated assertions | **1,710 passing, 0 failing** (46 suites) |
 | Sitemap URLs | 60 |
-| Release APK | 1,503,077 bytes (1.43 MiB), 60 HTML pages, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 1,401,639 bytes (1.34 MiB), 89 files |
+| Release APK | 3,127,079 bytes (2.98 MiB), 215 entries / 61 pages / 114 chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 3,010,751 bytes (2.87 MiB), 206 files |
 
 ---
 
 ## 6. What is still missing
 
 - **67 roadmap topics** remain unwritten (the 100-topic list minus the 23 covered).
-- **Tafsir** covers 6 verses, not the full Quran.
-- **Offline Quran** covers 10 surahs / 49 ayahs, not 114.
+- **Tafsir** covers 6 verses, not the full Quran; no asbab al-nuzul or verse-level thematic index yet.
+- **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.
 - **No lecture transcripts or translations**; the library is a catalog of embeds.
 - **No scholarly sign-off** on any content; the site says so.
 - **No device test** of the Android build; no v2/v3 signature block.

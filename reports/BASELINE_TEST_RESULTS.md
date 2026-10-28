@@ -1,5 +1,7 @@
 # BASELINE TEST RESULTS — NoorDeen
 
+> **Historical snapshot.** Counts, hashes and test totals in this report predate the 28 October 2026 Phase 1 release (1,710 assertions; 61 pages; 114-surah corpus; APK 3,127,079 bytes / `1a7e02…`; bundle 3,010,751 bytes / `4fbb2c…`). See `reports/FINAL_TEST_RESULTS.md` and `reports/FINAL_AUDIT_RESULTS.md` for current figures.
+
 **Baseline commit:** `81de7e4`
 **Branch:** `main`
 **Working tree:** clean

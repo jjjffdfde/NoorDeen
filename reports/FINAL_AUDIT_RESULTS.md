@@ -1,13 +1,32 @@
-# NoorDeen — Final Audit Results (27 October 2026 cycle)
+# NoorDeen — Final Audit Results (28 October 2026, Phase 1 cycle)
 
-**Audit date:** 27 October 2026
-**Commit baseline at start:** `a3ae83d` (working tree clean)
+**Audit date:** 28 October 2026
+**Commit baseline at start:** `8123ed8`
 **Environment:** Windows, Node.js local server on `http://localhost:3400`, Chromium via the automated browser tool, test harness on port 3000.
-**Verdict:** the reported blockers for this cycle are fixed and verified. The site is not finished; content expansion and device-level Android verification remain open.
+**Verdict:** Phase 1 of the master plan is implemented and verified: the complete Quran (114 surahs / 6,236 ayahs) is bundled, pre-cached and readable offline, with a persistent player, khatam planner and an honest offline fallback. The site is not finished; tafsir, article expansion and device-level Android verification remain open.
 
 ---
 
-## 1. What this cycle set out to fix
+## 0. Phase 1 — full offline Quran corpus
+
+| # | Deliverable | Evidence | Status |
+| --: | :--- | :--- | :---: |
+| 1 | 114-surah corpus | 114 JSON chunks, 6,236 ayahs, 4,653,659 bytes; per-surah counts validated against canonical metadata | **Done** |
+| 2 | Four fields per ayah | Arabic (Uthmani), English (Saheeh International), Urdu (Jalandhry), transliteration; 0 missing | **Done** |
+| 3 | Reproducible ingestion | `scripts/fetch-quran-corpus.cjs` aborts without writing if any count differs | **Done** |
+| 4 | Offline store | `public/js/quran-store.js`: IndexedDB `noordeen-quran`, manifest/download helpers, khatam maths | **Done** |
+| 5 | Reader integration | Ya-Sin 83/83 and Al-Kahf 110/110 rendered in Chromium; 0 console errors | **Done** |
+| 6 | Persistent player | Surah/ayah/reciter/speed/repeat stored and restored after reload; Media Session handlers | **Done** |
+| 7 | Khatam planner | 15/30/60-day goals; 30-day → 208 ayahs / 21 pages per day; mark-surah-complete → 110 ayahs / 1.8% | **Done** |
+| 8 | Offline shell | `offline.html` pre-cached and `noindex`; SW `v22`; corpus cache holds 114 entries | **Done** |
+| 9 | Copy corrections | Homepage, About and download page now state 114 surahs; false v2/v3 signing claim removed | **Done** |
+| 10 | Tests | 1,710 assertions across 46 suites, 0 failures | **Done** |
+
+**Not done in this phase:** tafsir beyond 6 verses, asbab al-nuzul, thematic verse index, audio bundling, airplane-mode radio-off test, device install.
+
+---
+
+## 1. What the previous cycle set out to fix
 
 | # | Reported problem | Root cause | Status |
 | --: | :--- | :--- | :---: |
@@ -118,33 +137,35 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 1663
-Passed Tests:         1663
+Total Tests Executed: 1710
+Passed Tests:         1710
 Failed Tests:         0
 ```
 
-- Suites: 44 (Suite 44 added for Batch 5).
+- Suites: 46 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
 - Suite 44: Batch 5 file/TOC/schema/bibliography/word-count/"not a fatwa"/search/sitemap/index integration.
+- Suite 45: 114 chunks, 6,236 ayahs, canonical per-surah counts, four fields per ayah, no BOM, no duplicated basmalah, spot checks.
+- Suite 46: IndexedDB store, khatam maths, repeat/speed cycles, Media Session, corpus precache, offline fallback.
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261027h`, service-worker cache `v21`.
+Version `?v=20261027h`, app version 1.3.0 (build 10300), service-worker cache `v22`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 1,401,639 | `a3493559328723c1e8cf7eeabac7af7a395f8d60f6a713ba24a6dc0cbb801c68` |
-| `public/downloads/islamic-portal-release.apk` | 1,503,077 | `29ede4bd82d086fa17f516bf1ed24165697a700bbb065fbc39191259b5f620a9` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 3,010,751 | `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
+| `public/downloads/islamic-portal-release.apk` | 3,127,079 | `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
 
-- APK: 98 ZIP entries (3 core + 5 icons + 90 public assets); bundle: 89 files.
-- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `config.js`, all HTML and the service worker hash-match `public/` inside both artefacts.
+- APK: 215 ZIP entries including 114 Quran corpus chunks and 61 HTML pages; bundle: 206 files including the same 114 chunks and 61 pages.
+- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts.
 - All four Batch 5 pages are present in both artefacts.
-- APK contains `?v=20261027h`, the lazy search loader, the alias guards and the 2:255 deep link.
+- APK contains `?v=20261027h`, the lazy search loader, the alias guards, the 2:255 deep link and the full corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 

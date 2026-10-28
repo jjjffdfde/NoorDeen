@@ -15,7 +15,7 @@
 | UI strings per verified dictionary | **50** | Complete for the defined key set |
 | Total translated UI strings | **550** | 11 × 50 |
 | Quran translation editions registered | **40** | Registry complete; subset live-tested |
-| Quran editions with offline support | **2** (English, Urdu) + Arabic tafsir mode | Bundled |
+| Quran editions with offline support | **3** (English, Urdu, transliteration) + Arabic tafsir mode | Bundled for all 6,236 ayahs |
 
 The public language selector offers **only the 11 verified languages**. The other 29 entries exist so that language metadata, direction and script are available to future work; selecting them is not exposed. The site no longer claims "100% scholarly verified" or "fully verified dictionaries" for all 40.
 
@@ -82,7 +82,7 @@ Because `getUISelectableLanguages()` filters on `coverage === 'verified'`, a use
 
 **Verified in this cycle:** English (Saheeh International) and Urdu (Jalandhry) render and switch correctly; Arabic tafsir mode (Tafsir Muyassar) renders with attribution; English reset restores Saheeh International. Other editions were validated structurally (unique codes, edition IDs, translator labels) but **not all 40 were fetched live**.
 
-**Honest limit:** the reader fetches translation text from `api.alquran.cloud`; if an edition is unavailable upstream, the reader shows its error state rather than inventing text. Offline, only English, Urdu and the Arabic tafsir mode are available.
+**Honest limit:** for the 37 translation editions that are not bundled, the reader fetches text from `api.alquran.cloud`; if an edition is unavailable upstream, the reader shows its error state rather than inventing text. Offline, English (Saheeh International), Urdu (Jalandhry), transliteration and the Arabic tafsir mode are available for every ayah.
 
 ---
 
@@ -103,7 +103,7 @@ Because `getUISelectableLanguages()` filters on `coverage === 'verified'`, a use
 | Hadith | Yes (101) | Yes (101) | Yes (101) | Urdu field present for every record; English and Arabic likewise |
 | Duas | Yes (102) | Yes (102) | Yes (102) | All three fields present |
 | Kalimas | Yes (6) | Yes (6) | Yes (6) | Arabic immutable |
-| Quran ayahs (bundled) | English + Urdu for 10 surahs | Yes | Yes | Other languages require network |
+| Quran ayahs (bundled) | English for all 6,236 ayahs | Urdu for all 6,236 ayahs | Arabic immutable | Transliteration also bundled for all 6,236; the other 37 editions require network |
 | Articles (33) | English only | No | No | Educational prose is English-only |
 | Seerah / Prophets / Sahaba / History | English only | No | No | Proper names and Quranic quotations retain Arabic |
 | UI dictionaries | 11 languages | Yes | Yes | 50 keys each |

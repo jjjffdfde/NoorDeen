@@ -189,7 +189,7 @@ class AxmlBuilder {
     const s_category = this.addString("category");
 
     const v_pkg = this.addString("com.islamicknowledge.portal");
-    const v_versionName = this.addString("1.2.0");
+    const v_versionName = this.addString("1.3.0");
     const v_perm_net = this.addString("android.permission.INTERNET");
     const v_perm_state = this.addString("android.permission.ACCESS_NETWORK_STATE");
     const v_main_act = this.addString("com.islamicknowledge.portal.MainActivity");
@@ -205,10 +205,10 @@ class AxmlBuilder {
       b.writeUInt32LE(s_ns_android, off + 4);
     }));
 
-    // <manifest package="com.islamicknowledge.portal" android:versionCode=10200 android:versionName="1.2.0">
+    // <manifest package="com.islamicknowledge.portal" android:versionCode=10300 android:versionName="1.3.0">
     const manifestAttrs = [
       { ns: 0xffffffff, name: s_package, raw: v_pkg, type: 0x03, data: v_pkg },
-      { ns: s_ns_android, name: this.stringMap.get("versionCode"), raw: 0xffffffff, type: 0x10, data: 10200 },
+      { ns: s_ns_android, name: this.stringMap.get("versionCode"), raw: 0xffffffff, type: 0x10, data: 10300 },
       { ns: s_ns_android, name: this.stringMap.get("versionName"), raw: v_versionName, type: 0x03, data: v_versionName }
     ];
     nodes.push(this.buildElementStart(s_manifest, 0xffffffff, manifestAttrs, 2));
@@ -805,4 +805,4 @@ execSync(verifyCmd, { stdio: 'inherit' });
 console.log('\nUpdating metadata and checksum manifests...');
 execSync('node scripts/update-download-metadata.cjs', { stdio: 'inherit' });
 
-console.log('\nGenuine Android Release APK v1.2.0 (build 10200) built and verified successfully!');
+console.log('\nGenuine Android Release APK v1.3.0 (build 10300) built and verified successfully!');

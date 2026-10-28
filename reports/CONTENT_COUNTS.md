@@ -1,6 +1,6 @@
 # NoorDeen — Reconciled Content Counts
 
-**Reconciled:** 26 October 2026
+**Reconciled:** 28 October 2026
 **Rule:** a "record count" means entries in a dataset; a "unique count" means distinct items after duplicates. They are never mixed.
 
 ---
@@ -9,9 +9,9 @@
 
 | Collection | Route | Records | Unique | Rendered statically? |
 | :--- | :--- | --: | --: | :--- |
-| Quran surahs | `/quran` | 114 | 114 | Directory yes; text via API |
+| Quran surahs | `/quran` | 114 | 114 | Directory yes; text from the bundled corpus |
 | Quran juz | `/quran` | 30 | 30 | Yes |
-| Quran offline text | `/quran` | 10 surahs / 49 ayahs | 10 | Yes, bundled |
+| Quran offline text | `/quran` | **114 surahs / 6,236 ayahs** | 114 | Yes, bundled as JSON chunks |
 | Hadith | `/hadith` | **101** | 101 | Yes |
 | Duas & adhkar | `/duas` | **102** | 102 | Yes |
 | Six kalimas | `/kalimas` | 6 | 6 | Yes |
@@ -22,11 +22,11 @@
 | Worship guides | Salah / Wudu / Janazah / Eid | 4 | 4 | Yes |
 | Interactive tools | Prayer times / Zakat / Tasbih / Calendar | 4 | 4 | Client-side |
 | Glossary terms | `index.html` | **135** | 135 | Yes |
-| Articles | `/articles/` | **20** + index | 20 | Yes |
+| Articles | `/articles/` | **33** + index | 33 | Yes |
 | Lecture catalog | `/dr-israr-ahmed` | **148** | **147** | Client-side from JSON |
 | Study-mode tafsir | `data/tafsir/study-content.json` | **6 verses** | 6 | Client-side |
 | Surah thematic profiles | `js/quran.js` | **32** | 32 | Client-side |
-| HTML pages | site-wide | **47** | 47 | — |
+| HTML pages | site-wide | **61** | 61 | 60 indexable + `offline.html` |
 
 ---
 
@@ -56,25 +56,19 @@ Each record has: `id`, `collection`, `number`, `book`, `ar`, `en`, `ur`, `narrat
 
 ## 4. Offline Quran text
 
-Bundled in `ISLAMIC_DATA.offlineSurahs`:
+The complete corpus is bundled in `public/data/quran/surahs/` as one JSON file per surah, indexed by `public/data/quran/manifest.json`.
 
-| Surah | Name | Ayahs |
-| --: | :--- | --: |
-| 1 | Al-Fatihah | 7 |
-| 36 | Ya-Sin | 6 |
-| 67 | Al-Mulk | 4 |
-| 97 | Al-Qadr | 5 |
-| 108 | Al-Kawthar | 3 |
-| 109 | Al-Kafirun | 6 |
-| 110 | An-Nasr | 3 |
-| 112 | Al-Ikhlas | 4 |
-| 113 | Al-Falaq | 5 |
-| 114 | An-Nas | 6 |
-| | **10 surahs** | **49 ayahs** |
+| Metric | Value |
+| :--- | --: |
+| Surah chunks | **114** |
+| Ayahs | **6,236** |
+| Payload | **4,653,659 bytes** |
+| Fields per ayah | `num`, `ar`, `en`, `ur`, `tr` (+ `sajda`, `juz`, `page` where present) |
+| Source editions | `quran-uthmani`, `en.sahih`, `ur.jalandhry`, `en.transliteration` |
+| Service-worker cache | `islamic-portal-quran-v1` (114 entries) |
+| IndexedDB store | `noordeen-quran` |
 
-**Correction:** an earlier revision listed Surah 111 and omitted Surah 109. The list above matches `js/data.js`.
-
-The remaining **104 surahs** are fetched from the Quran Cloud API and need a network connection.
+The legacy `ISLAMIC_DATA.offlineSurahs` set (10 surahs / 49 ayahs) is retained only as a last-resort fallback. The reader prefers the corpus; no surah now requires a network connection for its text.
 
 ---
 
@@ -99,18 +93,16 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | 47 (26 root + 21 article) |
-| Visible words, all pages | 209,021 |
-| Root pages | 161,370 words |
-| Article pages | 47,651 words (44,673 across the 20 articles) |
-| Sitemap URLs | 47 |
-| Desktop bundle | 1,241,211 bytes / 1.18 MB / 75 entries / 47 HTML |
-| Bundle SHA-256 | `137cd7b22e659a1a846ad8dc4486b3f9eb261ee467a8e5abee42ffb8af01498a` |
-| Release APK | 6,232,774 bytes / 5.94 MB |
-| APK SHA-256 | `87763ba4b3bea482944dd170cb81b0e47cfe03778213ee0852292a928fbab2ed` |
-| Automated assertions | 1,473 passing / 0 failing |
-
-**Correction:** earlier revisions quoted a 1.16 MB APK and a 1.07 MB bundle. Both artifacts were rebuilt with the current 47 pages and the 10 new articles.
+| HTML pages | 61 (26 root + 34 article pages + `offline.html`) |
+| Visible words, 60 indexable pages | 241,702 |
+| Root pages | 161,929 words (161,829 indexable + 100 offline) |
+| Article library | 79,873 whole-page words; 64,160 article-body words |
+| Sitemap URLs | 60 |
+| Desktop bundle | 3,010,751 bytes / 2.87 MiB / 206 entries / 61 HTML / 114 chunks |
+| Bundle SHA-256 | `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
+| Release APK | 3,127,079 bytes / 2.98 MiB / 215 entries / v1.3.0 |
+| APK SHA-256 | `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
+| Automated assertions | **1,710 passing / 0 failing** (46 suites) |
 
 ---
 
@@ -119,6 +111,6 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 - 101 hadiths ≠ the full corpus of any collection.
 - 102 duas ≠ the complete *Hisn al-Muslim*.
 - 6 tafsir verses ≠ tafsir of the Quran.
-- 10 offline surahs ≠ an offline mushaf.
-- 20 articles ≠ the 100-topic library; 80 topics are unwritten.
+- 6,236 bundled ayahs ≠ a critical edition or a substitute for a printed mushaf; it is the Tanzil Uthmani text as served by the declared API.
+- 33 articles ≠ the 100-topic library; 67 roadmap topics are unwritten.
 - 148 lecture records ≠ Dr. Israr Ahmed's complete body of work; the archive itself has 74 pages and only 10 were retrieved.

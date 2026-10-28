@@ -134,4 +134,4 @@ New reports created this session: `PROJECT_UNDERSTANDING.md`, `ACTUAL_PROJECT_MA
 3. **`public/js/data.js` is the canonical religious dataset.** Do not duplicate hadith/dua data inside HTML.
 4. **`public/sitemap.xml` must list every HTML page.** The test suite checks this.
 5. **Keep all links relative.** Absolute `/` paths break on GitHub Pages under `/NoorDeen/`.
-6. **Never claim full offline Quran.** Only 10 surahs / 49 ayahs are bundled.
+6. **Never claim offline audio or video.** The Quran text (114 surahs) is bundled; recitation audio and lecture video are not.

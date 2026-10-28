@@ -148,15 +148,16 @@ class ZipBuilder {
 
 const OFFLINE_README = `================================================================================
    NOORDEEN — OFFLINE STANDALONE WEB ARCHIVE
-   Version 1.2.0 • 52 Pages • Offline Reading for Bundled Content
+   Version 1.3.0 • 61 Pages • Full 114-Surah Quran Bundled
 ================================================================================
 
 IMPORTANT — WHAT "OFFLINE" MEANS HERE:
 This archive contains the full website shell, all articles, hadith, duas,
-biographies, worship guides, tools and 10 bundled Quran surahs (49 ayahs).
-The remaining 104 surahs, recitation audio, and the Dr. Israr Ahmed video
-catalog require an internet connection. The archive is not a complete
-offline Quran and does not bundle any video files.
+biographies, worship guides, tools and the complete Quran: all 114 surahs and
+6,236 ayahs in Uthmani Arabic with English (Saheeh International), Urdu
+(Jalandhry) and transliteration. Recitation audio and the Dr. Israr Ahmed
+video catalog still require an internet connection. The archive does not
+bundle any audio or video files.
 
 HOW TO USE THIS OFFLINE ARCHIVE ON WINDOWS, MAC, OR LINUX:
 
@@ -171,7 +172,8 @@ HOW TO USE THIS OFFLINE ARCHIVE ON WINDOWS, MAC, OR LINUX:
    (Google Chrome, Microsoft Edge, Mozilla Firefox, Apple Safari, Brave, Opera).
 
 3. OFFLINE FEATURES AVAILABLE:
-   - Holy Quran: All 114 Surahs cataloged, key Surahs bundled in full Arabic & English
+   - Holy Quran: All 114 surahs / 6,236 ayahs with Arabic, English, Urdu and transliteration
+   - Khatam planner and persistent reading position (device-local)
    - Kutub al-Sittah Hadith: Verified collections with scholarly gradings
    - Complete Prophetic Seerah: 25 chapters from pre-Islamic Arabia to the Farewell Pilgrimage
    - Stories of the Prophets: 30 prophetic narratives (25 Quranic prophets + 5 righteous figures)
@@ -231,7 +233,7 @@ if (fs.existsSync(APK_PATH)) {
 
 // Write CHECKSUMS.sha256
 const now = new Date().toISOString();
-const checksums = `SHA-256 CHECKSUMS (Islamic Knowledge Portal v1.2.0)\r\nUpdated: ${now}\r\n\r\n${bundleHash}  islamic-portal-offline-bundle.zip (${bundleSizeKb} KB / ${bundleSizeMb} MB)\r\n${apkHash}  islamic-portal-release.apk (${apkSizeMb} MB)\r\n`;
+const checksums = `SHA-256 CHECKSUMS (Islamic Knowledge Portal v1.3.0)\r\nUpdated: ${now}\r\n\r\n${bundleHash}  islamic-portal-offline-bundle.zip (${bundleSizeKb} KB / ${bundleSizeMb} MB)\r\n${apkHash}  islamic-portal-release.apk (${apkSizeMb} MB)\r\n`;
 fs.writeFileSync(path.join(DOWNLOADS_DIR, 'CHECKSUMS.sha256'), checksums);
 
 console.log('✓ Checksums file updated at public/downloads/CHECKSUMS.sha256');
@@ -244,7 +246,7 @@ fs.writeFileSync(path.join(ROOT_DIR, 'AUDIT', 'offline-bundle-metadata.json'), J
   bundleSizeMb: bundleSizeMb,
   bundleSha256: bundleHash,
   fileCount: bundleZip.files.length,
-  version: '1.2.0',
+  version: '1.3.0',
   buildDate: now
 }, null, 2));
 

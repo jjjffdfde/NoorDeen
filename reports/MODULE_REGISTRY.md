@@ -1,6 +1,6 @@
 # NoorDeen — Module Registry
 
-**Generated:** 27 October 2026
+**Generated:** 28 October 2026
 **Scope:** every user-facing module, data service and distribution artefact under `public/`, plus the Android build.
 **Method:** modules were discovered by walking `public/**/*.html`, `public/js/*.js`, `public/data/**`, `public/service-worker.js`, `public/manifest.json`, `scripts/build-*.cjs` and `test/run-tests.js`. Status is based on automated assertions plus browser checks performed in this cycle. A module is only marked **PASS** where both its rendering and its primary interaction were exercised. Coverage limits are recorded even when the module works.
 
@@ -20,9 +20,9 @@
 
 | Metric | Value |
 | :--- | --: |
-| Modules registered | **52** |
-| PASS | **40** |
-| PARTIAL | **11** |
+| Modules registered | **54** |
+| PASS | **43** |
+| PARTIAL | **10** |
 | BLOCKED | **1** |
 | FAIL | **0** |
 | NOT TESTED | **0** |
@@ -52,14 +52,16 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 11 | Quran reader shell and surah/juz/ayah navigation | PASS | 114 surahs / 6,236 ayahs in `data.js`; Surah 2 loaded 286 ayahs; header updates to requested surah; invalid ayah 999 rejected with toast and URL unchanged. | Network required for the 104 non-bundled surahs. |
+| 11 | Quran reader shell and surah/juz/ayah navigation | PASS | 114 surahs / 6,236 ayahs in `data.js`; **all 114 surahs also ship as local JSON chunks**; Ya-Sin rendered 83/83 and Al-Kahf 110/110 in Chromium; header updates to requested surah; invalid ayah 999 rejected with toast and URL unchanged. | The Al-Quran Cloud API remains a fallback for translation editions that are not bundled. |
 | 12 | Quran deep links and URL sync | PASS | `?surah=N&ayah=M`, legacy `?verse=`, and `#ayah-N` all load, scroll, highlight and sync the URL. | Smooth scroll is disabled in the test browser; an instant-scroll fallback is implemented. |
 | 13 | Quran translations and English reset | PASS | Translation switching (including Arabic/Tafsir Muyassar) preserves canonical Arabic and shows translator attribution; English reset restores Saheeh International. | 40-edition registry exists; only a subset was live-fetched in this cycle. |
-| 14 | Quran audio controls | PASS | Ayah audio URL built as `https://everyayah.com/data/Alafasy_128kbps/001001.mp3`; play/pause/repeat controls wired; audio cache namespace present. | Audio is online-only and was not played end-to-end in this cycle (no audio device in headless). |
+| 14 | Quran audio controls | PASS | Ayah audio URL built as `https://everyayah.com/data/Alafasy_128kbps/001001.mp3`; play/pause, previous/next, seek, repeat (off/ayah/3×/5×/surah) and speed (0.75×/1×/1.25×) wired; Media Session lock-screen handlers present; state restored after reload (surah 18, `ayah`, 1.25×). | Audio is streamed from EveryAyah and was not played end-to-end (no audio device in headless). Playback stops on cross-document navigation; state resumes on return. |
 | 15 | Study Mode: tafsir, word-by-word, compare, related hadith | PARTIAL | 1:1 and 2:255 render tafsir + WBW; 2:1 shows the honest "no commentary bundled" state; compare and hadith tabs render; generic hadith is labelled "not verse-specific". | Bundled tafsir covers **6 verses** only; bundled text is an editorial English summary, not a verbatim translation. |
 | 16 | Quran bookmarks and continue-reading | PASS | Bookmark 1:1 saved; bookmarks page shows `quran.html?surah=1#ayah-1`; hash link scrolls to ayah 7; removal clears card, storage and shows empty state. | — |
-| 17 | Offline Quran bundle | PARTIAL | 10 surahs / 49 ayahs bundled; complete surahs 1 and 114 render without a false banner; partial 36 (6/83) and 67 (4/30) show "Showing X of Y verses bundled" + retry; online fetch replaces partial data. | 104 surahs, all audio and all video need network. |
+| 17 | Offline Quran corpus | PASS | **114 surahs / 6,236 ayahs** in `public/data/quran/surahs/` (4.65 MB); service worker pre-caches all 114 chunks in `islamic-portal-quran-v1` (114 entries observed); IndexedDB `noordeen-quran` stores chunks on read; reader prefers corpus over network. | Audio and video are not bundled. Airplane-mode radio-off testing was unavailable; cache contents and cache-first paths were verified instead. |
 | 18 | Quran search and surah profiles | PASS | Phonetic aliases and 32 surah thematic profiles; search returns surah and ayah results with Urdu previews. | Search is over metadata/aliases, not a full Arabic concordance. |
+| 18a | Khatam planner & reading progress | PASS | 15/30/60-day goals; 30-day → 208 ayahs / 21 pages per day; progress ring/bar, completed-surah toggle, reset, cached-surah count; state persists in `localStorage`. | Progress is device-local; no account sync. |
+| 18b | Offline fallback page | PASS | `offline.html` is pre-cached and served when an uncached navigation fails; explains the state and links to the offline Quran; `noindex`. | Replaces the previous blind `index.html` redirect. |
 
 ---
 
@@ -124,8 +126,8 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and now network-first; displayed hashes match files (`29ede4…` APK, `a34935…` ZIP); sizes, page counts and bundle size corrected to 60 pages / ~1.34 MB. | APK is JAR-signed v1 only; installation not device-tested. |
-| 42 | About page | PASS | Test count updated to 1,663; removed WCAG certification and peer-review claims. | - |
+| 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and network-first; displayed hashes match files (`1a7e02…` APK, `4fbb2c…` ZIP); APK 3,127,079 bytes / v1.3.0, bundle 3,010,751 bytes / 206 files / 61 pages; page copy now states 114 bundled surahs and the v1-only signature. | APK is JAR-signed v1 only; installation not device-tested. |
+| 42 | About page | PASS | Test count updated to 1,710; removed WCAG certification and peer-review claims. | - |
 | 43 | Sources / methodology | PASS | Bibliography, grading policy, tafsir policy; qibla claim removed. | — |
 | 44 | Contact / corrections | PASS | Required and email validation block invalid submit; valid submit shows an honest "no backend" panel with GitHub issue + mailto dispatch. | No server-side inbox. |
 | 45 | Privacy and terms | PASS | Static policies render; no analytics or ad scripts active by default. | Legal review not performed. |
@@ -138,11 +140,11 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | --: | :--- | :--- | :--- | :--- |
 | 46 | Data layer (`data.js`, `catalog.json`, `study-content.json`) | PASS | 114 surahs / 6,236 ayahs; 101 hadith; 102 duas; 6 kalimas; 148 lecture records; 6 tafsir verses; all parse without error. | Tafsir and lecture coverage are explicitly partial. |
 | 47 | Search index and sitemap | PASS | 60 sitemap URLs (60 unique); 34 article-directory URLs; all 60 pages indexed in `search.js`; robots.txt valid. | Client-side index only. |
-| 48 | Service worker and offline bundle | PARTIAL | SW `v21`; shell precache; HTML network-first; checksums/downloads now network-first; bundle 89 files / 1,401,639 bytes / `a34935…`; all four Batch 5 pages embedded byte-identically. | Full offline Quran, audio and video are not included; no device install test. |
-| 49 | Android APK | BLOCKED | 98 ZIP entries (3 core + 5 icons + 90 public assets); 60 HTML pages; no nested APK/ZIP; `jarsigner` reports a valid v1 signature (SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent; embedded Batch 5 pages hash-match the source. | No v2/v3 signing block; `targetSdk 34`; `adb`/`apksigner` unavailable; **installation not tested**. Plaintext signing passwords and a tracked keystore are a P0 issue (not changed by owner instruction). |
+| 48 | Service worker and offline bundle | PASS | SW `v22`; shell precache (48 entries observed); HTML network-first; **full 114-surah corpus pre-cached in `islamic-portal-quran-v1`**; offline fallback page; checksums/downloads network-first. | Audio and video are not bundled; no device install test. |
+| 49 | Android APK | BLOCKED | 215 ZIP entries including 114 Quran corpus chunks; 61 HTML pages; no nested APK/ZIP; v1.3.0 (build 10300); `jarsigner` reports a valid v1 signature (SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent. | No v2/v3 signing block; `targetSdk 34`; `adb`/`apksigner` unavailable; **installation not tested**. Plaintext signing passwords and a tracked keystore are a P0 issue (not changed by owner instruction). |
 | 50 | Accessibility baseline | PARTIAL | 0 `<img>` without `alt`; `:focus-visible` styles; ARIA on drawer/search/language modals; skip link added; single `<h1>` per page. | No full WCAG 2.1 AA audit; no screen-reader session; focus visibility in headless not verifiable. |
 | 51 | Responsive layout | PARTIAL | CSS breakpoints at 991/992/1200/1024/960/900/820/768/600/480/360 px; mobile drawer and bottom nav implemented. | Browser tool cannot change viewport (`innerWidth` stays 1000), so 320/375/768/1024/1440 rendering was not visually verified in this cycle. |
-| 52 | SEO and structured data | PASS | 60/60 pages have canonical, description, OG, Twitter, JSON-LD, viewport, manifest, theme-color; `BreadcrumbList` / `FAQPage` / `Article` schemas on articles. | No Lighthouse/field Core Web Vitals data; no backlink or ranking evidence. |
+| 52 | SEO and structured data | PASS | 60/60 indexable pages have canonical, description, OG, Twitter, JSON-LD, viewport, manifest, theme-color; `BreadcrumbList` / `FAQPage` / `Article` schemas on articles; `offline.html` is `noindex` and excluded from the sitemap. | No Lighthouse/field Core Web Vitals data; no backlink or ranking evidence. |
 
 ---
 
@@ -154,7 +156,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | D2 | P0 | APK has no v2/v3 signing block; `targetSdk 34` may reject installation on modern Android. | **Open / BLOCKED** — no `apksigner` or SDK build-tools. |
 | D3 | P1 | APK installation not tested on a real device or emulator. | **BLOCKED** — no `adb`, no device. |
 | D4 | P1 | Tafsir bundled for 6 verses only. | **Accepted** — UI states the limit. |
-| D5 | P1 | Offline Quran is 10 surahs / 49 ayahs, two of them partial. | **Accepted** — UI labels partial surahs. |
+| D5 | P1 | Offline Quran was 10 surahs / 49 ayahs. | **Resolved (Phase 1)** — 114 surahs / 6,236 ayahs bundled and pre-cached. |
 | D6 | P1 | Only 11 of 40 language entries have UI dictionaries. | **Accepted** — selector offers only verified languages. |
 | D7 | P2 | No qibla direction feature. | **Accepted** — claims removed from site copy. |
 | D8 | P2 | Responsive breakpoints not visually verified in this environment. | **Open** — static/code-level review only. |

@@ -1,5 +1,7 @@
 # Lecture Catalog `Failed to fetch` — Root Cause and Fix
 
+> **Historical snapshot.** Counts, hashes and test totals in this report predate the 28 October 2026 Phase 1 release (1,710 assertions; 61 pages; 114-surah corpus; APK 3,127,079 bytes / `1a7e02…`; bundle 3,010,751 bytes / `4fbb2c…`). See `reports/FINAL_TEST_RESULTS.md` and `reports/FINAL_AUDIT_RESULTS.md` for current figures.
+
 **Date:** 27 October 2026  
 **Component:** `public/dr-israr-ahmed.html`, `public/data/dr-israr/catalog.json`, offline ZIP, Android assets  
 **Status:** Fixed in source, tested over HTTP with `fetch()` forcibly blocked, rebuilt into the offline bundle and APK.  

@@ -1,12 +1,12 @@
 # NoorDeen — Content Inventory
 
-**Audited:** 27 October 2026 (Batch 5 integrated; full re-measure of every page)
+**Audited:** 28 October 2026 (Phase 1: full offline Quran corpus; every page re-measured)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured from the current tree, not estimated.
-**Pages:** **60** — 26 root pages + 34 pages in `public/articles/` (33 articles + the library index)
-**Visible words across all pages (whole-page count):** **242,186**
+**Pages:** **61** — 26 root pages + 34 pages in `public/articles/` (33 articles + the library index) + `offline.html` (noindex fallback)
+**Visible words across the 60 indexable pages (whole-page tokenisation):** **241,702** (root 161,829 + article library 79,873); the offline fallback adds 100 words
 **Article body words (33 articles, excluding page chrome):** **64,160** — average **1,944**, minimum **1,538**, maximum **2,473**
 **Sitemap URLs:** **60** (`public/sitemap.xml`, 60 unique `<loc>` entries)
-**Full test suite:** **1,663 executed / 1,663 passed / 0 failed** (last run 27 October 2026)
+**Full test suite:** **1,710 executed / 1,710 passed / 0 failed** (last run 28 October 2026)
 
 ---
 
@@ -20,15 +20,15 @@
 | 4 | `history.html` | 18,204 | 299 KB | 12 civilisational eras |
 | 5 | `hadith.html` | 12,060 | 420 KB | 101 traditions, pre-rendered |
 | 6 | `duas.html` | 11,316 | 409 KB | 102 supplications, pre-rendered |
-| 7 | `index.html` | 7,497 | 322 KB | Homepage, hubs, 20-pillar taxonomy, glossary |
+| 7 | `index.html` | 7,501 | 315 KB | Homepage, hubs, 20-pillar taxonomy, glossary |
 | 8 | `salah-guide.html` | 4,168 | 78 KB | Step-by-step prayer guide |
 | 9 | `wudu-guide.html` | 3,218 | 59 KB | Wudu, ghusl, tayammum |
 | 10 | `janazah-guide.html` | 2,672 | 56 KB | Funeral prayer |
 | 11 | `pillars.html` | 2,445 | 48 KB | Five pillars |
 | 12 | `eid-guide.html` | 2,310 | 43 KB | Eid al-Fitr / al-Adha |
-| 13 | `about.html` | 1,532 | 39 KB | Mission, methodology, verification pipeline |
+| 13 | `about.html` | 1,562 | 38 KB | Mission, methodology, verification pipeline |
 | 14 | `kalimas.html` | 1,528 | 44 KB | Six kalimas + copy/share |
-| 15 | `download-app.html` | 1,464 | 43 KB | PWA install, APK/ZIP download, checksums |
+| 15 | `download-app.html` | 1,482 | 42 KB | PWA install, APK/ZIP download, checksums |
 | 16 | `zakat-calculator.html` | 1,411 | 49 KB | Zakat engine + fiqh |
 | 17 | `prayer-times.html` | 1,363 | 50 KB | Solar prayer times |
 | 18 | `calendar.html` | 965 | 29 KB | Hijri converter |
@@ -36,14 +36,15 @@
 | 20 | `privacy.html` | 755 | 19 KB | Privacy policy |
 | 21 | `sources.html` | 725 | 18 KB | Bibliography and methodology |
 | 22 | `dr-israr-ahmed.html` | 626 | 33 KB | Lecture library shell (cards render from JSON) |
-| 23 | `quran.html` | 617 | 35 KB | Quran reader shell |
+| 23 | `quran.html` | 654 | 38 KB | Quran reader shell, khatam planner |
 | 24 | `terms.html` | 601 | 16 KB | Terms of use |
 | 25 | `contact.html` | 579 | 25 KB | Contact / corrections form |
 | 26 | `bookmarks.html` | 356 | 16 KB | Saved items |
+| 27 | `offline.html` | 100 | 3 KB | Offline fallback (`noindex`) |
 
-Root total: **161,740 words**.
+Root total: **161,929 words** (161,829 across the 26 indexable root pages).
 
-Note: `dr-israr-ahmed.html` and `quran.html` have small static word counts because their content is rendered from `catalog.json` and the Quran API respectively. `hadith.html`, `duas.html`, `sahaba.html`, `seerah.html`, `prophets.html` and `history.html` are largely pre-rendered static text, which is why their counts are high.
+Note: `dr-israr-ahmed.html` has a small static word count because its cards render from `catalog.json`. `quran.html` now loads all surah text from the bundled corpus, so its static count only covers the shell. `hadith.html`, `duas.html`, `sahaba.html`, `seerah.html`, `prophets.html` and `history.html` are largely pre-rendered static text, which is why their counts are high.
 
 ---
 
@@ -100,7 +101,9 @@ Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies 
 | :--- | :--- | --: | :--- |
 | Surahs | `js/data.js` → `ISLAMIC_DATA.surahs` | 114 | Names, ayah counts, revelation type |
 | Juz | `ISLAMIC_DATA.juzList` | 30 | Traditional divisions |
-| Offline surah text | `ISLAMIC_DATA.offlineSurahs` | 10 surahs / 49 ayahs | 1, 36 (6/83), 67 (4/30), 97, 108, 109, 110, 112, 113, 114; 36 and 67 are partial and labelled in the UI |
+| Offline Quran corpus | `public/data/quran/surahs/NNN.json` | **114 surahs / 6,236 ayahs** | 4,653,659 bytes; Arabic (Uthmani), English (Saheeh International), Urdu (Jalandhry), transliteration for every ayah |
+| Quran corpus manifest | `public/data/quran/manifest.json` | 114 records | Provenance, editions, per-surah byte sizes |
+| Legacy offline surah text | `ISLAMIC_DATA.offlineSurahs` | 10 surahs / 49 ayahs | Retained only as a last-resort fallback; the reader prefers the corpus |
 | Hadith | `ISLAMIC_DATA.hadiths` | **101** | Bukhari 42, Muslim 25, Tirmidhi 14, Abu Dawud 10, Nasa'i 4, Ibn Majah 6 |
 | Duas | `ISLAMIC_DATA.duas` | **102** | Arabic, transliteration, English, Urdu, reference |
 | Kalimas | `ISLAMIC_DATA.kalimas` | 6 | Copy and share per entry |
@@ -118,10 +121,10 @@ Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies 
 
 | Artefact | Size | SHA-256 |
 | :--- | --: | :--- |
-| `downloads/islamic-portal-release.apk` | 1,503,077 bytes (1.43 MiB) | `29ede4bd82d086fa17f516bf1ed24165697a700bbb065fbc39191259b5f620a9` |
-| `downloads/islamic-portal-offline-bundle.zip` | 1,401,639 bytes (1.34 MiB) | `a3493559328723c1e8cf7eeabac7af7a395f8d60f6a713ba24a6dc0cbb801c68` |
+| `downloads/islamic-portal-release.apk` | 3,127,079 bytes (2.98 MiB) | `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
+| `downloads/islamic-portal-offline-bundle.zip` | 3,010,751 bytes (2.87 MiB) | `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
 
-Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte.
+Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 215 ZIP entries including the 114 corpus chunks; the bundle holds 206 files, 61 HTML pages and the same 114 chunks.
 
 **Live deployment:** `gh-pages` commit `fe311386` (tree from `b61587d:public`) was verified on `https://jjjffdfde.github.io/NoorDeen/` on 27 October 2026. The live APK is 1,503,077 bytes with SHA-256 `29ede4bd…` and the live bundle is 1,401,639 bytes with SHA-256 `a3493559…` — both match the local files. Sitemap serves 60 URLs, the service worker is `v21`, and all four Batch 5 pages return 200.
 
@@ -133,6 +136,6 @@ Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byt
 - 33 of the 100 roadmap topics are published. The index advertises the roadmap and marks unwritten topics as pending.
 - Hadith and dua counts are counts of records in this repository, not a claim to represent the full corpus of any collection. 101 traditions is a curated selection, not Sahih al-Bukhari's 7,000+.
 - Tafsir coverage is 6 verses, not 6,236. The UI states this and offers an honest "no commentary bundled" message for other verses.
-- Offline Quran coverage is 10 surahs / 49 ayahs, with two partial surahs explicitly labelled. The remaining 104 surahs, audio and video require a network.
+- Quran text is complete offline (114 surahs / 6,236 ayahs). Recitation audio and the lecture video catalogue still require a network.
 - The article library is educational prose, not a fatwa service. Specific legal and medical questions are referred to qualified scholars and professionals.
 - The APK is JAR-signed (v1) only and has not been installed on a device in this environment.

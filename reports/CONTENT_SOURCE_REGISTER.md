@@ -11,12 +11,12 @@
 | Content | Source | Scope in this project | Safeguards |
 | :--- | :--- | :--- | :--- |
 | Quranic Arabic text | Tanzil Project (Uthmani, Hafs 'an 'Asim) served via the Quran Cloud API | All 114 surahs / 6,236 ayahs at runtime | Arabic kept in its own field, `lang="ar"`, `translate="no"`; translation switching never rewrites Arabic |
-| Quranic Arabic text (offline) | Same Tanzil text, bundled in `js/data.js` | 10 surahs / 49 ayahs | Static, not regenerated at build time |
+| Quranic Arabic text (offline) | Same Tanzil text, bundled as `public/data/quran/surahs/NNN.json` | All 114 surahs / 6,236 ayahs | Static, not regenerated at build time; validated per surah before writing |
 | English translation | Saheeh International (as served by the API edition used) | Reader translation mode | Attributed in the reader, never merged into Arabic |
 | Urdu translation | Fateh Muhammad Jalandhari (as served by the API edition used) | Reader translation mode | Attributed, RTL-scoped |
 | Six Kalimas | Standard creed compilations | 6 entries | Arabic + transliteration + English + Urdu |
 
-**Known gap:** the Arabic text is only offline for 10 surahs. The other 104 require the API. No claim of a fully offline mushaf is made anywhere on the site.
+**Coverage note:** the complete Arabic text (114 surahs / 6,236 ayahs) is bundled offline, together with Saheeh International English, Jalandhry Urdu and transliteration. The other 37 translation editions require the API. Recitation audio and lecture video are not bundled.
 
 ---
 
