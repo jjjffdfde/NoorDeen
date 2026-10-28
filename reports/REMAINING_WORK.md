@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **1,710 executed / 1,710 passed / 0 failed** (Suites 1–46). Browser checks: Ya-Sin rendered 83/83 and Al-Kahf 110/110 ayahs from the corpus with 0 console errors; the service-worker corpus cache held 114 entries and the shell 48; khatam progress showed 110 ayahs / 1.8% after marking Al-Kahf; player state (surah 18, repeat `ayah`, 1.25×) was restored after reload.
 
-**Live deployment:** recorded in `FINAL_AUDIT_RESULTS.md` after the Phase 1 push. `gh-pages` is updated by `node scripts/deploy-ghpages.cjs`; the GitHub Pages CDN may serve the previous build for up to `max-age=600`.
+**Live deployment:** `gh-pages` commit `0fe41f0b` (tree from `732c221:public`) is live and verified on `https://jjjffdfde.github.io/NoorDeen/`: SW `v22`, About 1,710 assertions, all 114 corpus chunks downloadable (6,236 ayahs / 4,653,659 bytes), APK `1a7e02…` / 3,127,079 bytes, bundle `4fbb2c…` / 3,010,751 bytes, `offline.html` live with `noindex`. The GitHub Pages CDN served the previous build for about three minutes after the push (`max-age=600`).
 
 ---
 

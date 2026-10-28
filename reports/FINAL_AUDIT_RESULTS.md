@@ -173,7 +173,29 @@ Version `?v=20261027h`, app version 1.3.0 (build 10300), service-worker cache `v
 
 ## 6. Live deployment verification (GitHub Pages)
 
-### 6.1 Batch 5 deployment (this cycle) — verified
+### 6.1 Phase 1 deployment (this cycle) — verified
+
+Deployed commit: `0fe41f0b9ec8310907614413733463dbb720fb47` on `gh-pages` (tree from `732c221:public`), pushed as `fe31138..0fe41f0`.
+
+Every check below was run against the live origin with a cache-busting query string, after the first poll still served the previous build (GitHub Pages CDN `max-age=600`).
+
+| Live URL | Result |
+| :--- | :--- |
+| `https://jjjffdfde.github.io/NoorDeen/service-worker.js` | 200; `CACHE_VERSION = 'v22'` |
+| `.../about.html` | 200; states **1,710 assertions**; the old 1,663 figure is gone |
+| `.../data/quran/manifest.json` | 200; 114 surah records |
+| `.../data/quran/surahs/001.json` … `114.json` | **all 114 return 200**; 6,236 ayahs and **4,653,659 bytes** total, byte-identical to the local corpus |
+| Spot counts | 001 = 7 ayahs, 036 = 83, 114 = 6 — matching canonical metadata |
+| `.../download-app.html` | 200; states 114 surahs; no "ten bundled / 49 ayahs / 1.34 MB" text; v1 JAR signature wording present; hashes populated at runtime from `CHECKSUMS.sha256` |
+| `.../downloads/islamic-portal-release.apk` | 200; **3,127,079 bytes**; live SHA-256 `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **3,010,751 bytes**; live SHA-256 `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
+| `.../downloads/CHECKSUMS.sha256` | 200; both hashes match the served files |
+| `.../offline.html` | 200; `noindex` present |
+| `.../sitemap.xml` | 200; 60 `<loc>` entries; `offline.html` correctly absent |
+
+The corpus check downloaded all 114 chunks over HTTPS, parsed each one and summed the ayah counts — no failures, no parse errors.
+
+### 6.2 Batch 5 deployment (previous cycle, historical) — verified
 
 Deployed commit: `fe311386d8bbc16ccc46096baa7c252a96ae28b5` on `gh-pages` (tree from `b61587d:public`).
 
@@ -194,7 +216,7 @@ Deployed commit: `fe311386d8bbc16ccc46096baa7c252a96ae28b5` on `gh-pages` (tree 
 
 The deployment push reported `044fea4..fe31138 -> gh-pages`. The GitHub Pages CDN served the previous build for several minutes (`max-age=600`); a re-check after cache expiry served `?v=20261027h` / SW `v21` and all four Batch 5 pages.
 
-### 6.2 Batch 4 deployment (previous cycle, historical)
+### 6.3 Batch 4 deployment (historical)
 
 Deployed commit: `044fea4` on `gh-pages` (tree from `8d9b903:public`).
 

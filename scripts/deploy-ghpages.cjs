@@ -8,7 +8,7 @@ console.log('Fetching origin gh-pages parent SHA...');
 const parentSha = execSync('git rev-parse origin/gh-pages', { encoding: 'utf8' }).trim();
 console.log('Parent gh-pages SHA:', parentSha);
 
-const commitMsg = 'deploy: Batch 5 law and employment articles; 60 pages, 33 articles, 1,663 passing tests';
+const commitMsg = 'deploy: Phase 1 full offline Quran corpus (114 surahs, 6,236 ayahs), persistent player and khatam planner; 61 pages, 33 articles, 1,710 passing tests, SW v22';
 const commitSha = execSync(`git commit-tree ${treeSha} -p ${parentSha} -m "${commitMsg}"`, { encoding: 'utf8' }).trim();
 console.log('Created commit for gh-pages:', commitSha);
 

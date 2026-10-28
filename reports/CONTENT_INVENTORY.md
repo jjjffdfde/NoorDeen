@@ -126,7 +126,7 @@ Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies 
 
 Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 215 ZIP entries including the 114 corpus chunks; the bundle holds 206 files, 61 HTML pages and the same 114 chunks.
 
-**Live deployment:** `gh-pages` commit `fe311386` (tree from `b61587d:public`) was verified on `https://jjjffdfde.github.io/NoorDeen/` on 27 October 2026. The live APK is 1,503,077 bytes with SHA-256 `29ede4bd…` and the live bundle is 1,401,639 bytes with SHA-256 `a3493559…` — both match the local files. Sitemap serves 60 URLs, the service worker is `v21`, and all four Batch 5 pages return 200.
+**Live deployment:** `gh-pages` commit `0fe41f0b` (tree from `732c221:public`) was verified on `https://jjjffdfde.github.io/NoorDeen/` on 28 October 2026. All **114 corpus chunks** were downloaded from the live origin and summed to **6,236 ayahs / 4,653,659 bytes**, byte-identical to the local corpus. The live APK is 3,127,079 bytes with SHA-256 `1a7e021d…` and the live bundle is 3,010,751 bytes with SHA-256 `4fbb2c64…` — both match the local files and `CHECKSUMS.sha256`. Sitemap serves 60 URLs, the service worker is `v22`, About states 1,710 assertions, and `offline.html` is live with `noindex`.
 
 ---
 
