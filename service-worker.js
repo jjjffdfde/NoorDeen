@@ -3,9 +3,10 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v21';
-const CACHE_NAME = 'islamic-portal-shell-v21';
+const CACHE_VERSION = 'v22';
+const CACHE_NAME = 'islamic-portal-shell-v22';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
+const QURAN_CACHE = 'islamic-portal-quran-v1';
 
 const STATIC_ASSETS = [
   './',
@@ -27,6 +28,7 @@ const STATIC_ASSETS = [
   './janazah-guide.html',
   './eid-guide.html',
   './download-app.html',
+  './offline.html',
   './prayer-times.html',
   './tasbih.html',
   './zakat-calculator.html',
@@ -44,7 +46,9 @@ const STATIC_ASSETS = [
   './js/i18n.js?v=20261027h',
   './js/tools.js?v=20261027h',
   './js/search.js?v=20261027h',
+  './js/quran-store.js?v=20261027h',
   './js/quran.js?v=20261027h',
+  './data/quran/manifest.json',
   './js/app.js?v=20261027h',
   './js/sahaba-urdu.js?v=20261027h',
   './icons/icon-192.png',
@@ -55,15 +59,33 @@ const STATIC_ASSETS = [
   './icons/icon-512.svg'
 ];
 
-// 1. Install Event: Pre-cache core shell
+// 1. Install Event: Pre-cache core shell, then the full Quran corpus.
+// Corpus caching is best-effort so one slow chunk cannot abort installation.
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[ServiceWorker] Pre-caching offline application shell:', CACHE_NAME);
       return cache.addAll(STATIC_ASSETS);
-    }).then(() => self.skipWaiting())
+    }).then(() => preCacheQuranCorpus())
+      .then(() => self.skipWaiting())
   );
 });
+
+async function preCacheQuranCorpus() {
+  try {
+    const cache = await caches.open(QURAN_CACHE);
+    const response = await fetch('./data/quran/manifest.json');
+    if (!response.ok) throw new Error(`manifest HTTP ${response.status}`);
+    const manifest = await response.json();
+    const files = (manifest.surahs || []).map((surah) => `./data/quran/surahs/${surah.file}`);
+    if (!files.length) throw new Error('empty Quran manifest');
+    const results = await Promise.allSettled(files.map((file) => cache.add(file)));
+    const failed = results.filter((result) => result.status === 'rejected').length;
+    console.log(`[ServiceWorker] Quran corpus cached: ${files.length - failed}/${files.length} surahs`);
+  } catch (error) {
+    console.warn('[ServiceWorker] Quran corpus pre-cache skipped:', error.message);
+  }
+}
 
 // 2. Activate Event: Clean obsolete caches safely
 self.addEventListener('activate', (event) => {
@@ -71,8 +93,9 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          // Invalidate legacy application shell caches (v1, v2) while strictly preserving audio cache
-          if (key !== CACHE_NAME && key !== AUDIO_CACHE) {
+          // Invalidate legacy application shell caches while preserving the
+          // audio cache and the full Quran corpus cache.
+          if (key !== CACHE_NAME && key !== AUDIO_CACHE && key !== QURAN_CACHE) {
             console.log('[ServiceWorker] Removing legacy application shell cache:', key);
             return caches.delete(key);
           }
@@ -106,6 +129,29 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Bundled Quran corpus: dedicated cache, checked before the generic shell.
+  if (url.origin === self.location.origin && url.pathname.includes('/data/quran/surahs/')) {
+    event.respondWith(
+      caches.open(QURAN_CACHE).then(async (cache) => {
+        const cached = await cache.match(event.request, { ignoreSearch: true });
+        if (cached) return cached;
+        try {
+          const networkResponse = await fetch(event.request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch (error) {
+          return new Response(JSON.stringify({ error: 'Surah not cached offline' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      })
+    );
+    return;
+  }
+
   // Network-First for HTML navigation requests to ensure fresh content and prevent stale cache across deployments
   const isNavigation = event.request.mode === 'navigate' ||
     (event.request.method === 'GET' && event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'));
@@ -127,10 +173,12 @@ self.addEventListener('fetch', (event) => {
           const cached = await caches.match(event.request);
           if (cached) return cached;
 
-          // Universal fallback to offline homepage
-          return (await caches.match('./index.html')) ||
-                 (await caches.match('./')) ||
-                 (await caches.match('index.html'));
+          // Informative offline page instead of silently serving the homepage.
+          return (await caches.match('./offline.html')) ||
+                 new Response('<h1>You are offline</h1><p>Open the cached Quran reader at quran.html.</p>', {
+                   status: 200,
+                   headers: { 'Content-Type': 'text/html; charset=utf-8' }
+                 });
         })
     );
     return;
