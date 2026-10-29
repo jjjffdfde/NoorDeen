@@ -5,11 +5,11 @@
 
 **Last successful test:** `node test/run-tests.js` → **1,864 executed / 1,864 passed / 0 failed** (Suites 1–48). Browser checks: Study Mode rendered Jalalayn English with attribution, asbab Arabic RTL reports, the explicit Arabic gap state, and the labelled NoorDeen editorial summary; the thematic index rendered 30 chips and 40 capped mercy references; tafsir chunk 003 was cached on demand with 0 console errors.
 
-**Live deployment:** the Phase 1 deployment at `gh-pages` commit `0fe41f0b` remains the last verified live build (SW `v22`). The Phase 2 build is prepared locally; its deployment and live verification are recorded in `FINAL_AUDIT_RESULTS.md` §6.4 after the push.
+**Live deployment:** Phase 2 is live at `gh-pages` commit `5c135b90732c3b3357aab442be70f2d77ea5c411` (tree from `71350d1:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v23`, About states 1,864 assertions, tafsir manifest/themes/chunks served, APK `e1b2d5b2…` / 5,096,957 bytes, bundle `9dde2ee3…` / 4,957,506 bytes, 60 sitemap URLs, `offline.html` live with `noindex`. The GitHub Pages CDN served the previous About page for several minutes (`max-age=600`); the re-check after cache expiry passed.
 
 ---
 
-## 1. Done in this cycle (Phase 1)
+## 1. Done in Phase 1 (historical; current counts in §1A)
 
 | Item | Verified outcome |
 | :--- | :--- |

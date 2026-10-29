@@ -214,6 +214,28 @@ Every check below was run against the live origin with a cache-busting query str
 
 The corpus check downloaded all 114 chunks over HTTPS, parsed each one and summed the ayah counts — no failures, no parse errors.
 
+### 6.4 Phase 2 deployment (this cycle) — verified
+
+Deployed commit: `5c135b90732c3b3357aab442be70f2d77ea5c411` on `gh-pages` (tree from `71350d1:public`), pushed as `9aed31f..5c135b9`.
+
+| Live URL | Result |
+| :--- | :--- |
+| `https://jjjffdfde.github.io/NoorDeen/service-worker.js` | 200; `CACHE_VERSION = 'v23'` |
+| `.../about.html` | 200; states **1,864 assertions** and describes the tafsir/asbab and thematic-index validation |
+| `.../quran.html` | 200; loads `js/tafsir-store.js?v=20261029a` and `js/thematic-index.js?v=20261029a`; contains the thematic-index section and four tafsir options |
+| `.../data/tafsir/manifest.json` | 200; 114 surahs, 6,236 ayahs, 3 verbatim editions |
+| `.../data/tafsir/themes.json` | 200; 30 themes / 5,639 keyword matches |
+| `.../data/tafsir/surahs/001.json` | 200; 7 ayahs with English and Arabic Jalalayn text |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,096,957 bytes**; live SHA-256 `e1b2d5b2bfcc5f3fdf9a03744b6ae51db2b6f783f223ff087cbb491676d8f08d` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **4,957,506 bytes**; live SHA-256 `9dde2ee31be92339b639d85d12bc17c357afb6693d8c428184f2e8941e37f162` |
+| `.../downloads/CHECKSUMS.sha256` | 200; both hashes match the served files |
+| `.../sitemap.xml` | 200; 60 `<loc>` entries; `offline.html` correctly absent |
+| `.../offline.html` | 200; `noindex` present |
+
+The GitHub Pages CDN continued to serve the previous `about.html` for several minutes after the push (`max-age=600`), while the new artefacts and tafsir data were already live. The check was repeated after cache expiry and served the Phase 2 build.
+
+Chromium check on the live origin (after the service worker activated): `v23` controlled the page; the shell cache held 53 entries, `islamic-portal-quran-v1` held all **114** Quran chunks, and `islamic-portal-tafsir-v1` held the manifest, themes and study content. Study Mode rendered the Jalalayn English text with the Royal Aal al-Bayt attribution; the mercy theme rendered 40 capped references linking to `/NoorDeen/quran.html?surah=1&ayah=1`; 0 console errors.
+
 ### 6.2 Batch 5 deployment (previous cycle, historical) — verified
 
 Deployed commit: `fe311386d8bbc16ccc46096baa7c252a96ae28b5` on `gh-pages` (tree from `b61587d:public`).

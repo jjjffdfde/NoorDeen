@@ -129,7 +129,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
 | 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and network-first; displayed hashes match files (`1a7e02…` APK, `4fbb2c…` ZIP); APK 3,127,079 bytes / v1.3.0, bundle 3,010,751 bytes / 206 files / 61 pages; page copy now states 114 bundled surahs and the v1-only signature. | APK is JAR-signed v1 only; installation not device-tested. |
-| 42 | About page | PASS | Test count updated to 1,710; removed WCAG certification and peer-review claims. | - |
+| 42 | About page | PASS | Test count updated to 1,864; removed WCAG certification and peer-review claims. | - |
 | 43 | Sources / methodology | PASS | Bibliography, grading policy, tafsir policy; qibla claim removed. | — |
 | 44 | Contact / corrections | PASS | Required and email validation block invalid submit; valid submit shows an honest "no backend" panel with GitHub issue + mailto dispatch. | No server-side inbox. |
 | 45 | Privacy and terms | PASS | Static policies render; no analytics or ad scripts active by default. | Legal review not performed. |
