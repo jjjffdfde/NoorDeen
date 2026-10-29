@@ -3,7 +3,7 @@
 **Project:** NoorDeen Islamic Knowledge Library  
 **Document:** Master Educational Syllabus & Content Roadmap (100 Distinct Topics)  
 **Publication Standard:** Classical Sunni Orthodoxy (*Kutub al-Sittah*, *Tafsir Ibn Kathir*, *Fath al-Bari*, *Hisnul Muslim*)  
-**Current Status:** 10 Flagship Articles Published & Live (Batch 1) | 90 Topics Phased Roadmap  
+**Current Status:** 37 Long-Form Articles Published & Live (Batches 1–6a) | 100-Topic Phased Roadmap  
 
 ---
 
@@ -24,7 +24,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 5  | Zakat, Fasting, Hajj & Umrah               | 8 Topics      | 2 Live      | 6 Planned   |
 | 6  | Daily Duas, Adhkar & Sacred Remembrance    | 8 Topics      | 1 Live      | 7 Planned   |
 | 7  | New-Muslim Education & Beginner Onboarding | 4 Topics      | 1 Live      | 3 Planned   |
-| 8  | Prophetic Seerah (Biography of Muhammad ﷺ) | 8 Topics      | Integrated* | 8 Planned   |
+| 8  | Prophetic Seerah (Biography of Muhammad ﷺ) | 8 Topics      | 4 Live      | 4 Planned   |
 | 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | Integrated* | 8 Planned   |
 | 10 | Lives of the Noble Sahaba (Companions)     | 8 Topics      | Integrated* | 8 Planned   |
 | 11 | Islamic Civilizations & Historical Epochs  | 8 Topics      | Integrated* | 8 Planned   |
@@ -35,9 +35,10 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 16 | Practical Islamic Tools & Educational Fiqh | 4 Topics      | Integrated* | 4 Planned   |
 | 17 | Evidence-Based Contemporary Questions & QA | 4 Topics      | 0 Live      | 4 Planned   |
 +----+--------------------------------------------+---------------+-------------+-------------+
-|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 10 LIVE     | 90 ROADMAP  |
+|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 14 LIVE     | 86 ROADMAP  |
 +----+--------------------------------------------+---------------+-------------+-------------+
 * Note: Full libraries already exist in public/seerah.html (25 chapters), public/prophets.html (30 narratives), public/sahaba.html (52 monographs), and public/history.html (12 epochs). The roadmap expands these into standalone educational treatises.
+* Note: the "Live" column counts roadmap topics that have a dedicated standalone article mapped to their topic number. Additional published articles from Batches 2–5 are catalogued in reports/CONTENT_COUNTS.md; the per-topic mapping is reconciled as each discipline is expanded.
 ```
 
 ---
@@ -177,7 +178,19 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 ---
 
 ### 8–17. Extended Disciplines (Topics 53 to 100)
-- **Seerah al-Nabawiyyah (Topics 53–60):** Pre-Islamic Arabia, Makkan Persecution, Isra' wal-Mi'raj, Hijrah, Madinan Society, Battles, Hudaybiyyah/Conquest of Makkah, Farewell Sermon.
+- **Seerah al-Nabawiyyah (Topics 53–60):**
+  - 53. **Pre-Islamic Arabia: The World That Received the Qur’an** — `public/articles/pre-islamic-arabia-jahiliyyah.html` [LIVE]
+    - *Scope:* Caravan economy, tribal law and the pact of al-Fudul, religion of the Kaaba, poetry, women and the vulnerable, slavery, sacred months, the Year of the Elephant, and the limits of the sources.
+  - 54. **The Makkan Phase: Persecution, Patience and the Early Believers** — `public/articles/makkan-persecution-and-resilience.html` [LIVE]
+    - *Scope:* First revelation and the pause, secret then public preaching, motives for Quraysh’s opposition, torture of the vulnerable, the boycott, Abyssinia, the Year of Sorrow, Ta’if, and the Qur’anic response to persecution.
+  - 55. **Al-Isra’ wal-Mi’raj: The Night Journey and the Gift of Prayer** — `public/articles/isra-and-miraj-night-journey.html` [LIVE]
+    - *Scope:* Qur’anic anchor in 17:1 and 53:1–18, authentic hadith, date and commemoration, bodily versus spiritual travel, Jerusalem, the ascent, the five prayers, and the test of faith.
+  - 56. **The Hijrah to Madinah: Planning, Trust and a New Society** — `public/articles/hijrah-to-madinah.html` [LIVE]
+    - *Scope:* Pledges of Aqabah, the plot in Dar al-Nadwa, the cave of Thawr, the journey, Quba and the first mosque, the document of Madinah, the Muhajirun–Ansar brotherhood, and the Hijri calendar.
+  - 57. **Madinan Society and the First Muslim State** [PLANNED - BATCH 6B]
+  - 58. **The Battles of the Prophet ﷺ: Badr, Uhud and the Trench** [PLANNED - BATCH 6B]
+  - 59. **Hudaybiyyah and the Conquest of Makkah** [PLANNED - BATCH 6B]
+  - 60. **The Farewell Sermon and the Final Years** [PLANNED - BATCH 6B]
 - **Stories of the Prophets (Topics 61–68):** Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud/Sulayman, Yunus, Isa (AS).
 - **Lives of the Sahaba (Topics 69–76):** Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal, Salman al-Farsi (RA).
 - **Islamic History & Civilization (Topics 77–84):** Rightly Guided Caliphs, Umayyads, Abbasids, Al-Andalus, Ottomans, Islamic Contributions to Science, Waqf System, Trade Spread.

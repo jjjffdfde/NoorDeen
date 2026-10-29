@@ -1,7 +1,11 @@
 /**
- * Build long-form article HTML from structured content JSON.
- * Source content lives in scripts/article-content/*.json (not published).
+ * Build long-form article HTML from structured content modules.
+ * Source content lives in scripts/article-content/*.cjs (not published).
  * Output: public/articles/<slug>.html
+ *
+ * Usage:
+ *   node scripts/build-articles.cjs               # build every batch
+ *   node scripts/build-articles.cjs batch-6a.cjs  # build one batch only
  */
 const fs = require('fs');
 const path = require('path');
@@ -211,7 +215,7 @@ function build(article) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${esc(metaTitle)} — NoorDeen Islamic Library</title>
   <meta name="description" content="${esc(description)}">
-  <link rel="stylesheet" href="../css/main.css?v=20261027h">
+  <link rel="stylesheet" href="../css/main.css?v=20261029b">
   <link rel="manifest" href="../manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="${SITE}/articles/${slug}.html">
@@ -334,17 +338,24 @@ ${relatedHtml}
 
 ${FOOTER}
 
-  <script src="../js/config.js?v=20261027h"></script>
-  <script src="../js/i18n.js?v=20261027h"></script>
-  <script src="../js/search.js?v=20261027h"></script>
-  <script src="../js/app.js?v=20261027h"></script>
+  <script src="../js/config.js?v=20261029b"></script>
+  <script src="../js/i18n.js?v=20261029b"></script>
+  <script src="../js/search.js?v=20261029b"></script>
+  <script src="../js/app.js?v=20261029b"></script>
 </body>
 </html>
 `;
 }
 
 function main() {
-  const files = fs.readdirSync(CONTENT_DIR).filter(f => f.endsWith('.cjs'));
+  const filter = process.argv[2];
+  const files = fs.readdirSync(CONTENT_DIR)
+    .filter(f => f.endsWith('.cjs'))
+    .filter(f => !filter || f === filter || f === `${filter}.cjs`);
+  if (filter && files.length === 0) {
+    console.error(`No content file matched "${filter}" in ${CONTENT_DIR}`);
+    process.exit(1);
+  }
   let built = 0;
   for (const f of files) {
     const mod = require(path.join(CONTENT_DIR, f));

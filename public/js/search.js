@@ -427,6 +427,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The dignity of work, the wage contract, fair pay, workload and safety, respect and non-discrimination, vulnerable workers, employee duties, disputes and collective action, and a practical checklist.",
     url: "articles/workers-rights-in-islam.html",
     keywords: ["workers","worker","employees","employment","labour","labor","wages","salary","pay","fair pay","employer","dismissal","safety","overtime","migrant workers","domestic workers","gig economy","strike","union"]
+  },
+  {
+    title: "Pre-Islamic Arabia: The World That Received the Qur'an",
+    snippet: "The land, caravan economy, tribal law, religion of the Kaaba, poetry, the status of women and the vulnerable, slavery, the sacred months and the Year of the Elephant, with the limits of the sources stated.",
+    url: "articles/pre-islamic-arabia-jahiliyyah.html",
+    keywords: ["pre-islamic","jahiliyyah","arabia","mecca","makkah","quraysh","kaaba","tribe","tribal","caravan","poetry","muallaqat","hanif","year of the elephant","abraham","ismail","slavery","women","sacred months","seerah context"]
+  },
+  {
+    title: "The Makkan Phase: Persecution, Patience and the Early Believers",
+    snippet: "The first revelation, secret and public preaching, why Quraysh opposed the message, the torture of the vulnerable, the boycott, the migration to Abyssinia, the Year of Sorrow, Ta'if and the Qur'anic response to persecution.",
+    url: "articles/makkan-persecution-and-resilience.html",
+    keywords: ["makkah","mecca","persecution","early muslims","first revelation","hira","boycott","banu hashim","year of sorrow","abyssinia","najashi","taif","bilal","sumayyah","khabbab","patience","sabr","seerah"]
+  },
+  {
+    title: "Al-Isra' wal-Mi'raj: The Night Journey and the Gift of Prayer",
+    snippet: "What the Qur'an and authentic hadith say about the night journey and ascension, the question of date and bodily or spiritual travel, the sanctity of Jerusalem, the meeting with the prophets and the five daily prayers.",
+    url: "articles/isra-and-miraj-night-journey.html",
+    keywords: ["isra","miraj","night journey","ascension","jerusalem","aqsa","masjid al-aqsa","buraq","sidrat al-muntaha","five prayers","salah","27 rajab","abu bakr","siddiq","heavens","seerah"]
+  },
+  {
+    title: "The Hijrah to Madinah: Planning, Trust and a New Society",
+    snippet: "The pledges of Aqabah, the plot in Dar al-Nadwa, the cave of Thawr, the journey with Abu Bakr, Quba and the first mosque, the document of Madinah, the brotherhood between Muhajirun and Ansar, and the Hijri calendar.",
+    url: "articles/hijrah-to-madinah.html",
+    keywords: ["hijrah","migration","madinah","yathrib","aqabah","cave of thawr","abu bakr","quba","first mosque","constitution of madinah","document of madinah","ansar","muhajirun","brotherhood","hijri calendar","622"]
   }
 ];
 

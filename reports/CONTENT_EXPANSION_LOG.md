@@ -25,6 +25,7 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 3 articles** | 5 articles (finance/riba, marriage, death/afterlife, halal food, environment) | **8,547 body words**, 1,709 average; all ≥1,637 body words |
 | **Batch 4 articles** | 4 articles (parents, parenting, inheritance, neighbours) | **8,407 body words**, 2,102 average; all ≥1,971 body words |
 | **Batch 5 articles** | 4 articles (business ethics, contracts, debt, workers’ rights) | **9,728 body words**, 2,432 average; all ≥2,371 body words |
+| **Batch 6a articles** | 4 Seerah articles (topics 53–56: pre-Islamic Arabia, Makkan persecution, Isra’ wal-Mi’raj, Hijrah) | **11,792 body words**, 2,948 average; prose core 2,226–2,845 words each |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
@@ -48,6 +49,28 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 **Batch 5 verification:** each of the four pages was loaded in Chromium at `http://localhost:3400`, with H1, title, TOC link count, body-word count, JSON-LD presence, canonical URL, config.js load and console output checked. Search from an article page returned the correct first result for `business ethics`, `contract promises`, `debt repayment` and `workers wages`; the article index filter returned 1, 3, 3 and 1 cards respectively and reset to 33. A link sweep of the four pages checked 41 unique destinations with 0 failures.
 
 **Honest note on numbering:** the library now contains 33 articles. Twenty cover roadmap topics 1–20; three map to topics 92, 95 and 96; two additional topics (death/afterlife and environment) are recorded as 103 and 105; Batch 4 adds four family/community topics as publication numbers 106–109; Batch 5 adds four law/employment topics as 110–113. Those publication numbers are not a claim that 113 roadmap topics are written.
+
+---
+
+## 2. Batch 6a detail (this cycle)
+
+Generated from `scripts/article-content/batch-6a.cjs` through `scripts/build-articles.cjs batch-6a.cjs`, so all four share the established article template, TOC, schema, navigation and footer. The build script now accepts an optional batch filename so a single batch can be rebuilt without touching earlier articles.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 34 | 53. Pre-Islamic Arabia | `pre-islamic-arabia-jahiliyyah` | 3,391 | 2,845 | 3,748 |
+| 35 | 54. Makkan persecution and resilience | `makkan-persecution-and-resilience` | 2,965 | 2,508 | 3,300 |
+| 36 | 55. Al-Isra’ wal-Mi’raj | `isra-and-miraj-night-journey` | 2,664 | 2,226 | 3,002 |
+| 37 | 56. The Hijrah to Madinah | `hijrah-to-madinah` | 2,772 | 2,337 | 3,110 |
+| | **Total** | | **11,792** | **9,916** | **13,160** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #34–37, details block 114–117), and are reachable from the article library.
+
+**Source discipline.** These articles distinguish four evidentiary layers: the Qur’anic anchor, authentic hadith, early Sirah reports (Ibn Ishaq through Ibn Hisham), and later popular additions. Where a famous detail is a later report rather than an authentic hadith — the spider and dove in the cave of Thawr, Umm Ma’bad’s milk, the boycott document eaten by insects, the 27th of Rajab as the date of the night journey — the article says so explicitly. No invented dialogue, exact date or physical description is presented as certain.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 2,226–2,845 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 2,664–3,391. All four exceed the 2,500-word editorial guide because the brief required full source-critical treatment; the overage is recorded rather than hidden. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
+
+**Honest note on numbering.** The library now contains 37 articles. Cards are numbered #34–37 and the details block uses publication numbers 114–117. Those publication numbers are not a claim that 117 roadmap topics are written; the Seerah discipline has 4 of its 8 topics live (53–56) and 4 planned (57–60).
 
 ---
 

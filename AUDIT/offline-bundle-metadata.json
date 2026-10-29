@@ -1,10 +1,10 @@
 {
   "bundleFilename": "islamic-portal-offline-bundle.zip",
-  "bundleSizeBytes": 4957506,
-  "bundleSizeKb": 4841,
-  "bundleSizeMb": "4.73",
-  "bundleSha256": "9dde2ee31be92339b639d85d12bc17c357afb6693d8c428184f2e8941e37f162",
-  "fileCount": 324,
+  "bundleSizeBytes": 5008445,
+  "bundleSizeKb": 4891,
+  "bundleSizeMb": "4.78",
+  "bundleSha256": "3bbc577e83f8cc8023623aee606890f751311c3f18a619197c83af0230e46cd2",
+  "fileCount": 328,
   "version": "1.3.0",
-  "buildDate": "2026-10-29T03:57:59.708Z"
+  "buildDate": "2026-10-29T08:58:13.158Z"
 }

@@ -1401,7 +1401,7 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('1,864 assertions'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('2,023 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
   // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
@@ -1921,7 +1921,7 @@ async function runTestSuite() {
   assert(s46QuranJs.includes('handleAyahEnded') && s46QuranJs.includes('ayahRepeatPlayed'), 'Suite 46: 3x/5x ayah repetition is implemented');
 
   const s46Sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  assert(s46Sw.includes("CACHE_VERSION = 'v23'"), 'Suite 46: service worker cache version is v23');
+  assert(s46Sw.includes("CACHE_VERSION = 'v24'"), 'Suite 46: service worker cache version is v24');
   assert(s46Sw.includes('QURAN_CACHE') && s46Sw.includes('preCacheQuranCorpus'), 'Suite 46: service worker pre-caches the Quran corpus');
   assert(s46Sw.includes('TAFSIR_CACHE') && s46Sw.includes('preCacheTafsirIndex'), 'Suite 46: service worker caches tafsir on demand');
   assert(s46Sw.includes("'./offline.html'"), 'Suite 46: offline page is pre-cached');
@@ -2041,7 +2041,7 @@ async function runTestSuite() {
   assert(s47Store.includes('noordeen-tafsir') && s47Store.includes('indexedDB.open'), 'Suite 47: tafsir store persists chunks in IndexedDB');
   assert(s47Store.includes('function getSurah') && s47Store.includes('function getVerse') && s47Store.includes('function getManifest'), 'Suite 47: tafsir store exposes surah, verse and manifest APIs');
   assert(s47Store.includes('function validateSurah') && s47Store.includes('Invalid tafsir chunk'), 'Suite 47: tafsir store validates chunks before caching');
-  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261029a'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
+  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261029b'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
   assert(s47QuranHtml.includes('value="jalalayn-en"') && s47QuranHtml.includes('value="jalalayn-ar"') && s47QuranHtml.includes('value="asbab-ar"') && s47QuranHtml.includes('value="editorial"'), 'Suite 47: Study Mode offers the three verbatim editions plus the editorial option');
   assert(!s47QuranHtml.includes('value="ibn-kathir"'), 'Suite 47: Study Mode no longer offers a non-bundled Ibn Kathir edition');
   assert(s47QuranJs.includes('async renderStudyTafsir') && s47QuranJs.includes('TafsirStore.getSurah'), 'Suite 47: Study Mode loads commentary from the bundled tafsir store');
@@ -2115,8 +2115,79 @@ async function runTestSuite() {
   for (const id of ['thematic-index', 'thematic-search', 'thematic-theme-list', 'thematic-results', 'thematic-disclaimer']) {
     assert(s48Html.includes(`id="${id}"`), `Suite 48: Quran page contains #${id}`);
   }
-  assert(s48Html.includes('js/thematic-index.js?v=20261029a'), 'Suite 48: Quran page loads the thematic index at the current asset version');
+  assert(s48Html.includes('js/thematic-index.js?v=20261029b'), 'Suite 48: Quran page loads the thematic index at the current asset version');
   assert(/finding aid, not a scholarly thematic classification/i.test(s48Html), 'Suite 48: page copy labels the index as a finding aid');
+
+  // --- TEST SUITE 49: Batch 6a Seerah Articles ---
+  console.log('\n--- TEST SUITE 49: Batch 6a Seerah Articles ---');
+  const s49Articles = [
+    { slug: 'pre-islamic-arabia-jahiliyyah', topic: 53, minBody: 3000, caution: /later report|traditional rather than certain/i },
+    { slug: 'makkan-persecution-and-resilience', topic: 54, minBody: 2500, caution: /later report|not an authentic hadith/i },
+    { slug: 'isra-and-miraj-night-journey', topic: 55, minBody: 2400, caution: /later commemoration|not established by an authentic/i },
+    { slug: 'hijrah-to-madinah', topic: 56, minBody: 2500, caution: /later report|not an authentic hadith/i }
+  ];
+
+  const s49Files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.html') && f !== 'index.html');
+  assert(s49Files.length === 37, `Suite 49: article library now holds 37 articles (found ${s49Files.length})`);
+
+  const s49Search = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  const s49Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  const s49Index = fs.readFileSync(path.join(articlesDir, 'index.html'), 'utf-8');
+  const s49Roadmap = fs.readFileSync(path.join(ROOT_DIR, 'reports', 'KNOWLEDGE_LIBRARY_ROADMAP_100.md'), 'utf-8');
+
+  for (const item of s49Articles) {
+    const file = path.join(articlesDir, `${item.slug}.html`);
+    assert(fs.existsSync(file), `Suite 49: ${item.slug}.html exists`);
+    const html = fs.readFileSync(file, 'utf-8');
+    assert(html.length > 30 * 1024, `Suite 49: ${item.slug} is a substantial page (${html.length} bytes)`);
+    assert(/<html lang="en" dir="ltr"/.test(html), `Suite 49: ${item.slug} declares English LTR document`);
+    assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 49: ${item.slug} has the correct canonical URL`);
+    assert(html.includes('main.css?v=20261029b') && html.includes('app.js?v=20261029b'), `Suite 49: ${item.slug} uses the current asset version`);
+
+    const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
+    assert(!!bodyMatch, `Suite 49: ${item.slug} has an article body container`);
+    const body = bodyMatch[0];
+    const bodyWords = (body.replace(/<[^>]+>/g, ' ').match(/[A-Za-z0-9\u0600-\u06FF']+/g) || []).length;
+    assert(bodyWords >= item.minBody, `Suite 49: ${item.slug} body reaches depth (${bodyWords} words)`);
+    assert(bodyWords <= 3600, `Suite 49: ${item.slug} body stays within the audited maximum (${bodyWords} words)`);
+
+    const core = html.slice(html.indexOf('<article class="editorial-content-body"'), html.indexOf('id="frequently-asked-questions"'));
+    const coreWords = (core.replace(/<[^>]+>/g, ' ').match(/[A-Za-z0-9\u0600-\u06FF']+/g) || []).length;
+    assert(coreWords >= 1800, `Suite 49: ${item.slug} prose core exceeds 1,800 words (${coreWords})`);
+
+    const sectionIds = [...body.matchAll(/<section id="([^"]+)"/g)].map(m => m[1]);
+    assert(sectionIds.length >= 9, `Suite 49: ${item.slug} has at least nine numbered sections (${sectionIds.length})`);
+    for (const id of sectionIds) {
+      assert(html.includes(`href="#${id}"`), `Suite 49: ${item.slug} TOC links to #${id}`);
+    }
+    assert((body.match(/<h2/g) || []).length >= 10, `Suite 49: ${item.slug} uses multiple H2 headings`);
+    assert((body.match(/<h3/g) || []).length >= 3, `Suite 49: ${item.slug} uses H3 subheadings`);
+
+    const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+    assert(jsonLdBlocks.length === 2, `Suite 49: ${item.slug} carries exactly two JSON-LD blocks (${jsonLdBlocks.length})`);
+    const parsed = jsonLdBlocks.map(b => JSON.parse(b));
+    assert(parsed.some(o => o['@type'] === 'FAQPage'), `Suite 49: ${item.slug} includes FAQPage schema`);
+    assert(parsed.some(o => o['@type'] === 'BreadcrumbList'), `Suite 49: ${item.slug} includes BreadcrumbList schema`);
+
+    assert(html.includes('id="scholarly-bibliography"'), `Suite 49: ${item.slug} renders a bibliography section`);
+    assert(/Editorial note/i.test(html), `Suite 49: ${item.slug} carries an explicit editorial note`);
+    assert(item.caution.test(html), `Suite 49: ${item.slug} labels later or unverified reports as such`);
+    assert(!/<script[^>]+src="https?:\/\//i.test(html), `Suite 49: ${item.slug} loads no third-party scripts`);
+    assert(!/\]\(https?:\/\//.test(html), `Suite 49: ${item.slug} contains no stray Markdown links`);
+
+    const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
+    assert(new Set(ids).size === ids.length, `Suite 49: ${item.slug} has no duplicate element ids`);
+
+    assert(s49Search.includes(`articles/${item.slug}.html`), `Suite 49: ${item.slug} is registered in the search index`);
+    assert(s49Sitemap.includes(`/articles/${item.slug}.html</loc>`), `Suite 49: ${item.slug} is registered in sitemap.xml`);
+    assert(s49Index.includes(`href="${item.slug}.html"`), `Suite 49: ${item.slug} is linked from the article catalogue`);
+    assert(new RegExp(`${item.topic}\\. \\*\\*[^\\n]+\\*\\* — \`public/articles/${item.slug}\\.html\` \\[LIVE\\]`).test(s49Roadmap), `Suite 49: roadmap topic ${item.topic} is marked LIVE with its article path`);
+  }
+
+  assert(s49Search.includes('pre-islamic-arabia-jahiliyyah') && s49Search.includes('hijrah-to-madinah'), 'Suite 49: all four Seerah slugs appear in search.js');
+  assert((s49Sitemap.match(/<loc>/g) || []).length === 64, 'Suite 49: sitemap now lists 64 URLs');
+  assert(s49Index.includes('Batch 6a Published Articles') && s49Index.includes('🕋') && s49Index.includes('🐪'), 'Suite 49: article catalogue exposes the Batch 6a block and cards');
+  assert(/57\. \*\*Madinan Society[^\n]*\[PLANNED - BATCH 6B\]/.test(s49Roadmap), 'Suite 49: roadmap keeps topics 57–60 explicitly planned');
 
   // SUMMARY
   console.log('\n====================================================');

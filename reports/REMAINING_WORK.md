@@ -86,7 +86,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | Tafsir | **Done (Phase 2)** — Jalalayn EN 6,236; Jalalayn AR 6,010; 6 editorial summaries | Owner decision on the English translation licence; optional collation against a printed edition | English translation is © Royal Aal al-Bayt, attributed non-commercial use only |
 | Asbab al-nuzul | **Done (Phase 2)** — 275 verses / 50 surahs / 200 Arabic reports | English translation if a licensed one is found | Arabic only; absence is stated as absence, not non-existence |
 | Thematic index | **Done (Phase 2)** — 30 themes / 5,639 matches | Optional scholarly review of theme definitions | Keyword finding aid, not a thematic tafsir |
-| Articles | 33 published / 23 roadmap topics | 67 more roadmap topics | Phase 5; ~1,500–2,500 body words each |
+| Articles | 37 published / 27 roadmap topics | 73 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batch 6a deliberately longer, 2,664–3,391 whole-body) |
 | Hadith | 101 curated | 500+ reviewed records plus narrator (rijaal) notes | Phase 3 |
 | Nawawi 40 | Partial (within the 101) | Complete 40 with commentary | Phase 3 |
 | Lecture catalog | 10 of 74 archive pages | Remaining 64 pages | Same scrape-and-verify method; keep duplicate handling |
@@ -97,7 +97,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | :--- | :--- | :--- |
 | 4 | 21–30 | Family, parenting, inheritance, neighbours — **DONE** (4 articles) |
 | 5 | 31–40 | Business ethics, contracts, debt and workers' rights — **DONE** (4 articles) |
-| 6 | 41–50 | Seerah epochs in depth — **NEXT** |
+| 6 | 41–50 | Seerah epochs in depth — **PARTIAL: Batch 6a DONE (roadmap topics 53–56, 4 articles); topics 57–60 remain** |
 | 7 | 51–60 | Rightly-guided caliphs |
 | 8 | 61–70 | Islamic golden age: science, philosophy, medicine |
 | 9 | 71–80 | Death, barzakh, resurrection |
@@ -152,8 +152,8 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 ## 7. Exact next task
 
-**Next task:** **Batch 6 — four articles on the Seerah epochs (roadmap topics 41–50)**, via `scripts/article-content/batch-6a.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`.
+**Next task:** **Batch 6b — the remaining four Seerah articles (roadmap topics 57–60: Madinan society, the battles, Hudaybiyyah and the Conquest of Makkah, the Farewell Sermon)**, via a new `scripts/article-content/batch-6b.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`.
 
 Alternative: begin Phase 3 (hadith expansion) or obtain the owner's decision on the English Jalalayn translation licence before commercial distribution.
 
-Before starting either: run `node test/run-tests.js` to confirm the **1,864-assertion** baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md` / `MODULE_REGISTRY.md` / `MODULE_FUNCTIONAL_TESTS.md` / `FINAL_TEST_RESULTS.md`.
+Before starting either: run `node test/run-tests.js` to confirm the current baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md` / `MODULE_REGISTRY.md` / `MODULE_FUNCTIONAL_TESTS.md` / `FINAL_TEST_RESULTS.md`.
