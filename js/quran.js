@@ -430,9 +430,15 @@ class QuranReader {
 
     // Study Mode & Tafsir State
     this.activeStudyAyah = null;
-    this.studyTafsirEdition = 'ibn-kathir';
+    const savedTafsirEdition = (typeof localStorage !== 'undefined')
+      ? localStorage.getItem('islamic_portal_tafsir_edition')
+      : null;
+    this.studyTafsirEdition = ['jalalayn-en', 'jalalayn-ar', 'asbab-ar', 'editorial'].includes(savedTafsirEdition)
+      ? savedTafsirEdition
+      : 'jalalayn-en';
     this.activeStudyTab = 'tafsir';
     this.studyData = null;
+    this.tafsirRequestToken = 0;
 
     this.initAudioListeners();
     this.initStudyData();
@@ -659,6 +665,7 @@ class QuranReader {
       if (requestToken !== this.loadRequestToken) return false;
       if (corpusSurah) {
         this.useCorpusSurah(corpusSurah);
+        this.preloadTafsir(surahNum);
         return true;
       }
     }
@@ -1526,6 +1533,13 @@ class QuranReader {
 
   // --- STUDY MODE CONTROLLER (Exegesis, Word-by-Word, Comparison, Hadith) ---
 
+  // Load the tafsir chunk in the background so Study Mode opens instantly.
+  preloadTafsir(surahNum) {
+    if (window.TafsirStore && typeof window.TafsirStore.getSurah === 'function') {
+      window.TafsirStore.getSurah(surahNum).catch(() => {});
+    }
+  }
+
   openStudyMode(surahNum, ayahNum) {
     const sNum = Number(surahNum);
     const aNum = Number(ayahNum);
@@ -1600,7 +1614,13 @@ class QuranReader {
   }
 
   setStudyTafsirEdition(editionSlug) {
-    this.studyTafsirEdition = editionSlug;
+    const allowed = ['jalalayn-en', 'jalalayn-ar', 'asbab-ar', 'editorial'];
+    this.studyTafsirEdition = allowed.includes(editionSlug) ? editionSlug : 'jalalayn-en';
+    try {
+      localStorage.setItem('islamic_portal_tafsir_edition', this.studyTafsirEdition);
+    } catch (error) {
+      // Storage can be unavailable in private mode; the in-memory choice still applies.
+    }
     this.renderStudyTafsir();
   }
 
@@ -1611,51 +1631,191 @@ class QuranReader {
     this.renderStudyHadith();
   }
 
-  renderStudyTafsir() {
+  escapeStudyHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  async renderStudyTafsir() {
     const tafsirContent = document.getElementById('study-tafsir-content');
     const tafsirMeta = document.getElementById('study-tafsir-meta');
     if (!tafsirContent || !this.activeStudyAyah) return;
 
-    const key = `${this.activeStudyAyah.surah}:${this.activeStudyAyah.ayah}`;
-    const studyItem = this.studyData && this.studyData[key];
+    const surahNum = this.activeStudyAyah.surah;
+    const ayahNum = this.activeStudyAyah.ayah;
+    const key = `${surahNum}:${ayahNum}`;
+    const editionId = this.studyTafsirEdition;
+    const token = (this.tafsirRequestToken || 0) + 1;
+    this.tafsirRequestToken = token;
 
-    const surahName = this.surahData ? this.surahData.englishName : '';
-    const isJalalayn = this.studyTafsirEdition === 'jalalayn';
-    const bundledText = studyItem ? (isJalalayn ? studyItem.tafsirJalalayn : studyItem.tafsirIbnKathir) : null;
-    const borderColor = isJalalayn ? 'var(--color-gold)' : 'var(--color-primary)';
+    const isCurrent = () => token === this.tafsirRequestToken &&
+      this.activeStudyAyah && this.activeStudyAyah.surah === surahNum &&
+      this.activeStudyAyah.ayah === ayahNum && this.studyTafsirEdition === editionId;
 
-    if (tafsirMeta) {
-      tafsirMeta.textContent = isJalalayn
-        ? "Tafsir al-Jalalayn — Jalal al-Din al-Mahalli & Jalal al-Din al-Suyuti (رحمهما الله) • Editorial English summary of the classical commentary"
-        : "Tafsir al-Qur'an al-'Azim — Al-Hafiz Ibn Kathir (رحمه الله, 774 AH) • Editorial English summary of the classical commentary";
-    }
+    const surahLabel = this.surahData && this.surahData.englishName
+      ? `Surah ${this.surahData.englishName}`
+      : `Surah ${surahNum}`;
 
-    if (bundledText) {
-      tafsirContent.innerHTML = `
-        <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${borderColor};">
-          <p style="margin: 0; line-height: 1.8;">${bundledText}</p>
-          <p style="margin: 10px 0 0; padding-top: 8px; border-top: 1px dashed var(--color-border); font-size: 0.8rem; line-height: 1.5; color: var(--color-text-muted);">
-            <strong>Editorial summary:</strong> this is an English paraphrase of the named classical commentary, not a verbatim translation. Verify wording against a published edition before quoting.
-          </p>
-        </div>
-      `;
+    const renderPanel = (bodyHtml, footerHtml, color) => `
+      <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${color};">
+        ${bodyHtml}
+        ${footerHtml ? `<p style="margin: 12px 0 0; padding-top: 8px; border-top: 1px dashed var(--color-border); font-size: 0.78rem; line-height: 1.5; color: var(--color-text-muted);">${footerHtml}</p>` : ''}
+      </div>
+    `;
+
+    // --- NoorDeen editorial summary (site-original paraphrase) -------------
+    if (editionId === 'editorial') {
+      const studyItem = this.studyData && this.studyData[key];
+      const editorialText = studyItem && (studyItem.editorialSummary || studyItem.editorialSummaryAlternate);
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'NoorDeen editorial summary — modern English paraphrase written for this site. Not a classical tafsir and not a verbatim translation.';
+      }
+      if (editorialText) {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;">${this.escapeStudyHtml(editorialText)}</p>`,
+          '<strong>Editorial text:</strong> this is a NoorDeen paraphrase, not the wording of Ibn Kathir, al-Jalalayn or any other scholar. It is not attributed to them and must not be quoted as their tafsir. Verify against a published edition before relying on it.',
+          'var(--color-gold)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>No editorial summary is bundled for ${surahLabel}, verse ${ayahNum}.</strong> NoorDeen editorial summaries cover only six key verses (Al-Fatihah 1:1, 1:2, 1:5, 1:6, Ayat al-Kursi 2:255 and Al-Ikhlas 112:1).</p>
+           <p style="margin: 10px 0 0; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">Choose one of the bundled classical editions above to read commentary for this verse.</p>`,
+          '',
+          'var(--color-gold)'
+        );
+      }
       return;
     }
 
-    // Honest fallback: no commentary is bundled for this verse. Do not invent one.
-    tafsirContent.innerHTML = `
-      <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${borderColor};">
-        <p style="margin: 0 0 10px 0; line-height: 1.8;">
-          <strong>No commentary is bundled for ${surahName ? 'Surah ' + surahName + ', ' : ''}verse ${key}.</strong>
-          NoorDeen currently bundles verified commentary for a small set of key verses (Al-Fatihah, Ayat al-Kursi and Al-Ikhlas). Rather than display a fabricated or paraphrased explanation attributed to a classical scholar, this panel shows nothing here.
-        </p>
-        <p style="margin: 0; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">
-          Read the full tafsir in a published edition, or consult
-          <a href="https://quran.com/${key.split(':')[0]}/tafsirs" target="_blank" rel="noopener noreferrer">Quran.com's tafsir section</a>
-          and verify against the printed source.
-        </p>
-      </div>
-    `;
+    // --- Bundled classical editions ---------------------------------------
+    if (!window.TafsirStore || typeof window.TafsirStore.getSurah !== 'function') {
+      if (tafsirMeta) tafsirMeta.textContent = 'Bundled commentary is unavailable on this page.';
+      tafsirContent.innerHTML = renderPanel(
+        '<p style="margin: 0; line-height: 1.8;"><strong>The offline tafsir store did not load.</strong> Reload the page with a connection so the commentary chunk can be cached.</p>',
+        '',
+        'var(--color-primary)'
+      );
+      return;
+    }
+
+    if (tafsirMeta) tafsirMeta.textContent = 'Loading bundled commentary…';
+    tafsirContent.innerHTML = renderPanel(
+      '<p style="margin: 0; color: var(--color-text-muted);">Loading the bundled commentary…</p>',
+      '',
+      'var(--color-border)'
+    );
+
+    let chunk = null;
+    try {
+      chunk = await window.TafsirStore.getSurah(surahNum);
+    } catch (error) {
+      chunk = null;
+    }
+    if (!isCurrent()) return;
+
+    let edition = null;
+    try {
+      edition = await window.TafsirStore.getEdition(editionId);
+    } catch (error) {
+      edition = null;
+    }
+    if (!isCurrent()) return;
+
+    if (!chunk) {
+      if (tafsirMeta) tafsirMeta.textContent = 'Bundled commentary could not be loaded.';
+      tafsirContent.innerHTML = renderPanel(
+        `<p style="margin: 0 0 10px; line-height: 1.8;"><strong>The commentary chunk for ${surahLabel} could not be loaded.</strong> It may not be cached yet and the network request failed. No text has been invented to fill the gap.</p>
+         <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.82rem;" onclick="quranApp.renderStudyTafsir()">Retry loading commentary</button>`,
+        '',
+        'var(--color-primary)'
+      );
+      return;
+    }
+
+    const fields = chunk.ayahs[String(ayahNum)] || null;
+
+    // --- Tafsir al-Jalalayn, English translation --------------------------
+    if (editionId === 'jalalayn-en') {
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'Tafsir al-Jalalayn — Jalal al-Din al-Mahalli & Jalal al-Din al-Suyuti • English translation by Dr. Feras Hamza • © Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com) • Bundled for non-commercial educational use';
+      }
+      if (fields && fields.en) {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.85;">${this.escapeStudyHtml(fields.en)}</p>`,
+          '<strong>Attribution:</strong> Tafsir al-Jalalayn, English translation by Dr. Feras Hamza, © Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com). Quoted verbatim from the bundled edition for non-commercial educational use; commercial redistribution requires the Institute\'s permission. Verify against a published edition before quoting.',
+          'var(--color-primary)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>The bundled English edition has no entry for ${surahLabel}, verse ${ayahNum}.</strong> The entry is missing from the source dataset and has not been filled in from another translation.</p>`,
+          'Tafsir al-Jalalayn, English translation by Dr. Feras Hamza, © Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com).',
+          'var(--color-primary)'
+        );
+      }
+      return;
+    }
+
+    // --- Tafsir al-Jalalayn, Arabic original -------------------------------
+    if (editionId === 'jalalayn-ar') {
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'تفسير الجلالين — جلال الدين المحلي وجلال الدين السيوطي • Arabic original (public domain) • Digitised edition: 6,010 of 6,236 verses';
+      }
+      if (fields && fields.ar) {
+        tafsirContent.innerHTML = renderPanel(
+          `<div lang="ar" dir="rtl" style="font-family: var(--font-quran, 'Amiri', serif); font-size: 1.35rem; line-height: 2.15; text-align: right; color: var(--color-text-main);">${this.escapeStudyHtml(fields.ar)}</div>`,
+          '<strong>Attribution:</strong> Tafsir al-Jalalayn by Jalal al-Din al-Mahalli (d. 864 AH) and Jalal al-Din al-Suyuti (d. 911 AH). The Arabic original is in the public domain; this digitisation is used as distributed in the Tafsir API dataset. The digitised edition omits some verses, which are shown as missing rather than filled from another source.',
+          'var(--color-gold)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>The digitised Arabic edition has no entry for ${surahLabel}, verse ${ayahNum}.</strong> This is a known gap in the digitisation (6,010 of 6,236 verses are present). It has not been filled in from another edition.</p>`,
+          'Tafsir al-Jalalayn, Arabic original, public domain.',
+          'var(--color-gold)'
+        );
+      }
+      return;
+    }
+
+    // --- Asbab al-Nuzul, Arabic reports -----------------------------------
+    if (editionId === 'asbab-ar') {
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'أسباب النزول — reports compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī • Arabic only • 200 reports across 50 surahs • Dataset MIT licence';
+      }
+      const reports = fields && Array.isArray(fields.asbab) ? fields.asbab : [];
+      if (reports.length > 0) {
+        const rangeText = fields.asbabRange
+          ? ` The source report covers ayah(s) ${String(fields.asbabRange).replace('-', '–')}.`
+          : '';
+        const items = reports.map((report) => `
+          <li lang="ar" dir="rtl" style="margin-bottom: 12px; font-family: var(--font-quran, 'Amiri', serif); font-size: 1.12rem; line-height: 2.05; text-align: right;">${this.escapeStudyHtml(report)}</li>
+        `).join('');
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0 0 10px; line-height: 1.8;">Occasion(s) of revelation recorded for ${surahLabel}, verse ${ayahNum}.${rangeText}</p>
+           <ol style="margin: 0; padding-left: 22px;">${items}</ol>`,
+          '<strong>Source:</strong> Arabic reports quoted verbatim from the Asbab al-Nuzul Dataset (MIT licence), compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī. No English translation is bundled, so none is shown. The reports are quoted as recorded; NoorDeen has not independently graded their chains.',
+          'var(--color-primary)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>The bundled compilation records no occasion of revelation for ${surahLabel}, verse ${ayahNum}.</strong> Absence of an entry is not a claim that no occasion exists; it means this compilation has no report for this verse.</p>`,
+          'Asbab al-Nuzul Dataset (MIT licence), reports compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī. Arabic only.',
+          'var(--color-primary)'
+        );
+      }
+      return;
+    }
+
+    // Unknown edition: fail closed rather than show the wrong text.
+    if (tafsirMeta) tafsirMeta.textContent = 'Unknown commentary edition.';
+    tafsirContent.innerHTML = renderPanel(
+      '<p style="margin: 0; line-height: 1.8;">The selected commentary edition is not registered. Choose an edition from the list above.</p>',
+      '',
+      'var(--color-primary)'
+    );
   }
 
   renderStudyWBW() {

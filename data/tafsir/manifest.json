@@ -1,0 +1,1340 @@
+{
+  "catalogVersion": "1.0.0",
+  "generatedAt": "2026-10-29T03:27:02.285Z",
+  "generatedBy": "scripts/fetch-tafsir.cjs",
+  "sources": [
+    {
+      "provider": "Tafsir API dataset",
+      "repository": "https://github.com/spa5k/tafsir_api",
+      "baseUrl": "https://raw.githubusercontent.com/spa5k/tafsir_api/main/tafsir/"
+    },
+    {
+      "provider": "Asbab al-Nuzul Dataset",
+      "repository": "https://github.com/mostafaahmed97/asbab-al-nuzul-dataset",
+      "baseUrl": "https://raw.githubusercontent.com/mostafaahmed97/asbab-al-nuzul-dataset/main/data/structured/json/",
+      "licence": "MIT"
+    }
+  ],
+  "editions": [
+    {
+      "id": "jalalayn-en",
+      "field": "en",
+      "title": "Tafsir al-Jalalayn (English translation)",
+      "arabicTitle": "تفسير الجلالين",
+      "author": "Jalal al-Din al-Mahalli (d. 864 AH) and Jalal al-Din al-Suyuti (d. 911 AH)",
+      "language": "en",
+      "dir": "ltr",
+      "translator": "Dr. Feras Hamza",
+      "publisher": "Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com)",
+      "rightsStatus": "attributed-copyright",
+      "rightsNote": "English translation © Royal Aal al-Bayt Institute for Islamic Thought. Bundled with attribution for non-commercial educational use; commercial redistribution requires the Institute's permission.",
+      "coverageNote": "Verse-by-verse concise classical commentary. Every verse of the Quran has an entry."
+    },
+    {
+      "id": "jalalayn-ar",
+      "field": "ar",
+      "title": "Tafsir al-Jalalayn (Arabic original)",
+      "arabicTitle": "تفسير الجلالين",
+      "author": "Jalal al-Din al-Mahalli (d. 864 AH) and Jalal al-Din al-Suyuti (d. 911 AH)",
+      "language": "ar",
+      "dir": "rtl",
+      "translator": null,
+      "publisher": "Classical text; digitised text distributed in the Tafsir API dataset",
+      "rightsStatus": "public-domain",
+      "rightsNote": "The Arabic original is a classical work whose authors died in 864 AH and 911 AH; the text itself is in the public domain. The digitisation is used as distributed by the Tafsir API dataset.",
+      "coverageNote": "Arabic original. The digitised edition omits a few verses; gaps are shown explicitly."
+    },
+    {
+      "id": "asbab-ar",
+      "field": "asbab",
+      "title": "Asbab al-Nuzul — occasions of revelation (Arabic reports)",
+      "arabicTitle": "أسباب النزول",
+      "author": "Reports compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī",
+      "language": "ar",
+      "dir": "rtl",
+      "translator": null,
+      "publisher": "Asbab al-Nuzul Dataset (MIT licence)",
+      "rightsStatus": "mit",
+      "rightsNote": "Dataset released under the MIT licence. The reports themselves are classical hadith and reports quoted in the named compilation; no English translation is bundled.",
+      "coverageNote": "Only verses for which the compilation records an authentic occasion have an entry. Absence of an entry is not a claim that no occasion exists. Reports are Arabic only."
+    }
+  ],
+  "totalSurahs": 114,
+  "totalAyahs": 6236,
+  "totalBytes": 5781739,
+  "asbabGroups": 200,
+  "editionTotals": {
+    "jalalayn-en": {
+      "verses": 6236,
+      "surahs": 114
+    },
+    "jalalayn-ar": {
+      "verses": 6010,
+      "surahs": 114
+    },
+    "asbab-ar": {
+      "verses": 275,
+      "surahs": 50
+    }
+  },
+  "surahs": [
+    {
+      "number": 1,
+      "file": "001.json",
+      "ayahs": 7,
+      "bytes": 7661,
+      "coverage": {
+        "jalalayn-en": 7,
+        "jalalayn-ar": 7,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 2,
+      "file": "002.json",
+      "ayahs": 286,
+      "bytes": 554285,
+      "coverage": {
+        "jalalayn-en": 286,
+        "jalalayn-ar": 283,
+        "asbab-ar": 37
+      }
+    },
+    {
+      "number": 3,
+      "file": "003.json",
+      "ayahs": 200,
+      "bytes": 277290,
+      "coverage": {
+        "jalalayn-en": 200,
+        "jalalayn-ar": 196,
+        "asbab-ar": 24
+      }
+    },
+    {
+      "number": 4,
+      "file": "004.json",
+      "ayahs": 176,
+      "bytes": 297836,
+      "coverage": {
+        "jalalayn-en": 176,
+        "jalalayn-ar": 175,
+        "asbab-ar": 26
+      }
+    },
+    {
+      "number": 5,
+      "file": "005.json",
+      "ayahs": 120,
+      "bytes": 223433,
+      "coverage": {
+        "jalalayn-en": 120,
+        "jalalayn-ar": 118,
+        "asbab-ar": 18
+      }
+    },
+    {
+      "number": 6,
+      "file": "006.json",
+      "ayahs": 165,
+      "bytes": 195975,
+      "coverage": {
+        "jalalayn-en": 165,
+        "jalalayn-ar": 164,
+        "asbab-ar": 8
+      }
+    },
+    {
+      "number": 7,
+      "file": "007.json",
+      "ayahs": 206,
+      "bytes": 183558,
+      "coverage": {
+        "jalalayn-en": 206,
+        "jalalayn-ar": 199,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 8,
+      "file": "008.json",
+      "ayahs": 75,
+      "bytes": 143883,
+      "coverage": {
+        "jalalayn-en": 75,
+        "jalalayn-ar": 74,
+        "asbab-ar": 15
+      }
+    },
+    {
+      "number": 9,
+      "file": "009.json",
+      "ayahs": 129,
+      "bytes": 220769,
+      "coverage": {
+        "jalalayn-en": 129,
+        "jalalayn-ar": 127,
+        "asbab-ar": 17
+      }
+    },
+    {
+      "number": 10,
+      "file": "010.json",
+      "ayahs": 109,
+      "bytes": 95450,
+      "coverage": {
+        "jalalayn-en": 109,
+        "jalalayn-ar": 105,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 11,
+      "file": "011.json",
+      "ayahs": 123,
+      "bytes": 102338,
+      "coverage": {
+        "jalalayn-en": 123,
+        "jalalayn-ar": 123,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 12,
+      "file": "012.json",
+      "ayahs": 111,
+      "bytes": 106536,
+      "coverage": {
+        "jalalayn-en": 111,
+        "jalalayn-ar": 110,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 13,
+      "file": "013.json",
+      "ayahs": 43,
+      "bytes": 53868,
+      "coverage": {
+        "jalalayn-en": 43,
+        "jalalayn-ar": 43,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 14,
+      "file": "014.json",
+      "ayahs": 52,
+      "bytes": 46471,
+      "coverage": {
+        "jalalayn-en": 52,
+        "jalalayn-ar": 52,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 15,
+      "file": "015.json",
+      "ayahs": 99,
+      "bytes": 40259,
+      "coverage": {
+        "jalalayn-en": 99,
+        "jalalayn-ar": 96,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 16,
+      "file": "016.json",
+      "ayahs": 128,
+      "bytes": 115920,
+      "coverage": {
+        "jalalayn-en": 128,
+        "jalalayn-ar": 125,
+        "asbab-ar": 2
+      }
+    },
+    {
+      "number": 17,
+      "file": "017.json",
+      "ayahs": 111,
+      "bytes": 110659,
+      "coverage": {
+        "jalalayn-en": 111,
+        "jalalayn-ar": 111,
+        "asbab-ar": 5
+      }
+    },
+    {
+      "number": 18,
+      "file": "018.json",
+      "ayahs": 110,
+      "bytes": 114398,
+      "coverage": {
+        "jalalayn-en": 110,
+        "jalalayn-ar": 107,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 19,
+      "file": "019.json",
+      "ayahs": 98,
+      "bytes": 73248,
+      "coverage": {
+        "jalalayn-en": 98,
+        "jalalayn-ar": 97,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 20,
+      "file": "020.json",
+      "ayahs": 135,
+      "bytes": 92598,
+      "coverage": {
+        "jalalayn-en": 135,
+        "jalalayn-ar": 133,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 21,
+      "file": "021.json",
+      "ayahs": 112,
+      "bytes": 84365,
+      "coverage": {
+        "jalalayn-en": 112,
+        "jalalayn-ar": 111,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 22,
+      "file": "022.json",
+      "ayahs": 78,
+      "bytes": 82846,
+      "coverage": {
+        "jalalayn-en": 78,
+        "jalalayn-ar": 77,
+        "asbab-ar": 2
+      }
+    },
+    {
+      "number": 23,
+      "file": "023.json",
+      "ayahs": 118,
+      "bytes": 67288,
+      "coverage": {
+        "jalalayn-en": 118,
+        "jalalayn-ar": 112,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 24,
+      "file": "024.json",
+      "ayahs": 64,
+      "bytes": 188283,
+      "coverage": {
+        "jalalayn-en": 64,
+        "jalalayn-ar": 64,
+        "asbab-ar": 10
+      }
+    },
+    {
+      "number": 25,
+      "file": "025.json",
+      "ayahs": 77,
+      "bytes": 70801,
+      "coverage": {
+        "jalalayn-en": 77,
+        "jalalayn-ar": 77,
+        "asbab-ar": 4
+      }
+    },
+    {
+      "number": 26,
+      "file": "026.json",
+      "ayahs": 227,
+      "bytes": 71281,
+      "coverage": {
+        "jalalayn-en": 227,
+        "jalalayn-ar": 180,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 27,
+      "file": "027.json",
+      "ayahs": 93,
+      "bytes": 85443,
+      "coverage": {
+        "jalalayn-en": 93,
+        "jalalayn-ar": 92,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 28,
+      "file": "028.json",
+      "ayahs": 88,
+      "bytes": 89824,
+      "coverage": {
+        "jalalayn-en": 88,
+        "jalalayn-ar": 88,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 29,
+      "file": "029.json",
+      "ayahs": 69,
+      "bytes": 58295,
+      "coverage": {
+        "jalalayn-en": 69,
+        "jalalayn-ar": 69,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 30,
+      "file": "030.json",
+      "ayahs": 60,
+      "bytes": 48988,
+      "coverage": {
+        "jalalayn-en": 60,
+        "jalalayn-ar": 60,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 31,
+      "file": "031.json",
+      "ayahs": 34,
+      "bytes": 31730,
+      "coverage": {
+        "jalalayn-en": 34,
+        "jalalayn-ar": 33,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 32,
+      "file": "032.json",
+      "ayahs": 30,
+      "bytes": 20479,
+      "coverage": {
+        "jalalayn-en": 30,
+        "jalalayn-ar": 30,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 33,
+      "file": "033.json",
+      "ayahs": 73,
+      "bytes": 113133,
+      "coverage": {
+        "jalalayn-en": 73,
+        "jalalayn-ar": 72,
+        "asbab-ar": 7
+      }
+    },
+    {
+      "number": 34,
+      "file": "034.json",
+      "ayahs": 54,
+      "bytes": 53560,
+      "coverage": {
+        "jalalayn-en": 54,
+        "jalalayn-ar": 54,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 35,
+      "file": "035.json",
+      "ayahs": 45,
+      "bytes": 41991,
+      "coverage": {
+        "jalalayn-en": 45,
+        "jalalayn-ar": 45,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 36,
+      "file": "036.json",
+      "ayahs": 83,
+      "bytes": 54460,
+      "coverage": {
+        "jalalayn-en": 83,
+        "jalalayn-ar": 81,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 37,
+      "file": "037.json",
+      "ayahs": 182,
+      "bytes": 72805,
+      "coverage": {
+        "jalalayn-en": 182,
+        "jalalayn-ar": 170,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 38,
+      "file": "038.json",
+      "ayahs": 88,
+      "bytes": 60923,
+      "coverage": {
+        "jalalayn-en": 88,
+        "jalalayn-ar": 85,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 39,
+      "file": "039.json",
+      "ayahs": 75,
+      "bytes": 63129,
+      "coverage": {
+        "jalalayn-en": 75,
+        "jalalayn-ar": 74,
+        "asbab-ar": 2
+      }
+    },
+    {
+      "number": 40,
+      "file": "040.json",
+      "ayahs": 85,
+      "bytes": 61883,
+      "coverage": {
+        "jalalayn-en": 85,
+        "jalalayn-ar": 84,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 41,
+      "file": "041.json",
+      "ayahs": 54,
+      "bytes": 38559,
+      "coverage": {
+        "jalalayn-en": 54,
+        "jalalayn-ar": 54,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 42,
+      "file": "042.json",
+      "ayahs": 53,
+      "bytes": 47926,
+      "coverage": {
+        "jalalayn-en": 53,
+        "jalalayn-ar": 52,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 43,
+      "file": "043.json",
+      "ayahs": 89,
+      "bytes": 55713,
+      "coverage": {
+        "jalalayn-en": 89,
+        "jalalayn-ar": 84,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 44,
+      "file": "044.json",
+      "ayahs": 59,
+      "bytes": 38456,
+      "coverage": {
+        "jalalayn-en": 59,
+        "jalalayn-ar": 58,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 45,
+      "file": "045.json",
+      "ayahs": 37,
+      "bytes": 28678,
+      "coverage": {
+        "jalalayn-en": 37,
+        "jalalayn-ar": 37,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 46,
+      "file": "046.json",
+      "ayahs": 35,
+      "bytes": 41495,
+      "coverage": {
+        "jalalayn-en": 35,
+        "jalalayn-ar": 35,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 47,
+      "file": "047.json",
+      "ayahs": 38,
+      "bytes": 39170,
+      "coverage": {
+        "jalalayn-en": 38,
+        "jalalayn-ar": 38,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 48,
+      "file": "048.json",
+      "ayahs": 29,
+      "bytes": 43242,
+      "coverage": {
+        "jalalayn-en": 29,
+        "jalalayn-ar": 29,
+        "asbab-ar": 2
+      }
+    },
+    {
+      "number": 49,
+      "file": "049.json",
+      "ayahs": 18,
+      "bytes": 33552,
+      "coverage": {
+        "jalalayn-en": 18,
+        "jalalayn-ar": 18,
+        "asbab-ar": 6
+      }
+    },
+    {
+      "number": 50,
+      "file": "050.json",
+      "ayahs": 45,
+      "bytes": 30321,
+      "coverage": {
+        "jalalayn-en": 45,
+        "jalalayn-ar": 44,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 51,
+      "file": "051.json",
+      "ayahs": 60,
+      "bytes": 28276,
+      "coverage": {
+        "jalalayn-en": 60,
+        "jalalayn-ar": 60,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 52,
+      "file": "052.json",
+      "ayahs": 49,
+      "bytes": 25328,
+      "coverage": {
+        "jalalayn-en": 49,
+        "jalalayn-ar": 46,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 53,
+      "file": "053.json",
+      "ayahs": 62,
+      "bytes": 30595,
+      "coverage": {
+        "jalalayn-en": 62,
+        "jalalayn-ar": 60,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 54,
+      "file": "054.json",
+      "ayahs": 55,
+      "bytes": 37526,
+      "coverage": {
+        "jalalayn-en": 55,
+        "jalalayn-ar": 50,
+        "asbab-ar": 2
+      }
+    },
+    {
+      "number": 55,
+      "file": "055.json",
+      "ayahs": 78,
+      "bytes": 22359,
+      "coverage": {
+        "jalalayn-en": 78,
+        "jalalayn-ar": 46,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 56,
+      "file": "056.json",
+      "ayahs": 96,
+      "bytes": 28810,
+      "coverage": {
+        "jalalayn-en": 96,
+        "jalalayn-ar": 81,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 57,
+      "file": "057.json",
+      "ayahs": 29,
+      "bytes": 32041,
+      "coverage": {
+        "jalalayn-en": 29,
+        "jalalayn-ar": 29,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 58,
+      "file": "058.json",
+      "ayahs": 22,
+      "bytes": 36100,
+      "coverage": {
+        "jalalayn-en": 22,
+        "jalalayn-ar": 20,
+        "asbab-ar": 4
+      }
+    },
+    {
+      "number": 59,
+      "file": "059.json",
+      "ayahs": 24,
+      "bytes": 26804,
+      "coverage": {
+        "jalalayn-en": 24,
+        "jalalayn-ar": 23,
+        "asbab-ar": 2
+      }
+    },
+    {
+      "number": 60,
+      "file": "060.json",
+      "ayahs": 13,
+      "bytes": 30097,
+      "coverage": {
+        "jalalayn-en": 13,
+        "jalalayn-ar": 13,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 61,
+      "file": "061.json",
+      "ayahs": 14,
+      "bytes": 15165,
+      "coverage": {
+        "jalalayn-en": 14,
+        "jalalayn-ar": 14,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 62,
+      "file": "062.json",
+      "ayahs": 11,
+      "bytes": 11643,
+      "coverage": {
+        "jalalayn-en": 11,
+        "jalalayn-ar": 11,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 63,
+      "file": "063.json",
+      "ayahs": 11,
+      "bytes": 20254,
+      "coverage": {
+        "jalalayn-en": 11,
+        "jalalayn-ar": 11,
+        "asbab-ar": 6
+      }
+    },
+    {
+      "number": 64,
+      "file": "064.json",
+      "ayahs": 18,
+      "bytes": 12451,
+      "coverage": {
+        "jalalayn-en": 18,
+        "jalalayn-ar": 17,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 65,
+      "file": "065.json",
+      "ayahs": 12,
+      "bytes": 16677,
+      "coverage": {
+        "jalalayn-en": 12,
+        "jalalayn-ar": 12,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 66,
+      "file": "066.json",
+      "ayahs": 12,
+      "bytes": 29208,
+      "coverage": {
+        "jalalayn-en": 12,
+        "jalalayn-ar": 12,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 67,
+      "file": "067.json",
+      "ayahs": 30,
+      "bytes": 22623,
+      "coverage": {
+        "jalalayn-en": 30,
+        "jalalayn-ar": 30,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 68,
+      "file": "068.json",
+      "ayahs": 52,
+      "bytes": 22489,
+      "coverage": {
+        "jalalayn-en": 52,
+        "jalalayn-ar": 47,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 69,
+      "file": "069.json",
+      "ayahs": 52,
+      "bytes": 18925,
+      "coverage": {
+        "jalalayn-en": 52,
+        "jalalayn-ar": 46,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 70,
+      "file": "070.json",
+      "ayahs": 44,
+      "bytes": 14909,
+      "coverage": {
+        "jalalayn-en": 44,
+        "jalalayn-ar": 41,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 71,
+      "file": "071.json",
+      "ayahs": 28,
+      "bytes": 12777,
+      "coverage": {
+        "jalalayn-en": 28,
+        "jalalayn-ar": 28,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 72,
+      "file": "072.json",
+      "ayahs": 28,
+      "bytes": 22927,
+      "coverage": {
+        "jalalayn-en": 28,
+        "jalalayn-ar": 28,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 73,
+      "file": "073.json",
+      "ayahs": 20,
+      "bytes": 16331,
+      "coverage": {
+        "jalalayn-en": 20,
+        "jalalayn-ar": 20,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 74,
+      "file": "074.json",
+      "ayahs": 56,
+      "bytes": 21335,
+      "coverage": {
+        "jalalayn-en": 56,
+        "jalalayn-ar": 52,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 75,
+      "file": "075.json",
+      "ayahs": 40,
+      "bytes": 22039,
+      "coverage": {
+        "jalalayn-en": 40,
+        "jalalayn-ar": 40,
+        "asbab-ar": 5
+      }
+    },
+    {
+      "number": 76,
+      "file": "076.json",
+      "ayahs": 31,
+      "bytes": 17222,
+      "coverage": {
+        "jalalayn-en": 31,
+        "jalalayn-ar": 31,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 77,
+      "file": "077.json",
+      "ayahs": 50,
+      "bytes": 14692,
+      "coverage": {
+        "jalalayn-en": 50,
+        "jalalayn-ar": 43,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 78,
+      "file": "078.json",
+      "ayahs": 40,
+      "bytes": 16869,
+      "coverage": {
+        "jalalayn-en": 40,
+        "jalalayn-ar": 40,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 79,
+      "file": "079.json",
+      "ayahs": 46,
+      "bytes": 17881,
+      "coverage": {
+        "jalalayn-en": 46,
+        "jalalayn-ar": 46,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 80,
+      "file": "080.json",
+      "ayahs": 42,
+      "bytes": 17170,
+      "coverage": {
+        "jalalayn-en": 42,
+        "jalalayn-ar": 39,
+        "asbab-ar": 7
+      }
+    },
+    {
+      "number": 81,
+      "file": "081.json",
+      "ayahs": 29,
+      "bytes": 10330,
+      "coverage": {
+        "jalalayn-en": 29,
+        "jalalayn-ar": 29,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 82,
+      "file": "082.json",
+      "ayahs": 19,
+      "bytes": 5698,
+      "coverage": {
+        "jalalayn-en": 19,
+        "jalalayn-ar": 19,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 83,
+      "file": "083.json",
+      "ayahs": 36,
+      "bytes": 12352,
+      "coverage": {
+        "jalalayn-en": 36,
+        "jalalayn-ar": 35,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 84,
+      "file": "084.json",
+      "ayahs": 25,
+      "bytes": 9306,
+      "coverage": {
+        "jalalayn-en": 25,
+        "jalalayn-ar": 24,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 85,
+      "file": "085.json",
+      "ayahs": 22,
+      "bytes": 8564,
+      "coverage": {
+        "jalalayn-en": 22,
+        "jalalayn-ar": 21,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 86,
+      "file": "086.json",
+      "ayahs": 17,
+      "bytes": 6813,
+      "coverage": {
+        "jalalayn-en": 17,
+        "jalalayn-ar": 17,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 87,
+      "file": "087.json",
+      "ayahs": 19,
+      "bytes": 6428,
+      "coverage": {
+        "jalalayn-en": 19,
+        "jalalayn-ar": 19,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 88,
+      "file": "088.json",
+      "ayahs": 26,
+      "bytes": 6928,
+      "coverage": {
+        "jalalayn-en": 26,
+        "jalalayn-ar": 23,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 89,
+      "file": "089.json",
+      "ayahs": 30,
+      "bytes": 11609,
+      "coverage": {
+        "jalalayn-en": 30,
+        "jalalayn-ar": 30,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 90,
+      "file": "090.json",
+      "ayahs": 20,
+      "bytes": 7437,
+      "coverage": {
+        "jalalayn-en": 20,
+        "jalalayn-ar": 19,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 91,
+      "file": "091.json",
+      "ayahs": 15,
+      "bytes": 5059,
+      "coverage": {
+        "jalalayn-en": 15,
+        "jalalayn-ar": 14,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 92,
+      "file": "092.json",
+      "ayahs": 21,
+      "bytes": 9118,
+      "coverage": {
+        "jalalayn-en": 21,
+        "jalalayn-ar": 19,
+        "asbab-ar": 1
+      }
+    },
+    {
+      "number": 93,
+      "file": "093.json",
+      "ayahs": 11,
+      "bytes": 7145,
+      "coverage": {
+        "jalalayn-en": 11,
+        "jalalayn-ar": 11,
+        "asbab-ar": 4
+      }
+    },
+    {
+      "number": 94,
+      "file": "094.json",
+      "ayahs": 8,
+      "bytes": 2345,
+      "coverage": {
+        "jalalayn-en": 8,
+        "jalalayn-ar": 8,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 95,
+      "file": "095.json",
+      "ayahs": 8,
+      "bytes": 4215,
+      "coverage": {
+        "jalalayn-en": 8,
+        "jalalayn-ar": 8,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 96,
+      "file": "096.json",
+      "ayahs": 19,
+      "bytes": 59572,
+      "coverage": {
+        "jalalayn-en": 19,
+        "jalalayn-ar": 19,
+        "asbab-ar": 14
+      }
+    },
+    {
+      "number": 97,
+      "file": "097.json",
+      "ayahs": 5,
+      "bytes": 2872,
+      "coverage": {
+        "jalalayn-en": 5,
+        "jalalayn-ar": 5,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 98,
+      "file": "098.json",
+      "ayahs": 8,
+      "bytes": 5595,
+      "coverage": {
+        "jalalayn-en": 8,
+        "jalalayn-ar": 8,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 99,
+      "file": "099.json",
+      "ayahs": 8,
+      "bytes": 3064,
+      "coverage": {
+        "jalalayn-en": 8,
+        "jalalayn-ar": 8,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 100,
+      "file": "100.json",
+      "ayahs": 11,
+      "bytes": 4581,
+      "coverage": {
+        "jalalayn-en": 11,
+        "jalalayn-ar": 11,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 101,
+      "file": "101.json",
+      "ayahs": 11,
+      "bytes": 3821,
+      "coverage": {
+        "jalalayn-en": 11,
+        "jalalayn-ar": 11,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 102,
+      "file": "102.json",
+      "ayahs": 8,
+      "bytes": 3411,
+      "coverage": {
+        "jalalayn-en": 8,
+        "jalalayn-ar": 8,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 103,
+      "file": "103.json",
+      "ayahs": 3,
+      "bytes": 1112,
+      "coverage": {
+        "jalalayn-en": 3,
+        "jalalayn-ar": 3,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 104,
+      "file": "104.json",
+      "ayahs": 9,
+      "bytes": 3315,
+      "coverage": {
+        "jalalayn-en": 9,
+        "jalalayn-ar": 9,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 105,
+      "file": "105.json",
+      "ayahs": 5,
+      "bytes": 3735,
+      "coverage": {
+        "jalalayn-en": 5,
+        "jalalayn-ar": 5,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 106,
+      "file": "106.json",
+      "ayahs": 4,
+      "bytes": 1840,
+      "coverage": {
+        "jalalayn-en": 4,
+        "jalalayn-ar": 3,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 107,
+      "file": "107.json",
+      "ayahs": 7,
+      "bytes": 1834,
+      "coverage": {
+        "jalalayn-en": 7,
+        "jalalayn-ar": 6,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 108,
+      "file": "108.json",
+      "ayahs": 3,
+      "bytes": 3067,
+      "coverage": {
+        "jalalayn-en": 3,
+        "jalalayn-ar": 3,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 109,
+      "file": "109.json",
+      "ayahs": 6,
+      "bytes": 1847,
+      "coverage": {
+        "jalalayn-en": 6,
+        "jalalayn-ar": 5,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 110,
+      "file": "110.json",
+      "ayahs": 3,
+      "bytes": 2176,
+      "coverage": {
+        "jalalayn-en": 3,
+        "jalalayn-ar": 3,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 111,
+      "file": "111.json",
+      "ayahs": 5,
+      "bytes": 20142,
+      "coverage": {
+        "jalalayn-en": 5,
+        "jalalayn-ar": 5,
+        "asbab-ar": 5
+      }
+    },
+    {
+      "number": 112,
+      "file": "112.json",
+      "ayahs": 4,
+      "bytes": 3642,
+      "coverage": {
+        "jalalayn-en": 4,
+        "jalalayn-ar": 4,
+        "asbab-ar": 3
+      }
+    },
+    {
+      "number": 113,
+      "file": "113.json",
+      "ayahs": 5,
+      "bytes": 2160,
+      "coverage": {
+        "jalalayn-en": 5,
+        "jalalayn-ar": 5,
+        "asbab-ar": 0
+      }
+    },
+    {
+      "number": 114,
+      "file": "114.json",
+      "ayahs": 6,
+      "bytes": 4029,
+      "coverage": {
+        "jalalayn-en": 6,
+        "jalalayn-ar": 5,
+        "asbab-ar": 0
+      }
+    }
+  ],
+  "anomalies": [
+    "surah 96 asbab: dataset lists ayah(s) 6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 but the surah has 19; kept 6,7,8,9,10,11,12,13,14,15,16,17,18,19"
+  ],
+  "problems": []
+}
