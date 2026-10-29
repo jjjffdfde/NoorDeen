@@ -99,10 +99,10 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 | Root pages | 161,929 words (161,829 indexable + 100 offline) |
 | Article library | 79,873 whole-page words; 64,160 article-body words |
 | Sitemap URLs | 60 |
-| Desktop bundle | 4,957,488 bytes / 4.73 MiB / 324 entries / 61 HTML / 114 Quran chunks / 114 tafsir chunks |
-| Bundle SHA-256 | `1f206d04bf99683ac1c746aea5c9506e589d390659e5f4a5cc54fe139e52db85` |
-| Release APK | 5,096,933 bytes / 4.86 MiB / 333 entries / v1.3.0 |
-| APK SHA-256 | `c2337baa1148a874c804ed6e7c45a4ca33349d2e572fae0286377656d5a61a18` |
+| Desktop bundle | 4,957,506 bytes / 4.73 MiB / 324 entries / 61 HTML / 114 Quran chunks / 114 tafsir chunks |
+| Bundle SHA-256 | `9dde2ee31be92339b639d85d12bc17c357afb6693d8c428184f2e8941e37f162` |
+| Release APK | 5,096,957 bytes / 4.86 MiB / 333 entries / v1.3.0 |
+| APK SHA-256 | `e1b2d5b2bfcc5f3fdf9a03744b6ae51db2b6f783f223ff087cbb491676d8f08d` |
 | Automated assertions | **1,864 passing / 0 failing** (48 suites) |
 
 ---

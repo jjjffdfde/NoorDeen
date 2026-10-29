@@ -38,7 +38,7 @@
 | Thematic index | 30 themes / 5,639 keyword matches; searchable UI in `quran.html`; Suite 48 recomputes every count |
 | Service worker | `v23`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
 | Tests | 1,864 assertions, 0 failures, 48 suites |
-| Builds | APK 333 entries / 5,096,933 bytes / `c2337baa…`; bundle 324 files / 4,957,488 bytes / `1f206d04…`; version 1.3.0 (build 10300), SW `v23` |
+| Builds | APK 333 entries / 5,096,957 bytes / `e1b2d5b2…`; bundle 324 files / 4,957,506 bytes / `9dde2ee3…`; version 1.3.0 (build 10300), SW `v23` |
 
 ---
 

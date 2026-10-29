@@ -1401,7 +1401,7 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('1,710 assertions'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('1,864 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
   // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');

@@ -178,8 +178,8 @@ Version `?v=20261029a`, app version 1.3.0 (build 10300), service-worker cache `v
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 4,957,488 | `1f206d04bf99683ac1c746aea5c9506e589d390659e5f4a5cc54fe139e52db85` |
-| `public/downloads/islamic-portal-release.apk` | 5,096,933 | `c2337baa1148a874c804ed6e7c45a4ca33349d2e572fae0286377656d5a61a18` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 4,957,506 | `9dde2ee31be92339b639d85d12bc17c357afb6693d8c428184f2e8941e37f162` |
+| `public/downloads/islamic-portal-release.apk` | 5,096,957 | `e1b2d5b2bfcc5f3fdf9a03744b6ae51db2b6f783f223ff087cbb491676d8f08d` |
 
 - APK: 333 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 61 HTML pages; bundle: 324 files including the same 114 Quran chunks, 114 tafsir chunks and 61 pages.
 - `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts.
