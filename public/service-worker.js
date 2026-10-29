@@ -3,10 +3,11 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v22';
-const CACHE_NAME = 'islamic-portal-shell-v22';
+const CACHE_VERSION = 'v23';
+const CACHE_NAME = 'islamic-portal-shell-v23';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 const QURAN_CACHE = 'islamic-portal-quran-v1';
+const TAFSIR_CACHE = 'islamic-portal-tafsir-v1';
 
 const STATIC_ASSETS = [
   './',
@@ -40,17 +41,21 @@ const STATIC_ASSETS = [
   './privacy.html',
   './terms.html',
   './manifest.json',
-  './css/main.css?v=20261027h',
-  './js/config.js?v=20261027h',
-  './js/data.js?v=20261027h',
-  './js/i18n.js?v=20261027h',
-  './js/tools.js?v=20261027h',
-  './js/search.js?v=20261027h',
-  './js/quran-store.js?v=20261027h',
-  './js/quran.js?v=20261027h',
+  './css/main.css?v=20261029a',
+  './js/config.js?v=20261029a',
+  './js/data.js?v=20261029a',
+  './js/i18n.js?v=20261029a',
+  './js/tools.js?v=20261029a',
+  './js/search.js?v=20261029a',
+  './js/quran-store.js?v=20261029a',
+  './js/tafsir-store.js?v=20261029a',
+  './js/quran.js?v=20261029a',
+  './js/thematic-index.js?v=20261029a',
   './data/quran/manifest.json',
-  './js/app.js?v=20261027h',
-  './js/sahaba-urdu.js?v=20261027h',
+  './data/tafsir/manifest.json',
+  './data/tafsir/themes.json',
+  './js/app.js?v=20261029a',
+  './js/sahaba-urdu.js?v=20261029a',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',
@@ -67,6 +72,7 @@ self.addEventListener('install', (event) => {
       console.log('[ServiceWorker] Pre-caching offline application shell:', CACHE_NAME);
       return cache.addAll(STATIC_ASSETS);
     }).then(() => preCacheQuranCorpus())
+      .then(() => preCacheTafsirIndex())
       .then(() => self.skipWaiting())
   );
 });
@@ -87,6 +93,20 @@ async function preCacheQuranCorpus() {
   }
 }
 
+// The tafsir corpus is ~5.8 MB. Only the manifest and thematic index are
+// pre-cached; surah chunks are cached on demand by the fetch handler below.
+async function preCacheTafsirIndex() {
+  try {
+    const cache = await caches.open(TAFSIR_CACHE);
+    const files = ['./data/tafsir/manifest.json', './data/tafsir/themes.json'];
+    const results = await Promise.allSettled(files.map((file) => cache.add(file)));
+    const failed = results.filter((result) => result.status === 'rejected').length;
+    console.log(`[ServiceWorker] Tafsir index cached: ${files.length - failed}/${files.length} files`);
+  } catch (error) {
+    console.warn('[ServiceWorker] Tafsir index pre-cache skipped:', error.message);
+  }
+}
+
 // 2. Activate Event: Clean obsolete caches safely
 self.addEventListener('activate', (event) => {
   event.waitUntil(
@@ -95,7 +115,7 @@ self.addEventListener('activate', (event) => {
         keys.map((key) => {
           // Invalidate legacy application shell caches while preserving the
           // audio cache and the full Quran corpus cache.
-          if (key !== CACHE_NAME && key !== AUDIO_CACHE && key !== QURAN_CACHE) {
+          if (key !== CACHE_NAME && key !== AUDIO_CACHE && key !== QURAN_CACHE && key !== TAFSIR_CACHE) {
             console.log('[ServiceWorker] Removing legacy application shell cache:', key);
             return caches.delete(key);
           }
@@ -123,6 +143,33 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         } catch {
           return new Response('Audio unavailable offline', { status: 503 });
+        }
+      })
+    );
+    return;
+  }
+
+  // Bundled tafsir: manifest and thematic index are network-first (small and
+  // occasionally regenerated); surah chunks are cache-first so a verse can be
+  // studied offline after it has been opened once.
+  if (url.origin === self.location.origin && url.pathname.includes('/data/tafsir/')) {
+    const isIndex = url.pathname.endsWith('/manifest.json') || url.pathname.endsWith('/themes.json');
+    event.respondWith(
+      caches.open(TAFSIR_CACHE).then(async (cache) => {
+        const cached = await cache.match(event.request, { ignoreSearch: true });
+        if (!isIndex && cached) return cached;
+        try {
+          const networkResponse = await fetch(event.request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch (error) {
+          if (cached) return cached;
+          return new Response(JSON.stringify({ error: 'Tafsir data not cached offline' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json' }
+          });
         }
       })
     );

@@ -1,7 +1,7 @@
 # NoorDeen — Religious Source Verification
 
-**Audited:** 28 October 2026
-**Scope:** Quran Arabic, translations, tafsir, hadith, duas, kalimas, Seerah, prophets, Sahaba, history, worship guides, articles, and the Dr. Israr Ahmed lecture catalogue.
+**Audited:** 29 October 2026
+**Scope:** Quran Arabic, translations, tafsir, asbab al-nuzul, thematic index, hadith, duas, kalimas, Seerah, prophets, Sahaba, history, worship guides, articles, and the Dr. Israr Ahmed lecture catalogue.
 **Principle:** canonical text is never invented or silently "corrected"; where a source cannot be verified, the UI says so or the claim is removed. No item in this report is presented as a fatwa.
 
 ---
@@ -12,7 +12,8 @@
 | :--- | --: | :--- | :--- |
 | Quran Arabic text | 114 surahs / 6,236 ayahs, all bundled | Hafs ʿUthmani text via `api.alquran.cloud` (`quran-uthmani`); text stored verbatim per ayah | Verified structurally; canonical ayah total and per-surah counts match |
 | Quran translations | 40 editions registered; English, Urdu and transliteration bundled for all 6,236 ayahs | Named translator per edition; Saheeh International (EN), Fateh Muhammad Jalandhry (UR) | Bundled editions validated for every ayah; remaining editions registry-verified only |
-| Tafsir | 6 verses | Editorial English summary of classical commentary | **Labelled as a summary, not a verbatim translation** |
+| Tafsir | 3 verbatim editions + 6 editorial summaries | Tafsir al-Jalalayn EN (6,236 verses, tr. Feras Hamza, © Royal Aal al-Bayt Institute); Jalalayn AR (6,010 verses, public domain); asbab al-nuzul AR (275 verses / 200 reports, MIT dataset) | Downloaded verbatim; coverage, blanks, HTML and replacement characters checked. English translation licence flagged for owner review. Not independently collated against a printed edition |
+| Thematic index | 30 themes / 5,639 keyword matches | Keyword match over the bundled Saheeh International English text | **Labelled a finding aid, not a scholarly thematic classification** |
 | Hadith | 101 | Bukhari 42, Muslim 25, Tirmidhi 14, Abu Dawud 10, Nasa'i 4, Ibn Majah 6 | All graded Sahih or Hasan; numbers retained |
 | Duas | 102 | Qur'anic verses and six hadith collections | 102/102 non-empty references; 99 unique |
 | Kalimas | 6 | Standard six kalima formulary | Arabic, transliteration, English, Urdu present |
@@ -40,13 +41,22 @@
 - English reset restores Saheeh International.
 - **Not claimed:** that all 40 editions were reviewed for theological accuracy by this project. They are published translations fetched from the upstream edition.
 
-### 2.3 Tafsir
-- Only **6 verses** have bundled commentary: 1:1, 1:2, 1:5, 1:6, 2:255, 112:1.
-- The panel labels bundled text as an **"Editorial English summary of the classical commentary"** and states it is **not a verbatim translation**.
-- Verses without bundled commentary show an explicit **"No commentary is bundled for this verse"** message. The previous fabricated Ibn Kathir/Jalalayn fallback was removed.
-- No tafsir is generated at runtime.
+### 2.3 Tafsir and asbab al-nuzul
+- Three editions are bundled verbatim in `public/data/tafsir/surahs/`, with edition, translator, publisher, rights and coverage metadata in `public/data/tafsir/manifest.json` and `registry.json`.
+- **Tafsir al-Jalalayn, English** — 6,236 of 6,236 verses across 114 surahs. Translated by Dr. Feras Hamza, published by the Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com). The translation is © the Institute and is bundled with attribution for non-commercial educational use; commercial redistribution requires permission. **This licence is flagged for owner review.**
+- **Tafsir al-Jalalayn, Arabic** — 6,010 of 6,236 verses across 114 surahs. The classical Arabic original is public domain. The digitised edition has 226 gaps; the UI names each gap and never fills it from another edition.
+- **Asbab al-Nuzul, Arabic** — 275 verses across 50 surahs, comprising 200 reports from the MIT-licensed Asbab al-Nuzul Dataset, compiled in *Ṣaḥīḥ Asbāb al-Nuzūl* by Ibrāhīm Muḥammad al-ʿAlī. Reports are Arabic only; no English translation is bundled. Absence of an entry is explicitly not a claim that no occasion exists.
+- One source anomaly is recorded rather than silently repaired: the asbab dataset lists Surah 96 ayahs 6–20 although the surah has 19 verses. Ayahs 6–19 were kept and ayah 20 discarded.
+- The six pre-existing NoorDeen editorial summaries remain, now clearly labelled **"NoorDeen editorial summary"** and stored under editorial field names. They are not attributed to Ibn Kathir, al-Jalalayn or any other scholar.
+- Every panel shows its edition and rights note. Missing text produces an explicit missing-entry message; no tafsir is generated at runtime.
+- **Verification limit:** the text was downloaded verbatim and checked structurally (coverage, blank fields, raw HTML, U+FFFD). It has not been independently collated against a printed edition, and the asbab report chains have not been re-graded by a specialist.
 
-### 2.4 Audio
+### 2.4 Thematic verse index
+- `public/data/tafsir/themes.json` contains 30 themes and 5,639 keyword matches generated by `scripts/build-thematic-index.cjs` over the bundled Saheeh International English text.
+- Each theme records its keywords, total match count and up to 40 verse references. Suite 48 recomputes every count from the corpus.
+- The page labels the index a **finding aid, not a scholarly thematic classification**; keyword matching can miss relevant verses or include imperfect matches.
+
+### 2.5 Audio
 - Ayah audio is constructed from the EveryAyah Alafasy 128 kbps path (e.g. `001001.mp3`).
 - Audio is **not** re-hosted. Playback is online-only and was not listened to end-to-end in the headless environment; URL construction and control wiring were verified.
 
@@ -166,7 +176,10 @@ No tool issues a fatwa. The zakat page states it is an estimate and refers speci
 | Seerah details | Classical reports vary in strength | Per-chapter source lines; differences generally noted |
 | Prophetic narratives | Extra-Qur'anic material | Qur'anic priority; cautious use |
 | History interpretations | Civilisational overview | Named sources; no adjudication of disputed history |
-| Tafsir | 6 editorial summaries | Explicitly labelled as summaries, not translations |
+| Tafsir English translation | © Royal Aal al-Bayt Institute; non-commercial educational use only | Attribution and rights note shown with every English entry; flagged for owner review |
+| Tafsir Arabic text | 226 digitisation gaps | Gaps named explicitly; never filled from another edition |
+| Asbab reports | Arabic only; chains not re-graded | No English translation shown; source and dataset licence stated |
+| Thematic index | Keyword matching is not tafsir | Labelled a finding aid; counts recomputed by the test suite |
 | 40 Quran editions | Only EN/UR live-tested | Registry labels translator; error state instead of invented text |
 | Zakat rates | Indicative defaults | Editable; labelled non-live |
 | Prayer times | No external authority comparison | Method labels (MWL/ISNA/Umm al-Qura) shown; no certification claim |
@@ -177,7 +190,10 @@ No tool issues a fatwa. The zakat page states it is an estimate and refers speci
 
 - It does **not** claim scholarly endorsement, ijazah, or a formal fatwa authority.
 - It does **not** claim the hadith library is exhaustive or that every grading was independently re-derived.
-- It does **not** claim the tafsir is a complete or verbatim translation.
+- It does **not** claim the tafsir is complete, independently collated or free of digitisation gaps.
+- It does **not** claim the English Jalalayn translation may be redistributed commercially; that permission has not been obtained.
+- It does **not** claim the asbab reports are exhaustive or that their chains were re-graded here.
+- It does **not** claim the thematic index is a scholarly thematic classification.
 - It does **not** claim the 40 Quran editions were all reviewed here.
 - It does **not** claim the offline bundle contains the full Quran.
 - It does **not** host or own the Dr. Israr lectures.

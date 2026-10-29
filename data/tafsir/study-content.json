@@ -1,96 +1,240 @@
 {
   "version": "1.0.0",
-  "commentary": "Verified classical Sunni Tafsir and word-by-word linguistic corpus for Study Mode",
+  "commentary": "NoorDeen editorial summaries (modern English paraphrase, not a classical tafsir), word-by-word notes and general hadith context for six key verses. Verbatim classical tafsir is bundled separately in public/data/tafsir/surahs.",
   "verses": {
     "1:1": {
       "surah": 1,
       "ayah": 1,
       "reference": "Surah Al-Fatihah 1:1",
       "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-      "tafsirIbnKathir": "The Basmalah begins every chapter of the Quran except Surah At-Tawbah. It signifies that the servant commences recitation seeking blessing through all the divine names of Allah. 'Allah' is the proper and greatest name (Ism al-A'zam) of the Lord, applied exclusively to the Creator. 'Ar-Rahman' denotes universal vast mercy encompassing all creation in this world, while 'Ar-Raheem' denotes specialized, enduring mercy bestowed upon the righteous believers in the Hereafter.",
-      "tafsirJalalayn": "In the name of Allah, the Compassionate, the Merciful. Commencing with the name of God, Who is the One truly deserving of worship. Al-Rahman signifies the One possessed of vast mercy for all creatures in this worldly realm; Al-Raheem signifies the One possessed of specific mercy for the believers in the life to come.",
       "words": [
-        { "ar": "بِسْمِ", "tr": "Bismi", "en": "In (the) name", "ur": "نام سے", "root": "س م و" },
-        { "ar": "اللَّهِ", "tr": "Allahi", "en": "(of) Allah", "ur": "اللہ کے", "root": "إ ل ه" },
-        { "ar": "الرَّحْمَٰنِ", "tr": "Ar-Rahmaani", "en": "the Entirely Merciful", "ur": "جو بڑا مہربان", "root": "ر ح م" },
-        { "ar": "الرَّحِيمِ", "tr": "Ar-Raheemi", "en": "the Especially Merciful", "ur": "نہایت رحم والا", "root": "ر ح م" }
+        {
+          "ar": "بِسْمِ",
+          "tr": "Bismi",
+          "en": "In (the) name",
+          "ur": "نام سے",
+          "root": "س م و"
+        },
+        {
+          "ar": "اللَّهِ",
+          "tr": "Allahi",
+          "en": "(of) Allah",
+          "ur": "اللہ کے",
+          "root": "إ ل ه"
+        },
+        {
+          "ar": "الرَّحْمَٰنِ",
+          "tr": "Ar-Rahmaani",
+          "en": "the Entirely Merciful",
+          "ur": "جو بڑا مہربان",
+          "root": "ر ح م"
+        },
+        {
+          "ar": "الرَّحِيمِ",
+          "tr": "Ar-Raheemi",
+          "en": "the Especially Merciful",
+          "ur": "نہایت رحم والا",
+          "root": "ر ح م"
+        }
       ],
-      "hadith": "The Messenger of Allah ﷺ said: 'Every significant matter that does not begin in the name of Allah is severed from blessing.' (Musnad Ahmad)"
+      "hadith": "The Messenger of Allah ﷺ said: 'Every significant matter that does not begin in the name of Allah is severed from blessing.' (Musnad Ahmad)",
+      "editorialSummary": "The Basmalah begins every chapter of the Quran except Surah At-Tawbah. It signifies that the servant commences recitation seeking blessing through all the divine names of Allah. 'Allah' is the proper and greatest name (Ism al-A'zam) of the Lord, applied exclusively to the Creator. 'Ar-Rahman' denotes universal vast mercy encompassing all creation in this world, while 'Ar-Raheem' denotes specialized, enduring mercy bestowed upon the righteous believers in the Hereafter.",
+      "editorialSummaryAlternate": "In the name of Allah, the Compassionate, the Merciful. Commencing with the name of God, Who is the One truly deserving of worship. Al-Rahman signifies the One possessed of vast mercy for all creatures in this worldly realm; Al-Raheem signifies the One possessed of specific mercy for the believers in the life to come."
     },
     "1:2": {
       "surah": 1,
       "ayah": 2,
       "reference": "Surah Al-Fatihah 1:2",
       "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
-      "tafsirIbnKathir": "Al-Hamd implies the complete, unreserved praise and gratitude due solely to Allah for His intrinsic perfection and His boundless favors upon His creation. 'Rabb' encompasses sovereign owner, master, regulator, and nourisher of all that exists. 'Al-'Alamin' encompasses all existing realms besides Allah—the angelic, human, jinn, animal, and cosmic dominions.",
-      "tafsirJalalayn": "All praise belongs to God alone, affirming praise and gratitude for Him as Creator and Sustainer. Rabb is the Master and Educator; al-'Alamin is the plural of 'alam, meaning everything in existence other than God Himself.",
       "words": [
-        { "ar": "الْحَمْدُ", "tr": "Al-hamdu", "en": "All praise", "ur": "سب تعریف", "root": "ح م د" },
-        { "ar": "لِلَّهِ", "tr": "lillahi", "en": "is for Allah", "ur": "اللہ ہی کے لیے ہے", "root": "إ ل ه" },
-        { "ar": "رَبِّ", "tr": "Rabbi", "en": "Lord / Sustainer", "ur": "پروردگار", "root": "ر ب ب" },
-        { "ar": "الْعَالَمِينَ", "tr": "al-'aalameen", "en": "(of) the worlds", "ur": "تمام جہانوں کا", "root": "ع ل م" }
+        {
+          "ar": "الْحَمْدُ",
+          "tr": "Al-hamdu",
+          "en": "All praise",
+          "ur": "سب تعریف",
+          "root": "ح م د"
+        },
+        {
+          "ar": "لِلَّهِ",
+          "tr": "lillahi",
+          "en": "is for Allah",
+          "ur": "اللہ ہی کے لیے ہے",
+          "root": "إ ل ه"
+        },
+        {
+          "ar": "رَبِّ",
+          "tr": "Rabbi",
+          "en": "Lord / Sustainer",
+          "ur": "پروردگار",
+          "root": "ر ب ب"
+        },
+        {
+          "ar": "الْعَالَمِينَ",
+          "tr": "al-'aalameen",
+          "en": "(of) the worlds",
+          "ur": "تمام جہانوں کا",
+          "root": "ع ل م"
+        }
       ],
-      "hadith": "The Prophet ﷺ said: 'Allah said: I have divided the prayer between Myself and My servant into two halves... When the servant says Al-Hamdu lillahi Rabbil 'Alamin, Allah says: My servant has praised Me.' (Sahih Muslim #395)"
+      "hadith": "The Prophet ﷺ said: 'Allah said: I have divided the prayer between Myself and My servant into two halves... When the servant says Al-Hamdu lillahi Rabbil 'Alamin, Allah says: My servant has praised Me.' (Sahih Muslim #395)",
+      "editorialSummary": "Al-Hamd implies the complete, unreserved praise and gratitude due solely to Allah for His intrinsic perfection and His boundless favors upon His creation. 'Rabb' encompasses sovereign owner, master, regulator, and nourisher of all that exists. 'Al-'Alamin' encompasses all existing realms besides Allah—the angelic, human, jinn, animal, and cosmic dominions.",
+      "editorialSummaryAlternate": "All praise belongs to God alone, affirming praise and gratitude for Him as Creator and Sustainer. Rabb is the Master and Educator; al-'Alamin is the plural of 'alam, meaning everything in existence other than God Himself."
     },
     "1:5": {
       "surah": 1,
       "ayah": 5,
       "reference": "Surah Al-Fatihah 1:5",
       "arabic": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
-      "tafsirIbnKathir": "This verse marks the transition from praise to supplication. Syntactically, placing the pronoun 'Iyyaka' (You alone) before the verb expresses exclusivity and restriction (Hasr). It encapsulates the twin pillars of true faith: absolute worship directed exclusively to Allah without partners, and total reliance (Tawakkul) upon Him alone for strength, guidance, and succor.",
-      "tafsirJalalayn": "You alone we worship, dedicating our obedience and service solely to You, and from You alone do we seek assistance in our devotion and all our affairs.",
       "words": [
-        { "ar": "إِيَّاكَ", "tr": "Iyyaaka", "en": "You alone", "ur": "ہم تیری ہی", "root": "إ ي ا" },
-        { "ar": "نَعْبُدُ", "tr": "na'budu", "en": "we worship", "ur": "عبادت کرتے ہیں", "root": "ع ب د" },
-        { "ar": "وَإِيَّاكَ", "tr": "wa iyyaaka", "en": "and You alone", "ur": "اور تجھ ہی سے", "root": "إ ي ا" },
-        { "ar": "نَسْتَعِينُ", "tr": "nasta'een", "en": "we ask for help", "ur": "مدد مانگتے ہیں", "root": "ع و ن" }
+        {
+          "ar": "إِيَّاكَ",
+          "tr": "Iyyaaka",
+          "en": "You alone",
+          "ur": "ہم تیری ہی",
+          "root": "إ ي ا"
+        },
+        {
+          "ar": "نَعْبُدُ",
+          "tr": "na'budu",
+          "en": "we worship",
+          "ur": "عبادت کرتے ہیں",
+          "root": "ع ب د"
+        },
+        {
+          "ar": "وَإِيَّاكَ",
+          "tr": "wa iyyaaka",
+          "en": "and You alone",
+          "ur": "اور تجھ ہی سے",
+          "root": "إ ي ا"
+        },
+        {
+          "ar": "نَسْتَعِينُ",
+          "tr": "nasta'een",
+          "en": "we ask for help",
+          "ur": "مدد مانگتے ہیں",
+          "root": "ع و ن"
+        }
       ],
-      "hadith": "The Messenger of Allah ﷺ said to Ibn Abbas: 'When you ask, ask Allah; and when you seek assistance, seek assistance from Allah.' (Jami' at-Tirmidhi #2516, Sahih)"
+      "hadith": "The Messenger of Allah ﷺ said to Ibn Abbas: 'When you ask, ask Allah; and when you seek assistance, seek assistance from Allah.' (Jami' at-Tirmidhi #2516, Sahih)",
+      "editorialSummary": "This verse marks the transition from praise to supplication. Syntactically, placing the pronoun 'Iyyaka' (You alone) before the verb expresses exclusivity and restriction (Hasr). It encapsulates the twin pillars of true faith: absolute worship directed exclusively to Allah without partners, and total reliance (Tawakkul) upon Him alone for strength, guidance, and succor.",
+      "editorialSummaryAlternate": "You alone we worship, dedicating our obedience and service solely to You, and from You alone do we seek assistance in our devotion and all our affairs."
     },
     "1:6": {
       "surah": 1,
       "ayah": 6,
       "reference": "Surah Al-Fatihah 1:6",
       "arabic": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
-      "tafsirIbnKathir": "The greatest supplication in existence. Guidance (Hidayah) here includes both guidance of orientation (Irsyad) and guidance of steadfast realization (Tawfeeq). 'As-Sirat al-Mustaqeem' is the clear, upright path of Islam without deviation, conforming to the Book of Allah and the authentic Sunnah of His Messenger ﷺ.",
-      "tafsirJalalayn": "Guide us, direct us and make us firm upon the straight path, which is the clear religion of Islam.",
       "words": [
-        { "ar": "اهْدِنَا", "tr": "Ihdinaa", "en": "Guide us", "ur": "ہمیں چلا", "root": "ه د ي" },
-        { "ar": "الصِّرَاطَ", "tr": "as-siraata", "en": "(to) the path", "ur": "راستے پر", "root": "ص ر ط" },
-        { "ar": "الْمُسْتَقِيمَ", "tr": "al-mustaqeem", "en": "the straight", "ur": "سیدھے", "root": "ق و م" }
+        {
+          "ar": "اهْدِنَا",
+          "tr": "Ihdinaa",
+          "en": "Guide us",
+          "ur": "ہمیں چلا",
+          "root": "ه د ي"
+        },
+        {
+          "ar": "الصِّرَاطَ",
+          "tr": "as-siraata",
+          "en": "(to) the path",
+          "ur": "راستے پر",
+          "root": "ص ر ط"
+        },
+        {
+          "ar": "الْمُسْتَقِيمَ",
+          "tr": "al-mustaqeem",
+          "en": "the straight",
+          "ur": "سیدھے",
+          "root": "ق و م"
+        }
       ],
-      "hadith": "The Prophet ﷺ drew a straight line in the dust and said: 'This is the path of Allah, straight.' Then he drew lines to its right and left and said: 'These are divergent paths...' (Musnad Ahmad, Sahih)"
+      "hadith": "The Prophet ﷺ drew a straight line in the dust and said: 'This is the path of Allah, straight.' Then he drew lines to its right and left and said: 'These are divergent paths...' (Musnad Ahmad, Sahih)",
+      "editorialSummary": "The greatest supplication in existence. Guidance (Hidayah) here includes both guidance of orientation (Irsyad) and guidance of steadfast realization (Tawfeeq). 'As-Sirat al-Mustaqeem' is the clear, upright path of Islam without deviation, conforming to the Book of Allah and the authentic Sunnah of His Messenger ﷺ.",
+      "editorialSummaryAlternate": "Guide us, direct us and make us firm upon the straight path, which is the clear religion of Islam."
     },
     "2:255": {
       "surah": 2,
       "ayah": 255,
       "reference": "Surah Al-Baqarah 2:255 (Ayatul Kursi)",
       "arabic": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
-      "tafsirIbnKathir": "Ayatul Kursi is the greatest verse in the entire Book of Allah, containing ten independent theological affirmations of divine majesty. 'Al-Hayy' establishes His eternal, self-subsisting life without beginning or end; 'Al-Qayyum' establishes that He sustains all existence. He is exalted above fatigue, drowsiness, and sleep. His Kursi (Footstool) encompasses the heavens and the earth, yet maintaining them causes Him neither burden nor weariness.",
-      "tafsirJalalayn": "God! There is no deity except Him, the Living, the Eternal Sustainer of all creation. Neither drowsiness nor slumber overtakes Him. His Footstool extends across the heavens and the earth, and preserving them wearies Him not.",
       "words": [
-        { "ar": "اللَّهُ", "tr": "Allahu", "en": "Allah", "ur": "اللہ", "root": "إ ل ه" },
-        { "ar": "لَا إِلَٰهَ", "tr": "laa ilaaha", "en": "no deity", "ur": "کوئی معبود نہیں", "root": "إ ل ه" },
-        { "ar": "إِلَّا هُوَ", "tr": "illaa Huwa", "en": "except Him", "ur": "سوائے اس کے", "root": "ه و" },
-        { "ar": "الْحَيُّ", "tr": "Al-Hayyu", "en": "the Ever-Living", "ur": "جو زندہ ہے", "root": "ح ي ي" },
-        { "ar": "الْقَيُّومُ", "tr": "Al-Qayyoom", "en": "the Sustainer of all", "ur": "سب کا تھامنے والا", "root": "ق و م" }
+        {
+          "ar": "اللَّهُ",
+          "tr": "Allahu",
+          "en": "Allah",
+          "ur": "اللہ",
+          "root": "إ ل ه"
+        },
+        {
+          "ar": "لَا إِلَٰهَ",
+          "tr": "laa ilaaha",
+          "en": "no deity",
+          "ur": "کوئی معبود نہیں",
+          "root": "إ ل ه"
+        },
+        {
+          "ar": "إِلَّا هُوَ",
+          "tr": "illaa Huwa",
+          "en": "except Him",
+          "ur": "سوائے اس کے",
+          "root": "ه و"
+        },
+        {
+          "ar": "الْحَيُّ",
+          "tr": "Al-Hayyu",
+          "en": "the Ever-Living",
+          "ur": "جو زندہ ہے",
+          "root": "ح ي ي"
+        },
+        {
+          "ar": "الْقَيُّومُ",
+          "tr": "Al-Qayyoom",
+          "en": "the Sustainer of all",
+          "ur": "سب کا تھامنے والا",
+          "root": "ق و م"
+        }
       ],
-      "hadith": "Ubayy ibn Ka'b narrated that the Prophet ﷺ asked: 'O Abu al-Mundhir, do you know which verse from the Book of Allah with you is the greatest?' He replied: 'Allahu la ilaha illa Huwal-Hayyul-Qayyum.' The Prophet struck his chest gently and said: 'May knowledge be pleasant for you, O Abu al-Mundhir!' (Sahih Muslim #810)"
+      "hadith": "Ubayy ibn Ka'b narrated that the Prophet ﷺ asked: 'O Abu al-Mundhir, do you know which verse from the Book of Allah with you is the greatest?' He replied: 'Allahu la ilaha illa Huwal-Hayyul-Qayyum.' The Prophet struck his chest gently and said: 'May knowledge be pleasant for you, O Abu al-Mundhir!' (Sahih Muslim #810)",
+      "editorialSummary": "Ayatul Kursi is the greatest verse in the entire Book of Allah, containing ten independent theological affirmations of divine majesty. 'Al-Hayy' establishes His eternal, self-subsisting life without beginning or end; 'Al-Qayyum' establishes that He sustains all existence. He is exalted above fatigue, drowsiness, and sleep. His Kursi (Footstool) encompasses the heavens and the earth, yet maintaining them causes Him neither burden nor weariness.",
+      "editorialSummaryAlternate": "God! There is no deity except Him, the Living, the Eternal Sustainer of all creation. Neither drowsiness nor slumber overtakes Him. His Footstool extends across the heavens and the earth, and preserving them wearies Him not."
     },
     "112:1": {
       "surah": 112,
       "ayah": 1,
       "reference": "Surah Al-Ikhlas 112:1",
       "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ",
-      "tafsirIbnKathir": "Revealed when the polytheists inquired about the lineage of Allah. 'Ahad' is an absolute singular descriptor applied solely to Allah, signifying that He has no peer, no rival, no partner, no equal, and no resemblance in His divine essence or attributes.",
-      "tafsirJalalayn": "Say: He is God, the One and Indivisible, without pluralities or associates.",
       "words": [
-        { "ar": "قُلْ", "tr": "Qul", "en": "Say", "ur": "کہہ دیجیے", "root": "ق و ل" },
-        { "ar": "هُوَ", "tr": "Huwa", "en": "He is", "ur": "وہ", "root": "ه و" },
-        { "ar": "اللَّهُ", "tr": "Allahu", "en": "Allah", "ur": "اللہ", "root": "إ ل ه" },
-        { "ar": "أَحَدٌ", "tr": "Ahad", "en": "[who is] One", "ur": "ایک ہے", "root": "و ح د" }
+        {
+          "ar": "قُلْ",
+          "tr": "Qul",
+          "en": "Say",
+          "ur": "کہہ دیجیے",
+          "root": "ق و ل"
+        },
+        {
+          "ar": "هُوَ",
+          "tr": "Huwa",
+          "en": "He is",
+          "ur": "وہ",
+          "root": "ه و"
+        },
+        {
+          "ar": "اللَّهُ",
+          "tr": "Allahu",
+          "en": "Allah",
+          "ur": "اللہ",
+          "root": "إ ل ه"
+        },
+        {
+          "ar": "أَحَدٌ",
+          "tr": "Ahad",
+          "en": "[who is] One",
+          "ur": "ایک ہے",
+          "root": "و ح د"
+        }
       ],
-      "hadith": "The Prophet ﷺ said regarding Surah Al-Ikhlas: 'By the One in Whose Hand is my soul, it is truly equivalent to one-third of the Quran.' (Sahih al-Bukhari #5013)"
+      "hadith": "The Prophet ﷺ said regarding Surah Al-Ikhlas: 'By the One in Whose Hand is my soul, it is truly equivalent to one-third of the Quran.' (Sahih al-Bukhari #5013)",
+      "editorialSummary": "Revealed when the polytheists inquired about the lineage of Allah. 'Ahad' is an absolute singular descriptor applied solely to Allah, signifying that He has no peer, no rival, no partner, no equal, and no resemblance in His divine essence or attributes.",
+      "editorialSummaryAlternate": "Say: He is God, the One and Indivisible, without pluralities or associates."
     }
   }
 }

@@ -699,9 +699,12 @@ async function runTestSuite() {
   assert(fs.existsSync(path.join(PUBLIC_DIR, 'data', 'tafsir', 'registry.json')), 'Tafsir registry mirrored at public/data/tafsir/registry.json');
   assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'tafsir', 'study-content.json')), 'Tafsir study content exists at data/tafsir/study-content.json');
   const tafsirReg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'data', 'tafsir', 'registry.json'), 'utf-8'));
-  assert(tafsirReg.editions.length >= 3, 'Tafsir registry defines 3 canonical editions');
-  assert(tafsirReg.editions.some(e => e.id === 'tafsir-ibn-kathir'), 'Tafsir Ibn Kathir registered as verified orthodox exegesis');
-  assert(tafsirReg.editions.some(e => e.id === 'tafsir-al-jalalayn'), 'Tafsir al-Jalalayn registered as verified classical exegesis');
+  assert(tafsirReg.editions.length === 4, 'Tafsir registry defines four honestly measured editions');
+  assert(tafsirReg.editions.some(e => e.id === 'jalalayn-en'), 'Tafsir al-Jalalayn English translation registered');
+  assert(tafsirReg.editions.some(e => e.id === 'jalalayn-ar'), 'Tafsir al-Jalalayn Arabic original registered');
+  assert(tafsirReg.editions.some(e => e.id === 'asbab-ar'), 'Asbab al-Nuzul Arabic reports registered');
+  assert(tafsirReg.editions.some(e => e.id === 'editorial'), 'NoorDeen editorial summary registered as site-original');
+  assert(!tafsirReg.editions.some(e => e.id === 'tafsir-ibn-kathir'), 'Registry no longer claims bundled Ibn Kathir text');
 
   // 4. Audio Recitation Architecture
   assert(fs.existsSync(path.join(ROOT_DIR, 'data', 'audio', 'reciters.json')), 'Audio reciters registry exists at data/audio/reciters.json');
@@ -1918,8 +1921,9 @@ async function runTestSuite() {
   assert(s46QuranJs.includes('handleAyahEnded') && s46QuranJs.includes('ayahRepeatPlayed'), 'Suite 46: 3x/5x ayah repetition is implemented');
 
   const s46Sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  assert(s46Sw.includes("CACHE_VERSION = 'v22'"), 'Suite 46: service worker cache version is v22');
+  assert(s46Sw.includes("CACHE_VERSION = 'v23'"), 'Suite 46: service worker cache version is v23');
   assert(s46Sw.includes('QURAN_CACHE') && s46Sw.includes('preCacheQuranCorpus'), 'Suite 46: service worker pre-caches the Quran corpus');
+  assert(s46Sw.includes('TAFSIR_CACHE') && s46Sw.includes('preCacheTafsirIndex'), 'Suite 46: service worker caches tafsir on demand');
   assert(s46Sw.includes("'./offline.html'"), 'Suite 46: offline page is pre-cached');
   assert(s46Sw.includes("caches.match('./offline.html')"), 'Suite 46: navigation fallback serves the offline page, not the homepage');
   assert(!s46Sw.includes("(await caches.match('./index.html')) ||"), 'Suite 46: blind homepage redirect removed');
@@ -1927,6 +1931,192 @@ async function runTestSuite() {
   const s46OfflineHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'offline.html'), 'utf-8');
   assert(s46OfflineHtml.includes('You are offline') && s46OfflineHtml.includes('quran.html'), 'Suite 46: offline page explains the state and links to cached content');
   assert(s46OfflineHtml.includes('noindex'), 'Suite 46: offline page is excluded from search indexing');
+
+  // --- TEST SUITE 47: Phase 2 Authentic Tafsir & Asbab al-Nuzul Corpus ---
+  console.log('\n--- TEST SUITE 47: Phase 2 Tafsir & Asbab al-Nuzul Corpus ---');
+  const s47Dir = path.join(PUBLIC_DIR, 'data', 'tafsir');
+  const s47ManifestPath = path.join(s47Dir, 'manifest.json');
+  assert(fs.existsSync(s47ManifestPath), 'Suite 47: tafsir manifest exists');
+  const s47Manifest = JSON.parse(fs.readFileSync(s47ManifestPath, 'utf-8'));
+  assert(s47Manifest.totalSurahs === 114, 'Suite 47: tafsir manifest covers 114 surahs');
+  assert(s47Manifest.totalAyahs === 6236, 'Suite 47: tafsir manifest covers 6,236 ayahs');
+  assert(Array.isArray(s47Manifest.editions) && s47Manifest.editions.length === 3, 'Suite 47: exactly three verbatim editions are bundled');
+  assert(s47Manifest.editions.map(e => e.id).sort().join(',') === 'asbab-ar,jalalayn-ar,jalalayn-en', 'Suite 47: bundled editions are the three documented sources');
+  for (const edition of s47Manifest.editions) {
+    assert(typeof edition.rightsStatus === 'string' && edition.rightsStatus.length > 0, `Suite 47: ${edition.id} declares a rights status`);
+    assert(typeof edition.rightsNote === 'string' && edition.rightsNote.length > 40, `Suite 47: ${edition.id} carries a substantive rights note`);
+    assert(typeof edition.coverageNote === 'string' && edition.coverageNote.length > 20, `Suite 47: ${edition.id} documents its coverage limits`);
+  }
+  assert(s47Manifest.editionTotals['jalalayn-en'].verses === 6236 && s47Manifest.editionTotals['jalalayn-en'].surahs === 114, 'Suite 47: English Jalalayn covers every verse of every surah');
+  assert(s47Manifest.editionTotals['jalalayn-ar'].verses === 6010 && s47Manifest.editionTotals['jalalayn-ar'].surahs === 114, 'Suite 47: Arabic Jalalayn coverage is measured honestly at 6,010 verses');
+  assert(s47Manifest.editionTotals['asbab-ar'].verses === 275 && s47Manifest.editionTotals['asbab-ar'].surahs === 50, 'Suite 47: asbab dataset covers 275 verses across 50 surahs');
+  assert(s47Manifest.asbabGroups === 200, 'Suite 47: asbab dataset contains exactly 200 reports');
+  assert(Array.isArray(s47Manifest.anomalies) && s47Manifest.anomalies.length === 1 && /surah 96/i.test(s47Manifest.anomalies[0]), 'Suite 47: the Surah 96 source anomaly is recorded, not hidden');
+
+  const s47QuranManifest = JSON.parse(fs.readFileSync(path.join(PUBLIC_DIR, 'data', 'quran', 'manifest.json'), 'utf-8'));
+  const s47Counts = new Map(s47QuranManifest.surahs.map(s => [s.number, s.ayahs]));
+  let s47Files = 0;
+  let s47En = 0;
+  let s47Ar = 0;
+  let s47AsbabVerses = 0;
+  let s47BadChunks = 0;
+  let s47BadRanges = 0;
+  let s47EmptyText = 0;
+  let s47Html = 0;
+  let s47Replacement = 0;
+  const s47Ranges = new Set();
+  for (let n = 1; n <= 114; n += 1) {
+    const file = path.join(s47Dir, 'surahs', String(n).padStart(3, '0') + '.json');
+    if (!fs.existsSync(file)) {
+      s47BadChunks += 1;
+      continue;
+    }
+    s47Files += 1;
+    const raw = fs.readFileSync(file, 'utf-8');
+    if (raw.includes('\uFFFD')) s47Replacement += 1;
+    const chunk = JSON.parse(raw);
+    if (chunk.surah !== n) s47BadChunks += 1;
+    const expected = s47Counts.get(n);
+    for (const [ayahKey, fields] of Object.entries(chunk.ayahs || {})) {
+      const ayah = Number(ayahKey);
+      if (!Number.isInteger(ayah) || ayah < 1 || ayah > expected) s47BadRanges += 1;
+      for (const field of ['en', 'ar']) {
+        if (typeof fields[field] === 'string') {
+          if (field === 'en') s47En += 1;
+          else s47Ar += 1;
+          if (!fields[field].replace(/[\s\u200b-\u200f]/g, '')) s47EmptyText += 1;
+          if (/<[a-z/][^>]*>/i.test(fields[field])) s47Html += 1;
+        }
+      }
+      if (Array.isArray(fields.asbab) && fields.asbab.length > 0) {
+        s47AsbabVerses += 1;
+        if (fields.asbabRange) s47Ranges.add(n + ':' + fields.asbabRange);
+        for (const report of fields.asbab) {
+          if (typeof report !== 'string' || !report.replace(/[\s\u200b-\u200f]/g, '')) s47EmptyText += 1;
+          if (/<[a-z/][^>]*>/i.test(report)) s47Html += 1;
+        }
+      }
+    }
+  }
+  assert(s47Files === 114, `Suite 47: all 114 tafsir chunks exist (actual: ${s47Files})`);
+  assert(s47BadChunks === 0, `Suite 47: every chunk identifies its surah correctly (bad: ${s47BadChunks})`);
+  assert(s47BadRanges === 0, `Suite 47: no tafsir entry points outside its surah (bad: ${s47BadRanges})`);
+  assert(s47En === 6236, `Suite 47: English Jalalayn text is present for 6,236 ayahs (actual: ${s47En})`);
+  assert(s47Ar === 6010, `Suite 47: Arabic Jalalayn text is present for 6,010 ayahs (actual: ${s47Ar})`);
+  assert(s47AsbabVerses === 275, `Suite 47: asbab text is present for 275 ayahs (actual: ${s47AsbabVerses})`);
+  assert(s47Ranges.size === 200, `Suite 47: the 200 asbab reports are distinct (actual: ${s47Ranges.size})`);
+  assert(s47EmptyText === 0, `Suite 47: no bundled tafsir field is blank (blank: ${s47EmptyText})`);
+  assert(s47Html === 0, `Suite 47: no raw HTML remains in tafsir text (found: ${s47Html})`);
+  assert(s47Replacement === 0, 'Suite 47: no U+FFFD replacement characters in any tafsir chunk');
+
+  const s47Surah78 = JSON.parse(fs.readFileSync(path.join(s47Dir, 'surahs', '078.json'), 'utf-8'));
+  const s47Surah79 = JSON.parse(fs.readFileSync(path.join(s47Dir, 'surahs', '079.json'), 'utf-8'));
+  const s47Surah96 = JSON.parse(fs.readFileSync(path.join(s47Dir, 'surahs', '096.json'), 'utf-8'));
+  assert(Object.keys(s47Surah78.ayahs).length === 40 && s47Surah78.ayahs['1'].en, 'Suite 47: Surah 78 (nested API shape) is fully ingested');
+  assert(Object.keys(s47Surah79.ayahs).length === 46 && s47Surah79.ayahs['1'].en, 'Suite 47: Surah 79 (nested API shape) is fully ingested');
+  assert(Object.keys(s47Surah96.ayahs).length === 19 && !s47Surah96.ayahs['20'], 'Suite 47: Surah 96 keeps 19 ayahs and discards the out-of-range ayah 20');
+  assert(Object.keys(s47Surah96.ayahs).filter(a => s47Surah96.ayahs[a].asbab).length === 14, 'Suite 47: Surah 96 asbab is attached to ayahs 6-19 only');
+
+  const s47Registry = JSON.parse(fs.readFileSync(path.join(PUBLIC_DIR, 'data', 'tafsir', 'registry.json'), 'utf-8'));
+  assert(s47Registry.catalogVersion === '2.0.0', 'Suite 47: tafsir registry is at the honest 2.0.0 schema');
+  assert(s47Registry.editions.length === 4, 'Suite 47: registry lists four editions including the editorial option');
+  for (const edition of s47Registry.editions) {
+    assert(edition.coverage && Number.isInteger(edition.coverage.verses) && Number.isInteger(edition.coverage.totalVerses), `Suite 47: ${edition.id} coverage is numeric`);
+    assert(edition.coverage.verses <= edition.coverage.totalVerses, `Suite 47: ${edition.id} coverage never exceeds 6,236`);
+    assert(typeof edition.rightsNote === 'string' && edition.rightsNote.length > 40, `Suite 47: ${edition.id} registry entry carries rights metadata`);
+  }
+  assert(s47Registry.notBundled.some(e => e.id === 'ibn-kathir'), 'Suite 47: registry states Ibn Kathir text is not bundled');
+  assert(!s47Registry.editions.some(e => e.id === 'tafsir-ibn-kathir'), 'Suite 47: registry no longer claims a bundled Ibn Kathir edition');
+
+  const s47Study = JSON.parse(fs.readFileSync(path.join(PUBLIC_DIR, 'data', 'tafsir', 'study-content.json'), 'utf-8'));
+  const s47StudyKeys = Object.keys(s47Study.verses || {});
+  assert(s47StudyKeys.length === 6, 'Suite 47: six NoorDeen editorial summaries remain bundled');
+  assert(s47StudyKeys.every(k => !('tafsirIbnKathir' in s47Study.verses[k]) && !('tafsirJalalayn' in s47Study.verses[k])), 'Suite 47: editorial summaries are no longer stored under classical attribution fields');
+  assert(s47StudyKeys.every(k => typeof s47Study.verses[k].editorialSummary === 'string' && s47Study.verses[k].editorialSummary.length > 50), 'Suite 47: every editorial summary is clearly labelled site-original text');
+  assert(!/Verified classical Sunni Tafsir/i.test(s47Study.commentary || ''), 'Suite 47: study dataset no longer claims to be verified classical tafsir');
+
+  const s47Store = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'tafsir-store.js'), 'utf-8');
+  const s47QuranHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  const s47QuranJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'quran.js'), 'utf-8');
+  assert(s47Store.includes('noordeen-tafsir') && s47Store.includes('indexedDB.open'), 'Suite 47: tafsir store persists chunks in IndexedDB');
+  assert(s47Store.includes('function getSurah') && s47Store.includes('function getVerse') && s47Store.includes('function getManifest'), 'Suite 47: tafsir store exposes surah, verse and manifest APIs');
+  assert(s47Store.includes('function validateSurah') && s47Store.includes('Invalid tafsir chunk'), 'Suite 47: tafsir store validates chunks before caching');
+  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261029a'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
+  assert(s47QuranHtml.includes('value="jalalayn-en"') && s47QuranHtml.includes('value="jalalayn-ar"') && s47QuranHtml.includes('value="asbab-ar"') && s47QuranHtml.includes('value="editorial"'), 'Suite 47: Study Mode offers the three verbatim editions plus the editorial option');
+  assert(!s47QuranHtml.includes('value="ibn-kathir"'), 'Suite 47: Study Mode no longer offers a non-bundled Ibn Kathir edition');
+  assert(s47QuranJs.includes('async renderStudyTafsir') && s47QuranJs.includes('TafsirStore.getSurah'), 'Suite 47: Study Mode loads commentary from the bundled tafsir store');
+  assert(s47QuranJs.includes('Royal Aal al-Bayt') && s47QuranJs.includes('non-commercial educational use'), 'Suite 47: English Jalalayn attribution and use terms are shown with the text');
+  assert(s47QuranJs.includes('No English translation is bundled'), 'Suite 47: asbab panel states that no English translation is bundled');
+  assert(s47QuranJs.includes('Absence of an entry is not a claim that no occasion exists'), 'Suite 47: asbab absence is explained honestly');
+  assert(s47QuranJs.includes('preloadTafsir') && s47QuranJs.includes('escapeStudyHtml'), 'Suite 47: tafsir chunks are preloaded and rendered with escaping');
+  assert(s47QuranJs.includes('The digitised Arabic edition has no entry'), 'Suite 47: Arabic coverage gaps are reported, not filled');
+
+  const s47Sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
+  assert(s47Sw.includes("TAFSIR_CACHE = 'islamic-portal-tafsir-v1'"), 'Suite 47: service worker declares a dedicated tafsir cache');
+  assert(s47Sw.includes("url.pathname.includes('/data/tafsir/')"), 'Suite 47: service worker intercepts tafsir requests');
+  assert(s47Sw.includes('preCacheTafsirIndex'), 'Suite 47: service worker pre-caches only the tafsir index files');
+  assert(!/data\/tafsir\/surahs\/.*cache\.addAll/.test(s47Sw), 'Suite 47: service worker does not pre-cache the 5.8 MB tafsir corpus');
+
+  // --- TEST SUITE 48: Thematic Verse Index ---
+  console.log('\n--- TEST SUITE 48: Thematic Verse Index ---');
+  const s48Path = path.join(PUBLIC_DIR, 'data', 'tafsir', 'themes.json');
+  assert(fs.existsSync(s48Path), 'Suite 48: themes.json exists');
+  const s48 = JSON.parse(fs.readFileSync(s48Path, 'utf-8'));
+  assert(s48.totalThemes === 30 && s48.themes.length === 30, 'Suite 48: thirty themes are generated');
+  assert(s48.maxRefsPerTheme === 40, 'Suite 48: each theme caps displayed references at 40');
+  assert(/not a scholarly thematic classification/i.test(s48.disclaimer || ''), 'Suite 48: index is labelled a finding aid, not a scholarly classification');
+  assert(s48.sourceEdition && s48.sourceEdition.id === 'en.sahih', 'Suite 48: index records its English source edition');
+
+  const s48Corpus = [];
+  for (const entry of s47QuranManifest.surahs) {
+    const chunk = JSON.parse(fs.readFileSync(path.join(PUBLIC_DIR, 'data', 'quran', 'surahs', entry.file), 'utf-8'));
+    for (const ayah of chunk.ayahs) s48Corpus.push({ s: chunk.number, a: ayah.num, en: ayah.en || '' });
+  }
+  const s48Lookup = new Map(s48Corpus.map(v => [v.s + ':' + v.a, v]));
+  const s48Escape = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  let s48Mismatch = 0;
+  let s48BadRefs = 0;
+  let s48BadSnippets = 0;
+  let s48Duplicates = 0;
+  let s48BadCaps = 0;
+  let s48TotalMatches = 0;
+  const s48Ids = new Set();
+  for (const theme of s48.themes) {
+    assert(typeof theme.id === 'string' && theme.id.length > 0 && !s48Ids.has(theme.id), `Suite 48: theme id is unique (${theme.id})`);
+    s48Ids.add(theme.id);
+    assert(Array.isArray(theme.keywords) && theme.keywords.length > 0, `Suite 48: ${theme.id} records its keywords`);
+    const matcher = new RegExp('\\b(?:' + theme.keywords.map(s48Escape).join('|') + ')\\b', 'i');
+    const expected = s48Corpus.filter(v => matcher.test(v.en)).length;
+    s48TotalMatches += expected;
+    if (expected !== theme.totalVerses) s48Mismatch += 1;
+    if (theme.verses.length !== Math.min(expected, s48.maxRefsPerTheme)) s48BadCaps += 1;
+    const seen = new Set();
+    for (const ref of theme.verses) {
+      const key = ref.s + ':' + ref.a;
+      if (seen.has(key)) s48Duplicates += 1;
+      seen.add(key);
+      const verse = s48Lookup.get(key);
+      if (!verse || !matcher.test(verse.en)) s48BadRefs += 1;
+      if (typeof ref.t !== 'string' || !ref.t.trim()) s48BadSnippets += 1;
+    }
+  }
+  assert(s48Mismatch === 0, `Suite 48: every theme count matches a fresh keyword scan (mismatches: ${s48Mismatch})`);
+  assert(s48BadCaps === 0, `Suite 48: every theme shows exactly min(matches, 40) references (bad: ${s48BadCaps})`);
+  assert(s48BadRefs === 0, `Suite 48: every displayed reference actually matches its theme (bad: ${s48BadRefs})`);
+  assert(s48BadSnippets === 0, `Suite 48: every displayed reference has a non-empty snippet (bad: ${s48BadSnippets})`);
+  assert(s48Duplicates === 0, `Suite 48: no theme repeats a verse reference (duplicates: ${s48Duplicates})`);
+  assert(s48TotalMatches > 5000, `Suite 48: index contains a substantial number of matches (${s48TotalMatches})`);
+
+  const s48Js = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'thematic-index.js'), 'utf-8');
+  const s48Html = fs.readFileSync(path.join(PUBLIC_DIR, 'quran.html'), 'utf-8');
+  assert(s48Js.includes('data/tafsir/themes.json') && s48Js.includes('quran.html?surah='), 'Suite 48: index loads themes.json and deep-links to verses');
+  assert(s48Js.includes('escapeHtml') && s48Js.includes('aria-pressed'), 'Suite 48: index escapes snippets and exposes pressed state');
+  assert(s48Js.includes('window.ThematicIndex') || s48Js.includes('global.ThematicIndex'), 'Suite 48: thematic index exposes a public API');
+  for (const id of ['thematic-index', 'thematic-search', 'thematic-theme-list', 'thematic-results', 'thematic-disclaimer']) {
+    assert(s48Html.includes(`id="${id}"`), `Suite 48: Quran page contains #${id}`);
+  }
+  assert(s48Html.includes('js/thematic-index.js?v=20261029a'), 'Suite 48: Quran page loads the thematic index at the current asset version');
+  assert(/finding aid, not a scholarly thematic classification/i.test(s48Html), 'Suite 48: page copy labels the index as a finding aid');
 
   // SUMMARY
   console.log('\n====================================================');

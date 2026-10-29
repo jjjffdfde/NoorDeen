@@ -1,6 +1,6 @@
 # NoorDeen — Content Expansion Log
 
-**Last updated:** 27 October 2026 (Batch 5 integrated; distribution rebuilt)
+**Last updated:** 29 October 2026 (Phase 2 integrated: verbatim tafsir, asbab al-nuzul, thematic index)
 **Counting method:** rendered text only — `<script>`, `<style>` and tags removed, then tokens counted. Two figures are reported where they differ:
 - **Whole-page words** include navigation, table of contents, related-reading block and footer.
 - **Article body words** cover the `<article class="editorial-content-body">` region and exclude that shared chrome; they are the honest measure of article length.
@@ -140,7 +140,7 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Metric | Value |
 | :--- | :--- |
 | HTML pages | **61** (26 root + 34 article pages + `offline.html`) |
-| Visible words, 60 indexable pages | **241,702** |
+| Visible words, 60 indexable pages | **241,779** |
 | Articles published | **33** (23 roadmap topics + 10 additional topics) |
 | Article body words | **64,160**, average **1,944**, min **1,538**, max **2,473** |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
@@ -148,17 +148,21 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Dua records | 102 |
 | Kalimas | 6 |
 | Lecture records | 148 (147 unique) |
-| Automated assertions | **1,710 passing, 0 failing** (46 suites) |
+| Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
+| Editorial summaries | 6 verses, labelled NoorDeen editorial text |
+| Thematic index | 30 themes / 5,639 keyword matches |
+| Automated assertions | **1,864 passing, 0 failing** (48 suites) |
 | Sitemap URLs | 60 |
-| Release APK | 3,127,079 bytes (2.98 MiB), 215 entries / 61 pages / 114 chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 3,010,751 bytes (2.87 MiB), 206 files |
+| Release APK | 5,096,933 bytes (4.86 MiB), 333 entries / 61 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 4,957,488 bytes (4.73 MiB), 324 files |
 
 ---
 
 ## 6. What is still missing
 
 - **67 roadmap topics** remain unwritten (the 100-topic list minus the 23 covered).
-- **Tafsir** covers 6 verses, not the full Quran; no asbab al-nuzul or verse-level thematic index yet.
+- **Tafsir** now covers three verbatim editions with measured gaps; the English Jalalayn licence still needs owner confirmation, and no edition has been collated against print.
+- **Asbab al-nuzul** is Arabic only and covers the 275 verses for which the source compilation records an occasion.
 - **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.
 - **No lecture transcripts or translations**; the library is a catalog of embeds.
 - **No scholarly sign-off** on any content; the site says so.

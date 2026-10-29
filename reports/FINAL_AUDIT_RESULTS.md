@@ -1,9 +1,9 @@
-# NoorDeen — Final Audit Results (28 October 2026, Phase 1 cycle)
+# NoorDeen — Final Audit Results (29 October 2026, Phase 2 cycle)
 
-**Audit date:** 28 October 2026
-**Commit baseline at start:** `8123ed8`
+**Audit date:** 29 October 2026
+**Commit baseline at start:** `0599670`
 **Environment:** Windows, Node.js local server on `http://localhost:3400`, Chromium via the automated browser tool, test harness on port 3000.
-**Verdict:** Phase 1 of the master plan is implemented and verified: the complete Quran (114 surahs / 6,236 ayahs) is bundled, pre-cached and readable offline, with a persistent player, khatam planner and an honest offline fallback. The site is not finished; tafsir, article expansion and device-level Android verification remain open.
+**Verdict:** Phase 1 (complete offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index) are implemented and verified in Chromium and by 1,864 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
 
 ---
 
@@ -22,7 +22,24 @@
 | 9 | Copy corrections | Homepage, About and download page now state 114 surahs; false v2/v3 signing claim removed | **Done** |
 | 10 | Tests | 1,710 assertions across 46 suites, 0 failures | **Done** |
 
-**Not done in this phase:** tafsir beyond 6 verses, asbab al-nuzul, thematic verse index, audio bundling, airplane-mode radio-off test, device install.
+**Not done in Phase 1:** tafsir beyond 6 verses, asbab al-nuzul, thematic verse index, audio bundling, airplane-mode radio-off test, device install. Phase 2 addresses the first three below.
+
+---
+
+## 0A. Phase 2 — authentic tafsir, asbab al-nuzul and thematic index
+
+| # | Deliverable | Evidence | Status |
+| --: | :--- | :--- | :---: |
+| 1 | Verbatim tafsir corpus | 114 per-surah chunks; Jalalayn English **6,236/6,236** verses, Jalalayn Arabic **6,010/6,236**, asbab Arabic **275 verses / 50 surahs / 200 reports** | **Done** |
+| 2 | Reproducible ingestion | `scripts/fetch-tafsir.cjs` with `--resume`, `--check` and `--limit`; validates ayah ranges, blanks, raw HTML and U+FFFD; records source anomalies | **Done** |
+| 3 | Rights and provenance | `manifest.json` + rewritten `registry.json` record author, translator, publisher, licence, rights note and measured coverage per edition | **Done** |
+| 4 | Offline store | `public/js/tafsir-store.js`: IndexedDB `noordeen-tafsir`, memory → IDB → HTTP, chunk validation, manifest/edition/coverage APIs | **Done** |
+| 5 | Study Mode integration | Four options: Jalalayn English, Jalalayn Arabic, asbab Arabic, NoorDeen editorial summary; edition/rights notes, RTL Arabic, honest gap states, race-safe async rendering | **Done** |
+| 6 | Thematic index | `scripts/build-thematic-index.cjs` → 30 themes / 5,639 matches; searchable UI in `quran.html`; Suite 48 recomputes every count | **Done** |
+| 7 | Service worker | `v23`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand | **Done** |
+| 8 | Tests | 1,864 assertions across 48 suites, 0 failures; Suites 47–48 added | **Done** |
+
+**Honest limits:** the English Jalalayn translation is © Royal Aal al-Bayt Institute and bundled for attributed non-commercial use only — **owner review required**. The Arabic digitisation omits 226 verses; every gap is named and never filled from another edition. Asbab reports are Arabic only and their chains were not re-graded. The thematic index is a keyword finding aid, not a scholarly classification.
 
 ---
 
@@ -137,35 +154,37 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 1710
-Passed Tests:         1710
+Total Tests Executed: 1864
+Passed Tests:         1864
 Failed Tests:         0
 ```
 
-- Suites: 46 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell).
+- Suites: 48 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
 - Suite 44: Batch 5 file/TOC/schema/bibliography/word-count/"not a fatwa"/search/sitemap/index integration.
 - Suite 45: 114 chunks, 6,236 ayahs, canonical per-surah counts, four fields per ayah, no BOM, no duplicated basmalah, spot checks.
 - Suite 46: IndexedDB store, khatam maths, repeat/speed cycles, Media Session, corpus precache, offline fallback.
+- Suite 47: 114 tafsir chunks, measured edition coverage, rights metadata, Surah 96 anomaly, honest registry, editorial relabelling, Study Mode wiring, tafsir cache.
+- Suite 48: 30 themes, fresh keyword recount, reference validity, 40-reference cap, snippet integrity, UI wiring and deep links.
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261027h`, app version 1.3.0 (build 10300), service-worker cache `v22`.
+Version `?v=20261029a`, app version 1.3.0 (build 10300), service-worker cache `v23`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 3,010,751 | `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
-| `public/downloads/islamic-portal-release.apk` | 3,127,079 | `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 4,957,488 | `1f206d04bf99683ac1c746aea5c9506e589d390659e5f4a5cc54fe139e52db85` |
+| `public/downloads/islamic-portal-release.apk` | 5,096,933 | `c2337baa1148a874c804ed6e7c45a4ca33349d2e572fae0286377656d5a61a18` |
 
-- APK: 215 ZIP entries including 114 Quran corpus chunks and 61 HTML pages; bundle: 206 files including the same 114 chunks and 61 pages.
-- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts.
+- APK: 333 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 61 HTML pages; bundle: 324 files including the same 114 Quran chunks, 114 tafsir chunks and 61 pages.
+- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts.
 - All four Batch 5 pages are present in both artefacts.
-- APK contains `?v=20261027h`, the lazy search loader, the alias guards, the 2:255 deep link and the full corpus.
+- APK contains `?v=20261029a`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 
@@ -253,14 +272,15 @@ The Batch 4 deployment push reported `18f7f93..044fea4 -> gh-pages`. The first l
 | External sites | Tanzeem returns 406 and Sunnah.com 403 to automated clients; not re-verified live. |
 | Cross-browser | Chromium only. |
 | Performance | No Lighthouse/Web Vitals run this cycle. |
-| Scholarship | Content is source-cited but has no scholar sign-off. |
+| Scholarship | Content is source-cited but has no scholar sign-off. The English Jalalayn translation licence is not cleared for commercial distribution. |
 
 ---
 
 ## 8. Required follow-up
 
 1. Batch 6 articles: Seerah epochs (roadmap topics 41–50).
-2. Continue module repair per `MODULE_REGISTRY.md` PARTIAL items.
-3. Device-test the APK when a device is available; add v2/v3 signing.
-4. Remove signing secrets from the repository (owner action).
-5. Cross-browser and screen-reader passes.
+2. Owner decision on the English Jalalayn translation licence before any commercial distribution.
+3. Continue module repair per `MODULE_REGISTRY.md` PARTIAL items.
+4. Device-test the APK when a device is available; add v2/v3 signing.
+5. Remove signing secrets from the repository (owner action).
+6. Cross-browser and screen-reader passes.

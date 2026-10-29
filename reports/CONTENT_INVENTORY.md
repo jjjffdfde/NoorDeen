@@ -1,12 +1,12 @@
 # NoorDeen — Content Inventory
 
-**Audited:** 28 October 2026 (Phase 1: full offline Quran corpus; every page re-measured)
+**Audited:** 29 October 2026 (Phase 2: verbatim tafsir, asbab al-nuzul and thematic index added; page counts re-measured)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured from the current tree, not estimated.
 **Pages:** **61** — 26 root pages + 34 pages in `public/articles/` (33 articles + the library index) + `offline.html` (noindex fallback)
-**Visible words across the 60 indexable pages (whole-page tokenisation):** **241,702** (root 161,829 + article library 79,873); the offline fallback adds 100 words
+**Visible words across the 60 indexable pages (whole-page tokenisation):** **241,779** (root 161,906 + article library 79,873); the offline fallback adds 100 words
 **Article body words (33 articles, excluding page chrome):** **64,160** — average **1,944**, minimum **1,538**, maximum **2,473**
 **Sitemap URLs:** **60** (`public/sitemap.xml`, 60 unique `<loc>` entries)
-**Full test suite:** **1,710 executed / 1,710 passed / 0 failed** (last run 28 October 2026)
+**Full test suite:** **1,864 executed / 1,864 passed / 0 failed** (last run 29 October 2026)
 
 ---
 
@@ -36,13 +36,13 @@
 | 20 | `privacy.html` | 755 | 19 KB | Privacy policy |
 | 21 | `sources.html` | 725 | 18 KB | Bibliography and methodology |
 | 22 | `dr-israr-ahmed.html` | 626 | 33 KB | Lecture library shell (cards render from JSON) |
-| 23 | `quran.html` | 654 | 38 KB | Quran reader shell, khatam planner |
+| 23 | `quran.html` | 731 | 41 KB | Quran reader shell, khatam planner, thematic index |
 | 24 | `terms.html` | 601 | 16 KB | Terms of use |
 | 25 | `contact.html` | 579 | 25 KB | Contact / corrections form |
 | 26 | `bookmarks.html` | 356 | 16 KB | Saved items |
 | 27 | `offline.html` | 100 | 3 KB | Offline fallback (`noindex`) |
 
-Root total: **161,929 words** (161,829 across the 26 indexable root pages).
+Root total: **162,006 words** (161,906 across the 26 indexable root pages).
 
 Note: `dr-israr-ahmed.html` has a small static word count because its cards render from `catalog.json`. `quran.html` now loads all surah text from the bundled corpus, so its static count only covers the shell. `hadith.html`, `duas.html`, `sahaba.html`, `seerah.html`, `prophets.html` and `history.html` are largely pre-rendered static text, which is why their counts are high.
 
@@ -112,7 +112,13 @@ Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies 
 | Seerah chapters | `seerah.html` | 25 | Pre-Islamic Arabia → farewell pilgrimage |
 | History eras | `history.html` | 12 | 66 milestone subsections |
 | Lecture catalog | `data/dr-israr/catalog.json` | **148 records / 147 unique uploads** | 7 series, 131 Urdu, 17 English; 1 flagged duplicate |
-| Study-mode tafsir | `data/tafsir/study-content.json` | 6 verses | 1:1, 1:2, 1:5, 1:6, 2:255, 112:1; labelled as editorial summaries, not verbatim translations |
+| Study-mode editorial summaries | `data/tafsir/study-content.json` | 6 verses | 1:1, 1:2, 1:5, 1:6, 2:255, 112:1; labelled NoorDeen editorial summaries, not verbatim translations |
+| Tafsir al-Jalalayn — English | `public/data/tafsir/surahs/NNN.json` (`en`) | **6,236 verses / 114 surahs** | Verbatim translation by Dr. Feras Hamza, © Royal Aal al-Bayt Institute; attributed non-commercial use |
+| Tafsir al-Jalalayn — Arabic | `public/data/tafsir/surahs/NNN.json` (`ar`) | **6,010 verses / 114 surahs** | Public-domain Arabic original; 226 digitisation gaps shown as missing |
+| Asbab al-Nuzul — Arabic | `public/data/tafsir/surahs/NNN.json` (`asbab`) | **275 verses / 50 surahs / 200 reports** | MIT dataset; Arabic only; one Surah 96 anomaly recorded |
+| Tafsir manifest | `public/data/tafsir/manifest.json` | 3 editions | Per-surah coverage, rights metadata, source anomalies |
+| Tafsir registry | `public/data/tafsir/registry.json` | 4 editions | Three verbatim editions plus the NoorDeen editorial option; lists Ibn Kathir and Muyassar as not bundled |
+| Thematic verse index | `public/data/tafsir/themes.json` | **30 themes / 5,639 matches** | Keyword finding aid over the bundled English text; up to 40 refs per theme |
 | Glossary terms | `index.html` | 135 | Searchable, category-filtered |
 
 ---
@@ -121,12 +127,12 @@ Duplicate check: 5-word shingle Jaccard similarity across the 33 article bodies 
 
 | Artefact | Size | SHA-256 |
 | :--- | --: | :--- |
-| `downloads/islamic-portal-release.apk` | 3,127,079 bytes (2.98 MiB) | `1a7e021da147303a6e60c6fef8fa05e638f28df0d6c583af192d36ef0bd567d4` |
-| `downloads/islamic-portal-offline-bundle.zip` | 3,010,751 bytes (2.87 MiB) | `4fbb2c649e15bb19ac4eeaedf977ef6b5f62c5ada0886268a570f7c2aaada3e0` |
+| `downloads/islamic-portal-release.apk` | 5,096,933 bytes (4.86 MiB) | `c2337baa1148a874c804ed6e7c45a4ca33349d2e572fae0286377656d5a61a18` |
+| `downloads/islamic-portal-offline-bundle.zip` | 4,957,488 bytes (4.73 MiB) | `1f206d04bf99683ac1c746aea5c9506e589d390659e5f4a5cc54fe139e52db85` |
 
-Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 215 ZIP entries including the 114 corpus chunks; the bundle holds 206 files, 61 HTML pages and the same 114 chunks.
+Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 333 ZIP entries including the 114 Quran chunks, 114 tafsir chunks and 61 HTML pages; the bundle holds 324 files, 61 HTML pages and the same chunks.
 
-**Live deployment:** `gh-pages` commit `0fe41f0b` (tree from `732c221:public`) was verified on `https://jjjffdfde.github.io/NoorDeen/` on 28 October 2026. All **114 corpus chunks** were downloaded from the live origin and summed to **6,236 ayahs / 4,653,659 bytes**, byte-identical to the local corpus. The live APK is 3,127,079 bytes with SHA-256 `1a7e021d…` and the live bundle is 3,010,751 bytes with SHA-256 `4fbb2c64…` — both match the local files and `CHECKSUMS.sha256`. Sitemap serves 60 URLs, the service worker is `v22`, About states 1,710 assertions, and `offline.html` is live with `noindex`.
+**Live deployment:** `gh-pages` commit `0fe41f0b` (tree from `732c221:public`) was the last verified live build (Phase 1, 28 October 2026). The Phase 2 artefacts above are prepared locally; their deployment and live verification are recorded in `FINAL_AUDIT_RESULTS.md` §6.4.
 
 ---
 
@@ -135,7 +141,8 @@ Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byt
 - Whole-page word counts include navigation and footer. Article body counts are reported separately above so the two are not confused.
 - 33 of the 100 roadmap topics are published. The index advertises the roadmap and marks unwritten topics as pending.
 - Hadith and dua counts are counts of records in this repository, not a claim to represent the full corpus of any collection. 101 traditions is a curated selection, not Sahih al-Bukhari's 7,000+.
-- Tafsir coverage is 6 verses, not 6,236. The UI states this and offers an honest "no commentary bundled" message for other verses.
+- Tafsir is now bundled verbatim in three editions: Jalalayn English (6,236 verses), Jalalayn Arabic (6,010 of 6,236) and asbab al-nuzul Arabic (275 verses / 200 reports). Six further verses carry a NoorDeen editorial summary. The UI states every gap and never fills one from another edition.
+- The thematic index is a keyword finding aid, not a scholarly thematic classification. Its counts are recomputed by Suite 48.
 - Quran text is complete offline (114 surahs / 6,236 ayahs). Recitation audio and the lecture video catalogue still require a network.
 - The article library is educational prose, not a fatwa service. Specific legal and medical questions are referred to qualified scholars and professionals.
 - The APK is JAR-signed (v1) only and has not been installed on a device in this environment.

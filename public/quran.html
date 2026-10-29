@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Holy Quran Reader — All 114 Surahs & 30 Juz with Translations</title>
   <meta name="description" content="Read and listen to the Holy Quran with authentic Uthmani script, verse-by-verse Urdu and English translations, and audio recitation.">
-  <link rel="stylesheet" href="css/main.css?v=20261027h">
+  <link rel="stylesheet" href="css/main.css?v=20261029a">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/quran.html">
@@ -349,6 +349,38 @@
     </div>
   </section>
 
+  <!-- Thematic Verse Index (keyword-generated finding aid, not a scholarly classification) -->
+  <section class="container" id="thematic-index" style="padding-bottom: 40px;" aria-labelledby="thematic-index-heading">
+    <div class="card" style="border-top: 4px solid var(--color-primary);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 14px;">
+        <div>
+          <h2 id="thematic-index-heading" style="font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-primary); margin: 0 0 4px;">
+            🔎 Thematic Verse Index
+          </h2>
+          <p style="margin: 0; font-size: 0.88rem; color: var(--color-text-muted); max-width: 680px;">
+            Browse verses by theme using a keyword index built over the bundled English translation. This is a finding aid, not a scholarly thematic classification (tafsir mawdu'i).
+          </p>
+        </div>
+        <span id="thematic-index-count" class="badge" style="background: var(--color-surface); color: var(--color-gold-dark); font-size: 0.75rem;">Loading themes…</span>
+      </div>
+
+      <label for="thematic-search" style="display: block; font-size: 0.84rem; font-weight: 700; color: var(--color-text-main); margin-bottom: 6px;">Search themes</label>
+      <input id="thematic-search" type="search" autocomplete="off" placeholder="e.g. mercy, justice, patience, family" aria-describedby="thematic-disclaimer" style="width: 100%; max-width: 420px; padding: 8px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-card); color: var(--color-text-main); font-size: 0.9rem; margin-bottom: 14px;">
+
+      <div id="thematic-theme-list" role="list" aria-label="Available themes" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <!-- Theme buttons rendered by js/thematic-index.js -->
+      </div>
+
+      <div id="thematic-results" aria-live="polite" style="font-size: 0.92rem; line-height: 1.75; color: var(--color-text-main);">
+        <p style="margin: 0; color: var(--color-text-muted);">Choose a theme to see matching verses.</p>
+      </div>
+
+      <p id="thematic-disclaimer" style="margin: 14px 0 0; font-size: 0.78rem; line-height: 1.5; color: var(--color-text-muted);">
+        Keyword matching can miss relevant verses or include imperfect matches. Verify themes against published works before relying on them.
+      </p>
+    </div>
+  </section>
+
   <!-- Quran Study Mode Modal (Exegesis, Tafsir, Word-by-Word, Compare) -->
   <div id="quran-study-modal" class="modal-overlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="study-modal-title">
     <div class="modal-content study-modal-dialog">
@@ -396,12 +428,14 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
             <label for="study-tafsir-select" style="font-size: 0.84rem; font-weight: 700; color: var(--color-text-main);">Select Classical Tafsir:</label>
             <select id="study-tafsir-select" class="btn btn-outline" style="padding: 4px 10px; font-size: 0.82rem; background: var(--color-card);" onchange="quranApp.setStudyTafsirEdition(this.value)">
-              <option value="ibn-kathir">Tafsir Ibn Kathir (تفسير ابن كثير)</option>
-              <option value="jalalayn">Tafsir al-Jalalayn (تفسير الجلالين)</option>
+              <option value="jalalayn-en">Tafsir al-Jalalayn — English (تفسير الجلالين)</option>
+              <option value="jalalayn-ar">Tafsir al-Jalalayn — Arabic (تفسير الجلالين)</option>
+              <option value="asbab-ar">Asbab al-Nuzul — Arabic reports (أسباب النزول)</option>
+              <option value="editorial">NoorDeen editorial summary (not a classical tafsir)</option>
             </select>
           </div>
           <div id="study-tafsir-meta" style="font-size: 0.76rem; color: var(--color-text-muted); margin-bottom: 10px; padding: 6px 10px; background: var(--color-surface); border-radius: var(--radius-sm);">
-            Verified Orthodox Sunni Exegesis bi'l-Ma'thur • Sourced from classical scholarly manuscripts
+            Bundled commentary. Edition, translator and rights metadata are shown for every entry.
           </div>
           <div id="study-tafsir-content" style="font-size: 0.98rem; line-height: 1.8; color: var(--color-text-main);">
             <!-- Tafsir text rendered dynamically -->
@@ -563,14 +597,16 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/config.js?v=20261027h"></script>
-  <script src="js/data.js?v=20261027h"></script>
-  <script src="js/i18n.js?v=20261027h"></script>
-  <script src="js/tools.js?v=20261027h"></script>
-  <script src="js/search.js?v=20261027h"></script>
-  <script src="js/quran-store.js?v=20261027h"></script>
-  <script src="js/quran.js?v=20261027h"></script>
-  <script src="js/app.js?v=20261027h"></script>
+  <script src="js/config.js?v=20261029a"></script>
+  <script src="js/data.js?v=20261029a"></script>
+  <script src="js/i18n.js?v=20261029a"></script>
+  <script src="js/tools.js?v=20261029a"></script>
+  <script src="js/search.js?v=20261029a"></script>
+  <script src="js/quran-store.js?v=20261029a"></script>
+  <script src="js/tafsir-store.js?v=20261029a"></script>
+  <script src="js/quran.js?v=20261029a"></script>
+  <script src="js/thematic-index.js?v=20261029a"></script>
+  <script src="js/app.js?v=20261029a"></script>
   <script>
     // Initialize Quran Reader
     const quranApp = new QuranReader();

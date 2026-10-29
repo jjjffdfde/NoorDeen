@@ -1,11 +1,11 @@
 # NoorDeen — Remaining Work
 
-**Updated:** 28 October 2026
-**Status:** Phase 1 of the 10-phase master plan is complete: the full Quran corpus (114 surahs / 6,236 ayahs) is bundled, pre-cached, readable offline and tracked by a khatam planner; the player persists its state; an informative offline fallback replaces the old blind homepage redirect. The site is usable. It is not complete: tafsir, article expansion, Android device verification and signing remain the largest open items.
+**Updated:** 29 October 2026
+**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **1,710 executed / 1,710 passed / 0 failed** (Suites 1–46). Browser checks: Ya-Sin rendered 83/83 and Al-Kahf 110/110 ayahs from the corpus with 0 console errors; the service-worker corpus cache held 114 entries and the shell 48; khatam progress showed 110 ayahs / 1.8% after marking Al-Kahf; player state (surah 18, repeat `ayah`, 1.25×) was restored after reload.
+**Last successful test:** `node test/run-tests.js` → **1,864 executed / 1,864 passed / 0 failed** (Suites 1–48). Browser checks: Study Mode rendered Jalalayn English with attribution, asbab Arabic RTL reports, the explicit Arabic gap state, and the labelled NoorDeen editorial summary; the thematic index rendered 30 chips and 40 capped mercy references; tafsir chunk 003 was cached on demand with 0 console errors.
 
-**Live deployment:** `gh-pages` commit `0fe41f0b` (tree from `732c221:public`) is live and verified on `https://jjjffdfde.github.io/NoorDeen/`: SW `v22`, About 1,710 assertions, all 114 corpus chunks downloadable (6,236 ayahs / 4,653,659 bytes), APK `1a7e02…` / 3,127,079 bytes, bundle `4fbb2c…` / 3,010,751 bytes, `offline.html` live with `noindex`. The GitHub Pages CDN served the previous build for about three minutes after the push (`max-age=600`).
+**Live deployment:** the Phase 1 deployment at `gh-pages` commit `0fe41f0b` remains the last verified live build (SW `v22`). The Phase 2 build is prepared locally; its deployment and live verification are recorded in `FINAL_AUDIT_RESULTS.md` §6.4 after the push.
 
 ---
 
@@ -23,6 +23,22 @@
 | Copy corrections | Homepage FAQ/meta, About, download page and bundle README now state 114 surahs; removed the false "v1, v2 and v3 signed" claim |
 | Tests | 1,710 assertions, 0 failures, 46 suites |
 | Builds | Bundle 206 files / 3,010,751 bytes / `4fbb2c…`; APK 215 entries / 3,127,079 bytes / `1a7e02…`; version 1.3.0 (build 10300), SW `v22` |
+
+---
+
+## 1A. Done in this cycle (Phase 2)
+
+| Item | Verified outcome |
+| :--- | :--- |
+| Tafsir corpus | 114 chunks; Jalalayn English 6,236/6,236, Jalalayn Arabic 6,010/6,236, asbab 275 verses / 50 surahs / 200 reports; 5,781,739 bytes |
+| Ingestion | `scripts/fetch-tafsir.cjs` (`--resume`, `--check`, `--limit`); coverage, range, blank, HTML and U+FFFD checks; Surah 96 anomaly recorded |
+| Rights metadata | `manifest.json` + rewritten `registry.json`: author, translator, publisher, licence, rights note and measured coverage per edition |
+| Offline store | `tafsir-store.js`: IndexedDB `noordeen-tafsir`, memory → IDB → HTTP, chunk validation, manifest/edition/coverage APIs |
+| Study Mode | Jalalayn EN, Jalalayn AR, asbab AR and NoorDeen editorial summary; edition/rights notes, RTL Arabic, explicit gap states, race-safe async rendering |
+| Thematic index | 30 themes / 5,639 keyword matches; searchable UI in `quran.html`; Suite 48 recomputes every count |
+| Service worker | `v23`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
+| Tests | 1,864 assertions, 0 failures, 48 suites |
+| Builds | APK 333 entries / 5,096,933 bytes / `c2337baa…`; bundle 324 files / 4,957,488 bytes / `1f206d04…`; version 1.3.0 (build 10300), SW `v23` |
 
 ---
 
@@ -67,9 +83,9 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 | Gap | Current | Target | Notes |
 | :--- | :--- | :--- | :--- |
-| Tafsir | 6 verses | All 6,236, or a clearly scoped selection | Phase 2; largest credibility gap; requires licensed text or a public-domain edition with attribution |
-| Asbab al-nuzul | None bundled | Per-verse or per-surah notes with citations | Phase 2 |
-| Thematic index | 32 surah profiles | Verse-level thematic index | Phase 2 |
+| Tafsir | **Done (Phase 2)** — Jalalayn EN 6,236; Jalalayn AR 6,010; 6 editorial summaries | Owner decision on the English translation licence; optional collation against a printed edition | English translation is © Royal Aal al-Bayt, attributed non-commercial use only |
+| Asbab al-nuzul | **Done (Phase 2)** — 275 verses / 50 surahs / 200 Arabic reports | English translation if a licensed one is found | Arabic only; absence is stated as absence, not non-existence |
+| Thematic index | **Done (Phase 2)** — 30 themes / 5,639 matches | Optional scholarly review of theme definitions | Keyword finding aid, not a thematic tafsir |
 | Articles | 33 published / 23 roadmap topics | 67 more roadmap topics | Phase 5; ~1,500–2,500 body words each |
 | Hadith | 101 curated | 500+ reviewed records plus narrator (rijaal) notes | Phase 3 |
 | Nawawi 40 | Partial (within the 101) | Complete 40 with commentary | Phase 3 |
@@ -123,19 +139,21 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 ## 6. Content and claims policy (keep enforcing)
 
 1. Never invent Quran text, translations, hadith numbers, gradings, citations, counts, or test results.
-2. If a feature is not bundled, say so in the UI. The tafsir panel is the model.
+2. If a feature is not bundled, say so in the UI. The tafsir and asbab panels are the model.
 3. Distinguish records from unique items (148 vs 147) instead of rounding away duplicates.
 4. Do not describe a build as device-tested until it has been installed and used.
 5. The Quran text is complete offline; do not extend that claim to audio, video or the 37 unbundled translations.
 6. Keep Arabic source text immutable and separate from translations.
 7. Do not claim v2/v3 signing while the APK has only a v1 JAR signature.
+8. Do not describe the thematic index as a scholarly thematic classification; it is a keyword finding aid.
+9. Do not describe the English Jalalayn translation as public domain; it is © Royal Aal al-Bayt and cleared only for attributed non-commercial use.
 
 ---
 
 ## 7. Exact next task
 
-**Phase 2 of the master plan: authentic tafsir, asbab al-nuzul and a thematic index.** Start with a small, fully sourced pilot (for example Surah al-Fatihah and Ayat al-Kursi) using a public-domain or properly licensed tafsir with translator attribution, store it as `public/data/tafsir/` JSON, and label every entry with its edition and translator. Do not generate commentary text.
+**Next task:** **Batch 6 — four articles on the Seerah epochs (roadmap topics 41–50)**, via `scripts/article-content/batch-6a.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`.
 
-Alternative if content expansion is preferred: **Batch 6 — four articles on the Seerah epochs (roadmap topics 41–50)**, via `scripts/article-content/batch-6a.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`.
+Alternative: begin Phase 3 (hadith expansion) or obtain the owner's decision on the English Jalalayn translation licence before commercial distribution.
 
-Before starting either: run `node test/run-tests.js` to confirm the **1,710-assertion** baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md` / `MODULE_REGISTRY.md` / `MODULE_FUNCTIONAL_TESTS.md` / `FINAL_TEST_RESULTS.md`.
+Before starting either: run `node test/run-tests.js` to confirm the **1,864-assertion** baseline is still green. After the batch: bump the asset version, rebuild the bundle and APK, re-run the suite and the link recheck, and update `CONTENT_INVENTORY.md` / `CONTENT_EXPANSION_LOG.md` / `MODULE_REGISTRY.md` / `MODULE_FUNCTIONAL_TESTS.md` / `FINAL_TEST_RESULTS.md`.

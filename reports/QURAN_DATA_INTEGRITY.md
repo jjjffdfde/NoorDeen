@@ -1,8 +1,8 @@
 # NoorDeen — Quran Data Integrity
 
-**Audited:** 28 October 2026 (Phase 1 cycle)
-**Scope:** canonical Arabic text, surah metadata, the full offline corpus, translations, tafsir, audio and reader URL behaviour.
-**Verdict:** all 114 surahs and all 6,236 ayahs are now bundled locally as verified JSON chunks and pre-cached by the service worker. Arabic text, English (Saheeh International), Urdu (Jalandhry) and transliteration are present for every ayah. Tafsir remains intentionally partial (6 verses). No Quranic text, translation or tafsir was invented to fill a gap.
+**Audited:** 29 October 2026 (Phase 2 cycle)
+**Scope:** canonical Arabic text, surah metadata, the full offline corpus, translations, tafsir, asbab al-nuzul, thematic index, audio and reader URL behaviour.
+**Verdict:** all 114 surahs and all 6,236 ayahs are bundled locally as verified JSON chunks and pre-cached by the service worker. Arabic text, English (Saheeh International), Urdu (Jalandhry) and transliteration are present for every ayah. Three verbatim tafsir/asbab editions are now bundled with measured coverage and rights metadata; gaps are named, never filled. No Quranic text, translation or tafsir was invented.
 
 ---
 
@@ -78,15 +78,16 @@ The reader now prefers `QuranStore.getSurah()` (memory → IndexedDB → HTTP th
 
 | Check | Value |
 | :--- | :--- |
-| Bundled tafsir verses | **6**: 1:1, 1:2, 1:5, 1:6, 2:255, 112:1 |
-| Tafsir registry editions | 3 (Ibn Kathir, al-Jalalayn, al-Muyassar metadata) |
+| Bundled tafsir editions | **3 verbatim**: Jalalayn English (6,236 verses), Jalalayn Arabic (6,010), asbab al-nuzul Arabic (275 verses / 200 reports) |
+| Tafsir registry editions | 4 (three verbatim + NoorDeen editorial); Ibn Kathir and Muyassar listed as not bundled |
+| Editorial summaries | 6 verses: 1:1, 1:2, 1:5, 1:6, 2:255, 112:1 — labelled NoorDeen editorial text |
 | Word-by-word data | Present for the bundled study verses |
-| Verses without bundled commentary | Explicit "No commentary is bundled" message + external Quran.com link |
+| Verses without a bundled entry | Explicit missing-entry message naming the edition and the gap; never filled from another edition |
 | Generic hadith panel | Labelled "General Sunnah Guidance / Not verse-specific" |
 
-**Honesty caveat:** the bundled English commentary is an **editorial summary** that follows the named tafsir tradition; it is not a verbatim, line-by-line translation of the Arabic tafsir. The UI labels it accordingly. This report does not claim scholarly verification of the wording.
+**Honesty caveat:** the three classical editions are stored verbatim from their named datasets, but the English translation has not been collated against a printed edition and the asbab chains have not been re-graded. The six NoorDeen editorial summaries are paraphrases, not classical tafsir, and are never attributed to Ibn Kathir or al-Jalalayn.
 
-Coverage is **6 of 6,236 verses (0.1%)**. Phase 2 of the master plan addresses this gap.
+The English Jalalayn translation is © Royal Aal al-Bayt Institute and bundled for attributed non-commercial use only; commercial redistribution permission has not been obtained.
 
 ---
 
@@ -113,7 +114,8 @@ The URL construction, reciter selection, repeat/speed logic and state restoratio
 
 ## 7. What is *not* claimed
 
-- Not a complete tafsir: 6 verses have bundled commentary.
+- Not a complete or independently collated tafsir: Jalalayn Arabic has 226 digitisation gaps, and asbab covers only verses with a recorded report.
+- Not a claim that the English Jalalayn translation may be redistributed commercially.
 - Not a substitute for a printed mushaf or a qualified teacher.
 - Not a scholarly critical edition; the text standard is declared, not independently collated.
 - Not proof that all 40 translation editions are live; only the bundled English/Urdu/transliteration were validated for all 6,236 ayahs.
@@ -143,5 +145,7 @@ Relevant assertions:
 - Suite 41: deep-link resolution and Ayatul Kursi destination.
 - **Suite 45: 114 chunks, 6,236 ayahs, per-surah counts, four fields per ayah, no BOM, no duplicated basmalah, spot checks.**
 - **Suite 46: IndexedDB store, khatam maths, repeat/speed cycles, Media Session, service-worker corpus cache and offline fallback.**
+- **Suite 47: 114 tafsir chunks, measured edition coverage, rights metadata, Surah 96 anomaly, Study Mode wiring, tafsir cache.**
+- **Suite 48: 30 themes, independent keyword recount, reference validity, 40-reference cap, deep links.**
 
-Full suite at the time of writing: **1,710 executed / 1,710 passed / 0 failed** across 46 suites.
+Full suite at the time of writing: **1,864 executed / 1,864 passed / 0 failed** across 48 suites.
