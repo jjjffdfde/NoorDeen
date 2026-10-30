@@ -1,11 +1,11 @@
 # NoorDeen — Remaining Work
 
-**Updated:** 29 October 2026
-**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. Batch 6a adds four Seerah articles (roadmap topics 53–56) and is deployed. The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
+**Updated:** 30 October 2026
+**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. Batch 6b adds the final four Seerah articles (roadmap topics 57–60); the eight-topic Seerah strand is now fully published. The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **2,023 executed / 2,023 passed / 0 failed** (Suites 1–49). Browser checks: the four Batch 6a articles rendered with 12–13 TOC links, 2 JSON-LD blocks and 0 console errors; search returned the Hijrah article first for `hijrah`; the article index showed 37 cards.
+**Last successful test:** `node test/run-tests.js` → **2,185 executed / 2,185 passed / 0 failed** (Suites 1–50). The four Batch 6b pages were built at 3,148–3,538 body words (prose core 2,686–3,049), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 41 cards.
 
-**Live deployment:** Batch 6a is live at `gh-pages` commit `b930b7df756aba7456ae50d93b56c1a8df63cd03` (tree from `444377f:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v24`, About states 2,023 assertions, four new article pages 200, APK `019002cf…` / 5,148,693 bytes, bundle `3bbc577e…` / 5,008,445 bytes, 64 sitemap URLs, `offline.html` live with `noindex`. The GitHub Pages CDN served the previous Phase 2 build for about three minutes (`max-age=600`); the re-check after cache expiry passed.
+**Live deployment:** Batch 6a remains live at `gh-pages` commit `b930b7df756aba7456ae50d93b56c1a8df63cd03` (tree from `444377f:public`) on `https://jjjffdfde.github.io/NoorDeen/`. Batch 6b artefacts are built locally: APK `86096c12…` / 5,204,216 bytes / 341 entries; bundle `bed3ef77…` / 5,063,079 bytes / 332 entries; SW `v25`; 68 sitemap URLs. Deployment and live verification are recorded in `FINAL_AUDIT_RESULTS.md` §6.6.
 
 ---
 
@@ -36,9 +36,9 @@
 | Offline store | `tafsir-store.js`: IndexedDB `noordeen-tafsir`, memory → IDB → HTTP, chunk validation, manifest/edition/coverage APIs |
 | Study Mode | Jalalayn EN, Jalalayn AR, asbab AR and NoorDeen editorial summary; edition/rights notes, RTL Arabic, explicit gap states, race-safe async rendering |
 | Thematic index | 30 themes / 5,639 keyword matches; searchable UI in `quran.html`; Suite 48 recomputes every count |
-| Service worker | `v24`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
-| Tests | 2,023 assertions, 0 failures, 49 suites |
-| Builds | APK 337 entries / 5,148,693 bytes / `019002cf…`; bundle 328 files / 5,008,445 bytes / `3bbc577e…`; version 1.3.0 (build 10300), SW `v24` |
+| Service worker | `v25`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
+| Tests | 2,185 assertions, 0 failures, 50 suites |
+| Builds | APK 341 entries / 5,204,216 bytes / `86096c12…`; bundle 332 files / 5,063,079 bytes / `bed3ef77…`; version 1.3.0 (build 10300), SW `v25` |
 
 ---
 
@@ -86,7 +86,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | Tafsir | **Done (Phase 2)** — Jalalayn EN 6,236; Jalalayn AR 6,010; 6 editorial summaries | Owner decision on the English translation licence; optional collation against a printed edition | English translation is © Royal Aal al-Bayt, attributed non-commercial use only |
 | Asbab al-nuzul | **Done (Phase 2)** — 275 verses / 50 surahs / 200 Arabic reports | English translation if a licensed one is found | Arabic only; absence is stated as absence, not non-existence |
 | Thematic index | **Done (Phase 2)** — 30 themes / 5,639 matches | Optional scholarly review of theme definitions | Keyword finding aid, not a thematic tafsir |
-| Articles | 37 published / 27 roadmap topics | 73 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batch 6a deliberately longer, 2,664–3,391 whole-body) |
+| Articles | 41 published / 31 roadmap topics | 69 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batches 6a and 6b deliberately longer, 2,664–3,538 whole-body) |
 | Hadith | 101 curated | 500+ reviewed records plus narrator (rijaal) notes | Phase 3 |
 | Nawawi 40 | Partial (within the 101) | Complete 40 with commentary | Phase 3 |
 | Lecture catalog | 10 of 74 archive pages | Remaining 64 pages | Same scrape-and-verify method; keep duplicate handling |
@@ -97,8 +97,8 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | :--- | :--- | :--- |
 | 4 | 21–30 | Family, parenting, inheritance, neighbours — **DONE** (4 articles) |
 | 5 | 31–40 | Business ethics, contracts, debt and workers' rights — **DONE** (4 articles) |
-| 6 | 41–50 | Seerah epochs in depth — **PARTIAL: Batch 6a DONE (roadmap topics 53–56, 4 articles); topics 57–60 remain** |
-| 7 | 51–60 | Rightly-guided caliphs |
+| 6 | 41–50 | Seerah epochs in depth — **DONE: Batch 6a (topics 53–56) and Batch 6b (topics 57–60), 8 articles** |
+| 7 | 51–60 | Stories of the Prophets (topics 61–68) |
 | 8 | 61–70 | Islamic golden age: science, philosophy, medicine |
 | 9 | 71–80 | Death, barzakh, resurrection |
 | 10 | 81–90 | Tazkiyah, akhlaq, mental health |
@@ -152,7 +152,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 ## 7. Exact next task
 
-**Next task:** **Batch 6b — the remaining four Seerah articles (roadmap topics 57–60: Madinan society, the battles, Hudaybiyyah and the Conquest of Makkah, the Farewell Sermon)**, via a new `scripts/article-content/batch-6b.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`.
+**Next task:** **Batch 7 — Stories of the Prophets (roadmap topics 61–68: Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud/Sulayman, Yunus, Isa)**, via a new `scripts/article-content/batch-7a.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`. The Seerah strand (53–60) is now complete.
 
 Alternative: begin Phase 3 (hadith expansion) or obtain the owner's decision on the English Jalalayn translation licence before commercial distribution.
 

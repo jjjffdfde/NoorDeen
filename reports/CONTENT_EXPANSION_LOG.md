@@ -26,6 +26,7 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 4 articles** | 4 articles (parents, parenting, inheritance, neighbours) | **8,407 body words**, 2,102 average; all ≥1,971 body words |
 | **Batch 5 articles** | 4 articles (business ethics, contracts, debt, workers’ rights) | **9,728 body words**, 2,432 average; all ≥2,371 body words |
 | **Batch 6a articles** | 4 Seerah articles (topics 53–56: pre-Islamic Arabia, Makkan persecution, Isra’ wal-Mi’raj, Hijrah) | **11,792 body words**, 2,948 average; prose core 2,226–2,845 words each |
+| **Batch 6b articles** | 4 Seerah articles (topics 57–60: Madinah society, Badr/Uhud/Trench, Hudaybiyyah/conquest, farewell sermon) | **13,292 body words**, 3,323 average; prose core 2,686–3,049 words each |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
@@ -71,6 +72,28 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 **Quality gate.** Prose core (intro plus numbered sections) is 2,226–2,845 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 2,664–3,391. All four exceed the 2,500-word editorial guide because the brief required full source-critical treatment; the overage is recorded rather than hidden. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
 
 **Honest note on numbering.** The library now contains 37 articles. Cards are numbered #34–37 and the details block uses publication numbers 114–117. Those publication numbers are not a claim that 117 roadmap topics are written; the Seerah discipline has 4 of its 8 topics live (53–56) and 4 planned (57–60).
+
+---
+
+## 2. Batch 6b detail (this cycle)
+
+Generated from `scripts/article-content/batch-6b.cjs` through `scripts/build-articles.cjs batch-6b.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 38 | 57. Madinah: society, law and polity | `madinah-society-and-first-muslim-state` | 3,538 | 3,049 | 3,884 |
+| 39 | 58. Badr, Uhud and the Trench | `battles-of-badr-uhud-and-the-trench` | 3,279 | 2,799 | 3,629 |
+| 40 | 59. Hudaybiyyah and the conquest | `hudaybiyyah-and-conquest-of-makkah` | 3,148 | 2,686 | 3,488 |
+| 41 | 60. The farewell sermon and final years | `farewell-sermon-and-final-years` | 3,327 | 2,834 | 3,667 |
+| | **Total** | | **13,292** | **11,368** | **14,668** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #38–41, details block 118–121), and are reachable from the article library.
+
+**Source discipline.** The batch keeps four evidentiary layers separate: the Qur’anic anchor, authentic hadith, early Sirah reports (Ibn Ishaq through Ibn Hisham), and later popular additions. Where a famous detail is a later report rather than an authentic hadith — the prisoners teaching children to read after Badr, Nu’aym ibn Mas’ud’s deception at the Trench, “Go, for you are free” at the conquest, the composite “Last Sermon” text — the article says so explicitly. The Banu Qurayzah aftermath is recorded with its disputed numbers and its ethical debate, not smoothed into a slogan.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 2,686–3,049 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 3,148–3,538. All four exceed the 2,500-word editorial guide because the brief required full source-critical treatment; the overage is recorded rather than hidden, and every page stays under the audited 3,600 whole-body cap. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
+
+**Honest note on numbering.** The library now contains 41 articles. Cards are numbered #38–41 and the details block uses publication numbers 118–121. Those publication numbers are not a claim that 121 roadmap topics are written; the Seerah discipline now has all 8 of its topics live (53–60).
 
 ---
 
@@ -162,10 +185,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **61** (26 root + 34 article pages + `offline.html`) |
-| Visible words, 60 indexable pages | **241,779** |
-| Articles published | **33** (23 roadmap topics + 10 additional topics) |
-| Article body words | **75,952**, average **2,053**, min **1,538**, max **3,391** (37 articles) |
+| HTML pages | **69** (26 root + 42 article pages + `offline.html`) |
+| Visible words, 68 indexable pages | **270,778** |
+| Articles published | **41** (31 roadmap topics + 10 additional topics) |
+| Article body words | **89,244**, average **2,177**, min **1,538**, max **3,538** (41 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -174,16 +197,16 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **2,023 passing, 0 failing** (49 suites) |
-| Sitemap URLs | 64 |
-| Release APK | 5,148,693 bytes (4.91 MiB), 337 entries / 65 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 5,008,445 bytes (4.78 MiB), 328 files |
+| Automated assertions | **2,185 passing, 0 failing** (50 suites) |
+| Sitemap URLs | 68 |
+| Release APK | 5,204,216 bytes (4.96 MiB), 341 entries / 69 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 5,063,079 bytes (4.83 MiB), 332 files |
 
 ---
 
 ## 6. What is still missing
 
-- **67 roadmap topics** remain unwritten (the 100-topic list minus the 23 covered).
+- **69 roadmap topics** remain unwritten (the 100-topic list minus the 31 covered).
 - **Tafsir** now covers three verbatim editions with measured gaps; the English Jalalayn licence still needs owner confirmation, and no edition has been collated against print.
 - **Asbab al-nuzul** is Arabic only and covers the 275 verses for which the source compilation records an occasion.
 - **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.
