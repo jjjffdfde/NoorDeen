@@ -451,6 +451,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The pledges of Aqabah, the plot in Dar al-Nadwa, the cave of Thawr, the journey with Abu Bakr, Quba and the first mosque, the document of Madinah, the brotherhood between Muhajirun and Ansar, and the Hijri calendar.",
     url: "articles/hijrah-to-madinah.html",
     keywords: ["hijrah","migration","madinah","yathrib","aqabah","cave of thawr","abu bakr","quba","first mosque","constitution of madinah","document of madinah","ansar","muhajirun","brotherhood","hijri calendar","622"]
+  },
+  {
+    title: "Madinah: Society, Law and the First Muslim Polity",
+    snippet: "How the Hijrah created a plural city: the document of Madinah, the mosque as centre, the brotherhood of Muhajirun and Ansar, the change of qibla, law and arbitration, the hypocrites, zakat and the honest question of whether Madinah was a state.",
+    url: "articles/madinah-society-and-first-muslim-state.html",
+    keywords: ["madinah","medina","yathrib","document of madinah","constitution of madinah","sahifah","mosque","masjid al-nabawi","ansar","muhajirun","brotherhood","muakhah","qibla","ramadan","zakat","hypocrites","munafiqun","abdullah ibn ubayy","law","justice","state","polity","seerah"]
+  },
+  {
+    title: "Badr, Uhud and the Trench: War, Ethics and Survival",
+    snippet: "The three great early battles of the Seerah: the road to Badr, the day of the criterion, the prisoners and spoils, the archers at Uhud, the wounding of the Prophet, the Confederate siege of the Trench, the wind, and the difficult aftermath with Banu Qurayzah.",
+    url: "articles/battles-of-badr-uhud-and-the-trench.html",
+    keywords: ["badr","uhud","trench","khandaq","ahzab","battle","war","jihad","quraysh","abu sufyan","hamzah","khalid ibn al-walid","archers","martyrs","banu qurayzah","salman al-farsi","confederates","seerah"]
+  },
+  {
+    title: "Hudaybiyyah and the Conquest of Makkah",
+    snippet: "The umrah that became a treaty, the pledge of Ridwan, the terms that looked like humiliation, Surah al-Fath, the breach by Quraysh, the secret march, the entry into Makkah, the general amnesty and the cleansing of the Kaaba.",
+    url: "articles/hudaybiyyah-and-conquest-of-makkah.html",
+    keywords: ["hudaybiyyah","treaty","ridwan","bayat al-ridwan","surah al-fath","conquest of makkah","fath makkah","amnesty","abu sufyan","bilal","kaaba","hunayn","taif","khuzaah","banu bakr","seerah"]
+  },
+  {
+    title: "The Farewell Sermon and the Final Years",
+    snippet: "The farewell pilgrimage, the sermon at Arafah, the sanctity of life and property, the abolition of riba, the rights of women, the call to equality, the final months, the illness and death of the Prophet, and the succession.",
+    url: "articles/farewell-sermon-and-final-years.html",
+    keywords: ["farewell sermon","khutbat al-wada","farewell hajj","arafah","last sermon","riba","women","equality","ghadir khumm","death of the prophet","saqifah","succession","abu bakr","final years","seerah"]
   }
 ];
 
