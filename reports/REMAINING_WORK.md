@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **2,185 executed / 2,185 passed / 0 failed** (Suites 1–50). The four Batch 6b pages were built at 3,148–3,538 body words (prose core 2,686–3,049), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 41 cards.
 
-**Live deployment:** Batch 6a remains live at `gh-pages` commit `b930b7df756aba7456ae50d93b56c1a8df63cd03` (tree from `444377f:public`) on `https://jjjffdfde.github.io/NoorDeen/`. Batch 6b artefacts are built locally: APK `86096c12…` / 5,204,216 bytes / 341 entries; bundle `bed3ef77…` / 5,063,079 bytes / 332 entries; SW `v25`; 68 sitemap URLs. Deployment and live verification are recorded in `FINAL_AUDIT_RESULTS.md` §6.6.
+**Live deployment:** Batch 6b is live at `gh-pages` commit `ff4276fc4ccf15ee22db512864932c4813c51c78` (tree `1d62771` from `a0f3110:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v25`, About states 2,185 assertions, four new article pages 200 with correct H1, APK `86096c12…` / 5,204,216 bytes, bundle `bed3ef77…` / 5,063,079 bytes, 68 sitemap URLs, `offline.html` live with `noindex`. Live APK and bundle downloads hash-match the local artefacts; Chromium showed 0 console errors and search returned the new Hudaybiyyah and Farewell articles first.
 
 ---
 

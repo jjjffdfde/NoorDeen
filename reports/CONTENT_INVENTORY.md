@@ -141,7 +141,7 @@ Duplicate check: 5-word shingle Jaccard similarity across the 41 article bodies 
 
 Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 341 ZIP entries including the 114 Quran chunks, 114 tafsir chunks and 69 HTML pages; the bundle holds 332 files, 69 HTML pages and the same chunks. Extracted APK and bundle entries were hash-compared against `public/` with 0 missing and 0 differing files.
 
-**Live deployment:** Phase 2 was verified live at `gh-pages` commit `5c135b90732c3b3357aab442be70f2d77ea5c411` (tree from `71350d1:public`) on 29 October 2026. Batch 6a was verified live at `b930b7df756aba7456ae50d93b56c1a8df63cd03` on 29 October 2026. The Batch 6b artefacts above are prepared locally; their deployment and live verification are recorded in `FINAL_AUDIT_RESULTS.md` §6.6.
+**Live deployment:** Phase 2 was verified live at `gh-pages` commit `5c135b90732c3b3357aab442be70f2d77ea5c411` (tree from `71350d1:public`) on 29 October 2026. Batch 6a was verified live at `b930b7df756aba7456ae50d93b56c1a8df63cd03` on 29 October 2026. Batch 6b was verified live at `ff4276fc4ccf15ee22db512864932c4813c51c78` on 30 October 2026; see `FINAL_AUDIT_RESULTS.md` §6.6.
 
 ---
 

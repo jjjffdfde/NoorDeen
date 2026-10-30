@@ -1,9 +1,9 @@
-# NoorDeen — Final Audit Results (29 October 2026, Batch 6a cycle)
+# NoorDeen — Final Audit Results (30 October 2026, Batch 6b cycle)
 
-**Audit date:** 29 October 2026
-**Commit baseline at start:** `5f3facd`
+**Audit date:** 30 October 2026
+**Commit baseline at start:** `0fc05a6`
 **Environment:** Windows, Node.js local server on `http://localhost:3400`, Chromium via the automated browser tool, test harness on port 3000.
-**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index) and Batch 6a (four Seerah articles, roadmap topics 53–56) are implemented and verified in Chromium and by 2,023 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
+**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index) and the complete Seerah strand — Batch 6a (topics 53–56) and Batch 6b (topics 57–60) — are implemented and verified by 2,185 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
 
 ---
 
@@ -154,12 +154,12 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 2023
-Passed Tests:         2023
+Total Tests Executed: 2185
+Passed Tests:         2185
 Failed Tests:         0
 ```
 
-- Suites: 49 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles).
+- Suites: 50 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles; Suite 50 added for the Batch 6b Seerah articles).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
@@ -169,23 +169,24 @@ Failed Tests:         0
 - Suite 47: 114 tafsir chunks, measured edition coverage, rights metadata, Surah 96 anomaly, honest registry, editorial relabelling, Study Mode wiring, tafsir cache.
 - Suite 48: 30 themes, fresh keyword recount, reference validity, 40-reference cap, snippet integrity, UI wiring and deep links.
 - Suite 49: Batch 6a file depth, prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status.
+- Suite 50: Batch 6b file depth, prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 57–60 LIVE).
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261029b`, app version 1.3.0 (build 10300), service-worker cache `v24`.
+Version `?v=20261030a`, app version 1.3.0 (build 10300), service-worker cache `v25`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 5,008,445 | `3bbc577e83f8cc8023623aee606890f751311c3f18a619197c83af0230e46cd2` |
-| `public/downloads/islamic-portal-release.apk` | 5,148,693 | `019002cf75f63a18bf2ca5b544b22ccbab0da9ab9ff240e44906a9f9e84ed32b` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 5,063,079 | `bed3ef77672b38c09836428555a600acd43d495b7813ebbfffd404568461c626` |
+| `public/downloads/islamic-portal-release.apk` | 5,204,216 | `86096c12cdcc6c9add0f1d33b3c07e0c75ab1acaace3a6b593d917095846f259` |
 
-- APK: 337 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 65 HTML pages; bundle: 328 files including the same 114 Quran chunks, 114 tafsir chunks and 65 pages.
-- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts.
-- All four Batch 6a pages are present in both artefacts and hash-match the working tree.
-- APK contains `?v=20261029b`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
+- APK: 341 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 69 HTML pages; bundle: 332 files including the same 114 Quran chunks, 114 tafsir chunks and 69 pages.
+- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts (0 missing, 0 differing).
+- All eight Seerah pages are present in both artefacts and hash-match the working tree.
+- APK contains `?v=20261030a`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 
@@ -260,6 +261,28 @@ The first live check, run immediately after the push, still served the Phase 2 b
 Chromium check on the live origin after the service worker updated: `v24` controlled the page and `islamic-portal-shell-v24` replaced the v23 shell cache (58 entries); `islamic-portal-quran-v1` still held all **114** Quran chunks and `islamic-portal-tafsir-v1` held 2 entries. The Hijrah article rendered with 13 TOC links and 2 JSON-LD blocks; search for `hijrah` returned the new article first; 0 console errors.
 
 Local integrity checks: the APK (337 entries) and bundle (328 entries) were both extracted and compared byte-for-byte against `public/`; the four articles, `articles/index.html`, `service-worker.js` and `sitemap.xml` all matched, and `CHECKSUMS.sha256` matches both served files.
+
+### 6.6 Batch 6b deployment (this cycle) — verified
+
+Deployed commit: `ff4276fc4ccf15ee22db512864932c4813c51c78` on `gh-pages` (tree `1d62771` from `a0f3110:public`), pushed as `b930b7d..ff4276f`.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/madinah-society-and-first-muslim-state.html` | 200; 50,471 bytes; H1 “Madinah: Society, Law and the First Muslim Polity”; 13 TOC links; 2 JSON-LD blocks |
+| `.../articles/battles-of-badr-uhud-and-the-trench.html` | 200; 48,636 bytes; H1 “Badr, Uhud and the Trench: War, Ethics and Survival”; 13 TOC links; 2 JSON-LD blocks |
+| `.../articles/hudaybiyyah-and-conquest-of-makkah.html` | 200; 47,721 bytes; H1 “Hudaybiyyah and the Conquest of Makkah” |
+| `.../articles/farewell-sermon-and-final-years.html` | 200; 47,909 bytes; H1 “The Farewell Sermon and the Final Years” |
+| `.../articles/index.html` | 200; 164,865 bytes; 41 cards; Batch 6b block present and all four pages linked |
+| `.../service-worker.js` | 200; `CACHE_VERSION = 'v25'` |
+| `.../about.html` | 200; states **2,185 assertions** |
+| `.../sitemap.xml` | 200; **68** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,204,216 bytes**; SHA-256 `86096c12cdcc6c9add0f1d33b3c07e0c75ab1acaace3a6b593d917095846f259` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,063,079 bytes**; SHA-256 `bed3ef77672b38c09836428555a600acd43d495b7813ebbfffd404568461c626` |
+
+Chromium check on the live origin: `islamic-portal-shell-v25` was present and `islamic-portal-quran-v1` still held the Quran cache; the Badr page rendered with 13 TOC links, 2 JSON-LD blocks, the correct H1 and `?v=20261030a` assets, with **0 console errors**. On the home page, `UniversalSearch.search('hudaybiyyah')` returned the new Hudaybiyyah article first, and `search('farewell sermon')` returned the new Farewell article first.
+
+Local integrity checks: the APK (341 entries) and bundle (332 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 330 expected files, and `CHECKSUMS.sha256` matches both served files.
 
 ### 6.2 Batch 5 deployment (previous cycle, historical) — verified
 
