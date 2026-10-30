@@ -148,4 +148,4 @@ Relevant assertions:
 - **Suite 47: 114 tafsir chunks, measured edition coverage, rights metadata, Surah 96 anomaly, Study Mode wiring, tafsir cache.**
 - **Suite 48: 30 themes, independent keyword recount, reference validity, 40-reference cap, deep links.**
 
-Full suite at the time of writing: **1,864 executed / 1,864 passed / 0 failed** across 48 suites.
+Full suite at the time of writing: **2,023 executed / 2,023 passed / 0 failed** across 49 suites.

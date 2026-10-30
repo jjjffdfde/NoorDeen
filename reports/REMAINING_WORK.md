@@ -1,11 +1,11 @@
 # NoorDeen — Remaining Work
 
 **Updated:** 29 October 2026
-**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
+**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. Batch 6a adds four Seerah articles (roadmap topics 53–56) and is deployed. The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **1,864 executed / 1,864 passed / 0 failed** (Suites 1–48). Browser checks: Study Mode rendered Jalalayn English with attribution, asbab Arabic RTL reports, the explicit Arabic gap state, and the labelled NoorDeen editorial summary; the thematic index rendered 30 chips and 40 capped mercy references; tafsir chunk 003 was cached on demand with 0 console errors.
+**Last successful test:** `node test/run-tests.js` → **2,023 executed / 2,023 passed / 0 failed** (Suites 1–49). Browser checks: the four Batch 6a articles rendered with 12–13 TOC links, 2 JSON-LD blocks and 0 console errors; search returned the Hijrah article first for `hijrah`; the article index showed 37 cards.
 
-**Live deployment:** Phase 2 is live at `gh-pages` commit `5c135b90732c3b3357aab442be70f2d77ea5c411` (tree from `71350d1:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v23`, About states 1,864 assertions, tafsir manifest/themes/chunks served, APK `e1b2d5b2…` / 5,096,957 bytes, bundle `9dde2ee3…` / 4,957,506 bytes, 60 sitemap URLs, `offline.html` live with `noindex`. The GitHub Pages CDN served the previous About page for several minutes (`max-age=600`); the re-check after cache expiry passed.
+**Live deployment:** Batch 6a is live at `gh-pages` commit `b930b7df756aba7456ae50d93b56c1a8df63cd03` (tree from `444377f:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v24`, About states 2,023 assertions, four new article pages 200, APK `019002cf…` / 5,148,693 bytes, bundle `3bbc577e…` / 5,008,445 bytes, 64 sitemap URLs, `offline.html` live with `noindex`. The GitHub Pages CDN served the previous Phase 2 build for about three minutes (`max-age=600`); the re-check after cache expiry passed.
 
 ---
 
@@ -36,9 +36,9 @@
 | Offline store | `tafsir-store.js`: IndexedDB `noordeen-tafsir`, memory → IDB → HTTP, chunk validation, manifest/edition/coverage APIs |
 | Study Mode | Jalalayn EN, Jalalayn AR, asbab AR and NoorDeen editorial summary; edition/rights notes, RTL Arabic, explicit gap states, race-safe async rendering |
 | Thematic index | 30 themes / 5,639 keyword matches; searchable UI in `quran.html`; Suite 48 recomputes every count |
-| Service worker | `v23`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
-| Tests | 1,864 assertions, 0 failures, 48 suites |
-| Builds | APK 333 entries / 5,096,957 bytes / `e1b2d5b2…`; bundle 324 files / 4,957,506 bytes / `9dde2ee3…`; version 1.3.0 (build 10300), SW `v23` |
+| Service worker | `v24`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
+| Tests | 2,023 assertions, 0 failures, 49 suites |
+| Builds | APK 337 entries / 5,148,693 bytes / `019002cf…`; bundle 328 files / 5,008,445 bytes / `3bbc577e…`; version 1.3.0 (build 10300), SW `v24` |
 
 ---
 

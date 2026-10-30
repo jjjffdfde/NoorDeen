@@ -165,7 +165,7 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | HTML pages | **61** (26 root + 34 article pages + `offline.html`) |
 | Visible words, 60 indexable pages | **241,779** |
 | Articles published | **33** (23 roadmap topics + 10 additional topics) |
-| Article body words | **64,160**, average **1,944**, min **1,538**, max **2,473** |
+| Article body words | **75,952**, average **2,053**, min **1,538**, max **3,391** (37 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -174,10 +174,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **1,864 passing, 0 failing** (48 suites) |
-| Sitemap URLs | 60 |
-| Release APK | 5,096,957 bytes (4.86 MiB), 333 entries / 61 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 4,957,506 bytes (4.73 MiB), 324 files |
+| Automated assertions | **2,023 passing, 0 failing** (49 suites) |
+| Sitemap URLs | 64 |
+| Release APK | 5,148,693 bytes (4.91 MiB), 337 entries / 65 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 5,008,445 bytes (4.78 MiB), 328 files |
 
 ---
 

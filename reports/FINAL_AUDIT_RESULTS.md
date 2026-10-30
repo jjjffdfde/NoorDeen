@@ -1,9 +1,9 @@
-# NoorDeen — Final Audit Results (29 October 2026, Phase 2 cycle)
+# NoorDeen — Final Audit Results (29 October 2026, Batch 6a cycle)
 
 **Audit date:** 29 October 2026
-**Commit baseline at start:** `0599670`
+**Commit baseline at start:** `5f3facd`
 **Environment:** Windows, Node.js local server on `http://localhost:3400`, Chromium via the automated browser tool, test harness on port 3000.
-**Verdict:** Phase 1 (complete offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index) are implemented and verified in Chromium and by 1,864 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
+**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index) and Batch 6a (four Seerah articles, roadmap topics 53–56) are implemented and verified in Chromium and by 2,023 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
 
 ---
 
@@ -36,8 +36,8 @@
 | 4 | Offline store | `public/js/tafsir-store.js`: IndexedDB `noordeen-tafsir`, memory → IDB → HTTP, chunk validation, manifest/edition/coverage APIs | **Done** |
 | 5 | Study Mode integration | Four options: Jalalayn English, Jalalayn Arabic, asbab Arabic, NoorDeen editorial summary; edition/rights notes, RTL Arabic, honest gap states, race-safe async rendering | **Done** |
 | 6 | Thematic index | `scripts/build-thematic-index.cjs` → 30 themes / 5,639 matches; searchable UI in `quran.html`; Suite 48 recomputes every count | **Done** |
-| 7 | Service worker | `v23`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand | **Done** |
-| 8 | Tests | 1,864 assertions across 48 suites, 0 failures; Suites 47–48 added | **Done** |
+| 7 | Service worker | `v23` at Phase 2 close (now `v24` after Batch 6a); `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand | **Done** |
+| 8 | Tests | 1,864 assertions across 48 suites at Phase 2 close (now 2,023 across 49 after Suite 49); Suites 47–48 added | **Done** |
 
 **Honest limits:** the English Jalalayn translation is © Royal Aal al-Bayt Institute and bundled for attributed non-commercial use only — **owner review required**. The Arabic digitisation omits 226 verses; every gap is named and never filled from another edition. Asbab reports are Arabic only and their chains were not re-graded. The thematic index is a keyword finding aid, not a scholarly classification.
 
@@ -154,12 +154,12 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 1864
-Passed Tests:         1864
+Total Tests Executed: 2023
+Passed Tests:         2023
 Failed Tests:         0
 ```
 
-- Suites: 48 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index).
+- Suites: 49 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
@@ -168,23 +168,24 @@ Failed Tests:         0
 - Suite 46: IndexedDB store, khatam maths, repeat/speed cycles, Media Session, corpus precache, offline fallback.
 - Suite 47: 114 tafsir chunks, measured edition coverage, rights metadata, Surah 96 anomaly, honest registry, editorial relabelling, Study Mode wiring, tafsir cache.
 - Suite 48: 30 themes, fresh keyword recount, reference validity, 40-reference cap, snippet integrity, UI wiring and deep links.
+- Suite 49: Batch 6a file depth, prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status.
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261029a`, app version 1.3.0 (build 10300), service-worker cache `v23`.
+Version `?v=20261029b`, app version 1.3.0 (build 10300), service-worker cache `v24`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 4,957,506 | `9dde2ee31be92339b639d85d12bc17c357afb6693d8c428184f2e8941e37f162` |
-| `public/downloads/islamic-portal-release.apk` | 5,096,957 | `e1b2d5b2bfcc5f3fdf9a03744b6ae51db2b6f783f223ff087cbb491676d8f08d` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 5,008,445 | `3bbc577e83f8cc8023623aee606890f751311c3f18a619197c83af0230e46cd2` |
+| `public/downloads/islamic-portal-release.apk` | 5,148,693 | `019002cf75f63a18bf2ca5b544b22ccbab0da9ab9ff240e44906a9f9e84ed32b` |
 
-- APK: 333 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 61 HTML pages; bundle: 324 files including the same 114 Quran chunks, 114 tafsir chunks and 61 pages.
+- APK: 337 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 65 HTML pages; bundle: 328 files including the same 114 Quran chunks, 114 tafsir chunks and 65 pages.
 - `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts.
-- All four Batch 5 pages are present in both artefacts.
-- APK contains `?v=20261029a`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
+- All four Batch 6a pages are present in both artefacts and hash-match the working tree.
+- APK contains `?v=20261029b`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 
@@ -235,6 +236,30 @@ Deployed commit: `5c135b90732c3b3357aab442be70f2d77ea5c411` on `gh-pages` (tree 
 The GitHub Pages CDN continued to serve the previous `about.html` for several minutes after the push (`max-age=600`), while the new artefacts and tafsir data were already live. The check was repeated after cache expiry and served the Phase 2 build.
 
 Chromium check on the live origin (after the service worker activated): `v23` controlled the page; the shell cache held 53 entries, `islamic-portal-quran-v1` held all **114** Quran chunks, and `islamic-portal-tafsir-v1` held the manifest, themes and study content. Study Mode rendered the Jalalayn English text with the Royal Aal al-Bayt attribution; the mercy theme rendered 40 capped references linking to `/NoorDeen/quran.html?surah=1&ayah=1`; 0 console errors.
+
+### 6.5 Batch 6a deployment (this cycle) — verified
+
+Deployed commit: `b930b7df756aba7456ae50d93b56c1a8df63cd03` on `gh-pages` (tree from `444377f:public`), pushed as `5c135b9..b930b7d`.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/pre-islamic-arabia-jahiliyyah.html` | 200; 50,133 bytes; H1 “Pre-Islamic Arabia: The World That Received the Qur’an” |
+| `.../articles/makkan-persecution-and-resilience.html` | 200; 45,490 bytes; correct H1 |
+| `.../articles/isra-and-miraj-night-journey.html` | 200; 42,975 bytes; correct H1 |
+| `.../articles/hijrah-to-madinah.html` | 200; 44,012 bytes; correct H1 |
+| `.../articles/index.html` | 200; 152,684 bytes; Batch 6a block present and all four pages linked |
+| `.../service-worker.js` | 200; `CACHE_VERSION = 'v24'` |
+| `.../about.html` | 200; states **2,023 assertions** |
+| `.../sitemap.xml` | 200; **64** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,148,693 bytes**; SHA-256 `019002cf75f63a18bf2ca5b544b22ccbab0da9ab9ff240e44906a9f9e84ed32b` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,008,445 bytes**; SHA-256 `3bbc577e83f8cc8023623aee606890f751311c3f18a619197c83af0230e46cd2` |
+
+The first live check, run immediately after the push, still served the Phase 2 build (four 404s, 60 sitemap URLs, old APK). A re-check roughly three minutes later served the Batch 6a build; this is the same GitHub Pages CDN `max-age=600` behaviour recorded in §6.4, not a deployment failure.
+
+Chromium check on the live origin after the service worker updated: `v24` controlled the page and `islamic-portal-shell-v24` replaced the v23 shell cache (58 entries); `islamic-portal-quran-v1` still held all **114** Quran chunks and `islamic-portal-tafsir-v1` held 2 entries. The Hijrah article rendered with 13 TOC links and 2 JSON-LD blocks; search for `hijrah` returned the new article first; 0 console errors.
+
+Local integrity checks: the APK (337 entries) and bundle (328 entries) were both extracted and compared byte-for-byte against `public/`; the four articles, `articles/index.html`, `service-worker.js` and `sitemap.xml` all matched, and `CHECKSUMS.sha256` matches both served files.
 
 ### 6.2 Batch 5 deployment (previous cycle, historical) — verified
 

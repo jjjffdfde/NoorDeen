@@ -12,7 +12,7 @@
 | Hadith library too small | 101 curated records across 6 collections | 101 cards; search, collection/topic/grade filters, copy |
 | Duas too few | 102 entries, 17 category filters | 102 cards; morning filter → 7; counter and copy |
 | No glossary | 135 searchable terms with categories and Arabic | Homepage glossary search |
-| No long-form library | 33 articles, 64,160 body words | 1,538–2,473 words each; TOC, schema, bibliography |
+| No long-form library | 37 articles, 75,952 body words | 1,538–3,391 words each; TOC, schema, bibliography |
 | No lecture library | 148 Dr. Israr records / 147 unique uploads | Search "Arbaeen" → 73; series filter → 9 |
 | Sahaba count mislabelled | 52 monographs, 6 cohorts | Filter → 14 women, reset → 52 |
 | Missing Arabic in sahaba/history | Restored from git HEAD as UTF-8 | 6,696 Arabic chars in sahaba; 0 mojibake |
@@ -29,8 +29,8 @@
 
 | Gap | Current | What would close it | Why it is not closed |
 | :--- | :--- | :--- | :--- |
-| **Tafsir** | 6 verses (1:1, 1:2, 1:5, 1:6, 2:255, 112:1) | A licensed or public-domain tafsir with translator attribution, verse by verse | Licensing and editorial review; inventing text is not an option |
-| **Roadmap articles** | 23 of 100 topics (33 articles incl. additional topics) | 67 more roadmap articles at 1,500–2,500 body words | Time; each needs sources and review |
+| **Tafsir** | 3 verbatim editions (Jalalayn EN 6,236; Jalalayn AR 6,010; asbab AR 275) + 6 editorial summaries | English asbab translation if a licensed one is found; owner decision on the Jalalayn EN licence | Licensing and editorial review; inventing text is not an option |
+| **Roadmap articles** | 27 of 100 topics (37 articles incl. additional topics) | 73 more roadmap articles at 1,500–2,500 body words | Time; each needs sources and review |
 | **Hadith corpus** | 101 curated records | Explicit selection policy plus a larger reviewed set | Full collections are thousands of records and need grading review |
 | **Lecture archive** | 10 of 74 tanzeem.org pages | Continue the same scrape-and-verify method | Time; must preserve duplicate handling and source links |
 | **Scholar review** | None | Named reviewers with dates per module | Cannot be simulated |
