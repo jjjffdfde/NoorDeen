@@ -1,9 +1,9 @@
-# NoorDeen — Final Audit Results (30 October 2026, Batch 6b cycle)
+# NoorDeen — Final Audit Results (2 November 2026, Batch 7b cycle)
 
 **Audit date:** 2 November 2026
-**Commit baseline at start:** `ca84410`
+**Commit baseline at start:** `c85213f`
 **Environment:** Windows, Node.js local server on `http://localhost:3400`, Chromium via the automated browser tool, test harness on port 3000.
-**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index) and the complete Seerah strand — Batch 6a (topics 53–56) and Batch 6b (topics 57–60) — are implemented and verified by 2,185 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
+**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index), the complete Seerah strand — Batch 6a (topics 53–56) and Batch 6b (topics 57–60) — and all eight Stories of the Prophets — Batch 7a (topics 61–64) and Batch 7b (topics 65–68) — are implemented and verified by 2,518 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
 
 ---
 
@@ -154,12 +154,12 @@ The single non-200 and all seven fragment flags are the same documented false po
 ```
 node test/run-tests.js
 
-Total Tests Executed: 2349
-Passed Tests:         2349
+Total Tests Executed: 2518
+Passed Tests:         2518
 Failed Tests:         0
 ```
 
-- Suites: 51 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles; Suite 50 added for the Batch 6b Seerah articles; Suite 51 added for the Batch 7a Stories of the Prophets).
+- Suites: 52 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles; Suite 50 added for the Batch 6b Seerah articles; Suite 51 added for the Batch 7a Stories of the Prophets; Suite 52 added for the Batch 7b Stories of the Prophets).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
@@ -170,24 +170,25 @@ Failed Tests:         0
 - Suite 48: 30 themes, fresh keyword recount, reference validity, 40-reference cap, snippet integrity, UI wiring and deep links.
 - Suite 49: Batch 6a file depth, prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status.
 - Suite 50: Batch 6b file depth, prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 57–60 LIVE).
-- Suite 51: Batch 7a file depth (3,400–3,580 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 61–64 LIVE, 65–68 PLANNED for Batch 7b).
+- Suite 51: Batch 7a file depth (3,400–3,580 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 61–64 LIVE).
+- Suite 52: Batch 7b file depth (2,976–3,596 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 65–68 LIVE, all eight Stories topics complete).
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261030b`, app version 1.3.0 (build 10300), service-worker cache `v26`.
+Version `?v=20261102a`, app version 1.3.0 (build 10300), service-worker cache `v27`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 5,117,377 | `364e7d51bb3edcf8a741c16996e0d366537cf0b61e90dcaeea624f886bbb8a22` |
-| `public/downloads/islamic-portal-release.apk` | 5,259,333 | `fd575a7636b4c7c716d10e8586011c98486066ee5b4d8e65d183bd0b1930753a` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 5,169,737 | `75330af9af2e69b31fa735a560f75c45dfee617ae4d86ddabdd55bdb344088f9` |
+| `public/downloads/islamic-portal-release.apk` | 5,312,530 | `011d7ed3cff9041785480d3707ddf656715e61bbd4934602dd76b1d93d3ced1b` |
 
-- APK: 345 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 73 HTML pages; bundle: 336 entries including the same 114 Quran chunks, 114 tafsir chunks and 73 pages.
+- APK: 349 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 77 HTML pages; bundle: 340 entries including the same 114 Quran chunks, 114 tafsir chunks and 77 pages.
 - `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts (0 missing, 0 differing).
-- All eight Seerah pages and all four Batch 7a pages are present in both artefacts and hash-match the working tree.
-- APK contains `?v=20261030b`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
+- All eight Seerah pages and all eight Stories of the Prophets pages are present in both artefacts and hash-match the working tree (338 files checked, 0 missing, 0 differing).
+- APK contains `?v=20261102a`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 

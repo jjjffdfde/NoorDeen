@@ -1,12 +1,12 @@
 # NoorDeen — Content Inventory
 
-**Audited:** 2 November 2026 (Batch 7a Stories of the Prophets added; page and word counts re-measured)
+**Audited:** 2 November 2026 (Batch 7b Stories of the Prophets added; page and word counts re-measured)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured from the current tree, not estimated.
-**Pages:** **73** — 26 root pages + 46 pages in `public/articles/` (45 articles + the library index) + `offline.html` (noindex fallback)
-**Visible words across the 72 indexable pages (whole-page tokenisation):** **286,520** (root 163,568 + article library 122,952); the offline fallback adds 96 words
-**Article body words (45 articles, excluding page chrome):** **103,259** — average **2,295**, minimum **1,538**, maximum **3,580**
-**Sitemap URLs:** **72** (`public/sitemap.xml`, 72 unique `<loc>` entries)
-**Full test suite:** **2,349 executed / 2,349 passed / 0 failed** (51 suites; last run 2 November 2026)
+**Pages:** **77** — 26 root pages + 50 pages in `public/articles/` (49 articles + the library index) + `offline.html` (noindex fallback)
+**Visible words across the 76 indexable pages (whole-page tokenisation):** **301,897** (root 163,570 + article library 138,327); the offline fallback adds 96 words
+**Article body words (49 articles, excluding page chrome):** **116,903** — average **2,386**, minimum **1,538**, maximum **3,596**
+**Sitemap URLs:** **76** (`public/sitemap.xml`, 76 unique `<loc>` entries)
+**Full test suite:** **2,518 executed / 2,518 passed / 0 failed** (52 suites; last run 2 November 2026)
 
 ---
 
@@ -48,7 +48,7 @@ Note: `dr-israr-ahmed.html` has a small static word count because its cards rend
 
 ---
 
-## 2. Article library (46 pages, 45 articles)
+## 2. Article library (50 pages, 49 articles)
 
 The index is not an article. Article body counts below exclude the shared navigation, table of contents, related-reading block and footer; whole-page counts are higher.
 
@@ -102,7 +102,7 @@ The index is not an article. Article body counts below exclude the shared naviga
 | 72 | `articles/islamic-history-civilization.html` | 1,538 | 35 KB | History framework (topic 14) |
 
 
-**Article body total: 103,259 words across 45 articles**, averaging **2,295** words each. The eight Seerah articles measure 2,664–3,538 body words on this whole-body convention (which includes FAQ, bibliography and related reading), with a prose core of 2,226–3,049 words. The four Batch 7a articles measure 3,400–3,580 body words, with a prose core of 2,922–3,078 words. Both batches exceed the 2,500-word editorial guide deliberately, because the brief required full source-critical treatment of each topic.
+**Article body total: 116,903 words across 49 articles**, averaging **2,386** words each. The eight Seerah articles measure 2,664–3,538 body words on this whole-body convention (which includes FAQ, bibliography and related reading), with a prose core of 2,226–3,049 words. The eight Stories of the Prophets articles (Batches 7a and 7b) measure 2,976–3,596 body words, with a prose core of 2,510–3,078 words. Both strands exceed the 2,500-word editorial guide deliberately, because the brief required full source-critical treatment of each topic.
 
 Duplicate check: 5-word shingle Jaccard similarity across the 41 article bodies peaked at **0.0290** (99 Names vs Repentance). The closest Batch 5 pair was **0.0255** (Business Ethics vs Workers’ Rights), driven by shared Quranic quotations and shared economic vocabulary rather than copied prose. The Batch 6b Seerah articles do not appear in the top five pairs.
 
@@ -152,7 +152,7 @@ Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byt
 ## 5. What this inventory does *not* claim
 
 - Whole-page word counts include navigation and footer. Article body counts are reported separately above so the two are not confused.
-- 45 long-form articles are published; they map to a subset of the 100 roadmap topics. The index advertises the roadmap and marks unwritten topics as pending.
+- 49 long-form articles are published; they map to a subset of the 100 roadmap topics. The index advertises the roadmap and marks unwritten topics as pending.
 - Hadith and dua counts are counts of records in this repository, not a claim to represent the full corpus of any collection. 101 traditions is a curated selection, not Sahih al-Bukhari's 7,000+.
 - Tafsir is now bundled verbatim in three editions: Jalalayn English (6,236 verses), Jalalayn Arabic (6,010 of 6,236) and asbab al-nuzul Arabic (275 verses / 200 reports). Six further verses carry a NoorDeen editorial summary. The UI states every gap and never fills one from another edition.
 - The thematic index is a keyword finding aid, not a scholarly thematic classification. Its counts are recomputed by Suite 48.

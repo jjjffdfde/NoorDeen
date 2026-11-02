@@ -1,11 +1,11 @@
 # NoorDeen — Remaining Work
 
 **Updated:** 2 November 2026
-**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. The eight-topic Seerah strand (Batch 6a/6b, topics 53–60) is fully published. Batch 7a adds the first four Stories of the Prophets (topics 61–64: Adam, Nuh, Ibrahim, Yusuf). The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
+**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. The eight-topic Seerah strand (Batch 6a/6b, topics 53–60) is fully published. Batch 7a and 7b add all eight Stories of the Prophets (topics 61–68: Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud/Sulayman, Yunus, Isa). The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **2,185 executed / 2,185 passed / 0 failed** (Suites 1–50; Batch 7a suite pending). The four Batch 7a pages were built at 3,400–3,580 body words (prose core 2,922–3,078), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 45 cards.
+**Last successful test:** `node test/run-tests.js` → **2,518 executed / 2,518 passed / 0 failed** (Suites 1–52). The four Batch 7b pages were built at 2,976–3,596 body words (prose core 2,510–3,067), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 49 cards.
 
-**Live deployment:** Batch 7a is live at `gh-pages` commit `437ccc2b141316d8b6c51911ca18655fd4a32028` (tree from `7ab78dc:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v26`, About states 2,349 assertions, four new article pages 200 with correct H1, 13–14 TOC links and 2 JSON-LD blocks each, 45 cards, 72 sitemap URLs, `offline.html` live with `noindex`. Live APK and bundle downloads hash-match the local artefacts; Chromium showed 0 console errors and search returned the new Yusuf article first.
+**Live deployment:** Batch 7b artefacts are built and verified locally; their deployment is recorded in `FINAL_AUDIT_RESULTS.md` §6.8. Batch 7a remains live at `gh-pages` commit `437ccc2b141316d8b6c51911ca18655fd4a32028`.
 
 ---
 
@@ -36,8 +36,8 @@
 | Offline store | `tafsir-store.js`: IndexedDB `noordeen-tafsir`, memory → IDB → HTTP, chunk validation, manifest/edition/coverage APIs |
 | Study Mode | Jalalayn EN, Jalalayn AR, asbab AR and NoorDeen editorial summary; edition/rights notes, RTL Arabic, explicit gap states, race-safe async rendering |
 | Thematic index | 30 themes / 5,639 keyword matches; searchable UI in `quran.html`; Suite 48 recomputes every count |
-| Service worker | `v26`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
-| Tests | 2,349 assertions, 0 failures, 51 suites |
+| Service worker | `v27`; `islamic-portal-tafsir-v1`; manifest + themes pre-cached, surah chunks cached on demand |
+| Tests | 2,518 assertions, 0 failures, 52 suites |
 | Builds | APK 341 entries / 5,204,216 bytes / `86096c12…`; bundle 332 files / 5,063,079 bytes / `bed3ef77…`; version 1.3.0 (build 10300), SW `v25` |
 
 ---
@@ -86,7 +86,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | Tafsir | **Done (Phase 2)** — Jalalayn EN 6,236; Jalalayn AR 6,010; 6 editorial summaries | Owner decision on the English translation licence; optional collation against a printed edition | English translation is © Royal Aal al-Bayt, attributed non-commercial use only |
 | Asbab al-nuzul | **Done (Phase 2)** — 275 verses / 50 surahs / 200 Arabic reports | English translation if a licensed one is found | Arabic only; absence is stated as absence, not non-existence |
 | Thematic index | **Done (Phase 2)** — 30 themes / 5,639 matches | Optional scholarly review of theme definitions | Keyword finding aid, not a thematic tafsir |
-| Articles | 45 published / 35 roadmap topics | 65 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batches 6a, 6b and 7a deliberately longer, 2,664–3,580 whole-body) |
+| Articles | 49 published / 39 roadmap topics | 61 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batches 6a, 6b, 7a and 7b deliberately longer, 2,664–3,596 whole-body) |
 | Hadith | 101 curated | 500+ reviewed records plus narrator (rijaal) notes | Phase 3 |
 | Nawawi 40 | Partial (within the 101) | Complete 40 with commentary | Phase 3 |
 | Lecture catalog | 10 of 74 archive pages | Remaining 64 pages | Same scrape-and-verify method; keep duplicate handling |
@@ -98,7 +98,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | 4 | 21–30 | Family, parenting, inheritance, neighbours — **DONE** (4 articles) |
 | 5 | 31–40 | Business ethics, contracts, debt and workers' rights — **DONE** (4 articles) |
 | 6 | 41–50 | Seerah epochs in depth — **DONE: Batch 6a (topics 53–56) and Batch 6b (topics 57–60), 8 articles** |
-| 7 | 61–68 | Stories of the Prophets — **PARTIAL: Batch 7a DONE (topics 61–64, 4 articles); topics 65–68 remain (Batch 7b)** |
+| 7 | 61–68 | Stories of the Prophets — **DONE: Batch 7a (topics 61–64) and Batch 7b (topics 65–68), 8 articles** |
 | 8 | 61–70 | Islamic golden age: science, philosophy, medicine |
 | 9 | 71–80 | Death, barzakh, resurrection |
 | 10 | 81–90 | Tazkiyah, akhlaq, mental health |
@@ -152,7 +152,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 ## 7. Exact next task
 
-**Next task:** **Batch 7b — the remaining Stories of the Prophets (roadmap topics 65–68: Musa, Dawud/Sulayman, Yunus, Isa)**, via a new `scripts/article-content/batch-7b.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`. Batch 7a (topics 61–64) is built and verified.
+**Next task:** **Batch 8 — Lives of the Noble Sahaba (roadmap topics 69–76: Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal and Salman al-Farsi)**, via a new `scripts/article-content/batch-8a.cjs`, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`. Batches 7a and 7b (topics 61–68) are built and verified.
 
 Alternative: begin Phase 3 (hadith expansion) or obtain the owner's decision on the English Jalalayn translation licence before commercial distribution.
 

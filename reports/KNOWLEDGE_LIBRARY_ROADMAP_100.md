@@ -3,7 +3,7 @@
 **Project:** NoorDeen Islamic Knowledge Library  
 **Document:** Master Educational Syllabus & Content Roadmap (100 Distinct Topics)  
 **Publication Standard:** Classical Sunni Orthodoxy (*Kutub al-Sittah*, *Tafsir Ibn Kathir*, *Fath al-Bari*, *Hisnul Muslim*)  
-**Current Status:** 45 Long-Form Articles Published (Batches 1-7a) | 100-Topic Phased Roadmap  
+**Current Status:** 49 Long-Form Articles Published (Batches 1-7b) | 100-Topic Phased Roadmap  
 
 ---
 
@@ -25,7 +25,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 6  | Daily Duas, Adhkar & Sacred Remembrance    | 8 Topics      | 1 Live      | 7 Planned   |
 | 7  | New-Muslim Education & Beginner Onboarding | 4 Topics      | 1 Live      | 3 Planned   |
 | 8  | Prophetic Seerah (Biography of Muhammad ﷺ) | 8 Topics      | 8 Live      | 0 Planned   |
-| 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | 4 Live      | 4 Planned   |
+| 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | 8 Live      | 0 Planned   |
 | 10 | Lives of the Noble Sahaba (Companions)     | 8 Topics      | Integrated* | 8 Planned   |
 | 11 | Islamic Civilizations & Historical Epochs  | 8 Topics      | Integrated* | 8 Planned   |
 | 12 | Islamic Character, Manners & Ethics        | 6 Topics      | 0 Live      | 6 Planned   |
@@ -35,7 +35,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 16 | Practical Islamic Tools & Educational Fiqh | 4 Topics      | Integrated* | 4 Planned   |
 | 17 | Evidence-Based Contemporary Questions & QA | 4 Topics      | 0 Live      | 4 Planned   |
 +----+--------------------------------------------+---------------+-------------+-------------+
-|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 22 LIVE     | 78 ROADMAP  |
+|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 26 LIVE     | 74 ROADMAP  |
 +----+--------------------------------------------+---------------+-------------+-------------+
 * Note: Full libraries already exist in public/seerah.html (25 chapters), public/prophets.html (30 narratives), public/sahaba.html (52 monographs), and public/history.html (12 epochs). The roadmap expands these into standalone educational treatises.
 * Note: the "Live" column counts roadmap topics that have a dedicated standalone article mapped to their topic number. Additional published articles from Batches 2–5 are catalogued in reports/CONTENT_COUNTS.md; the per-topic mapping is reconciled as each discipline is expanded.
@@ -204,10 +204,14 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
     - *Scope:* The search for the Lord among the star, moon and sun, the breaking of the idols, the fire, the father who refused, the migration, the guests and the annunciation, the sacrifice and the unnamed son, the House and the pilgrimage, and the tests of 2:124.
   - 64. **Yusuf: Beauty, Chastity and Forgiveness** — `public/articles/yusuf-beauty-of-forgiveness.html` [LIVE]
     - *Scope:* The dream and its fulfilment, the brothers’ jealousy, the well and slavery, the temptation and prison, the king’s dream and the rise, the cup and Binyamin, the forgiveness of 12:92, and the patience of Ya’qub.
-  - 65. **Musa: Pharaoh, the Exodus and the Law** [PLANNED - BATCH 7B]
-  - 66. **Dawud and Sulayman: Power, Justice and Gratitude** [PLANNED - BATCH 7B]
-  - 67. **Yunus: The Prophet Who Fled** [PLANNED - BATCH 7B]
-  - 68. **Isa: The Messiah, the Miracles and the Qur’anic Correction** [PLANNED - BATCH 7B]
+  - 65. **Musa: Pharaoh, the Exodus and the Law** — `public/articles/musa-pharaoh-the-exodus-and-the-law.html` [LIVE]
+    - *Scope:* The infant in the river, the flight to Madyan, the burning bush, the confrontation with Pharaoh, the magicians, the plagues, the crossing of the sea, the tablets, the golden calf, the water from the rock, Khidr and Qarun.
+  - 66. **Dawud and Sulayman: Power, Justice and Gratitude** — `public/articles/dawud-and-sulayman-power-justice-and-gratitude.html` [LIVE]
+    - *Scope:* The victory over Jalut, the Psalms, the mountains and birds, the softened iron, the judgement of the field, the litigants, the hoopoe and the Queen of Sheba, the glass palace, the wind and the jinn, the staff and the lesson on gratitude.
+  - 67. **Yunus: The Prophet Who Fled** — `public/articles/yunus-the-prophet-who-fled.html` [LIVE]
+    - *Scope:* The call to his people, the departure in anger, the ship and the lot, the great fish, the prayer in the darkness, the people who believed, the gourd tree, the rebuke in Surah al-Qalam and the limits of the later legends.
+  - 68. **Isa: The Messiah, the Miracles and the Qur’anic Correction** — `public/articles/isa-the-messiah-and-the-quranic-correction.html` [LIVE]
+    - *Scope:* The annunciation to Maryam, the birth under the palm, the speech in the cradle, the miracles by Allah’s permission, the Injil, the crucifixion that did not happen, the correction of the Trinity, the second coming and Muslim–Christian relations.
 - **Lives of the Sahaba (Topics 69–76):** Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal, Salman al-Farsi (RA).
 - **Islamic History & Civilization (Topics 77–84):** Rightly Guided Caliphs, Umayyads, Abbasids, Al-Andalus, Ottomans, Islamic Contributions to Science, Waqf System, Trade Spread.
 - **Character & Manners (Topics 85–90):** Akhlaq Concept, Guarding the Tongue, Adab al-Ikhtilaf (Disagreement Ethics), Humility vs Pride, Truthfulness, Ithar (Generosity).

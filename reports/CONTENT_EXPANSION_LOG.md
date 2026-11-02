@@ -76,7 +76,29 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 ---
 
-## 2. Batch 7a detail (this cycle)
+## 2. Batch 7b detail (this cycle)
+
+Generated from `scripts/article-content/batch-7b.cjs` through `scripts/build-articles.cjs batch-7b.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 46 | 65. Musa: Pharaoh and the exodus | `musa-pharaoh-the-exodus-and-the-law` | 3,596 | 3,010 | 4,388 |
+| 47 | 66. Dawud and Sulayman | `dawud-and-sulayman-power-justice-and-gratitude` | 3,548 | 3,067 | 4,264 |
+| 48 | 67. Yunus: the prophet who fled | `yunus-the-prophet-who-fled` | 2,976 | 2,510 | 3,656 |
+| 49 | 68. Isa: the Messiah | `isa-the-messiah-and-the-quranic-correction` | 3,524 | 3,025 | 4,250 |
+| | **Total** | | **13,644** | **11,612** | **16,558** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #46–49, details block 126–129), and are reachable from the article library.
+
+**Source discipline.** The batch keeps four evidentiary layers separate: the Qur’anic text, authentic hadith, classical commentary (al-Tabari, al-Qurtubi, Ibn Kathir) and later narrative or *Isra’iliyyat*. Where a famous detail is later material rather than revelation — the name of Pharaoh, the identification of Sinai, the name Khidr, the ring and demon of Sulayman, the name Bilqis, the name of Yunus’s fish, the forty days, the name of the substitute on the cross — the article says so explicitly. The crucifixion is discussed as the Qur’an states it (4:157–158) without naming a substitute, and the Trinity is corrected with the Qur’anic texts rather than with polemic.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 2,510–3,067 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 2,976–3,596. The three long articles exceed the 2,500-word editorial guide because the brief required full source-critical treatment; the overage is recorded rather than hidden, and every page stays under the audited 3,600 whole-body cap. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
+
+**Honest note on numbering.** The library now contains 49 articles. Cards are numbered #46–49 and the details block uses publication numbers 126–129. Those publication numbers are not a claim that 129 roadmap topics are written; the Stories of the Prophets discipline now has all 8 of its topics live (61–68).
+
+---
+
+## 2. Batch 7a detail (previous cycle)
 
 Generated from `scripts/article-content/batch-7a.cjs` through `scripts/build-articles.cjs batch-7a.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
 
@@ -208,10 +230,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **73** (26 root + 46 article pages + `offline.html`) |
-| Visible words, 72 indexable pages | **286,520** |
-| Articles published | **45** (35 roadmap topics + 10 additional topics) |
-| Article body words | **103,259**, average **2,295**, min **1,538**, max **3,580** (45 articles) |
+| HTML pages | **77** (26 root + 50 article pages + `offline.html`) |
+| Visible words, 76 indexable pages | **301,897** |
+| Articles published | **49** (39 roadmap topics + 10 additional topics) |
+| Article body words | **116,903**, average **2,386**, min **1,538**, max **3,596** (49 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -220,8 +242,8 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **2,349 passing, 0 failing** (51 suites) |
-| Sitemap URLs | 72 |
+| Automated assertions | **2,518 passing, 0 failing** (52 suites) |
+| Sitemap URLs | 76 |
 | Release APK | 5,204,216 bytes (4.96 MiB), 341 entries / 69 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
 | Offline bundle | 5,063,079 bytes (4.83 MiB), 332 files |
 
@@ -229,7 +251,7 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 ## 6. What is still missing
 
-- **65 roadmap topics** remain unwritten (the 100-topic list minus the 35 covered).
+- **61 roadmap topics** remain unwritten (the 100-topic list minus the 39 covered).
 - **Tafsir** now covers three verbatim editions with measured gaps; the English Jalalayn licence still needs owner confirmation, and no edition has been collated against print.
 - **Asbab al-nuzul** is Arabic only and covers the 275 verses for which the source compilation records an occasion.
 - **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.
