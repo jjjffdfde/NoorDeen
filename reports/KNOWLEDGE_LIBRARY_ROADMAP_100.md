@@ -3,7 +3,7 @@
 **Project:** NoorDeen Islamic Knowledge Library  
 **Document:** Master Educational Syllabus & Content Roadmap (100 Distinct Topics)  
 **Publication Standard:** Classical Sunni Orthodoxy (*Kutub al-Sittah*, *Tafsir Ibn Kathir*, *Fath al-Bari*, *Hisnul Muslim*)  
-**Current Status:** 41 Long-Form Articles Published & Live (Batches 1-6b) | 100-Topic Phased Roadmap  
+**Current Status:** 45 Long-Form Articles Published (Batches 1-7a) | 100-Topic Phased Roadmap  
 
 ---
 
@@ -25,7 +25,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 6  | Daily Duas, Adhkar & Sacred Remembrance    | 8 Topics      | 1 Live      | 7 Planned   |
 | 7  | New-Muslim Education & Beginner Onboarding | 4 Topics      | 1 Live      | 3 Planned   |
 | 8  | Prophetic Seerah (Biography of Muhammad ﷺ) | 8 Topics      | 8 Live      | 0 Planned   |
-| 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | Integrated* | 8 Planned   |
+| 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | 4 Live      | 4 Planned   |
 | 10 | Lives of the Noble Sahaba (Companions)     | 8 Topics      | Integrated* | 8 Planned   |
 | 11 | Islamic Civilizations & Historical Epochs  | 8 Topics      | Integrated* | 8 Planned   |
 | 12 | Islamic Character, Manners & Ethics        | 6 Topics      | 0 Live      | 6 Planned   |
@@ -35,7 +35,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 16 | Practical Islamic Tools & Educational Fiqh | 4 Topics      | Integrated* | 4 Planned   |
 | 17 | Evidence-Based Contemporary Questions & QA | 4 Topics      | 0 Live      | 4 Planned   |
 +----+--------------------------------------------+---------------+-------------+-------------+
-|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 18 LIVE     | 82 ROADMAP  |
+|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 22 LIVE     | 78 ROADMAP  |
 +----+--------------------------------------------+---------------+-------------+-------------+
 * Note: Full libraries already exist in public/seerah.html (25 chapters), public/prophets.html (30 narratives), public/sahaba.html (52 monographs), and public/history.html (12 epochs). The roadmap expands these into standalone educational treatises.
 * Note: the "Live" column counts roadmap topics that have a dedicated standalone article mapped to their topic number. Additional published articles from Batches 2–5 are catalogued in reports/CONTENT_COUNTS.md; the per-topic mapping is reconciled as each discipline is expanded.
@@ -195,7 +195,19 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
     - *Scope:* The umrah journey, the pledge of Ridwan, the treaty terms, Surah al-Fath, the strategic fruits, the breach, the secret march, the entry, the general amnesty, the cleansing of the Kaaba, Hunayn and Ta’if.
   - 60. **The Farewell Sermon and the Final Years** — `public/articles/farewell-sermon-and-final-years.html` [LIVE]
     - *Scope:* The farewell Hajj, the sermon at Arafah, the sanctity of life and property, the abolition of riba, the rights of women, the equality passage and its transmission, the final months, the death and burial, and the succession.
-- **Stories of the Prophets (Topics 61–68):** Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud/Sulayman, Yunus, Isa (AS).
+- **Stories of the Prophets (Topics 61–68):**
+  - 61. **Adam: Creation, Trust and Repentance** — `public/articles/adam-creation-trust-and-repentance.html` [LIVE]
+    - *Scope:* Creation from clay, the knowledge of names, the refusal of Iblis, the garden and the single prohibition, the slip and the words of repentance, the descent and vicegerency, the covenant of the descendants of Adam, and the rejection of inherited guilt.
+  - 62. **Nuh: The Long Call, the Ark and the Flood** — `public/articles/nuh-the-long-call-and-the-ark.html` [LIVE]
+    - *Scope:* The 950-year call, secret and public preaching, the rejection by the elites, the ark, the flood and its unspecified extent, the son who refused, the wife who disbelieved, the covenant after the flood, and the unverified ark claims.
+  - 63. **Ibrahim: The Friend of Allah and the Trial of Faith** — `public/articles/ibrahim-friend-of-allah-and-the-trial.html` [LIVE]
+    - *Scope:* The search for the Lord among the star, moon and sun, the breaking of the idols, the fire, the father who refused, the migration, the guests and the annunciation, the sacrifice and the unnamed son, the House and the pilgrimage, and the tests of 2:124.
+  - 64. **Yusuf: Beauty, Chastity and Forgiveness** — `public/articles/yusuf-beauty-of-forgiveness.html` [LIVE]
+    - *Scope:* The dream and its fulfilment, the brothers’ jealousy, the well and slavery, the temptation and prison, the king’s dream and the rise, the cup and Binyamin, the forgiveness of 12:92, and the patience of Ya’qub.
+  - 65. **Musa: Pharaoh, the Exodus and the Law** [PLANNED - BATCH 7B]
+  - 66. **Dawud and Sulayman: Power, Justice and Gratitude** [PLANNED - BATCH 7B]
+  - 67. **Yunus: The Prophet Who Fled** [PLANNED - BATCH 7B]
+  - 68. **Isa: The Messiah, the Miracles and the Qur’anic Correction** [PLANNED - BATCH 7B]
 - **Lives of the Sahaba (Topics 69–76):** Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal, Salman al-Farsi (RA).
 - **Islamic History & Civilization (Topics 77–84):** Rightly Guided Caliphs, Umayyads, Abbasids, Al-Andalus, Ottomans, Islamic Contributions to Science, Waqf System, Trade Spread.
 - **Character & Manners (Topics 85–90):** Akhlaq Concept, Guarding the Tongue, Adab al-Ikhtilaf (Disagreement Ethics), Humility vs Pride, Truthfulness, Ithar (Generosity).

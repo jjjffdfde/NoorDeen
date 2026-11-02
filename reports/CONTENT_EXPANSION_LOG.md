@@ -27,6 +27,7 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 5 articles** | 4 articles (business ethics, contracts, debt, workers’ rights) | **9,728 body words**, 2,432 average; all ≥2,371 body words |
 | **Batch 6a articles** | 4 Seerah articles (topics 53–56: pre-Islamic Arabia, Makkan persecution, Isra’ wal-Mi’raj, Hijrah) | **11,792 body words**, 2,948 average; prose core 2,226–2,845 words each |
 | **Batch 6b articles** | 4 Seerah articles (topics 57–60: Madinah society, Badr/Uhud/Trench, Hudaybiyyah/conquest, farewell sermon) | **13,292 body words**, 3,323 average; prose core 2,686–3,049 words each |
+| **Batch 7a articles** | 4 Stories of the Prophets (topics 61–64: Adam, Nuh, Ibrahim, Yusuf) | **14,015 body words**, 3,504 average; prose core 2,922–3,078 words each |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
@@ -75,7 +76,29 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 ---
 
-## 2. Batch 6b detail (this cycle)
+## 2. Batch 7a detail (this cycle)
+
+Generated from `scripts/article-content/batch-7a.cjs` through `scripts/build-articles.cjs batch-7a.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 42 | 61. Adam: creation and repentance | `adam-creation-trust-and-repentance` | 3,580 | 3,072 | 3,943 |
+| 43 | 62. Nuh: the long call and the ark | `nuh-the-long-call-and-the-ark` | 3,400 | 2,922 | 3,769 |
+| 44 | 63. Ibrahim: the friend of Allah | `ibrahim-friend-of-allah-and-the-trial` | 3,570 | 3,078 | 3,926 |
+| 45 | 64. Yusuf: chastity and forgiveness | `yusuf-beauty-of-forgiveness` | 3,465 | 2,989 | 3,807 |
+| | **Total** | | **14,015** | **12,061** | **15,445** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #42–45, details block 122–125), and are reachable from the article library.
+
+**Source discipline.** The batch keeps four evidentiary layers separate: the Qur’anic text, authentic hadith, classical commentary (al-Tabari, al-Qurtubi, Ibn Kathir) and later narrative or *Isra’iliyyat*. Where a famous detail is later material rather than revelation — the identity of the forbidden tree, the serpent in the garden, Adam’s 930-year lifespan, Nimrod and the catapult, the name Zulaykha, the seven-year famine — the article says so explicitly. The identity of the son of the sacrifice is reported as the majority view (Isma’il) with the early disagreement (Ishaq) noted, because the Qur’an does not name him in Surah al-Saffat.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 2,922–3,078 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 3,400–3,580. All four exceed the 2,500-word editorial guide because the brief required full source-critical treatment; the overage is recorded rather than hidden, and every page stays under the audited 3,600 whole-body cap. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
+
+**Honest note on numbering.** The library now contains 45 articles. Cards are numbered #42–45 and the details block uses publication numbers 122–125. Those publication numbers are not a claim that 125 roadmap topics are written; the Stories of the Prophets discipline now has 4 of its 8 topics live (61–64), with 65–68 planned for Batch 7b.
+
+---
+
+## 2. Batch 6b detail (previous cycle)
 
 Generated from `scripts/article-content/batch-6b.cjs` through `scripts/build-articles.cjs batch-6b.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
 
@@ -185,10 +208,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **69** (26 root + 42 article pages + `offline.html`) |
-| Visible words, 68 indexable pages | **270,778** |
-| Articles published | **41** (31 roadmap topics + 10 additional topics) |
-| Article body words | **89,244**, average **2,177**, min **1,538**, max **3,538** (41 articles) |
+| HTML pages | **73** (26 root + 46 article pages + `offline.html`) |
+| Visible words, 72 indexable pages | **286,520** |
+| Articles published | **45** (35 roadmap topics + 10 additional topics) |
+| Article body words | **103,259**, average **2,295**, min **1,538**, max **3,580** (45 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -197,8 +220,8 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **2,185 passing, 0 failing** (50 suites) |
-| Sitemap URLs | 68 |
+| Automated assertions | **2,349 passing, 0 failing** (51 suites) |
+| Sitemap URLs | 72 |
 | Release APK | 5,204,216 bytes (4.96 MiB), 341 entries / 69 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
 | Offline bundle | 5,063,079 bytes (4.83 MiB), 332 files |
 
@@ -206,7 +229,7 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 ## 6. What is still missing
 
-- **69 roadmap topics** remain unwritten (the 100-topic list minus the 31 covered).
+- **65 roadmap topics** remain unwritten (the 100-topic list minus the 35 covered).
 - **Tafsir** now covers three verbatim editions with measured gaps; the English Jalalayn licence still needs owner confirmation, and no edition has been collated against print.
 - **Asbab al-nuzul** is Arabic only and covers the 275 verses for which the source compilation records an occasion.
 - **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.

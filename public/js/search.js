@@ -475,6 +475,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The farewell pilgrimage, the sermon at Arafah, the sanctity of life and property, the abolition of riba, the rights of women, the call to equality, the final months, the illness and death of the Prophet, and the succession.",
     url: "articles/farewell-sermon-and-final-years.html",
     keywords: ["farewell sermon","khutbat al-wada","farewell hajj","arafah","last sermon","riba","women","equality","ghadir khumm","death of the prophet","saqifah","succession","abu bakr","final years","seerah"]
+  },
+  {
+    title: "Adam: Creation, Trust and Repentance",
+    snippet: "The Qur’anic account of Adam: creation from clay, the knowledge of names, the refusal of Iblis, the garden and the tree, the slip and the words of repentance, the descent to earth, the covenant of the descendants of Adam, and the rejection of inherited guilt.",
+    url: "articles/adam-creation-trust-and-repentance.html",
+    keywords: ["adam","hawwa","eve","creation","clay","khalifah","vicegerent","iblis","satan","shaytan","angels","names","garden","forbidden tree","repentance","tawbah","original sin","covenant","fitrah","prophets"]
+  },
+  {
+    title: "Nuh: The Long Call, the Ark and the Flood",
+    snippet: "The Qur’anic story of Nuh: the call by night and day, the rejection by the elites, the building of the ark, the flood, the son who refused, the wife who disbelieved, the covenant after the flood, and the archaeological claims that cannot be verified.",
+    url: "articles/nuh-the-long-call-and-the-ark.html",
+    keywords: ["nuh","noah","ark","flood","950 years","judi","ararat","prophet","messenger","idolatry","repentance","covenant","intercession","prophets"]
+  },
+  {
+    title: "Ibrahim: The Friend of Allah and the Trial of Faith",
+    snippet: "The Qur’anic story of Ibrahim: the search for the Lord among the star, moon and sun, the breaking of the idols, the fire that became cool, the father who refused, the guests and the annunciation, Isma’il and the sacrifice, the building of the House and the pilgrimage.",
+    url: "articles/ibrahim-friend-of-allah-and-the-trial.html",
+    keywords: ["ibrahim","abraham","khalil","hanif","idols","nimrod","fire","migration","lut","ishaq","ismail","sacrifice","zamzam","kaaba","house","makkah","hajj","maqam ibrahim","prophets"]
+  },
+  {
+    title: "Yusuf: Beauty, Chastity and Forgiveness",
+    snippet: "The Qur’anic story of Yusuf: the dream, the jealousy of the brothers, the well, slavery in Egypt, the temptation and prison, the king’s dream, the rise to power, the cup and Binyamin, and the forgiveness that ends the story.",
+    url: "articles/yusuf-beauty-of-forgiveness.html",
+    keywords: ["yusuf","joseph","surah yusuf","dream","brothers","well","egypt","zulaykha","chastity","prison","famine","binyamin","benjamin","forgiveness","patience","yaqub","prophets"]
   }
 ];
 
