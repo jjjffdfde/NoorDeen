@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **2,185 executed / 2,185 passed / 0 failed** (Suites 1–50; Batch 7a suite pending). The four Batch 7a pages were built at 3,400–3,580 body words (prose core 2,922–3,078), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 45 cards.
 
-**Live deployment:** Batch 6b is live at `gh-pages` commit `ff4276fc4ccf15ee22db512864932c4813c51c78` (tree `1d62771` from `a0f3110:public`) on `https://jjjffdfde.github.io/NoorDeen/`. Batch 7a artefacts are built and verified locally; their deployment is recorded in `FINAL_AUDIT_RESULTS.md` §6.7.
+**Live deployment:** Batch 7a is live at `gh-pages` commit `437ccc2b141316d8b6c51911ca18655fd4a32028` (tree from `7ab78dc:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v26`, About states 2,349 assertions, four new article pages 200 with correct H1, 13–14 TOC links and 2 JSON-LD blocks each, 45 cards, 72 sitemap URLs, `offline.html` live with `noindex`. Live APK and bundle downloads hash-match the local artefacts; Chromium showed 0 console errors and search returned the new Yusuf article first.
 
 ---
 

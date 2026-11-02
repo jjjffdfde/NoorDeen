@@ -285,6 +285,28 @@ Chromium check on the live origin: `islamic-portal-shell-v25` was present and `i
 
 Local integrity checks: the APK (341 entries) and bundle (332 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 330 expected files, and `CHECKSUMS.sha256` matches both served files.
 
+### 6.7 Batch 7a deployment (this cycle) — verified
+
+Deployed commit: `437ccc2b141316d8b6c51911ca18655fd4a32028` on `gh-pages` (tree from `7ab78dc:public`), pushed as `ff4276f..437ccc2`. `main` was pushed as `ca84410..7ab78dc`.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/adam-creation-trust-and-repentance.html` | 200; 48,927 bytes; H1 “Adam: Creation, Trust and Repentance”; 14 TOC links; 2 JSON-LD blocks |
+| `.../articles/nuh-the-long-call-and-the-ark.html` | 200; 47,429 bytes; H1 “Nuh: The Long Call, the Ark and the Flood”; 14 TOC links; 2 JSON-LD blocks |
+| `.../articles/ibrahim-friend-of-allah-and-the-trial.html` | 200; 47,905 bytes; H1 “Ibrahim: The Friend of Allah and the Trial of Faith”; 13 TOC links; 2 JSON-LD blocks |
+| `.../articles/yusuf-beauty-of-forgiveness.html` | 200; 47,392 bytes; H1 “Yusuf: Beauty, Chastity and Forgiveness”; 13 TOC links; 2 JSON-LD blocks |
+| `.../articles/index.html` | 200; 176,954 bytes; 45 article cards; Batch 7a block present and all four pages linked |
+| `.../service-worker.js` | 200; `CACHE_VERSION = 'v26'`; `islamic-portal-shell-v26` present |
+| `.../about.html` | 200; states **2,349 assertions** and names Batch 7a |
+| `.../sitemap.xml` | 200; **72** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,259,333 bytes**; SHA-256 `fd575a7636b4c7c716d10e8586011c98486066ee5b4d8e65d183bd0b1930753a` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,117,377 bytes**; SHA-256 `364e7d51bb3edcf8a741c16996e0d366537cf0b61e90dcaeea624f886bbb8a22` |
+
+Chromium check on the live article index: 45 `article-summary-card` elements, the Batch 7a block rendered, and **0 console errors**. `UniversalSearch.search('yusuf', 5)` returned `articles/yusuf-beauty-of-forgiveness.html` first; `search('musa', 3)` still returned the all-prophets overview and `prophets.html#musa`, which is correct while Batch 7b is unwritten.
+
+Local integrity checks: the APK (345 entries) and bundle (336 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 334 expected files, and `CHECKSUMS.sha256` matches both served files.
+
 ### 6.2 Batch 5 deployment (previous cycle, historical) — verified
 
 Deployed commit: `fe311386d8bbc16ccc46096baa7c252a96ae28b5` on `gh-pages` (tree from `b61587d:public`).
