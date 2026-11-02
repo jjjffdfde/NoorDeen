@@ -286,7 +286,29 @@ Chromium check on the live origin: `islamic-portal-shell-v25` was present and `i
 
 Local integrity checks: the APK (341 entries) and bundle (332 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 330 expected files, and `CHECKSUMS.sha256` matches both served files.
 
-### 6.7 Batch 7a deployment (this cycle) — verified
+### 6.8 Batch 7b deployment (this cycle) — verified
+
+Deployed commit: `96f7359bc8d0334d086e3eb18ff2e6a9590402c9` on `gh-pages` (tree from `a25bdd1:public`), pushed as `437ccc2..96f7359`. `main` was pushed as `c85213f..203ba51`, followed by `a25bdd1` removing a temporary measurement file.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/musa-pharaoh-the-exodus-and-the-law.html` | 200; 49,467 bytes; H1 “Musa: Pharaoh, the Exodus and the Law”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/dawud-and-sulayman-power-justice-and-gratitude.html` | 200; 49,428 bytes; H1 “Dawud and Sulayman: Power, Justice and Gratitude”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/yunus-the-prophet-who-fled.html` | 200; 44,007 bytes; H1 “Yunus: The Prophet Who Fled”; 13 TOC links; 2 JSON-LD blocks |
+| `.../articles/isa-the-messiah-and-the-quranic-correction.html` | 200; 48,599 bytes; H1 “Isa: The Messiah, the Miracles and the Qur’anic Correction”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/index.html` | 200; 189,063 bytes; 49 article cards; Batch 7b block present and all four pages linked |
+| `.../service-worker.js` | 200; 10,579 bytes; `CACHE_VERSION = 'v27'`; `islamic-portal-shell-v27` present |
+| `.../about.html` | 200; 39,417 bytes; states **2,518 assertions** and names Batches 7a and 7b |
+| `.../sitemap.xml` | 200; 16,127 bytes; **76** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,312,530 bytes**; SHA-256 `011d7ed3cff9041785480d3707ddf656715e61bbd4934602dd76b1d93d3ced1b` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,169,737 bytes**; SHA-256 `75330af9af2e69b31fa735a560f75c45dfee617ae4d86ddabdd55bdb344088f9` |
+
+Chromium check on the live article index: 49 `article-summary-card` elements, the Batch 7b block rendered, and **0 console errors**. `UniversalSearch.search()` returned the new Musa, Dawud, Yunus and Isa pages first for their respective queries.
+
+Local integrity checks: the APK (349 entries) and bundle (340 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 338 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
+
+### 6.7 Batch 7a deployment (previous cycle) — verified
 
 Deployed commit: `437ccc2b141316d8b6c51911ca18655fd4a32028` on `gh-pages` (tree from `7ab78dc:public`), pushed as `ff4276f..437ccc2`. `main` was pushed as `ca84410..7ab78dc`.
 

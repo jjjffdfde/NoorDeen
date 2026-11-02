@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **2,518 executed / 2,518 passed / 0 failed** (Suites 1–52). The four Batch 7b pages were built at 2,976–3,596 body words (prose core 2,510–3,067), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 49 cards.
 
-**Live deployment:** Batch 7b artefacts are built and verified locally; their deployment is recorded in `FINAL_AUDIT_RESULTS.md` §6.8. Batch 7a remains live at `gh-pages` commit `437ccc2b141316d8b6c51911ca18655fd4a32028`.
+**Live deployment:** Batch 7b is live at `gh-pages` commit `96f7359bc8d0334d086e3eb18ff2e6a9590402c9` (tree from `a25bdd1:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v27`, About states 2,518 assertions, four new article pages 200 with correct H1, 13–15 TOC links and 2 JSON-LD blocks each, 49 cards, 76 sitemap URLs, `offline.html` live with `noindex`. Live APK and bundle downloads hash-match the local artefacts; Chromium showed 0 console errors and search returned the new Musa, Dawud, Yunus and Isa pages first.
 
 ---
 
