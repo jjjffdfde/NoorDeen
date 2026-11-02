@@ -499,6 +499,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The Qur’anic story of Yusuf: the dream, the jealousy of the brothers, the well, slavery in Egypt, the temptation and prison, the king’s dream, the rise to power, the cup and Binyamin, and the forgiveness that ends the story.",
     url: "articles/yusuf-beauty-of-forgiveness.html",
     keywords: ["yusuf","joseph","surah yusuf","dream","brothers","well","egypt","zulaykha","chastity","prison","famine","binyamin","benjamin","forgiveness","patience","yaqub","prophets"]
+  },
+  {
+    title: "Musa: Pharaoh, the Exodus and the Law",
+    snippet: "The Qur’anic story of Musa: the infant in the river, the flight to Madyan, the burning bush, the confrontation with Pharaoh, the magicians, the plagues, the crossing of the sea, the tablets, the golden calf, the water from the rock, Khidr and Qarun.",
+    url: "articles/musa-pharaoh-the-exodus-and-the-law.html",
+    keywords: ["musa","moses","pharaoh","firawn","exodus","sea","staff","magicians","harun","aaron","torah","tablets","golden calf","samiri","khidr","qarun","korah","sinai","madyan","prophets"]
+  },
+  {
+    title: "Dawud and Sulayman: Power, Justice and Gratitude",
+    snippet: "The Qur’anic story of Dawud and Sulayman: the victory over Jalut, the Psalms, the mountains and birds, the judgement of the field, the litigants, the hoopoe and the Queen of Sheba, the glass palace, the wind and the jinn, and the lesson on gratitude.",
+    url: "articles/dawud-and-sulayman-power-justice-and-gratitude.html",
+    keywords: ["dawud","david","sulayman","solomon","jalut","goliath","zabur","psalms","sheba","saba","bilqis","hoopoe","jinn","wind","kingdom","justice","gratitude","prophets"]
+  },
+  {
+    title: "Yunus: The Prophet Who Fled",
+    snippet: "The Qur’anic story of Yunus: the call to his people, his departure in anger, the ship and the lot, the great fish, the prayer in the darkness, the people who believed, the gourd tree and the Qur’anic rebuke that made him a lesson for every caller.",
+    url: "articles/yunus-the-prophet-who-fled.html",
+    keywords: ["yunus","jonah","whale","fish","nineveh","dhul nun","prayer","darkness","repentance","mercy","patience","prophets"]
+  },
+  {
+    title: "Isa: The Messiah, the Miracles and the Qur’anic Correction",
+    snippet: "The Qur’anic account of Isa: the annunciation to Maryam, the birth under the palm, the speech in the cradle, the miracles by Allah’s permission, the Injil, the crucifixion that did not happen, the correction of the Trinity and the second coming.",
+    url: "articles/isa-the-messiah-and-the-quranic-correction.html",
+    keywords: ["isa","jesus","messiah","masih","maryam","mary","injil","gospel","crucifixion","trinity","tawhid","second coming","miracles","virgin birth","prophets"]
   }
 ];
 
