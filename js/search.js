@@ -544,9 +544,33 @@ const EDUCATIONAL_SEARCH_PAGES = [
   },
   {
     title: "Ali: The Gate of Knowledge and the Fitna",
-    snippet: "The life of Ali ibn Abi Talib: his upbringing in the Prophet’s household, the night of the hijrah, his marriage to Fatima, Badr, Uhud and Khaybar, Ghadir Khumm, the caliphate, the Camel, Siffin, the Kharijites and his assassination in Kufa.",
+    snippet: "The life of Ali ibn Abi Talib: his upbringing in the Prophet's household, the night of the hijrah, his marriage to Fatima, Badr, Uhud and Khaybar, Ghadir Khumm, the caliphate, the Camel, Siffin, the Kharijites and his assassination in Kufa.",
     url: "articles/ali-the-gate-of-knowledge-and-the-fitna.html",
     keywords: ["ali","abi talib","fatima","hasan","husayn","khaybar","ghadir khumm","caliphate","camel","siffin","kharijites","nahrawan","kufa","companions","sahaba"]
+  },
+  {
+    title: "Khadijah: The First Believer and the Pillar of the Early Mission",
+    snippet: "The life of Khadijah bint Khuwaylid: her merchant household in Makkah, her marriage to Muhammad ﷺ, the first revelation in the cave of Hira, her support of the mission, her children, the boycott, the year of sorrow, her rank in the hadith and the limits of the later legends.",
+    url: "articles/khadijah-the-first-believer-and-pillar-of-the-mission.html",
+    keywords: ["khadijah","khuwaylid","first believer","first muslim","waraqa","cave of hira","year of sorrow","mother of the believers","merchant","sahaba","wives of the prophet"]
+  },
+  {
+    title: "Aisha: The Mother of the Believers, the Scholar and the Fitna",
+    snippet: "The life of Aisha bint Abi Bakr: her family and marriage, the household of the Prophet ﷺ, the slander and Qur’an 24:11–20, her scholarship and legal opinions, the fitna and the Battle of the Camel, her later teaching in Madinah and the politics of memory.",
+    url: "articles/aisha-mother-of-the-believers-scholar-and-fitna.html",
+    keywords: ["aisha","aysha","abi bakr","mother of the believers","slander","ifk","battle of the camel","fitna","hadith","scholar","ummu ruman","sahaba"]
+  },
+  {
+    title: "Bilal ibn Rabah: The Voice of the First Adhan",
+    snippet: "The life of Bilal ibn Rabah: his enslavement in Makkah, the torture he endured for saying “One”, his manumission by Abu Bakr, the first adhan in Madinah, Badr and the battles, the conquest of Makkah, his grief after the Prophet ﷺ, his years in Syria and his death.",
+    url: "articles/bilal-ibn-rabah-the-voice-of-the-adhan.html",
+    keywords: ["bilal","ibn rabah","habashi","adhan","muezzin","umayyah ibn khalaf","abu bakr","slavery","freedom","conquest of makkah","sahaba"]
+  },
+  {
+    title: "Salman al-Farsi: The Seeker Who Crossed Empires",
+    snippet: "The life of Salman al-Farsi: his Zoroastrian upbringing near Isfahan, his search for the true religion through Syria and Iraq, his enslavement and arrival in Yathrib, his recognition of the Prophet ﷺ, the trench of the Confederates, al-Mada’in and his death.",
+    url: "articles/salman-al-farsi-the-seeker-who-crossed-empires.html",
+    keywords: ["salman","farsi","persian","isfahan","jayy","trench","khandaq","confederates","mada'in","ahl al-bayt","sahaba","convert"]
   }
 ];
 
