@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **2,858 executed / 2,858 passed / 0 failed** (Suites 1–54). The four Batch 8b pages were built at 3,536–3,568 body words (prose core 3,063–3,101), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 57 cards.
 
-**Live deployment:** Batch 8b is built and tested locally but **not yet deployed**. The last live release is Batch 8a at `gh-pages` commit `56faf235cba050513c5b48fe2d8d9fa608f1d9e7` (tree from `41f5a75:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v29`, About states 2,688 assertions, 53 cards, 80 sitemap URLs, `offline.html` live with `noindex`.
+**Live deployment:** Batch 8b is live at `gh-pages` commit `ecf183e631b3f6d93c20ab86fb09f87fbcc03469` (tree from `273518c:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v30`, About states 2,858 assertions and names Batches 8a/8b, the four new article pages return 200 with correct H1, 14–15 TOC links and 2 JSON-LD blocks each, 57 cards, 84 sitemap URLs, `offline.html` live with `noindex`. Live APK (5,418,764 bytes / `c60a0ef5…`) and bundle (5,274,058 bytes / `47bbdfa4…`) hash-match the local artefacts; Chromium showed 0 console errors and search returned the Khadijah, Aisha, Bilal and Salman pages first.
 
 ---
 

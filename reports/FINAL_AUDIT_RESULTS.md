@@ -334,6 +334,30 @@ Chromium check on the live article index: 53 `article-summary-card` elements, th
 
 Local integrity checks: the APK (353 entries) and bundle (344 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 342 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
 
+### 6.10 Batch 8b deployment (this cycle) — verified
+
+Deployed commit: `ecf183e631b3f6d93c20ab86fb09f87fbcc03469` on `gh-pages` (tree from `273518c:public`), pushed as `56faf23..ecf183e`. `main` was pushed as `a6fdd5b..273518c`.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/khadijah-the-first-believer-and-pillar-of-the-mission.html` | 200; 50,751 bytes; H1 “Khadijah: The First Believer and the Pillar of the Early Mission”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/aisha-mother-of-the-believers-scholar-and-fitna.html` | 200; 50,460 bytes; H1 “Aisha: The Mother of the Believers, the Scholar and the Fitna”; 14 TOC links; 2 JSON-LD blocks |
+| `.../articles/bilal-ibn-rabah-the-voice-of-the-adhan.html` | 200; 50,731 bytes; H1 “Bilal ibn Rabah: The Voice of the First Adhan”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/salman-al-farsi-the-seeker-who-crossed-empires.html` | 200; 51,499 bytes; H1 “Salman al-Farsi: The Seeker Who Crossed Empires”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/index.html` | 200; 212,290 bytes; 57 article cards; Batch 8b block present and all four pages linked |
+| `.../service-worker.js` | 200; 10,579 bytes; `CACHE_VERSION = 'v30'`; `islamic-portal-shell-v30` present |
+| `.../about.html` | 200; 39,556 bytes; states **2,858 assertions** and names Batches 8a and 8b (Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal, Salman al-Farsi) |
+| `.../sitemap.xml` | 200; 17,952 bytes; **84** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; 2,673 bytes; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,418,764 bytes**; SHA-256 `c60a0ef5fde49a757cc62464c6adf7491fe8f5f7dd8e9c600d761861a8e835ed` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,274,058 bytes**; SHA-256 `47bbdfa4e2337f51250ad48ea992e8ec6e804ff78c97a34c0d663a24274807d5` |
+
+Chromium check on the live article index: 57 `article-summary-card` elements, 23 details blocks, the Batch 8b block rendered, and **0 console errors**. Each of the four live article pages rendered with its H1, TOC anchors, bibliography, FAQ section and 2 JSON-LD blocks, and **0 console errors** each. `UniversalSearch.search()` returned the Khadijah, Aisha, Bilal and Salman pages first (priority 100) for their respective queries.
+
+The first binary `GET` attempts returned a transient 404 while GitHub Pages propagated the new tree; `HEAD` and retried `GET` requests then returned 200 with the exact local sizes and hashes. No file was missing from the deployed tree.
+
+Local integrity checks: the APK (357 entries) and bundle (348 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 346 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
+
 ### 6.7 Batch 7a deployment (earlier cycle) — verified
 
 Deployed commit: `437ccc2b141316d8b6c51911ca18655fd4a32028` on `gh-pages` (tree from `7ab78dc:public`), pushed as `ff4276f..437ccc2`. `main` was pushed as `ca84410..7ab78dc`.
