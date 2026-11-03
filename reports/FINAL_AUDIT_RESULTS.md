@@ -287,7 +287,7 @@ Chromium check on the live origin: `islamic-portal-shell-v25` was present and `i
 
 Local integrity checks: the APK (341 entries) and bundle (332 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 330 expected files, and `CHECKSUMS.sha256` matches both served files.
 
-### 6.8 Batch 7b deployment (this cycle) — verified
+### 6.8 Batch 7b deployment (previous cycle) — verified
 
 Deployed commit: `96f7359bc8d0334d086e3eb18ff2e6a9590402c9` on `gh-pages` (tree from `a25bdd1:public`), pushed as `437ccc2..96f7359`. `main` was pushed as `c85213f..203ba51`, followed by `a25bdd1` removing a temporary measurement file.
 
@@ -309,7 +309,29 @@ Chromium check on the live article index: 49 `article-summary-card` elements, th
 
 Local integrity checks: the APK (349 entries) and bundle (340 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 338 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
 
-### 6.7 Batch 7a deployment (previous cycle) — verified
+### 6.9 Batch 8a deployment (this cycle) — verified
+
+Deployed commit: `56faf235cba050513c5b48fe2d8d9fa608f1d9e7` on `gh-pages` (tree from `41f5a75:public`), pushed as `e2c320a..56faf23`. `main` was pushed as `8ab069e..c85bc46`, followed by `41f5a75` for the exact-title search ranking fix and the `20261102c` / `v29` bump.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/abu-bakr-the-truthful-and-the-first-caliph.html` | 200; 48,621 bytes; H1 “Abu Bakr: The Truthful and the First Caliph”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/umar-al-faruq-justice-and-the-caliphate.html` | 200; 46,587 bytes; H1 “Umar: Justice, Conquest and the Caliphate”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/uthman-dhul-nurayn-and-the-standard-codex.html` | 200; 45,422 bytes; H1 “Uthman: The Standard Codex and the Fitna”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/ali-the-gate-of-knowledge-and-the-fitna.html` | 200; 45,858 bytes; H1 “Ali: The Gate of Knowledge and the Fitna”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/index.html` | 200; 200,512 bytes; 53 article cards; Batch 8a block present and all four pages linked |
+| `.../service-worker.js` | 200; 10,579 bytes; `CACHE_VERSION = 'v29'`; `islamic-portal-shell-v29` present |
+| `.../about.html` | 200; 39,505 bytes; states **2,688 assertions** and names Batch 8a |
+| `.../sitemap.xml` | 200; 17,028 bytes; **80** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,364,269 bytes**; SHA-256 `56ba2ece4fd9f79fc786f3774e552a5f78230df91c4f8079ed0c28aed089376b` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,220,557 bytes**; SHA-256 `427815695c87975e5bfd7fd61f9a7e1af0bdb66531bb6d2f4886fd4ce2985b41` |
+
+Chromium check on the live article index: 53 `article-summary-card` elements, the Batch 8a block rendered, and **0 console errors**. `UniversalSearch.search()` returned the Abu Bakr, Umar, Uthman and Ali pages first for their respective queries after the exact-title ranking fix.
+
+Local integrity checks: the APK (353 entries) and bundle (344 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 342 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
+
+### 6.7 Batch 7a deployment (earlier cycle) — verified
 
 Deployed commit: `437ccc2b141316d8b6c51911ca18655fd4a32028` on `gh-pages` (tree from `7ab78dc:public`), pushed as `ff4276f..437ccc2`. `main` was pushed as `ca84410..7ab78dc`.
 
