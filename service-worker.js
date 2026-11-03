@@ -3,8 +3,8 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v28';
-const CACHE_NAME = 'islamic-portal-shell-v28';
+const CACHE_VERSION = 'v29';
+const CACHE_NAME = 'islamic-portal-shell-v29';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 const QURAN_CACHE = 'islamic-portal-quran-v1';
 const TAFSIR_CACHE = 'islamic-portal-tafsir-v1';
@@ -41,21 +41,21 @@ const STATIC_ASSETS = [
   './privacy.html',
   './terms.html',
   './manifest.json',
-  './css/main.css?v=20261102b',
-  './js/config.js?v=20261102b',
-  './js/data.js?v=20261102b',
-  './js/i18n.js?v=20261102b',
-  './js/tools.js?v=20261102b',
-  './js/search.js?v=20261102b',
-  './js/quran-store.js?v=20261102b',
-  './js/tafsir-store.js?v=20261102b',
-  './js/quran.js?v=20261102b',
-  './js/thematic-index.js?v=20261102b',
+  './css/main.css?v=20261102c',
+  './js/config.js?v=20261102c',
+  './js/data.js?v=20261102c',
+  './js/i18n.js?v=20261102c',
+  './js/tools.js?v=20261102c',
+  './js/search.js?v=20261102c',
+  './js/quran-store.js?v=20261102c',
+  './js/tafsir-store.js?v=20261102c',
+  './js/quran.js?v=20261102c',
+  './js/thematic-index.js?v=20261102c',
   './data/quran/manifest.json',
   './data/tafsir/manifest.json',
   './data/tafsir/themes.json',
-  './js/app.js?v=20261102b',
-  './js/sahaba-urdu.js?v=20261102b',
+  './js/app.js?v=20261102c',
+  './js/sahaba-urdu.js?v=20261102c',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',

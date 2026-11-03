@@ -1423,6 +1423,11 @@ const UniversalSearch = {
       const titleHasTerm = pageTitle.includes(rawLower) ||
         (normalized.length >= 2 && normalizeIslamicQuery(page.title).includes(normalized));
       const snippetHasTerm = page.snippet.toLowerCase().includes(rawLower);
+      // A page whose title begins with the query is a stronger match than one
+      // that merely contains the letters inside a longer word (e.g. "Ali"
+      // inside "al-Walidayn" or "Caliphate").
+      const startsWithTerm = pageTitle.startsWith(rawLower) ||
+        (normalized.length >= 2 && normalizeIslamicQuery(page.title).startsWith(normalized));
 
       if (titleHasTerm || snippetHasTerm) {
         matched = true;
@@ -1454,7 +1459,7 @@ const UniversalSearch = {
           title: page.title,
           snippet: page.snippet,
           url: page.url,
-          priority: titleMatch ? 90 : 80
+          priority: startsWithTerm ? 100 : titleMatch ? 90 : 80
         });
       }
     });
