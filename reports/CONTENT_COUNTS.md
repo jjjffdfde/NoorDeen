@@ -22,12 +22,12 @@
 | Worship guides | Salah / Wudu / Janazah / Eid | 4 | 4 | Yes |
 | Interactive tools | Prayer times / Zakat / Tasbih / Calendar | 4 | 4 | Client-side |
 | Glossary terms | `index.html` | **135** | 135 | Yes |
-| Articles | `/articles/` | **53** + index | 53 | Yes |
+| Articles | `/articles/` | **57** + index | 57 | Yes |
 | Lecture catalog | `/dr-israr-ahmed` | **148** | **147** | Client-side from JSON |
 | Study-mode tafsir | `data/tafsir/` + `study-content.json` | **3 editions + 6 editorial verses** | 3 editions | Client-side, on demand |
 | Thematic verse index | `public/data/tafsir/themes.json` | **30 themes / 5,639 matches** | 30 | Client-side |
 | Surah thematic profiles | `js/quran.js` | **32** | 32 | Client-side |
-| HTML pages | site-wide | **81** | 81 | 80 indexable + `offline.html` |
+| HTML pages | site-wide | **85** | 85 | 84 indexable + `offline.html` |
 
 ---
 
@@ -94,16 +94,16 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | 81 (26 root + 54 article pages + `offline.html`) |
-| Visible words, 80 indexable pages | 309,119 |
-| Root pages | 162,068 words (161,972 indexable + 96 offline) |
-| Article library | 147,147 whole-page words; 125,619 article-body words |
-| Sitemap URLs | 80 |
-| Desktop bundle | 5,220,557 bytes / 4.98 MiB / 344 entries / 81 HTML / 114 Quran chunks / 114 tafsir chunks |
-| Bundle SHA-256 | `427815695c87975e5bfd7fd61f9a7e1af0bdb66531bb6d2f4886fd4ce2985b41` |
-| Release APK | 5,364,269 bytes / 5.12 MiB / 353 entries / v1.3.0 |
-| APK SHA-256 | `56ba2ece4fd9f79fc786f3774e552a5f78230df91c4f8079ed0c28aed089376b` |
-| Automated assertions | **2,688 passing / 0 failing** (53 suites) |
+| HTML pages | 85 (26 root + 58 article pages + `offline.html`) |
+| Visible words, 84 indexable pages | 331,683 |
+| Root pages | 163,690 words (163,594 indexable + 96 offline) |
+| Article library | 168,089 whole-page words; 143,276 article-body words |
+| Sitemap URLs | 84 |
+| Desktop bundle | 5,274,058 bytes / 5.03 MiB / 348 entries / 85 HTML / 114 Quran chunks / 114 tafsir chunks |
+| Bundle SHA-256 | `47bbdfa4e2337f51250ad48ea992e8ec6e804ff78c97a34c0d663a24274807d5` |
+| Release APK | 5,418,764 bytes / 5.17 MiB / 357 entries / v1.3.0 |
+| APK SHA-256 | `c60a0ef5fde49a757cc62464c6adf7491fe8f5f7dd8e9c600d761861a8e835ed` |
+| Automated assertions | **2,858 passing / 0 failing** (54 suites) |
 
 ---
 
@@ -114,5 +114,5 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 - 6 editorial tafsir verses ≠ tafsir of the Quran; the three verbatim editions are the bundled commentary.
 - The 30-theme index is a keyword finding aid, not a scholarly thematic classification.
 - 6,236 bundled ayahs ≠ a critical edition or a substitute for a printed mushaf; it is the Tanzil Uthmani text as served by the declared API.
-- 53 articles ≠ the 100-topic library; 70 roadmap topics are unwritten.
+- 57 articles cover 34 of the 100 syllabus topics; 66 topics remain unwritten.
 - 148 lecture records ≠ Dr. Israr Ahmed's complete body of work; the archive itself has 74 pages and only 10 were retrieved.

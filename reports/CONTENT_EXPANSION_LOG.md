@@ -1,6 +1,6 @@
 # NoorDeen — Content Expansion Log
 
-**Last updated:** 3 November 2026 (Batch 8a: four Lives of the Noble Sahaba articles)
+**Last updated:** 3 November 2026 (Batch 8b: four Lives of the Noble Sahaba articles)
 **Counting method:** rendered text only — `<script>`, `<style>` and tags removed, then tokens counted. Two figures are reported where they differ:
 - **Whole-page words** include navigation, table of contents, related-reading block and footer.
 - **Article body words** cover the `<article class="editorial-content-body">` region and exclude that shared chrome; they are the honest measure of article length.
@@ -30,6 +30,7 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 7a articles** | 4 Stories of the Prophets (topics 61–64: Adam, Nuh, Ibrahim, Yusuf) | **14,015 body words**, 3,504 average; prose core 2,922–3,078 words each |
 | **Batch 7b articles** | 4 Stories of the Prophets (topics 65–68: Musa, Dawud/Sulayman, Yunus, Isa) | **13,644 body words**, 3,411 average; prose core 2,510–3,067 words each |
 | **Batch 8a articles** | 4 Lives of the Noble Sahaba (topics 69–72: Abu Bakr, Umar, Uthman, Ali) | **12,167 body words**, 3,042 average; prose core 2,427–2,963 words each |
+| **Batch 8b articles** | 4 Lives of the Noble Sahaba (topics 73–76: Khadijah, Aisha, Bilal, Salman al-Farsi) | **14,206 body words**, 3,552 average; prose core 3,063–3,101 words each |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
@@ -78,7 +79,29 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 ---
 
-## 2. Batch 8a detail (this cycle)
+## 2. Batch 8b detail (this cycle)
+
+Generated from `scripts/article-content/batch-8b.cjs` through `scripts/build-articles.cjs batch-8b.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 54 | 73. Khadijah: the first believer and pillar of the early mission | `khadijah-the-first-believer-and-pillar-of-the-mission` | 3,557 | 3,101 | 3,912 |
+| 55 | 74. Aisha: the mother of the believers, the scholar and the fitna | `aisha-mother-of-the-believers-scholar-and-fitna` | 3,536 | 3,088 | 3,895 |
+| 56 | 75. Bilal: the voice of the first adhan | `bilal-ibn-rabah-the-voice-of-the-adhan` | 3,568 | 3,063 | 3,930 |
+| 57 | 76. Salman al-Farsi: the seeker who crossed empires | `salman-al-farsi-the-seeker-who-crossed-empires` | 3,545 | 3,092 | 3,898 |
+| | **Total** | | **14,206** | **12,344** | **15,635** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #54–57, details block 134–137), and are reachable from the article library.
+
+**Source discipline.** The batch separates the Qur’anic anchor, authentic hadith, early Sirah and prosopographical reports, and later legendary or polemical material. Khadijah’s age, previous marriages and funeral details are flagged as later biography; Aisha’s age reports and the fitna are presented with the scholarly disagreement intact; Bilal’s “Ahad, Ahad” and the dream-visit to the grave are labelled by source layer; Salman’s long journey, the “Salman is from us” report and the 250-year lifespan legend are graded explicitly. No companion is idealised, and no contested event is presented as neutral fact.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 3,063–3,101 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 3,536–3,568. Each page stays under the audited 3,600 whole-body cap. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
+
+**Honest note on numbering.** The library now contains 57 articles. Cards are numbered #54–57 and the details block uses publication numbers 134–137. Those publication numbers are not a claim that 137 roadmap topics are written; the Lives of the Sahaba discipline now has all 8 of its topics live (69–76).
+
+---
+
+## 2. Batch 8a detail (previous cycle)
 
 Generated from `scripts/article-content/batch-8a.cjs` through `scripts/build-articles.cjs batch-8a.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
 
@@ -96,7 +119,7 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 **Quality gate.** Prose core (intro plus numbered sections) is 2,427–2,963 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 2,826–3,377. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
 
-**Honest note on numbering.** The library now contains 53 articles. Cards are numbered #50–53 and the details block uses publication numbers 130–133. Those publication numbers are not a claim that 133 roadmap topics are written; the Lives of the Sahaba discipline has 4 of its 8 topics live (69–72), with 73–76 planned for Batch 8b.
+**Honest note on numbering.** At the end of Batch 8a the library contained 53 articles. Cards were numbered #50–53 and the details block used publication numbers 130–133. Those publication numbers are not a claim that 133 roadmap topics are written; the Lives of the Sahaba discipline has 4 of its 8 topics live (69–72), with 73–76 planned for Batch 8b.
 
 ---
 
@@ -254,10 +277,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **81** (26 root + 54 article pages + `offline.html`) |
-| Visible words, 80 indexable pages | **310,727** |
-| Articles published | **53** (30 roadmap topics + 23 additional topics) |
-| Article body words | **129,070**, average **2,435**, min **1,538**, max **3,596** (53 articles) |
+| HTML pages | **85** (26 root + 58 article pages + `offline.html`) |
+| Visible words, 84 indexable pages | **331,683** |
+| Articles published | **57** (34 roadmap topics + 23 additional topics) |
+| Article body words | **143,276**, average **2,514**, min **1,538**, max **3,596** (57 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -266,10 +289,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **2,688 passing, 0 failing** (53 suites) |
-| Sitemap URLs | 80 |
-| Release APK | 5,364,269 bytes (5.12 MiB), 353 entries / 81 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 5,220,557 bytes (4.98 MiB), 344 files |
+| Automated assertions | **2,858 passing, 0 failing** (54 suites) |
+| Sitemap URLs | 84 |
+| Release APK | 5,418,764 bytes (5.17 MiB), 357 entries / 85 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 5,274,058 bytes (5.03 MiB), 348 files |
 
 ---
 
