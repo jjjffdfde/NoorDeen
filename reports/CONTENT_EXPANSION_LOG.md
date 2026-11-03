@@ -1,6 +1,6 @@
 # NoorDeen — Content Expansion Log
 
-**Last updated:** 29 October 2026 (Phase 2 integrated: verbatim tafsir, asbab al-nuzul, thematic index)
+**Last updated:** 3 November 2026 (Batch 8a: four Lives of the Noble Sahaba articles)
 **Counting method:** rendered text only — `<script>`, `<style>` and tags removed, then tokens counted. Two figures are reported where they differ:
 - **Whole-page words** include navigation, table of contents, related-reading block and footer.
 - **Article body words** cover the `<article class="editorial-content-body">` region and exclude that shared chrome; they are the honest measure of article length.
@@ -28,6 +28,8 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 6a articles** | 4 Seerah articles (topics 53–56: pre-Islamic Arabia, Makkan persecution, Isra’ wal-Mi’raj, Hijrah) | **11,792 body words**, 2,948 average; prose core 2,226–2,845 words each |
 | **Batch 6b articles** | 4 Seerah articles (topics 57–60: Madinah society, Badr/Uhud/Trench, Hudaybiyyah/conquest, farewell sermon) | **13,292 body words**, 3,323 average; prose core 2,686–3,049 words each |
 | **Batch 7a articles** | 4 Stories of the Prophets (topics 61–64: Adam, Nuh, Ibrahim, Yusuf) | **14,015 body words**, 3,504 average; prose core 2,922–3,078 words each |
+| **Batch 7b articles** | 4 Stories of the Prophets (topics 65–68: Musa, Dawud/Sulayman, Yunus, Isa) | **13,644 body words**, 3,411 average; prose core 2,510–3,067 words each |
+| **Batch 8a articles** | 4 Lives of the Noble Sahaba (topics 69–72: Abu Bakr, Umar, Uthman, Ali) | **12,167 body words**, 3,042 average; prose core 2,427–2,963 words each |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
@@ -76,7 +78,29 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 ---
 
-## 2. Batch 7b detail (this cycle)
+## 2. Batch 8a detail (this cycle)
+
+Generated from `scripts/article-content/batch-8a.cjs` through `scripts/build-articles.cjs batch-8a.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 50 | 69. Abu Bakr: the truthful and the first caliph | `abu-bakr-the-truthful-and-the-first-caliph` | 3,377 | 2,963 | 3,730 |
+| 51 | 70. Umar: justice, conquest and the caliphate | `umar-al-faruq-justice-and-the-caliphate` | 3,053 | 2,685 | 3,402 |
+| 52 | 71. Uthman: the standard codex and the fitna | `uthman-dhul-nurayn-and-the-standard-codex` | 2,826 | 2,427 | 3,173 |
+| 53 | 72. Ali: the gate of knowledge and the fitna | `ali-the-gate-of-knowledge-and-the-fitna` | 2,911 | 2,494 | 3,261 |
+| | **Total** | | **12,167** | **10,569** | **13,566** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #50–53, details block 130–133), and are reachable from the article library.
+
+**Source discipline.** The batch separates the Qur’anic anchor, authentic hadith, early Sirah and prosopographical reports, and later polemical or legendary material. Contested succession and fitna narratives are attributed to their classical transmitters rather than presented as neutral fact; reports that survive only in later history or in sectarian polemic are labelled as such. No companion is idealised, and no caliph is condemned beyond what the sources support.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 2,427–2,963 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 2,826–3,377. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity and duplicate IDs.
+
+**Honest note on numbering.** The library now contains 53 articles. Cards are numbered #50–53 and the details block uses publication numbers 130–133. Those publication numbers are not a claim that 133 roadmap topics are written; the Lives of the Sahaba discipline has 4 of its 8 topics live (69–72), with 73–76 planned for Batch 8b.
+
+---
+
+## 2. Batch 7b detail (previous cycle)
 
 Generated from `scripts/article-content/batch-7b.cjs` through `scripts/build-articles.cjs batch-7b.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
 
@@ -98,7 +122,7 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 ---
 
-## 2. Batch 7a detail (previous cycle)
+## 2. Batch 7a detail (earlier cycle)
 
 Generated from `scripts/article-content/batch-7a.cjs` through `scripts/build-articles.cjs batch-7a.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
 
@@ -230,10 +254,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **77** (26 root + 50 article pages + `offline.html`) |
-| Visible words, 76 indexable pages | **301,897** |
-| Articles published | **49** (39 roadmap topics + 10 additional topics) |
-| Article body words | **116,903**, average **2,386**, min **1,538**, max **3,596** (49 articles) |
+| HTML pages | **81** (26 root + 54 article pages + `offline.html`) |
+| Visible words, 80 indexable pages | **310,727** |
+| Articles published | **53** (30 roadmap topics + 23 additional topics) |
+| Article body words | **129,070**, average **2,435**, min **1,538**, max **3,596** (53 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -242,16 +266,16 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **2,518 passing, 0 failing** (52 suites) |
-| Sitemap URLs | 76 |
-| Release APK | 5,204,216 bytes (4.96 MiB), 341 entries / 69 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 5,063,079 bytes (4.83 MiB), 332 files |
+| Automated assertions | **2,688 passing, 0 failing** (53 suites) |
+| Sitemap URLs | 80 |
+| Release APK | 5,364,152 bytes (5.12 MiB), 353 entries / 81 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 5,220,470 bytes (4.98 MiB), 344 files |
 
 ---
 
 ## 6. What is still missing
 
-- **61 roadmap topics** remain unwritten (the 100-topic list minus the 39 covered).
+- **70 roadmap topics** remain unwritten (the 100-topic list minus the 30 covered).
 - **Tafsir** now covers three verbatim editions with measured gaps; the English Jalalayn licence still needs owner confirmation, and no edition has been collated against print.
 - **Asbab al-nuzul** is Arabic only and covers the 275 verses for which the source compilation records an occasion.
 - **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.

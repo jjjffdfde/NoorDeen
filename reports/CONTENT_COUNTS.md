@@ -1,6 +1,6 @@
 # NoorDeen — Reconciled Content Counts
 
-**Reconciled:** 2 November 2026 (Batch 7b)
+**Reconciled:** 3 November 2026 (Batch 8a)
 **Rule:** a "record count" means entries in a dataset; a "unique count" means distinct items after duplicates. They are never mixed.
 
 ---
@@ -22,12 +22,12 @@
 | Worship guides | Salah / Wudu / Janazah / Eid | 4 | 4 | Yes |
 | Interactive tools | Prayer times / Zakat / Tasbih / Calendar | 4 | 4 | Client-side |
 | Glossary terms | `index.html` | **135** | 135 | Yes |
-| Articles | `/articles/` | **49** + index | 49 | Yes |
+| Articles | `/articles/` | **53** + index | 53 | Yes |
 | Lecture catalog | `/dr-israr-ahmed` | **148** | **147** | Client-side from JSON |
 | Study-mode tafsir | `data/tafsir/` + `study-content.json` | **3 editions + 6 editorial verses** | 3 editions | Client-side, on demand |
 | Thematic verse index | `public/data/tafsir/themes.json` | **30 themes / 5,639 matches** | 30 | Client-side |
 | Surah thematic profiles | `js/quran.js` | **32** | 32 | Client-side |
-| HTML pages | site-wide | **77** | 77 | 76 indexable + `offline.html` |
+| HTML pages | site-wide | **81** | 81 | 80 indexable + `offline.html` |
 
 ---
 
@@ -94,16 +94,16 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | 77 (26 root + 50 article pages + `offline.html`) |
-| Visible words, 76 indexable pages | 301,897 |
-| Root pages | 163,666 words (163,570 indexable + 96 offline) |
-| Article library | 138,327 whole-page words; 116,903 article-body words |
-| Sitemap URLs | 76 |
-| Desktop bundle | 5,169,737 bytes / 4.93 MiB / 340 entries / 77 HTML / 114 Quran chunks / 114 tafsir chunks |
-| Bundle SHA-256 | `75330af9af2e69b31fa735a560f75c45dfee617ae4d86ddabdd55bdb344088f9` |
-| Release APK | 5,312,530 bytes / 5.07 MiB / 349 entries / v1.3.0 |
-| APK SHA-256 | `011d7ed3cff9041785480d3707ddf656715e61bbd4934602dd76b1d93d3ced1b` |
-| Automated assertions | **2,518 passing / 0 failing** (52 suites) |
+| HTML pages | 81 (26 root + 54 article pages + `offline.html`) |
+| Visible words, 80 indexable pages | 309,119 |
+| Root pages | 162,068 words (161,972 indexable + 96 offline) |
+| Article library | 147,147 whole-page words; 125,619 article-body words |
+| Sitemap URLs | 80 |
+| Desktop bundle | 5,220,470 bytes / 4.98 MiB / 344 entries / 81 HTML / 114 Quran chunks / 114 tafsir chunks |
+| Bundle SHA-256 | `4cd264a4fbc4beeda359bfa9cfb69ef932d43e8a309e1f246e9c8ff93ad12b65` |
+| Release APK | 5,364,152 bytes / 5.12 MiB / 353 entries / v1.3.0 |
+| APK SHA-256 | `fe67fa3c0d4673f9f40924cbd09090d889b04c51342bbe0b97ca8ff8da49c7c7` |
+| Automated assertions | **2,688 passing / 0 failing** (53 suites) |
 
 ---
 
@@ -114,5 +114,5 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 - 6 editorial tafsir verses ≠ tafsir of the Quran; the three verbatim editions are the bundled commentary.
 - The 30-theme index is a keyword finding aid, not a scholarly thematic classification.
 - 6,236 bundled ayahs ≠ a critical edition or a substitute for a printed mushaf; it is the Tanzil Uthmani text as served by the declared API.
-- 49 articles ≠ the 100-topic library; 74 roadmap topics are unwritten.
+- 53 articles ≠ the 100-topic library; 70 roadmap topics are unwritten.
 - 148 lecture records ≠ Dr. Israr Ahmed's complete body of work; the archive itself has 74 pages and only 10 were retrieved.

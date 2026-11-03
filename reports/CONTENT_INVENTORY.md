@@ -1,12 +1,12 @@
 # NoorDeen — Content Inventory
 
-**Audited:** 2 November 2026 (Batch 7b Stories of the Prophets added; page and word counts re-measured)
+**Audited:** 3 November 2026 (Batch 8a Lives of the Noble Sahaba added; page and word counts re-measured)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured from the current tree, not estimated.
-**Pages:** **77** — 26 root pages + 50 pages in `public/articles/` (49 articles + the library index) + `offline.html` (noindex fallback)
-**Visible words across the 76 indexable pages (whole-page tokenisation):** **301,897** (root 163,570 + article library 138,327); the offline fallback adds 96 words
-**Article body words (49 articles, excluding page chrome):** **116,903** — average **2,386**, minimum **1,538**, maximum **3,596**
-**Sitemap URLs:** **76** (`public/sitemap.xml`, 76 unique `<loc>` entries)
-**Full test suite:** **2,518 executed / 2,518 passed / 0 failed** (52 suites; last run 2 November 2026)
+**Pages:** **81** — 26 root pages + 54 pages in `public/articles/` (53 articles + the library index) + `offline.html` (noindex fallback)
+**Visible words across the 80 indexable pages (whole-page tokenisation):** **310,727** (root 163,586 + article library 147,141); the offline fallback adds 96 words
+**Article body words (53 articles, excluding page chrome):** **129,070** — average **2,435**, minimum **1,538**, maximum **3,596**
+**Sitemap URLs:** **80** (`public/sitemap.xml`, 80 unique `<loc>` entries)
+**Full test suite:** **2,688 executed / 2,688 passed / 0 failed** (53 suites; last run 3 November 2026)
 
 ---
 
@@ -42,69 +42,77 @@
 | 26 | `bookmarks.html` | 356 | 16 KB | Saved items |
 | 27 | `offline.html` | 100 | 3 KB | Offline fallback (`noindex`) |
 
-Root total: **163,653 words** (163,557 across the 26 indexable root pages, plus 96 in the offline fallback).
+Root total: **163,682 words** (163,586 across the 26 indexable root pages, plus 96 in the offline fallback).
 
 Note: `dr-israr-ahmed.html` has a small static word count because its cards render from `catalog.json`. `quran.html` now loads all surah text from the bundled corpus, so its static count only covers the shell. `hadith.html`, `duas.html`, `sahaba.html`, `seerah.html`, `prophets.html` and `history.html` are largely pre-rendered static text, which is why their counts are high.
 
 ---
 
-## 2. Article library (50 pages, 49 articles)
+## 2. Article library (54 pages, 53 articles)
 
 The index is not an article. Article body counts below exclude the shared navigation, table of contents, related-reading block and footer; whole-page counts are higher.
 
 | # | File | Body words | Size | Topic |
 | --: | :--- | --: | --: | :--- |
-| 27 | `articles/index.html` | — (4,477 whole page) | 160 KB | Library index + 100-topic syllabus |
-| 28 | `articles/adam-creation-trust-and-repentance.html` | 3,580 | 47 KB | Adam: creation, trust and repentance (topic 61) |
-| 29 | `articles/ibrahim-friend-of-allah-and-the-trial.html` | 3,570 | 46 KB | Ibrahim: the friend of Allah (topic 63) |
-| 30 | `articles/madinah-society-and-first-muslim-state.html` | 3,538 | 49 KB | Madinah society and polity (topic 57) |
-| 31 | `articles/yusuf-beauty-of-forgiveness.html` | 3,465 | 46 KB | Yusuf: chastity and forgiveness (topic 64) |
-| 32 | `articles/nuh-the-long-call-and-the-ark.html` | 3,400 | 46 KB | Nuh: the long call and the ark (topic 62) |
-| 33 | `articles/pre-islamic-arabia-jahiliyyah.html` | 3,391 | 48 KB | Pre-Islamic Arabia (topic 53) |
-| 34 | `articles/farewell-sermon-and-final-years.html` | 3,327 | 46 KB | Farewell sermon and final years (topic 60) |
-| 35 | `articles/battles-of-badr-uhud-and-the-trench.html` | 3,279 | 47 KB | Badr, Uhud and the Trench (topic 58) |
-| 36 | `articles/hudaybiyyah-and-conquest-of-makkah.html` | 3,148 | 46 KB | Hudaybiyyah and the conquest (topic 59) |
-| 37 | `articles/makkan-persecution-and-resilience.html` | 2,965 | 44 KB | Makkan persecution (topic 54) |
-| 38 | `articles/hijrah-to-madinah.html` | 2,772 | 43 KB | Hijrah to Madinah (topic 56) |
-| 39 | `articles/isra-and-miraj-night-journey.html` | 2,664 | 42 KB | Isra’ wal-Mi’raj (topic 55) |
-| 40 | `articles/contracts-and-promises-in-islam.html` | 2,473 | 41 KB | Contracts and promises (Batch 5) |
-| 41 | `articles/debt-and-loans-in-islam.html` | 2,473 | 40 KB | Debt and loans (Batch 5) |
-| 42 | `articles/workers-rights-in-islam.html` | 2,411 | 39 KB | Workers’ rights (Batch 5) |
-| 43 | `articles/business-ethics-and-honest-trade.html` | 2,371 | 39 KB | Business ethics (Batch 5) |
-| 44 | `articles/honouring-parents-in-islam.html` | 2,257 | 40 KB | Parents and family (Batch 4) |
-| 45 | `articles/seerah-of-prophet-muhammad.html` | 2,124 | 40 KB | Seerah (topic 11) |
-| 46 | `articles/islamic-parenting-guide.html` | 2,107 | 39 KB | Parenting (Batch 4) |
-| 47 | `articles/fasting-and-ramadan.html` | 2,084 | 39 KB | Fasting and Ramadan (topic 16) |
-| 48 | `articles/islamic-inheritance-basics.html` | 2,072 | 37 KB | Inheritance (Batch 4) |
-| 49 | `articles/salah-complete-beginners-guide.html` | 1,975 | 49 KB | Salah (topic 6) |
-| 50 | `articles/beginners-guide-to-islam.html` | 1,974 | 49 KB | Foundations (topic 1) |
-| 51 | `articles/rights-of-neighbours-in-islam.html` | 1,971 | 38 KB | Neighbours (Batch 4) |
-| 52 | `articles/stories-of-the-prophets.html` | 1,961 | 39 KB | Prophetic narratives (topic 12) |
-| 53 | `articles/ninety-nine-names-of-allah.html` | 1,955 | 39 KB | Names of Allah (topic 18) |
-| 54 | `articles/zakat-educational-calculation-guide.html` | 1,954 | 51 KB | Zakat (topic 10) |
-| 55 | `articles/wudu-ghusl-tayammum-guide.html` | 1,944 | 47 KB | Purification (topic 7) |
-| 56 | `articles/quran-translation-vs-tafsir.html` | 1,933 | 48 KB | Translation vs tafsir (topic 3) |
-| 57 | `articles/hajj-and-umrah-guide.html` | 1,926 | 38 KB | Hajj and Umrah (topic 17) |
-| 58 | `articles/hadith-and-sunnah-authenticity.html` | 1,913 | 48 KB | Hadith sciences (topic 8) |
-| 59 | `articles/daily-adhkar-and-supplications.html` | 1,886 | 46 KB | Adhkar (topic 9) |
-| 60 | `articles/tawhid-and-the-shahadah.html` | 1,854 | 45 KB | Tawhid (topic 4) |
-| 61 | `articles/sahaba-biographies.html` | 1,846 | 37 KB | Companions (topic 13) |
-| 62 | `articles/islamic-manners-and-character.html` | 1,800 | 38 KB | Adab (topic 15) |
-| 63 | `articles/islamic-finance-and-riba.html` | 1,798 | 37 KB | Riba and finance (topic 96 / published #101) |
-| 64 | `articles/how-to-read-and-understand-quran.html` | 1,785 | 46 KB | Quran study (topic 2) |
-| 65 | `articles/marriage-and-family-in-islam.html` | 1,726 | 37 KB | Marriage and family (topic 92 / #102) |
-| 66 | `articles/death-and-the-afterlife.html` | 1,722 | 37 KB | Death and afterlife (#103) |
-| 67 | `articles/repentance-dhikr-spiritual-development.html` | 1,709 | 37 KB | Tawbah and dhikr (topic 19) |
-| 68 | `articles/environment-and-stewardship.html` | 1,700 | 38 KB | Environment and stewardship (#105) |
-| 69 | `articles/new-muslim-learning-path.html` | 1,676 | 37 KB | New Muslim path (topic 20) |
-| 70 | `articles/halal-and-haram-food.html` | 1,649 | 36 KB | Halal and haram food (topic 95 / #104) |
-| 71 | `articles/five-pillars-of-islam.html` | 1,593 | 43 KB | Five pillars (topic 5) |
-| 72 | `articles/islamic-history-civilization.html` | 1,538 | 35 KB | History framework (topic 14) |
+| 27 | `articles/index.html` | — (5,009 whole page) | 196 KB | Library index + 100-topic syllabus |
+| 28 | `articles/musa-pharaoh-the-exodus-and-the-law.html` | 3,596 | 48 KB | Musa: Pharaoh and the Exodus (topic 65) |
+| 29 | `articles/adam-creation-trust-and-repentance.html` | 3,580 | 48 KB | Adam: creation, trust and repentance (topic 61) |
+| 30 | `articles/ibrahim-friend-of-allah-and-the-trial.html` | 3,570 | 47 KB | Ibrahim: the friend of Allah (topic 63) |
+| 31 | `articles/dawud-and-sulayman-power-justice-and-gratitude.html` | 3,548 | 48 KB | Dawud and Sulayman: power and justice (topic 66) |
+| 32 | `articles/madinah-society-and-first-muslim-state.html` | 3,538 | 49 KB | Madinah society and polity (topic 57) |
+| 33 | `articles/isa-the-messiah-and-the-quranic-correction.html` | 3,524 | 47 KB | Isa: the Messiah and the correction (topic 68) |
+| 34 | `articles/yusuf-beauty-of-forgiveness.html` | 3,465 | 46 KB | Yusuf: chastity and forgiveness (topic 64) |
+| 35 | `articles/nuh-the-long-call-and-the-ark.html` | 3,400 | 46 KB | Nuh: the long call and the ark (topic 62) |
+| 36 | `articles/pre-islamic-arabia-jahiliyyah.html` | 3,391 | 49 KB | Pre-Islamic Arabia (topic 53) |
+| 37 | `articles/abu-bakr-the-truthful-and-the-first-caliph.html` | 3,377 | 47 KB | Abu Bakr: the truthful and first caliph (topic 69) |
+| 38 | `articles/farewell-sermon-and-final-years.html` | 3,327 | 47 KB | Farewell sermon and final years (topic 60) |
+| 39 | `articles/battles-of-badr-uhud-and-the-trench.html` | 3,279 | 47 KB | Badr, Uhud and the Trench (topic 58) |
+| 40 | `articles/hudaybiyyah-and-conquest-of-makkah.html` | 3,148 | 47 KB | Hudaybiyyah and the conquest (topic 59) |
+| 41 | `articles/umar-al-faruq-justice-and-the-caliphate.html` | 3,053 | 45 KB | Umar: justice and the caliphate (topic 70) |
+| 42 | `articles/yunus-the-prophet-who-fled.html` | 2,976 | 43 KB | Yunus: the prophet who fled (topic 67) |
+| 43 | `articles/makkan-persecution-and-resilience.html` | 2,965 | 44 KB | Makkan persecution (topic 54) |
+| 44 | `articles/ali-the-gate-of-knowledge-and-the-fitna.html` | 2,911 | 45 KB | Ali: the gate of knowledge (topic 72) |
+| 45 | `articles/uthman-dhul-nurayn-and-the-standard-codex.html` | 2,826 | 44 KB | Uthman: the standard codex (topic 71) |
+| 46 | `articles/hijrah-to-madinah.html` | 2,772 | 43 KB | Hijrah to Madinah (topic 56) |
+| 47 | `articles/isra-and-miraj-night-journey.html` | 2,664 | 42 KB | Isra’ wal-Mi’raj (topic 55) |
+| 48 | `articles/contracts-and-promises-in-islam.html` | 2,473 | 42 KB | Contracts and promises (Batch 5) |
+| 49 | `articles/debt-and-loans-in-islam.html` | 2,473 | 41 KB | Debt and loans (Batch 5) |
+| 50 | `articles/workers-rights-in-islam.html` | 2,411 | 39 KB | Workers’ rights (Batch 5) |
+| 51 | `articles/business-ethics-and-honest-trade.html` | 2,371 | 39 KB | Business ethics (Batch 5) |
+| 52 | `articles/honouring-parents-in-islam.html` | 2,257 | 41 KB | Parents and family (Batch 4) |
+| 53 | `articles/seerah-of-prophet-muhammad.html` | 2,124 | 40 KB | Seerah (topic 11) |
+| 54 | `articles/islamic-parenting-guide.html` | 2,107 | 39 KB | Parenting (Batch 4) |
+| 55 | `articles/fasting-and-ramadan.html` | 2,084 | 40 KB | Fasting and Ramadan (topic 16) |
+| 56 | `articles/islamic-inheritance-basics.html` | 2,072 | 37 KB | Inheritance (Batch 4) |
+| 57 | `articles/salah-complete-beginners-guide.html` | 1,975 | 50 KB | Salah (topic 6) |
+| 58 | `articles/beginners-guide-to-islam.html` | 1,974 | 49 KB | Foundations (topic 1) |
+| 59 | `articles/rights-of-neighbours-in-islam.html` | 1,971 | 38 KB | Neighbours (Batch 4) |
+| 60 | `articles/stories-of-the-prophets.html` | 1,961 | 40 KB | Prophetic narratives (topic 12) |
+| 61 | `articles/ninety-nine-names-of-allah.html` | 1,955 | 40 KB | Names of Allah (topic 18) |
+| 62 | `articles/zakat-educational-calculation-guide.html` | 1,954 | 52 KB | Zakat (topic 10) |
+| 63 | `articles/wudu-ghusl-tayammum-guide.html` | 1,944 | 47 KB | Purification (topic 7) |
+| 64 | `articles/quran-translation-vs-tafsir.html` | 1,933 | 49 KB | Translation vs tafsir (topic 3) |
+| 65 | `articles/hajj-and-umrah-guide.html` | 1,926 | 38 KB | Hajj and Umrah (topic 17) |
+| 66 | `articles/hadith-and-sunnah-authenticity.html` | 1,913 | 48 KB | Hadith sciences (topic 8) |
+| 67 | `articles/daily-adhkar-and-supplications.html` | 1,886 | 47 KB | Adhkar (topic 9) |
+| 68 | `articles/tawhid-and-the-shahadah.html` | 1,854 | 46 KB | Tawhid (topic 4) |
+| 69 | `articles/sahaba-biographies.html` | 1,846 | 37 KB | Companions (topic 13) |
+| 70 | `articles/islamic-manners-and-character.html` | 1,800 | 38 KB | Adab (topic 15) |
+| 71 | `articles/islamic-finance-and-riba.html` | 1,798 | 37 KB | Riba and finance (topic 96 / published #101) |
+| 72 | `articles/how-to-read-and-understand-quran.html` | 1,785 | 46 KB | Quran study (topic 2) |
+| 73 | `articles/marriage-and-family-in-islam.html` | 1,726 | 37 KB | Marriage and family (topic 92 / #102) |
+| 74 | `articles/death-and-the-afterlife.html` | 1,722 | 37 KB | Death and afterlife (#103) |
+| 75 | `articles/repentance-dhikr-spiritual-development.html` | 1,709 | 38 KB | Tawbah and dhikr (topic 19) |
+| 76 | `articles/environment-and-stewardship.html` | 1,700 | 38 KB | Environment and stewardship (#105) |
+| 77 | `articles/new-muslim-learning-path.html` | 1,676 | 37 KB | New Muslim path (topic 20) |
+| 78 | `articles/halal-and-haram-food.html` | 1,649 | 37 KB | Halal and haram food (topic 95 / #104) |
+| 79 | `articles/five-pillars-of-islam.html` | 1,593 | 44 KB | Five pillars (topic 5) |
+| 80 | `articles/islamic-history-civilization.html` | 1,538 | 35 KB | History framework (topic 14) |
 
 
-**Article body total: 116,903 words across 49 articles**, averaging **2,386** words each. The eight Seerah articles measure 2,664–3,538 body words on this whole-body convention (which includes FAQ, bibliography and related reading), with a prose core of 2,226–3,049 words. The eight Stories of the Prophets articles (Batches 7a and 7b) measure 2,976–3,596 body words, with a prose core of 2,510–3,078 words. Both strands exceed the 2,500-word editorial guide deliberately, because the brief required full source-critical treatment of each topic.
+**Article body total: 129,070 words across 53 articles**, averaging **2,435** words each. The eight Seerah articles measure 2,664–3,538 body words on this whole-body convention (which includes FAQ, bibliography and related reading). The eight Stories of the Prophets articles (Batches 7a and 7b) measure 2,976–3,596 body words. The four Lives of the Noble Sahaba articles (Batch 8a) measure 2,826–3,377 body words, with a prose core of 2,427–2,963 words. These strands exceed the 2,500-word editorial guide deliberately, because the brief required full source-critical treatment of each topic.
 
-Duplicate check: 5-word shingle Jaccard similarity across the 41 article bodies peaked at **0.0290** (99 Names vs Repentance). The closest Batch 5 pair was **0.0255** (Business Ethics vs Workers’ Rights), driven by shared Quranic quotations and shared economic vocabulary rather than copied prose. The Batch 6b Seerah articles do not appear in the top five pairs.
+Duplicate check: 5-word shingle Jaccard similarity across the 53 article bodies peaked at **0.0308** (Dawud and Sulayman vs Yunus), followed by **0.0290** (99 Names vs Repentance). The closest Batch 5 pair was **0.0255** (Business Ethics vs Workers’ Rights), driven by shared Quranic quotations and shared economic vocabulary rather than copied prose. The closest Batch 8a pair was **0.0282** (Ali vs Uthman), reflecting shared fitna-era source material rather than copied prose.
 
 ---
 
@@ -140,10 +148,10 @@ Duplicate check: 5-word shingle Jaccard similarity across the 41 article bodies 
 
 | Artefact | Size | SHA-256 |
 | :--- | --: | :--- |
-| `downloads/islamic-portal-release.apk` | 5,204,216 bytes (4.96 MiB) | `86096c12cdcc6c9add0f1d33b3c07e0c75ab1acaace3a6b593d917095846f259` |
-| `downloads/islamic-portal-offline-bundle.zip` | 5,063,079 bytes (4.83 MiB) | `bed3ef77672b38c09836428555a600acd43d495b7813ebbfffd404568461c626` |
+| `downloads/islamic-portal-release.apk` | 5,364,152 bytes (5.12 MiB) | `fe67fa3c0d4673f9f40924cbd09090d889b04c51342bbe0b97ca8ff8da49c7c7` |
+| `downloads/islamic-portal-offline-bundle.zip` | 5,220,470 bytes (4.98 MiB) | `4cd264a4fbc4beeda359bfa9cfb69ef932d43e8a309e1f246e9c8ff93ad12b65` |
 
-Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 341 ZIP entries including the 114 Quran chunks, 114 tafsir chunks and 69 HTML pages; the bundle holds 332 files, 69 HTML pages and the same chunks. Extracted APK and bundle entries were hash-compared against `public/` with 0 missing and 0 differing files.
+Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 353 ZIP entries including the 114 Quran chunks, 114 tafsir chunks and 81 HTML pages; the bundle holds 344 files, 81 HTML pages and the same chunks. Extracted APK and bundle entries were hash-compared against `public/` with 0 missing and 0 differing files (342 public files excluding `downloads/`; the bundle adds `OFFLINE-INSTRUCTIONS.txt`).
 
 **Live deployment:** Phase 2 was verified live at `gh-pages` commit `5c135b90732c3b3357aab442be70f2d77ea5c411` (tree from `71350d1:public`) on 29 October 2026. Batch 6a was verified live at `b930b7df756aba7456ae50d93b56c1a8df63cd03` on 29 October 2026. Batch 6b was verified live at `ff4276fc4ccf15ee22db512864932c4813c51c78` on 30 October 2026; see `FINAL_AUDIT_RESULTS.md` §6.6.
 

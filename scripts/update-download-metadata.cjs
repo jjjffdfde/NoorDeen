@@ -51,8 +51,8 @@ console.log('Updated public/download-app.html');
 
 // 3. Update AUDIT/apk-metadata.json
 const metadata = {
-  versionName: "1.2.0",
-  versionCode: 10200,
+  versionName: "1.3.0",
+  versionCode: 10300,
   minSdk: 22,
   targetSdk: 34,
   compileSdk: 34,

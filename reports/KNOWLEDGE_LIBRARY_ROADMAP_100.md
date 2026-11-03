@@ -3,7 +3,7 @@
 **Project:** NoorDeen Islamic Knowledge Library  
 **Document:** Master Educational Syllabus & Content Roadmap (100 Distinct Topics)  
 **Publication Standard:** Classical Sunni Orthodoxy (*Kutub al-Sittah*, *Tafsir Ibn Kathir*, *Fath al-Bari*, *Hisnul Muslim*)  
-**Current Status:** 49 Long-Form Articles Published (Batches 1-7b) | 100-Topic Phased Roadmap  
+**Current Status:** 53 Long-Form Articles Published (Batches 1-8a) | 100-Topic Phased Roadmap  
 
 ---
 
@@ -26,7 +26,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 7  | New-Muslim Education & Beginner Onboarding | 4 Topics      | 1 Live      | 3 Planned   |
 | 8  | Prophetic Seerah (Biography of Muhammad ﷺ) | 8 Topics      | 8 Live      | 0 Planned   |
 | 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | 8 Live      | 0 Planned   |
-| 10 | Lives of the Noble Sahaba (Companions)     | 8 Topics      | Integrated* | 8 Planned   |
+| 10 | Lives of the Noble Sahaba (Companions)     | 8 Topics      | 4 Live      | 4 Planned   |
 | 11 | Islamic Civilizations & Historical Epochs  | 8 Topics      | Integrated* | 8 Planned   |
 | 12 | Islamic Character, Manners & Ethics        | 6 Topics      | 0 Live      | 6 Planned   |
 | 13 | Family Life, Marriage & Social Rights      | 6 Topics      | 0 Live      | 6 Planned   |
@@ -35,7 +35,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 16 | Practical Islamic Tools & Educational Fiqh | 4 Topics      | Integrated* | 4 Planned   |
 | 17 | Evidence-Based Contemporary Questions & QA | 4 Topics      | 0 Live      | 4 Planned   |
 +----+--------------------------------------------+---------------+-------------+-------------+
-|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 26 LIVE     | 74 ROADMAP  |
+|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 30 LIVE     | 70 ROADMAP  |
 +----+--------------------------------------------+---------------+-------------+-------------+
 * Note: Full libraries already exist in public/seerah.html (25 chapters), public/prophets.html (30 narratives), public/sahaba.html (52 monographs), and public/history.html (12 epochs). The roadmap expands these into standalone educational treatises.
 * Note: the "Live" column counts roadmap topics that have a dedicated standalone article mapped to their topic number. Additional published articles from Batches 2–5 are catalogued in reports/CONTENT_COUNTS.md; the per-topic mapping is reconciled as each discipline is expanded.
@@ -212,7 +212,16 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
     - *Scope:* The call to his people, the departure in anger, the ship and the lot, the great fish, the prayer in the darkness, the people who believed, the gourd tree, the rebuke in Surah al-Qalam and the limits of the later legends.
   - 68. **Isa: The Messiah, the Miracles and the Qur’anic Correction** — `public/articles/isa-the-messiah-and-the-quranic-correction.html` [LIVE]
     - *Scope:* The annunciation to Maryam, the birth under the palm, the speech in the cradle, the miracles by Allah’s permission, the Injil, the crucifixion that did not happen, the correction of the Trinity, the second coming and Muslim–Christian relations.
-- **Lives of the Sahaba (Topics 69–76):** Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal, Salman al-Farsi (RA).
+- **Lives of the Sahaba (Topics 69–76):**
+  - 69. **Abu Bakr: The Truthful and the First Caliph** — `public/articles/abu-bakr-the-truthful-and-the-first-caliph.html` [LIVE]
+    - *Scope:* The merchant of Taym, the first days of revelation, al-Siddiq, the freeing of slaves, the cave of Thawr, Madinah and the battles, the Saqifah, the Ridda wars, the refusal to compromise on zakat and the Qur’anic codex.
+  - 70. **Umar: Justice, Conquest and the Caliphate** — `public/articles/umar-al-faruq-justice-and-the-caliphate.html` [LIVE]
+    - *Scope:* The conversion through Surah Ta-Ha, al-Faruq, the hijrah and the battles, the great conquests, Jerusalem, the year of ashes, the plague of Amwas, the diwan, the Hijri calendar and the assassination.
+  - 71. **Uthman: The Standard Codex and the Fitna** — `public/articles/uthman-dhul-nurayn-and-the-standard-codex.html` [LIVE]
+    - *Scope:* The merchant of Umayya, the two migrations, Dhul-Nurayn, the well of Rumah, the army of Tabuk, the standard Qur’anic codex, the grievances, the siege and the assassination.
+  - 72. **Ali: The Gate of Knowledge and the Fitna** — `public/articles/ali-the-gate-of-knowledge-and-the-fitna.html` [LIVE]
+    - *Scope:* The Prophet’s household, the night of the hijrah, Fatima, Badr, Uhud, Khaybar, Ghadir Khumm, the caliphate, the Camel, Siffin, the Kharijites and the assassination in Kufa.
+  - 73–76. **Khadijah, Aisha, Bilal and Salman al-Farsi** — [PLANNED - BATCH 8B]
 - **Islamic History & Civilization (Topics 77–84):** Rightly Guided Caliphs, Umayyads, Abbasids, Al-Andalus, Ottomans, Islamic Contributions to Science, Waqf System, Trade Spread.
 - **Character & Manners (Topics 85–90):** Akhlaq Concept, Guarding the Tongue, Adab al-Ikhtilaf (Disagreement Ethics), Humility vs Pride, Truthfulness, Ithar (Generosity).
 - **Family Life & Society (Topics 91–96):** Birr al-Walidayn (Honoring Parents), Marriage in Islam, Parenting, Ties of Kinship, Halal and Tayyib, Islamic Business Ethics.

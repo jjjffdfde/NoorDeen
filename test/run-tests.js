@@ -1401,7 +1401,7 @@ async function runTestSuite() {
   // 3. About Page Rigor
   const s36_aboutHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'about.html'), 'utf-8');
   assert(!s36_aboutHtml.includes('peer-reviewed'), 'Suite 36: about.html avoids unsupported claims of academic peer review boards');
-  assert(s36_aboutHtml.includes('2,518 assertions'), 'Suite 36: about.html documents verified automated test suites');
+  assert(s36_aboutHtml.includes('2,688 assertions'), 'Suite 36: about.html documents verified automated test suites');
 
   // 4. Download APK Checksum Loading
   const s36_downloadHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'download-app.html'), 'utf-8');
@@ -1921,7 +1921,7 @@ async function runTestSuite() {
   assert(s46QuranJs.includes('handleAyahEnded') && s46QuranJs.includes('ayahRepeatPlayed'), 'Suite 46: 3x/5x ayah repetition is implemented');
 
   const s46Sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  assert(s46Sw.includes("CACHE_VERSION = 'v27'"), 'Suite 46: service worker cache version is v27');
+  assert(s46Sw.includes("CACHE_VERSION = 'v28'"), 'Suite 46: service worker cache version is v28');
   assert(s46Sw.includes('QURAN_CACHE') && s46Sw.includes('preCacheQuranCorpus'), 'Suite 46: service worker pre-caches the Quran corpus');
   assert(s46Sw.includes('TAFSIR_CACHE') && s46Sw.includes('preCacheTafsirIndex'), 'Suite 46: service worker caches tafsir on demand');
   assert(s46Sw.includes("'./offline.html'"), 'Suite 46: offline page is pre-cached');
@@ -2041,7 +2041,7 @@ async function runTestSuite() {
   assert(s47Store.includes('noordeen-tafsir') && s47Store.includes('indexedDB.open'), 'Suite 47: tafsir store persists chunks in IndexedDB');
   assert(s47Store.includes('function getSurah') && s47Store.includes('function getVerse') && s47Store.includes('function getManifest'), 'Suite 47: tafsir store exposes surah, verse and manifest APIs');
   assert(s47Store.includes('function validateSurah') && s47Store.includes('Invalid tafsir chunk'), 'Suite 47: tafsir store validates chunks before caching');
-  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261102a'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
+  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261102b'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
   assert(s47QuranHtml.includes('value="jalalayn-en"') && s47QuranHtml.includes('value="jalalayn-ar"') && s47QuranHtml.includes('value="asbab-ar"') && s47QuranHtml.includes('value="editorial"'), 'Suite 47: Study Mode offers the three verbatim editions plus the editorial option');
   assert(!s47QuranHtml.includes('value="ibn-kathir"'), 'Suite 47: Study Mode no longer offers a non-bundled Ibn Kathir edition');
   assert(s47QuranJs.includes('async renderStudyTafsir') && s47QuranJs.includes('TafsirStore.getSurah'), 'Suite 47: Study Mode loads commentary from the bundled tafsir store');
@@ -2115,7 +2115,7 @@ async function runTestSuite() {
   for (const id of ['thematic-index', 'thematic-search', 'thematic-theme-list', 'thematic-results', 'thematic-disclaimer']) {
     assert(s48Html.includes(`id="${id}"`), `Suite 48: Quran page contains #${id}`);
   }
-  assert(s48Html.includes('js/thematic-index.js?v=20261102a'), 'Suite 48: Quran page loads the thematic index at the current asset version');
+  assert(s48Html.includes('js/thematic-index.js?v=20261102b'), 'Suite 48: Quran page loads the thematic index at the current asset version');
   assert(/finding aid, not a scholarly thematic classification/i.test(s48Html), 'Suite 48: page copy labels the index as a finding aid');
 
   // --- TEST SUITE 49: Batch 6a Seerah Articles ---
@@ -2128,7 +2128,7 @@ async function runTestSuite() {
   ];
 
   const s49Files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.html') && f !== 'index.html');
-  assert(s49Files.length === 49, `Suite 49: article library now holds 49 articles (found ${s49Files.length})`);
+  assert(s49Files.length === 53, `Suite 49: article library now holds 53 articles (found ${s49Files.length})`);
 
   const s49Search = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
   const s49Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
@@ -2142,7 +2142,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 49: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 49: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 49: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102a') && html.includes('app.js?v=20261102a'), `Suite 49: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 49: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 49: ${item.slug} has an article body container`);
@@ -2185,7 +2185,7 @@ async function runTestSuite() {
   }
 
   assert(s49Search.includes('pre-islamic-arabia-jahiliyyah') && s49Search.includes('hijrah-to-madinah'), 'Suite 49: all four Seerah slugs appear in search.js');
-  assert((s49Sitemap.match(/<loc>/g) || []).length === 76, 'Suite 49: sitemap now lists 76 URLs');
+  assert((s49Sitemap.match(/<loc>/g) || []).length === 80, 'Suite 49: sitemap now lists 80 URLs');
   assert(s49Index.includes('Batch 6a Published Articles') && s49Index.includes('🕋') && s49Index.includes('🐪'), 'Suite 49: article catalogue exposes the Batch 6a block and cards');
   assert(/57\. \*\*Madinah[^\n]*\[LIVE\]/.test(s49Roadmap) && /60\. \*\*The Farewell Sermon[^\n]*\[LIVE\]/.test(s49Roadmap), 'Suite 49: roadmap marks topics 57–60 LIVE after Batch 6b');
 
@@ -2199,7 +2199,7 @@ async function runTestSuite() {
   ];
 
   const s50Files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.html') && f !== 'index.html');
-  assert(s50Files.length === 49, `Suite 50: article library now holds 49 articles (found ${s50Files.length})`);
+  assert(s50Files.length === 53, `Suite 50: article library now holds 53 articles (found ${s50Files.length})`);
 
   const s50Search = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
   const s50Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
@@ -2213,7 +2213,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 50: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 50: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 50: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102a') && html.includes('app.js?v=20261102a'), `Suite 50: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 50: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 50: ${item.slug} has an article body container`);
@@ -2256,7 +2256,7 @@ async function runTestSuite() {
   }
 
   assert(s50Search.includes('madinah-society-and-first-muslim-state') && s50Search.includes('farewell-sermon-and-final-years'), 'Suite 50: all four Batch 6b slugs appear in search.js');
-  assert((s50Sitemap.match(/<loc>/g) || []).length === 76, 'Suite 50: sitemap lists 76 URLs');
+  assert((s50Sitemap.match(/<loc>/g) || []).length === 80, 'Suite 50: sitemap lists 80 URLs');
   assert(s50Index.includes('Batch 6b Published Articles') && s50Index.includes('🕌') && s50Index.includes('⚔️'), 'Suite 50: article catalogue exposes the Batch 6b block and cards');
   assert(!/\[PLANNED - BATCH 6B\]/.test(s50Roadmap), 'Suite 50: roadmap no longer marks any Seerah topic as planned for Batch 6b');
   assert(/Seerah al-Nabawiyyah \(Topics 53–60\)/.test(s50Roadmap), 'Suite 50: roadmap retains the Seerah section heading');
@@ -2272,7 +2272,7 @@ async function runTestSuite() {
   ];
 
   const s51Files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.html') && f !== 'index.html');
-  assert(s51Files.length === 49, `Suite 51: article library now holds 49 articles (found ${s51Files.length})`);
+  assert(s51Files.length === 53, `Suite 51: article library now holds 53 articles (found ${s51Files.length})`);
 
   const s51Search = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
   const s51Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
@@ -2286,7 +2286,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 51: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 51: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 51: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102a') && html.includes('app.js?v=20261102a'), `Suite 51: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 51: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 51: ${item.slug} has an article body container`);
@@ -2329,7 +2329,7 @@ async function runTestSuite() {
   }
 
   assert(s51Search.includes('adam-creation-trust-and-repentance') && s51Search.includes('yusuf-beauty-of-forgiveness'), 'Suite 51: all four Batch 7a slugs appear in search.js');
-  assert((s51Sitemap.match(/<loc>/g) || []).length === 76, 'Suite 51: sitemap lists 76 URLs');
+  assert((s51Sitemap.match(/<loc>/g) || []).length === 80, 'Suite 51: sitemap lists 80 URLs');
   assert(s51Index.includes('Batch 7a Published Articles') && s51Index.includes('🌍') && s51Index.includes('🚢'), 'Suite 51: article catalogue exposes the Batch 7a block and cards');
   assert(/65\. \*\*Musa[^\n]*\[LIVE\]/.test(s51Roadmap) && /68\. \*\*Isa[^\n]*\[LIVE\]/.test(s51Roadmap), 'Suite 51: roadmap marks topics 65–68 LIVE in Batch 7b');
   assert(/Stories of the Prophets \(Topics 61–68\)/.test(s51Roadmap), 'Suite 51: roadmap retains the Stories of the Prophets section heading');
@@ -2345,7 +2345,7 @@ async function runTestSuite() {
   ];
 
   const s52Files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.html') && f !== 'index.html');
-  assert(s52Files.length === 49, `Suite 52: article library now holds 49 articles (found ${s52Files.length})`);
+  assert(s52Files.length === 53, `Suite 52: article library now holds 53 articles (found ${s52Files.length})`);
 
   const s52Search = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
   const s52Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
@@ -2359,7 +2359,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 52: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 52: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 52: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102a') && html.includes('app.js?v=20261102a'), `Suite 52: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 52: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 52: ${item.slug} has an article body container`);
@@ -2402,11 +2402,84 @@ async function runTestSuite() {
   }
 
   assert(s52Search.includes('musa-pharaoh-the-exodus-and-the-law') && s52Search.includes('isa-the-messiah-and-the-quranic-correction'), 'Suite 52: all four Batch 7b slugs appear in search.js');
-  assert((s52Sitemap.match(/<loc>/g) || []).length === 76, 'Suite 52: sitemap lists 76 URLs');
+  assert((s52Sitemap.match(/<loc>/g) || []).length === 80, 'Suite 52: sitemap lists 80 URLs');
   assert(s52Index.includes('Batch 7b Published Articles') && s52Index.includes('🏛️') && s52Index.includes('🕊️'), 'Suite 52: article catalogue exposes the Batch 7b block and cards');
   assert(!/\[PLANNED - BATCH 7B\]/.test(s52Roadmap), 'Suite 52: no Stories of the Prophets topic remains planned');
   assert(/\| 9  \| Stories of the Prophets \(Qasas al-Anbiya\)  \| 8 Topics      \| 8 Live      \| 0 Planned   \|/.test(s52Roadmap), 'Suite 52: roadmap discipline row shows all eight topics live');
   assert(/Stories of the Prophets \(Topics 61–68\)/.test(s52Roadmap), 'Suite 52: roadmap retains the Stories of the Prophets section heading');
+
+
+  // --- TEST SUITE 53: Batch 8a Lives of the Noble Sahaba ---
+  console.log('\n--- TEST SUITE 53: Batch 8a Lives of the Noble Sahaba ---');
+  const s53Articles = [
+    { slug: 'abu-bakr-the-truthful-and-the-first-caliph', topic: 69, minBody: 3000 },
+    { slug: 'umar-al-faruq-justice-and-the-caliphate', topic: 70, minBody: 2800 },
+    { slug: 'uthman-dhul-nurayn-and-the-standard-codex', topic: 71, minBody: 2600 },
+    { slug: 'ali-the-gate-of-knowledge-and-the-fitna', topic: 72, minBody: 2700 }
+  ];
+
+  const s53Files = fs.readdirSync(articlesDir).filter(f => f.endsWith('.html') && f !== 'index.html');
+  assert(s53Files.length === 53, `Suite 53: article library now holds 53 articles (found ${s53Files.length})`);
+
+  const s53Search = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
+  const s53Sitemap = fs.readFileSync(path.join(PUBLIC_DIR, 'sitemap.xml'), 'utf-8');
+  const s53Index = fs.readFileSync(path.join(articlesDir, 'index.html'), 'utf-8');
+  const s53Roadmap = fs.readFileSync(path.join(ROOT_DIR, 'reports', 'KNOWLEDGE_LIBRARY_ROADMAP_100.md'), 'utf-8');
+
+  for (const item of s53Articles) {
+    const file = path.join(articlesDir, `${item.slug}.html`);
+    assert(fs.existsSync(file), `Suite 53: ${item.slug}.html exists`);
+    const html = fs.readFileSync(file, 'utf-8');
+    assert(html.length > 30 * 1024, `Suite 53: ${item.slug} is a substantial page (${html.length} bytes)`);
+    assert(/<html lang="en" dir="ltr"/.test(html), `Suite 53: ${item.slug} declares English LTR document`);
+    assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 53: ${item.slug} has the correct canonical URL`);
+    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 53: ${item.slug} uses the current asset version`);
+
+    const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
+    assert(!!bodyMatch, `Suite 53: ${item.slug} has an article body container`);
+    const body = bodyMatch[0];
+    const bodyWords = (body.replace(/<[^>]+>/g, ' ').match(/[A-Za-z0-9\u0600-\u06FF']+/g) || []).length;
+    assert(bodyWords >= item.minBody, `Suite 53: ${item.slug} body reaches depth (${bodyWords} words)`);
+    assert(bodyWords <= 3600, `Suite 53: ${item.slug} body stays within the audited maximum (${bodyWords} words)`);
+
+    const core = html.slice(html.indexOf('<article class="editorial-content-body"'), html.indexOf('id="frequently-asked-questions"'));
+    const coreWords = (core.replace(/<[^>]+>/g, ' ').match(/[A-Za-z0-9\u0600-\u06FF']+/g) || []).length;
+    assert(coreWords >= 1800, `Suite 53: ${item.slug} prose core exceeds 1,800 words (${coreWords})`);
+
+    const sectionIds = [...body.matchAll(/<section id="([^"]+)"/g)].map(m => m[1]);
+    assert(sectionIds.length >= 9, `Suite 53: ${item.slug} has at least nine numbered sections (${sectionIds.length})`);
+    for (const id of sectionIds) {
+      assert(html.includes(`href="#${id}"`), `Suite 53: ${item.slug} TOC links to #${id}`);
+    }
+    assert((body.match(/<h2/g) || []).length >= 10, `Suite 53: ${item.slug} uses multiple H2 headings`);
+    assert((body.match(/<h3/g) || []).length >= 3, `Suite 53: ${item.slug} uses H3 subheadings`);
+
+    const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => m[1]);
+    assert(jsonLdBlocks.length === 2, `Suite 53: ${item.slug} carries exactly two JSON-LD blocks (${jsonLdBlocks.length})`);
+    const parsed = jsonLdBlocks.map(b => JSON.parse(b));
+    assert(parsed.some(o => o['@type'] === 'FAQPage'), `Suite 53: ${item.slug} includes FAQPage schema`);
+    assert(parsed.some(o => o['@type'] === 'BreadcrumbList'), `Suite 53: ${item.slug} includes BreadcrumbList schema`);
+
+    assert(html.includes('id="scholarly-bibliography"'), `Suite 53: ${item.slug} renders a bibliography section`);
+    assert(/Editorial note/i.test(html), `Suite 53: ${item.slug} carries an explicit editorial note`);
+    assert(/Source caution/i.test(html), `Suite 53: ${item.slug} labels later or unverified reports as such`);
+    assert(!/<script[^>]+src="https?:\/\//i.test(html), `Suite 53: ${item.slug} loads no third-party scripts`);
+    assert(!/\]\(https?:\/\//.test(html), `Suite 53: ${item.slug} contains no stray Markdown links`);
+
+    const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
+    assert(new Set(ids).size === ids.length, `Suite 53: ${item.slug} has no duplicate element ids`);
+
+    assert(s53Search.includes(`articles/${item.slug}.html`), `Suite 53: ${item.slug} is registered in the search index`);
+    assert(s53Sitemap.includes(`/articles/${item.slug}.html</loc>`), `Suite 53: ${item.slug} is registered in sitemap.xml`);
+    assert(s53Index.includes(`href="${item.slug}.html"`), `Suite 53: ${item.slug} is linked from the article catalogue`);
+    assert(s53Roadmap.includes(`${item.topic}. **`) && s53Roadmap.includes(`public/articles/${item.slug}.html`) && s53Roadmap.includes('[LIVE]'), `Suite 53: roadmap topic ${item.topic} is marked LIVE with its article path`);
+  }
+
+  assert(s53Search.includes('abu-bakr-the-truthful-and-the-first-caliph') && s53Search.includes('ali-the-gate-of-knowledge-and-the-fitna'), 'Suite 53: all four Batch 8a slugs appear in search.js');
+  assert((s53Sitemap.match(/<loc>/g) || []).length === 80, 'Suite 53: sitemap lists 80 URLs');
+  assert(s53Index.includes('Batch 8a Published Articles') && s53Index.includes('🕋') && s53Index.includes('⚔️'), 'Suite 53: article catalogue exposes the Batch 8a block and cards');
+  assert(/\| 10 \| Lives of the Noble Sahaba \(Companions\)     \| 8 Topics      \| 4 Live      \| 4 Planned   \|/.test(s53Roadmap), 'Suite 53: roadmap discipline row shows four Sahaba topics live');
+  assert(s53Roadmap.includes('73–76. **Khadijah, Aisha, Bilal and Salman al-Farsi** — [PLANNED - BATCH 8B]'), 'Suite 53: roadmap keeps topics 73–76 planned for Batch 8b');
 
   // SUMMARY
   console.log('\n====================================================');

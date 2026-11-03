@@ -35,7 +35,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 1 | Header navigation, desktop dropdowns | PASS | Present on all 76 indexable pages; links resolve (0 real broken in the Batch 7b sweep); active-state highlighter runs without error. | Dropdown interaction is CSS/JS hover + click; not separately keyboard-audited. |
+| 1 | Header navigation, desktop dropdowns | PASS | Present on all 80 indexable pages; links resolve (0 real broken in the Batch 8a sweep); active-state highlighter runs without error. | Dropdown interaction is CSS/JS hover + click; not separately keyboard-audited. |
 | 2 | Mobile drawer menu | PASS | Opens/closes; `aria-expanded` toggles `true`/`false`; `aria-hidden` toggles; focus moves into the drawer; Escape closes. | — |
 | 3 | Global search modal + `Ctrl+K` | PASS | `riba` → 1 result; `zakat` → Zakat Calculator first; `marriage` → article + Seerah chapter + hadith; `barzakh` → death article; `halal food` → article; `parenting` → parenting article; `inheritance` → inheritance article; `neighbour` → neighbours article; `business ethics` → business article; `contract promises` → contracts article; `debt repayment` → debt article first; `workers wages` → workers article. Works from article pages via lazy `data.js`; nested result links return 200; `ayatul kursi` → 2:255; `سورہ واقعہ` → 56; `tabarakallazi` → 67 only. | Search is client-side over a curated index (60 pages + datasets), not a full-text corpus index. |
 | 4 | Language selector + English reset | PASS | Modal offers 11 verified languages; switching to Urdu translates content areas while UI stays `lang="en"` / `dir="ltr"`; reset restores English. | Only 11 of 40 registry languages have UI dictionaries (see `TRANSLATION_AUDIT.md`). |
@@ -117,8 +117,8 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 37 | Articles index | PASS | 49 cards; in-page filter `business` → 1, `contract` → 3, `debt` → 3, `workers` → 1, `seerah` → 8, `prophets` → 9, `hijrah` → 1, reset → 49; roadmap statuses updated for topics 53–68; 49 unique article links. | 39 of 100 roadmap topics published (49 articles incl. additional topics). |
-| 38 | Educational articles (49) | PARTIAL | All 49 render; TOC anchors resolve; 2 JSON-LD blocks each; body length 1,538–3,596 words (prose core 1,538–3,067); max 5-word shingle similarity 0.0308. Batch 7b pages built and checked statically. | Coverage is 39/100 roadmap topics; no scholarly sign-off. Batches 6a, 6b, 7a and 7b exceed the 2,500-word guide deliberately. |
+| 37 | Articles index | PASS | 53 cards; in-page filter `business` → 1, `contract` → 3, `debt` → 3, `workers` → 1, `seerah` → 8, `prophets` → 9, `hijrah` → 1, reset → 53; roadmap statuses updated for topics 53–72; 53 unique article links. | 30 of 100 roadmap topics published (53 articles incl. 23 additional topics). |
+| 38 | Educational articles (53) | PARTIAL | All 53 render; TOC anchors resolve; 2 JSON-LD blocks each; body length 1,538–3,596 words (prose core 1,139–3,078); max 5-word shingle similarity 0.0308. Batch 8a pages built and checked statically. | Coverage is 30/100 roadmap topics; no scholarly sign-off. Batches 6a, 6b, 7a, 7b and 8a exceed the 2,500-word guide deliberately. |
 | 39 | Glossary | PASS | 135 terms with categories, Arabic script and search. | Definitions are concise, not encyclopaedic. |
 | 40 | Learning pathways | PASS | Homepage pathways section now has the previously missing `#guided-learning` anchor; cards link to guides and articles. | — |
 
@@ -128,8 +128,8 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and network-first; displayed hashes match files (`019002cf…` APK, `3bbc577e…` ZIP); APK 5,148,693 bytes / v1.3.0, bundle 5,008,445 bytes / 328 files / 65 pages; page copy states 114 bundled surahs and the v1-only signature. | APK is JAR-signed v1 only; installation not device-tested. |
-| 42 | About page | PASS | Test count updated to 2,023; removed WCAG certification and peer-review claims. | - |
+| 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and network-first; displayed hashes match files (`fe67fa3c…` APK, `4cd264a4…` ZIP); APK 5,364,152 bytes / v1.3.0, bundle 5,220,470 bytes / 344 files / 81 pages; page copy states 114 bundled surahs and the v1-only signature. | APK is JAR-signed v1 only; installation not device-tested. |
+| 42 | About page | PASS | Test count updated to 2,688; removed WCAG certification and peer-review claims. | - |
 | 43 | Sources / methodology | PASS | Bibliography, grading policy, tafsir policy; qibla claim removed. | — |
 | 44 | Contact / corrections | PASS | Required and email validation block invalid submit; valid submit shows an honest "no backend" panel with GitHub issue + mailto dispatch. | No server-side inbox. |
 | 45 | Privacy and terms | PASS | Static policies render; no analytics or ad scripts active by default. | Legal review not performed. |
@@ -141,12 +141,12 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
 | 46 | Data layer (`data.js`, `catalog.json`, `study-content.json`, `data/tafsir/`) | PASS | 114 surahs / 6,236 ayahs; 101 hadith; 102 duas; 6 kalimas; 148 lecture records; 3 tafsir editions + 6 editorial summaries + 30 themes; all parse without error. | English Jalalayn licence and asbab coverage limits are stated in the UI. |
-| 47 | Search index and sitemap | PASS | 64 sitemap URLs (64 unique); 38 article-directory URLs; all 64 indexable pages indexed in `search.js`; robots.txt valid. | Client-side index only. |
-| 48 | Service worker and offline bundle | PASS | SW `v24`; shell precache includes the new tafsir/thematic scripts; **full 114-surah Quran corpus pre-cached in `islamic-portal-quran-v1`**; tafsir manifest + themes pre-cached in `islamic-portal-tafsir-v1`, surah chunks cached on demand; offline fallback page; checksums/downloads network-first. | Audio and video are not bundled; tafsir chunks are available offline only after first open (IndexedDB also retains them); no device install test. |
-| 49 | Android APK | BLOCKED | 349 ZIP entries including 114 Quran corpus chunks and 114 tafsir chunks; 77 HTML pages; no nested APK/ZIP; v1.3.0 (build 10300); `jarsigner` reports a valid v1 signature (SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent. | No v2/v3 signing block; `targetSdk 34`; `adb`/`apksigner` unavailable; **installation not tested**. Plaintext signing passwords and a tracked keystore are a P0 issue (not changed by owner instruction). |
+| 47 | Search index and sitemap | PASS | 80 sitemap URLs (80 unique); 54 article-directory URLs; all 80 indexable pages indexed in `search.js`; robots.txt valid. | Client-side index only. |
+| 48 | Service worker and offline bundle | PASS | SW `v28`; shell precache includes the new tafsir/thematic scripts; **full 114-surah Quran corpus pre-cached in `islamic-portal-quran-v1`**; tafsir manifest + themes pre-cached in `islamic-portal-tafsir-v1`, surah chunks cached on demand; offline fallback page; checksums/downloads network-first. | Audio and video are not bundled; tafsir chunks are available offline only after first open (IndexedDB also retains them); no device install test. |
+| 49 | Android APK | BLOCKED | 353 ZIP entries including 114 Quran corpus chunks and 114 tafsir chunks; 81 HTML pages; no nested APK/ZIP; v1.3.0 (build 10300); `jarsigner` reports a valid v1 signature (SHA256withRSA, 2048-bit, expires 2054-03-12); `APK Sig Block 42` absent. | No v2/v3 signing block; `targetSdk 34`; `adb`/`apksigner` unavailable; **installation not tested**. Plaintext signing passwords and a tracked keystore are a P0 issue (not changed by owner instruction). |
 | 50 | Accessibility baseline | PARTIAL | 0 `<img>` without `alt`; `:focus-visible` styles; ARIA on drawer/search/language modals; skip link added; single `<h1>` per page. | No full WCAG 2.1 AA audit; no screen-reader session; focus visibility in headless not verifiable. |
 | 51 | Responsive layout | PARTIAL | CSS breakpoints at 991/992/1200/1024/960/900/820/768/600/480/360 px; mobile drawer and bottom nav implemented. | Browser tool cannot change viewport (`innerWidth` stays 1000), so 320/375/768/1024/1440 rendering was not visually verified in this cycle. |
-| 52 | SEO and structured data | PASS | 76/76 indexable pages have canonical, description, OG, Twitter, JSON-LD, viewport, manifest, theme-color; `BreadcrumbList` / `FAQPage` / `Article` schemas on articles; `offline.html` is `noindex` and excluded from the sitemap. | No Lighthouse/field Core Web Vitals data; no backlink or ranking evidence. |
+| 52 | SEO and structured data | PASS | 80/80 indexable pages have canonical, description, OG, Twitter, JSON-LD, viewport, manifest, theme-color; `BreadcrumbList` / `FAQPage` / `Article` schemas on articles; `offline.html` is `noindex` and excluded from the sitemap. | No Lighthouse/field Core Web Vitals data; no backlink or ranking evidence. |
 
 ---
 
