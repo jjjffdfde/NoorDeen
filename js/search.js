@@ -523,6 +523,30 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The Qur’anic account of Isa: the annunciation to Maryam, the birth under the palm, the speech in the cradle, the miracles by Allah’s permission, the Injil, the crucifixion that did not happen, the correction of the Trinity and the second coming.",
     url: "articles/isa-the-messiah-and-the-quranic-correction.html",
     keywords: ["isa","jesus","messiah","masih","maryam","mary","injil","gospel","crucifixion","trinity","tawhid","second coming","miracles","virgin birth","prophets"]
+  },
+  {
+    title: "Abu Bakr: The Truthful and the First Caliph",
+    snippet: "The life of Abu Bakr al-Siddiq: his merchant years in Makkah, his early acceptance of Islam, the title al-Siddiq, the persecution and the freeing of slaves, the hijrah and the cave, Madinah and the battles, the Saqifah, the Ridda wars and the compilation of the Qur’an.",
+    url: "articles/abu-bakr-the-truthful-and-the-first-caliph.html",
+    keywords: ["abu bakr","siddiq","first caliph","cave","thawr","hijrah","saqifah","ridda","zakat","quran codex","bilal","aisha","companions","sahaba"]
+  },
+  {
+    title: "Umar: Justice, Conquest and the Caliphate",
+    snippet: "The life of Umar ibn al-Khattab: his early opposition, the conversion through Surah Ta-Ha, al-Faruq, the hijrah and the battles, the caliphate of Abu Bakr, the great conquests, Jerusalem, the year of ashes, the plague of Amwas, the diwan and the Hijri calendar.",
+    url: "articles/umar-al-faruq-justice-and-the-caliphate.html",
+    keywords: ["umar","faruq","khattab","second caliph","conversion","ta-ha","jerusalem","conquests","diwan","hijri calendar","justice","amwas","companions","sahaba"]
+  },
+  {
+    title: "Uthman: The Standard Codex and the Fitna",
+    snippet: "The life of Uthman ibn Affan: his wealth and early conversion, the two migrations, his marriages to the Prophet’s daughters, the well of Rumah and the army of Tabuk, the standard Qur’anic codex, the conquests, the grievances, the siege and the assassination.",
+    url: "articles/uthman-dhul-nurayn-and-the-standard-codex.html",
+    keywords: ["uthman","affan","dhul nurayn","two lights","rumah","tabuk","quran codex","mushaf","fitna","siege","assassination","companions","sahaba"]
+  },
+  {
+    title: "Ali: The Gate of Knowledge and the Fitna",
+    snippet: "The life of Ali ibn Abi Talib: his upbringing in the Prophet’s household, the night of the hijrah, his marriage to Fatima, Badr, Uhud and Khaybar, Ghadir Khumm, the caliphate, the Camel, Siffin, the Kharijites and his assassination in Kufa.",
+    url: "articles/ali-the-gate-of-knowledge-and-the-fitna.html",
+    keywords: ["ali","abi talib","fatima","hasan","husayn","khaybar","ghadir khumm","caliphate","camel","siffin","kharijites","nahrawan","kufa","companions","sahaba"]
   }
 ];
 
