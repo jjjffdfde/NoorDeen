@@ -179,17 +179,17 @@ Failed Tests:         0
 
 ## 5. Build artefacts
 
-Version `?v=20261102b`, app version 1.3.0 (build 10300), service-worker cache `v28`.
+Version `?v=20261102c`, app version 1.3.0 (build 10300), service-worker cache `v29`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 5,220,470 | `4cd264a4fbc4beeda359bfa9cfb69ef932d43e8a309e1f246e9c8ff93ad12b65` |
-| `public/downloads/islamic-portal-release.apk` | 5,364,152 | `fe67fa3c0d4673f9f40924cbd09090d889b04c51342bbe0b97ca8ff8da49c7c7` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 5,220,557 | `427815695c87975e5bfd7fd61f9a7e1af0bdb66531bb6d2f4886fd4ce2985b41` |
+| `public/downloads/islamic-portal-release.apk` | 5,364,269 | `56ba2ece4fd9f79fc786f3774e552a5f78230df91c4f8079ed0c28aed089376b` |
 
 - APK: 353 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 81 HTML pages; bundle: 344 entries including the same 114 Quran chunks, 114 tafsir chunks and 81 pages.
 - `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts (342 public files excluding `downloads/`; 0 missing, 0 differing; the bundle adds `OFFLINE-INSTRUCTIONS.txt`).
 - All eight Seerah pages, all eight Stories of the Prophets pages and all four Batch 8a Sahaba pages are present in both artefacts and hash-match the working tree.
-- APK contains `?v=20261102b`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
+- APK contains `?v=20261102c`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 

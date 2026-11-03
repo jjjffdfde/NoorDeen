@@ -50,7 +50,7 @@
 | Registration | `js/search.js` (4 entries), `sitemap.xml` (80 URLs), `articles/index.html` (cards #50–53, details block 130–133) |
 | Roadmap | Topics 69–72 marked LIVE; topics 73–76 marked PLANNED for Batch 8b; TOTAL 30 LIVE / 70 ROADMAP |
 | Tests | 2,688 assertions, 0 failures, 53 suites |
-| Asset version | `?v=20261102b`, service-worker cache `v28` |
+| Asset version | `?v=20261102c`, service-worker cache `v29` |
 | Builds | APK and bundle rebuilt from the current tree; hashes recorded in `FINAL_AUDIT_RESULTS.md` |
 
 ---

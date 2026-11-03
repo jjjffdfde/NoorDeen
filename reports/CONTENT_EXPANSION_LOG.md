@@ -268,8 +268,8 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Thematic index | 30 themes / 5,639 keyword matches |
 | Automated assertions | **2,688 passing, 0 failing** (53 suites) |
 | Sitemap URLs | 80 |
-| Release APK | 5,364,152 bytes (5.12 MiB), 353 entries / 81 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 5,220,470 bytes (4.98 MiB), 344 files |
+| Release APK | 5,364,269 bytes (5.12 MiB), 353 entries / 81 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 5,220,557 bytes (4.98 MiB), 344 files |
 
 ---
 

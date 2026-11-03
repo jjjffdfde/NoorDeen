@@ -148,8 +148,8 @@ Duplicate check: 5-word shingle Jaccard similarity across the 53 article bodies 
 
 | Artefact | Size | SHA-256 |
 | :--- | --: | :--- |
-| `downloads/islamic-portal-release.apk` | 5,364,152 bytes (5.12 MiB) | `fe67fa3c0d4673f9f40924cbd09090d889b04c51342bbe0b97ca8ff8da49c7c7` |
-| `downloads/islamic-portal-offline-bundle.zip` | 5,220,470 bytes (4.98 MiB) | `4cd264a4fbc4beeda359bfa9cfb69ef932d43e8a309e1f246e9c8ff93ad12b65` |
+| `downloads/islamic-portal-release.apk` | 5,364,269 bytes (5.12 MiB) | `56ba2ece4fd9f79fc786f3774e552a5f78230df91c4f8079ed0c28aed089376b` |
+| `downloads/islamic-portal-offline-bundle.zip` | 5,220,557 bytes (4.98 MiB) | `427815695c87975e5bfd7fd61f9a7e1af0bdb66531bb6d2f4886fd4ce2985b41` |
 
 Both are rebuilt from the current tree; `CHECKSUMS.sha256` matches the files byte-for-byte. The APK is v1.3.0 (build 10300) with 353 ZIP entries including the 114 Quran chunks, 114 tafsir chunks and 81 HTML pages; the bundle holds 344 files, 81 HTML pages and the same chunks. Extracted APK and bundle entries were hash-compared against `public/` with 0 missing and 0 differing files (342 public files excluding `downloads/`; the bundle adds `OFFLINE-INSTRUCTIONS.txt`).
 

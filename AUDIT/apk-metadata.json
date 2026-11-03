@@ -6,9 +6,9 @@
   "compileSdk": 34,
   "packageId": "com.islamicknowledge.portal",
   "appName": "NoorDeen",
-  "apkSize": 5364152,
-  "apkSha256": "fe67fa3c0d4673f9f40924cbd09090d889b04c51342bbe0b97ca8ff8da49c7c7",
+  "apkSize": 5364269,
+  "apkSha256": "56ba2ece4fd9f79fc786f3774e552a5f78230df91c4f8079ed0c28aed089376b",
   "zipSize": 5220470,
-  "zipSha256": "25f95ecfab510f313b1c1ca1f80b6134e1c8fd2ac29b420ba797cb752e7ca975",
-  "lastUpdated": "2026-11-03T03:17:54.421Z"
+  "zipSha256": "4cd264a4fbc4beeda359bfa9cfb69ef932d43e8a309e1f246e9c8ff93ad12b65",
+  "lastUpdated": "2026-11-03T03:51:38.994Z"
 }

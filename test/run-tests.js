@@ -1921,7 +1921,7 @@ async function runTestSuite() {
   assert(s46QuranJs.includes('handleAyahEnded') && s46QuranJs.includes('ayahRepeatPlayed'), 'Suite 46: 3x/5x ayah repetition is implemented');
 
   const s46Sw = fs.readFileSync(path.join(PUBLIC_DIR, 'service-worker.js'), 'utf-8');
-  assert(s46Sw.includes("CACHE_VERSION = 'v28'"), 'Suite 46: service worker cache version is v28');
+  assert(s46Sw.includes("CACHE_VERSION = 'v29'"), 'Suite 46: service worker cache version is v29');
   assert(s46Sw.includes('QURAN_CACHE') && s46Sw.includes('preCacheQuranCorpus'), 'Suite 46: service worker pre-caches the Quran corpus');
   assert(s46Sw.includes('TAFSIR_CACHE') && s46Sw.includes('preCacheTafsirIndex'), 'Suite 46: service worker caches tafsir on demand');
   assert(s46Sw.includes("'./offline.html'"), 'Suite 46: offline page is pre-cached');
@@ -2041,7 +2041,7 @@ async function runTestSuite() {
   assert(s47Store.includes('noordeen-tafsir') && s47Store.includes('indexedDB.open'), 'Suite 47: tafsir store persists chunks in IndexedDB');
   assert(s47Store.includes('function getSurah') && s47Store.includes('function getVerse') && s47Store.includes('function getManifest'), 'Suite 47: tafsir store exposes surah, verse and manifest APIs');
   assert(s47Store.includes('function validateSurah') && s47Store.includes('Invalid tafsir chunk'), 'Suite 47: tafsir store validates chunks before caching');
-  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261102b'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
+  assert(s47QuranHtml.includes('js/tafsir-store.js?v=20261102c'), 'Suite 47: Quran page loads the tafsir store at the current asset version');
   assert(s47QuranHtml.includes('value="jalalayn-en"') && s47QuranHtml.includes('value="jalalayn-ar"') && s47QuranHtml.includes('value="asbab-ar"') && s47QuranHtml.includes('value="editorial"'), 'Suite 47: Study Mode offers the three verbatim editions plus the editorial option');
   assert(!s47QuranHtml.includes('value="ibn-kathir"'), 'Suite 47: Study Mode no longer offers a non-bundled Ibn Kathir edition');
   assert(s47QuranJs.includes('async renderStudyTafsir') && s47QuranJs.includes('TafsirStore.getSurah'), 'Suite 47: Study Mode loads commentary from the bundled tafsir store');
@@ -2115,7 +2115,7 @@ async function runTestSuite() {
   for (const id of ['thematic-index', 'thematic-search', 'thematic-theme-list', 'thematic-results', 'thematic-disclaimer']) {
     assert(s48Html.includes(`id="${id}"`), `Suite 48: Quran page contains #${id}`);
   }
-  assert(s48Html.includes('js/thematic-index.js?v=20261102b'), 'Suite 48: Quran page loads the thematic index at the current asset version');
+  assert(s48Html.includes('js/thematic-index.js?v=20261102c'), 'Suite 48: Quran page loads the thematic index at the current asset version');
   assert(/finding aid, not a scholarly thematic classification/i.test(s48Html), 'Suite 48: page copy labels the index as a finding aid');
 
   // --- TEST SUITE 49: Batch 6a Seerah Articles ---
@@ -2142,7 +2142,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 49: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 49: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 49: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 49: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102c') && html.includes('app.js?v=20261102c'), `Suite 49: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 49: ${item.slug} has an article body container`);
@@ -2213,7 +2213,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 50: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 50: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 50: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 50: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102c') && html.includes('app.js?v=20261102c'), `Suite 50: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 50: ${item.slug} has an article body container`);
@@ -2286,7 +2286,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 51: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 51: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 51: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 51: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102c') && html.includes('app.js?v=20261102c'), `Suite 51: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 51: ${item.slug} has an article body container`);
@@ -2359,7 +2359,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 52: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 52: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 52: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 52: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102c') && html.includes('app.js?v=20261102c'), `Suite 52: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 52: ${item.slug} has an article body container`);
@@ -2433,7 +2433,7 @@ async function runTestSuite() {
     assert(html.length > 30 * 1024, `Suite 53: ${item.slug} is a substantial page (${html.length} bytes)`);
     assert(/<html lang="en" dir="ltr"/.test(html), `Suite 53: ${item.slug} declares English LTR document`);
     assert(html.includes(`<link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/articles/${item.slug}.html">`), `Suite 53: ${item.slug} has the correct canonical URL`);
-    assert(html.includes('main.css?v=20261102b') && html.includes('app.js?v=20261102b'), `Suite 53: ${item.slug} uses the current asset version`);
+    assert(html.includes('main.css?v=20261102c') && html.includes('app.js?v=20261102c'), `Suite 53: ${item.slug} uses the current asset version`);
 
     const bodyMatch = html.match(/<article class="editorial-content-body"[\s\S]*?<\/article>/);
     assert(!!bodyMatch, `Suite 53: ${item.slug} has an article body container`);
