@@ -571,6 +571,34 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "The life of Salman al-Farsi: his Zoroastrian upbringing near Isfahan, his search for the true religion through Syria and Iraq, his enslavement and arrival in Yathrib, his recognition of the Prophet ﷺ, the trench of the Confederates, al-Mada’in and his death.",
     url: "articles/salman-al-farsi-the-seeker-who-crossed-empires.html",
     keywords: ["salman","farsi","persian","isfahan","jayy","trench","khandaq","confederates","mada'in","ahl al-bayt","sahaba","convert"]
+  },
+  {
+    title: "The Rightly Guided Caliphs: Succession, Expansion and the First Fitna",
+    snippet: "The Rashidun caliphate as an institution: the Saqifa and the bay‘ah, Abu Bakr and the ridda wars, Umar and the machinery of empire, Uthman and the standard codex, Ali and the first fitna, taxation, the garrison towns and the contested memory of the four caliphs.",
+    url: "articles/rightly-guided-caliphs-succession-and-expansion.html",
+    priority: 95,
+    keywords: ["rashidun","rightly guided caliphs","abu bakr","umar","uthman","ali","saqifa","bay'ah","ridda","fitna","camel","siffin","kharaj","jizya","diwan","history"]
+  },
+  {
+    title: "The Umayyads: Damascus, Dynasty and the Limits of the Arab Kingdom",
+    snippet: "The Umayyad caliphate from Mu‘awiya to Marwan II: Damascus, the second fitna and Karbala, Abd al-Malik and the coinage, al-Hajjaj, the conquests of Africa, Iberia and Sind, Umar II’s reforms and the Abbasid revolution of 750.",
+    url: "articles/umayyads-damascus-and-the-arab-kingdom.html",
+    priority: 95,
+    keywords: ["umayyads","muawiya","damascus","yazid","karbala","husayn","abd al-malik","hajjaj","umar ii","iberia","sind","abbasid revolution","history"]
+  },
+  {
+    title: "The Abbasids: Baghdad, the Translation Movement and the Fragmentation of the Caliphate",
+    snippet: "The Abbasid caliphate from the revolution of 750 to the sack of Baghdad in 1258: the Round City, the Barmakids, Harun al-Rashid, the translation movement, paper and commerce, the mihna, the Buyids and Seljuks, and the Mongol catastrophe.",
+    url: "articles/abbasids-baghdad-and-the-fragmentation.html",
+    priority: 95,
+    keywords: ["abbasids","baghdad","harun al-rashid","barmakids","translation movement","bayt al-hikma","mihna","ibn hanbal","buyids","seljuks","mongols","1258","history"]
+  },
+  {
+    title: "Al-Andalus: Córdoba, the Taifas and the Memory of Convivencia",
+    snippet: "Al-Andalus from the conquest of 711 to the fall of Granada in 1492: the emirate and caliphate of Córdoba, Madinat al-Zahra, Ibn Rushd and Maimonides, the taifas, the Almoravids and Almohads, the Reconquista and the debate over convivencia.",
+    url: "articles/al-andalus-cordoba-taifas-and-convivencia.html",
+    priority: 95,
+    keywords: ["al-andalus","andalusia","spain","iberia","cordoba","granada","convivencia","tariq","ibn rushd","maimonides","almohads","almoravids","1492","history"]
   }
 ];
 
@@ -1483,7 +1511,7 @@ const UniversalSearch = {
           title: page.title,
           snippet: page.snippet,
           url: page.url,
-          priority: startsWithTerm ? 100 : titleMatch ? 90 : 80
+          priority: page.priority || (startsWithTerm ? 100 : titleMatch ? 90 : 80)
         });
       }
     });
