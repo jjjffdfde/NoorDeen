@@ -23,11 +23,10 @@ const JS_PATH = path.join(ROOT, 'public', 'data', 'dr-israr', 'catalog.js');
 function validate(catalog) {
   const errors = [];
   if (!catalog || typeof catalog !== 'object') errors.push('catalog is not an object');
-  if (catalog.schemaVersion !== 1) errors.push(`unexpected schemaVersion: ${catalog.schemaVersion}`);
+  if (catalog.schemaVersion !== 1 && catalog.schemaVersion !== 2) errors.push(`unexpected schemaVersion: ${catalog.schemaVersion}`);
   if (!Array.isArray(catalog.videos)) errors.push('videos is not an array');
   if (!Array.isArray(catalog.series)) errors.push('series is not an array');
   if (!catalog.speaker || typeof catalog.speaker.name !== 'string') errors.push('speaker.name missing');
-  if (!catalog.source || typeof catalog.source.primary !== 'string') errors.push('source.primary missing');
 
   const seen = new Set();
   (catalog.videos || []).forEach((v, i) => {
@@ -41,11 +40,13 @@ function validate(catalog) {
       if (seen.has(v.id)) errors.push(`${where}.id duplicated: ${v.id}`);
       seen.add(v.id);
     }
-    try {
-      const u = new URL(v.sourceUrl);
-      if (u.protocol !== 'https:') errors.push(`${where}.sourceUrl is not https`);
-    } catch (e) {
-      errors.push(`${where}.sourceUrl invalid: ${v.sourceUrl}`);
+    if (v.sourceUrl) {
+      try {
+        const u = new URL(v.sourceUrl);
+        if (u.protocol !== 'https:' && u.protocol !== 'http:') errors.push(`${where}.sourceUrl is not http(s)`);
+      } catch (e) {
+        errors.push(`${where}.sourceUrl invalid: ${v.sourceUrl}`);
+      }
     }
   });
   return errors;

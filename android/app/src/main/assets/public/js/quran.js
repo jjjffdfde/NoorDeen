@@ -410,8 +410,6 @@ class QuranReader {
     this.audioElement = new Audio();
     this.isPlaying = false;
     this.reciter = localStorage.getItem('islamic_portal_reciter') || 'Alafasy_128kbps';
-    this.repeatMode = 'none'; // 'none' | 'ayah' | 'surah'
-    this.playbackRate = 1.0;
     this.fontSize = parseInt(localStorage.getItem('islamic_portal_font_size') || '30', 10);
     this.translationMode = localStorage.getItem('islamic_portal_translation_mode') || 'both';
     this.translationLang = localStorage.getItem('islamic_portal_quran_trans_lang') || 'en';
@@ -422,14 +420,29 @@ class QuranReader {
     this.surahData = null;
     this.isDownloadingAudio = false;
 
+    // Persistent player state (survives navigation and reloads)
+    this.ayahRepeatPlayed = 0;
+    this.repeatMode = localStorage.getItem('islamic_portal_repeat_mode') || 'none';
+    if (['none', 'ayah', 'ayah3', 'ayah5', 'surah'].indexOf(this.repeatMode) === -1) {
+      this.repeatMode = 'none';
+    }
+    this.playbackRate = parseFloat(localStorage.getItem('islamic_portal_playback_rate') || '1') || 1;
+
     // Study Mode & Tafsir State
     this.activeStudyAyah = null;
-    this.studyTafsirEdition = 'ibn-kathir';
+    const savedTafsirEdition = (typeof localStorage !== 'undefined')
+      ? localStorage.getItem('islamic_portal_tafsir_edition')
+      : null;
+    this.studyTafsirEdition = ['jalalayn-en', 'jalalayn-ar', 'asbab-ar', 'editorial'].includes(savedTafsirEdition)
+      ? savedTafsirEdition
+      : 'jalalayn-en';
     this.activeStudyTab = 'tafsir';
     this.studyData = null;
+    this.tafsirRequestToken = 0;
 
     this.initAudioListeners();
     this.initStudyData();
+    this.restorePlayerState();
   }
 
   async initStudyData() {
@@ -457,16 +470,19 @@ class QuranReader {
   initAudioListeners() {
     // When ayah audio finishes playing
     this.audioElement.addEventListener('ended', () => {
-      if (this.repeatMode === 'ayah') {
-        this.playAyah(this.currentSurah, this.currentAyah);
-      } else if (this.surahData && this.currentAyah < this.surahData.numberOfAyahs) {
-        this.playAyah(this.currentSurah, this.currentAyah + 1);
-      } else if (this.repeatMode === 'surah') {
-        this.playAyah(this.currentSurah, 1);
-      } else {
-        this.isPlaying = false;
-        this.updateAudioBarUI();
-      }
+      this.handleAyahEnded();
+    });
+
+    this.audioElement.addEventListener('play', () => {
+      this.isPlaying = true;
+      this.updateAudioBarUI();
+      this.persistPlayerState();
+    });
+
+    this.audioElement.addEventListener('pause', () => {
+      this.isPlaying = false;
+      this.updateAudioBarUI();
+      this.persistPlayerState();
     });
 
     // Time update for seek bar and elapsed readout
@@ -495,6 +511,30 @@ class QuranReader {
     });
   }
 
+  // Repeat modes: none → ayah → ayah3 → ayah5 → surah → none
+  handleAyahEnded() {
+    const mode = this.repeatMode;
+    if (mode === 'ayah' || mode === 'ayah3' || mode === 'ayah5') {
+      const target = mode === 'ayah' ? Infinity : (mode === 'ayah3' ? 3 : 5);
+      this.ayahRepeatPlayed += 1;
+      if (this.ayahRepeatPlayed < target) {
+        this.playAyah(this.currentSurah, this.currentAyah, { repeat: true });
+        return;
+      }
+      this.ayahRepeatPlayed = 0;
+    }
+
+    if (this.surahData && this.currentAyah < this.surahData.numberOfAyahs) {
+      this.playAyah(this.currentSurah, this.currentAyah + 1);
+    } else if (mode === 'surah') {
+      this.playAyah(this.currentSurah, 1);
+    } else {
+      this.isPlaying = false;
+      this.persistPlayerState();
+      this.updateAudioBarUI();
+    }
+  }
+
   formatTime(seconds) {
     if (isNaN(seconds) || seconds < 0) return '00:00';
     const mins = Math.floor(seconds / 60);
@@ -502,12 +542,105 @@ class QuranReader {
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   }
 
-  // Load a complete Surah (from offline bundled cache or online verified cloud)
-  async loadSurah(surahNumber = 1) {
-    this.currentSurah = Number(surahNumber);
-    const container = document.getElementById('quran-ayahs-container');
+  // Update the reader header from Surah metadata (used while loading and on failure)
+  updateSurahHeader(meta) {
+    if (!meta) return;
     const headerTitle = document.getElementById('surah-title-header');
     const headerMeta = document.getElementById('surah-meta-header');
+    if (headerTitle) {
+      headerTitle.textContent = `${meta.number}. ${meta.englishName} (${meta.name})`;
+    }
+    if (headerMeta) {
+      const type = meta.revelationType || '';
+      headerMeta.textContent = `${meta.englishNameTranslation || ''} • ${meta.numberOfAyahs} Verses${type ? ` • Revelation: ${type}` : ''}`;
+    }
+  }
+
+  // Keep the address bar in sync with the open Surah / Ayah so links are shareable
+  syncUrl(surahNum, ayahNum) {
+    if (!window.history || typeof window.history.replaceState !== 'function') return;
+    const params = new URLSearchParams(window.location.search);
+    params.set('surah', String(surahNum));
+    params.delete('verse');
+    if (ayahNum) params.set('ayah', String(ayahNum));
+    else params.delete('ayah');
+    const qs = params.toString();
+    window.history.replaceState(null, '', `${window.location.pathname}${qs ? `?${qs}` : ''}`);
+  }
+
+  // Render the bundled database for a Surah, with honest flags for partial / untranslated data
+  useBundledSurah(offline, { partial = false } = {}) {
+    const bundledCount = offline.ayahs.length;
+    const declaredCount = offline.numberOfAyahs || bundledCount;
+    const translationAvailable = this.translationLang === 'en' || this.translationLang === 'ur' || this.translationMode === 'arabic';
+    const isUrdu = this.translationLang === 'ur';
+
+    this.offlineFallback = {
+      partial: partial || bundledCount < declaredCount,
+      bundledCount,
+      declaredCount,
+      translationAvailable
+    };
+
+    this.surahData = {
+      ...offline,
+      ayahs: offline.ayahs.map(a => ({
+        ...a,
+        selectedTranslation: isUrdu ? a.ur : (this.translationLang === 'en' ? a.en : null)
+      }))
+    };
+    this.renderSurah();
+    this.saveLastReadPosition(this.currentSurah, 1);
+  }
+
+  retryLoadSurah() {
+    return this.loadSurah(this.currentSurah || 1);
+  }
+
+  // Render a complete surah from the bundled Phase 1 corpus (all 114 surahs).
+  useCorpusSurah(chunk) {
+    const isUrdu = this.translationLang === 'ur';
+    const translationAvailable = this.translationLang === 'en' || this.translationLang === 'ur' || this.translationMode === 'arabic';
+
+    this.offlineFallback = {
+      partial: false,
+      bundledCount: chunk.ayahs.length,
+      declaredCount: chunk.numberOfAyahs,
+      translationAvailable,
+      source: 'corpus'
+    };
+
+    this.surahData = {
+      ...chunk,
+      ayahs: chunk.ayahs.map(a => ({
+        ...a,
+        selectedTranslation: isUrdu ? a.ur : (this.translationLang === 'en' ? a.en : null)
+      }))
+    };
+    this.renderSurah();
+    this.saveLastReadPosition(this.currentSurah, 1);
+    this.updateKhatamUI();
+  }
+
+  // Load a complete Surah (bundled cache when complete, otherwise verified online source)
+  async loadSurah(surahNumber = 1) {
+    const surahNum = Number(surahNumber);
+    if (!Number.isInteger(surahNum) || surahNum < 1 || surahNum > 114) {
+      if (window.App && typeof window.App.showToast === 'function') {
+        window.App.showToast('Please choose a Surah between 1 and 114.');
+      }
+      return false;
+    }
+
+    this.currentSurah = surahNum;
+    const requestToken = (this.loadRequestToken || 0) + 1;
+    this.loadRequestToken = requestToken;
+
+    const container = document.getElementById('quran-ayahs-container');
+    const meta = ISLAMIC_DATA.surahs.find(s => s.number === surahNum);
+
+    // Reflect the requested Surah immediately, even if loading later fails
+    this.updateSurahHeader(meta);
 
     if (container) {
       container.innerHTML = `
@@ -518,87 +651,142 @@ class QuranReader {
       `;
     }
 
-    // 1. Check offline bundled database
-    if (ISLAMIC_DATA.offlineSurahs && ISLAMIC_DATA.offlineSurahs[this.currentSurah]) {
-      const offline = ISLAMIC_DATA.offlineSurahs[this.currentSurah];
-      const isUrdu = this.translationLang === 'ur';
+    const offline = ISLAMIC_DATA.offlineSurahs && ISLAMIC_DATA.offlineSurahs[surahNum];
+    const bundledCount = offline ? offline.ayahs.length : 0;
+    const declaredCount = offline ? (offline.numberOfAyahs || bundledCount) : 0;
+    const isCompleteOffline = Boolean(offline) && bundledCount >= declaredCount && declaredCount > 0;
+    const offlineTranslationSupported = this.translationLang === 'en' || this.translationLang === 'ur' || this.translationMode === 'arabic';
+    const isOffline = typeof navigator !== 'undefined' && navigator.onLine === false;
+
+    // 0. Phase 1 corpus: all 114 surahs ship as verified JSON chunks and are
+    // cached by the service worker + IndexedDB. This path works in airplane mode.
+    if (window.QuranStore && (offlineTranslationSupported || isOffline)) {
+      const corpusSurah = await window.QuranStore.getSurah(surahNum);
+      if (requestToken !== this.loadRequestToken) return false;
+      if (corpusSurah) {
+        this.useCorpusSurah(corpusSurah);
+        this.preloadTafsir(surahNum);
+        return true;
+      }
+    }
+
+    // 1. A complete inline Surah can be read instantly, including offline
+    if (isCompleteOffline && offlineTranslationSupported) {
+      this.useBundledSurah(offline);
+      return true;
+    }
+
+    // 2. Device is offline: show the bundled portion (with an honest notice when incomplete)
+    if (isOffline && offline) {
+      this.useBundledSurah(offline, { partial: !isCompleteOffline });
+      return true;
+    }
+
+    // 3. Fetch the complete Surah from Al-Quran Cloud, retrying transient failures
+    const targetEd = (this.translationInfo && this.translationInfo.verificationStatus === 'verified' && this.translationInfo.editionId)
+      ? this.translationInfo.editionId
+      : 'en.sahih';
+    const editions = ['quran-uthmani'];
+    if (!editions.includes(targetEd)) editions.push(targetEd);
+    if (!editions.includes('en.sahih')) editions.push('en.sahih');
+    if (!editions.includes('ur.jalandhry')) editions.push('ur.jalandhry');
+
+    const fetchEditions = async (eds) => {
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timer = controller ? setTimeout(() => controller.abort(), 15000) : null;
+      try {
+        const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/${eds.join(',')}`, controller ? { signal: controller.signal } : undefined);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (json.code !== 200 || !Array.isArray(json.data) || json.data.length === 0 || !Array.isArray(json.data[0].ayahs)) {
+          throw new Error('Malformed API response');
+        }
+        return json;
+      } finally {
+        if (timer) clearTimeout(timer);
+      }
+    };
+
+    let json = null;
+    try {
+      json = await fetchEditions(editions);
+    } catch (err) {
+      console.warn(`Quran API first attempt failed for Surah ${surahNum}; retrying with core editions:`, err);
+      const retryEditions = ['quran-uthmani'];
+      if (!retryEditions.includes(targetEd)) retryEditions.push(targetEd);
+      if (!retryEditions.includes('en.sahih')) retryEditions.push('en.sahih');
+      try {
+        json = await fetchEditions(retryEditions);
+      } catch (retryErr) {
+        console.warn('Quran API retry failed:', retryErr);
+      }
+    }
+
+    // A newer Surah/translation request superseded this one
+    if (requestToken !== this.loadRequestToken) return false;
+
+    if (json) {
+      const ar = json.data[0];
+      const isTargetVerified = this.translationInfo && this.translationInfo.verificationStatus === 'verified';
+      const targetDataset = isTargetVerified ? json.data.find(d => d.edition && d.edition.identifier === targetEd) : null;
+      const enDataset = json.data.find(d => d.edition && d.edition.identifier === 'en.sahih');
+      const urDataset = json.data.find(d => d.edition && d.edition.identifier === 'ur.jalandhry');
+
+      this.offlineFallback = null;
       this.surahData = {
-        ...offline,
-        ayahs: offline.ayahs.map(a => ({
-          ...a,
-          selectedTranslation: isUrdu ? a.ur : a.en
+        number: ar.number,
+        name: ar.name,
+        englishName: ar.englishName,
+        englishNameTranslation: ar.englishNameTranslation,
+        numberOfAyahs: ar.numberOfAyahs,
+        bismillahPre: ar.number !== 1 && ar.number !== 9,
+        ayahs: ar.ayahs.map((a, idx) => ({
+          num: a.numberInSurah,
+          ar: a.text,
+          selectedTranslation: targetDataset ? targetDataset.ayahs[idx]?.text || '' : null,
+          en: enDataset ? enDataset.ayahs[idx]?.text || '' : '',
+          ur: urDataset ? urDataset.ayahs[idx]?.text || '' : '',
+          tr: '',
+          audio: `${String(ar.number).padStart(3, '0')}${String(a.numberInSurah).padStart(3, '0')}.mp3`
         }))
       };
       this.renderSurah();
       this.saveLastReadPosition(this.currentSurah, 1);
-      return;
+      return true;
     }
 
-    // 2. Fetch from Al-Quran Cloud API if connected
-    try {
-      const editions = ['quran-uthmani'];
-      const targetEd = (this.translationInfo && this.translationInfo.verificationStatus === 'verified' && this.translationInfo.editionId)
-        ? this.translationInfo.editionId
-        : 'en.sahih';
-
-      if (!editions.includes(targetEd)) editions.push(targetEd);
-      if (!editions.includes('en.sahih')) editions.push('en.sahih');
-      if (!editions.includes('ur.jalandhry')) editions.push('ur.jalandhry');
-
-      const res = await fetch(`https://api.alquran.cloud/v1/surah/${this.currentSurah}/editions/${editions.join(',')}`);
-      if (res.ok) {
-        const json = await res.json();
-        if (json.code === 200 && json.data && json.data.length >= 1) {
-          const ar = json.data[0];
-          const isTargetVerified = this.translationInfo && this.translationInfo.verificationStatus === 'verified';
-          const targetDataset = isTargetVerified ? json.data.find(d => d.edition && d.edition.identifier === targetEd) : null;
-          const enDataset = json.data.find(d => d.edition && d.edition.identifier === 'en.sahih');
-          const urDataset = json.data.find(d => d.edition && d.edition.identifier === 'ur.jalandhry');
-
-          this.surahData = {
-            number: ar.number,
-            name: ar.name,
-            englishName: ar.englishName,
-            englishNameTranslation: ar.englishNameTranslation,
-            numberOfAyahs: ar.numberOfAyahs,
-            bismillahPre: ar.number !== 1 && ar.number !== 9,
-            ayahs: ar.ayahs.map((a, idx) => ({
-              num: a.numberInSurah,
-              ar: a.text,
-              selectedTranslation: targetDataset ? targetDataset.ayahs[idx]?.text || '' : null,
-              en: enDataset ? enDataset.ayahs[idx]?.text || '' : '',
-              ur: urDataset ? urDataset.ayahs[idx]?.text || '' : '',
-              tr: '',
-              audio: `${String(ar.number).padStart(3, '0')}${String(a.numberInSurah).padStart(3, '0')}.mp3`
-            }))
-          };
-          this.renderSurah();
-          this.saveLastReadPosition(this.currentSurah, 1);
-          return;
-        }
+    // 4. Network unavailable but a bundled portion exists: show it with an honest banner
+    if (offline) {
+      this.useBundledSurah(offline, { partial: !isCompleteOffline });
+      if (window.App && typeof window.App.showToast === 'function') {
+        window.App.showToast(`Full Surah ${surahNum} could not be loaded. Showing the verses bundled on this device.`, 5000);
       }
-    } catch (err) {
-      console.warn('Network API fetch failed, displaying offline fallback notice:', err);
+      return true;
     }
 
-    // 3. Fallback when Surah is not bundled offline and device is disconnected
-    const meta = ISLAMIC_DATA.surahs.find(s => s.number === this.currentSurah);
-    if (container && meta) {
+    // 5. Nothing bundled and the network failed: honest error card with a retry action
+    this.offlineFallback = null;
+    this.surahData = null;
+    if (container) {
       container.innerHTML = `
-        <div class="card" style="text-align: center; padding: 48px 24px; max-width: 680px; margin: 40px auto; border-top: 3px solid var(--color-gold);">
-          <div style="font-size: 2.2rem; margin-bottom: 12px;">⚡</div>
-          <h3 style="color: var(--color-primary); font-size: 1.35rem; margin-bottom: 8px;">Surah ${meta.englishName} (${meta.name})</h3>
+        <div class="card" role="alert" style="text-align: center; padding: 48px 24px; max-width: 680px; margin: 40px auto; border-top: 3px solid var(--color-gold);">
+          <div style="font-size: 2.2rem; margin-bottom: 12px;">📡</div>
+          <h3 style="color: var(--color-primary); font-size: 1.35rem; margin-bottom: 8px;">Surah ${meta ? meta.englishName : surahNum} could not be loaded</h3>
           <p style="color: var(--color-text-muted); line-height: 1.6; margin-bottom: 24px;">
-            This Surah contains ${meta.numberOfAyahs} verses. Complete offline reading is currently active for Surahs 1 (Al-Fatihah), 36 (Ya-Sin), 67 (Al-Mulk), 97 (Al-Qadr), 108 (Al-Kawthar), 109 (Al-Kafirun), 110 (An-Nasr), 112 (Al-Ikhlas), 113 (Al-Falaq), 114 (An-Nas), and Ayatul Kursi. Additional Surahs stream automatically via verified HTTPS when online.
+            ${meta ? `This Surah contains ${meta.numberOfAyahs} verses.` : ''} The verified Quran text is fetched over HTTPS and was not available just now. Check your connection, then retry. No substitute or machine-generated Quran text is ever shown.
           </p>
           <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <a href="quran.html?surah=1" class="btn btn-primary">Read Surah Al-Fatihah (Offline)</a>
-            <a href="quran.html?surah=36" class="btn btn-outline">Read Surah Ya-Sin (Offline)</a>
-            <a href="quran.html?surah=67" class="btn btn-outline">Read Surah Al-Mulk (Offline)</a>
+            <button type="button" class="btn btn-primary" onclick="quranApp.retryLoadSurah()">Retry loading Surah ${surahNum}</button>
+            <a href="${window.App ? App.resolveUrl('quran.html?surah=1') : 'quran.html?surah=1'}" class="btn btn-outline">Read Surah Al-Fatihah (bundled)</a>
+            <a href="${window.App ? App.resolveUrl('quran.html?surah=112') : 'quran.html?surah=112'}" class="btn btn-outline">Read Surah Al-Ikhlas (bundled)</a>
           </div>
         </div>
       `;
     }
+    if (window.App && typeof window.App.showToast === 'function') {
+      window.App.showToast(`Could not load Surah ${surahNum}. Please check your connection and retry.`, 5000);
+    }
+    return false;
   }
 
   // Load Juz Navigation
@@ -625,12 +813,41 @@ class QuranReader {
     }
   }
 
-  scrollToAyah(ayahNum) {
-    const target = document.getElementById(`ayah-${ayahNum}`);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      this.highlightAyah(ayahNum);
+  scrollToAyah(ayahNum, options = {}) {
+    const num = Number(ayahNum);
+    const total = (this.surahData && (this.surahData.numberOfAyahs || (this.surahData.ayahs && this.surahData.ayahs.length))) || 0;
+
+    if (!Number.isInteger(num) || num < 1 || (total && num > total)) {
+      const range = total ? `1–${total}` : 'the available range';
+      if (window.App && typeof window.App.showToast === 'function') {
+        window.App.showToast(`Ayah ${Number.isFinite(num) ? num : ''} is outside ${range} for this Surah.`);
+      }
+      return false;
     }
+
+    const target = document.getElementById(`ayah-${num}`);
+    if (!target) {
+      if (window.App && typeof window.App.showToast === 'function') {
+        window.App.showToast(this.surahData ? `Ayah ${num} is not available on this page.` : 'Please wait for the Surah to finish loading.');
+      }
+      return false;
+    }
+
+    // Use explicit window scrolling: scrollIntoView can target <body> (overflow-y:auto)
+    // and silently no-op in this layout. Fall back to an instant jump if smooth
+    // scrolling is disabled by the browser or reduced-motion settings.
+    const rect = target.getBoundingClientRect();
+    const targetTop = Math.max(0, rect.top + window.scrollY - (window.innerHeight / 2) + (rect.height / 2));
+    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    setTimeout(() => {
+      if (Math.abs(window.scrollY - targetTop) > 8) {
+        window.scrollTo({ top: targetTop, behavior: 'instant' });
+      }
+    }, 800);
+    this.highlightAyah(num);
+    this.currentAyah = num;
+    if (options.syncUrl !== false) this.syncUrl(this.currentSurah, num);
+    return true;
   }
 
   saveLastReadPosition(surahNum, ayahNum) {
@@ -646,6 +863,9 @@ class QuranReader {
       localStorage.setItem('islamic_portal_last_read', JSON.stringify(lastRead));
     } catch (e) {
       console.warn('Could not persist last read state:', e);
+    }
+    if (window.QuranStore && typeof window.QuranStore.setLastRead === 'function') {
+      window.QuranStore.setLastRead(surahNum, ayahNum);
     }
   }
 
@@ -707,6 +927,31 @@ class QuranReader {
 
     if (!container) return;
     container.innerHTML = '';
+
+    // Honest notice when bundled data is partial or lacks the selected translation
+    if (this.offlineFallback) {
+      const fallback = this.offlineFallback;
+      const messages = [];
+      if (fallback.partial) {
+        messages.push(`Showing ${fallback.bundledCount} of ${fallback.declaredCount} verses bundled on this device. The complete Surah could not be loaded from the network.`);
+      }
+      if (!fallback.translationAvailable) {
+        messages.push(`The selected translation (${(this.translationInfo || {}).name || 'requested language'}) is not bundled offline. Only the Arabic text is shown.`);
+      }
+      if (messages.length) {
+        const notice = document.createElement('div');
+        notice.className = 'card';
+        notice.setAttribute('role', 'status');
+        notice.style.cssText = 'border-left: 4px solid var(--color-gold); margin-bottom: 24px; background: var(--color-surface);';
+        notice.innerHTML = `
+          <p style="margin: 0 0 10px; color: var(--color-text-main); line-height: 1.6; font-size: 0.95rem;">
+            <strong>📶 Offline data notice:</strong> ${messages.join(' ')}
+          </p>
+          <button type="button" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;" onclick="quranApp.retryLoadSurah()">Retry full Surah</button>
+        `;
+        container.appendChild(notice);
+      }
+    }
 
     // Render Surah Overview & Thematic Context Card
     const meta = ISLAMIC_DATA.surahs.find(s => s.number === this.surahData.number) || {};
@@ -789,9 +1034,15 @@ class QuranReader {
                 </div>
               </div>
             ` : `
-              <div class="ayah-translation-unavailable" role="status" style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; padding: 10px 14px; background: var(--color-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--color-gold); margin-bottom: 8px;">
-                ℹ️ <strong>Scholarly Translation Status:</strong> The approved translation for <em>${transInfo.name} (${transInfo.nativeName})</em> is currently undergoing theological review. Unverified machine translations are strictly excluded to preserve Quranic sanctity. Please select an available verified translation (e.g., English or Urdu).
-              </div>
+              ${this.offlineFallback && !this.offlineFallback.translationAvailable ? `
+                <div class="ayah-translation-unavailable" role="status" style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; padding: 10px 14px; background: var(--color-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--color-gold); margin-bottom: 8px;">
+                  ℹ️ <strong>Offline translation notice:</strong> <em>${transInfo.name} (${transInfo.nativeName})</em> is not bundled on this device. Only the Arabic text is shown. Connect to the internet to load this translation.
+                </div>
+              ` : `
+                <div class="ayah-translation-unavailable" role="status" style="font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.5; padding: 10px 14px; background: var(--color-surface); border-radius: var(--radius-sm); border-left: 3px solid var(--color-gold); margin-bottom: 8px;">
+                  ℹ️ <strong>Scholarly Translation Status:</strong> The approved translation for <em>${transInfo.name} (${transInfo.nativeName})</em> is currently undergoing theological review. Unverified machine translations are strictly excluded to preserve Quranic sanctity. Please select an available verified translation (e.g., English or Urdu).
+                </div>
+              `}
             `}
           </div>
         ` : ''}
@@ -834,12 +1085,14 @@ class QuranReader {
     }
   }
 
-  playAyah(surahNum, ayahNum) {
-    this.currentSurah = surahNum;
-    this.currentAyah = ayahNum;
-    const s = String(surahNum).padStart(3, '0');
-    const a = String(ayahNum).padStart(3, '0');
-    const url = `https://everyayah.com/data/${this.reciter}/${s}${a}.mp3`;
+  playAyah(surahNum, ayahNum, options = {}) {
+    this.currentSurah = Number(surahNum);
+    this.currentAyah = Number(ayahNum);
+    if (!options.repeat) this.ayahRepeatPlayed = 0;
+
+    const url = (window.QuranStore && typeof window.QuranStore.buildAudioUrl === 'function')
+      ? window.QuranStore.buildAudioUrl(this.reciter, this.currentSurah, this.currentAyah)
+      : `https://everyayah.com/data/${this.reciter}/${String(surahNum).padStart(3, '0')}${String(ayahNum).padStart(3, '0')}.mp3`;
 
     this.audioElement.src = url;
     this.audioElement.playbackRate = this.playbackRate;
@@ -847,13 +1100,70 @@ class QuranReader {
     this.audioElement.play().then(() => {
       this.isPlaying = true;
       this.updateAudioBarUI();
-      this.highlightAyah(ayahNum);
-      this.saveLastReadPosition(surahNum, ayahNum);
+      this.updateMediaSession();
+      this.highlightAyah(this.currentAyah);
+      this.saveLastReadPosition(this.currentSurah, this.currentAyah);
+      this.persistPlayerState();
     }).catch(err => {
       console.warn('Playback play failed (device policy or offline):', err);
       this.isPlaying = false;
       this.updateAudioBarUI();
     });
+  }
+
+  updateMediaSession() {
+    if (typeof navigator === 'undefined' || !('mediaSession' in navigator)) return;
+    try {
+      const surah = this.surahData || {};
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: `Surah ${surah.englishName || this.currentSurah} — Ayah ${this.currentAyah}`,
+        artist: this.getReciterName(this.reciter),
+        album: 'NoorDeen — Holy Quran',
+        artwork: [
+          { src: (window.App ? App.resolveUrl('icons/icon-512.png') : 'icons/icon-512.png'), sizes: '512x512', type: 'image/png' }
+        ]
+      });
+      navigator.mediaSession.setActionHandler('play', () => this.togglePlayPause());
+      navigator.mediaSession.setActionHandler('pause', () => this.togglePlayPause());
+      navigator.mediaSession.setActionHandler('previoustrack', () => this.playPreviousAyah());
+      navigator.mediaSession.setActionHandler('nexttrack', () => this.playNextAyah());
+    } catch (error) {
+      console.warn('Media Session unavailable:', error);
+    }
+  }
+
+  // Persist enough state to resume the same ayah after navigation or reload.
+  persistPlayerState() {
+    try {
+      localStorage.setItem('islamic_portal_player_state', JSON.stringify({
+        surah: this.currentSurah,
+        ayah: this.currentAyah,
+        reciter: this.reciter,
+        speed: this.playbackRate,
+        repeat: this.repeatMode,
+        timestamp: Date.now()
+      }));
+    } catch (error) {
+      /* storage may be unavailable in private mode */
+    }
+  }
+
+  restorePlayerState() {
+    try {
+      const raw = localStorage.getItem('islamic_portal_player_state');
+      if (!raw) return;
+      const state = JSON.parse(raw);
+      if (!state || !Number.isInteger(state.surah)) return;
+      this.currentSurah = state.surah;
+      this.currentAyah = Number(state.ayah) || 1;
+      if (state.reciter) this.reciter = state.reciter;
+      if (state.speed) this.playbackRate = Number(state.speed) || 1;
+      if (state.repeat) this.repeatMode = state.repeat;
+      this.pendingResume = true;
+      this.updateAudioBarUI();
+    } catch (error) {
+      /* ignore malformed state */
+    }
   }
 
   highlightAyah(ayahNum) {
@@ -869,6 +1179,73 @@ class QuranReader {
     }
   }
 
+  updateKhatamUI() {
+    if (!window.QuranStore || !window.QuranStore.computeKhatamProgress) return;
+    const counts = window.QuranStore.ayahCountsFromMetadata(ISLAMIC_DATA.surahs) || {};
+    const state = window.QuranStore.readState();
+    const progress = window.QuranStore.computeKhatamProgress(state, counts);
+    const plan = window.QuranStore.computeKhatamPlan(state.khatam.days, state.khatam.startDate);
+
+    const bar = document.getElementById('khatam-progress-bar');
+    if (bar) bar.style.width = `${Math.max(0, Math.min(100, progress.percent))}%`;
+
+    const progressText = document.getElementById('khatam-progress-text');
+    if (progressText) {
+      progressText.textContent = `${progress.ayahsRead.toLocaleString()} of ${progress.totalAyahs.toLocaleString()} ayahs (${progress.percent}%) • ${progress.surahsCompleted} surah${progress.surahsCompleted === 1 ? '' : 's'} marked complete`;
+    }
+
+    const planText = document.getElementById('khatam-plan-text');
+    if (planText) {
+      planText.textContent = `${plan.days}-day plan: ${plan.ayahsPerDay} ayahs (about ${plan.pagesPerDay} Mushaf pages) per day, finishing ${plan.finishDate}.`;
+    }
+
+    const remaining = document.getElementById('khatam-days-remaining');
+    if (remaining) {
+      const left = window.QuranStore.daysRemaining(plan.finishDate);
+      remaining.textContent = left > 0 ? `${left} day${left === 1 ? '' : 's'} remaining in this plan.` : 'Plan window has ended — start a new khatam when ready.';
+    }
+
+    const goalSelect = document.getElementById('khatam-goal-select');
+    if (goalSelect) goalSelect.value = String(plan.days);
+
+    const cached = document.getElementById('khatam-cached-count');
+    if (cached && window.QuranStore.cachedCount) {
+      window.QuranStore.cachedCount().then((count) => {
+        cached.textContent = `${count} of 114 surahs stored on this device for offline reading.`;
+      });
+    }
+
+    const surahBtn = document.getElementById('khatam-surah-btn');
+    if (surahBtn) {
+      const done = state.completedSurahs.indexOf(this.currentSurah) !== -1;
+      surahBtn.textContent = done ? `✓ Surah ${this.currentSurah} complete` : `Mark Surah ${this.currentSurah} complete`;
+    }
+  }
+
+  setKhatamGoal(days) {
+    if (!window.QuranStore) return;
+    window.QuranStore.setKhatamDays(days);
+    this.updateKhatamUI();
+    if (window.App) window.App.showToast(`Khatam goal set to ${days} days.`);
+  }
+
+  markCurrentSurahComplete() {
+    if (!window.QuranStore) return;
+    const state = window.QuranStore.toggleSurahComplete(this.currentSurah);
+    const done = state.completedSurahs.indexOf(this.currentSurah) !== -1;
+    this.updateKhatamUI();
+    if (window.App) {
+      window.App.showToast(done ? `Surah ${this.currentSurah} marked complete.` : `Surah ${this.currentSurah} marked incomplete.`);
+    }
+  }
+
+  resetKhatamProgress() {
+    if (!window.QuranStore) return;
+    window.QuranStore.resetKhatam();
+    this.updateKhatamUI();
+    if (window.App) window.App.showToast('Khatam progress reset. Bismillah — start again.');
+  }
+
   togglePlayPause() {
     if (this.isPlaying) {
       this.audioElement.pause();
@@ -877,6 +1254,8 @@ class QuranReader {
       if (this.audioElement.src) {
         this.audioElement.play().then(() => {
           this.isPlaying = true;
+          this.updateMediaSession();
+          this.persistPlayerState();
         }).catch(err => {
           console.warn('Playback failed:', err);
         });
@@ -918,6 +1297,7 @@ class QuranReader {
   setReciter(reciterId) {
     this.reciter = reciterId;
     localStorage.setItem('islamic_portal_reciter', reciterId);
+    this.persistPlayerState();
     if (this.isPlaying) {
       this.playAyah(this.currentSurah, this.currentAyah);
     } else {
@@ -938,32 +1318,48 @@ class QuranReader {
   }
 
   toggleRepeatMode() {
-    const modes = ['none', 'ayah', 'surah'];
-    const nextIdx = (modes.indexOf(this.repeatMode) + 1) % modes.length;
-    this.repeatMode = modes[nextIdx];
+    const next = (window.QuranStore && window.QuranStore.nextRepeatMode)
+      ? window.QuranStore.nextRepeatMode(this.repeatMode)
+      : (this.repeatMode === 'none' ? 'ayah' : 'none');
+    this.repeatMode = next;
+    this.ayahRepeatPlayed = 0;
+    localStorage.setItem('islamic_portal_repeat_mode', this.repeatMode);
+    this.persistPlayerState();
 
     const btn = document.getElementById('audio-repeat-btn');
     if (btn) {
-      if (this.repeatMode === 'none') {
-        btn.textContent = '🔁 Off';
-        btn.style.color = 'var(--color-text-muted)';
-      } else if (this.repeatMode === 'ayah') {
-        btn.textContent = '🔂 Ayah';
-        btn.style.color = 'var(--color-primary)';
-      } else {
-        btn.textContent = '🔁 Surah';
-        btn.style.color = 'var(--color-gold)';
-      }
+      const labels = {
+        none: '🔁 Off',
+        ayah: '🔂 Ayah',
+        ayah3: '🔂 3×',
+        ayah5: '🔂 5×',
+        surah: '🔁 Surah'
+      };
+      btn.textContent = labels[this.repeatMode] || '🔁 Off';
+      btn.style.color = this.repeatMode === 'none' ? 'var(--color-text-muted)' : 'var(--color-primary)';
+      btn.setAttribute('aria-label', `Repeat mode: ${this.repeatMode}. Activate to change.`);
     }
     if (window.App) window.App.showToast(`Repeat mode: ${this.repeatMode.toUpperCase()}`);
   }
 
   setPlaybackSpeed(speed) {
-    this.playbackRate = parseFloat(speed);
+    this.playbackRate = parseFloat(speed) || 1;
     this.audioElement.playbackRate = this.playbackRate;
+    localStorage.setItem('islamic_portal_playback_rate', String(this.playbackRate));
     const btn = document.getElementById('audio-speed-btn');
-    if (btn) btn.textContent = `${this.playbackRate}x`;
+    if (btn) {
+      btn.textContent = `${this.playbackRate}×`;
+      btn.setAttribute('aria-label', `Playback speed ${this.playbackRate} times. Activate to change.`);
+    }
+    this.persistPlayerState();
     if (window.App) window.App.showToast(`Playback speed: ${this.playbackRate}x`);
+  }
+
+  cyclePlaybackSpeed() {
+    const next = (window.QuranStore && window.QuranStore.nextPlaybackSpeed)
+      ? window.QuranStore.nextPlaybackSpeed(this.playbackRate)
+      : (this.playbackRate === 1 ? 1.25 : (this.playbackRate === 1.25 ? 0.75 : 1));
+    this.setPlaybackSpeed(next);
   }
 
   updateAudioBarUI() {
@@ -977,12 +1373,21 @@ class QuranReader {
       playBtn.textContent = this.isPlaying ? '❚❚' : '▶';
       playBtn.setAttribute('aria-label', this.isPlaying ? 'Pause audio' : 'Play audio');
     }
-    if (title && this.surahData) {
-      title.textContent = `Surah ${this.surahData.englishName} — Ayah ${this.currentAyah}`;
+    if (title) {
+      const surah = this.surahData || ISLAMIC_DATA.surahs.find(s => s.number === this.currentSurah) || {};
+      title.textContent = `Surah ${surah.englishName || this.currentSurah} — Ayah ${this.currentAyah}`;
     }
     if (reciterLabel) {
       reciterLabel.textContent = `Reciter: ${this.getReciterName(this.reciter)}`;
     }
+
+    const repeatBtn = document.getElementById('audio-repeat-btn');
+    if (repeatBtn) {
+      const labels = { none: '🔁 Off', ayah: '🔂 Ayah', ayah3: '🔂 3×', ayah5: '🔂 5×', surah: '🔁 Surah' };
+      repeatBtn.textContent = labels[this.repeatMode] || '🔁 Off';
+    }
+    const speedBtn = document.getElementById('audio-speed-btn');
+    if (speedBtn) speedBtn.textContent = `${this.playbackRate}×`;
   }
 
   setTranslationMode(mode) {
@@ -1015,38 +1420,41 @@ class QuranReader {
   copyAyah(ayahNum) {
     const ayah = this.surahData?.ayahs.find(a => a.num === ayahNum);
     if (!ayah) return;
-    const transInfo = this.getTranslationInfo(this.translationLanguage);
+    const lang = this.translationLang;
+    const transInfo = this.translationInfo || this.getTranslationInfo(lang);
     let transText = '';
-    if (this.translationLanguage === 'en' && ayah.en) {
+    if (lang === 'en' && ayah.en) {
       transText = `\n\n"${ayah.en}"\n— Saheeh International`;
-    } else if (this.translationLanguage === 'ur' && ayah.ur) {
+    } else if (lang === 'ur' && ayah.ur) {
       transText = `\n\n"${ayah.ur}"\n— مولانا فتح محمد جالندھری`;
-    } else if (ayah.translations && ayah.translations[this.translationLanguage]) {
-      transText = `\n\n"${ayah.translations[this.translationLanguage]}"\n— ${transInfo.name}: ${transInfo.translator}`;
+    } else if (ayah.selectedTranslation && transInfo.verificationStatus === 'verified') {
+      transText = `\n\n"${ayah.selectedTranslation}"\n— ${transInfo.name}: ${transInfo.translator}`;
     } else if (ayah.en) {
       transText = `\n\n"${ayah.en}"\n— Saheeh International`;
     }
-    const urduExtra = (this.showUrdu && this.translationLanguage !== 'ur' && ayah.ur) ? `\n\n"${ayah.ur}"\n— اردو ترجمہ` : '';
+    const urduExtra = (this.showUrdu && lang !== 'ur' && ayah.ur) ? `\n\n"${ayah.ur}"\n— مولانا فتح محمد جالندھری` : '';
     const text = `${ayah.ar}${transText}${urduExtra}\n\n[Surah ${this.surahData.englishName} (${this.surahData.name}) ${this.surahData.number}:${ayah.num}]`;
-    navigator.clipboard.writeText(text).then(() => {
-      if (window.App) window.App.showToast('Ayah copied to clipboard!');
+    const copier = window.App && window.App.copyText ? window.App.copyText(text) : Promise.resolve(false);
+    copier.then((ok) => {
+      if (window.App) window.App.showToast(ok ? 'Ayah copied to clipboard!' : 'Copy failed — please select the Ayah text manually.');
     });
   }
 
   shareAyah(ayahNum) {
     const ayah = this.surahData?.ayahs.find(a => a.num === ayahNum);
     if (!ayah) return;
-    const transInfo = this.getTranslationInfo(this.translationLanguage);
+    const lang = this.translationLang;
+    const transInfo = this.translationInfo || this.getTranslationInfo(lang);
     let transText = ayah.en || '';
-    if (this.translationLanguage === 'ur' && ayah.ur) {
+    if (lang === 'ur' && ayah.ur) {
       transText = ayah.ur;
-    } else if (ayah.translations && ayah.translations[this.translationLanguage]) {
-      transText = ayah.translations[this.translationLanguage];
+    } else if (ayah.selectedTranslation && transInfo.verificationStatus === 'verified') {
+      transText = ayah.selectedTranslation;
     }
     const shareData = {
       title: `Surah ${this.surahData.englishName} ${this.surahData.number}:${ayah.num}`,
       text: `${ayah.ar}\n\n"${transText}"\n\n[Surah ${this.surahData.englishName} (${this.surahData.name}) ${this.surahData.number}:${ayah.num}]`,
-      url: `${window.location.origin}/quran.html?surah=${this.surahData.number}&ayah=${ayah.num}`
+      url: new URL(`quran.html?surah=${this.surahData.number}&ayah=${ayah.num}`, window.location.href).href
     };
     if (navigator.share) {
       navigator.share(shareData).catch(() => this.copyAyah(ayahNum));
@@ -1125,6 +1533,13 @@ class QuranReader {
 
   // --- STUDY MODE CONTROLLER (Exegesis, Word-by-Word, Comparison, Hadith) ---
 
+  // Load the tafsir chunk in the background so Study Mode opens instantly.
+  preloadTafsir(surahNum) {
+    if (window.TafsirStore && typeof window.TafsirStore.getSurah === 'function') {
+      window.TafsirStore.getSurah(surahNum).catch(() => {});
+    }
+  }
+
   openStudyMode(surahNum, ayahNum) {
     const sNum = Number(surahNum);
     const aNum = Number(ayahNum);
@@ -1199,7 +1614,13 @@ class QuranReader {
   }
 
   setStudyTafsirEdition(editionSlug) {
-    this.studyTafsirEdition = editionSlug;
+    const allowed = ['jalalayn-en', 'jalalayn-ar', 'asbab-ar', 'editorial'];
+    this.studyTafsirEdition = allowed.includes(editionSlug) ? editionSlug : 'jalalayn-en';
+    try {
+      localStorage.setItem('islamic_portal_tafsir_edition', this.studyTafsirEdition);
+    } catch (error) {
+      // Storage can be unavailable in private mode; the in-memory choice still applies.
+    }
     this.renderStudyTafsir();
   }
 
@@ -1210,48 +1631,191 @@ class QuranReader {
     this.renderStudyHadith();
   }
 
-  renderStudyTafsir() {
+  escapeStudyHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  async renderStudyTafsir() {
     const tafsirContent = document.getElementById('study-tafsir-content');
     const tafsirMeta = document.getElementById('study-tafsir-meta');
     if (!tafsirContent || !this.activeStudyAyah) return;
 
-    const key = `${this.activeStudyAyah.surah}:${this.activeStudyAyah.ayah}`;
-    const studyItem = this.studyData && this.studyData[key];
+    const surahNum = this.activeStudyAyah.surah;
+    const ayahNum = this.activeStudyAyah.ayah;
+    const key = `${surahNum}:${ayahNum}`;
+    const editionId = this.studyTafsirEdition;
+    const token = (this.tafsirRequestToken || 0) + 1;
+    this.tafsirRequestToken = token;
 
-    const surahName = this.surahData ? this.surahData.englishName : '';
-    const isJalalayn = this.studyTafsirEdition === 'jalalayn';
-    const bundledText = studyItem ? (isJalalayn ? studyItem.tafsirJalalayn : studyItem.tafsirIbnKathir) : null;
-    const borderColor = isJalalayn ? 'var(--color-gold)' : 'var(--color-primary)';
+    const isCurrent = () => token === this.tafsirRequestToken &&
+      this.activeStudyAyah && this.activeStudyAyah.surah === surahNum &&
+      this.activeStudyAyah.ayah === ayahNum && this.studyTafsirEdition === editionId;
 
-    if (tafsirMeta) {
-      tafsirMeta.textContent = isJalalayn
-        ? "Tafsir al-Jalalayn — Jalal al-Din al-Mahalli & Jalal al-Din al-Suyuti (رحمهما الله) • Concise Grammatical & Contextual Commentary"
-        : "Tafsir al-Qur'an al-'Azim — Al-Hafiz Ibn Kathir (رحمه الله, 774 AH) • Classical Exegesis bi'l-Ma'thur (Quran explained by Quran & Sunnah)";
-    }
+    const surahLabel = this.surahData && this.surahData.englishName
+      ? `Surah ${this.surahData.englishName}`
+      : `Surah ${surahNum}`;
 
-    if (bundledText) {
-      tafsirContent.innerHTML = `
-        <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${borderColor};">
-          <p style="margin: 0; line-height: 1.8;">${bundledText}</p>
-        </div>
-      `;
+    const renderPanel = (bodyHtml, footerHtml, color) => `
+      <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${color};">
+        ${bodyHtml}
+        ${footerHtml ? `<p style="margin: 12px 0 0; padding-top: 8px; border-top: 1px dashed var(--color-border); font-size: 0.78rem; line-height: 1.5; color: var(--color-text-muted);">${footerHtml}</p>` : ''}
+      </div>
+    `;
+
+    // --- NoorDeen editorial summary (site-original paraphrase) -------------
+    if (editionId === 'editorial') {
+      const studyItem = this.studyData && this.studyData[key];
+      const editorialText = studyItem && (studyItem.editorialSummary || studyItem.editorialSummaryAlternate);
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'NoorDeen editorial summary — modern English paraphrase written for this site. Not a classical tafsir and not a verbatim translation.';
+      }
+      if (editorialText) {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;">${this.escapeStudyHtml(editorialText)}</p>`,
+          '<strong>Editorial text:</strong> this is a NoorDeen paraphrase, not the wording of Ibn Kathir, al-Jalalayn or any other scholar. It is not attributed to them and must not be quoted as their tafsir. Verify against a published edition before relying on it.',
+          'var(--color-gold)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>No editorial summary is bundled for ${surahLabel}, verse ${ayahNum}.</strong> NoorDeen editorial summaries cover only six key verses (Al-Fatihah 1:1, 1:2, 1:5, 1:6, Ayat al-Kursi 2:255 and Al-Ikhlas 112:1).</p>
+           <p style="margin: 10px 0 0; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">Choose one of the bundled classical editions above to read commentary for this verse.</p>`,
+          '',
+          'var(--color-gold)'
+        );
+      }
       return;
     }
 
-    // Honest fallback: no commentary is bundled for this verse. Do not invent one.
-    tafsirContent.innerHTML = `
-      <div style="background: var(--color-surface); padding: 16px; border-radius: var(--radius-sm); border-left: 3px solid ${borderColor};">
-        <p style="margin: 0 0 10px 0; line-height: 1.8;">
-          <strong>No commentary is bundled for ${surahName ? 'Surah ' + surahName + ', ' : ''}verse ${key}.</strong>
-          NoorDeen currently bundles verified commentary for a small set of key verses (Al-Fatihah, Ayat al-Kursi and Al-Ikhlas). Rather than display a fabricated or paraphrased explanation attributed to a classical scholar, this panel shows nothing here.
-        </p>
-        <p style="margin: 0; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">
-          Read the full tafsir in a published edition, or consult
-          <a href="https://quran.com/${key.split(':')[0]}/tafsirs" target="_blank" rel="noopener noreferrer">Quran.com's tafsir section</a>
-          and verify against the printed source.
-        </p>
-      </div>
-    `;
+    // --- Bundled classical editions ---------------------------------------
+    if (!window.TafsirStore || typeof window.TafsirStore.getSurah !== 'function') {
+      if (tafsirMeta) tafsirMeta.textContent = 'Bundled commentary is unavailable on this page.';
+      tafsirContent.innerHTML = renderPanel(
+        '<p style="margin: 0; line-height: 1.8;"><strong>The offline tafsir store did not load.</strong> Reload the page with a connection so the commentary chunk can be cached.</p>',
+        '',
+        'var(--color-primary)'
+      );
+      return;
+    }
+
+    if (tafsirMeta) tafsirMeta.textContent = 'Loading bundled commentary…';
+    tafsirContent.innerHTML = renderPanel(
+      '<p style="margin: 0; color: var(--color-text-muted);">Loading the bundled commentary…</p>',
+      '',
+      'var(--color-border)'
+    );
+
+    let chunk = null;
+    try {
+      chunk = await window.TafsirStore.getSurah(surahNum);
+    } catch (error) {
+      chunk = null;
+    }
+    if (!isCurrent()) return;
+
+    let edition = null;
+    try {
+      edition = await window.TafsirStore.getEdition(editionId);
+    } catch (error) {
+      edition = null;
+    }
+    if (!isCurrent()) return;
+
+    if (!chunk) {
+      if (tafsirMeta) tafsirMeta.textContent = 'Bundled commentary could not be loaded.';
+      tafsirContent.innerHTML = renderPanel(
+        `<p style="margin: 0 0 10px; line-height: 1.8;"><strong>The commentary chunk for ${surahLabel} could not be loaded.</strong> It may not be cached yet and the network request failed. No text has been invented to fill the gap.</p>
+         <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.82rem;" onclick="quranApp.renderStudyTafsir()">Retry loading commentary</button>`,
+        '',
+        'var(--color-primary)'
+      );
+      return;
+    }
+
+    const fields = chunk.ayahs[String(ayahNum)] || null;
+
+    // --- Tafsir al-Jalalayn, English translation --------------------------
+    if (editionId === 'jalalayn-en') {
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'Tafsir al-Jalalayn — Jalal al-Din al-Mahalli & Jalal al-Din al-Suyuti • English translation by Dr. Feras Hamza • © Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com) • Bundled for non-commercial educational use';
+      }
+      if (fields && fields.en) {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.85;">${this.escapeStudyHtml(fields.en)}</p>`,
+          '<strong>Attribution:</strong> Tafsir al-Jalalayn, English translation by Dr. Feras Hamza, © Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com). Quoted verbatim from the bundled edition for non-commercial educational use; commercial redistribution requires the Institute\'s permission. Verify against a published edition before quoting.',
+          'var(--color-primary)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>The bundled English edition has no entry for ${surahLabel}, verse ${ayahNum}.</strong> The entry is missing from the source dataset and has not been filled in from another translation.</p>`,
+          'Tafsir al-Jalalayn, English translation by Dr. Feras Hamza, © Royal Aal al-Bayt Institute for Islamic Thought (altafsir.com).',
+          'var(--color-primary)'
+        );
+      }
+      return;
+    }
+
+    // --- Tafsir al-Jalalayn, Arabic original -------------------------------
+    if (editionId === 'jalalayn-ar') {
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'تفسير الجلالين — جلال الدين المحلي وجلال الدين السيوطي • Arabic original (public domain) • Digitised edition: 6,010 of 6,236 verses';
+      }
+      if (fields && fields.ar) {
+        tafsirContent.innerHTML = renderPanel(
+          `<div lang="ar" dir="rtl" style="font-family: var(--font-quran, 'Amiri', serif); font-size: 1.35rem; line-height: 2.15; text-align: right; color: var(--color-text-main);">${this.escapeStudyHtml(fields.ar)}</div>`,
+          '<strong>Attribution:</strong> Tafsir al-Jalalayn by Jalal al-Din al-Mahalli (d. 864 AH) and Jalal al-Din al-Suyuti (d. 911 AH). The Arabic original is in the public domain; this digitisation is used as distributed in the Tafsir API dataset. The digitised edition omits some verses, which are shown as missing rather than filled from another source.',
+          'var(--color-gold)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>The digitised Arabic edition has no entry for ${surahLabel}, verse ${ayahNum}.</strong> This is a known gap in the digitisation (6,010 of 6,236 verses are present). It has not been filled in from another edition.</p>`,
+          'Tafsir al-Jalalayn, Arabic original, public domain.',
+          'var(--color-gold)'
+        );
+      }
+      return;
+    }
+
+    // --- Asbab al-Nuzul, Arabic reports -----------------------------------
+    if (editionId === 'asbab-ar') {
+      if (tafsirMeta) {
+        tafsirMeta.textContent = 'أسباب النزول — reports compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī • Arabic only • 200 reports across 50 surahs • Dataset MIT licence';
+      }
+      const reports = fields && Array.isArray(fields.asbab) ? fields.asbab : [];
+      if (reports.length > 0) {
+        const rangeText = fields.asbabRange
+          ? ` The source report covers ayah(s) ${String(fields.asbabRange).replace('-', '–')}.`
+          : '';
+        const items = reports.map((report) => `
+          <li lang="ar" dir="rtl" style="margin-bottom: 12px; font-family: var(--font-quran, 'Amiri', serif); font-size: 1.12rem; line-height: 2.05; text-align: right;">${this.escapeStudyHtml(report)}</li>
+        `).join('');
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0 0 10px; line-height: 1.8;">Occasion(s) of revelation recorded for ${surahLabel}, verse ${ayahNum}.${rangeText}</p>
+           <ol style="margin: 0; padding-left: 22px;">${items}</ol>`,
+          '<strong>Source:</strong> Arabic reports quoted verbatim from the Asbab al-Nuzul Dataset (MIT licence), compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī. No English translation is bundled, so none is shown. The reports are quoted as recorded; NoorDeen has not independently graded their chains.',
+          'var(--color-primary)'
+        );
+      } else {
+        tafsirContent.innerHTML = renderPanel(
+          `<p style="margin: 0; line-height: 1.8;"><strong>The bundled compilation records no occasion of revelation for ${surahLabel}, verse ${ayahNum}.</strong> Absence of an entry is not a claim that no occasion exists; it means this compilation has no report for this verse.</p>`,
+          'Asbab al-Nuzul Dataset (MIT licence), reports compiled in Ṣaḥīḥ Asbāb al-Nuzūl by Ibrāhīm Muḥammad al-ʿAlī. Arabic only.',
+          'var(--color-primary)'
+        );
+      }
+      return;
+    }
+
+    // Unknown edition: fail closed rather than show the wrong text.
+    if (tafsirMeta) tafsirMeta.textContent = 'Unknown commentary edition.';
+    tafsirContent.innerHTML = renderPanel(
+      '<p style="margin: 0; line-height: 1.8;">The selected commentary edition is not registered. Choose an edition from the list above.</p>',
+      '',
+      'var(--color-primary)'
+    );
   }
 
   renderStudyWBW() {
@@ -1345,12 +1909,15 @@ class QuranReader {
     } else {
       hadithContainer.innerHTML = `
         <div class="card" style="margin: 0; padding: 16px; border-left: 4px solid var(--color-primary); background: var(--color-surface);">
-          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px;">
-            <span class="badge" style="background: var(--color-primary); color: #fff; font-size: 0.72rem;">Authentic Sunnah Context</span>
-            <span style="font-size: 0.78rem; color: var(--color-gold-dark); font-weight: 700;">Prophetic Guidance</span>
+          <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap;">
+            <span class="badge" style="background: var(--color-text-muted); color: #fff; font-size: 0.72rem;">General Sunnah Guidance</span>
+            <span style="font-size: 0.78rem; color: var(--color-gold-dark); font-weight: 700;">Not verse-specific</span>
           </div>
           <p style="margin: 0; font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main);">
-            Prophet Muhammad ﷺ said: <em>"The best among you are those who learn the Quran and teach it."</em> (Sahih al-Bukhari #5027). The verses of Surah ${this.surahData?.englishName || ''} are recited in daily prayers and contemplated for spiritual purification and righteous action.
+            No verse-specific narration is bundled for ${this.surahData?.englishName ? 'Surah ' + this.surahData.englishName + ', ' : ''}verse ${key}. The following is general guidance on reciting and teaching the Quran, not a commentary on this verse:
+          </p>
+          <p style="margin: 8px 0 0; font-size: 0.95rem; line-height: 1.8; color: var(--color-text-main); font-style: italic;">
+            Prophet Muhammad ﷺ said: "The best among you are those who learn the Quran and teach it." (Sahih al-Bukhari #5027)
           </p>
         </div>
       `;

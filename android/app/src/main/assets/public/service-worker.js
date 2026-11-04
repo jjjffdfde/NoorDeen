@@ -3,9 +3,11 @@
  * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v6';
-const CACHE_NAME = 'islamic-portal-shell-v6';
+const CACHE_VERSION = 'v31';
+const CACHE_NAME = 'islamic-portal-shell-v31';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
+const QURAN_CACHE = 'islamic-portal-quran-v1';
+const TAFSIR_CACHE = 'islamic-portal-tafsir-v1';
 
 const STATIC_ASSETS = [
   './',
@@ -21,11 +23,13 @@ const STATIC_ASSETS = [
   './pillars.html',
   './dr-israr-ahmed.html',
   './data/dr-israr/catalog.json',
+  './data/dr-israr/catalog.js',
   './salah-guide.html',
   './wudu-guide.html',
   './janazah-guide.html',
   './eid-guide.html',
   './download-app.html',
+  './offline.html',
   './prayer-times.html',
   './tasbih.html',
   './zakat-calculator.html',
@@ -37,15 +41,21 @@ const STATIC_ASSETS = [
   './privacy.html',
   './terms.html',
   './manifest.json',
-  './css/main.css',
-  './js/config.js',
-  './js/data.js',
-  './js/i18n.js',
-  './js/tools.js',
-  './js/search.js',
-  './js/quran.js',
-  './js/app.js',
-  './js/sahaba-urdu.js',
+  './css/main.css?v=20261104a',
+  './js/config.js?v=20261104a',
+  './js/data.js?v=20261104a',
+  './js/i18n.js?v=20261104a',
+  './js/tools.js?v=20261104a',
+  './js/search.js?v=20261104a',
+  './js/quran-store.js?v=20261104a',
+  './js/tafsir-store.js?v=20261104a',
+  './js/quran.js?v=20261104a',
+  './js/thematic-index.js?v=20261104a',
+  './data/quran/manifest.json',
+  './data/tafsir/manifest.json',
+  './data/tafsir/themes.json',
+  './js/app.js?v=20261104a',
+  './js/sahaba-urdu.js?v=20261104a',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',
@@ -54,15 +64,48 @@ const STATIC_ASSETS = [
   './icons/icon-512.svg'
 ];
 
-// 1. Install Event: Pre-cache core shell
+// 1. Install Event: Pre-cache core shell, then the full Quran corpus.
+// Corpus caching is best-effort so one slow chunk cannot abort installation.
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[ServiceWorker] Pre-caching offline application shell:', CACHE_NAME);
       return cache.addAll(STATIC_ASSETS);
-    }).then(() => self.skipWaiting())
+    }).then(() => preCacheQuranCorpus())
+      .then(() => preCacheTafsirIndex())
+      .then(() => self.skipWaiting())
   );
 });
+
+async function preCacheQuranCorpus() {
+  try {
+    const cache = await caches.open(QURAN_CACHE);
+    const response = await fetch('./data/quran/manifest.json');
+    if (!response.ok) throw new Error(`manifest HTTP ${response.status}`);
+    const manifest = await response.json();
+    const files = (manifest.surahs || []).map((surah) => `./data/quran/surahs/${surah.file}`);
+    if (!files.length) throw new Error('empty Quran manifest');
+    const results = await Promise.allSettled(files.map((file) => cache.add(file)));
+    const failed = results.filter((result) => result.status === 'rejected').length;
+    console.log(`[ServiceWorker] Quran corpus cached: ${files.length - failed}/${files.length} surahs`);
+  } catch (error) {
+    console.warn('[ServiceWorker] Quran corpus pre-cache skipped:', error.message);
+  }
+}
+
+// The tafsir corpus is ~5.8 MB. Only the manifest and thematic index are
+// pre-cached; surah chunks are cached on demand by the fetch handler below.
+async function preCacheTafsirIndex() {
+  try {
+    const cache = await caches.open(TAFSIR_CACHE);
+    const files = ['./data/tafsir/manifest.json', './data/tafsir/themes.json'];
+    const results = await Promise.allSettled(files.map((file) => cache.add(file)));
+    const failed = results.filter((result) => result.status === 'rejected').length;
+    console.log(`[ServiceWorker] Tafsir index cached: ${files.length - failed}/${files.length} files`);
+  } catch (error) {
+    console.warn('[ServiceWorker] Tafsir index pre-cache skipped:', error.message);
+  }
+}
 
 // 2. Activate Event: Clean obsolete caches safely
 self.addEventListener('activate', (event) => {
@@ -70,8 +113,9 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          // Invalidate legacy application shell caches (v1, v2) while strictly preserving audio cache
-          if (key !== CACHE_NAME && key !== AUDIO_CACHE) {
+          // Invalidate legacy application shell caches while preserving the
+          // audio cache and the full Quran corpus cache.
+          if (key !== CACHE_NAME && key !== AUDIO_CACHE && key !== QURAN_CACHE && key !== TAFSIR_CACHE) {
             console.log('[ServiceWorker] Removing legacy application shell cache:', key);
             return caches.delete(key);
           }
@@ -105,6 +149,56 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Bundled tafsir: manifest and thematic index are network-first (small and
+  // occasionally regenerated); surah chunks are cache-first so a verse can be
+  // studied offline after it has been opened once.
+  if (url.origin === self.location.origin && url.pathname.includes('/data/tafsir/')) {
+    const isIndex = url.pathname.endsWith('/manifest.json') || url.pathname.endsWith('/themes.json');
+    event.respondWith(
+      caches.open(TAFSIR_CACHE).then(async (cache) => {
+        const cached = await cache.match(event.request, { ignoreSearch: true });
+        if (!isIndex && cached) return cached;
+        try {
+          const networkResponse = await fetch(event.request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch (error) {
+          if (cached) return cached;
+          return new Response(JSON.stringify({ error: 'Tafsir data not cached offline' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      })
+    );
+    return;
+  }
+
+  // Bundled Quran corpus: dedicated cache, checked before the generic shell.
+  if (url.origin === self.location.origin && url.pathname.includes('/data/quran/surahs/')) {
+    event.respondWith(
+      caches.open(QURAN_CACHE).then(async (cache) => {
+        const cached = await cache.match(event.request, { ignoreSearch: true });
+        if (cached) return cached;
+        try {
+          const networkResponse = await fetch(event.request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch (error) {
+          return new Response(JSON.stringify({ error: 'Surah not cached offline' }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      })
+    );
+    return;
+  }
+
   // Network-First for HTML navigation requests to ensure fresh content and prevent stale cache across deployments
   const isNavigation = event.request.mode === 'navigate' ||
     (event.request.method === 'GET' && event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'));
@@ -126,11 +220,32 @@ self.addEventListener('fetch', (event) => {
           const cached = await caches.match(event.request);
           if (cached) return cached;
 
-          // Universal fallback to offline homepage
-          return (await caches.match('./index.html')) ||
-                 (await caches.match('./')) ||
-                 (await caches.match('index.html'));
+          // Informative offline page instead of silently serving the homepage.
+          return (await caches.match('./offline.html')) ||
+                 new Response('<h1>You are offline</h1><p>Open the cached Quran reader at quran.html.</p>', {
+                   status: 200,
+                   headers: { 'Content-Type': 'text/html; charset=utf-8' }
+                 });
         })
+    );
+    return;
+  }
+
+  // Checksums and downloadable release assets must never be served stale:
+  // Network-First with cache fallback so a rebuilt APK/ZIP hash is visible immediately.
+  if (url.pathname.includes('/downloads/') || url.pathname.endsWith('.sha256')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseClone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }

@@ -5,6 +5,7 @@ const urls = [
   'https://jjjffdfde.github.io/NoorDeen/hadith.html',
   'https://jjjffdfde.github.io/NoorDeen/duas.html',
   'https://jjjffdfde.github.io/NoorDeen/sahaba.html',
+  'https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html',
   'https://jjjffdfde.github.io/NoorDeen/download-app.html',
   'https://jjjffdfde.github.io/NoorDeen/articles/',
   'https://jjjffdfde.github.io/NoorDeen/articles/beginners-guide-to-islam.html',

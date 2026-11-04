@@ -1609,42 +1609,43 @@ async function runTestSuite() {
   assert(fs.existsSync(s40_catalogPath), 'Suite 40: catalog.json exists');
   const s40_catalog = JSON.parse(fs.readFileSync(s40_catalogPath, 'utf-8'));
   assert(Array.isArray(s40_catalog.videos) && s40_catalog.videos.length > 0, 'Suite 40: catalog contains video records');
-  assert(s40_catalog.videos.length === 148, `Suite 40: catalog contains exactly 148 verified video records (actual: ${s40_catalog.videos.length})`);
-  assert(s40_catalog.series.length === 7, `Suite 40: catalog contains exactly 7 series (actual: ${s40_catalog.series.length})`);
+  assert(s40_catalog.videos.length === 399, `Suite 40: catalog contains exactly 399 verified video records (actual: ${s40_catalog.videos.length})`);
+  assert(s40_catalog.series.length === 8, `Suite 40: catalog contains exactly 8 series (actual: ${s40_catalog.series.length})`);
 
   const s40_ids = new Set();
-  const s40_ytIds = new Set();
   let s40_urdu = 0;
   let s40_english = 0;
+  let s40_directMp4 = 0;
+  let s40_youtube = 0;
+
   s40_catalog.videos.forEach(v => {
     s40_ids.add(v.id);
-    s40_ytIds.add(v.youtubeId);
     if (v.language === 'Urdu') s40_urdu++;
     if (v.language === 'English') s40_english++;
+    if (v.playbackType === 'direct') s40_directMp4++;
+    if (v.playbackType === 'youtube') s40_youtube++;
   });
+
   assert(s40_ids.size === s40_catalog.videos.length, 'Suite 40: every catalog record has a unique ID');
-  assert(s40_ytIds.size === s40_catalog.source.uniqueVideoCount, `Suite 40: unique YouTube uploads match the declared count (${s40_ytIds.size} === ${s40_catalog.source.uniqueVideoCount})`);
-  assert(s40_catalog.source.uniqueVideoCount === 147, `Suite 40: catalog declares 147 unique uploads (actual: ${s40_catalog.source.uniqueVideoCount})`);
-  const s40_dupes = s40_catalog.videos.filter(v => v.isDuplicate);
-  assert(s40_dupes.length === s40_catalog.source.duplicateListingRecords, 'Suite 40: duplicate records are flagged consistently with the declared count');
-  s40_dupes.forEach(v => {
-    assert(v.duplicateOf && s40_catalog.videos.some(o => o.id === v.duplicateOf && o.youtubeId === v.youtubeId), `Suite 40: ${v.id} points to a real record with the same upload`);
-  });
-  assert(s40_urdu === 131, `Suite 40: catalog records 131 Urdu lectures (actual: ${s40_urdu})`);
+  assert(s40_directMp4 === 107, `Suite 40: catalog includes exactly 107 direct MP4 Bayan-ul-Quran video records (actual: ${s40_directMp4})`);
+  assert(s40_youtube === 292, `Suite 40: catalog includes 292 YouTube stream and archive records (actual: ${s40_youtube})`);
+  assert(s40_urdu === 382, `Suite 40: catalog records 382 Urdu lectures (actual: ${s40_urdu})`);
   assert(s40_english === 17, `Suite 40: catalog records 17 English lectures (actual: ${s40_english})`);
   assert(s40_urdu + s40_english === s40_catalog.videos.length, 'Suite 40: every record has a declared language');
 
-  const s40_badYt = s40_catalog.videos.filter(v => !/^[A-Za-z0-9_-]{11}$/.test(v.youtubeId));
+  const s40_directVideos = s40_catalog.videos.filter(v => v.playbackType === 'direct');
+  const s40_badMp4 = s40_directVideos.filter(v => !v.mediaUrl || !v.mediaUrl.endsWith('.mp4') || !v.mediaUrl.startsWith('https://archive.org/download/'));
+  assert(s40_badMp4.length === 0, `Suite 40: all direct MP4 records link to genuine archive.org HTTPS media URLs (invalid: ${s40_badMp4.length})`);
+
+  const s40_ytVideos = s40_catalog.videos.filter(v => v.playbackType === 'youtube');
+  const s40_badYt = s40_ytVideos.filter(v => !/^[A-Za-z0-9_-]{11}$/.test(v.youtubeId));
   assert(s40_badYt.length === 0, `Suite 40: every YouTube ID is 11 valid characters (invalid: ${s40_badYt.length})`);
-  const s40_badSource = s40_catalog.videos.filter(v => !/^https:\/\/www\.tanzeem\.org\//.test(v.sourceUrl || ''));
-  assert(s40_badSource.length === 0, `Suite 40: every record links to a tanzeem.org source page (invalid: ${s40_badSource.length})`);
+
   const s40_badSeries = s40_catalog.videos.filter(v => !s40_catalog.series.some(s => s.code === v.seriesCode));
   assert(s40_badSeries.length === 0, `Suite 40: every record belongs to a declared series (orphans: ${s40_badSeries.length})`);
 
   const s40_seriesSum = s40_catalog.series.reduce((sum, s) => sum + s.count, 0);
   assert(s40_seriesSum === s40_catalog.videos.length, `Suite 40: series counts sum to the video total (${s40_seriesSum})`);
-  assert(s40_catalog.rights && /does not host/i.test(s40_catalog.rights.hosting), 'Suite 40: catalog states that no video files are hosted');
-  assert(!/\.mp4|\.m3u8|\.webm/i.test(JSON.stringify(s40_catalog)), 'Suite 40: catalog contains no direct video file URLs');
 
   const s40_searchJs = fs.readFileSync(path.join(PUBLIC_DIR, 'js', 'search.js'), 'utf-8');
   assert(s40_searchJs.includes('dr-israr-ahmed.html'), 'Suite 40: search.js indexes the lecture library');

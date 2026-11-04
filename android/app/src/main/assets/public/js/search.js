@@ -349,6 +349,256 @@ const EDUCATIONAL_SEARCH_PAGES = [
     snippet: "A realistic 12-month path: shahadah, prayer, pillars, Quran, Seerah, hadith, halal and haram, and community.",
     url: "articles/new-muslim-learning-path.html",
     keywords: ["new muslim","convert","revert","learning path","beginner muslim","shahadah","how to become muslim","new shahada","islam journey"]
+  },
+  {
+    title: "Islamic Finance and Riba: A Source-Based Introduction",
+    snippet: "Why Islam regulates money, the two classical categories of riba, modern loans and credit cards, halal financing structures, gharar, and zakat on investments.",
+    url: "articles/islamic-finance-and-riba.html",
+    keywords: ["riba","interest","usury","islamic finance","halal mortgage","murabaha","musharakah","ijarah","sukuk","takaful","gharar","credit card","bank interest","shariah finance"]
+  },
+  {
+    title: "Marriage and Family in Islam: Rights, Contracts and Real Life",
+    snippet: "The Quranic purpose of marriage, choosing a spouse, the marriage contract and mahr, mutual rights, conflict resolution, divorce and raising children.",
+    url: "articles/marriage-and-family-in-islam.html",
+    keywords: ["marriage","nikah","mahr","dowry","wali","guardian","divorce","talaq","khul","iddah","family","parenting","spouse","wife","husband"]
+  },
+  {
+    title: "Death and the Afterlife: A Quranic and Prophetic Overview",
+    snippet: "Preparing a will and settling debts, deathbed etiquette, burial rites, the barzakh, resurrection, judgment, and Paradise and Hell.",
+    url: "articles/death-and-the-afterlife.html",
+    keywords: ["death","afterlife","akhirah","barzakh","grave","resurrection","qiyamah","judgment day","paradise","jannah","hell","jahannam","janazah","will","wasiyyah"]
+  },
+  {
+    title: "Halal and Haram Food: Principles, Practice and Doubts",
+    snippet: "The default of permissibility, explicit prohibitions, slaughter conditions, alcohol, seafood differences, additives, and dealing with genuine doubt.",
+    url: "articles/halal-and-haram-food.html",
+    keywords: ["halal","haram","food","pork","alcohol","khamr","slaughter","zabihah","seafood","shellfish","gelatine","vanilla extract","doubt","tayyib","diet"]
+  },
+  {
+    title: "Environment and Stewardship: The Islamic Case for Caring for the Earth",
+    snippet: "Khalifah and mizan, water and waste, kindness to animals, planting trees, moderation in consumption, and practical environmental action.",
+    url: "articles/environment-and-stewardship.html",
+    keywords: ["environment","stewardship","khalifah","mizan","climate","water","waste","animals","trees","conservation","ecology","moderation","israf","nature"]
+  },
+  {
+    title: "Honouring Parents (Birr al-Walidayn): Rights, Limits and Care in Old Age",
+    snippet: "The Quranic command to honour parents, what birr includes, the limits of obedience, non-Muslim parents, care in old age, family conflict, and what can be done after a parent dies.",
+    url: "articles/honouring-parents-in-islam.html",
+    keywords: ["parents","mother","father","birr","walidayn","filial piety","elderly care","ageing","obedience","non-muslim parents","family","gratitude","dua for parents"]
+  },
+  {
+    title: "Raising Children in Islam: Parenting with Mercy, Structure and Purpose",
+    snippet: "Children as a trust, the Prophetic model of mercy, teaching tawhid and prayer, discipline without harm, emotional health, fairness, screens and parenting adult children.",
+    url: "articles/islamic-parenting-guide.html",
+    keywords: ["parenting","children","child","raising kids","family","mercy","discipline","tarbiyah","prayer at seven","screens","fairness","motherhood","fatherhood","teenagers"]
+  },
+  {
+    title: "Islamic Inheritance (Mawarith): Rights, Shares and Practical Duties",
+    snippet: "Why inheritance is Quranic law, what must be paid before distribution, the fixed shares, the one-third will, common injustices, orphans and minors, and how to seek a qualified calculation.",
+    url: "articles/islamic-inheritance-basics.html",
+    keywords: ["inheritance","mawarith","faraid","will","wasiyyah","estate","heirs","daughter share","son share","one third","orphans","debts","probate"]
+  },
+  {
+    title: "Neighbours in Islam: Rights, Boundaries and Community",
+    snippet: "The Quranic command of neighbourliness, the Prophetic prohibition of harm, everyday rights, privacy, noise and shared spaces, conflict resolution, neighbours of other faiths, and community emergencies.",
+    url: "articles/rights-of-neighbours-in-islam.html",
+    keywords: ["neighbour","neighbor","neighbours","neighbors","community","privacy","noise","parking","shared spaces","kindness","other faiths","local community"]
+  },
+  {
+    title: "Business Ethics and Honest Trade in Islam: Trust, Truthfulness and Fair Measure",
+    snippet: "Why trade is lawful worship, truthful disclosure, honest weights and measures, mutual consent, riba in brief, hoarding and market abuse, advertising, modern business dilemmas, and a practical ethics checklist.",
+    url: "articles/business-ethics-and-honest-trade.html",
+    keywords: ["business","trade","commerce","merchant","honest trade","truthfulness","cheating","fraud","weights","measure","scales","gharar","hoarding","monopoly","advertising","consumer","dropshipping","profit","sales"]
+  },
+  {
+    title: "Contracts and Promises in Islam: Fulfilling the Covenant in Word and Deed",
+    snippet: "The Quranic command to fulfil contracts, promise-keeping as a sign of faith, the elements of a valid contract, writing and witnesses, lawful conditions, broken oaths, breach and repair, and digital contracts.",
+    url: "articles/contracts-and-promises-in-islam.html",
+    keywords: ["contract","contracts","promise","promises","covenant","agreement","oath","trust","amanah","witness","evidence","breach","conditions","terms","digital contract","clickwrap","reconciliation"]
+  },
+  {
+    title: "Debt and Loans in Islam: Borrowing, Repayment and Relief",
+    snippet: "The seriousness of debt, the permission to borrow, qard hasan, the prohibition of riba, documenting loans, repayment and delay, hardship and forgiveness, lending ethics, collateral and guarantees, and modern debt.",
+    url: "articles/debt-and-loans-in-islam.html",
+    keywords: ["debt","debts","loan","loans","borrowing","borrow","qard hasan","repayment","creditor","debtor","riba","interest","mortgage","credit card","guarantee","collateral","insolvency","bankruptcy","forgiveness"]
+  },
+  {
+    title: "Workers’ Rights and Fair Employment in Islam: Wages, Dignity and Justice",
+    snippet: "The dignity of work, the wage contract, fair pay, workload and safety, respect and non-discrimination, vulnerable workers, employee duties, disputes and collective action, and a practical checklist.",
+    url: "articles/workers-rights-in-islam.html",
+    keywords: ["workers","worker","employees","employment","labour","labor","wages","salary","pay","fair pay","employer","dismissal","safety","overtime","migrant workers","domestic workers","gig economy","strike","union"]
+  },
+  {
+    title: "Pre-Islamic Arabia: The World That Received the Qur'an",
+    snippet: "The land, caravan economy, tribal law, religion of the Kaaba, poetry, the status of women and the vulnerable, slavery, the sacred months and the Year of the Elephant, with the limits of the sources stated.",
+    url: "articles/pre-islamic-arabia-jahiliyyah.html",
+    keywords: ["pre-islamic","jahiliyyah","arabia","mecca","makkah","quraysh","kaaba","tribe","tribal","caravan","poetry","muallaqat","hanif","year of the elephant","abraham","ismail","slavery","women","sacred months","seerah context"]
+  },
+  {
+    title: "The Makkan Phase: Persecution, Patience and the Early Believers",
+    snippet: "The first revelation, secret and public preaching, why Quraysh opposed the message, the torture of the vulnerable, the boycott, the migration to Abyssinia, the Year of Sorrow, Ta'if and the Qur'anic response to persecution.",
+    url: "articles/makkan-persecution-and-resilience.html",
+    keywords: ["makkah","mecca","persecution","early muslims","first revelation","hira","boycott","banu hashim","year of sorrow","abyssinia","najashi","taif","bilal","sumayyah","khabbab","patience","sabr","seerah"]
+  },
+  {
+    title: "Al-Isra' wal-Mi'raj: The Night Journey and the Gift of Prayer",
+    snippet: "What the Qur'an and authentic hadith say about the night journey and ascension, the question of date and bodily or spiritual travel, the sanctity of Jerusalem, the meeting with the prophets and the five daily prayers.",
+    url: "articles/isra-and-miraj-night-journey.html",
+    keywords: ["isra","miraj","night journey","ascension","jerusalem","aqsa","masjid al-aqsa","buraq","sidrat al-muntaha","five prayers","salah","27 rajab","abu bakr","siddiq","heavens","seerah"]
+  },
+  {
+    title: "The Hijrah to Madinah: Planning, Trust and a New Society",
+    snippet: "The pledges of Aqabah, the plot in Dar al-Nadwa, the cave of Thawr, the journey with Abu Bakr, Quba and the first mosque, the document of Madinah, the brotherhood between Muhajirun and Ansar, and the Hijri calendar.",
+    url: "articles/hijrah-to-madinah.html",
+    keywords: ["hijrah","migration","madinah","yathrib","aqabah","cave of thawr","abu bakr","quba","first mosque","constitution of madinah","document of madinah","ansar","muhajirun","brotherhood","hijri calendar","622"]
+  },
+  {
+    title: "Madinah: Society, Law and the First Muslim Polity",
+    snippet: "How the Hijrah created a plural city: the document of Madinah, the mosque as centre, the brotherhood of Muhajirun and Ansar, the change of qibla, law and arbitration, the hypocrites, zakat and the honest question of whether Madinah was a state.",
+    url: "articles/madinah-society-and-first-muslim-state.html",
+    keywords: ["madinah","medina","yathrib","document of madinah","constitution of madinah","sahifah","mosque","masjid al-nabawi","ansar","muhajirun","brotherhood","muakhah","qibla","ramadan","zakat","hypocrites","munafiqun","abdullah ibn ubayy","law","justice","state","polity","seerah"]
+  },
+  {
+    title: "Badr, Uhud and the Trench: War, Ethics and Survival",
+    snippet: "The three great early battles of the Seerah: the road to Badr, the day of the criterion, the prisoners and spoils, the archers at Uhud, the wounding of the Prophet, the Confederate siege of the Trench, the wind, and the difficult aftermath with Banu Qurayzah.",
+    url: "articles/battles-of-badr-uhud-and-the-trench.html",
+    keywords: ["badr","uhud","trench","khandaq","ahzab","battle","war","jihad","quraysh","abu sufyan","hamzah","khalid ibn al-walid","archers","martyrs","banu qurayzah","salman al-farsi","confederates","seerah"]
+  },
+  {
+    title: "Hudaybiyyah and the Conquest of Makkah",
+    snippet: "The umrah that became a treaty, the pledge of Ridwan, the terms that looked like humiliation, Surah al-Fath, the breach by Quraysh, the secret march, the entry into Makkah, the general amnesty and the cleansing of the Kaaba.",
+    url: "articles/hudaybiyyah-and-conquest-of-makkah.html",
+    keywords: ["hudaybiyyah","treaty","ridwan","bayat al-ridwan","surah al-fath","conquest of makkah","fath makkah","amnesty","abu sufyan","bilal","kaaba","hunayn","taif","khuzaah","banu bakr","seerah"]
+  },
+  {
+    title: "The Farewell Sermon and the Final Years",
+    snippet: "The farewell pilgrimage, the sermon at Arafah, the sanctity of life and property, the abolition of riba, the rights of women, the call to equality, the final months, the illness and death of the Prophet, and the succession.",
+    url: "articles/farewell-sermon-and-final-years.html",
+    keywords: ["farewell sermon","khutbat al-wada","farewell hajj","arafah","last sermon","riba","women","equality","ghadir khumm","death of the prophet","saqifah","succession","abu bakr","final years","seerah"]
+  },
+  {
+    title: "Adam: Creation, Trust and Repentance",
+    snippet: "The Qur’anic account of Adam: creation from clay, the knowledge of names, the refusal of Iblis, the garden and the tree, the slip and the words of repentance, the descent to earth, the covenant of the descendants of Adam, and the rejection of inherited guilt.",
+    url: "articles/adam-creation-trust-and-repentance.html",
+    keywords: ["adam","hawwa","eve","creation","clay","khalifah","vicegerent","iblis","satan","shaytan","angels","names","garden","forbidden tree","repentance","tawbah","original sin","covenant","fitrah","prophets"]
+  },
+  {
+    title: "Nuh: The Long Call, the Ark and the Flood",
+    snippet: "The Qur’anic story of Nuh: the call by night and day, the rejection by the elites, the building of the ark, the flood, the son who refused, the wife who disbelieved, the covenant after the flood, and the archaeological claims that cannot be verified.",
+    url: "articles/nuh-the-long-call-and-the-ark.html",
+    keywords: ["nuh","noah","ark","flood","950 years","judi","ararat","prophet","messenger","idolatry","repentance","covenant","intercession","prophets"]
+  },
+  {
+    title: "Ibrahim: The Friend of Allah and the Trial of Faith",
+    snippet: "The Qur’anic story of Ibrahim: the search for the Lord among the star, moon and sun, the breaking of the idols, the fire that became cool, the father who refused, the guests and the annunciation, Isma’il and the sacrifice, the building of the House and the pilgrimage.",
+    url: "articles/ibrahim-friend-of-allah-and-the-trial.html",
+    keywords: ["ibrahim","abraham","khalil","hanif","idols","nimrod","fire","migration","lut","ishaq","ismail","sacrifice","zamzam","kaaba","house","makkah","hajj","maqam ibrahim","prophets"]
+  },
+  {
+    title: "Yusuf: Beauty, Chastity and Forgiveness",
+    snippet: "The Qur’anic story of Yusuf: the dream, the jealousy of the brothers, the well, slavery in Egypt, the temptation and prison, the king’s dream, the rise to power, the cup and Binyamin, and the forgiveness that ends the story.",
+    url: "articles/yusuf-beauty-of-forgiveness.html",
+    keywords: ["yusuf","joseph","surah yusuf","dream","brothers","well","egypt","zulaykha","chastity","prison","famine","binyamin","benjamin","forgiveness","patience","yaqub","prophets"]
+  },
+  {
+    title: "Musa: Pharaoh, the Exodus and the Law",
+    snippet: "The Qur’anic story of Musa: the infant in the river, the flight to Madyan, the burning bush, the confrontation with Pharaoh, the magicians, the plagues, the crossing of the sea, the tablets, the golden calf, the water from the rock, Khidr and Qarun.",
+    url: "articles/musa-pharaoh-the-exodus-and-the-law.html",
+    keywords: ["musa","moses","pharaoh","firawn","exodus","sea","staff","magicians","harun","aaron","torah","tablets","golden calf","samiri","khidr","qarun","korah","sinai","madyan","prophets"]
+  },
+  {
+    title: "Dawud and Sulayman: Power, Justice and Gratitude",
+    snippet: "The Qur’anic story of Dawud and Sulayman: the victory over Jalut, the Psalms, the mountains and birds, the judgement of the field, the litigants, the hoopoe and the Queen of Sheba, the glass palace, the wind and the jinn, and the lesson on gratitude.",
+    url: "articles/dawud-and-sulayman-power-justice-and-gratitude.html",
+    keywords: ["dawud","david","sulayman","solomon","jalut","goliath","zabur","psalms","sheba","saba","bilqis","hoopoe","jinn","wind","kingdom","justice","gratitude","prophets"]
+  },
+  {
+    title: "Yunus: The Prophet Who Fled",
+    snippet: "The Qur’anic story of Yunus: the call to his people, his departure in anger, the ship and the lot, the great fish, the prayer in the darkness, the people who believed, the gourd tree and the Qur’anic rebuke that made him a lesson for every caller.",
+    url: "articles/yunus-the-prophet-who-fled.html",
+    keywords: ["yunus","jonah","whale","fish","nineveh","dhul nun","prayer","darkness","repentance","mercy","patience","prophets"]
+  },
+  {
+    title: "Isa: The Messiah, the Miracles and the Qur’anic Correction",
+    snippet: "The Qur’anic account of Isa: the annunciation to Maryam, the birth under the palm, the speech in the cradle, the miracles by Allah’s permission, the Injil, the crucifixion that did not happen, the correction of the Trinity and the second coming.",
+    url: "articles/isa-the-messiah-and-the-quranic-correction.html",
+    keywords: ["isa","jesus","messiah","masih","maryam","mary","injil","gospel","crucifixion","trinity","tawhid","second coming","miracles","virgin birth","prophets"]
+  },
+  {
+    title: "Abu Bakr: The Truthful and the First Caliph",
+    snippet: "The life of Abu Bakr al-Siddiq: his merchant years in Makkah, his early acceptance of Islam, the title al-Siddiq, the persecution and the freeing of slaves, the hijrah and the cave, Madinah and the battles, the Saqifah, the Ridda wars and the compilation of the Qur’an.",
+    url: "articles/abu-bakr-the-truthful-and-the-first-caliph.html",
+    keywords: ["abu bakr","siddiq","first caliph","cave","thawr","hijrah","saqifah","ridda","zakat","quran codex","bilal","aisha","companions","sahaba"]
+  },
+  {
+    title: "Umar: Justice, Conquest and the Caliphate",
+    snippet: "The life of Umar ibn al-Khattab: his early opposition, the conversion through Surah Ta-Ha, al-Faruq, the hijrah and the battles, the caliphate of Abu Bakr, the great conquests, Jerusalem, the year of ashes, the plague of Amwas, the diwan and the Hijri calendar.",
+    url: "articles/umar-al-faruq-justice-and-the-caliphate.html",
+    keywords: ["umar","faruq","khattab","second caliph","conversion","ta-ha","jerusalem","conquests","diwan","hijri calendar","justice","amwas","companions","sahaba"]
+  },
+  {
+    title: "Uthman: The Standard Codex and the Fitna",
+    snippet: "The life of Uthman ibn Affan: his wealth and early conversion, the two migrations, his marriages to the Prophet’s daughters, the well of Rumah and the army of Tabuk, the standard Qur’anic codex, the conquests, the grievances, the siege and the assassination.",
+    url: "articles/uthman-dhul-nurayn-and-the-standard-codex.html",
+    keywords: ["uthman","affan","dhul nurayn","two lights","rumah","tabuk","quran codex","mushaf","fitna","siege","assassination","companions","sahaba"]
+  },
+  {
+    title: "Ali: The Gate of Knowledge and the Fitna",
+    snippet: "The life of Ali ibn Abi Talib: his upbringing in the Prophet's household, the night of the hijrah, his marriage to Fatima, Badr, Uhud and Khaybar, Ghadir Khumm, the caliphate, the Camel, Siffin, the Kharijites and his assassination in Kufa.",
+    url: "articles/ali-the-gate-of-knowledge-and-the-fitna.html",
+    keywords: ["ali","abi talib","fatima","hasan","husayn","khaybar","ghadir khumm","caliphate","camel","siffin","kharijites","nahrawan","kufa","companions","sahaba"]
+  },
+  {
+    title: "Khadijah: The First Believer and the Pillar of the Early Mission",
+    snippet: "The life of Khadijah bint Khuwaylid: her merchant household in Makkah, her marriage to Muhammad ﷺ, the first revelation in the cave of Hira, her support of the mission, her children, the boycott, the year of sorrow, her rank in the hadith and the limits of the later legends.",
+    url: "articles/khadijah-the-first-believer-and-pillar-of-the-mission.html",
+    keywords: ["khadijah","khuwaylid","first believer","first muslim","waraqa","cave of hira","year of sorrow","mother of the believers","merchant","sahaba","wives of the prophet"]
+  },
+  {
+    title: "Aisha: The Mother of the Believers, the Scholar and the Fitna",
+    snippet: "The life of Aisha bint Abi Bakr: her family and marriage, the household of the Prophet ﷺ, the slander and Qur’an 24:11–20, her scholarship and legal opinions, the fitna and the Battle of the Camel, her later teaching in Madinah and the politics of memory.",
+    url: "articles/aisha-mother-of-the-believers-scholar-and-fitna.html",
+    keywords: ["aisha","aysha","abi bakr","mother of the believers","slander","ifk","battle of the camel","fitna","hadith","scholar","ummu ruman","sahaba"]
+  },
+  {
+    title: "Bilal ibn Rabah: The Voice of the First Adhan",
+    snippet: "The life of Bilal ibn Rabah: his enslavement in Makkah, the torture he endured for saying “One”, his manumission by Abu Bakr, the first adhan in Madinah, Badr and the battles, the conquest of Makkah, his grief after the Prophet ﷺ, his years in Syria and his death.",
+    url: "articles/bilal-ibn-rabah-the-voice-of-the-adhan.html",
+    keywords: ["bilal","ibn rabah","habashi","adhan","muezzin","umayyah ibn khalaf","abu bakr","slavery","freedom","conquest of makkah","sahaba"]
+  },
+  {
+    title: "Salman al-Farsi: The Seeker Who Crossed Empires",
+    snippet: "The life of Salman al-Farsi: his Zoroastrian upbringing near Isfahan, his search for the true religion through Syria and Iraq, his enslavement and arrival in Yathrib, his recognition of the Prophet ﷺ, the trench of the Confederates, al-Mada’in and his death.",
+    url: "articles/salman-al-farsi-the-seeker-who-crossed-empires.html",
+    keywords: ["salman","farsi","persian","isfahan","jayy","trench","khandaq","confederates","mada'in","ahl al-bayt","sahaba","convert"]
+  },
+  {
+    title: "The Rightly Guided Caliphs: Succession, Expansion and the First Fitna",
+    snippet: "The Rashidun caliphate as an institution: the Saqifa and the bay‘ah, Abu Bakr and the ridda wars, Umar and the machinery of empire, Uthman and the standard codex, Ali and the first fitna, taxation, the garrison towns and the contested memory of the four caliphs.",
+    url: "articles/rightly-guided-caliphs-succession-and-expansion.html",
+    priority: 95,
+    keywords: ["rashidun","rightly guided caliphs","abu bakr","umar","uthman","ali","saqifa","bay'ah","ridda","fitna","camel","siffin","kharaj","jizya","diwan","history"]
+  },
+  {
+    title: "The Umayyads: Damascus, Dynasty and the Limits of the Arab Kingdom",
+    snippet: "The Umayyad caliphate from Mu‘awiya to Marwan II: Damascus, the second fitna and Karbala, Abd al-Malik and the coinage, al-Hajjaj, the conquests of Africa, Iberia and Sind, Umar II’s reforms and the Abbasid revolution of 750.",
+    url: "articles/umayyads-damascus-and-the-arab-kingdom.html",
+    priority: 95,
+    keywords: ["umayyads","muawiya","damascus","yazid","karbala","husayn","abd al-malik","hajjaj","umar ii","iberia","sind","abbasid revolution","history"]
+  },
+  {
+    title: "The Abbasids: Baghdad, the Translation Movement and the Fragmentation of the Caliphate",
+    snippet: "The Abbasid caliphate from the revolution of 750 to the sack of Baghdad in 1258: the Round City, the Barmakids, Harun al-Rashid, the translation movement, paper and commerce, the mihna, the Buyids and Seljuks, and the Mongol catastrophe.",
+    url: "articles/abbasids-baghdad-and-the-fragmentation.html",
+    priority: 95,
+    keywords: ["abbasids","baghdad","harun al-rashid","barmakids","translation movement","bayt al-hikma","mihna","ibn hanbal","buyids","seljuks","mongols","1258","history"]
+  },
+  {
+    title: "Al-Andalus: Córdoba, the Taifas and the Memory of Convivencia",
+    snippet: "Al-Andalus from the conquest of 711 to the fall of Granada in 1492: the emirate and caliphate of Córdoba, Madinat al-Zahra, Ibn Rushd and Maimonides, the taifas, the Almoravids and Almohads, the Reconquista and the debate over convivencia.",
+    url: "articles/al-andalus-cordoba-taifas-and-convivencia.html",
+    priority: 95,
+    keywords: ["al-andalus","andalusia","spain","iberia","cordoba","granada","convivencia","tariq","ibn rushd","maimonides","almohads","almoravids","1492","history"]
   }
 ];
 
@@ -1111,6 +1361,18 @@ const UniversalSearch = {
   normalize: normalizeIslamicQuery,
   aliases: SURAH_SEARCH_ALIASES,
 
+  /**
+   * Resolve a site-root-relative path (e.g. "articles/x.html") against the
+   * deployment root ("/", "/NoorDeen/", or a file:// bundle directory).
+   * Absolute URLs, protocol-relative URLs and in-page anchors pass through.
+   */
+  resolveUrl(url, basePath) {
+    if (!url) return url;
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url)) return url;
+    const base = basePath || '/';
+    return base + String(url).replace(/^\.?\//, '');
+  },
+
   search(query) {
     if (!query || query.trim().length < 2) return [];
     const raw = query.trim();
@@ -1118,6 +1380,10 @@ const UniversalSearch = {
     const normalized = normalizeIslamicQuery(raw);
     const results = [];
     const matchedSurahNumbers = new Set();
+    // "Ayatul Kursi" is a verse (2:255), not just Surah Al-Baqarah. Deep-link
+    // to the verse so the reader scrolls to it instead of opening the surah top.
+    const ayatulKursiQuery = /ayat[\s-]*(ul|al)?[\s-]*kursi|kursi/i.test(rawLower)
+      || /آیت\s*الکرسی|آیۃ\s*الکرسی|اية\s*الكرسي/.test(raw);
 
     // 1. Search Surahs using Exact Aliases and Normalized Phonetics
     if (typeof ISLAMIC_DATA !== 'undefined' && ISLAMIC_DATA.surahs) {
@@ -1147,8 +1413,11 @@ const UniversalSearch = {
         if (!isMatch && normalized.length >= 2) {
           const normEnglish = normalizeIslamicQuery(s.englishName);
           const normArabic = normalizeIslamicQuery(s.name);
-          if (normEnglish.includes(normalized) || normalized.includes(normEnglish) ||
-              normArabic.includes(normalized) || normalized.includes(normArabic)) {
+          // Never let a 1–2 character name (e.g. Surah Qaf "ق") match as a
+          // substring of a longer query such as "واقعہ".
+          const contains = (haystack, needle) => needle.length >= 4 && haystack.includes(needle);
+          if (contains(normEnglish, normalized) || contains(normArabic, normalized) ||
+              contains(normalized, normEnglish) || contains(normalized, normArabic)) {
             isMatch = true;
             matchReason = s.englishName;
           }
@@ -1159,13 +1428,19 @@ const UniversalSearch = {
         if (!isMatch && aliasInfo && aliasInfo.aliases) {
           for (const alias of aliasInfo.aliases) {
             const normAlias = normalizeIslamicQuery(alias);
-            if (rawLower === alias.toLowerCase() || (normalized.length >= 2 && normAlias === normalized)) {
+            const aliasLower = alias.toLowerCase();
+            if (rawLower === aliasLower || (normalized.length >= 2 && normAlias === normalized)) {
               isMatch = true;
               aliasExactMatch = true;
               matchReason = alias;
               break;
-            } else if (rawLower.includes(alias.toLowerCase()) || 
-                      (normalized.length >= 4 && normAlias.length >= 4 && normAlias.includes(normalized))) {
+            } else if (
+              // Only allow containment for aliases long enough to be meaningful;
+              // a 3-letter alias such as "ala" must not match inside
+              // "tabarakallazi".
+              (aliasLower.length >= 4 && rawLower.includes(aliasLower)) ||
+              (normalized.length >= 4 && normAlias.length >= 4 && normAlias.includes(normalized))
+            ) {
               isMatch = true;
               matchReason = alias;
               break;
@@ -1176,13 +1451,16 @@ const UniversalSearch = {
         if (isMatch) {
           matchedSurahNumbers.add(s.number);
           const urduPreview = SURAH_URDU_PREVIEWS[s.number] || `اردو ترجمہ مولانا فتح محمد جالندھری • ${s.numberOfAyahs} آیات`;
+          const isAyatulKursi = s.number === 2 && ayatulKursiQuery;
           results.push({
             type: `📖 Surah #${s.number}`,
-            title: `Surah ${s.englishName} (${s.name}) • ${urduName}`,
+            title: isAyatulKursi
+              ? `Ayat al-Kursi (2:255) • Surah Al-Baqarah • ${urduName}`
+              : `Surah ${s.englishName} (${s.name}) • ${urduName}`,
             subtitle: `${s.englishNameTranslation} • ${s.numberOfAyahs} Verses • ${s.revelationType}`,
             urduPreview: urduPreview,
             snippet: `${s.englishNameTranslation} • ${s.numberOfAyahs} Verses • ${s.revelationType} • ${urduPreview}`,
-            url: `quran.html?surah=${s.number}`,
+            url: isAyatulKursi ? 'quran.html?surah=2&ayah=255' : `quran.html?surah=${s.number}`,
             priority: aliasExactMatch ? 150 : 100
           });
         }
@@ -1193,12 +1471,20 @@ const UniversalSearch = {
     EDUCATIONAL_SEARCH_PAGES.forEach(page => {
       let matched = false;
       let titleMatch = false;
-      if (page.title.toLowerCase().includes(rawLower) || page.snippet.toLowerCase().includes(rawLower)) {
+      const pageTitle = page.title.toLowerCase();
+      const titleHasTerm = pageTitle.includes(rawLower) ||
+        (normalized.length >= 2 && normalizeIslamicQuery(page.title).includes(normalized));
+      const snippetHasTerm = page.snippet.toLowerCase().includes(rawLower);
+      // A page whose title begins with the query is a stronger match than one
+      // that merely contains the letters inside a longer word (e.g. "Ali"
+      // inside "al-Walidayn" or "Caliphate").
+      const startsWithTerm = pageTitle.startsWith(rawLower) ||
+        (normalized.length >= 2 && normalizeIslamicQuery(page.title).startsWith(normalized));
+
+      if (titleHasTerm || snippetHasTerm) {
         matched = true;
-        titleMatch = true;
-      } else if (normalized.length >= 2 && normalizeIslamicQuery(page.title).includes(normalized)) {
-        matched = true;
-        titleMatch = true;
+        // Title matches must outrank pages that only mention the term in their summary.
+        titleMatch = titleHasTerm;
       } else if (page.keywords) {
         for (const kw of page.keywords) {
           if (rawLower.includes(kw) || kw.includes(rawLower) || (normalized.length >= 2 && normalizeIslamicQuery(kw).includes(normalized))) {
@@ -1209,12 +1495,23 @@ const UniversalSearch = {
       }
 
       if (matched) {
+        const pageType = page.url === 'dr-israr-ahmed.html'
+          ? '🎬 Lecture Library'
+          : page.url === 'download-app.html'
+            ? '📱 Download'
+            : page.url === 'articles/index.html'
+              ? '📚 Article Library'
+              : page.url.startsWith('articles/')
+                ? '📚 Educational Article'
+                : ['zakat-calculator.html', 'prayer-times.html', 'tasbih.html', 'calendar.html'].includes(page.url)
+                  ? '🧮 Islamic Tool'
+                  : '📖 Worship Guide';
         results.push({
-          type: '📚 Worship Guide',
+          type: pageType,
           title: page.title,
           snippet: page.snippet,
           url: page.url,
-          priority: titleMatch ? 90 : 80
+          priority: page.priority || (startsWithTerm ? 100 : titleMatch ? 90 : 80)
         });
       }
     });
