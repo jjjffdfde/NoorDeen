@@ -5,7 +5,7 @@
 
 **Last successful test:** `node test/run-tests.js` → **3,033 executed / 3,033 passed / 0 failed** (Suites 1–55). The four Batch 9a pages were built at 3,305–3,562 body words (prose core 2,829–3,072), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 61 cards.
 
-**Live deployment:** Batch 8b is live at `gh-pages` commit `ecf183e631b3f6d93c20ab86fb09f87fbcc03469` (tree from `273518c:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v30`, About states 2,858 assertions and names Batches 8a/8b, the four new article pages return 200 with correct H1, 14–15 TOC links and 2 JSON-LD blocks each, 57 cards, 84 sitemap URLs, `offline.html` live with `noindex`. Live APK (5,418,764 bytes / `c60a0ef5…`) and bundle (5,274,058 bytes / `47bbdfa4…`) hash-match the local artefacts; Chromium showed 0 console errors and search returned the Khadijah, Aisha, Bilal and Salman pages first.
+**Live deployment:** Batch 9a is live at `gh-pages` commit `c9f11ff3245e57b96379cfb075d872218164c7ae` (tree from `a56cc60:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v31`, About states 3,033 assertions and names Batch 9a, the four new article pages return 200 with correct H1, 14–15 TOC links and 2 JSON-LD blocks each, 61 cards, 88 sitemap URLs, `offline.html` live with `noindex`. Live APK (5,476,274 bytes / `6a12d1d9…`) and bundle (5,330,695 bytes / `f91c46d5…`) hash-match the local artefacts; Chromium showed 0 console errors and search returned the Rightly Guided Caliphs, Umayyads, Abbasids and al-Andalus pages first.
 
 ---
 

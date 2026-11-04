@@ -1,9 +1,9 @@
-# NoorDeen — Final Audit Results (3 November 2026, Batch 8b cycle)
+# NoorDeen — Final Audit Results (4 November 2026, Batch 9a cycle)
 
-**Audit date:** 3 November 2026
-**Commit baseline at start:** `a6fdd5b`
+**Audit date:** 4 November 2026
+**Commit baseline at start:** `3835eb6`
 **Environment:** Windows, Node.js local server on `http://localhost:3400`, Chromium via the automated browser tool, test harness on port 3000.
-**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index), the complete Seerah strand — Batch 6a (topics 53–56) and Batch 6b (topics 57–60) — all eight Stories of the Prophets — Batch 7a (topics 61–64) and Batch 7b (topics 65–68) — and all eight Lives of the Noble Sahaba — Batch 8a (topics 69–72) and Batch 8b (topics 73–76) — are implemented and verified by 2,858 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
+**Verdict:** Phase 1 (complete offline Quran), Phase 2 (verbatim tafsir, asbab al-nuzul and a thematic verse index), the complete Seerah strand — Batch 6a (topics 53–56) and Batch 6b (topics 57–60) — all eight Stories of the Prophets — Batch 7a (topics 61–64) and Batch 7b (topics 65–68) — and all eight Lives of the Noble Sahaba — Batch 8a (topics 69–72) and Batch 8b (topics 73–76) — and the first four Islamic History & Civilization articles — Batch 9a (topics 77–80: the Rightly Guided Caliphs, the Umayyads, the Abbasids and al-Andalus) — are implemented and verified by 3,033 assertions. The English Jalalayn translation licence still needs owner confirmation, and device-level Android verification remains blocked by the environment.
 
 ---
 
@@ -135,17 +135,17 @@ This crawl predates Batches 8a/8b. The Batch 8b pages were verified separately i
 
 ### 3.2 Post-change static + HTTP re-check
 
-Re-run after the Batch 8b edits and rebuild (static scan of every HTML file under `public/`, excluding `downloads/`):
+Re-run after the Batch 9a edits and rebuild (static scan of every HTML file under `public/`, excluding `downloads/`):
 
 | Metric | Result |
 | :--- | --: |
-| HTML pages scanned | 85 |
-| Unique internal destinations requested | 86 |
+| HTML pages scanned | 89 |
+| Unique internal destinations requested | 90 |
 | Non-200 | **0** |
 | Empty / hash-only href | 0 |
 | `javascript:` href | 0 |
 | Textless anchors | 0 |
-| Anchors scanned | 5,664 |
+| Anchors scanned | 5,973 |
 
 Six fragment flags remain, all `#kalima-1`–`#kalima-6` in `kalimas.html`. Those ids are generated at runtime from a template literal, so the static scan cannot see them; the rendered page resolves them. They are the same documented false positive class recorded in `BROKEN_LINKS_AND_EMPTY_CONTENT.md`; no new defect was introduced.
 
@@ -156,12 +156,12 @@ Six fragment flags remain, all `#kalima-1`–`#kalima-6` in `kalimas.html`. Thos
 ```
 node test/run-tests.js
 
-Total Tests Executed: 2858
-Passed Tests:         2858
+Total Tests Executed: 3033
+Passed Tests:         3033
 Failed Tests:         0
 ```
 
-- Suites: 54 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles; Suite 50 added for the Batch 6b Seerah articles; Suite 51 added for the Batch 7a Stories of the Prophets; Suite 52 added for the Batch 7b Stories of the Prophets; Suite 53 added for the Batch 8a Lives of the Noble Sahaba; Suite 54 added for the Batch 8b Lives of the Noble Sahaba).
+- Suites: 55 (Suites 45–46 added for the offline corpus and the Phase 1 player/khatam/offline shell; Suites 47–48 added for the Phase 2 tafsir corpus and thematic index; Suite 49 added for the Batch 6a Seerah articles; Suite 50 added for the Batch 6b Seerah articles; Suite 51 added for the Batch 7a Stories of the Prophets; Suite 52 added for the Batch 7b Stories of the Prophets; Suite 53 added for the Batch 8a Lives of the Noble Sahaba; Suite 54 added for the Batch 8b Lives of the Noble Sahaba; Suite 55 added for the Batch 9a Islamic History & Civilization articles).
 - Suite 41: URL resolution, catalog parity/loader, cookie banner, lazy search, alias guards.
 - Suite 42: Daily Companion local date, streak award/reset, Friday optionality, honest zero state.
 - Suite 43: Batch 4 file/TOC/schema/bibliography/word-count/search/sitemap/index integration.
@@ -176,23 +176,24 @@ Failed Tests:         0
 - Suite 52: Batch 7b file depth (2,976–3,596 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 65–68 LIVE, all eight Stories topics complete).
 - Suite 53: Batch 8a file depth (2,826–3,377 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 69–72 LIVE, all eight Sahaba topics complete).
 - Suite 54: Batch 8b file depth (3,536–3,568 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 73–76 LIVE, 34 live / 66 roadmap).
+- Suite 55: Batch 9a file depth (3,305–3,562 body words, 3,600 cap), prose core, TOC anchors, H2/H3, FAQ/Breadcrumb schema, bibliography, source-caution labelling, no third-party scripts, unique IDs, search/sitemap/catalogue registration and roadmap status (topics 77–80 LIVE, 38 live / 62 roadmap).
 - No assertion was skipped.
 
 ---
 
 ## 5. Build artefacts
 
-Version `?v=20261102d`, app version 1.3.0 (build 10300), service-worker cache `v30`.
+Version `?v=20261104a`, app version 1.3.0 (build 10300), service-worker cache `v31`.
 
 | Artefact | Bytes | SHA-256 |
 | :--- | --: | :--- |
-| `public/downloads/islamic-portal-offline-bundle.zip` | 5,274,058 | `47bbdfa4e2337f51250ad48ea992e8ec6e804ff78c97a34c0d663a24274807d5` |
-| `public/downloads/islamic-portal-release.apk` | 5,418,764 | `c60a0ef5fde49a757cc62464c6adf7491fe8f5f7dd8e9c600d761861a8e835ed` |
+| `public/downloads/islamic-portal-offline-bundle.zip` | 5,330,695 | `f91c46d575e2991326459bcc58f8bfafe4e39b2730f01be9b72501acd493d42f` |
+| `public/downloads/islamic-portal-release.apk` | 5,476,274 | `6a12d1d9780c3f89c09223ca7c752e66228ec01a3e22a999130f7228b0d43cfd` |
 
-- APK: 357 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 85 HTML pages; bundle: 348 entries including the same 114 Quran chunks, 114 tafsir chunks and 85 pages.
-- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts (346 public files excluding `downloads/`; 0 missing, 0 differing; the bundle adds `OFFLINE-INSTRUCTIONS.txt`).
-- All eight Seerah pages, all eight Stories of the Prophets pages and all eight Batch 8a/8b Sahaba pages are present in both artefacts and hash-match the working tree.
-- APK contains `?v=20261102d`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
+- APK: 361 ZIP entries including 114 Quran corpus chunks, **114 tafsir chunks** and 89 HTML pages; bundle: 352 entries including the same 114 Quran chunks, 114 tafsir chunks and 89 pages.
+- `catalog.js`, `catalog.json`, `app.js`, `search.js`, `quran.js`, `quran-store.js`, `tafsir-store.js`, `thematic-index.js`, `config.js`, `offline.html`, all HTML and the service worker hash-match `public/` inside both artefacts (350 public files excluding `downloads/`; 0 missing, 0 differing; the bundle adds `OFFLINE-INSTRUCTIONS.txt`).
+- All eight Seerah pages, all eight Stories of the Prophets pages, all eight Batch 8a/8b Sahaba pages and all four Batch 9a history pages are present in both artefacts and hash-match the working tree.
+- APK contains `?v=20261104a`, the tafsir store, the thematic index, the lazy search loader, the alias guards, the 2:255 deep link, the full Quran corpus and the full tafsir corpus.
 - `jarsigner -verify` → `jar verified` (v1 only; no v2/v3 block).
 - `CHECKSUMS.sha256` matches both files.
 
@@ -357,6 +358,30 @@ Chromium check on the live article index: 57 `article-summary-card` elements, 23
 The first binary `GET` attempts returned a transient 404 while GitHub Pages propagated the new tree; `HEAD` and retried `GET` requests then returned 200 with the exact local sizes and hashes. No file was missing from the deployed tree.
 
 Local integrity checks: the APK (357 entries) and bundle (348 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 346 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
+
+### 6.11 Batch 9a deployment (this cycle) — verified
+
+Deployed commit: `c9f11ff3245e57b96379cfb075d872218164c7ae` on `gh-pages` (tree from `a56cc60:public`), pushed as `ecf183e..c9f11ff`. `main` was pushed as `3835eb6..a56cc60`.
+
+| Live URL | Result |
+| :--- | :--- |
+| `.../articles/rightly-guided-caliphs-succession-and-expansion.html` | 200; 51,750 bytes; H1 “The Rightly Guided Caliphs: Succession, Expansion and the First Fitna”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/umayyads-damascus-and-the-arab-kingdom.html` | 200; 52,511 bytes; H1 “The Umayyads: Damascus, Dynasty and the Limits of the Arab Kingdom”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/abbasids-baghdad-and-the-fragmentation.html` | 200; 53,030 bytes; H1 “The Abbasids: Baghdad, the Translation Movement and the Fragmentation of the Caliphate”; 15 TOC links; 2 JSON-LD blocks |
+| `.../articles/al-andalus-cordoba-taifas-and-convivencia.html` | 200; 50,962 bytes; H1 “Al-Andalus: Córdoba, the Taifas and the Memory of Convivencia”; 14 TOC links; 2 JSON-LD blocks |
+| `.../articles/index.html` | 200; 224,110 bytes; 61 article cards; 24 details blocks; Batch 9a block present and all four pages linked |
+| `.../service-worker.js` | 200; 10,579 bytes; `CACHE_VERSION = 'v31'`; `islamic-portal-shell-v31` present |
+| `.../about.html` | 200; 39,690 bytes; states **3,033 assertions** and names Batch 9a (Rightly Guided Caliphs, Umayyads, Abbasids, al-Andalus) |
+| `.../sitemap.xml` | 200; 18,856 bytes; **88** `<loc>` entries, including all four new URLs; `offline.html` absent |
+| `.../offline.html` | 200; 2,673 bytes; `noindex` present |
+| `.../downloads/islamic-portal-release.apk` | 200; **5,476,274 bytes**; SHA-256 `6a12d1d9780c3f89c09223ca7c752e66228ec01a3e22a999130f7228b0d43cfd` |
+| `.../downloads/islamic-portal-offline-bundle.zip` | 200; **5,330,695 bytes**; SHA-256 `f91c46d575e2991326459bcc58f8bfafe4e39b2730f01be9b72501acd493d42f` |
+
+Chromium check on the live article index: 61 `article-summary-card` elements, 24 details blocks, the Batch 9a block rendered, and **0 console errors**. Each of the four live article pages rendered with its H1, TOC anchors, bibliography, FAQ section and 2 JSON-LD blocks, and **0 console errors** each. `UniversalSearch.search()` returned the Rightly Guided Caliphs, Umayyads, Abbasids and al-Andalus pages first for their respective queries after the four entries were given an explicit priority of 95.
+
+The binary `GET` requests returned a transient 404 when a cache-busting query string was appended; the same URLs without a query string returned 200 with the exact local sizes and hashes. No file was missing from the deployed tree.
+
+Local integrity checks: the APK (361 entries) and bundle (352 entries) were both extracted and compared byte-for-byte against `public/`; **0 missing and 0 differing files** across 350 expected files (the bundle-only `OFFLINE-INSTRUCTIONS.txt` is expected), and `CHECKSUMS.sha256` matches both served files.
 
 ### 6.7 Batch 7a deployment (earlier cycle) — verified
 
