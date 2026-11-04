@@ -3,7 +3,7 @@
 **Audited:** 4 November 2026 (Batch 9a Islamic History & Civilization added; page and word counts re-measured)
 **Method:** every `.html` file under `public/` was read, `<script>`/`<style>` blocks stripped, tags removed, and remaining tokens counted. Article body counts cover the `<article class="editorial-content-body">` region — article prose, tables, callouts and bibliography — while excluding shared navigation, table of contents, related-reading block and footer. Numbers are measured from the current tree, not estimated.
 **Pages:** **89** — 26 root pages + 62 pages in `public/articles/` (61 articles + the library index) + `offline.html` (noindex fallback)
-**Visible words across the 88 indexable pages (whole-page tokenisation):** **346,991** (root 169,022 + article library 177,969); the offline fallback adds 96 words
+**Visible words across the 88 indexable pages (whole-page tokenisation):** **347,412** (root 169,229 + article library 178,183); the offline fallback adds 96 words
 **Article body words (61 articles, excluding page chrome):** **157,219** — average **2,577**, minimum **1,538**, maximum **3,596**
 **Sitemap URLs:** **88** (`public/sitemap.xml`, 88 unique `<loc>` entries)
 **Full test suite:** **3,033 executed / 3,033 passed / 0 failed** (55 suites; last run 4 November 2026)

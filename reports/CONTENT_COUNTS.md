@@ -95,9 +95,9 @@ Full detail: `reports/DR_ISRAR_VIDEO_CATALOG.md`.
 | Metric | Value |
 | :--- | :--- |
 | HTML pages | 89 (26 root + 62 article pages + `offline.html`) |
-| Visible words, 88 indexable pages | 346,991 |
-| Root pages | 169,118 words (169,022 indexable + 96 offline) |
-| Article library | 177,969 whole-page words; 157,010 article-body words |
+| Visible words, 88 indexable pages | 347,412 |
+| Root pages | 169,325 words (169,229 indexable + 96 offline) |
+| Article library | 178,183 whole-page words; 157,219 article-body words |
 | Sitemap URLs | 88 |
 | Desktop bundle | 5,330,695 bytes / 5.08 MiB / 352 entries / 89 HTML / 114 Quran chunks / 114 tafsir chunks |
 | Bundle SHA-256 | `f91c46d575e2991326459bcc58f8bfafe4e39b2730f01be9b72501acd493d42f` |
