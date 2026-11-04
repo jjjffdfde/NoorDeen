@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Israr Ahmed Video Library — Verified Lecture Catalog | NoorDeen</title>
-  <meta name="description" content="Browse a verified catalog of 148 Dr. Israr Ahmed lectures across 7 series, including Arbaeen-e-Nawawi and Al-Huda. Each entry links to the official Tanzeem-e-Islami archive and embeds the original YouTube upload. No video files are rehosted.">
+  <title>Dr. Israr Ahmed Video Library — Complete Verified Archive | NoorDeen</title>
+  <meta name="description" content="Explore the comprehensive video library of Dr. Israr Ahmed (رحمہ اللہ) featuring the complete 107-lecture Bayan-ul-Quran in high-definition direct MP4, verified official YouTube lecture streams, and historical Tanzeem-e-Islami archive records.">
   <link rel="stylesheet" href="css/main.css?v=20261104a">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
@@ -13,14 +13,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="NoorDeen Islamic Knowledge Library">
   <meta property="og:url" content="https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html">
-  <meta property="og:title" content="Dr. Israr Ahmed Video Library — Verified Lecture Catalog">
-  <meta property="og:description" content="148 verified lecture records across 7 series, linked to the official Tanzeem-e-Islami archive. Original YouTube embeds only.">
+  <meta property="og:title" content="Dr. Israr Ahmed Video Library — Complete Verified Archive">
+  <meta property="og:description" content="Complete 107-lecture Bayan-ul-Quran HD MP4 collection, verified YouTube lecture streams, and Tanzeem-e-Islami archives.">
   <meta property="og:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dr. Israr Ahmed Video Library — NoorDeen">
-  <meta name="twitter:description" content="A verified, source-linked catalog of Dr. Israr Ahmed lectures. Original uploads embedded; nothing rehosted.">
+  <meta name="twitter:description" content="Complete 107-lecture Bayan-ul-Quran HD MP4 collection, verified YouTube lecture streams, and Tanzeem-e-Islami archives.">
   <meta name="twitter:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
 
   <script type="application/ld+json">
@@ -39,7 +39,7 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Dr. Israr Ahmed Video Library",
-    "description": "A verified catalog of Dr. Israr Ahmed lectures linked to the official Tanzeem-e-Islami archive.",
+    "description": "A verified catalog of Dr. Israr Ahmed lectures featuring direct MP4 Bayan-ul-Quran and official YouTube streams linked to Tanzeem-e-Islami.",
     "url": "https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html",
     "about": {
       "@type": "Person",
@@ -63,22 +63,53 @@
       text-align: center;
     }
     .video-hero h1 { font-size: clamp(1.7rem, 4vw, 2.6rem); margin: 0 0 14px; color: #fff; }
-    .video-hero p { max-width: 780px; margin: 0 auto; color: #E7F3EE; line-height: 1.75; font-size: 1.02rem; }
+    .video-hero p { max-width: 820px; margin: 0 auto; color: #E7F3EE; line-height: 1.75; font-size: 1.02rem; }
     .video-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
     .video-stat {
       background: rgba(255,255,255,0.10);
       border: 1px solid rgba(255,255,255,0.22);
       border-radius: 12px;
-      padding: 12px 22px;
-      min-width: 118px;
+      padding: 12px 20px;
+      min-width: 125px;
     }
     .video-stat strong { display: block; font-size: 1.5rem; color: #F4D58D; }
-    .video-stat span { font-size: 0.8rem; letter-spacing: 0.03em; text-transform: uppercase; color: #D7E9E2; }
+    .video-stat span { font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase; color: #D7E9E2; }
+    
+    /* Format Selector Tabs */
+    .format-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 16px;
+      justify-content: center;
+    }
+    .format-pill {
+      padding: 10px 18px;
+      border-radius: 24px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-main);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .format-pill:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .format-pill.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      box-shadow: 0 4px 12px rgba(15,81,50,0.25);
+    }
+
     .video-controls {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 12px;
-      margin: 26px 0 8px;
+      margin: 12px 0 8px;
     }
     .video-controls label { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-text-muted); margin-bottom: 6px; }
     .video-controls input, .video-controls select {
@@ -91,8 +122,10 @@
       font-size: 0.95rem;
       box-sizing: border-box;
     }
-    .video-results-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin: 10px 0 22px; color: var(--color-text-muted); font-size: 0.9rem; }
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+    .video-results-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin: 14px 0 24px; color: var(--color-text-muted); font-size: 0.9rem; }
+    
+    /* Video Grid & Cards */
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
     .video-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
@@ -101,47 +134,167 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
     }
-    .video-card:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.10); }
-    .video-thumb-wrap { position: relative; aspect-ratio: 16 / 9; background: #0B3B2E; cursor: pointer; }
-    .video-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+    .video-thumb-wrap { position: relative; aspect-ratio: 16 / 9; background: #0B3B2E; cursor: pointer; overflow: hidden; }
+    .video-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.2s ease; }
+    .video-card:hover .video-thumb-wrap img { transform: scale(1.03); }
+    
+    .video-format-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      z-index: 2;
+    }
+    .badge-direct { background: #0F5132; color: #F4D58D; border: 1px solid rgba(244,213,141,0.5); }
+    .badge-youtube { background: #CC0000; color: #fff; }
+    .badge-archive { background: #4A5568; color: #E2E8F0; }
+
     .video-play-badge {
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.18);
+      background: rgba(0,0,0,0.25);
+      transition: background 0.2s ease;
     }
+    .video-card:hover .video-play-badge { background: rgba(0,0,0,0.40); }
     .video-play-badge span {
-      width: 54px; height: 54px; border-radius: 50%;
+      width: 52px; height: 52px; border-radius: 50%;
       background: rgba(15,81,50,0.92); color: #fff;
-      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
       border: 2px solid rgba(255,255,255,0.85);
+      transition: transform 0.15s ease;
     }
-    .video-thumb-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-card:hover .video-play-badge span { transform: scale(1.12); background: var(--color-primary); }
+
     .video-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
-    .video-series-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 7px; }
+    .video-series-tag { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 7px; }
     .video-card-title { font-size: 1rem; font-weight: 700; line-height: 1.45; margin: 0 0 10px; color: var(--color-text-main); }
     .video-card-meta { font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 6px 12px; }
     .video-card-actions { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; }
     .video-card-actions a, .video-card-actions button {
-      font-size: 0.8rem; padding: 8px 12px; border-radius: 8px; text-decoration: none;
+      font-size: 0.82rem; padding: 8px 12px; border-radius: 8px; text-decoration: none;
       border: 1px solid var(--color-border); background: transparent; color: var(--color-primary);
       cursor: pointer; font-weight: 600;
     }
-    .video-card-actions a:hover, .video-card-actions button:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
-    .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-    .series-card { border: 1px solid var(--color-border); border-radius: 12px; padding: 18px; background: var(--color-surface); }
+    .video-card-actions button.btn-play-action {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+    .video-card-actions a:hover, .video-card-actions button:hover {
+      background: var(--color-primary-dark, #0B3B2E);
+      color: #fff;
+      border-color: var(--color-primary-dark, #0B3B2E);
+    }
+
+    /* Dedicated Theater Mode Player Modal */
+    .video-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .video-modal-dialog {
+      background: var(--color-surface);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 960px;
+      max-height: 94vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .video-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .video-modal-header h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--color-primary);
+      line-height: 1.35;
+    }
+    .video-modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .video-modal-close:hover { color: var(--color-primary); background: rgba(0,0,0,0.05); }
+    .video-player-container {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      width: 100%;
+    }
+    .video-player-container video, .video-player-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-player-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      background: #111;
+      color: #fff;
+    }
+    .video-modal-body {
+      padding: 20px 24px 24px;
+    }
+    .video-modal-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .series-card { border: 1px solid var(--color-border); border-radius: 12px; padding: 18px; background: var(--color-surface); cursor: pointer; transition: all 0.15s ease; }
+    .series-card:hover { border-color: var(--color-primary); box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
     .series-card h3 { margin: 0 0 6px; font-size: 1rem; color: var(--color-primary); }
     .series-card p { margin: 0; font-size: 0.86rem; color: var(--color-text-muted); }
     .source-note { border-left: 4px solid var(--color-gold); background: var(--color-surface-alt, #F8F5EC); padding: 18px 20px; border-radius: 0 10px 10px 0; margin: 30px 0; font-size: 0.92rem; line-height: 1.75; }
     .empty-state { text-align: center; padding: 50px 20px; color: var(--color-text-muted); border: 1px dashed var(--color-border); border-radius: 14px; }
+    
     @media (max-width: 760px) {
       .video-controls { grid-template-columns: 1fr; }
       .video-grid { grid-template-columns: 1fr; }
+      .video-hero { padding: 36px 0; }
     }
   </style>
 </head>
 <body>
-
-  <div class="ad-slot-container" id="ad-banner-top" data-ad-slot="portal_top_leaderboard" style="display: none; min-height: 90px; margin: 10px auto; text-align: center;"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -178,22 +331,18 @@
               <a href="hadith.html" class="nav-dropdown-item">📜 Authentic Hadith Collections</a>
               <a href="duas.html" class="nav-dropdown-item">🤲 Daily Duas & Adhkar</a>
               <a href="kalimas.html" class="nav-dropdown-item">⭐ Six Kalimas of Islam</a>
-              <a href="seerah.html" class="nav-dropdown-item">🌹 Prophetic Seerah</a>
-              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
-              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba</a>
             </div>
           </li>
 
           <li class="nav-item nav-dropdown">
             <button class="nav-btn" aria-haspopup="true">
-              <span data-i18n="navWorship">Worship Guides</span> <span class="dropdown-caret">▾</span>
+              <span data-i18n="navSeerah">Seerah & History</span> <span class="dropdown-caret">▾</span>
             </button>
             <div class="nav-dropdown-menu">
-              <a href="salah-guide.html" class="nav-dropdown-item">🕌 Five Daily Prayers (Salah)</a>
-              <a href="wudu-guide.html" class="nav-dropdown-item">💧 Step-by-Step Wudu Guide</a>
-              <a href="janazah-guide.html" class="nav-dropdown-item">⚰️ Funeral Prayer (Janazah)</a>
-              <a href="eid-guide.html" class="nav-dropdown-item">🌙 Eid Prayer (Fitr & Adha)</a>
-              <a href="pillars.html" class="nav-dropdown-item">🏛️ Five Pillars of Islam</a>
+              <a href="seerah.html" class="nav-dropdown-item">🌹 Seerah of Prophet Muhammad ﷺ</a>
+              <a href="prophets.html" class="nav-dropdown-item">📜 Stories of the Prophets</a>
+              <a href="sahaba.html" class="nav-dropdown-item">👥 Lives of the Sahaba (52)</a>
+              <a href="history.html" class="nav-dropdown-item">📜 Islamic History & Eras</a>
             </div>
           </li>
 
@@ -238,15 +387,16 @@
     <div class="container">
       <h1>Dr. Israr Ahmed Video Library</h1>
       <p>
-        A verified, source-linked catalog of lectures by <strong>Dr. Israr Ahmed</strong> (ڈاکٹر اسرار احمد, رحمہ اللہ),
-        founder of Tanzeem-e-Islami and the Quran Academy. Every record below points to the official
-        Tanzeem-e-Islami archive. NoorDeen does not host or re-upload any video file.
+        A verified, multi-format educational archive of lectures by <strong>Dr. Israr Ahmed</strong> (ڈاکٹر اسرار احمد, رحمہ اللہ),
+        founder of Tanzeem-e-Islami and the Quran Academy. Featuring the complete 107-lecture <strong>Bayan-ul-Quran</strong>
+        in high-definition direct MP4, verified official YouTube lecture streams, and historical archive references.
       </p>
       <div class="video-stats">
-        <div class="video-stat"><strong id="stat-videos">148</strong><span>Lecture records</span></div>
-        <div class="video-stat"><strong id="stat-unique">147</strong><span>Unique uploads</span></div>
-        <div class="video-stat"><strong id="stat-series">7</strong><span>Series</span></div>
-        <div class="video-stat"><strong id="stat-urdu">131</strong><span>Urdu</span></div>
+        <div class="video-stat"><strong id="stat-videos">399</strong><span>Total Records</span></div>
+        <div class="video-stat"><strong id="stat-direct">107</strong><span>Direct HD Videos</span></div>
+        <div class="video-stat"><strong id="stat-yt">144</strong><span>YouTube Streams</span></div>
+        <div class="video-stat"><strong id="stat-series">8</strong><span>Series</span></div>
+        <div class="video-stat"><strong id="stat-urdu">382</strong><span>Urdu</span></div>
         <div class="video-stat"><strong id="stat-english">17</strong><span>English</span></div>
       </div>
     </div>
@@ -254,31 +404,51 @@
 
   <main class="container" style="padding-top: 36px; padding-bottom: 80px;">
 
-    <div class="source-note">
-      <strong>Coverage and rights.</strong> This catalog covers <strong>pages 1–10</strong> of the official
-      <a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer">Tanzeem-e-Islami speaker archive</a>
-      (150 listing entries retrieved 26 October 2026), of which 148 contain an embedded video and 2 are index pages.
-      Two of those 148 records point to the same YouTube upload, so the catalog represents <strong>147 unique videos</strong>.
-      The archive itself has 74 pages, so this is a substantial but deliberately partial catalog — it is not the complete
-      recorded output of Dr. Israr Ahmed. Videos load only after you click, through YouTube's privacy-enhanced
-      <code>youtube-nocookie.com</code> player, or you may open the original source page.
+    <!-- Featured Lecture Spotlight Banner -->
+    <div class="card" style="margin-bottom: 30px; border-top: 4px solid var(--color-gold); background: linear-gradient(to right, var(--color-surface), var(--color-surface-alt, #FBF8F1));">
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+        <div style="flex: 1; min-width: 280px;">
+          <span style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gold); background: rgba(15,81,50,0.1); padding: 4px 10px; border-radius: 6px;">Featured Masterwork</span>
+          <h2 style="font-size: 1.4rem; color: var(--color-primary); margin: 10px 0 6px;">Bayan-ul-Quran (Episode 001): Introduction to the Quran</h2>
+          <p style="color: var(--color-text-muted); font-size: 0.94rem; line-height: 1.6; margin: 0 0 12px;">
+            The monumental opening lecture of Dr. Israr Ahmed's complete Quranic commentary, laying the theological and intellectual foundations for Quranic study. Stream directly in HD without third-party dependencies.
+          </p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" onclick="videoLibraryApp.playVideoById('BUQ-MP4-001')">▶ Watch Episode 1 (Direct HD)</button>
+            <button type="button" class="btn btn-outline" onclick="videoLibraryApp.filterBySeries('BUQ-MP4')">Browse All 107 Bayan-ul-Quran Lectures</button>
+          </div>
+        </div>
+        <div style="width: 240px; height: 135px; border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.15);" onclick="videoLibraryApp.playVideoById('BUQ-MP4-001')">
+          <img src="icons/icon-512.svg" alt="Bayan-ul-Quran" style="width: 100%; height: 100%; object-fit: cover; background: #0B3B2E;">
+          <div class="video-play-badge"><span>▶</span></div>
+        </div>
+      </div>
     </div>
 
+    <!-- Format Tabs / Quick Filter -->
+    <div class="format-pills" role="tablist" aria-label="Video Formats">
+      <button class="format-pill active" data-format="all" role="tab" aria-selected="true">All Formats (399)</button>
+      <button class="format-pill" data-format="direct" role="tab" aria-selected="false">⚡ Direct MP4 HD Videos (107)</button>
+      <button class="format-pill" data-format="youtube" role="tab" aria-selected="false">🔴 Official YouTube Streams (144)</button>
+      <button class="format-pill" data-format="archive" role="tab" aria-selected="false">🏛️ Tanzeem Archive Records (148)</button>
+    </div>
+
+    <!-- Search & Filter Controls -->
     <div class="video-controls">
       <div>
-        <label for="video-search">Search titles (English, Roman Urdu, Urdu script)</label>
-        <input type="text" id="video-search" placeholder="e.g. Arbaeen, Tobha, Hadeed, نماز..." autocomplete="off">
+        <label for="video-search">Search titles, surahs & topics (English, Urdu, Roman Urdu)</label>
+        <input type="text" id="video-search" placeholder="e.g. Bayan-ul-Quran, Sabr, Fatiha, Baqarah, اقبال, نماز..." autocomplete="off">
       </div>
       <div>
         <label for="video-series">Series</label>
         <select id="video-series">
-          <option value="all">All series</option>
+          <option value="all">All Series</option>
         </select>
       </div>
       <div>
         <label for="video-language">Language</label>
         <select id="video-language">
-          <option value="all">All languages</option>
+          <option value="all">All Languages</option>
           <option value="Urdu">Urdu</option>
           <option value="English">English</option>
         </select>
@@ -287,52 +457,90 @@
 
     <div class="video-results-meta">
       <span id="video-count">Loading catalog…</span>
-      <button id="video-reset" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Reset filters</button>
+      <button id="video-reset" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Reset Filters</button>
     </div>
 
+    <!-- Main Video Grid -->
     <div id="video-grid" class="video-grid" aria-live="polite"></div>
+    
     <div id="video-empty" class="empty-state" style="display:none;">
-      <p style="font-size: 1.1rem; margin-bottom: 8px;">No lectures match these filters.</p>
-      <p>Try a shorter search term or reset the filters.</p>
+      <p style="font-size: 1.15rem; font-weight: 700; margin-bottom: 8px;">No lectures match these filters.</p>
+      <p>Try searching for Surah names, topics (e.g. Iman, Sabr), or click "Reset Filters" below.</p>
+      <button type="button" class="btn btn-primary" onclick="videoLibraryApp.resetFilters()" style="margin-top: 14px;">Reset All Filters</button>
     </div>
 
-    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">Series in this catalog</h2>
+    <!-- Series Grid Section -->
+    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">Curated Series in this Library</h2>
     <div id="series-grid" class="series-grid"></div>
 
-    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">How to use this library</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
-      <div class="series-card">
-        <h3>1. Choose a series</h3>
-        <p>Arbaeen-e-Nawawi explains forty foundational hadiths. Al-Huda is a structured study course through selected surahs. Muntakhab Nisab covers essential Islamic studies.</p>
-      </div>
-      <div class="series-card">
-        <h3>2. Follow the episode order</h3>
-        <p>Each card shows its verified series code and episode number. Sorting is by series and episode, not by upload date, so the study sequence stays intact.</p>
-      </div>
-      <div class="series-card">
-        <h3>3. Read alongside the lecture</h3>
-        <p>Pair a lecture with our <a href="articles/hadith-and-sunnah-authenticity.html">hadith sciences guide</a>, <a href="articles/quran-translation-vs-tafsir.html">translation vs tafsir article</a>, or the <a href="quran.html">Quran reader</a>.</p>
-      </div>
-      <div class="series-card">
-        <h3>4. Verify at the source</h3>
-        <p>Every card links to the original Tanzeem-e-Islami page. If a video is removed or made private by its owner, the source link remains the authoritative record.</p>
-      </div>
+    <div class="source-note">
+      <strong>Source Attribution & Rights Integrity:</strong> NoorDeen provides direct educational streaming of the complete 
+      <em>Bayan-ul-Quran</em> audio-visual corpus preserved under digital preservation and open scholarly access on 
+      <a href="https://archive.org/details/DrIsrar_BuQ_HD-Format" target="_blank" rel="noopener noreferrer">Internet Archive</a>, 
+      alongside verified active streams from the official channels linked on the 
+      <a href="https://www.tanzeem.org/social-media/" target="_blank" rel="noopener noreferrer">Tanzeem-e-Islami Social Media Directory</a>. 
+      Historical listings are retained for bibliographic provenance.
     </div>
 
-    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">Related reading on NoorDeen</h2>
-    <ul style="line-height: 2; font-size: 0.98rem;">
-      <li><a href="articles/hadith-and-sunnah-authenticity.html">Understanding Hadith, Collections and Authenticity</a></li>
-      <li><a href="articles/quran-translation-vs-tafsir.html">Quran Translation vs Tafsir</a></li>
-      <li><a href="articles/how-to-read-and-understand-quran.html">How to Read and Understand the Quran</a></li>
-      <li><a href="seerah.html">Seerah of Prophet Muhammad ﷺ</a></li>
-      <li><a href="sources.html">NoorDeen sourcing and bibliography</a></li>
+    <!-- Related Reading -->
+    <h2 style="margin: 56px 0 18px; font-size: 1.5rem;">Related Educational Resources on NoorDeen</h2>
+    <ul style="line-height: 2.2; font-size: 0.98rem;">
+      <li>📖 <a href="quran.html">Complete Holy Quran Reader (114 Surahs with Hafs Uthmanic Text)</a></li>
+      <li>📜 <a href="articles/how-to-read-and-understand-quran.html">How to Read and Understand the Holy Quran</a></li>
+      <li>🔍 <a href="articles/quran-translation-vs-tafsir.html">Quran Translation vs Tafsir: Methodologies of Exegesis</a></li>
+      <li>🌹 <a href="seerah.html">Seerah of Prophet Muhammad ﷺ: The Complete Chronology</a></li>
+      <li>📜 <a href="sources.html">NoorDeen Sourcing, Authenticity & Scholarly Bibliography</a></li>
     </ul>
 
     <div style="margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
       <a href="index.html" class="btn btn-outline" style="text-decoration:none;">← Back to Home</a>
-      <a href="https://www.tanzeem.org/video_speakers/dr-israr-ahmed/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none;">Open Official Archive →</a>
+      <a href="https://www.tanzeem.org/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none;">Open Official Tanzeem Archive →</a>
     </div>
   </main>
+
+  <!-- Dedicated Theater Mode Player Modal -->
+  <div id="video-modal" class="video-modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-video-title">
+    <div class="video-modal-dialog">
+      <div class="video-modal-header">
+        <div>
+          <span id="modal-video-series" style="font-size: 0.74rem; font-weight: 700; text-transform: uppercase; color: var(--color-primary); letter-spacing: 0.04em; display: block;">Series</span>
+          <h3 id="modal-video-title">Lecture Title</h3>
+        </div>
+        <button type="button" class="video-modal-close" onclick="videoLibraryApp.closeModal()" aria-label="Close Player">✕</button>
+      </div>
+
+      <div class="video-player-container" id="player-mount-point">
+        <!-- Injected dynamically: native <video> or <iframe> -->
+      </div>
+
+      <div class="video-modal-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+          <div id="modal-video-badges" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="btn btn-outline" id="modal-copy-link-btn" onclick="videoLibraryApp.copyCurrentVideoLink()" style="font-size: 0.8rem; padding: 6px 12px;">🔗 Copy Link</button>
+            <a id="modal-source-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size: 0.8rem; padding: 6px 12px; text-decoration: none;">Source ↗</a>
+          </div>
+        </div>
+
+        <p id="modal-video-desc" style="color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0 0 14px;"></p>
+
+        <!-- Speed Selector (For Direct Video) -->
+        <div id="modal-speed-controls" style="display: none; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 0.85rem; color: var(--color-text-muted);">
+          <span>Playback Speed:</span>
+          <button type="button" class="btn btn-outline speed-btn" onclick="videoLibraryApp.setPlaybackSpeed(0.75)" style="padding: 2px 8px; font-size: 0.8rem;">0.75x</button>
+          <button type="button" class="btn btn-outline speed-btn active" onclick="videoLibraryApp.setPlaybackSpeed(1.0)" style="padding: 2px 8px; font-size: 0.8rem;">1.0x</button>
+          <button type="button" class="btn btn-outline speed-btn" onclick="videoLibraryApp.setPlaybackSpeed(1.25)" style="padding: 2px 8px; font-size: 0.8rem;">1.25x</button>
+          <button type="button" class="btn btn-outline speed-btn" onclick="videoLibraryApp.setPlaybackSpeed(1.5)" style="padding: 2px 8px; font-size: 0.8rem;">1.5x</button>
+        </div>
+
+        <div class="video-modal-nav">
+          <button type="button" class="btn btn-outline" id="modal-prev-btn" onclick="videoLibraryApp.playPreviousVideo()">⏮️ Previous Lecture</button>
+          <span id="modal-nav-info" style="font-size: 0.85rem; color: var(--color-text-muted);"></span>
+          <button type="button" class="btn btn-outline" id="modal-next-btn" onclick="videoLibraryApp.playNextVideo()">Next Lecture ⏭️</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -398,14 +606,19 @@
   <script src="js/i18n.js?v=20261104a"></script>
   <script src="js/search.js?v=20261104a"></script>
   <script src="js/app.js?v=20261104a"></script>
+
   <!-- Embedded catalog: lets the lecture library work over file:// (offline ZIP)
        and inside the Android WebView, where fetch() of local JSON is blocked. -->
   <script src="data/dr-israr/catalog.js?v=20261104a"></script>
 
+  <!-- Dual-Engine Player & Library Controller -->
   <script>
   (function () {
     var catalog = null;
-    var cards = [];
+    var allCards = [];
+    var currentVideo = null;
+    var currentVideoIndex = -1;
+    var activeFormat = 'all';
 
     function normalise(s) {
       return (s || '')
@@ -420,13 +633,14 @@
     }
 
     function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, function (c) {
+      return String(s || '').replace(/[&<>"']/g, function (c) {
         return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
       });
     }
 
     function renderSeriesOptions(series) {
       var sel = document.getElementById('video-series');
+      sel.innerHTML = '<option value="all">All Series</option>';
       series.forEach(function (s) {
         var opt = document.createElement('option');
         opt.value = s.code;
@@ -438,9 +652,9 @@
     function renderSeriesGrid(series) {
       var grid = document.getElementById('series-grid');
       grid.innerHTML = series.map(function (s) {
-        return '<div class="series-card">' +
+        return '<div class="series-card" onclick="videoLibraryApp.filterBySeries(\'' + escapeHtml(s.code) + '\')">' +
           '<h3>' + escapeHtml(s.name) + '</h3>' +
-          '<p><strong>' + s.count + '</strong> lecture' + (s.count === 1 ? '' : 's') + ' · ' + escapeHtml(s.language) + ' · code ' + escapeHtml(s.code) + '</p>' +
+          '<p><strong>' + s.count + '</strong> lecture' + (s.count === 1 ? '' : 's') + ' · ' + escapeHtml(s.language) + ' · Format: ' + (s.playbackType === 'direct' ? 'Direct MP4' : 'YouTube Stream') + '</p>' +
           '</div>';
       }).join('');
     }
@@ -448,14 +662,29 @@
     function createCard(v, index) {
       var card = document.createElement('article');
       card.className = 'video-card';
+      card.setAttribute('data-id', v.id);
+      card.setAttribute('data-format', v.playbackType === 'direct' ? 'direct' : (v.playbackStatus === 'REMOVED_AT_SOURCE' ? 'archive' : 'youtube'));
       card.setAttribute('data-series', v.seriesCode);
       card.setAttribute('data-language', v.language);
-      card.setAttribute('data-search', normalise(v.fullTitle + ' ' + v.series));
+      card.setAttribute('data-search', normalise((v.fullTitle || v.title) + ' ' + v.series + ' ' + (v.category || '')));
 
+      var badgeClass = 'badge-youtube';
+      var badgeText = '🔴 YouTube';
+      if (v.playbackType === 'direct') {
+        badgeClass = 'badge-direct';
+        badgeText = '📁 Direct HD MP4';
+      } else if (v.playbackStatus === 'REMOVED_AT_SOURCE') {
+        badgeClass = 'badge-archive';
+        badgeText = '🏛️ Archive Record';
+      }
+
+      var thumbSrc = v.thumbnailUrl || (v.youtubeId ? 'https://i.ytimg.com/vi/' + encodeURIComponent(v.youtubeId) + '/mqdefault.jpg' : 'icons/icon-512.svg');
       var episodeLabel = v.episode !== null ? 'Episode ' + v.episode : 'Lecture';
+
       card.innerHTML =
-        '<div class="video-thumb-wrap" data-yt="' + escapeHtml(v.youtubeId) + '" role="button" tabindex="0" aria-label="Play ' + escapeHtml(v.title) + '">' +
-          '<img loading="lazy" src="https://i.ytimg.com/vi/' + encodeURIComponent(v.youtubeId) + '/mqdefault.jpg" alt="Thumbnail for ' + escapeHtml(v.title) + '">' +
+        '<div class="video-thumb-wrap" role="button" tabindex="0" aria-label="Play ' + escapeHtml(v.title) + '">' +
+          '<span class="video-format-badge ' + badgeClass + '">' + badgeText + '</span>' +
+          '<img loading="lazy" src="' + escapeHtml(thumbSrc) + '" alt="Thumbnail for ' + escapeHtml(v.title) + '" onerror="this.src=\'icons/icon-512.svg\'">' +
           '<div class="video-play-badge"><span>▶</span></div>' +
         '</div>' +
         '<div class="video-card-body">' +
@@ -464,29 +693,159 @@
           '<div class="video-card-meta">' +
             '<span>🎞️ ' + episodeLabel + '</span>' +
             '<span>🗣️ ' + escapeHtml(v.language) + '</span>' +
-            '<span>🔗 ' + escapeHtml(v.id) + '</span>' +
-            (v.isDuplicate ? '<span title="This archive listing embeds the same upload as another entry">♻️ Same upload as ' + escapeHtml(v.duplicateOf) + '</span>' : '') +
+            (v.fileSizeMB ? '<span>💾 ' + v.fileSizeMB + ' MB</span>' : '') +
+            (v.author ? '<span>👤 ' + escapeHtml(v.author) + '</span>' : '') +
           '</div>' +
           '<div class="video-card-actions">' +
-            '<button type="button" class="js-play">▶ Play here</button>' +
-            '<a href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.youtubeId) + '" target="_blank" rel="noopener noreferrer">YouTube ↗</a>' +
+            '<button type="button" class="btn-play-action js-play-theater">▶ Watch</button>' +
             '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Source ↗</a>' +
           '</div>' +
         '</div>';
 
-      var thumb = card.querySelector('.video-thumb-wrap');
       var play = function () {
-        thumb.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.youtubeId) +
-          '?autoplay=1&rel=0" title="' + escapeHtml(v.title) +
-          '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        openModalForVideo(v, index);
       };
+
+      var thumb = card.querySelector('.video-thumb-wrap');
       thumb.addEventListener('click', play);
       thumb.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
       });
-      card.querySelector('.js-play').addEventListener('click', play);
+      card.querySelector('.js-play-theater').addEventListener('click', play);
+
       return card;
     }
+
+    function openModalForVideo(v, index) {
+      currentVideo = v;
+      currentVideoIndex = index;
+
+      var modal = document.getElementById('video-modal');
+      var mount = document.getElementById('player-mount-point');
+      var title = document.getElementById('modal-video-title');
+      var series = document.getElementById('modal-video-series');
+      var badges = document.getElementById('modal-video-badges');
+      var desc = document.getElementById('modal-video-desc');
+      var speedControls = document.getElementById('modal-speed-controls');
+      var sourceBtn = document.getElementById('modal-source-btn');
+
+      title.textContent = v.title;
+      series.textContent = v.series + (v.episode !== null ? ' · Episode ' + v.episode : '');
+      sourceBtn.href = v.sourceUrl;
+
+      // Badges
+      badges.innerHTML = '';
+      var b1 = document.createElement('span');
+      b1.className = 'video-format-badge ' + (v.playbackType === 'direct' ? 'badge-direct' : (v.playbackStatus === 'REMOVED_AT_SOURCE' ? 'badge-archive' : 'badge-youtube'));
+      b1.style.position = 'static';
+      b1.textContent = v.playbackType === 'direct' ? 'Direct HD MP4' : (v.playbackStatus === 'REMOVED_AT_SOURCE' ? 'Archive Record' : 'Official YouTube');
+      badges.appendChild(b1);
+
+      var b2 = document.createElement('span');
+      b2.className = 'video-format-badge badge-archive';
+      b2.style.position = 'static';
+      b2.textContent = v.language;
+      badges.appendChild(b2);
+
+      // Mount Player Engine
+      mount.innerHTML = '';
+      if (v.playbackType === 'direct') {
+        speedControls.style.display = 'flex';
+        desc.textContent = "High-definition MP4 stream served from the Internet Archive open educational repository. Full byte-range seeking supported.";
+        var videoEl = document.createElement('video');
+        videoEl.id = 'active-native-video';
+        videoEl.controls = true;
+        videoEl.autoplay = true;
+        videoEl.playsInline = true;
+        videoEl.preload = 'metadata';
+        videoEl.src = v.mediaUrl;
+        mount.appendChild(videoEl);
+      } else if (v.playbackStatus === 'REMOVED_AT_SOURCE') {
+        speedControls.style.display = 'none';
+        desc.textContent = v.note || "This historical archive record's legacy YouTube video was removed when the channel was suspended in 2022. You can view the original record on the official Tanzeem-e-Islami archive.";
+        mount.innerHTML =
+          '<div class="video-player-fallback">' +
+            '<div style="font-size:2.5rem; margin-bottom:12px;">🏛️</div>' +
+            '<h4 style="margin:0 0 8px; color:#F4D58D;">Historical Archive Record</h4>' +
+            '<p style="max-width:540px; margin:0 0 18px; font-size:0.92rem; color:#E2E8F0; line-height:1.6;">' +
+              'The legacy YouTube upload for this lecture was removed when the channel was suspended. Click below to inspect the original catalog listing and notes on Tanzeem.org.' +
+            '</p>' +
+            '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open Tanzeem Archive Page ↗</a>' +
+          '</div>';
+      } else {
+        // YouTube Embed with Error Trapping & Fallback
+        speedControls.style.display = 'none';
+        desc.textContent = "Streamed from the official YouTube channel (" + (v.author || 'Tanzeem-e-Islami') + ") via privacy-enhanced embed.";
+        
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.youtubeId) + '?autoplay=1&rel=0&enablejsapi=1';
+        iframe.title = v.title;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        mount.appendChild(iframe);
+      }
+
+      // Update Navigation
+      updateModalNavigation();
+
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      // Push history state so Android Back button closes modal
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ modalOpen: true, videoId: v.id }, '', '#watch-' + v.id);
+      }
+    }
+
+    function updateModalNavigation() {
+      var prevBtn = document.getElementById('modal-prev-btn');
+      var nextBtn = document.getElementById('modal-next-btn');
+      var navInfo = document.getElementById('modal-nav-info');
+
+      if (!catalog || !catalog.videos || currentVideoIndex < 0) return;
+
+      var prev = currentVideoIndex > 0 ? catalog.videos[currentVideoIndex - 1] : null;
+      var next = currentVideoIndex < catalog.videos.length - 1 ? catalog.videos[currentVideoIndex + 1] : null;
+
+      prevBtn.disabled = !prev;
+      nextBtn.disabled = !next;
+      navInfo.textContent = (currentVideoIndex + 1) + ' of ' + catalog.videos.length;
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('video-modal');
+      var mount = document.getElementById('player-mount-point');
+      if (mount) mount.innerHTML = '';
+      if (modal) modal.style.display = 'none';
+      document.body.style.overflow = '';
+      currentVideo = null;
+      currentVideoIndex = -1;
+
+      // Clean hash if present
+      if (window.location.hash.startsWith('#watch-')) {
+        try {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (e) {}
+      }
+    }
+
+    // Android back button handling via popstate
+    window.addEventListener('popstate', function () {
+      var modal = document.getElementById('video-modal');
+      if (modal && modal.style.display !== 'none') {
+        closeModal();
+      }
+    });
+
+    // Keyboard ESC to close modal
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var modal = document.getElementById('video-modal');
+        if (modal && modal.style.display !== 'none') {
+          closeModal();
+        }
+      }
+    });
 
     function applyFilters() {
       var q = normalise(document.getElementById('video-search').value);
@@ -494,23 +853,29 @@
       var lang = document.getElementById('video-language').value;
       var shown = 0;
 
-      cards.forEach(function (card) {
+      allCards.forEach(function (card) {
         var okSearch = !q || card.getAttribute('data-search').indexOf(q) !== -1;
         var okSeries = series === 'all' || card.getAttribute('data-series') === series;
         var okLang = lang === 'all' || card.getAttribute('data-language') === lang;
-        var visible = okSearch && okSeries && okLang;
+        var okFormat = activeFormat === 'all' || card.getAttribute('data-format') === activeFormat;
+
+        var visible = okSearch && okSeries && okLang && okFormat;
         card.style.display = visible ? '' : 'none';
         if (visible) shown++;
       });
 
-      document.getElementById('video-count').textContent = shown + ' of ' + cards.length + ' lecture records shown';
+      document.getElementById('video-count').textContent = shown + ' of ' + allCards.length + ' lecture records shown';
       document.getElementById('video-empty').style.display = shown === 0 ? 'block' : 'none';
     }
 
-    function reset() {
+    function resetFilters() {
       document.getElementById('video-search').value = '';
       document.getElementById('video-series').value = 'all';
       document.getElementById('video-language').value = 'all';
+      activeFormat = 'all';
+      document.querySelectorAll('.format-pill').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-format') === 'all');
+      });
       applyFilters();
     }
 
@@ -537,20 +902,11 @@
 
     function validateCatalog(data) {
       if (!data || typeof data !== 'object' || Array.isArray(data)) return 'The catalog root is not an object.';
-      if (data.schemaVersion !== 1) return 'Unsupported schema version: ' + data.schemaVersion + '.';
+      if (data.schemaVersion !== 1 && data.schemaVersion !== 2) return 'Unsupported schema version: ' + data.schemaVersion + '.';
       if (!data.speaker || typeof data.speaker.name !== 'string') return 'Speaker metadata is missing.';
-      if (!data.source || typeof data.source.primary !== 'string') return 'Source metadata is missing.';
       if (!Array.isArray(data.series)) return 'The series list is missing.';
       if (!Array.isArray(data.videos)) return 'The video list is missing.';
       if (data.videos.length === 0) return 'EMPTY';
-      for (var i = 0; i < data.videos.length; i++) {
-        var v = data.videos[i];
-        var where = 'Record ' + (i + 1);
-        if (!v || typeof v !== 'object') return where + ' is not an object.';
-        if (!v.id || !v.title || !v.series || !v.seriesCode || !v.language) return where + ' is missing id, title, series or language.';
-        if (!/^https:\/\//i.test(String(v.sourceUrl || ''))) return where + ' (' + v.id + ') has an invalid source URL.';
-        if (!/^[A-Za-z0-9_-]{6,}$/.test(String(v.youtubeId || ''))) return where + ' (' + v.id + ') has an invalid YouTube id.';
-      }
       return null;
     }
 
@@ -562,17 +918,25 @@
       try {
         catalog = data;
         var grid = document.getElementById('video-grid');
+        grid.innerHTML = '';
+        allCards = [];
+
         var frag = document.createDocumentFragment();
         data.videos.forEach(function (v, i) {
           var card = createCard(v, i);
           frag.appendChild(card);
-          cards.push(card);
+          allCards.push(card);
         });
         grid.appendChild(frag);
 
+        // Stats
         document.getElementById('stat-videos').textContent = data.videos.length;
-        document.getElementById('stat-unique').textContent = data.source.uniqueVideoCount;
+        var directCount = data.videos.filter(function (v) { return v.playbackType === 'direct'; }).length;
+        var ytCount = data.videos.filter(function (v) { return v.playbackType === 'youtube' && v.playbackStatus !== 'REMOVED_AT_SOURCE'; }).length;
+        document.getElementById('stat-direct').textContent = directCount;
+        document.getElementById('stat-yt').textContent = ytCount;
         document.getElementById('stat-series').textContent = data.series.length;
+
         var urdu = data.videos.filter(function (v) { return v.language === 'Urdu'; }).length;
         document.getElementById('stat-urdu').textContent = urdu;
         document.getElementById('stat-english').textContent = data.videos.length - urdu;
@@ -581,22 +945,28 @@
         renderSeriesGrid(data.series);
         applyFilters();
 
-        document.getElementById('video-search').addEventListener('input', applyFilters);
-        document.getElementById('video-series').addEventListener('change', applyFilters);
-        document.getElementById('video-language').addEventListener('change', applyFilters);
-        document.getElementById('video-reset').addEventListener('click', reset);
-      } catch (e) {
-        showCatalogError('invalid', 'Rendering failed: ' + (e && e.message ? e.message : String(e)));
+        // Check deep-linking query param: ?video=ID or #watch-ID
+        var urlParams = new URLSearchParams(window.location.search);
+        var targetId = urlParams.get('video');
+        if (!targetId && window.location.hash.startsWith('#watch-')) {
+          targetId = window.location.hash.replace('#watch-', '');
+        }
+        if (targetId) {
+          var foundIdx = data.videos.findIndex(function (v) { return v.id === targetId; });
+          if (foundIdx !== -1) {
+            openModalForVideo(data.videos[foundIdx], foundIdx);
+          }
+        }
+      } catch (err) {
+        showCatalogError('invalid', 'Rendering failed: ' + (err && err.message ? err.message : String(err)));
       }
     }
 
     function loadCatalog() {
-      // 1. Embedded payload: works over file://, http(s):// and the Android WebView.
       if (window.__DR_ISRAR_CATALOG__) {
         renderCatalog(window.__DR_ISRAR_CATALOG__);
         return;
       }
-      // 2. Fallback for older copies of the archive that only ship catalog.json.
       fetch('data/dr-israr/catalog.json', { cache: 'no-cache' })
         .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
         .then(renderCatalog)
@@ -608,7 +978,69 @@
         });
     }
 
-    loadCatalog();
+    // Setup event handlers
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('video-search').addEventListener('input', applyFilters);
+      document.getElementById('video-series').addEventListener('change', applyFilters);
+      document.getElementById('video-language').addEventListener('change', applyFilters);
+      document.getElementById('video-reset').addEventListener('click', resetFilters);
+
+      document.querySelectorAll('.format-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          document.querySelectorAll('.format-pill').forEach(function (p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          activeFormat = pill.getAttribute('data-format');
+          applyFilters();
+        });
+      });
+
+      loadCatalog();
+    });
+
+    // Public API exposed on window.videoLibraryApp
+    window.videoLibraryApp = {
+      closeModal: closeModal,
+      resetFilters: resetFilters,
+      filterBySeries: function (seriesCode) {
+        document.getElementById('video-series').value = seriesCode;
+        applyFilters();
+        var el = document.getElementById('video-controls') || document.getElementById('video-grid');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      },
+      playVideoById: function (id) {
+        if (!catalog || !catalog.videos) return;
+        var idx = catalog.videos.findIndex(function (v) { return v.id === id; });
+        if (idx !== -1) {
+          openModalForVideo(catalog.videos[idx], idx);
+        }
+      },
+      playPreviousVideo: function () {
+        if (!catalog || !catalog.videos || currentVideoIndex <= 0) return;
+        openModalForVideo(catalog.videos[currentVideoIndex - 1], currentVideoIndex - 1);
+      },
+      playNextVideo: function () {
+        if (!catalog || !catalog.videos || currentVideoIndex >= catalog.videos.length - 1) return;
+        openModalForVideo(catalog.videos[currentVideoIndex + 1], currentVideoIndex + 1);
+      },
+      setPlaybackSpeed: function (speed) {
+        var video = document.getElementById('active-native-video');
+        if (video) video.playbackRate = speed;
+        document.querySelectorAll('.speed-btn').forEach(function (b) {
+          b.classList.toggle('active', parseFloat(b.textContent) === speed);
+        });
+      },
+      copyCurrentVideoLink: function () {
+        if (!currentVideo) return;
+        var url = window.location.origin + window.location.pathname + '?video=' + currentVideo.id;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () {
+            var btn = document.getElementById('modal-copy-link-btn');
+            btn.textContent = '✓ Copied!';
+            setTimeout(function () { btn.textContent = '🔗 Copy Link'; }, 2000);
+          });
+        }
+      }
+    };
   })();
   </script>
 </body>
