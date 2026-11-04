@@ -35,7 +35,7 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 1 | Header navigation, desktop dropdowns | PASS | Present on all 80 indexable pages; links resolve (0 real broken in the Batch 8a sweep); active-state highlighter runs without error. | Dropdown interaction is CSS/JS hover + click; not separately keyboard-audited. |
+| 1 | Header navigation, desktop dropdowns | PASS | Present on all 88 indexable pages; links resolve (0 real broken in the Batch 8a sweep); active-state highlighter runs without error. | Dropdown interaction is CSS/JS hover + click; not separately keyboard-audited. |
 | 2 | Mobile drawer menu | PASS | Opens/closes; `aria-expanded` toggles `true`/`false`; `aria-hidden` toggles; focus moves into the drawer; Escape closes. | — |
 | 3 | Global search modal + `Ctrl+K` | PASS | `riba` → 1 result; `zakat` → Zakat Calculator first; `marriage` → article + Seerah chapter + hadith; `barzakh` → death article; `halal food` → article; `parenting` → parenting article; `inheritance` → inheritance article; `neighbour` → neighbours article; `business ethics` → business article; `contract promises` → contracts article; `debt repayment` → debt article first; `workers wages` → workers article. Works from article pages via lazy `data.js`; nested result links return 200; `ayatul kursi` → 2:255; `سورہ واقعہ` → 56; `tabarakallazi` → 67 only. | Search is client-side over a curated index (60 pages + datasets), not a full-text corpus index. |
 | 4 | Language selector + English reset | PASS | Modal offers 11 verified languages; switching to Urdu translates content areas while UI stays `lang="en"` / `dir="ltr"`; reset restores English. | Only 11 of 40 registry languages have UI dictionaries (see `TRANSLATION_AUDIT.md`). |
@@ -117,8 +117,8 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 37 | Articles index | PASS | 57 cards; in-page filter `business` → 1, `contract` → 3, `debt` → 3, `workers` → 1, `seerah` → 8, `prophets` → 9, `hijrah` → 1, reset → 57; roadmap statuses updated for topics 53–76; 57 unique article links. | 34 of 100 roadmap topics published (57 articles incl. 23 additional topics). |
-| 38 | Educational articles (57) | PARTIAL | All 57 render; TOC anchors resolve; 2 JSON-LD blocks each; body length 1,538–3,596 words (prose core 1,139–3,101); max 5-word shingle similarity 0.0308. Batch 8b pages built and checked statically. | Coverage is 34/100 roadmap topics; no scholarly sign-off. Batches 6a, 6b, 7a, 7b, 8a and 8b exceed the 2,500-word guide deliberately. |
+| 37 | Articles index | PASS | 61 cards; in-page filter `business` → 1, `contract` → 3, `debt` → 3, `workers` → 1, `seerah` → 8, `prophets` → 9, `hijrah` → 1, reset → 61; roadmap statuses updated for topics 53–80; 61 unique article links. | 38 of 100 roadmap topics published (61 articles incl. 23 additional topics). |
+| 38 | Educational articles (61) | PARTIAL | All 61 render; TOC anchors resolve; 2 JSON-LD blocks each; body length 1,538–3,596 words (prose core 1,139–3,101); max 5-word shingle similarity 0.0308. Batch 9a pages built and checked statically. | Coverage is 38/100 roadmap topics; no scholarly sign-off. Batches 6a, 6b, 7a, 7b, 8a, 8b and 9a exceed the 2,500-word guide deliberately. |
 | 39 | Glossary | PASS | 135 terms with categories, Arabic script and search. | Definitions are concise, not encyclopaedic. |
 | 40 | Learning pathways | PASS | Homepage pathways section now has the previously missing `#guided-learning` anchor; cards link to guides and articles. | — |
 
@@ -128,8 +128,8 @@ The single BLOCKED item is Android device verification (installation and v2/v3 s
 
 | # | Module | Status | Evidence | Limits / notes |
 | --: | :--- | :--- | :--- | :--- |
-| 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and network-first; displayed hashes match files (`c60a0ef5…` APK, `47bbdfa4…` ZIP); APK 5,418,764 bytes / v1.3.0, bundle 5,274,058 bytes / 348 files / 85 pages; page copy states 114 bundled surahs and the v1-only signature. | APK is JAR-signed v1 only; installation not device-tested. |
-| 42 | About page | PASS | Test count updated to 2,858; removed WCAG certification and peer-review claims. | - |
+| 41 | Download centre | PASS | APK and ZIP links return HTTP 200; `CHECKSUMS.sha256` loaded at runtime and network-first; displayed hashes match files (`6a12d1d9…` APK, `f91c46d5…` ZIP); APK 5,476,274 bytes / v1.3.0, bundle 5,330,695 bytes / 352 files / 89 pages; page copy states 114 bundled surahs and the v1-only signature. | APK is JAR-signed v1 only; installation not device-tested. |
+| 42 | About page | PASS | Test count updated to 3,033; removed WCAG certification and peer-review claims. | - |
 | 43 | Sources / methodology | PASS | Bibliography, grading policy, tafsir policy; qibla claim removed. | — |
 | 44 | Contact / corrections | PASS | Required and email validation block invalid submit; valid submit shows an honest "no backend" panel with GitHub issue + mailto dispatch. | No server-side inbox. |
 | 45 | Privacy and terms | PASS | Static policies render; no analytics or ad scripts active by default. | Legal review not performed. |

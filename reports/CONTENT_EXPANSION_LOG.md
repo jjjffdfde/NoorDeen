@@ -1,6 +1,6 @@
 # NoorDeen — Content Expansion Log
 
-**Last updated:** 3 November 2026 (Batch 8b: four Lives of the Noble Sahaba articles)
+**Last updated:** 4 November 2026 (Batch 9a: four Islamic History & Civilization articles)
 **Counting method:** rendered text only — `<script>`, `<style>` and tags removed, then tokens counted. Two figures are reported where they differ:
 - **Whole-page words** include navigation, table of contents, related-reading block and footer.
 - **Article body words** cover the `<article class="editorial-content-body">` region and exclude that shared chrome; they are the honest measure of article length.
@@ -31,6 +31,7 @@ Historical Batch 1/2 figures below are whole-page counts. Batch 3 reports body c
 | **Batch 7b articles** | 4 Stories of the Prophets (topics 65–68: Musa, Dawud/Sulayman, Yunus, Isa) | **13,644 body words**, 3,411 average; prose core 2,510–3,067 words each |
 | **Batch 8a articles** | 4 Lives of the Noble Sahaba (topics 69–72: Abu Bakr, Umar, Uthman, Ali) | **12,167 body words**, 3,042 average; prose core 2,427–2,963 words each |
 | **Batch 8b articles** | 4 Lives of the Noble Sahaba (topics 73–76: Khadijah, Aisha, Bilal, Salman al-Farsi) | **14,206 body words**, 3,552 average; prose core 3,063–3,101 words each |
+| **Batch 9a articles** | 4 Islamic History & Civilization articles (topics 77–80: Rashidun, Umayyads, Abbasids, al-Andalus) | **13,943 body words**, 3,486 average; prose core 2,829–3,072 words each |
 | **Content-trust fixes** | Search modal, tafsir fallback, checksums, page counts, SW cache, kalima copy/share, drawer ARIA, result labels, missing anchor, skip link, theme-color | See section 4 |
 
 ---
@@ -79,7 +80,29 @@ Each article includes: a table of contents with working anchors, `BreadcrumbList
 
 ---
 
-## 2. Batch 8b detail (this cycle)
+## 2. Batch 9a detail (this cycle)
+
+Generated from `scripts/article-content/batch-9a.cjs` through `scripts/build-articles.cjs batch-9a.cjs`, so all four share the established article template, TOC, schema, navigation and footer. This batch opens the Islamic History & Civilization discipline and treats institutions and historiography rather than repeating the four caliph biographies already published in Batch 8a.
+
+| # | Roadmap topic | Slug | Body words | Prose core | Whole-page words |
+| --: | :--- | :--- | --: | --: | --: |
+| 58 | 77. The Rightly Guided Caliphs: succession, expansion and the first fitna | `rightly-guided-caliphs-succession-and-expansion` | 3,555 | 3,005 | 3,923 |
+| 59 | 78. The Umayyads: Damascus, dynasty and the limits of the Arab kingdom | `umayyads-damascus-and-the-arab-kingdom` | 3,562 | 3,072 | 3,932 |
+| 60 | 79. The Abbasids: Baghdad, the translation movement and fragmentation | `abbasids-baghdad-and-the-fragmentation` | 3,521 | 3,048 | 3,893 |
+| 61 | 80. Al-Andalus: Córdoba, the taifas and the memory of convivencia | `al-andalus-cordoba-taifas-and-convivencia` | 3,305 | 2,829 | 3,659 |
+| | **Total** | | **13,943** | **11,954** | **15,407** |
+
+Each article includes: a table of contents with working anchors, `BreadcrumbList` and `FAQPage` JSON-LD, a rendered bibliography, explicit source-critical notes, and links to related libraries. All four are indexed in `js/search.js`, `sitemap.xml` and `articles/index.html` (cards #58–61, details block 138–141), and are reachable from the article library.
+
+**Source discipline.** The batch keeps the Qur’anic text, sound hadith, early chronicles (al-Tabari, al-Baladhuri, Ibn Abd al-Hakam), later biography and modern historiography in separate layers. The Saqifa, the ridda campaigns, the conquest treaties, the Karbala narratives, the Barmakid fall, the mihna and the convivencia debate are each labelled by source type. Where the famous report is later Sirah, court history or *Isra’iliyyat* rather than an authentic hadith, the article says so. Contested memory — Sunni and Shi‘i accounts of the first fitna, Umayyad and Abbasid historiography, the romantic and critical readings of al-Andalus — is presented without polemic or romanticism.
+
+**Quality gate.** Prose core (intro plus numbered sections) is 2,829–3,072 words per article; the whole-body measure (including FAQ, bibliography and related reading) is 3,305–3,562. Each page stays under the audited 3,600 whole-body cap. Each page was checked for stray Markdown, third-party scripts, canonical URLs, FAQ/Breadcrumb schema, TOC anchors, body-container integrity, duplicate IDs and replacement characters.
+
+**Honest note on numbering.** The library now contains 61 articles. Cards are numbered #58–61 and the details block uses publication numbers 138–141. Those publication numbers are not a claim that 141 roadmap topics are written; the Islamic History & Civilization discipline now has 4 of its 8 topics live (77–80) and 4 planned (81–84).
+
+---
+
+## 2. Batch 8b detail (previous cycle)
 
 Generated from `scripts/article-content/batch-8b.cjs` through `scripts/build-articles.cjs batch-8b.cjs`, so all four share the established article template, TOC, schema, navigation and footer.
 
@@ -277,10 +300,10 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 
 | Metric | Value |
 | :--- | :--- |
-| HTML pages | **85** (26 root + 58 article pages + `offline.html`) |
-| Visible words, 84 indexable pages | **331,683** |
-| Articles published | **57** (34 roadmap topics + 23 additional topics) |
-| Article body words | **143,276**, average **2,514**, min **1,538**, max **3,596** (57 articles) |
+| HTML pages | **89** (26 root + 62 article pages + `offline.html`) |
+| Visible words, 88 indexable pages | **346,991** |
+| Articles published | **61** (38 roadmap topics + 23 additional topics) |
+| Article body words | **157,219**, average **2,577**, min **1,538**, max **3,596** (61 articles) |
 | Quran ayahs bundled | **6,236** (114 surahs) with Arabic, English, Urdu and transliteration |
 | Hadith records | 101 |
 | Dua records | 102 |
@@ -289,16 +312,16 @@ No Quranic text was generated or "corrected" by hand. The only transformations a
 | Tafsir editions | **3 verbatim**: Jalalayn EN 6,236 verses, Jalalayn AR 6,010, asbab AR 275 verses / 200 reports |
 | Editorial summaries | 6 verses, labelled NoorDeen editorial text |
 | Thematic index | 30 themes / 5,639 keyword matches |
-| Automated assertions | **2,858 passing, 0 failing** (54 suites) |
-| Sitemap URLs | 84 |
-| Release APK | 5,418,764 bytes (5.17 MiB), 357 entries / 85 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
-| Offline bundle | 5,274,058 bytes (5.03 MiB), 348 files |
+| Automated assertions | **3,033 passing, 0 failing** (55 suites) |
+| Sitemap URLs | 88 |
+| Release APK | 5,476,274 bytes (5.22 MiB), 361 entries / 89 pages / 114 Quran chunks / 114 tafsir chunks, v1.3.0, JAR-signed v1 only, **not device-tested** |
+| Offline bundle | 5,330,695 bytes (5.08 MiB), 352 files |
 
 ---
 
 ## 6. What is still missing
 
-- **70 roadmap topics** remain unwritten (the 100-topic list minus the 30 covered).
+- **62 roadmap topics** remain unwritten (the 100-topic list minus the 38 covered).
 - **Tafsir** now covers three verbatim editions with measured gaps; the English Jalalayn licence still needs owner confirmation, and no edition has been collated against print.
 - **Asbab al-nuzul** is Arabic only and covers the 275 verses for which the source compilation records an occasion.
 - **Audio and video** are not bundled; recitation streams and lectures embed from YouTube.

@@ -1,9 +1,9 @@
 # NoorDeen — Remaining Work
 
-**Updated:** 3 November 2026
-**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. The eight-topic Seerah strand (Batch 6a/6b, topics 53–60) is fully published. Batch 7a and 7b add all eight Stories of the Prophets (topics 61–68: Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud/Sulayman, Yunus, Isa). Batch 8a and 8b add all eight Lives of the Noble Sahaba (topics 69–76: Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal and Salman al-Farsi). The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
+**Updated:** 4 November 2026
+**Status:** Phase 1 (full offline Quran) and Phase 2 (verbatim tafsir, asbab al-nuzul and thematic index) are complete and verified. The eight-topic Seerah strand (Batch 6a/6b, topics 53–60) is fully published. Batch 7a and 7b add all eight Stories of the Prophets (topics 61–68: Adam, Nuh, Ibrahim, Yusuf, Musa, Dawud/Sulayman, Yunus, Isa). Batch 8a and 8b add all eight Lives of the Noble Sahaba (topics 69–76: Abu Bakr, Umar, Uthman, Ali, Khadijah, Aisha, Bilal and Salman al-Farsi). Batch 9a opens the Islamic History & Civilization discipline (topics 77–80: the Rightly Guided Caliphs, the Umayyads, the Abbasids and al-Andalus). The site is usable offline. It is not complete: article expansion, Android device verification, signing and the English Jalalayn licence decision remain the largest open items.
 
-**Last successful test:** `node test/run-tests.js` → **2,858 executed / 2,858 passed / 0 failed** (Suites 1–54). The four Batch 8b pages were built at 3,536–3,568 body words (prose core 3,063–3,101), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 57 cards.
+**Last successful test:** `node test/run-tests.js` → **3,033 executed / 3,033 passed / 0 failed** (Suites 1–55). The four Batch 9a pages were built at 3,305–3,562 body words (prose core 2,829–3,072), each with 2 JSON-LD blocks, a bibliography and explicit source-caution notes. The article index now shows 61 cards.
 
 **Live deployment:** Batch 8b is live at `gh-pages` commit `ecf183e631b3f6d93c20ab86fb09f87fbcc03469` (tree from `273518c:public`) on `https://jjjffdfde.github.io/NoorDeen/`: SW `v30`, About states 2,858 assertions and names Batches 8a/8b, the four new article pages return 200 with correct H1, 14–15 TOC links and 2 JSON-LD blocks each, 57 cards, 84 sitemap URLs, `offline.html` live with `noindex`. Live APK (5,418,764 bytes / `c60a0ef5…`) and bundle (5,274,058 bytes / `47bbdfa4…`) hash-match the local artefacts; Chromium showed 0 console errors and search returned the Khadijah, Aisha, Bilal and Salman pages first.
 
@@ -42,7 +42,7 @@
 
 ---
 
-## 1B. Done in this cycle (Batch 8b)
+## 1B. Done in the previous cycle (Batch 8b)
 
 | Item | Verified outcome |
 | :--- | :--- |
@@ -51,6 +51,19 @@
 | Roadmap | Topics 73–76 marked LIVE; Sahaba discipline 8 Live / 0 Planned; TOTAL 34 LIVE / 66 ROADMAP |
 | Tests | 2,858 assertions, 0 failures, 54 suites |
 | Asset version | `?v=20261102d`, service-worker cache `v30` |
+| Builds | APK and bundle rebuilt from the current tree; hashes recorded in `FINAL_AUDIT_RESULTS.md` |
+
+---
+
+## 1C. Done in this cycle (Batch 9a)
+
+| Item | Verified outcome |
+| :--- | :--- |
+| Articles | 4 Islamic History & Civilization articles (topics 77–80): Rightly Guided Caliphs, Umayyads, Abbasids, al-Andalus; 3,305–3,562 body words, prose core 2,829–3,072 |
+| Registration | `js/search.js` (4 entries), `sitemap.xml` (88 URLs), `articles/index.html` (cards #58–61, details block 138–141) |
+| Roadmap | Topics 77–80 marked LIVE; history discipline 4 Live / 4 Planned; TOTAL 38 LIVE / 62 ROADMAP |
+| Tests | 3,033 assertions, 0 failures, 55 suites |
+| Asset version | `?v=20261104a`, service-worker cache `v31` |
 | Builds | APK and bundle rebuilt from the current tree; hashes recorded in `FINAL_AUDIT_RESULTS.md` |
 
 ---
@@ -99,7 +112,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | Tafsir | **Done (Phase 2)** — Jalalayn EN 6,236; Jalalayn AR 6,010; 6 editorial summaries | Owner decision on the English translation licence; optional collation against a printed edition | English translation is © Royal Aal al-Bayt, attributed non-commercial use only |
 | Asbab al-nuzul | **Done (Phase 2)** — 275 verses / 50 surahs / 200 Arabic reports | English translation if a licensed one is found | Arabic only; absence is stated as absence, not non-existence |
 | Thematic index | **Done (Phase 2)** — 30 themes / 5,639 matches | Optional scholarly review of theme definitions | Keyword finding aid, not a thematic tafsir |
-| Articles | 53 published / 30 roadmap topics | 70 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batches 6a, 6b, 7a, 7b and 8a deliberately longer, 2,664–3,596 whole-body) |
+| Articles | 61 published / 38 roadmap topics | 62 more roadmap topics | Phase 5; ~1,800–2,500 body words each (Batches 6a, 6b, 7a, 7b, 8a, 8b and 9a deliberately longer, 2,664–3,596 whole-body) |
 | Hadith | 101 curated | 500+ reviewed records plus narrator (rijaal) notes | Phase 3 |
 | Nawawi 40 | Partial (within the 101) | Complete 40 with commentary | Phase 3 |
 | Lecture catalog | 10 of 74 archive pages | Remaining 64 pages | Same scrape-and-verify method; keep duplicate handling |
@@ -113,7 +126,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 | 6 | 41–50 | Seerah epochs in depth — **DONE: Batch 6a (topics 53–56) and Batch 6b (topics 57–60), 8 articles** |
 | 7 | 61–68 | Stories of the Prophets — **DONE: Batch 7a (topics 61–64) and Batch 7b (topics 65–68), 8 articles** |
 | 8 | 69–76 | Lives of the Noble Sahaba — **COMPLETE: all eight topics live (Batches 8a and 8b)** |
-| 9 | 77–84 | Islamic history and civilisation: caliphates, Al-Andalus, Ottomans, science, waqf and trade |
+| 9 | 77–84 | Islamic history and civilisation: caliphates, Al-Andalus, Ottomans, science, waqf and trade — **IN PROGRESS: Batch 9a (topics 77–80), 4 articles** |
 | 10 | 85–90 | Character, manners and ethics: akhlaq, guarding the tongue, disagreement, humility, truthfulness, ithar |
 | 11 | 91–100 | Family, sacred seasons, Arabic terminology, practical tools and contemporary questions |
 
@@ -165,7 +178,7 @@ The APK carries a valid JAR signature (v1, SHA256withRSA, 2048-bit, certificate 
 
 ## 7. Exact next task
 
-**Next task:** **Batch 9a — Islamic History & Civilization (roadmap topics 77–80: the Rightly Guided Caliphs, the Umayyads, the Abbasids and Al-Andalus)**, registered in `js/search.js`, `sitemap.xml` and `articles/index.html`. Batch 8b completes the eight-topic Sahaba strand; the next discipline is history.
+**Next task:** **Batch 9b — Islamic History & Civilization (roadmap topics 81–84: the Ottomans, Islamic contributions to science, the waqf system and the spread of Islam through trade)**, to be registered in `js/search.js`, `sitemap.xml` and `articles/index.html`. Batch 9a opens the discipline with four articles; Batch 9b completes it.
 
 Alternative: begin Phase 3 (hadith expansion) or obtain the owner's decision on the English Jalalayn translation licence before commercial distribution.
 

@@ -3,7 +3,7 @@
 **Project:** NoorDeen Islamic Knowledge Library  
 **Document:** Master Educational Syllabus & Content Roadmap (100 Distinct Topics)  
 **Publication Standard:** Classical Sunni Orthodoxy (*Kutub al-Sittah*, *Tafsir Ibn Kathir*, *Fath al-Bari*, *Hisnul Muslim*)  
-**Current Status:** 57 Long-Form Articles Published (Batches 1-8b) | 100-Topic Phased Roadmap  
+**Current Status:** 61 Long-Form Articles Published (Batches 1-9a) | 100-Topic Phased Roadmap  
 
 ---
 
@@ -27,7 +27,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 8  | Prophetic Seerah (Biography of Muhammad ﷺ) | 8 Topics      | 8 Live      | 0 Planned   |
 | 9  | Stories of the Prophets (Qasas al-Anbiya)  | 8 Topics      | 8 Live      | 0 Planned   |
 | 10 | Lives of the Noble Sahaba (Companions)     | 8 Topics      | 8 Live      | 0 Planned   |
-| 11 | Islamic Civilizations & Historical Epochs  | 8 Topics      | Integrated* | 8 Planned   |
+| 11 | Islamic Civilizations & Historical Epochs  | 8 Topics      | 4 Live      | 4 Planned   |
 | 12 | Islamic Character, Manners & Ethics        | 6 Topics      | 0 Live      | 6 Planned   |
 | 13 | Family Life, Marriage & Social Rights      | 6 Topics      | 0 Live      | 6 Planned   |
 | 14 | Sacred Seasons, Ramadan & Eid Celebrations | 4 Topics      | 0 Live      | 4 Planned   |
@@ -35,7 +35,7 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
 | 16 | Practical Islamic Tools & Educational Fiqh | 4 Topics      | Integrated* | 4 Planned   |
 | 17 | Evidence-Based Contemporary Questions & QA | 4 Topics      | 0 Live      | 4 Planned   |
 +----+--------------------------------------------+---------------+-------------+-------------+
-|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 34 LIVE     | 66 ROADMAP  |
+|    | TOTAL SYLLABUS SCOPE                       | 100 TOPICS    | 38 LIVE     | 62 ROADMAP  |
 +----+--------------------------------------------+---------------+-------------+-------------+
 * Note: Full libraries already exist in public/seerah.html (25 chapters), public/prophets.html (30 narratives), public/sahaba.html (52 monographs), and public/history.html (12 epochs). The roadmap expands these into standalone educational treatises.
 * Note: the "Live" column counts roadmap topics that have a dedicated standalone article mapped to their topic number. Additional published articles from Batches 2–5 are catalogued in reports/CONTENT_COUNTS.md; the per-topic mapping is reconciled as each discipline is expanded.
@@ -230,6 +230,14 @@ The 100 topics are divided across 17 essential Islamic disciplines, designed to 
   - 76. **Salman al-Farsi: The Seeker Who Crossed Empires** — `public/articles/salman-al-farsi-the-seeker-who-crossed-empires.html` [LIVE]
     - *Scope:* His Zoroastrian upbringing near Isfahan, the search through the monks of Syria and Iraq, his enslavement and arrival in Yathrib, the three signs, his freedom and the palms, the trench of the Confederates, al-Mada’in, his death and the grading of “Salman is from us”.
 - **Islamic History & Civilization (Topics 77–84):** Rightly Guided Caliphs, Umayyads, Abbasids, Al-Andalus, Ottomans, Islamic Contributions to Science, Waqf System, Trade Spread.
+  - 77. **The Rightly Guided Caliphs: Succession, Expansion and the First Fitna** — `public/articles/rightly-guided-caliphs-succession-and-expansion.html` [LIVE]
+    - *Scope:* The Saqifa and the bay‘ah, Abu Bakr and the ridda wars, the collection of the Qur’an, Umar and the machinery of empire, Uthman and the standard codex, Ali and the first fitna, taxation and the garrison towns, the conquests and their terms, Sunni and Shi‘i memory, and the limits of the sources.
+  - 78. **The Umayyads: Damascus, Dynasty and the Limits of the Arab Kingdom** — `public/articles/umayyads-damascus-and-the-arab-kingdom.html` [LIVE]
+    - *Scope:* Mu‘awiya and the move to Damascus, the second fitna and Karbala, Abd al-Malik and the coinage, the Dome of the Rock, the “Arab kingdom” thesis, al-Hajjaj and Iraq, the conquests of Africa, Iberia and Sind, Umar II’s reforms, the third fitna and the revolution of 750, and Abbasid-era memory.
+  - 79. **The Abbasids: Baghdad, the Translation Movement and the Fragmentation of the Caliphate** — `public/articles/abbasids-baghdad-and-the-fragmentation.html` [LIVE]
+    - *Scope:* The revolution of 750, the Round City, the Barmakids, Harun al-Rashid, the translation movement and the Bayt al-Hikma debate, paper and commerce, the mihna of Ibn Hanbal, the Buyids, Fatimids and Seljuks, the Nizamiyya, the sack of Baghdad in 1258, and the limits of the “golden age”.
+  - 80. **Al-Andalus: Córdoba, the Taifas and the Memory of Convivencia** — `public/articles/al-andalus-cordoba-taifas-and-convivencia.html` [LIVE]
+    - *Scope:* The conquest of 711, the emirate and caliphate of Córdoba, Madinat al-Zahra, Ibn Hazm, Ibn Rushd and Maimonides, the convivencia debate, the taifa kingdoms, the Almoravids and Almohads, the Reconquista, 1492 and the Morisco expulsions, and the architecture of memory.
 - **Character & Manners (Topics 85–90):** Akhlaq Concept, Guarding the Tongue, Adab al-Ikhtilaf (Disagreement Ethics), Humility vs Pride, Truthfulness, Ithar (Generosity).
 - **Family Life & Society (Topics 91–96):** Birr al-Walidayn (Honoring Parents), Marriage in Islam, Parenting, Ties of Kinship, Halal and Tayyib, Islamic Business Ethics.
 - **Sacred Seasons & Specialized Guides (Topics 97–100):** Sacred Months, Day of Ashura, First Ten Days of Dhul Hijjah, Celebrating Eid.
