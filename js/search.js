@@ -166,9 +166,9 @@ const SURAH_SEARCH_ALIASES = {
 const EDUCATIONAL_SEARCH_PAGES = [
   {
     title: "Dr. Israr Ahmed Video Library (Verified Catalog)",
-    snippet: "148 verified lecture records across 7 series, including Arbaeen-e-Nawawi, Al-Huda and Muntakhab Nisab, linked to the official Tanzeem-e-Islami archive.",
+    snippet: "722 catalog records across 13 series: 107 attributed Internet Archive MP4 source links, 468 active YouTube streams and 147 historical archive records. MP4 redistribution permission is not established, so those files are source-linked rather than embedded. Transcript and subtitle availability is disclosed honestly; notes, bookmarks and progress stay on your device.",
     url: "dr-israr-ahmed.html",
-    keywords: ["dr israr", "israr ahmed", "israr ahmad", "tanzeem", "bayan ul quran", "arbaeen", "arbaeen e nawawi", "al huda", "muntakhab nisab", "lectures", "videos", "taqreer", "bayan", "ڈاکٹر اسرار", "اسرار احمد", "بیان"]
+    keywords: ["dr israr", "israr ahmed", "israr ahmad", "tanzeem", "bayan ul quran", "arbaeen", "arbaeen e nawawi", "al huda", "muntakhab nisab", "lectures", "videos", "taqreer", "bayan", "transcript", "transcripts", "subtitles", "captions", "lecture notes", "bookmarks", "continue watching", "learning", "ڈاکٹر اسرار", "اسرار احمد", "بیان"]
   },
   {
     title: "Complete Janazah (Funeral Prayer) Guide",

@@ -364,7 +364,7 @@ const ISLAMIC_DATA = {
       en: "The merciful will be shown mercy by the Most Merciful. Be merciful to those on earth, and the One in the heavens will show mercy to you.",
       ur: "رحم کرنے والوں پر رحمن رحم فرماتا ہے۔ تم زمین والوں پر رحم کرو، آسمان والا تم پر رحم فرمائے گا۔",
       narrator: "Abdullah ibn Amr (RA)",
-      grade: "Sahih (Al-Albani)",
+      grade: "Hasan (Darussalam); Sahih (Al-Albani) — NEEDS HUMAN SCHOLAR REVIEW",
       topic: "Mercy"
     },
     {
@@ -377,18 +377,6 @@ const ISLAMIC_DATA = {
       ur: "جو لوگوں کا شکر ادا نہیں کرتا، وہ اللہ کا بھی شکر ادا نہیں کرتا۔",
       narrator: "Abu Hurairah (RA)",
       grade: "Sahih (Al-Albani)",
-      topic: "Akhlaq"
-    },
-    {
-      id: "nasai-3140",
-      collection: "Sunan an-Nasa'i",
-      number: 3140,
-      book: "Jihad",
-      ar: "الْجَنَّةُ تَحْتَ أَقْدَامِ الأُمَّهَاتِ.",
-      en: "Paradise lies beneath the feet of mothers.",
-      ur: "جنت ماؤں کے قدموں تلے ہے۔",
-      narrator: "Mu'awiyah ibn Jahima (RA)",
-      grade: "Hasan (Al-Albani)",
       topic: "Akhlaq"
     },
     {
@@ -516,8 +504,8 @@ const ISLAMIC_DATA = {
       en: "Seeking knowledge is an absolute religious duty upon every single Muslim.",
       ur: "علم کا حاصل کرنا ہر مسلمان (مرد و عورت) پر فرض ہے۔",
       narrator: "Anas ibn Malik (RA)",
-      grade: "Sahih (Al-Albani)",
-      gradeScholar: "Ibn Majah / Al-Albani",
+      grade: "Da'if Jaddan (Darussalam); Sahih (Al-Albani) — NEEDS HUMAN SCHOLAR REVIEW",
+      gradeScholar: "Ibn Majah / Darussalam vs Al-Albani",
       topic: "Knowledge"
     },
 {

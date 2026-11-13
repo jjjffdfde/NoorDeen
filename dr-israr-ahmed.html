@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Dr. Israr Ahmed Video Library — Complete Verified Archive | NoorDeen</title>
-  <meta name="description" content="Explore the comprehensive video library of Dr. Israr Ahmed (رحمہ اللہ) featuring the complete 107-lecture Bayan-ul-Quran in high-definition direct MP4, verified official YouTube lecture streams, and historical Tanzeem-e-Islami archive records.">
-  <link rel="stylesheet" href="css/main.css?v=20261104a">
+  <meta name="description" content="Explore the source-verified video library of Dr. Israr Ahmed (رحمہ اللہ): the complete 107-lecture Bayan-ul-Quran as attributed Internet Archive MP4 source links, 468 active YouTube uploads from organization-linked and third-party channels, and 147 historical Tanzeem-e-Islami archive records. Playback status, rights status, uploader and attribution are shown per record.">
+  <link rel="stylesheet" href="css/main.css?v=20261105a">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html">
@@ -14,13 +15,13 @@
   <meta property="og:site_name" content="NoorDeen Islamic Knowledge Library">
   <meta property="og:url" content="https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html">
   <meta property="og:title" content="Dr. Israr Ahmed Video Library — Complete Verified Archive">
-  <meta property="og:description" content="Complete 107-lecture Bayan-ul-Quran HD MP4 collection, verified YouTube lecture streams, and Tanzeem-e-Islami archives.">
+  <meta property="og:description" content="Complete 107-lecture Bayan-ul-Quran HD MP4 collection, 406 source-verified YouTube uploads with per-record attribution, and 147 historical Tanzeem-e-Islami archive records.">
   <meta property="og:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dr. Israr Ahmed Video Library — NoorDeen">
-  <meta name="twitter:description" content="Complete 107-lecture Bayan-ul-Quran HD MP4 collection, verified YouTube lecture streams, and Tanzeem-e-Islami archives.">
+  <meta name="twitter:description" content="Complete 107-lecture Bayan-ul-Quran HD MP4 collection, 406 source-verified YouTube uploads with per-record attribution, and 147 historical Tanzeem-e-Islami archive records.">
   <meta name="twitter:image" content="https://jjjffdfde.github.io/NoorDeen/icons/icon-512.svg">
 
   <script type="application/ld+json">
@@ -39,7 +40,7 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Dr. Israr Ahmed Video Library",
-    "description": "A verified catalog of Dr. Israr Ahmed lectures featuring direct MP4 Bayan-ul-Quran and official YouTube streams linked to Tanzeem-e-Islami.",
+    "description": "A verified catalog of Dr. Israr Ahmed lectures featuring attributed Internet Archive MP4 source links and YouTube streams linked to Tanzeem-e-Islami.",
     "url": "https://jjjffdfde.github.io/NoorDeen/dr-israr-ahmed.html",
     "about": {
       "@type": "Person",
@@ -253,6 +254,29 @@
       height: 100%;
       border: 0;
     }
+    .yt-player-shell { position: absolute; inset: 0; background: #000; }
+    .yt-player-holder { position: absolute; inset: 0; }
+    .yt-player-holder iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .yt-player-loading {
+      position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center;
+      gap: 12px; background: rgba(0,0,0,0.82); color: #F4D58D; font-size: 0.92rem; text-align: center; padding: 20px;
+    }
+    .yt-spinner {
+      width: 22px; height: 22px; border-radius: 50%; border: 3px solid rgba(244,213,141,0.3);
+      border-top-color: #F4D58D; animation: yt-spin 0.9s linear infinite; flex: none;
+    }
+    @keyframes yt-spin { to { transform: rotate(360deg); } }
+    .yt-play-overlay {
+      position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 12px; border: 0; background: rgba(0,0,0,0.55); color: #fff;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+    }
+    .yt-play-overlay:hover { background: rgba(0,0,0,0.68); }
+    .yt-play-icon {
+      display: flex; align-items: center; justify-content: center; width: 66px; height: 66px;
+      border-radius: 50%; background: #CC0000; color: #fff; font-size: 1.6rem; padding-left: 5px;
+    }
+    @media (prefers-reduced-motion: reduce) { .yt-spinner { animation: none; } }
     .video-player-fallback {
       position: absolute;
       inset: 0;
@@ -287,10 +311,130 @@
     .source-note { border-left: 4px solid var(--color-gold); background: var(--color-surface-alt, #F8F5EC); padding: 18px 20px; border-radius: 0 10px 10px 0; margin: 30px 0; font-size: 0.92rem; line-height: 1.75; }
     .empty-state { text-align: center; padding: 50px 20px; color: var(--color-text-muted); border: 1px dashed var(--color-border); border-radius: 14px; }
     
+    /* Personal learning dashboard */
+    .learning-card {
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      background: var(--color-surface);
+      padding: 20px 22px;
+      margin: 0 0 26px;
+    }
+    .learning-card h2 { margin: 0 0 6px; font-size: 1.15rem; color: var(--color-primary); }
+    .learning-sub { margin: 0 0 16px; font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.6; }
+    .learning-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .learning-column h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); margin: 0 0 10px; }
+    .learning-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .learning-list li {
+      display: flex; justify-content: space-between; gap: 10px; align-items: center;
+      border: 1px solid var(--color-border); border-radius: 10px; padding: 9px 11px; font-size: 0.85rem;
+    }
+    .learning-list .learning-title { display: block; font-weight: 700; font-size: 0.84rem; line-height: 1.4; }
+    .learning-list .learning-meta { display: block; color: var(--color-text-muted); font-size: 0.75rem; margin-top: 3px; }
+    .learning-list button {
+      border: 1px solid var(--color-border); background: transparent; color: var(--color-primary);
+      border-radius: 7px; padding: 5px 9px; font-size: 0.76rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+    .learning-list button:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .learning-empty { font-size: 0.84rem; color: var(--color-text-muted); font-style: italic; }
+
+    /* Transcript scope and search */
+    .transcript-search-row { display: flex; gap: 8px; margin: 12px 0; }
+    .transcript-search-row input {
+      flex: 1; padding: 10px 12px; border-radius: 9px; border: 1px solid var(--color-border);
+      background: var(--color-surface); color: var(--color-text-main); font-size: 0.92rem; box-sizing: border-box;
+    }
+    .transcript-results { display: flex; flex-direction: column; gap: 7px; }
+    .transcript-result {
+      display: block; width: 100%; text-align: left; border: 1px solid var(--color-border);
+      border-radius: 9px; padding: 9px 11px; background: transparent; cursor: pointer;
+      color: var(--color-text-main); font-size: 0.88rem; line-height: 1.55;
+    }
+    .transcript-result:hover { border-color: var(--color-primary); background: rgba(15,81,50,0.04); }
+    .transcript-result .tr-time { color: var(--color-primary); font-weight: 700; margin-right: 6px; font-variant-numeric: tabular-nums; }
+    .transcript-status {
+      border-left: 4px solid var(--color-gold); background: var(--color-surface-alt, #F8F5EC);
+      padding: 14px 16px; border-radius: 0 10px 10px 0; font-size: 0.88rem; line-height: 1.65; margin: 0 0 14px;
+    }
+    .transcript-status strong { color: var(--color-primary); }
+    .transcript-status p { margin: 6px 0 0; }
+    .transcript-body {
+      max-height: 340px; overflow: auto; border: 1px solid var(--color-border);
+      border-radius: 10px; padding: 6px;
+    }
+    .transcript-seg {
+      display: flex; gap: 10px; width: 100%; text-align: left; border: none; background: transparent;
+      padding: 7px 8px; border-radius: 7px; cursor: pointer; font-size: 0.9rem; line-height: 1.6;
+      color: var(--color-text-main);
+    }
+    .transcript-seg:hover { background: rgba(15,81,50,0.07); }
+    .transcript-seg time { color: var(--color-primary); font-weight: 700; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+    .transcript-seg .seg-text { flex: 1; }
+
+    /* Modal learning tabs */
+    .lecture-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--color-border); margin: 4px 0 16px; flex-wrap: wrap; }
+    .lecture-tab {
+      background: transparent; border: none; border-bottom: 3px solid transparent; padding: 9px 13px;
+      font-weight: 700; color: var(--color-text-muted); cursor: pointer; font-size: 0.88rem;
+    }
+    .lecture-tab[aria-selected="true"] { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .lecture-panel[hidden] { display: none; }
+    .lecture-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 9px; margin: 0 0 16px; }
+    .lecture-meta-item { border: 1px solid var(--color-border); border-radius: 9px; padding: 8px 11px; background: var(--color-surface-alt, #F8F5EC); }
+    .lecture-meta-item dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); margin: 0 0 3px; }
+    .lecture-meta-item dd { margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--color-text-main); word-break: break-word; }
+    .lecture-subhead { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted); margin: 18px 0 8px; }
+    .lecture-link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.88rem; }
+    .lecture-link-list a, .lecture-link-list button {
+      color: var(--color-primary); text-decoration: none; background: none; border: none;
+      padding: 0; cursor: pointer; text-align: left; font-size: 0.88rem; line-height: 1.5;
+    }
+    .lecture-link-list a:hover, .lecture-link-list button:hover { text-decoration: underline; }
+    .integrity-note {
+      font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6;
+      border-top: 1px dashed var(--color-border); padding-top: 10px; margin-top: 16px;
+    }
+
+    /* Player toolbar */
+    .player-toolbar {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 16px;
+      border-bottom: 1px solid var(--color-border); background: var(--color-surface-alt, #F8F5EC);
+    }
+    .player-toolbar button {
+      font-size: 0.78rem; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--color-border);
+      background: var(--color-surface); color: var(--color-primary); font-weight: 600; cursor: pointer;
+    }
+    .player-toolbar button:disabled { opacity: 0.45; cursor: not-allowed; }
+    .player-toolbar .resume-note {
+      margin-left: auto; font-size: 0.78rem; color: var(--color-text-muted);
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    }
+    .player-toolbar .resume-note button { padding: 3px 8px; font-size: 0.74rem; }
+
+    /* Notes */
+    .note-editor textarea {
+      width: 100%; min-height: 150px; padding: 12px 14px; border-radius: 10px;
+      border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text-main);
+      font-family: inherit; font-size: 0.92rem; line-height: 1.65; box-sizing: border-box; resize: vertical;
+    }
+    .note-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .note-status { font-size: 0.78rem; color: var(--color-text-muted); }
+    .subtitle-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 12px 0 0; font-size: 0.85rem; }
+    .subtitle-row select { padding: 8px 10px; border-radius: 8px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text-main); }
+    .ai-warning {
+      background: #FEF3C7; border: 1px solid #F59E0B; color: #7C2D12; border-radius: 8px;
+      padding: 10px 12px; font-size: 0.82rem; font-weight: 700; margin: 0 0 12px; line-height: 1.5;
+    }
+    .video-card-progress { height: 4px; background: rgba(15,81,50,0.15); border-radius: 2px; overflow: hidden; margin: 0 0 10px; }
+    .video-card-progress span { display: block; height: 100%; background: var(--color-primary); }
+    .video-card-actions .js-bookmark-card.is-saved { color: var(--color-gold); border-color: var(--color-gold); }
+
     @media (max-width: 760px) {
       .video-controls { grid-template-columns: 1fr; }
       .video-grid { grid-template-columns: 1fr; }
       .video-hero { padding: 36px 0; }
+      .learning-columns { grid-template-columns: 1fr; }
+      .lecture-tab { padding: 8px 10px; font-size: 0.82rem; }
+      .player-toolbar .resume-note { width: 100%; margin-left: 0; }
     }
   </style>
 </head>
@@ -389,15 +533,15 @@
       <p>
         A verified, multi-format educational archive of lectures by <strong>Dr. Israr Ahmed</strong> (ڈاکٹر اسرار احمد, رحمہ اللہ),
         founder of Tanzeem-e-Islami and the Quran Academy. Featuring the complete 107-lecture <strong>Bayan-ul-Quran</strong>
-        in high-definition direct MP4, verified official YouTube lecture streams, and historical archive references.
+        as attributed Internet Archive MP4 source links, verified official YouTube lecture streams, and historical archive references.
       </p>
       <div class="video-stats">
-        <div class="video-stat"><strong id="stat-videos">399</strong><span>Total Records</span></div>
-        <div class="video-stat"><strong id="stat-direct">107</strong><span>Direct HD Videos</span></div>
-        <div class="video-stat"><strong id="stat-yt">144</strong><span>YouTube Streams</span></div>
-        <div class="video-stat"><strong id="stat-series">8</strong><span>Series</span></div>
-        <div class="video-stat"><strong id="stat-urdu">382</strong><span>Urdu</span></div>
-        <div class="video-stat"><strong id="stat-english">17</strong><span>English</span></div>
+        <div class="video-stat"><strong id="stat-videos">722</strong><span>Total Records</span></div>
+        <div class="video-stat"><strong id="stat-direct">107</strong><span>Archive MP4 Sources</span></div>
+        <div class="video-stat"><strong id="stat-yt">468</strong><span>YouTube Streams</span></div>
+        <div class="video-stat"><strong id="stat-series">13</strong><span>Series</span></div>
+        <div class="video-stat"><strong id="stat-urdu">690</strong><span>Urdu</span></div>
+        <div class="video-stat"><strong id="stat-english">32</strong><span>English</span></div>
       </div>
     </div>
   </section>
@@ -411,10 +555,10 @@
           <span style="font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gold); background: rgba(15,81,50,0.1); padding: 4px 10px; border-radius: 6px;">Featured Masterwork</span>
           <h2 style="font-size: 1.4rem; color: var(--color-primary); margin: 10px 0 6px;">Bayan-ul-Quran (Episode 001): Introduction to the Quran</h2>
           <p style="color: var(--color-text-muted); font-size: 0.94rem; line-height: 1.6; margin: 0 0 12px;">
-            The monumental opening lecture of Dr. Israr Ahmed's complete Quranic commentary, laying the theological and intellectual foundations for Quranic study. Stream directly in HD without third-party dependencies.
+            The monumental opening lecture of Dr. Israr Ahmed's complete Quranic commentary, laying the theological and intellectual foundations for Quranic study. The verified Internet Archive MP4 is linked at its original source; NoorDeen does not re-host it.
           </p>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button type="button" class="btn btn-primary" onclick="videoLibraryApp.playVideoById('BUQ-MP4-001')">▶ Watch Episode 1 (Direct HD)</button>
+            <button type="button" class="btn btn-primary" onclick="videoLibraryApp.playVideoById('BUQ-MP4-001')">Open Episode 1 Source</button>
             <button type="button" class="btn btn-outline" onclick="videoLibraryApp.filterBySeries('BUQ-MP4')">Browse All 107 Bayan-ul-Quran Lectures</button>
           </div>
         </div>
@@ -427,10 +571,10 @@
 
     <!-- Format Tabs / Quick Filter -->
     <div class="format-pills" role="tablist" aria-label="Video Formats">
-      <button class="format-pill active" data-format="all" role="tab" aria-selected="true">All Formats (399)</button>
-      <button class="format-pill" data-format="direct" role="tab" aria-selected="false">⚡ Direct MP4 HD Videos (107)</button>
-      <button class="format-pill" data-format="youtube" role="tab" aria-selected="false">🔴 Official YouTube Streams (144)</button>
-      <button class="format-pill" data-format="archive" role="tab" aria-selected="false">🏛️ Tanzeem Archive Records (148)</button>
+      <button class="format-pill active" data-format="all" role="tab" aria-selected="true">All Formats (722)</button>
+      <button class="format-pill" data-format="direct" role="tab" aria-selected="false">📁 Internet Archive MP4 Sources (107)</button>
+      <button class="format-pill" data-format="youtube" role="tab" aria-selected="false">🔴 Active YouTube Streams (468)</button>
+      <button class="format-pill" data-format="archive" role="tab" aria-selected="false">🏛️ Tanzeem Archive Records (147)</button>
     </div>
 
     <!-- Search & Filter Controls -->
@@ -460,6 +604,34 @@
       <button id="video-reset" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.82rem;">Reset Filters</button>
     </div>
 
+    <!-- Personal learning dashboard: progress and bookmarks stay in this browser -->
+    <section id="my-learning" class="learning-card" style="display:none;" aria-labelledby="my-learning-title">
+      <h2 id="my-learning-title">📚 My Learning</h2>
+      <p class="learning-sub">Continue-watching positions, bookmarks and notes are stored only in this browser. No account is required and nothing is uploaded.</p>
+      <div class="learning-columns">
+        <div class="learning-column">
+          <h3>Continue Watching</h3>
+          <ul id="continue-list" class="learning-list"></ul>
+        </div>
+        <div class="learning-column">
+          <h3>Bookmarked Lectures</h3>
+          <ul id="bookmark-list" class="learning-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transcript scope: only searches text that is actually bundled -->
+    <section class="learning-card" aria-labelledby="transcript-scope-title">
+      <h2 id="transcript-scope-title">🔎 Search Inside Lectures (Transcripts)</h2>
+      <p class="learning-sub" id="transcript-audit">Checking the bundled transcript manifest…</p>
+      <div class="transcript-search-row">
+        <input type="search" id="lecture-transcript-search" placeholder="Search bundled transcripts (Urdu, English, Arabic)…" autocomplete="off" aria-label="Search bundled lecture transcripts">
+        <button type="button" class="btn btn-primary" id="lecture-transcript-search-btn" style="padding:10px 16px;">Search</button>
+      </div>
+      <div id="lecture-transcript-results" class="transcript-results" aria-live="polite"></div>
+      <div class="integrity-note" id="transcript-policy-note">NoorDeen only searches text that is bundled in the transcript manifest. Spoken-word search is never simulated. No transcript, subtitle or AI draft is created from a title or a guess.</div>
+    </section>
+
     <!-- Main Video Grid -->
     <div id="video-grid" class="video-grid" aria-live="polite"></div>
     
@@ -474,12 +646,14 @@
     <div id="series-grid" class="series-grid"></div>
 
     <div class="source-note">
-      <strong>Source Attribution & Rights Integrity:</strong> NoorDeen provides direct educational streaming of the complete 
-      <em>Bayan-ul-Quran</em> audio-visual corpus preserved under digital preservation and open scholarly access on 
-      <a href="https://archive.org/details/DrIsrar_BuQ_HD-Format" target="_blank" rel="noopener noreferrer">Internet Archive</a>, 
-      alongside verified active streams from the official channels linked on the 
-      <a href="https://www.tanzeem.org/social-media/" target="_blank" rel="noopener noreferrer">Tanzeem-e-Islami Social Media Directory</a>. 
-      Historical listings are retained for bibliographic provenance.
+      <strong>Source Attribution &amp; Rights Integrity:</strong> NoorDeen links to the complete 
+      <em>Bayan-ul-Quran</em> audio-visual corpus preserved on 
+      <a href="https://archive.org/details/DrIsrar_BuQ_HD-Format" target="_blank" rel="noopener noreferrer">Internet Archive</a>. 
+      Those 107 MP4 files were technically verified (HTTP 206, byte-range, H.264/AAC) but the archive item states no licence, 
+      rights holder or written permission, so redistribution permission is <strong>not established</strong> and the in-page 
+      direct player is disabled; the original archive link is retained. YouTube lectures are streamed from the channels linked on the 
+      <a href="https://www.tanzeem.org/social-media/" target="_blank" rel="noopener noreferrer">Tanzeem-e-Islami Social Media Directory</a> 
+      or from third-party uploads attributed per record. Historical listings are retained for bibliographic provenance.
     </div>
 
     <!-- Related Reading -->
@@ -513,6 +687,13 @@
         <!-- Injected dynamically: native <video> or <iframe> -->
       </div>
 
+      <div class="player-toolbar" role="toolbar" aria-label="Player and learning actions">
+        <button type="button" id="modal-fullscreen-btn" onclick="videoLibraryApp.toggleFullscreen()">⛶ Fullscreen</button>
+        <button type="button" id="modal-pip-btn" onclick="videoLibraryApp.togglePictureInPicture()">⧉ Picture-in-Picture</button>
+        <button type="button" id="modal-bookmark-btn" onclick="videoLibraryApp.toggleBookmark()" aria-pressed="false">☆ Save lecture</button>
+        <span class="resume-note" id="modal-resume-note"></span>
+      </div>
+
       <div class="video-modal-body">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
           <div id="modal-video-badges" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
@@ -531,6 +712,51 @@
           <button type="button" class="btn btn-outline speed-btn active" onclick="videoLibraryApp.setPlaybackSpeed(1.0)" style="padding: 2px 8px; font-size: 0.8rem;">1.0x</button>
           <button type="button" class="btn btn-outline speed-btn" onclick="videoLibraryApp.setPlaybackSpeed(1.25)" style="padding: 2px 8px; font-size: 0.8rem;">1.25x</button>
           <button type="button" class="btn btn-outline speed-btn" onclick="videoLibraryApp.setPlaybackSpeed(1.5)" style="padding: 2px 8px; font-size: 0.8rem;">1.5x</button>
+        </div>
+
+        <div class="lecture-tabs" role="tablist" aria-label="Lecture learning panels">
+          <button type="button" class="lecture-tab" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview" data-panel="overview">Overview</button>
+          <button type="button" class="lecture-tab" id="tab-transcript" role="tab" aria-selected="false" aria-controls="panel-transcript" data-panel="transcript">Transcript &amp; Subtitles</button>
+          <button type="button" class="lecture-tab" id="tab-notes" role="tab" aria-selected="false" aria-controls="panel-notes" data-panel="notes">My Notes</button>
+        </div>
+
+        <div id="panel-overview" class="lecture-panel" role="tabpanel" aria-labelledby="tab-overview">
+          <dl id="modal-meta-grid" class="lecture-meta-grid"></dl>
+          <h4 class="lecture-subhead">Related lectures in this series</h4>
+          <ul id="modal-related-lectures" class="lecture-link-list"></ul>
+          <h4 class="lecture-subhead">Related reading on NoorDeen</h4>
+          <ul id="modal-related-reading" class="lecture-link-list"></ul>
+          <p class="integrity-note" id="modal-integrity-note"></p>
+        </div>
+
+        <div id="panel-transcript" class="lecture-panel" role="tabpanel" aria-labelledby="tab-transcript" hidden>
+          <div id="transcript-status" class="transcript-status"></div>
+          <div class="subtitle-row">
+            <label for="subtitle-select">Subtitles:</label>
+            <select id="subtitle-select" disabled><option>No bundled subtitle track</option></select>
+            <span id="subtitle-note" style="font-size:.8rem;color:var(--color-text-muted);"></span>
+          </div>
+          <div class="transcript-search-row">
+            <input type="search" id="lecture-text-search" placeholder="Search this lecture's bundled text…" aria-label="Search this lecture transcript" disabled>
+            <button type="button" class="btn btn-outline" id="lecture-text-search-btn" disabled style="padding:10px 14px;">Find</button>
+          </div>
+          <div id="lecture-text-results" aria-live="polite"></div>
+          <div id="transcript-body" class="transcript-body" style="display:none;" tabindex="0" aria-label="Lecture transcript"></div>
+        </div>
+
+        <div id="panel-notes" class="lecture-panel" role="tabpanel" aria-labelledby="tab-notes" hidden>
+          <div class="note-editor">
+            <label for="lecture-note" style="display:block;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--color-text-muted);margin-bottom:6px;">Personal notes for this lecture</label>
+            <textarea id="lecture-note" placeholder="Write your own notes, questions or reflections…" spellcheck="true"></textarea>
+            <div class="note-actions">
+              <span class="note-status" id="note-status">Notes are stored only in this browser.</span>
+              <span style="display:flex;gap:8px;">
+                <button type="button" class="btn btn-outline" id="note-save-btn" style="font-size:.8rem;padding:6px 12px;">Save note</button>
+                <button type="button" class="btn btn-outline" id="note-clear-btn" style="font-size:.8rem;padding:6px 12px;">Clear</button>
+              </span>
+            </div>
+          </div>
+          <p class="integrity-note">Notes are personal study aids. They are not published, reviewed or presented as scholarly commentary. Clearing browser data removes them.</p>
         </div>
 
         <div class="video-modal-nav">
@@ -602,24 +828,207 @@
     </div>
   </footer>
 
-  <script src="js/config.js?v=20261104a"></script>
-  <script src="js/i18n.js?v=20261104a"></script>
-  <script src="js/search.js?v=20261104a"></script>
-  <script src="js/app.js?v=20261104a"></script>
+  <script src="js/config.js?v=20261105a"></script>
+  <script src="js/i18n.js?v=20261105a"></script>
+  <script src="js/search.js?v=20261105a"></script>
+  <script src="js/app.js?v=20261105a"></script>
 
   <!-- Embedded catalog: lets the lecture library work over file:// (offline ZIP)
        and inside the Android WebView, where fetch() of local JSON is blocked. -->
-  <script src="data/dr-israr/catalog.js?v=20261104a"></script>
+  <script src="data/dr-israr/catalog.js?v=20261105a"></script>
+
+  <!-- Embedded transcript manifest: lets the lecture page read the audited
+       manifest over file:// (offline ZIP) and inside the Android WebView. -->
+  <script src="data/dr-israr/transcripts/manifest.js?v=20261105a"></script>
 
   <!-- Dual-Engine Player & Library Controller -->
   <script>
   (function () {
+    'use strict';
+
+    var STORAGE_KEYS = {
+      progress: 'noorDeen.lectures.v1.progress',
+      bookmarks: 'noorDeen.lectures.v1.bookmarks',
+      notes: 'noorDeen.lectures.v1.notes'
+    };
+
     var catalog = null;
     var allCards = [];
     var currentVideo = null;
     var currentVideoIndex = -1;
     var activeFormat = 'all';
+    var transcriptManifest = null;
+    var manifestLoadState = 'loading';
+    var activeTrack = null;
+    var currentSegments = [];
+    var subtitleTracks = [];
+    var noteSaveTimer = null;
+    var progressSaveTimer = 0;
+    var youTubePosition = null;
+    var lastFocusedElement = null;
+    var ytApiPromise = null;
+    var activeYtPlayer = null;
+    var activeYtVideoId = null;
+    var ytProgressTimer = null;
+    var ytMountToken = 0;
+    var ytReady = false;
+    var ytHasPlayed = false;
+    var YT_ORIGIN = /^https?:$/.test(window.location.protocol) ? window.location.origin : '';
 
+    var AI_LABEL = 'AI-GENERATED TRANSCRIPT — UNVERIFIED';
+
+    var READING_MAP = {
+      'Tafseer & Quran': [
+        { href: 'quran.html', label: 'Complete Quran reader (114 surahs)' },
+        { href: 'articles/how-to-read-and-understand-quran.html', label: 'How to Read and Understand the Holy Quran' },
+        { href: 'articles/quran-translation-vs-tafsir.html', label: 'Quran Translation vs Tafsir: Methodologies of Exegesis' }
+      ],
+      'Seerah & Akhlaq': [
+        { href: 'seerah.html', label: 'Seerah of Prophet Muhammad ﷺ' },
+        { href: 'sahaba.html', label: 'Lives of the Noble Sahaba' },
+        { href: 'articles/honouring-parents-in-islam.html', label: 'Honouring Parents in Islam' }
+      ],
+      'Tazkiyah & Faith': [
+        { href: 'articles/repentance-dhikr-spiritual-development.html', label: 'Repentance, Dhikr and Spiritual Development' },
+        { href: 'duas.html', label: 'Daily Duas & Adhkar' },
+        { href: 'articles/beginners-guide-to-islam.html', label: 'A Beginner’s Guide to Islam' }
+      ],
+      'General Lectures': [
+        { href: 'articles/beginners-guide-to-islam.html', label: 'A Beginner’s Guide to Islam' },
+        { href: 'kalimas.html', label: 'The Six Kalimas' },
+        { href: 'salah-guide.html', label: 'The Five Daily Prayers (Salah)' }
+      ],
+      'History & Renaissance': [
+        { href: 'history.html', label: 'Islamic History & Eras' },
+        { href: 'articles/islamic-history-civilization.html', label: 'Islamic History and Civilization' },
+        { href: 'articles/rightly-guided-caliphs-succession-and-expansion.html', label: 'The Rightly Guided Caliphs' }
+      ],
+      'Khilafat & Movement': [
+        { href: 'history.html', label: 'Islamic History & Eras' },
+        { href: 'articles/rightly-guided-caliphs-succession-and-expansion.html', label: 'The Rightly Guided Caliphs' },
+        { href: 'articles/islamic-history-civilization.html', label: 'Islamic History and Civilization' }
+      ],
+      'Historical Archive': [
+        { href: 'sources.html', label: 'NoorDeen Sourcing, Authenticity & Bibliography' },
+        { href: 'history.html', label: 'Islamic History & Eras' },
+        { href: 'about.html', label: 'About NoorDeen & Methodology' }
+      ],
+      'Hadith & Sunnah': [
+        { href: 'hadith.html', label: 'Authentic Hadith Collections' },
+        { href: 'seerah.html', label: 'Seerah of Prophet Muhammad ﷺ' },
+        { href: 'sources.html', label: 'NoorDeen Sourcing & Scholarly Bibliography' }
+      ]
+    };
+
+    /* ---------------------------------------------------------------------
+     * Local storage helpers. Every learning feature degrades safely when a
+     * browser blocks storage (private mode, embedded WebView, quota).
+     * ------------------------------------------------------------------- */
+    function readJSON(key, fallback) {
+      try {
+        var raw = window.localStorage.getItem(key);
+        if (!raw) return fallback;
+        var parsed = JSON.parse(raw);
+        return parsed === null || parsed === undefined ? fallback : parsed;
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    function writeJSON(key, value) {
+      try {
+        window.localStorage.setItem(key, JSON.stringify(value));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function getProgress() {
+      var data = readJSON(STORAGE_KEYS.progress, {});
+      return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
+    }
+
+    function getProgressFor(id) {
+      var data = getProgress();
+      return data && data[id] && typeof data[id] === 'object' ? data[id] : null;
+    }
+
+    function saveProgress(id, position, duration, completed) {
+      if (!id || typeof position !== 'number' || !isFinite(position) || position < 0) return;
+      var data = getProgress();
+      var previous = data[id] || {};
+      if (previous.completed && !completed) return;
+      data[id] = {
+        position: Math.max(0, position),
+        duration: typeof duration === 'number' && isFinite(duration) ? duration : (previous.duration || 0),
+        completed: Boolean(completed),
+        updatedAt: new Date().toISOString()
+      };
+      writeJSON(STORAGE_KEYS.progress, data);
+    }
+
+    function clearProgress(id) {
+      var data = getProgress();
+      if (data[id]) {
+        delete data[id];
+        writeJSON(STORAGE_KEYS.progress, data);
+      }
+    }
+
+    function getResumePosition(id) {
+      var p = getProgressFor(id);
+      if (!p || p.completed) return 0;
+      return typeof p.position === 'number' && p.position > 10 ? p.position : 0;
+    }
+
+    function getBookmarks() {
+      var data = readJSON(STORAGE_KEYS.bookmarks, []);
+      return Array.isArray(data) ? data.filter(function (id) { return typeof id === 'string'; }) : [];
+    }
+
+    function isBookmarked(id) {
+      return getBookmarks().indexOf(id) !== -1;
+    }
+
+    function toggleBookmark(id) {
+      var bookmarks = getBookmarks();
+      var index = bookmarks.indexOf(id);
+      if (index === -1) bookmarks.unshift(id);
+      else bookmarks.splice(index, 1);
+      writeJSON(STORAGE_KEYS.bookmarks, bookmarks);
+      updateBookmarkButtons(id);
+      renderLearningDashboard();
+      return index === -1;
+    }
+
+    function getNotes() {
+      var data = readJSON(STORAGE_KEYS.notes, {});
+      return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
+    }
+
+    function getNote(id) {
+      var notes = getNotes();
+      return notes[id] && typeof notes[id] === 'object' ? notes[id] : null;
+    }
+
+    function setNote(id, text) {
+      var notes = getNotes();
+      if (!text || !String(text).trim()) {
+        if (notes[id]) {
+          delete notes[id];
+          writeJSON(STORAGE_KEYS.notes, notes);
+        }
+        return false;
+      }
+      notes[id] = { text: String(text), updatedAt: new Date().toISOString() };
+      writeJSON(STORAGE_KEYS.notes, notes);
+      return true;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Formatting and escaping
+     * ------------------------------------------------------------------- */
     function normalise(s) {
       return (s || '')
         .toLowerCase()
@@ -633,11 +1042,149 @@
     }
 
     function escapeHtml(s) {
-      return String(s || '').replace(/[&<>"']/g, function (c) {
+      return String(s === null || s === undefined ? '' : s).replace(/[&<>"']/g, function (c) {
         return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
       });
     }
 
+    function formatTime(seconds) {
+      var total = Math.max(0, Math.floor(Number(seconds) || 0));
+      var h = Math.floor(total / 3600);
+      var m = Math.floor((total % 3600) / 60);
+      var s = total % 60;
+      var mm = h > 0 ? String(m).padStart(2, '0') : String(m);
+      return (h > 0 ? h + ':' + mm : mm) + ':' + String(s).padStart(2, '0');
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '';
+      try {
+        return new Date(iso).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+      } catch (e) {
+        try { return new Date(iso).toLocaleString(); } catch (e2) { return ''; }
+      }
+    }
+
+    function plural(count, singular, pluralForm) {
+      return count + ' ' + (count === 1 ? singular : (pluralForm || singular + 's'));
+    }
+
+    function parseTimestamp(value) {
+      var parts = String(value || '').replace(',', '.').trim().split(':');
+      if (parts.length === 3) {
+        return (Number(parts[0]) || 0) * 3600 + (Number(parts[1]) || 0) * 60 + (Number(parts[2]) || 0);
+      }
+      if (parts.length === 2) {
+        return (Number(parts[0]) || 0) * 60 + (Number(parts[1]) || 0);
+      }
+      return Number(parts[0]) || 0;
+    }
+
+    function parseVtt(text) {
+      var blocks = String(text || '').replace(/\r/g, '').split(/\n{2,}/);
+      var segments = [];
+      blocks.forEach(function (block) {
+        var lines = block.split('\n').filter(function (line) { return line.trim() !== ''; });
+        var timingIndex = -1;
+        for (var i = 0; i < lines.length; i++) {
+          if (lines[i].indexOf('-->') !== -1) { timingIndex = i; break; }
+        }
+        if (timingIndex === -1) return;
+        var times = lines[timingIndex].split('-->');
+        if (times.length < 2) return;
+        var start = parseTimestamp(times[0]);
+        var end = parseTimestamp(times[1].trim().split(/\s+/)[0]);
+        var textValue = lines.slice(timingIndex + 1).join(' ').replace(/<[^>]+>/g, '').trim();
+        if (textValue) segments.push({ start: start, end: end, text: textValue });
+      });
+      return segments;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Transcript manifest
+     * ------------------------------------------------------------------- */
+    function setTranscriptManifest(manifest) {
+      if (!manifest || typeof manifest !== 'object' || !Array.isArray(manifest.tracks)) {
+        transcriptManifest = null;
+        manifestLoadState = 'invalid';
+      } else {
+        transcriptManifest = manifest;
+        manifestLoadState = 'ready';
+      }
+      renderTranscriptAudit();
+      if (currentVideo) renderTranscriptPanel(currentVideo);
+    }
+
+    function loadTranscriptManifest() {
+      if (window.__DR_ISRAR_TRANSCRIPTS__) {
+        setTranscriptManifest(window.__DR_ISRAR_TRANSCRIPTS__);
+        return;
+      }
+      fetch('data/dr-israr/transcripts/manifest.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(setTranscriptManifest)
+        .catch(function () {
+          transcriptManifest = null;
+          manifestLoadState = 'missing';
+          renderTranscriptAudit();
+          if (currentVideo) renderTranscriptPanel(currentVideo);
+        });
+    }
+
+    function renderTranscriptAudit() {
+      var el = document.getElementById('transcript-audit');
+      if (!el) return;
+      if (manifestLoadState === 'loading') {
+        el.textContent = 'Checking the bundled transcript manifest…';
+        return;
+      }
+      if (!transcriptManifest) {
+        el.textContent = 'The transcript manifest could not be loaded. Spoken-word search is unavailable; only title, series and metadata search is active.';
+        return;
+      }
+      var audit = transcriptManifest.audit || {};
+      var checked = audit.checkedAt ? ' Audited ' + audit.checkedAt + '.' : '';
+      el.textContent =
+        plural(audit.authorizedTranscripts || 0, 'authorized transcript') + ' · ' +
+        plural(audit.authorizedTranslations || 0, 'authorized translation') + ' · ' +
+        plural(audit.verifiedSubtitleTracks || 0, 'subtitle track') + ' · ' +
+        plural(audit.aiGeneratedDrafts || 0, 'AI draft') + ' · ' +
+        (audit.recordsWithBundledText || 0) + ' of ' + (audit.catalogRecords || 0) +
+        ' catalog records carry bundled lecture text.' + checked;
+    }
+
+    function tracksForVideo(id) {
+      if (!transcriptManifest || !Array.isArray(transcriptManifest.tracks)) return [];
+      return transcriptManifest.tracks.filter(function (track) { return track.videoId === id; });
+    }
+
+    function trackKey(track) {
+      return [track.videoId, track.language, track.role, track.label].join('|');
+    }
+
+    function trackKindLabel(kind) {
+      if (kind === 'official') return 'Official source';
+      if (kind === 'authorized-translation') return 'Authorized translation';
+      if (kind === 'ai-generated-unverified') return AI_LABEL;
+      return 'Unverified kind';
+    }
+
+    function trackSegments(track) {
+      if (Array.isArray(track.segments) && track.segments.length) {
+        return Promise.resolve(track.segments);
+      }
+      if (track.url && /\.vtt$/i.test(track.url)) {
+        return fetch('data/dr-israr/transcripts/' + track.url, { cache: 'no-cache' })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+          .then(parseVtt)
+          .catch(function () { return []; });
+      }
+      return Promise.resolve([]);
+    }
+
+    /* ---------------------------------------------------------------------
+     * Catalog rendering
+     * ------------------------------------------------------------------- */
     function renderSeriesOptions(series) {
       var sel = document.getElementById('video-series');
       sel.innerHTML = '<option value="all">All Series</option>';
@@ -654,7 +1201,7 @@
       grid.innerHTML = series.map(function (s) {
         return '<div class="series-card" onclick="videoLibraryApp.filterBySeries(\'' + escapeHtml(s.code) + '\')">' +
           '<h3>' + escapeHtml(s.name) + '</h3>' +
-          '<p><strong>' + s.count + '</strong> lecture' + (s.count === 1 ? '' : 's') + ' · ' + escapeHtml(s.language) + ' · Format: ' + (s.playbackType === 'direct' ? 'Direct MP4' : 'YouTube Stream') + '</p>' +
+          '<p><strong>' + s.count + '</strong> lecture' + (s.count === 1 ? '' : 's') + ' · ' + escapeHtml(s.language) + ' · Format: ' + (s.playbackType === 'direct' ? 'Archive MP4 source link' : 'YouTube Stream') + '</p>' +
           '</div>';
       }).join('');
     }
@@ -671,15 +1218,15 @@
       var badgeClass = 'badge-youtube';
       var badgeText = '🔴 YouTube';
       if (v.playbackType === 'direct') {
-        badgeClass = 'badge-direct';
-        badgeText = '📁 Direct HD MP4';
+        badgeClass = 'badge-archive';
+        badgeText = '📁 Archive MP4 · source link';
       } else if (v.playbackStatus === 'REMOVED_AT_SOURCE') {
         badgeClass = 'badge-archive';
         badgeText = '🏛️ Archive Record';
       }
 
       var thumbSrc = v.thumbnailUrl || (v.youtubeId ? 'https://i.ytimg.com/vi/' + encodeURIComponent(v.youtubeId) + '/mqdefault.jpg' : 'icons/icon-512.svg');
-      var episodeLabel = v.episode !== null ? 'Episode ' + v.episode : 'Lecture';
+      var episodeLabel = v.episode !== null && v.episode !== undefined ? 'Episode ' + v.episode : 'Lecture';
 
       card.innerHTML =
         '<div class="video-thumb-wrap" role="button" tabindex="0" aria-label="Play ' + escapeHtml(v.title) + '">' +
@@ -696,8 +1243,10 @@
             (v.fileSizeMB ? '<span>💾 ' + v.fileSizeMB + ' MB</span>' : '') +
             (v.author ? '<span>👤 ' + escapeHtml(v.author) + '</span>' : '') +
           '</div>' +
+          '<div class="video-card-progress" style="display:none;"><span style="width:0%"></span></div>' +
           '<div class="video-card-actions">' +
             '<button type="button" class="btn-play-action js-play-theater">▶ Watch</button>' +
+            '<button type="button" class="js-bookmark-card" data-id="' + escapeHtml(v.id) + '" aria-pressed="false" aria-label="Save lecture ' + escapeHtml(v.title) + '">☆</button>' +
             '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Source ↗</a>' +
           '</div>' +
         '</div>';
@@ -712,33 +1261,442 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
       });
       card.querySelector('.js-play-theater').addEventListener('click', play);
+      card.querySelector('.js-bookmark-card').addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleBookmark(v.id);
+      });
 
       return card;
     }
 
-    function openModalForVideo(v, index) {
-      currentVideo = v;
-      currentVideoIndex = index;
+    function updateBookmarkButtons(id) {
+      var saved = isBookmarked(id);
+      document.querySelectorAll('.js-bookmark-card').forEach(function (btn) {
+        if (btn.getAttribute('data-id') !== id) return;
+        btn.classList.toggle('is-saved', saved);
+        btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+        btn.textContent = saved ? '★' : '☆';
+      });
+      var modalBtn = document.getElementById('modal-bookmark-btn');
+      if (modalBtn && currentVideo && currentVideo.id === id) {
+        modalBtn.classList.toggle('is-saved', saved);
+        modalBtn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+        modalBtn.textContent = saved ? '★ Saved lecture' : '☆ Save lecture';
+      }
+    }
 
-      var modal = document.getElementById('video-modal');
-      var mount = document.getElementById('player-mount-point');
-      var title = document.getElementById('modal-video-title');
-      var series = document.getElementById('modal-video-series');
+    function refreshCardProgress() {
+      if (!catalog) return;
+      allCards.forEach(function (card) {
+        var id = card.getAttribute('data-id');
+        var p = getProgressFor(id);
+        var bar = card.querySelector('.video-card-progress');
+        if (!bar) return;
+        if (p && !p.completed && p.position > 10 && p.duration > 0) {
+          var percent = Math.min(100, Math.max(1, (p.position / p.duration) * 100));
+          bar.style.display = 'block';
+          bar.querySelector('span').style.width = percent.toFixed(1) + '%';
+        } else {
+          bar.style.display = 'none';
+        }
+      });
+    }
+
+    /* ---------------------------------------------------------------------
+     * Personal learning dashboard
+     * ------------------------------------------------------------------- */
+    function renderLearningDashboard() {
+      var section = document.getElementById('my-learning');
+      var continueList = document.getElementById('continue-list');
+      var bookmarkList = document.getElementById('bookmark-list');
+      if (!section || !continueList || !bookmarkList) return;
+      if (!catalog || !catalog.videos) { section.style.display = 'none'; return; }
+
+      var byId = {};
+      catalog.videos.forEach(function (v) { byId[v.id] = v; });
+
+      var progress = getProgress();
+      var continueItems = Object.keys(progress)
+        .map(function (id) { return { id: id, video: byId[id], p: progress[id] }; })
+        .filter(function (item) { return item.video && item.p && !item.p.completed && item.p.position > 10; })
+        .sort(function (a, b) { return String(b.p.updatedAt || '').localeCompare(String(a.p.updatedAt || '')); })
+        .slice(0, 4);
+
+      var bookmarkItems = getBookmarks()
+        .map(function (id) { return byId[id]; })
+        .filter(Boolean)
+        .slice(0, 6);
+
+      if (!continueItems.length && !bookmarkItems.length) {
+        section.style.display = 'none';
+        return;
+      }
+      section.style.display = 'block';
+
+      continueList.innerHTML = continueItems.length ? continueItems.map(function (item) {
+        var percent = item.p.duration ? Math.min(100, Math.round((item.p.position / item.p.duration) * 100)) : 0;
+        return '<li>' +
+          '<span><span class="learning-title">' + escapeHtml(item.video.title) + '</span>' +
+          '<span class="learning-meta">Resume at ' + formatTime(item.p.position) + (percent ? ' · ' + percent + '%' : '') + '</span></span>' +
+          '<button type="button" class="js-continue" data-id="' + escapeHtml(item.video.id) + '" data-start="' + item.p.position + '">Resume</button>' +
+          '</li>';
+      }).join('') : '<li style="border:none;padding:0;" class="learning-empty">No lecture in progress yet.</li>';
+
+      bookmarkList.innerHTML = bookmarkItems.length ? bookmarkItems.map(function (video) {
+        return '<li>' +
+          '<span><span class="learning-title">' + escapeHtml(video.title) + '</span>' +
+          '<span class="learning-meta">' + escapeHtml(video.series) + '</span></span>' +
+          '<span style="display:flex;gap:6px;">' +
+            '<button type="button" class="js-open-bookmark" data-id="' + escapeHtml(video.id) + '">Open</button>' +
+            '<button type="button" class="js-remove-bookmark" data-id="' + escapeHtml(video.id) + '" aria-label="Remove bookmark">✕</button>' +
+          '</span>' +
+          '</li>';
+      }).join('') : '<li style="border:none;padding:0;" class="learning-empty">No bookmarked lectures yet.</li>';
+    }
+
+    function handleDashboardClick(event) {
+      var target = event.target.closest('button');
+      if (!target) return;
+      var id = target.getAttribute('data-id');
+      if (!id) return;
+      if (target.classList.contains('js-remove-bookmark')) {
+        toggleBookmark(id);
+        return;
+      }
+      var start = target.classList.contains('js-continue') ? parseFloat(target.getAttribute('data-start')) : 0;
+      playVideoById(id, start);
+    }
+
+    /* ---------------------------------------------------------------------
+     * Overview, notes and transcript panels
+     * ------------------------------------------------------------------- */
+    function renderOverview(v) {
+      var meta = document.getElementById('modal-meta-grid');
+      var provenance;
+      if (v.playbackType === 'direct') {
+        provenance = 'Internet Archive open educational collection (media served directly by archive.org)';
+      } else if (v.playbackStatus === 'REMOVED_AT_SOURCE') {
+        provenance = 'Historical record — removed at source; retained for provenance only';
+      } else if (v.rightsStatus === 'ORGANIZATION_LINKED') {
+        provenance = 'Publisher channel listed in the Tanzeem-e-Islami social-media registry';
+      } else {
+        provenance = 'Public YouTube upload by a third party — not verified as an official Tanzeem-e-Islami channel';
+      }
+      var rows = [
+        ['Series', v.series],
+        ['Episode', v.episode !== null && v.episode !== undefined ? 'Episode ' + v.episode : 'Not numbered in catalog'],
+        ['Language', v.language],
+        ['Format', v.playbackType === 'direct' ? 'Archive MP4 source link' : 'YouTube stream'],
+        ['Source platform', v.sourcePlatform || 'Not published in catalog'],
+        ['Uploader', v.author || 'Not published in catalog'],
+        ['Duration', v.durationText || 'Not published in catalog'],
+        ['Playback status', playbackStatusLabel(v)],
+        ['Embedding', v.playbackType === 'direct' ? 'Not applicable' : embeddingStatusLabel(v)],
+        ['Attribution', rightsStatusLabel(v)],
+        ['File size', v.fileSizeMB ? v.fileSizeMB + ' MB' : 'Not published in catalog'],
+        ['Verification', v.verificationMethod === 'browser-playback' ? 'Actual browser playback confirmed' : (v.verifiedAt ? 'Source metadata checked ' + v.verifiedAt : 'Not recorded')],
+        ['Provenance', provenance]
+      ];
+      meta.innerHTML = rows.map(function (row) {
+        return '<div class="lecture-meta-item"><dt>' + escapeHtml(row[0]) + '</dt><dd>' + escapeHtml(row[1]) + '</dd></div>';
+      }).join('');
+
+      var relatedList = document.getElementById('modal-related-lectures');
+      var sameSeries = catalog.videos.filter(function (x) {
+        return x.seriesCode === v.seriesCode && x.id !== v.id;
+      });
+      if (v.episode !== null && v.episode !== undefined) {
+        sameSeries.sort(function (a, b) {
+          var da = Math.abs((a.episode || 0) - v.episode);
+          var db = Math.abs((b.episode || 0) - v.episode);
+          return da - db;
+        });
+      }
+      var related = sameSeries.slice(0, 4);
+      relatedList.innerHTML = related.length ? related.map(function (x) {
+        return '<li><button type="button" class="js-related-lecture" data-id="' + escapeHtml(x.id) + '">' +
+          (x.episode !== null && x.episode !== undefined ? 'Episode ' + x.episode + ': ' : '') +
+          escapeHtml(x.title) + '</button></li>';
+      }).join('') : '<li class="learning-empty" style="border:none;padding:0;">No other lecture in this series.</li>';
+
+      var reading = READING_MAP[v.category] || READING_MAP['General Lectures'];
+      document.getElementById('modal-related-reading').innerHTML = reading.map(function (item) {
+        return '<li><a href="' + escapeHtml(item.href) + '">' + escapeHtml(item.label) + '</a></li>';
+      }).join('');
+
+      var tracks = tracksForVideo(v.id);
+      var note = document.getElementById('modal-integrity-note');
+      note.textContent = tracks.length
+        ? 'This record has ' + plural(tracks.length, 'bundled text track') + ' listed in the audited transcript manifest. Source, rights and any machine-draft label are shown in the Transcript & Subtitles tab.'
+        : 'No verified transcript, subtitle, chapter marker or lecture summary is bundled for this record, so none is shown. NoorDeen publishes only catalog metadata that exists in catalog.json and never invents religious text or timestamps.';
+    }
+
+    function renderNotes(v) {
+      var textarea = document.getElementById('lecture-note');
+      var status = document.getElementById('note-status');
+      var note = getNote(v.id);
+      textarea.value = note && typeof note.text === 'string' ? note.text : '';
+      status.textContent = note
+        ? 'Saved locally ' + formatDate(note.updatedAt) + '.'
+        : 'Notes are stored only in this browser.';
+    }
+
+    function commitNote() {
+      if (!currentVideo) return;
+      var textarea = document.getElementById('lecture-note');
+      var status = document.getElementById('note-status');
+      var saved = setNote(currentVideo.id, textarea.value);
+      status.textContent = saved
+        ? 'Saved locally ' + formatDate(new Date().toISOString()) + '.'
+        : (textarea.value.trim() ? 'Could not save this note in this browser.' : 'Note cleared. Nothing is stored for this lecture.');
+    }
+
+    function renderTranscriptPanel(v) {
+      var statusBox = document.getElementById('transcript-status');
+      var subtitleSelect = document.getElementById('subtitle-select');
+      var subtitleNote = document.getElementById('subtitle-note');
+      var searchInput = document.getElementById('lecture-text-search');
+      var searchBtn = document.getElementById('lecture-text-search-btn');
+      var body = document.getElementById('transcript-body');
+      var results = document.getElementById('lecture-text-results');
+
+      activeTrack = null;
+      currentSegments = [];
+      body.style.display = 'none';
+      body.innerHTML = '';
+      results.innerHTML = '';
+      searchInput.value = '';
+      subtitleTracks = tracksForVideo(v.id).filter(function (t) { return t.role === 'subtitle'; });
+
+      if (manifestLoadState === 'loading') {
+        statusBox.innerHTML = '<strong>Checking the audited transcript manifest…</strong>';
+        subtitleSelect.disabled = true;
+        subtitleSelect.innerHTML = '<option>Checking…</option>';
+        subtitleNote.textContent = '';
+        searchInput.disabled = true;
+        searchBtn.disabled = true;
+        return;
+      }
+
+      if (!transcriptManifest) {
+        statusBox.innerHTML =
+          '<strong>Transcript availability could not be confirmed.</strong>' +
+          '<p>The transcript manifest did not load, so NoorDeen will not show or search any lecture text. No text has been inferred from the title or thumbnail.</p>' +
+          '<p>Open the official source below and use its caption controls where the publisher provides them.</p>';
+        subtitleSelect.disabled = true;
+        subtitleSelect.innerHTML = '<option>No bundled subtitle track</option>';
+        subtitleNote.textContent = 'No subtitle file is bundled.';
+        searchInput.disabled = true;
+        searchBtn.disabled = true;
+        return;
+      }
+
+      var tracks = tracksForVideo(v.id);
+      var audit = transcriptManifest.audit || {};
+
+      if (!tracks.length) {
+        statusBox.innerHTML =
+          '<strong>No transcript or subtitle track is bundled for this lecture.</strong>' +
+          '<p>NoorDeen does not create text from a title, a thumbnail or a guess, and it does not download or redistribute YouTube captions. Spoken-word search is therefore unavailable for this record.</p>' +
+          '<p>Library-wide audit: ' + plural(audit.authorizedTranscripts || 0, 'authorized transcript') + ', ' +
+          plural(audit.verifiedSubtitleTracks || 0, 'subtitle track') + ' and ' +
+          plural(audit.aiGeneratedDrafts || 0, 'AI draft') + ' across ' + (audit.catalogRecords || 0) + ' catalog records. ' +
+          'If the publisher supplies captions, use the caption control inside the official source player.</p>';
+        subtitleSelect.disabled = true;
+        subtitleSelect.innerHTML = '<option>No bundled subtitle track</option>';
+        subtitleNote.textContent = v.playbackType === 'youtube'
+          ? 'YouTube captions, when the uploader provides them, are controlled inside the official player. NoorDeen does not download or redistribute them.'
+          : 'No .vtt subtitle file is bundled for this direct video.';
+        searchInput.disabled = true;
+        searchBtn.disabled = true;
+        return;
+      }
+
+      var trackButtons = tracks.map(function (track, index) {
+        return '<button type="button" class="js-select-track" data-index="' + index + '" style="display:block;width:100%;text-align:left;border:1px solid var(--color-border);border-radius:8px;padding:9px 11px;margin:0 0 7px;background:transparent;cursor:pointer;color:var(--color-text-main);font-size:.86rem;">' +
+          '<strong style="color:var(--color-primary);">' + escapeHtml(track.label) + '</strong>' +
+          '<span style="display:block;font-size:.76rem;color:var(--color-text-muted);margin-top:2px;">' +
+          escapeHtml(track.language) + ' · ' + escapeHtml(trackKindLabel(track.kind)) + ' · ' + escapeHtml(track.role) +
+          '</span></button>';
+      }).join('');
+
+      statusBox.innerHTML =
+        '<strong>' + plural(tracks.length, 'bundled text track') + ' for this lecture.</strong>' +
+        '<p>Select a track to read it. Timestamps, when present in the track, jump to the matching player position.</p>' +
+        '<div style="margin-top:10px;">' + trackButtons + '</div>' +
+        '<p style="font-size:.78rem;">Every track is listed with its own source, rights statement and copyright attribution. Machine drafts, if any, are labelled ' + AI_LABEL + '.</p>';
+
+      // Subtitle selector
+      if (subtitleTracks.length) {
+        subtitleSelect.disabled = false;
+        subtitleSelect.innerHTML = '<option value="off">Subtitles off</option>' + subtitleTracks.map(function (track, index) {
+          return '<option value="' + index + '">' + escapeHtml(track.label) + ' (' + escapeHtml(track.language) + ')</option>';
+        }).join('');
+        subtitleNote.textContent = 'Changing subtitles never changes the lecture audio, speaker or video identity.';
+      } else {
+        subtitleSelect.disabled = true;
+        subtitleSelect.innerHTML = '<option>No bundled subtitle track</option>';
+        subtitleNote.textContent = v.playbackType === 'youtube'
+          ? 'YouTube captions, when the uploader provides them, are controlled inside the official player. NoorDeen does not download or redistribute them.'
+          : 'No .vtt subtitle file is bundled for this direct video.';
+      }
+
+      searchInput.disabled = false;
+      searchBtn.disabled = false;
+
+      var firstReadable = tracks.find(function (t) { return t.role !== 'subtitle' || (Array.isArray(t.segments) && t.segments.length); }) || tracks[0];
+      selectTranscriptTrack(v, firstReadable, tracks);
+    }
+
+    function selectTranscriptTrack(v, track, tracks) {
+      activeTrack = track;
+      document.querySelectorAll('.js-select-track').forEach(function (btn) {
+        var index = Number(btn.getAttribute('data-index'));
+        var selected = tracks && tracks[index] === track;
+        btn.style.borderColor = selected ? 'var(--color-primary)' : 'var(--color-border)';
+        btn.style.background = selected ? 'rgba(15,81,50,0.06)' : 'transparent';
+      });
+
+      var body = document.getElementById('transcript-body');
+      var results = document.getElementById('lecture-text-results');
+      results.innerHTML = '';
+      body.style.display = 'block';
+      body.innerHTML = '<p style="padding:10px;color:var(--color-text-muted);font-size:.85rem;">Loading bundled text…</p>';
+
+      trackSegments(track).then(function (segments) {
+        if (!currentVideo || currentVideo.id !== v.id || activeTrack !== track) return;
+        currentSegments = segments;
+        var attribution = '<p style="padding:4px 8px 8px;font-size:.76rem;color:var(--color-text-muted);line-height:1.55;">' +
+          'Source: ' + escapeHtml(track.source) + ' · Rights: ' + escapeHtml(track.rights) + '<br>' +
+          escapeHtml(track.copyright) + '</p>';
+        var warning = track.kind === 'ai-generated-unverified'
+          ? '<div class="ai-warning" style="margin:8px;">' + AI_LABEL + '</div>'
+          : '';
+        if (!segments.length) {
+          body.innerHTML = warning + attribution + '<p style="padding:10px;color:var(--color-text-muted);font-size:.85rem;">This track contains no readable text segments.</p>';
+          return;
+        }
+        body.innerHTML = warning + attribution + segments.map(function (seg) {
+          return '<button type="button" class="transcript-seg" data-seek="' + Number(seg.start) + '">' +
+            '<time datetime="PT' + Math.floor(Number(seg.start)) + 'S">' + formatTime(seg.start) + '</time>' +
+            '<span class="seg-text">' + escapeHtml(seg.text) + '</span></button>';
+        }).join('');
+      });
+    }
+
+    function searchCurrentLectureText() {
+      var input = document.getElementById('lecture-text-search');
+      var results = document.getElementById('lecture-text-results');
+      var query = normalise(input.value);
+      if (!query) {
+        results.innerHTML = '';
+        return;
+      }
+      if (!activeTrack) {
+        results.innerHTML = '<div class="transcript-status">Select a bundled track first. No transcript is bundled for this lecture, so there is no spoken text to search.</div>';
+        return;
+      }
+      var matches = currentSegments.filter(function (seg) {
+        return normalise(seg.text).indexOf(query) !== -1;
+      });
+      if (!matches.length) {
+        results.innerHTML = '<div class="transcript-status">No passage in this bundled track matches “' + escapeHtml(input.value) + '”. Searched ' + plural(currentSegments.length, 'segment') + ' in the ' + escapeHtml(activeTrack.label) + ' track.</div>';
+        return;
+      }
+      results.innerHTML = '<p style="font-size:.8rem;color:var(--color-text-muted);margin:0 0 8px;">' + plural(matches.length, 'matching passage') + ' in this track:</p>' +
+        matches.slice(0, 30).map(function (seg) {
+          return '<button type="button" class="transcript-result" data-seek="' + Number(seg.start) + '">' +
+            '<span class="tr-time">' + formatTime(seg.start) + '</span>' + escapeHtml(seg.text) + '</button>';
+        }).join('');
+    }
+
+    function searchBundledTranscripts() {
+      var input = document.getElementById('lecture-transcript-search');
+      var box = document.getElementById('lecture-transcript-results');
+      var query = normalise(input.value);
+      if (!query) {
+        box.innerHTML = '';
+        return;
+      }
+      if (manifestLoadState === 'loading') {
+        box.innerHTML = '<div class="transcript-status">The transcript manifest is still loading. No result is shown until the audited manifest is available.</div>';
+        return;
+      }
+      if (!transcriptManifest) {
+        box.innerHTML = '<div class="transcript-status"><strong>Transcript search is unavailable.</strong> The audited manifest could not be loaded, so NoorDeen will not simulate spoken-word results.</div>';
+        return;
+      }
+      var tracks = transcriptManifest.tracks || [];
+      var searchable = tracks.filter(function (t) { return Array.isArray(t.segments) && t.segments.length; });
+      if (!tracks.length || !searchable.length) {
+        box.innerHTML = '<div class="transcript-status"><strong>No spoken-word results are possible.</strong>' +
+          '<p>NoorDeen currently bundles ' + plural((transcriptManifest.audit || {}).authorizedTranscripts || 0, 'authorized transcript') +
+          ' and ' + plural((transcriptManifest.audit || {}).verifiedSubtitleTracks || 0, 'subtitle track') +
+          ' for ' + ((transcriptManifest.audit || {}).catalogRecords || 0) + ' catalog records. This is not a failed match: there is no searchable lecture text in the library.</p>' +
+          '<p>Title, series and metadata search remains available above. No transcript has been invented to fill the gap.</p></div>';
+        return;
+      }
+
+      var byId = {};
+      if (catalog) catalog.videos.forEach(function (v) { byId[v.id] = v; });
+      var results = [];
+      searchable.forEach(function (track) {
+        var video = byId[track.videoId];
+        track.segments.forEach(function (seg) {
+          if (normalise(seg.text).indexOf(query) !== -1) {
+            results.push({ track: track, seg: seg, video: video });
+          }
+        });
+      });
+
+      if (!results.length) {
+        box.innerHTML = '<div class="transcript-status">No bundled transcript passage matches “' + escapeHtml(input.value) + '”. Searched ' +
+          plural(searchable.length, 'searchable track') + ' across ' + plural(Object.keys(byId).length, 'catalog record') + '.</div>';
+        return;
+      }
+
+      box.innerHTML = '<p style="font-size:.8rem;color:var(--color-text-muted);margin:0 0 8px;">' + plural(results.length, 'matching passage') + ' in bundled transcripts:</p>' +
+        results.slice(0, 30).map(function (r) {
+          return '<button type="button" class="transcript-result" data-video="' + escapeHtml(r.track.videoId) + '" data-seek="' + Number(r.seg.start) + '">' +
+            '<span class="tr-time">' + formatTime(r.seg.start) + '</span>' + escapeHtml(r.seg.text) +
+            '<span style="display:block;font-size:.74rem;color:var(--color-text-muted);margin-top:3px;">' +
+            escapeHtml(r.video ? r.video.title : r.track.videoId) + ' · ' + escapeHtml(r.track.label) + '</span></button>';
+        }).join('');
+    }
+
+    /* ---------------------------------------------------------------------
+     * Player mounting
+     * ------------------------------------------------------------------- */
+    function playbackStatusLabel(v) {
+      if (v.playbackType === 'direct') return 'Source link only — rights not established';
+      if (v.playbackStatus === 'VERIFIED_PLAYABLE') return 'Playback verified';
+      if (v.playbackStatus === 'EMBED_RESTRICTED') return 'Embedding restricted';
+      if (v.playbackStatus === 'REMOVED_AT_SOURCE') return 'Removed at source';
+      if (v.playbackStatus === 'AVAILABLE_AT_SOURCE') return 'Available at source';
+      return v.playbackStatus || 'Status not published';
+    }
+
+    function embeddingStatusLabel(v) {
+      if (v.playbackType !== 'youtube') return null;
+      if (v.embeddingStatus === 'EMBEDDABLE') return 'Embedding allowed';
+      if (v.embeddingStatus === 'RESTRICTED') return 'Embedding disabled';
+      return 'Embedding not re-checked';
+    }
+
+    function rightsStatusLabel(v) {
+      if (v.playbackType === 'direct') return 'Redistribution permission NOT established';
+      if (v.rightsStatus === 'ORGANIZATION_LINKED') return 'Organization-linked channel';
+      if (v.rightsStatus === 'VIDEO_UNAVAILABLE') return 'Source unavailable';
+      return 'Third-party upload — not verified';
+    }
+
+    function renderBadges(v) {
       var badges = document.getElementById('modal-video-badges');
-      var desc = document.getElementById('modal-video-desc');
-      var speedControls = document.getElementById('modal-speed-controls');
-      var sourceBtn = document.getElementById('modal-source-btn');
-
-      title.textContent = v.title;
-      series.textContent = v.series + (v.episode !== null ? ' · Episode ' + v.episode : '');
-      sourceBtn.href = v.sourceUrl;
-
-      // Badges
       badges.innerHTML = '';
       var b1 = document.createElement('span');
       b1.className = 'video-format-badge ' + (v.playbackType === 'direct' ? 'badge-direct' : (v.playbackStatus === 'REMOVED_AT_SOURCE' ? 'badge-archive' : 'badge-youtube'));
       b1.style.position = 'static';
-      b1.textContent = v.playbackType === 'direct' ? 'Direct HD MP4' : (v.playbackStatus === 'REMOVED_AT_SOURCE' ? 'Archive Record' : 'Official YouTube');
+      b1.textContent = v.playbackType === 'direct' ? 'Archive MP4 (source link)' : (v.playbackStatus === 'REMOVED_AT_SOURCE' ? 'Archive Record' : 'YouTube Stream');
       badges.appendChild(b1);
 
       var b2 = document.createElement('span');
@@ -747,22 +1705,476 @@
       b2.textContent = v.language;
       badges.appendChild(b2);
 
-      // Mount Player Engine
-      mount.innerHTML = '';
+      var b3 = document.createElement('span');
+      b3.className = 'video-format-badge ' + (v.playbackStatus === 'VERIFIED_PLAYABLE' ? 'badge-direct' : 'badge-archive');
+      b3.style.position = 'static';
+      b3.textContent = playbackStatusLabel(v);
+      badges.appendChild(b3);
+
+      var embedLabel = embeddingStatusLabel(v);
+      if (embedLabel) {
+        var b4 = document.createElement('span');
+        b4.className = 'video-format-badge ' + (v.embeddingStatus === 'EMBEDDABLE' ? 'badge-direct' : 'badge-archive');
+        b4.style.position = 'static';
+        b4.textContent = embedLabel;
+        badges.appendChild(b4);
+      }
+
+      var b5 = document.createElement('span');
+      b5.className = 'video-format-badge badge-archive';
+      b5.style.position = 'static';
+      b5.textContent = rightsStatusLabel(v);
+      badges.appendChild(b5);
+    }
+
+    function renderDescription(v) {
+      var desc = document.getElementById('modal-video-desc');
       if (v.playbackType === 'direct') {
-        speedControls.style.display = 'flex';
-        desc.textContent = "High-definition MP4 stream served from the Internet Archive open educational repository. Full byte-range seeking supported.";
-        var videoEl = document.createElement('video');
-        videoEl.id = 'active-native-video';
-        videoEl.controls = true;
-        videoEl.autoplay = true;
-        videoEl.playsInline = true;
-        videoEl.preload = 'metadata';
-        videoEl.src = v.mediaUrl;
-        mount.appendChild(videoEl);
+        desc.textContent = 'Technical playback of this MP4 was verified at the Internet Archive (HTTP 206, byte-range, H.264/AAC), but the archive item states no licence, rights holder or written permission. Redistribution permission is NOT established, so NoorDeen disables the in-page direct player and links to the original source instead.';
+      } else if (v.playbackStatus === 'REMOVED_AT_SOURCE') {
+        desc.textContent = v.note || 'This historical archive record was removed at its original source. The catalog record is retained for provenance.';
+      } else {
+        var text = 'Streamed from the YouTube channel ' + (v.author ? '“' + v.author + '”' : 'recorded in the catalog') + ' through the official YouTube IFrame Player API, using the privacy-enhanced youtube-nocookie.com host. No video file is downloaded or re-hosted by NoorDeen.';
+        if (v.rightsStatus === 'ORGANIZATION_LINKED') {
+          text += ' This channel is listed in the Tanzeem-e-Islami social-media registry.';
+        } else {
+          text += ' This channel is not listed as an official Tanzeem-e-Islami channel; the uploader is shown exactly as YouTube publishes it.';
+        }
+        if (v.playbackStatus === 'AVAILABLE_AT_SOURCE') {
+          text += ' The video exists at its original YouTube URL. Playback inside NoorDeen has not been re-tested for this record, so it is not marked as verified playable.';
+        } else if (v.playbackStatus === 'EMBED_RESTRICTED') {
+          text += ' The uploader has disabled embedding, so this record cannot play inside NoorDeen; use “Watch on YouTube” to open the original upload.';
+        }
+        desc.textContent = text;
+      }
+    }
+
+    function setResumeNote(text, allowRestart) {
+      var el = document.getElementById('modal-resume-note');
+      if (!el) return;
+      el.innerHTML = '';
+      if (!text) return;
+      var span = document.createElement('span');
+      span.textContent = text;
+      el.appendChild(span);
+      if (allowRestart) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = 'Start over';
+        btn.addEventListener('click', restartLecture);
+        el.appendChild(btn);
+      }
+    }
+
+    /* Direct MP4 playback is intentionally not mounted: redistribution
+       permission for the Internet Archive files is not established. The
+       catalog keeps the verified mediaUrl only as provenance and the UI
+       renders an attributed source link instead (see renderPlayer). */
+
+    function addSubtitleTracks(videoEl, v) {
+      var tracks = subtitleTracks.length ? subtitleTracks : tracksForVideo(v.id).filter(function (t) { return t.role === 'subtitle'; });
+      tracks.forEach(function (track) {
+        if (!track.url || !/\.vtt$/i.test(track.url)) return;
+        var el = document.createElement('track');
+        el.kind = 'subtitles';
+        el.label = track.label;
+        el.srclang = track.language === 'Urdu' ? 'ur' : (track.language === 'Arabic' ? 'ar' : (track.language === 'English' ? 'en' : 'und'));
+        el.src = 'data/dr-israr/transcripts/' + track.url;
+        el.setAttribute('data-track-key', trackKey(track));
+        videoEl.appendChild(el);
+      });
+    }
+
+    function applySubtitleSelection() {
+      var select = document.getElementById('subtitle-select');
+      var videoEl = document.getElementById('active-native-video');
+      if (!select) return;
+      if (!videoEl) {
+        if (subtitleTracks.length) setResumeNote('Subtitles are controlled by the official YouTube player for this lecture.');
+        return;
+      }
+      var value = select.value;
+      var selected = value === 'off' ? null : subtitleTracks[Number(value)];
+      for (var i = 0; i < videoEl.textTracks.length; i++) {
+        var textTrack = videoEl.textTracks[i];
+        textTrack.mode = selected && textTrack.label === selected.label ? 'showing' : 'disabled';
+      }
+      if (selected) setResumeNote('Subtitles: ' + selected.label);
+    }
+
+    /* ---------------------------------------------------------------------
+     * YouTube playback — official IFrame Player API
+     *
+     * The previous implementation injected a bare <iframe> and hoped that a
+     * hand-written postMessage handshake would arrive. It had no ready state,
+     * no error codes, no retry and no teardown. This implementation uses the
+     * documented API, keeps exactly one player alive, and maps every documented
+     * playback error to a truthful message.
+     * ------------------------------------------------------------------- */
+    var YT_API_SRC = 'https://www.youtube.com/iframe_api';
+
+    function loadYouTubeApi() {
+      if (window.YT && typeof window.YT.Player === 'function') return Promise.resolve(window.YT);
+      if (ytApiPromise) return ytApiPromise;
+      ytApiPromise = new Promise(function (resolve, reject) {
+        var settled = false;
+        function finish() {
+          if (settled) return;
+          if (!window.YT || typeof window.YT.Player !== 'function') return;
+          settled = true;
+          resolve(window.YT);
+        }
+        var previous = window.onYouTubeIframeAPIReady;
+        window.onYouTubeIframeAPIReady = function () {
+          if (typeof previous === 'function') { try { previous(); } catch (e) {} }
+          finish();
+        };
+        if (!document.querySelector('script[data-youtube-iframe-api]')) {
+          var script = document.createElement('script');
+          script.src = YT_API_SRC;
+          script.async = true;
+          script.setAttribute('data-youtube-iframe-api', 'true');
+          script.onerror = function () {
+            if (settled) return;
+            settled = true;
+            ytApiPromise = null;
+            // Remove the failed element so the Retry action can insert a fresh
+            // script instead of waiting forever on a dead tag.
+            if (script.parentNode) script.parentNode.removeChild(script);
+            reject(new Error('The official YouTube IFrame Player API could not be loaded.'));
+          };
+          document.head.appendChild(script);
+        }
+        var attempts = 0;
+        var timer = setInterval(function () {
+          attempts += 1;
+          if (window.YT && typeof window.YT.Player === 'function') {
+            clearInterval(timer);
+            finish();
+          } else if (attempts >= 75) {
+            clearInterval(timer);
+            if (settled) return;
+            settled = true;
+            ytApiPromise = null;
+            // A timed-out loader must also be removable, otherwise the next
+            // Retry sees the stale tag and never requests the API again.
+            var stale = document.querySelector('script[data-youtube-iframe-api]');
+            if (stale && stale.parentNode) stale.parentNode.removeChild(stale);
+            reject(new Error('The official YouTube IFrame Player API did not finish loading.'));
+          }
+        }, 200);
+      });
+      return ytApiPromise;
+    }
+
+    function destroyYouTubePlayer() {
+      ytMountToken += 1;
+      if (ytProgressTimer) {
+        clearInterval(ytProgressTimer);
+        ytProgressTimer = null;
+      }
+      if (activeYtPlayer) {
+        var player = activeYtPlayer;
+        activeYtPlayer = null;
+        try { player.destroy(); } catch (e) {}
+      }
+      activeYtVideoId = null;
+      ytReady = false;
+      ytHasPlayed = false;
+    }
+
+    function youtubeErrorInfo(code, detail) {
+      var value = Number(code);
+      if (value === 2) {
+        return {
+          title: 'Invalid video identifier',
+          body: 'YouTube rejected this video ID. The catalog record is wrong; no substitute video has been loaded.',
+          retry: true
+        };
+      }
+      if (value === 5) {
+        return {
+          title: 'HTML5 playback error',
+          body: 'YouTube’s HTML5 player could not play this stream on this device. Retry the player, or open the original source.',
+          retry: true
+        };
+      }
+      if (value === 100) {
+        return {
+          title: 'Video removed, private or unavailable',
+          body: 'This video is no longer available because its owner removed it, made it private, or restricted it. It has not been replaced with another video.',
+          retry: false
+        };
+      }
+      if (value === 101 || value === 150) {
+        return {
+          title: 'Embedding disabled by the uploader',
+          body: 'The owner does not permit this video to be played inside another website. Use “Watch on YouTube” to open the original upload.',
+          retry: false
+        };
+      }
+      if (value === 153) {
+        return {
+          title: 'Embedding request not identified',
+          body: 'YouTube did not receive a valid embedding origin or HTTP Referer. Open this page over HTTPS (not a local file) and retry. NoorDeen does not forge referrer headers or bypass embedding restrictions.',
+          retry: true
+        };
+      }
+      return {
+        title: 'Playback error',
+        body: detail || 'YouTube reported an unknown playback error. Retry the player, or open the original source.',
+        retry: true
+      };
+    }
+
+    function setYtLoading(show, text) {
+      var el = document.getElementById('yt-player-loading');
+      if (!el) return;
+      el.style.display = show ? 'flex' : 'none';
+      var label = el.querySelector('.yt-loading-text');
+      if (label && text) label.textContent = text;
+    }
+
+    function showYouTubeError(v, code, detail) {
+      if (!currentVideo || currentVideo.id !== v.id) return;
+      var modal = document.getElementById('video-modal');
+      if (modal && modal.style.display === 'none') return;
+      destroyYouTubePlayer();
+      var mount = document.getElementById('player-mount-point');
+      if (!mount) return;
+      var info = youtubeErrorInfo(code, detail);
+      var actions = '';
+      if (info.retry) {
+        actions += '<button type="button" class="btn btn-primary" id="yt-retry-btn">Retry player</button>';
+      }
+      actions += '<a href="https://www.youtube.com/watch?v=' + encodeURIComponent(v.youtubeId) + '" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-decoration:none;">Watch on YouTube ↗</a>';
+      actions += '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-decoration:none;">Original source ↗</a>';
+      mount.innerHTML =
+        '<div class="video-player-fallback" role="alert">' +
+          '<div style="font-size:2.5rem; margin-bottom:12px;">⚠️</div>' +
+          '<h4 style="margin:0 0 8px; color:#F4D58D;">' + escapeHtml(info.title) + '</h4>' +
+          '<p style="max-width:560px; margin:0 0 18px; font-size:0.92rem; color:#E2E8F0; line-height:1.6;">' +
+            escapeHtml(info.body) +
+          '</p>' +
+          '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">' + actions + '</div>' +
+        '</div>';
+      var retry = document.getElementById('yt-retry-btn');
+      if (retry) {
+        retry.addEventListener('click', function () {
+          mountYouTube(v, getResumePosition(v.id));
+        });
+      }
+      setResumeNote('Playback error — the original source is linked above.');
+    }
+
+    function getYouTubeDuration() {
+      try {
+        var duration = activeYtPlayer.getDuration();
+        return typeof duration === 'number' && isFinite(duration) ? duration : 0;
+      } catch (e) {
+        return 0;
+      }
+    }
+
+    function startYouTubeProgress(v) {
+      if (ytProgressTimer) clearInterval(ytProgressTimer);
+      ytProgressTimer = setInterval(function () {
+        if (!activeYtPlayer || !currentVideo || currentVideo.id !== v.id) return;
+        var time = null;
+        var duration = 0;
+        try {
+          time = activeYtPlayer.getCurrentTime();
+          duration = activeYtPlayer.getDuration();
+        } catch (e) {
+          return;
+        }
+        if (typeof time !== 'number' || !isFinite(time)) return;
+        youTubePosition = time;
+        if (time > 5) {
+          var now = Date.now();
+          if (now - progressSaveTimer > 5000) {
+            progressSaveTimer = now;
+            saveProgress(v.id, time, duration || 0, false);
+            refreshCardProgress();
+            renderLearningDashboard();
+          }
+        }
+      }, 1000);
+    }
+
+    function showYouTubePlayOverlay(v) {
+      var shell = document.querySelector('.yt-player-shell');
+      if (!shell || shell.querySelector('.yt-play-overlay')) return;
+      var overlay = document.createElement('button');
+      overlay.type = 'button';
+      overlay.className = 'yt-play-overlay';
+      overlay.innerHTML = '<span class="yt-play-icon" aria-hidden="true">▶</span><span>Play lecture</span>';
+      overlay.addEventListener('click', function () {
+        overlay.remove();
+        try {
+          activeYtPlayer.playVideo();
+        } catch (e) {
+          showYouTubeError(v, 5, 'The player could not start playback.');
+        }
+      });
+      shell.appendChild(overlay);
+    }
+
+    function onYouTubeReady(event, v, token) {
+      if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id) return;
+      ytReady = true;
+      setYtLoading(false);
+      try {
+        var iframe = event.target.getIframe();
+        if (iframe) {
+          iframe.setAttribute('title', v.title);
+          iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          iframe.setAttribute('allowfullscreen', 'true');
+        }
+      } catch (e) {}
+      try { event.target.playVideo(); } catch (e) {}
+      startYouTubeProgress(v);
+      window.setTimeout(function () {
+        if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id) return;
+        if (ytHasPlayed) return;
+        var state = -1;
+        try { state = activeYtPlayer.getPlayerState(); } catch (e) {}
+        if (state === 5 || state === -1 || state === 2) showYouTubePlayOverlay(v);
+      }, 2500);
+    }
+
+    function onYouTubeStateChange(event, v, token) {
+      if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id) return;
+      var state = event.data;
+      if (state === 1) {
+        ytHasPlayed = true;
+        setYtLoading(false);
+        var overlay = document.querySelector('.yt-play-overlay');
+        if (overlay) overlay.remove();
+        startYouTubeProgress(v);
+      } else if (state === 3) {
+        setYtLoading(true, 'Buffering…');
+      } else if (state === 0) {
+        setYtLoading(false);
+        if (ytProgressTimer) {
+          clearInterval(ytProgressTimer);
+          ytProgressTimer = null;
+        }
+        saveProgress(v.id, 0, getYouTubeDuration(), true);
+        setResumeNote('Completed — saved to My Learning.', false);
+        refreshCardProgress();
+        renderLearningDashboard();
+      } else if (state === 2) {
+        setYtLoading(false);
+      }
+    }
+
+    function mountYouTube(v, startAt) {
+      var mount = document.getElementById('player-mount-point');
+      if (!mount) return;
+      destroyYouTubePlayer();
+      var token = ++ytMountToken;
+      youTubePosition = null;
+      mount.innerHTML = '';
+
+      var shell = document.createElement('div');
+      shell.className = 'yt-player-shell';
+      var loading = document.createElement('div');
+      loading.className = 'yt-player-loading';
+      loading.id = 'yt-player-loading';
+      loading.setAttribute('role', 'status');
+      loading.setAttribute('aria-live', 'polite');
+      loading.innerHTML = '<span class="yt-spinner" aria-hidden="true"></span><span class="yt-loading-text">Loading the official YouTube player…</span>';
+      shell.appendChild(loading);
+
+      var holder = document.createElement('div');
+      holder.id = 'active-youtube-holder';
+      holder.className = 'yt-player-holder';
+      shell.appendChild(holder);
+      mount.appendChild(shell);
+
+      var start = typeof startAt === 'number' && isFinite(startAt) && startAt > 0 ? Math.floor(startAt) : 0;
+      if (start > 0) {
+        setResumeNote('Opening at ' + formatTime(start) + ' using YouTube’s official start parameter.', false);
+      }
+
+      loadYouTubeApi().then(function (YT) {
+        if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id || !holder.isConnected) return;
+        var vars = {
+          autoplay: 1,
+          rel: 0,
+          enablejsapi: 1,
+          playsinline: 1,
+          modestbranding: 1,
+          start: start
+        };
+        if (YT_ORIGIN) vars.origin = YT_ORIGIN;
+        activeYtVideoId = v.youtubeId;
+        try {
+          activeYtPlayer = new YT.Player(holder, {
+            width: '100%',
+            height: '100%',
+            videoId: v.youtubeId,
+            host: 'https://www.youtube-nocookie.com',
+            playerVars: vars,
+            events: {
+              onReady: function (event) { onYouTubeReady(event, v, token); },
+              onStateChange: function (event) { onYouTubeStateChange(event, v, token); },
+              onError: function (event) {
+                if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id) return;
+                showYouTubeError(v, event.data);
+              }
+            }
+          });
+        } catch (error) {
+          showYouTubeError(v, null, error && error.message ? error.message : 'The player could not be created.');
+          return;
+        }
+        window.setTimeout(function () {
+          if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id) return;
+          if (!ytReady) {
+            showYouTubeError(v, null, 'The player did not become ready. The network may be blocking YouTube.');
+          }
+        }, 15000);
+      }).catch(function (error) {
+        if (token !== ytMountToken || !currentVideo || currentVideo.id !== v.id) return;
+        showYouTubeError(v, null, error && error.message ? error.message : 'The YouTube API could not be loaded.');
+      });
+    }
+
+    function renderPlayer(v, startAt) {
+      var mount = document.getElementById('player-mount-point');
+      var speedControls = document.getElementById('modal-speed-controls');
+      var pipBtn = document.getElementById('modal-pip-btn');
+      var fullscreenBtn = document.getElementById('modal-fullscreen-btn');
+      mount.innerHTML = '';
+      setResumeNote('');
+
+      if (v.playbackType === 'direct') {
+        speedControls.style.display = 'none';
+        pipBtn.disabled = true;
+        fullscreenBtn.disabled = true;
+        mount.innerHTML =
+          '<div class="video-player-fallback">' +
+            '<div style="font-size:2.5rem; margin-bottom:12px;">📁</div>' +
+            '<h4 style="margin:0 0 8px; color:#F4D58D;">Archive MP4 — source link only</h4>' +
+            '<p style="max-width:560px; margin:0 0 14px; font-size:0.92rem; color:#E2E8F0; line-height:1.6;">' +
+              'The MP4 file at the Internet Archive was technically verified (HTTP 206 byte-range, H.264 video, AAC audio), but the archive item carries no licence, rights statement or written permission from the rights-holder. Public availability is not a redistribution licence, so NoorDeen does not embed or re-host this file.' +
+            '</p>' +
+            '<p style="max-width:560px; margin:0 0 18px; font-size:0.82rem; color:#CBD5E1; line-height:1.6;">' +
+              'Open the original archive page to watch it there, where the uploader controls distribution.' +
+            '</p>' +
+            '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">' +
+              '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration:none;">Open original Internet Archive source ↗</a>' +
+              (v.mediaUrl ? '<a href="' + escapeHtml(v.mediaUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="text-decoration:none;">Open MP4 file ↗</a>' : '') +
+            '</div>' +
+          '</div>';
+        setResumeNote('Source link only — redistribution permission not established.');
       } else if (v.playbackStatus === 'REMOVED_AT_SOURCE') {
         speedControls.style.display = 'none';
-        desc.textContent = v.note || "This historical archive record's legacy YouTube video was removed when the channel was suspended in 2022. You can view the original record on the official Tanzeem-e-Islami archive.";
+        pipBtn.disabled = true;
+        fullscreenBtn.disabled = true;
         mount.innerHTML =
           '<div class="video-player-fallback">' +
             '<div style="font-size:2.5rem; margin-bottom:12px;">🏛️</div>' +
@@ -773,27 +2185,69 @@
             '<a href="' + escapeHtml(v.sourceUrl) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open Tanzeem Archive Page ↗</a>' +
           '</div>';
       } else {
-        // YouTube Embed with Error Trapping & Fallback
         speedControls.style.display = 'none';
-        desc.textContent = "Streamed from the official YouTube channel (" + (v.author || 'Tanzeem-e-Islami') + ") via privacy-enhanced embed.";
-        
-        var iframe = document.createElement('iframe');
-        iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.youtubeId) + '?autoplay=1&rel=0&enablejsapi=1';
-        iframe.title = v.title;
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-        mount.appendChild(iframe);
+        pipBtn.disabled = true;
+        fullscreenBtn.disabled = false;
+        mountYouTube(v, startAt);
       }
+      updateFullscreenButton();
+    }
 
-      // Update Navigation
+    /* ---------------------------------------------------------------------
+     * Modal lifecycle, tabs and navigation
+     * ------------------------------------------------------------------- */
+    function switchTab(name) {
+      var tabs = document.querySelectorAll('.lecture-tab');
+      var panels = document.querySelectorAll('.lecture-panel');
+      tabs.forEach(function (tab) {
+        var selected = tab.getAttribute('data-panel') === name;
+        tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(function (panel) {
+        panel.hidden = panel.id !== 'panel-' + name;
+      });
+    }
+
+    function openModalForVideo(v, index, options) {
+      options = options || {};
+      if (!v) return;
+      var modal = document.getElementById('video-modal');
+      var wasOpen = modal.style.display !== 'none';
+      if (!wasOpen) lastFocusedElement = document.activeElement;
+
+      currentVideo = v;
+      currentVideoIndex = index;
+
+      document.getElementById('modal-video-title').textContent = v.title;
+      document.getElementById('modal-video-series').textContent = v.series + (v.episode !== null && v.episode !== undefined ? ' · Episode ' + v.episode : '');
+      document.getElementById('modal-source-btn').href = v.sourceUrl;
+      renderBadges(v);
+      renderDescription(v);
+      renderOverview(v);
+      renderTranscriptPanel(v);
+      renderNotes(v);
+      updateBookmarkButtons(v.id);
+      renderPlayer(v, options.startAt);
+
+      switchTab(options.tab || 'overview');
       updateModalNavigation();
 
       modal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
 
-      // Push history state so Android Back button closes modal
+      var state = { lectureModal: true, videoId: v.id };
       if (window.history && window.history.pushState) {
-        window.history.pushState({ modalOpen: true, videoId: v.id }, '', '#watch-' + v.id);
+        if (!wasOpen && !options.fromHistory) {
+          window.history.pushState(state, '', '#watch-' + v.id);
+        } else {
+          window.history.replaceState(state, '', '#watch-' + v.id);
+        }
+      }
+
+      if (!options.fromHistory) {
+        var closeBtn = modal.querySelector('.video-modal-close');
+        if (closeBtn) closeBtn.focus();
       }
     }
 
@@ -801,7 +2255,6 @@
       var prevBtn = document.getElementById('modal-prev-btn');
       var nextBtn = document.getElementById('modal-next-btn');
       var navInfo = document.getElementById('modal-nav-info');
-
       if (!catalog || !catalog.videos || currentVideoIndex < 0) return;
 
       var prev = currentVideoIndex > 0 ? catalog.videos[currentVideoIndex - 1] : null;
@@ -812,41 +2265,102 @@
       navInfo.textContent = (currentVideoIndex + 1) + ' of ' + catalog.videos.length;
     }
 
-    function closeModal() {
+    function hideModal() {
       var modal = document.getElementById('video-modal');
       var mount = document.getElementById('player-mount-point');
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        try {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        } catch (e) {}
+      }
+      destroyYouTubePlayer();
       if (mount) mount.innerHTML = '';
       if (modal) modal.style.display = 'none';
       document.body.style.overflow = '';
       currentVideo = null;
       currentVideoIndex = -1;
+      activeTrack = null;
+      currentSegments = [];
+      subtitleTracks = [];
+      youTubePosition = null;
+      setResumeNote('');
 
-      // Clean hash if present
-      if (window.location.hash.startsWith('#watch-')) {
-        try {
-          history.replaceState(null, '', window.location.pathname + window.location.search);
-        } catch (e) {}
+      if (window.location.hash.indexOf('#watch-') === 0 && !(window.history.state && window.history.state.lectureModal)) {
+        try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch (e) {}
       }
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        try { lastFocusedElement.focus(); } catch (e) {}
+      }
+      lastFocusedElement = null;
     }
 
-    // Android back button handling via popstate
-    window.addEventListener('popstate', function () {
+    function closeModal() {
       var modal = document.getElementById('video-modal');
-      if (modal && modal.style.display !== 'none') {
-        closeModal();
+      if (!modal || modal.style.display === 'none') return;
+      if (window.history && window.history.state && window.history.state.lectureModal) {
+        window.history.back();
+        return;
       }
-    });
+      hideModal();
+    }
 
-    // Keyboard ESC to close modal
-    window.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
-        var modal = document.getElementById('video-modal');
-        if (modal && modal.style.display !== 'none') {
-          closeModal();
+    function restartLecture() {
+      if (!currentVideo) return;
+      clearProgress(currentVideo.id);
+      if (currentVideo.playbackType === 'direct') {
+        var videoEl = document.getElementById('active-native-video');
+        if (videoEl) {
+          try { videoEl.currentTime = 0; videoEl.play(); } catch (e) {}
+        }
+      } else if (currentVideo.playbackType === 'youtube') {
+        if (activeYtPlayer && typeof activeYtPlayer.seekTo === 'function') {
+          try { activeYtPlayer.seekTo(0, true); activeYtPlayer.playVideo(); } catch (e) { mountYouTube(currentVideo, 0); }
+        } else {
+          mountYouTube(currentVideo, 0);
         }
       }
-    });
+      setResumeNote('Restarted from the beginning.', false);
+      refreshCardProgress();
+      renderLearningDashboard();
+    }
 
+    function seekTo(seconds) {
+      if (!currentVideo) return;
+      var value = Math.max(0, Number(seconds) || 0);
+      if (currentVideo.playbackType === 'direct') {
+        var videoEl = document.getElementById('active-native-video');
+        if (videoEl) {
+          try { videoEl.currentTime = value; videoEl.play(); } catch (e) {}
+        }
+      } else if (currentVideo.playbackType === 'youtube') {
+        if (activeYtPlayer && typeof activeYtPlayer.seekTo === 'function') {
+          try { activeYtPlayer.seekTo(value, true); activeYtPlayer.playVideo(); } catch (e) { mountYouTube(currentVideo, value); }
+        } else {
+          mountYouTube(currentVideo, value);
+        }
+      }
+      setResumeNote('Jumped to ' + formatTime(value) + '.', false);
+    }
+
+    function getCurrentPosition() {
+      if (!currentVideo) return 0;
+      if (currentVideo.playbackType === 'direct') {
+        var videoEl = document.getElementById('active-native-video');
+        return videoEl && typeof videoEl.currentTime === 'number' ? videoEl.currentTime : 0;
+      }
+      if (activeYtPlayer && typeof activeYtPlayer.getCurrentTime === 'function') {
+        try {
+          var live = activeYtPlayer.getCurrentTime();
+          if (typeof live === 'number' && isFinite(live)) return live;
+        } catch (e) {}
+      }
+      return typeof youTubePosition === 'number' ? youTubePosition : 0;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Filters and catalog loading
+     * ------------------------------------------------------------------- */
     function applyFilters() {
       var q = normalise(document.getElementById('video-search').value);
       var series = document.getElementById('video-series').value;
@@ -929,7 +2443,6 @@
         });
         grid.appendChild(frag);
 
-        // Stats
         document.getElementById('stat-videos').textContent = data.videos.length;
         var directCount = data.videos.filter(function (v) { return v.playbackType === 'direct'; }).length;
         var ytCount = data.videos.filter(function (v) { return v.playbackType === 'youtube' && v.playbackStatus !== 'REMOVED_AT_SOURCE'; }).length;
@@ -944,17 +2457,21 @@
         renderSeriesOptions(data.series);
         renderSeriesGrid(data.series);
         applyFilters();
+        renderLearningDashboard();
+        refreshCardProgress();
 
-        // Check deep-linking query param: ?video=ID or #watch-ID
         var urlParams = new URLSearchParams(window.location.search);
         var targetId = urlParams.get('video');
-        if (!targetId && window.location.hash.startsWith('#watch-')) {
+        var startAt = parseFloat(urlParams.get('t'));
+        if (!targetId && window.location.hash.indexOf('#watch-') === 0) {
           targetId = window.location.hash.replace('#watch-', '');
         }
         if (targetId) {
           var foundIdx = data.videos.findIndex(function (v) { return v.id === targetId; });
           if (foundIdx !== -1) {
-            openModalForVideo(data.videos[foundIdx], foundIdx);
+            openModalForVideo(data.videos[foundIdx], foundIdx, {
+              startAt: isFinite(startAt) && startAt > 0 ? startAt : 0
+            });
           }
         }
       } catch (err) {
@@ -978,7 +2495,95 @@
         });
     }
 
-    // Setup event handlers
+    /* ---------------------------------------------------------------------
+     * Public actions
+     * ------------------------------------------------------------------- */
+    function playVideoById(id, startAt) {
+      if (!catalog || !catalog.videos) return;
+      var idx = catalog.videos.findIndex(function (v) { return v.id === id; });
+      if (idx === -1) return;
+      var value = typeof startAt === 'number' && isFinite(startAt) && startAt > 0 ? startAt : 0;
+      openModalForVideo(catalog.videos[idx], idx, { startAt: value });
+    }
+
+    function updateFullscreenButton() {
+      var btn = document.getElementById('modal-fullscreen-btn');
+      if (!btn) return;
+      var active = document.fullscreenElement || document.webkitFullscreenElement;
+      btn.textContent = active ? '⛶ Exit fullscreen' : '⛶ Fullscreen';
+    }
+
+    function toggleFullscreen() {
+      var mount = document.getElementById('player-mount-point');
+      if (!mount) return;
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        return;
+      }
+      if (mount.requestFullscreen) {
+        mount.requestFullscreen().catch(function () {
+          setResumeNote('Fullscreen is not available in this browser.');
+        });
+      } else {
+        var videoEl = document.getElementById('active-native-video');
+        if (videoEl && videoEl.webkitEnterFullscreen) videoEl.webkitEnterFullscreen();
+        else setResumeNote('Fullscreen is not available in this browser.');
+      }
+    }
+
+    function togglePictureInPicture() {
+      var videoEl = document.getElementById('active-native-video');
+      if (!videoEl || !document.pictureInPictureEnabled || typeof videoEl.requestPictureInPicture !== 'function') {
+        setResumeNote('Picture-in-Picture is available only for direct MP4 playback.');
+        return;
+      }
+      if (document.pictureInPictureElement) {
+        document.exitPictureInPicture();
+        return;
+      }
+      videoEl.requestPictureInPicture().catch(function () {
+        setResumeNote('Picture-in-Picture was blocked by this browser.');
+      });
+    }
+
+    function copyCurrentVideoLink() {
+      if (!currentVideo) return;
+      var base = window.location.href.split('#')[0].split('?')[0];
+      var position = getCurrentPosition();
+      var url = base + '?video=' + encodeURIComponent(currentVideo.id) + (position > 5 ? '&t=' + Math.floor(position) : '');
+      function done() {
+        var btn = document.getElementById('modal-copy-link-btn');
+        if (!btn) return;
+        btn.textContent = '✓ Copied!';
+        setTimeout(function () { btn.textContent = '🔗 Copy Link'; }, 2000);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+      function fallbackCopy() {
+        try {
+          var input = document.createElement('textarea');
+          input.value = url;
+          input.setAttribute('readonly', '');
+          input.style.position = 'fixed';
+          input.style.opacity = '0';
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand('copy');
+          document.body.removeChild(input);
+          done();
+        } catch (e) {
+          setResumeNote('Copy failed. The lecture link is: ' + url);
+        }
+      }
+    }
+
+    /* ---------------------------------------------------------------------
+     * Wiring
+     * ------------------------------------------------------------------- */
     document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('video-search').addEventListener('input', applyFilters);
       document.getElementById('video-series').addEventListener('change', applyFilters);
@@ -994,26 +2599,131 @@
         });
       });
 
+      document.querySelectorAll('.lecture-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          switchTab(tab.getAttribute('data-panel'));
+        });
+        tab.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            var tabs = Array.prototype.slice.call(document.querySelectorAll('.lecture-tab'));
+            var index = tabs.indexOf(tab);
+            var next = tabs[(index + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+            next.focus();
+            switchTab(next.getAttribute('data-panel'));
+          }
+        });
+      });
+
+      document.getElementById('lecture-transcript-search-btn').addEventListener('click', searchBundledTranscripts);
+      document.getElementById('lecture-transcript-search').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); searchBundledTranscripts(); }
+      });
+
+      document.getElementById('lecture-text-search-btn').addEventListener('click', searchCurrentLectureText);
+      document.getElementById('lecture-text-search').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); searchCurrentLectureText(); }
+      });
+
+      document.getElementById('subtitle-select').addEventListener('change', applySubtitleSelection);
+
+      document.getElementById('lecture-note').addEventListener('input', function () {
+        if (noteSaveTimer) clearTimeout(noteSaveTimer);
+        document.getElementById('note-status').textContent = 'Saving…';
+        noteSaveTimer = setTimeout(commitNote, 700);
+      });
+      document.getElementById('note-save-btn').addEventListener('click', commitNote);
+      document.getElementById('note-clear-btn').addEventListener('click', function () {
+        if (!currentVideo) return;
+        document.getElementById('lecture-note').value = '';
+        setNote(currentVideo.id, '');
+        document.getElementById('note-status').textContent = 'Note cleared. Nothing is stored for this lecture.';
+      });
+
+      document.getElementById('continue-list').addEventListener('click', handleDashboardClick);
+      document.getElementById('bookmark-list').addEventListener('click', handleDashboardClick);
+
+      document.getElementById('lecture-transcript-results').addEventListener('click', function (e) {
+        var btn = e.target.closest('.transcript-result');
+        if (!btn) return;
+        playVideoById(btn.getAttribute('data-video'), parseFloat(btn.getAttribute('data-seek')));
+      });
+
+      document.getElementById('lecture-text-results').addEventListener('click', function (e) {
+        var btn = e.target.closest('.transcript-result');
+        if (!btn) return;
+        seekTo(parseFloat(btn.getAttribute('data-seek')));
+      });
+
+      document.getElementById('transcript-body').addEventListener('click', function (e) {
+        var btn = e.target.closest('.transcript-seg');
+        if (!btn) return;
+        seekTo(parseFloat(btn.getAttribute('data-seek')));
+      });
+
+      document.getElementById('transcript-status').addEventListener('click', function (e) {
+        var btn = e.target.closest('.js-select-track');
+        if (!btn || !currentVideo) return;
+        var tracks = tracksForVideo(currentVideo.id);
+        var track = tracks[Number(btn.getAttribute('data-index'))];
+        if (track) selectTranscriptTrack(currentVideo, track, tracks);
+      });
+
+      document.getElementById('modal-related-lectures').addEventListener('click', function (e) {
+        var btn = e.target.closest('.js-related-lecture');
+        if (btn) playVideoById(btn.getAttribute('data-id'));
+      });
+
+      document.addEventListener('fullscreenchange', updateFullscreenButton);
+      document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+
+      window.addEventListener('popstate', function (event) {
+        var modal = document.getElementById('video-modal');
+        var isOpen = modal && modal.style.display !== 'none';
+        if (isOpen) {
+          if (event.state && event.state.lectureModal && event.state.videoId && catalog) {
+            var idx = catalog.videos.findIndex(function (v) { return v.id === event.state.videoId; });
+            if (idx !== -1) {
+              openModalForVideo(catalog.videos[idx], idx, { fromHistory: true });
+              return;
+            }
+          }
+          hideModal();
+        } else if (event.state && event.state.lectureModal && event.state.videoId && catalog) {
+          var forwardIdx = catalog.videos.findIndex(function (v) { return v.id === event.state.videoId; });
+          if (forwardIdx !== -1) {
+            openModalForVideo(catalog.videos[forwardIdx], forwardIdx, { fromHistory: true });
+          }
+        }
+      });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          var modal = document.getElementById('video-modal');
+          if (modal && modal.style.display !== 'none') closeModal();
+        }
+      });
+
+      loadTranscriptManifest();
       loadCatalog();
     });
 
-    // Public API exposed on window.videoLibraryApp
     window.videoLibraryApp = {
       closeModal: closeModal,
       resetFilters: resetFilters,
+      switchTab: switchTab,
+      seekTo: seekTo,
+      toggleBookmark: function () { if (currentVideo) toggleBookmark(currentVideo.id); },
+      toggleFullscreen: toggleFullscreen,
+      togglePictureInPicture: togglePictureInPicture,
+      restartLecture: restartLecture,
       filterBySeries: function (seriesCode) {
         document.getElementById('video-series').value = seriesCode;
         applyFilters();
         var el = document.getElementById('video-controls') || document.getElementById('video-grid');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       },
-      playVideoById: function (id) {
-        if (!catalog || !catalog.videos) return;
-        var idx = catalog.videos.findIndex(function (v) { return v.id === id; });
-        if (idx !== -1) {
-          openModalForVideo(catalog.videos[idx], idx);
-        }
-      },
+      playVideoById: playVideoById,
       playPreviousVideo: function () {
         if (!catalog || !catalog.videos || currentVideoIndex <= 0) return;
         openModalForVideo(catalog.videos[currentVideoIndex - 1], currentVideoIndex - 1);
@@ -1029,17 +2739,9 @@
           b.classList.toggle('active', parseFloat(b.textContent) === speed);
         });
       },
-      copyCurrentVideoLink: function () {
-        if (!currentVideo) return;
-        var url = window.location.origin + window.location.pathname + '?video=' + currentVideo.id;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(url).then(function () {
-            var btn = document.getElementById('modal-copy-link-btn');
-            btn.textContent = '✓ Copied!';
-            setTimeout(function () { btn.textContent = '🔗 Copy Link'; }, 2000);
-          });
-        }
-      }
+      copyCurrentVideoLink: copyCurrentVideoLink,
+      searchBundledTranscripts: searchBundledTranscripts,
+      searchCurrentLectureText: searchCurrentLectureText
     };
   })();
   </script>

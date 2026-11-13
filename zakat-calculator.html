@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zakat Calculator — Islamic Wealth, Nisab & Complete Fiqh Guide</title>
   <meta name="description" content="Calculate your annual obligatory Zakat (2.5%) according to Islamic jurisprudence with an editable Nisab threshold, stocks, 401k, business inventory, and the 8 eligible recipient categories.">
-  <link rel="stylesheet" href="css/main.css?v=20261104a">
+  <link rel="stylesheet" href="css/main.css?v=20261105a">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0F5132">
   <link rel="canonical" href="https://jjjffdfde.github.io/NoorDeen/zakat-calculator.html">
@@ -282,7 +282,12 @@
       </div>
     </div>
 
-    <!-- Calculator Grid Interface -->
+    <!-- Static rate disclosure: required because no live FX/metal feed is integrated -->
+    <div id="zakat-rate-disclosure" style="margin-bottom: 24px; padding: 14px 16px; background: rgba(180,83,9,0.08); border-left: 4px solid #b45309; border-radius: var(--radius-sm); font-size: 0.84rem; line-height: 1.65; color: var(--color-text-main);">
+      <strong>Rate data status: STATIC BENCHMARK — NOT LIVE.</strong>
+      This calculator does not call a foreign-exchange or bullion API. The currency cross-rates and gold/silver prices are a bundled benchmark table in <code>public/js/tools.js</code> (<code>CURRENCY_RATES</code>), last reviewed on <strong>13 November 2026</strong>. They are indicative only: edit the gold and silver price fields with your local market rate on the day your Zakat is due. No timestamped live quote is displayed, and the currency-equivalent panel is a static conversion of the entered values — not a live FX conversion.
+    </div>
+
     <div class="grid-responsive-2col" style="gap: 28px; margin-bottom: 60px;">
       
       <!-- Inputs Form -->
@@ -620,12 +625,12 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/config.js?v=20261104a"></script>
-  <script src="js/data.js?v=20261104a"></script>
-  <script src="js/i18n.js?v=20261104a"></script>
-  <script src="js/tools.js?v=20261104a"></script>
-  <script src="js/search.js?v=20261104a"></script>
-  <script src="js/app.js?v=20261104a"></script>
+  <script src="js/config.js?v=20261105a"></script>
+  <script src="js/data.js?v=20261105a"></script>
+  <script src="js/i18n.js?v=20261105a"></script>
+  <script src="js/tools.js?v=20261105a"></script>
+  <script src="js/search.js?v=20261105a"></script>
+  <script src="js/app.js?v=20261105a"></script>
   <script>
     const STORAGE_KEY = 'ikp_zakat_calculator_state';
 

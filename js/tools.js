@@ -327,6 +327,9 @@ const IslamicTools = (() => {
       return {
         currency,
         currencySymbol: curr.symbol,
+        rateSource: 'STATIC_BENCHMARK_TABLE',
+        rateAsOf: '2026-11-13',
+        isLiveRate: false,
         totalAssets,
         totalLiabilities,
         netZakatableWealth,

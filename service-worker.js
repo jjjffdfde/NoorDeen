@@ -1,10 +1,10 @@
-/**
- * ISLAMIC KNOWLEDGE PORTAL — PROGRESSIVE WEB APP SERVICE WORKER
- * Network-First Navigation Engine • Cache-First Static Assets • Audio Caching • Safe Cache Invalidation
+﻿/**
+ * ISLAMIC KNOWLEDGE PORTAL â€” PROGRESSIVE WEB APP SERVICE WORKER
+ * Network-First Navigation Engine â€¢ Cache-First Static Assets â€¢ Audio Caching â€¢ Safe Cache Invalidation
  */
 
-const CACHE_VERSION = 'v31';
-const CACHE_NAME = 'islamic-portal-shell-v31';
+const CACHE_VERSION = 'v34';
+const CACHE_NAME = 'islamic-portal-shell-v34';
 const AUDIO_CACHE = 'islamic-portal-audio-v1';
 const QURAN_CACHE = 'islamic-portal-quran-v1';
 const TAFSIR_CACHE = 'islamic-portal-tafsir-v1';
@@ -24,6 +24,8 @@ const STATIC_ASSETS = [
   './dr-israr-ahmed.html',
   './data/dr-israr/catalog.json',
   './data/dr-israr/catalog.js',
+  './data/dr-israr/transcripts/manifest.json',
+  './data/dr-israr/transcripts/manifest.js',
   './salah-guide.html',
   './wudu-guide.html',
   './janazah-guide.html',
@@ -41,21 +43,21 @@ const STATIC_ASSETS = [
   './privacy.html',
   './terms.html',
   './manifest.json',
-  './css/main.css?v=20261104a',
-  './js/config.js?v=20261104a',
-  './js/data.js?v=20261104a',
-  './js/i18n.js?v=20261104a',
-  './js/tools.js?v=20261104a',
-  './js/search.js?v=20261104a',
-  './js/quran-store.js?v=20261104a',
-  './js/tafsir-store.js?v=20261104a',
-  './js/quran.js?v=20261104a',
-  './js/thematic-index.js?v=20261104a',
+  './css/main.css?v=20261105a',
+  './js/config.js?v=20261105a',
+  './js/data.js?v=20261105a',
+  './js/i18n.js?v=20261105a',
+  './js/tools.js?v=20261105a',
+  './js/search.js?v=20261105a',
+  './js/quran-store.js?v=20261105a',
+  './js/tafsir-store.js?v=20261105a',
+  './js/quran.js?v=20261105a',
+  './js/thematic-index.js?v=20261105a',
   './data/quran/manifest.json',
   './data/tafsir/manifest.json',
   './data/tafsir/themes.json',
-  './js/app.js?v=20261104a',
-  './js/sahaba-urdu.js?v=20261104a',
+  './js/app.js?v=20261105a',
+  './js/sahaba-urdu.js?v=20261105a',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',
